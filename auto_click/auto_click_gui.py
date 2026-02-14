@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, scrolledtext
+from tkinter import ttk, scrolledtext, messagebox
 import threading
 import time
 import os
@@ -13,6 +13,9 @@ import win32gui
 import win32con
 import ctypes
 
+# 어디서 실행해도 이미지를 찾을 수 있도록 현재 스크립트의 절대 경로 확보
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # ==========================================
 # 1. 자동 클릭 에이전트 클래스 (로직 분리)
 # ==========================================
@@ -24,8 +27,7 @@ class ClickAgentThread(threading.Thread):
         self.running = False
         self.enabled = True
         
-        # 설정값 초기화 (GUI에서 가져옴)
-        self.toggle_key = 0x78  # F9
+        self.enabled = True
         
     def log(self, message, is_status=False):
         self.gui.update_log_signal(message, is_status)
@@ -47,8 +49,10 @@ class ClickAgentThread(threading.Thread):
         best_match = (None, None, None, None, 0, None) # x, y, w, h, val, name
         
         for name in targets:
-            if not os.path.exists(name): continue
-            template = cv2.imread(name)
+            # 절대 경로로 변환
+            img_path = os.path.join(BASE_DIR, name)
+            if not os.path.exists(img_path): continue
+            template = cv2.imread(img_path)
             if template is None: continue
             
             res = cv2.matchTemplate(screen, template, cv2.TM_CCOEFF_NORMED)
@@ -75,15 +79,6 @@ class ClickAgentThread(threading.Thread):
             target_title = self.gui.get_target_title()
             check_interval = self.gui.get_interval()
             cool_down = 2.0
-
-            # F9 토글 감지
-            if ctypes.windll.user32.GetAsyncKeyState(self.toggle_key) & 1:
-                self.enabled = not self.enabled
-                self.gui.set_active_ui(self.enabled)
-                if self.enabled:
-                    self.log("▶ 모니터링 활성화")
-                else:
-                    self.log("⏸ 일시정지 상태 (F9로 재개)", is_status=True)
 
             if not self.enabled:
                 time.sleep(0.1)
@@ -200,23 +195,14 @@ class AutoClickGUI:
         footer_frame = ttk.Frame(main_frame)
         footer_frame.pack(side=tk.BOTTOM, fill=tk.X)
 
-        # 단축키 안내 (가장 최하단)
-        ttk.Label(footer_frame, text="단축키: F9 (활성/비활성 토글)", font=("Malgun Gothic", 8), foreground="gray").pack(side=tk.BOTTOM, pady=(5, 0))
-
         btn_frame = ttk.Frame(footer_frame)
         btn_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=(10, 0))
 
-        # 스타일 개선된 시작 버튼
-        self.start_btn = tk.Button(btn_frame, text="에이전트 시작", command=self.start_agent,
+        # 토글 방식의 단일 버튼
+        self.toggle_btn = tk.Button(btn_frame, text="에이전트 시작", command=self.toggle_agent,
                                    bg="#28a745", fg="white", font=("Malgun Gothic", 11, "bold"),
                                    relief="flat", pady=10, cursor="hand2")
-        self.start_btn.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
-
-        # 스타일 개선된 중지 버튼
-        self.stop_btn = tk.Button(btn_frame, text="중지", command=self.stop_agent,
-                                   bg="#666666", fg="white", font=("Malgun Gothic", 11, "bold"),
-                                   relief="flat", pady=10, cursor="hand2", state=tk.DISABLED)
-        self.stop_btn.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
+        self.toggle_btn.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
 
         # 4. 로그 영역 (남은 중앙 공간을 가득 채움)
         ttk.Label(main_frame, text="작업 로그").pack(anchor=tk.W, pady=(15, 5))
@@ -224,6 +210,9 @@ class AutoClickGUI:
         self.log_area.pack(fill=tk.BOTH, expand=True)
 
         self.agent = None
+        
+        # 앱 실행 시 0.5초 후 자동으로 에이전트 시작
+        self.root.after(500, self.start_agent)
 
     def setup_styles(self):
         style = ttk.Style()
@@ -247,34 +236,31 @@ class AutoClickGUI:
         except:
             return 1.0
 
+    def toggle_agent(self):
+        if self.agent and self.agent.running:
+            self.stop_agent()
+        else:
+            self.start_agent()
+
     def start_agent(self):
         targets = ['button.png', 'button2.png', 'image.jpg']
-        if not any(os.path.exists(t) for t in targets):
-            tk.messagebox.showerror("오류", f"매칭할 이미지 파일({', '.join(targets)})이 하나도 없습니다.")
+        if not any(os.path.exists(os.path.join(BASE_DIR, t)) for t in targets):
+            messagebox.showerror("오류", f"매칭할 이미지 파일({', '.join(targets)})이 하나도 없습니다.\n경로: {BASE_DIR}")
             return
 
         self.agent = ClickAgentThread(self)
         self.agent.start()
         
-        self.start_btn.config(state=tk.DISABLED, bg="#cccccc")
-        self.stop_btn.config(state=tk.NORMAL, bg="#dc3545") # Red
-        self.set_active_ui(True)
+        self.toggle_btn.config(text="에이전트 중지", bg="#dc3545") # Red
+        self.status_label.config(text="모니터링 작동 중", bg="#28a745") # Green
 
     def stop_agent(self):
         if self.agent:
             self.agent.stop()
             self.agent = None
         
-        self.start_btn.config(state=tk.NORMAL, bg="#28a745") # Green
-        self.stop_btn.config(state=tk.DISABLED, bg="#666666")
+        self.toggle_btn.config(text="에이전트 시작", bg="#28a745") # Green
         self.set_status_stopped()
-
-    def set_active_ui(self, enabled):
-        """에이전트가 돌고 있을 때 활성/비활성 토글에 따른 UI 변경"""
-        if enabled:
-            self.status_label.config(text="모니터링 작동 중", bg="#28a745") # Green
-        else:
-            self.status_label.config(text="모니터링 일시정지 (F9)", bg="#ffc107", fg="black") # Yellow
 
     def set_status_stopped(self):
         self.status_label.config(text="에이전트 중지됨", bg="#666666", fg="white")
