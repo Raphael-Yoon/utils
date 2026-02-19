@@ -199,7 +199,7 @@ class AutoClickGUI:
         btn_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=(10, 0))
 
         # 토글 방식의 단일 버튼
-        self.toggle_btn = tk.Button(btn_frame, text="에이전트 시작", command=self.toggle_agent,
+        self.toggle_btn = tk.Button(btn_frame, text="에이전트 시작 (F9)", command=self.toggle_agent,
                                    bg="#28a745", fg="white", font=("Malgun Gothic", 11, "bold"),
                                    relief="flat", pady=10, cursor="hand2")
         self.toggle_btn.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
@@ -213,6 +213,9 @@ class AutoClickGUI:
         
         # 앱 실행 시 0.5초 후 자동으로 에이전트 시작
         self.root.after(500, self.start_agent)
+        
+        # F9 단축키 바인딩
+        self.root.bind("<F9>", lambda e: self.toggle_agent())
 
     def setup_styles(self):
         style = ttk.Style()
@@ -251,7 +254,7 @@ class AutoClickGUI:
         self.agent = ClickAgentThread(self)
         self.agent.start()
         
-        self.toggle_btn.config(text="에이전트 중지", bg="#dc3545") # Red
+        self.toggle_btn.config(text="에이전트 중지 (F9)", bg="#dc3545") # Red
         self.status_label.config(text="모니터링 작동 중", bg="#28a745") # Green
 
     def stop_agent(self):
@@ -259,7 +262,7 @@ class AutoClickGUI:
             self.agent.stop()
             self.agent = None
         
-        self.toggle_btn.config(text="에이전트 시작", bg="#28a745") # Green
+        self.toggle_btn.config(text="에이전트 시작 (F9)", bg="#28a745") # Green
         self.set_status_stopped()
 
     def set_status_stopped(self):
