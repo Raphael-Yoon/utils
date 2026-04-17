@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity CSR System - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CSR Management System</h1>
+            <p>Snowball System Supplementary Audit Utility</p>
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}">대시보드</a>
+                <a href="{{ url_for('create') }}">신규 요청</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer style="text-align: center; color: #888; padding: 40px 0;">
+        &copy; 2026 Antigravity Development Team 4 (Utility)
+    </footer>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}SR Detail - {{ sr.sr_id }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+        <div>
+            <h2>[증빙] {{ sr['sr_id'] }} 상세 내역</h2>
+            <p style="color: #666;">Generated on {{ sr['created_at'] }}</p>
+        </div>
+        <span class="badge badge-{{ sr['status'].lower() }}" style="font-size: 1.2em; padding: 10px 20px;">{{ sr['status'] }}</span>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+    <div class="form-group">
+        <label>요청 제목</label>
+        <p style="font-size: 1.2em; font-weight: 500;">{{ sr['title'] }}</p>
+    </div>
+
+    <div class="form-group">
+        <label>요청 상세 내용</label>
+        <div style="background: #f9f9f9; padding: 20px; border-radius: 4px; white-space: pre-wrap;">{{ sr['content'] }}</div>
+    </div>
+
+    <div style="display: flex; gap: 40px; margin-top: 30px;">
+        <div>
+            <label>요청자</label>
+            <p>{{ sr['requester'] }}</p>
+        </div>
+        <div>
+            <label>요청 일시</label>
+            <p>{{ sr['created_at'] }}</p>
+        </div>
+    </div>
+
+    {% if sr['status'] == 'Pending' %}
+    <div style="background-color: #fcfcfc; border: 1px dashed #ddd; padding: 30px; margin-top: 40px; border-radius: 8px;">
+        <h3>승인 처리</h3>
+        <p style="color: #666;">이 요청을 승인하거나 거절하여 증빙 로그를 생성합니다.</p>
+        
+        <form action="{{ url_for('approve', id=sr['id']) }}" method="POST" style="display: inline-block; margin-right: 10px;">
+            <input type="hidden" name="approver" value="Raphael">
+            <button type="submit" class="btn btn-success">최종 승인 (Approve)</button>
+        </form>
+
+        <form action="{{ url_for('reject', id=sr['id']) }}" method="POST" style="display: inline-block;">
+            <input type="hidden" name="approver" value="Raphael">
+            <button type="submit" class="btn btn-danger">반려 (Reject)</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="evidence-box">
+        <h3>승인 증빙 로그 (Evidence Log)</h3>
+        <p>{{ sr['evidence_log'] }}</p>
+        <p><strong>승인자:</strong> {{ sr['approver'] }}</p>
+        <p><strong>최종 처리 일시:</strong> {{ sr['approved_at'] }}</p>
+    </div>
+    <div style="text-align: right; margin-top: 20px;">
+        <button onclick="window.print()" class="btn btn-primary">증빙 서류 인쇄 / PDF 저장</button>
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 40px;">
+        <a href="{{ url_for('index') }}" style="color: var(--accent-color); text-decoration: none;">&larr; 목록으로 돌아가기</a>
+    </div>
+</div>
+{% endblock %}

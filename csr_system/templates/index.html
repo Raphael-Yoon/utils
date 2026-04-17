@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>서비스 요청 목록</h2>
+        <a href="{{ url_for('create') }}" class="btn btn-primary">+ 신규 SR 생성</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>SR ID</th>
+                <th>제목</th>
+                <th>요청자</th>
+                <th>생성일자</th>
+                <th>상태</th>
+                <th>상세보기</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sr in requests %}
+            <tr>
+                <td><strong>{{ sr['sr_id'] }}</strong></td>
+                <td>{{ sr['title'] }}</td>
+                <td>{{ sr['requester'] }}</td>
+                <td>{{ sr['created_at'][:10] }}</td>
+                <td>
+                    <span class="badge badge-{{ sr['status'].lower() }}">{{ sr['status'] }}</span>
+                </td>
+                <td>
+                    <a href="{{ url_for('detail', id=sr['id']) }}" class="btn btn-primary" style="padding: 5px 10px; font-size: 0.8em;">보기</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" style="text-align: center; color: #999; padding: 40px;">등록된 서비스 요청이 없습니다.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
