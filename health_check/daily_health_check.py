@@ -365,7 +365,8 @@ def main():
     if send_telegram_flag:
         has_failure = any(res["local"]["status"] != "UP" or res["external"]["status"] != "UP" for res in ap_results) or \
                       any(res["status"] != "UP" for res in db_results)
-        if has_failure:
+        # 데일리 리포트(--email)와 함께 가동되거나 오류가 있을 시 텔레그램 발송
+        if has_failure or send_email_flag:
             send_telegram(telegram_msg)
         else:
             print("🔊 모든 시스템 정상: 텔레그램 알림 전송을 생략합니다.")
