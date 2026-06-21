@@ -38,12 +38,12 @@ DEFAULT_CHAT_ID = "8587089093"  # Raphael's chat_id
 # Target AP Servers configuration
 AP_TARGETS = [
     {
-        "name": "snowball (IT 감사 웹앱)",
+        "name": "snowball (K-Sox)",
         "local_url": "http://127.0.0.1:5001",
         "external_url": "https://ksox.snowball.pe.kr"
     },
     {
-        "name": "trade (트레이딩 시스템)",
+        "name": "Jonathan's Coffee House (트레이딩 시스템)",
         "local_url": "http://127.0.0.1:5000",
         "external_url": "https://trade.snowball.pe.kr"
     },
@@ -57,27 +57,12 @@ AP_TARGETS = [
 # Target Databases configuration
 DB_TARGETS = [
     {
-        "name": "SQLite (snowball.db)",
-        "type": "sqlite",
-        "path": os.path.join(PROJECT_ROOT, "snowball", "snowball.db")
-    },
-    {
-        "name": "SQLite (infosd.db)",
-        "type": "sqlite",
-        "path": os.path.join(PROJECT_ROOT, "infosd", "infosd.db")
-    },
-    {
         "name": "MySQL (100.103.64.85)",
         "type": "mysql",
         "host": "100.103.64.85",
         "port": 3306,
         "user": "root",
         "password": "150606"
-    },
-    {
-        "name": "PostgreSQL (Neon Cloud)",
-        "type": "postgres",
-        "url": "postgresql://neondb_owner:npg_XaO8K1HpfVnu@ep-snowy-field-aossp7rh-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
     }
 ]
 
@@ -269,13 +254,13 @@ def build_telegram_message(ap_results, db_results):
     ap_summaries = []
     for ap, res in zip(AP_TARGETS, ap_results):
         icon = "✅" if (res["local"]["status"] == "UP" and res["external"]["status"] == "UP") else "⚠️"
-        ap_summaries.append(f"{icon} {ap['name'].split()[0]} (로컬:{res['local']['status']}/외부:{res['external']['status']})")
+        ap_summaries.append(f"{icon} {ap['name']} (로컬:{res['local']['status']}/외부:{res['external']['status']})")
         
     # DB status summary
     db_summaries = []
     for db, res in zip(DB_TARGETS, db_results):
         icon = "✅" if res["status"] == "UP" else "❌"
-        db_summaries.append(f"{icon} {db['name'].split()[0]}: {res['status']}")
+        db_summaries.append(f"{icon} {db['name']}: {res['status']}")
 
     message = f"""<b>[📡 시스템 헬스체크 보고]</b>
 일시: {now_str}
@@ -376,8 +361,14 @@ def main():
     print("4. 리포트 전송 중...")
     if send_email_flag:
         send_html_email(html_report)
+        
     if send_telegram_flag:
-        send_telegram(telegram_msg)
+        has_failure = any(res["local"]["status"] != "UP" or res["external"]["status"] != "UP" for res in ap_results) or \
+                      any(res["status"] != "UP" for res in db_results)
+        if has_failure:
+            send_telegram(telegram_msg)
+        else:
+            print("🔊 모든 시스템 정상: 텔레그램 알림 전송을 생략합니다.")
     
     print("5. 헬스체크 프로세스 종료.")
 

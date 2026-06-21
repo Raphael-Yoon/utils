@@ -3,6 +3,7 @@ import json
 import os
 import time
 import subprocess
+import html
 from pathlib import Path
 from telegram import Bot, Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
@@ -24,53 +25,88 @@ if not OUTBOX_FILE.exists():
     OUTBOX_FILE.write_text(json.dumps([], indent=4))
 
 # 단축 명령어 매핑 설정
-COMMAND_MAPPING = {
-    "sb-start": {
+RAW_COMMANDS = [
+    # 1. Snowball (IT 감사)
+    {
+        "system": "1. Snowball (IT 감사)",
+        "num": "1-1",
+        "alias": "sb-start",
         "cmd": "./snowball_start.sh",
         "cwd": "/home/raphael/Dev/pythons/snowball",
         "desc": "Snowball AP 서버 시작"
     },
-    "sb-stop": {
-        "cmd": "./snowball_stop.sh",
-        "cwd": "/home/raphael/Dev/pythons/snowball",
-        "desc": "Snowball AP 서버 종료"
-    },
-    "sb-reset": {
+    {
+        "system": "1. Snowball (IT 감사)",
+        "num": "1-2",
+        "alias": "sb-reset",
         "cmd": "./snowball_reset.sh",
         "cwd": "/home/raphael/Dev/pythons/snowball",
         "desc": "Snowball AP 서버 재설정 및 재기동"
     },
-    "tr-start": {
+    {
+        "system": "1. Snowball (IT 감사)",
+        "num": "1-3",
+        "alias": "sb-stop",
+        "cmd": "./snowball_stop.sh",
+        "cwd": "/home/raphael/Dev/pythons/snowball",
+        "desc": "Snowball AP 서버 종료"
+    },
+    # 2. Trading (Jonathan's Coffee House)
+    {
+        "system": "2. Trading (Jonathan's Coffee House)",
+        "num": "2-1",
+        "alias": "tr-start",
         "cmd": "./coffee_house_start.sh",
         "cwd": "/home/raphael/Dev/pythons/trade",
-        "desc": "Trading AP 서버 시작"
+        "desc": "Jonathan's Coffee House AP 서버 시작"
     },
-    "tr-stop": {
-        "cmd": "./coffee_house_stop.sh",
-        "cwd": "/home/raphael/Dev/pythons/trade",
-        "desc": "Trading AP 서버 종료"
-    },
-    "tr-reset": {
+    {
+        "system": "2. Trading (Jonathan's Coffee House)",
+        "num": "2-2",
+        "alias": "tr-reset",
         "cmd": "./coffee_house_reset.sh",
         "cwd": "/home/raphael/Dev/pythons/trade",
-        "desc": "Trading AP 서버 재설정 및 재기동"
+        "desc": "Jonathan's Coffee House AP 서버 재설정 및 재기동"
     },
-    "is-start": {
+    {
+        "system": "2. Trading (Jonathan's Coffee House)",
+        "num": "2-3",
+        "alias": "tr-stop",
+        "cmd": "./coffee_house_stop.sh",
+        "cwd": "/home/raphael/Dev/pythons/trade",
+        "desc": "Jonathan's Coffee House AP 서버 종료"
+    },
+    # 3. Infosd (정보보호공시)
+    {
+        "system": "3. Infosd (정보보호공시)",
+        "num": "3-1",
+        "alias": "is-start",
         "cmd": "./infosd_start.sh",
         "cwd": "/home/raphael/Dev/pythons/infosd",
         "desc": "정보보호공시 AP 서버 시작"
     },
-    "is-stop": {
-        "cmd": "./infosd_stop.sh",
-        "cwd": "/home/raphael/Dev/pythons/infosd",
-        "desc": "정보보호공시 AP 서버 종료"
-    },
-    "is-reset": {
+    {
+        "system": "3. Infosd (정보보호공시)",
+        "num": "3-2",
+        "alias": "is-reset",
         "cmd": "./infosd_reset.sh",
         "cwd": "/home/raphael/Dev/pythons/infosd",
         "desc": "정보보호공시 AP 서버 재설정 및 재기동"
+    },
+    {
+        "system": "3. Infosd (정보보호공시)",
+        "num": "3-3",
+        "alias": "is-stop",
+        "cmd": "./infosd_stop.sh",
+        "cwd": "/home/raphael/Dev/pythons/infosd",
+        "desc": "정보보호공시 AP 서버 종료"
     }
-}
+]
+
+COMMAND_MAPPING = {}
+for cmd_info in RAW_COMMANDS:
+    COMMAND_MAPPING[cmd_info["num"]] = cmd_info
+    COMMAND_MAPPING[cmd_info["alias"]] = cmd_info
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """단축 명령어를 입력받아 AP 서버 제어 스크립트 실행"""
@@ -96,20 +132,24 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # 2. 명령어 확인 및 처리
     if command == "help" or command == "?":
-        help_text = "📋 **사용 가능한 단축 명령어 목록:**\n\n"
-        for cmd, info in COMMAND_MAPPING.items():
-            help_text += f"🔹 `{cmd}` : {info['desc']}\n"
-        help_text += "\n* 슬래시(/) 없이 입력하셔도 작동합니다."
-        await update.message.reply_text(help_text, parse_mode='Markdown')
+        help_text = "📋 <b>사용 가능한 단축 명령어 목록:</b>\n\n"
+        current_system = None
+        for cmd_info in RAW_COMMANDS:
+            if cmd_info["system"] != current_system:
+                current_system = cmd_info["system"]
+                help_text += f"\n🖥 <b>{current_system}</b>\n"
+            help_text += f"🔹 <code>{cmd_info['num']}</code> (또는 <code>{cmd_info['alias']}</code>) : {cmd_info['desc']}\n"
+        help_text += "\n* 슬래시(/) 없이 숫자나 명령어를 입력하셔도 작동합니다."
+        await update.message.reply_text(help_text, parse_mode='HTML')
         return
 
     if command not in COMMAND_MAPPING:
-        err_msg = f"❌ **지원하지 않는 명령어입니다.**\n\n`help`를 입력하여 사용 가능한 단축 명령어 목록을 확인하세요."
-        await update.message.reply_text(err_msg, parse_mode='Markdown')
+        err_msg = f"❌ <b>지원하지 않는 명령어입니다.</b>\n\n<code>help</code>를 입력하여 사용 가능한 단축 명령어 목록을 확인하세요."
+        await update.message.reply_text(err_msg, parse_mode='HTML')
         return
 
     info = COMMAND_MAPPING[command]
-    await update.message.reply_text(f"⚡️ `{info['desc']}` 실행 중...", parse_mode='Markdown')
+    await update.message.reply_text(f"⚡️ <code>{info['desc']}</code> 실행 중...", parse_mode='HTML')
     
     try:
         # 지정된 cwd 디렉토리로 이동하여 쉘 명령어 실행
@@ -125,23 +165,26 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         output = result.stdout.strip()
         error = result.stderr.strip()
         
-        response = f"🎯 **{info['desc']} 결과:**\n"
+        response = f"🎯 <b>{info['desc']} 결과:</b>\n"
         if output:
-            response += f"\n📋 **출력:**\n```\n{output}\n```"
+            response += f"\n📋 <b>출력:</b>\n<pre>{html.escape(output)}</pre>"
         if error:
-            response += f"\n❌ **에러:**\n```\n{error}\n```"
+            if result.returncode != 0:
+                response += f"\n❌ <b>실행 에러 (코드 {result.returncode}):</b>\n<pre>{html.escape(error)}</pre>"
+            else:
+                response += f"\nℹ️ <b>추가 정보:</b>\n<pre>{html.escape(error)}</pre>"
         if not output and not error:
             response += "\n✅ 작업이 완료되었습니다 (출력 없음)."
             
     except subprocess.TimeoutExpired:
-        response = f"⏳ **타임아웃**: `{info['desc']}` 실행 시간이 60초를 초과했습니다."
+        response = f"⏳ <b>타임아웃</b>: <code>{info['desc']}</code> 실행 시간이 60초를 초과했습니다."
     except Exception as e:
-        response = f"🚫 **실행 실패**: {str(e)}"
+        response = f"🚫 <b>실행 실패</b>: {html.escape(str(e))}"
 
     if len(response) > 4000:
         response = response[:3900] + "\n...(이하 생략)"
 
-    await update.message.reply_text(response, parse_mode='Markdown')
+    await update.message.reply_text(response, parse_mode='HTML')
 
 def main():
     if not TOKEN:
