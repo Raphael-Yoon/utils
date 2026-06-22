@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowball 서비스 통합 포털</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 고정 오버레이 헤더 영역 -->
+    <header class="overlay-header">
+        <h1>SNOWBALL</h1>
+        <p>스노볼 통합 도메인 산하의 모든 서비스로 연결하는 관문입니다.</p>
+    </header>
+
+    <!-- 세로 분할 기둥 패널들이 동적으로 배치될 컨테이너 -->
+    <main class="portal-split-container" id="portalSplitWrapper">
+        <!-- 자바스크립트에 의해 패널이 동적으로 채워집니다 -->
+    </main>
+
+    <!-- 고정 오버레이 푸터 영역 -->
+    <footer class="overlay-footer">
+        <p>&copy; 2026 SNOWBALL ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- 설정 파일 기반 동적 화면 구성 스크립트 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const splitWrapper = document.getElementById('portalSplitWrapper');
+
+            // 기본 데이터 백업 (로컬에서 파일(file:///)로 다이렉트 실행 시 CORS 정책으로 fetch가 차단되는 경우의 대비책)
+            const fallbackData = [
+                {
+                    "title": "K-SOX 실시간 감사 시스템",
+                    "description": "ITGC 내부 통제 및 실시간 프로세스 제어 감사 지원 솔루션",
+                    "url": "https://ksox.snowball.pe.kr",
+                    "emoji": "🛡️",
+                    "theme_color": "217, 91%, 60%"
+                },
+                {
+                    "title": "정보보호공시 시스템",
+                    "description": "법적 보안 공시 항목 검증 및 정합성 관리 도구",
+                    "url": "https://infosd.snowball.pe.kr",
+                    "emoji": "📄",
+                    "theme_color": "190, 90%, 50%"
+                },
+                {
+                    "title": "조나단 커피하우스",
+                    "description": "투자적격 우량 종목 분석 및 실시간 트레이딩 포트폴리오 관리",
+                    "url": "https://trade.snowball.pe.kr",
+                    "emoji": "☕",
+                    "theme_color": "45, 95%, 60%"
+                },
+                {
+                    "title": "카지노 게임",
+                    "description": "실시간 난수 알고리즘 기반 캐주얼 웹 시뮬레이션 게임",
+                    "url": "https://casino.snowball.pe.kr",
+                    "emoji": "🎰",
+                    "theme_color": "342, 85%, 60%"
+                }
+            ];
+
+            // 세로 기둥 패널을 화면에 동적으로 그리는 렌더링 함수
+            function renderPanels(services) {
+                splitWrapper.innerHTML = ''; // 초기화
+                services.forEach(service => {
+                    const panel = document.createElement('a');
+                    panel.className = 'panel';
+                    panel.href = service.url;
+                    panel.target = '_blank';
+                    // 개별 패널의 테마 색상 CSS 변수 주입
+                    panel.style.setProperty('--card-theme', service.theme_color);
+
+                    panel.innerHTML = `
+                        <div class="panel-icon">${service.emoji}</div>
+                        <div class="panel-info">
+                            <h2 class="panel-title">${service.title}</h2>
+                            <p class="panel-desc">${service.description}</p>
+                        </div>
+                        <div class="panel-arrow">↗</div>
+                    `;
+                    splitWrapper.appendChild(panel);
+                });
+            }
+
+            // services.json 파일에서 최신 설정을 동적으로 가져옵니다
+            fetch('services.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('설정 파일 로딩 실패');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    renderPanels(data);
+                    console.log('[완료] 최신 설정 파일 기반으로 포털 분할 화면 구성 완료.');
+                })
+                .catch(error => {
+                    // CORS 오류 등으로 JSON 호출이 차단되었을 때 백업 데이터 활용
+                    console.warn('[경고] 설정 파일을 직접 호출할 수 없어 로컬 백업 데이터를 사용합니다:', error);
+                    renderPanels(fallbackData);
+                });
+        });
+    </script>
+</body>
+</html>

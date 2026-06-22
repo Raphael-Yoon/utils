@@ -1,0 +1,300 @@
+/* 전사 통합 포털 세로 분할 패널 스타일시트 */
+
+/* 구글 폰트 로드 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap');
+
+:root {
+    --bg-dark: #05070c;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.04);
+    --font-outfit: 'Outfit', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-inter);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 화면 전체를 가득 채우는 분할 패널 컨테이너 */
+.portal-split-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 개별 세로 분할 기둥 패널 */
+.panel {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 30px;
+    text-decoration: none;
+    color: inherit;
+    border-right: 1px solid var(--border-color);
+    background: rgba(15, 23, 42, 0.15);
+    overflow: hidden;
+    /* 웅장하고 부드러운 가로 폭 변화 전환 애니메이션 */
+    transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), 
+                background 0.5s ease, 
+                border-color 0.4s ease;
+    cursor: pointer;
+}
+
+.panel:last-child {
+    border-right: none;
+}
+
+/* 개별 브랜드 고유 컬러별 상단 백라이트 효과 */
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, hsla(var(--card-theme), 0.08) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: 1;
+}
+
+/* 마우스 호버(오버) 시 패널 확장 및 네온 발광 효과 */
+.panel:hover {
+    flex: 2.2; /* 가로 폭이 2.2배 확장 */
+    background: hsla(var(--card-theme), 0.03);
+    border-color: hsla(var(--card-theme), 0.35);
+}
+
+.panel:hover::before {
+    opacity: 1;
+}
+
+/* 기둥 구분선 경계를 흐릿한 네온 섀도로 입체감 있게 처리 */
+.panel:hover + .panel {
+    border-left: 1px solid hsla(var(--card-theme), 0.1);
+}
+
+/* 아이콘/이모지 영역 스타일 */
+.panel-icon {
+    font-size: 3rem;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 2;
+}
+
+.panel:hover .panel-icon {
+    background: hsla(var(--card-theme), 0.12);
+    border-color: hsla(var(--card-theme), 0.4);
+    transform: scale(1.1) translateY(-10px);
+    box-shadow: 0 10px 25px hsla(var(--card-theme), 0.2);
+}
+
+/* 텍스트 정보 영역 */
+.panel-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: 320px;
+    z-index: 2;
+}
+
+.panel-title {
+    font-family: var(--font-outfit);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+    transition: all 0.4s ease;
+}
+
+.panel:hover .panel-title {
+    color: hsl(var(--card-theme));
+    transform: translateY(-5px);
+}
+
+/* 상세 설명 문구: 평소에는 숨겨져 있다가 호버 시 부드럽게 위로 페이드인 & 슬라이드업 */
+.panel-desc {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(25px);
+    transition: opacity 0.5s ease 0.1s, 
+                transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.1s, 
+                max-height 0.5s ease;
+    pointer-events: none;
+}
+
+.panel:hover .panel-desc {
+    opacity: 1;
+    max-height: 120px;
+    transform: translateY(0);
+}
+
+/* 화살표 이동 아이콘 (호버 시 부드럽게 등장) */
+.panel-arrow {
+    margin-top: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.15s;
+    z-index: 2;
+}
+
+.panel:hover .panel-arrow {
+    opacity: 1;
+    transform: translateY(0);
+    background: hsl(var(--card-theme));
+    border-color: hsl(var(--card-theme));
+    color: var(--bg-dark);
+}
+
+/* 화면 전체를 덮는 투명한 고정형 오버레이 헤더 & 푸터 */
+.overlay-header {
+    position: absolute;
+    top: 5vh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.overlay-header h1 {
+    font-family: var(--font-outfit);
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-header p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-footer {
+    position: absolute;
+    bottom: 4vh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.overlay-footer p {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 모바일 화면 최적화 (모바일에서는 가로 분할 대신 세로 분할 기둥 구조로 전환) */
+@media (max-width: 768px) {
+    .portal-split-container {
+        flex-direction: column;
+    }
+    .panel {
+        width: 100%;
+        height: 25%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px;
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+        transition: flex 0.5s ease, background 0.4s ease;
+    }
+    .panel:hover {
+        flex: 1.8;
+        background: rgba(var(--card-theme), 0.04);
+    }
+    .panel-icon {
+        margin-bottom: 0;
+        margin-right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        border-radius: 14px;
+    }
+    .panel:hover .panel-icon {
+        transform: scale(1.05);
+    }
+    .panel-info {
+        align-items: flex-start;
+        gap: 6px;
+        max-width: calc(100% - 70px);
+    }
+    .panel-title {
+        font-size: 1.2rem;
+    }
+    .panel:hover .panel-title {
+        transform: none;
+    }
+    .panel-desc {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    .panel-arrow {
+        display: none;
+    }
+    .overlay-header {
+        top: 2vh;
+    }
+    .overlay-header h1 {
+        font-size: 1.6rem;
+    }
+    .overlay-header p {
+        font-size: 0.8rem;
+    }
+    .overlay-footer {
+        bottom: 2vh;
+    }
+}

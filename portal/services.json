@@ -1,0 +1,30 @@
+[
+  {
+    "title": "K-SOX 실시간 감사 시스템",
+    "description": "ITGC 내부 통제 및 실시간 프로세스 제어 감사 지원 솔루션",
+    "url": "https://ksox.snowball.pe.kr",
+    "emoji": "🛡️",
+    "theme_color": "217, 91%, 60%"
+  },
+  {
+    "title": "정보보호공시 시스템",
+    "description": "법적 보안 공시 항목 검증 및 정합성 관리 도구",
+    "url": "https://infosd.snowball.pe.kr",
+    "emoji": "📄",
+    "theme_color": "190, 90%, 50%"
+  },
+  {
+    "title": "조나단 커피하우스",
+    "description": "투자적격 우량 종목 분석 및 실시간 트레이딩 포트폴리오 관리",
+    "url": "https://trade.snowball.pe.kr",
+    "emoji": "☕",
+    "theme_color": "45, 95%, 60%"
+  },
+  {
+    "title": "카지노 게임",
+    "description": "실시간 난수 알고리즘 기반 캐주얼 웹 시뮬레이션 게임",
+    "url": "https://casino.snowball.pe.kr",
+    "emoji": "🎰",
+    "theme_color": "342, 85%, 60%"
+  }
+]
