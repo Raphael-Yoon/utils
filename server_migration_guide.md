@@ -189,3 +189,34 @@ chmod +x restart_all.sh
 
 > **[Gemini 지시 프롬프트 예시]**
 > "현재 디렉토리에 위치한 `utils/server_migration_guide.md` 문서를 완독해줘. 이 가이드에 명시된 포트 바인딩 및 서비스를 기반으로, 신규 PC에 Python 가상환경(.venv) 설정, Docker DB 컨테이너 기동, SQLite 스키마 마이그레이션, 그리고 `utils/restart_all.sh` 스크립트를 통한 통합 재기동 작업을 순차적으로 자동 실행하고 결과를 리포트해줘."
+
+---
+
+## 5. 기존 서버와의 리소스 충돌 방지 가이드 (필독)
+
+기존 PC와 신규 PC에서 동일한 설정으로 서버를 동시에 구동할 경우, **외부 연동 리소스에서 심각한 충돌**이 발생합니다. 반드시 아래 주의사항을 숙지하고 이전을 진행해 주십시오.
+
+> [!WARNING]
+> ### 1. Cloudflare Tunnel 연결 충돌 (도메인 경합)
+> 동일한 Cloudflare Tunnel ID(`10d06dea...` 등)를 사용하여 두 PC가 동시에 터널을 띄우면, 하나의 터널 커넥션을 두고 두 PC가 경쟁하게 됩니다. 이 경우 외부 접속(`snowball.pe.kr`)이 비정상적으로 한쪽으로만 쏠리거나 터널 연결이 끊기는 현상이 반복됩니다.
+> *   **대응 방안**: 신규 PC에서 서비스를 기동하기 직전, **기존 PC의 터널 프로세스(`systemctl --user stop cloudflared-...`)를 반드시 먼저 중지**해야 합니다.
+
+> [!WARNING]
+> ### 2. Telegram Bot API Long Polling 충돌 (메시지 수신 누락)
+> `telegram_bridge`는 동일한 Telegram Bot Token을 기반으로 구동됩니다. 텔레그램 API 특성상 두 대의 서버가 동일한 토큰으로 메시지를 수신(`getUpdates`)하려고 시도하면, 한쪽의 세션이 만료되거나 메시지가 번갈아 누락되어 정상적인 텔레그램 명령 제어가 불가능해집니다.
+> *   **대응 방안**: 신규 PC의 텔레그램 브릿지를 띄우기 전, **기존 PC의 브릿지 프로세스(`pkill -f telegram_bridge/bridge.py`)를 먼저 종료**해 주십시오.
+
+> [!IMPORTANT]
+> ### 3. 안전한 서버 이전 체크리스트 및 순서
+> 1. 기존 PC에서 MySQL → SQLite 백업 수행 후 `migration_secrets.tar.gz` 생성
+> 2. **[기존 PC]** 서비스 완전 중지 및 비활성화:
+>    ```bash
+>    # 기존 PC에서 모든 서비스 및 터널 완전 종료
+>    systemctl --user stop cloudflared-ksox cloudflared-trade cloudflared-infosd
+>    pkill -f "gunicorn"
+>    pkill -f "telegram_bridge/bridge.py"
+>    docker stop snowball-mysql
+>    ```
+> 3. `migration_secrets.tar.gz` 파일을 신규 PC로 전송
+> 4. 신규 PC에서 가이드에 따라 구성 및 서비스 기동
+
