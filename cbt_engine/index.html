@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스마트 CBT 모의고사 시스템 (Smart CBT Test Platform)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent-success: #16a34a;
+      --accent-danger: #dc2626;
+      --accent-warning: #d97706;
+      --omr-checked: #1e293b;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, sans-serif; }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-md);
+      z-index: 10;
+    }
+    .brand { font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .brand span { background: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; }
+    
+    .timer-badge {
+      background: #334155;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .timer-badge.warning { background: #991b1b; animation: pulse 1s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+    .header-actions { display: flex; gap: 12px; }
+    .btn {
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-outline { background: transparent; border: 1px solid #475569; color: #f8fafc; }
+    .btn-outline:hover { background: #334155; }
+    .btn-success { background: var(--accent-success); color: #fff; }
+    .btn-success:hover { background: #15803d; }
+
+    .app-container { display: flex; flex: 1; overflow: hidden; }
+
+    .start-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+    }
+    .start-card {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      max-width: 600px;
+      width: 100%;
+      border: 1px solid var(--border-color);
+    }
+    .start-card h2 { margin-bottom: 16px; color: #0f172a; }
+    .start-card p { color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+    .exam-select-box {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      font-size: 1rem;
+      margin-bottom: 24px;
+      background: #f8fafc;
+    }
+
+    .exam-layout {
+      display: none;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .question-pane {
+      flex: 1;
+      padding: 24px 36px;
+      overflow-y: auto;
+      background: var(--bg-main);
+    }
+
+    .subject-header {
+      background: #e2e8f0;
+      color: #334155;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .question-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .q-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .q-title .q-num {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: #fff;
+    }
+    .option-item:hover {
+      border-color: var(--primary);
+      background: #f0f6ff;
+    }
+    .option-item.selected {
+      border-color: var(--primary);
+      background: #eff6ff;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .option-item input { margin-right: 12px; accent-color: var(--primary); width: 18px; height: 18px; }
+
+    .omr-pane {
+      width: 320px;
+      background: #fff;
+      border-left: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.03);
+    }
+    .omr-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      background: #f8fafc;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .omr-body {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+    }
+    .omr-subject-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin: 12px 0 8px 0;
+    }
+    .omr-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .omr-item {
+      aspect-ratio: 1;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      background: #fff;
+      transition: all 0.15s;
+    }
+    .omr-item:hover { border-color: var(--primary); }
+    .omr-item.answered {
+      background: var(--omr-checked);
+      color: #fff;
+      border-color: var(--omr-checked);
+    }
+
+    .result-screen {
+      display: none;
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      background: var(--bg-main);
+      align-items: center;
+      flex-direction: column;
+    }
+    .result-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      width: 100%;
+      padding: 40px;
+      border: 1px solid var(--border-color);
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 8px 24px;
+      border-radius: 30px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .status-badge.pass { background: #dcfce7; color: #15803d; }
+    .status-badge.fail { background: #fee2e2; color: #b91c1c; }
+
+    .score-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .score-box {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+    .score-box h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px; }
+    .score-box .val { font-size: 1.8rem; font-weight: 700; color: #0f172a; }
+
+    .subject-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+    .subject-table th, .subject-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .subject-table th { background: #f8fafc; font-weight: 700; color: #475569; }
+
+    /* 오답노트 / 채점 결과 리뷰 모드 스타일 */
+    .option-item.correct-answer {
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+      color: #15803d !important;
+      font-weight: 700;
+    }
+    .option-item.user-wrong {
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      color: #b91c1c !important;
+      text-decoration: line-through;
+    }
+    .q-result-tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-left: 10px;
+    }
+    .q-result-tag.correct { background: #dcfce7; color: #15803d; }
+    .q-result-tag.wrong { background: #fee2e2; color: #b91c1c; }
+
+    .omr-item.correct { background: #22c55e !important; color: #fff; border-color: #16a34a !important; }
+    .omr-item.wrong { background: #ef4444 !important; color: #fff; border-color: #dc2626 !important; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span>SMART CBT</span> 국가자격시험 CBT 모의고사 시스템
+  </div>
+  <div class="timer-badge" id="timerBadge" style="display:none;">
+    ⏱️ <span id="timerStr">120:00</span>
+  </div>
+  <div class="header-actions">
+    <button class="btn btn-outline" id="btnHome" onclick="location.reload()">🏠 시험 목록</button>
+    <button class="btn btn-success" id="btnSubmitHeader" style="display:none;" onclick="submitExam()">📝 답안 제출</button>
+  </div>
+</header>
+
+<div class="app-container">
+
+  <!-- 1. 시험 선택 홈 화면 -->
+  <div class="start-screen" id="startScreen">
+    <div class="start-card">
+      <h2>🎓 SMART CBT 실전 모의고사</h2>
+      <p>응시하고자 하는 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
+      
+      <select class="exam-select-box" id="examSelect">
+        <option value="/exams/빅데이터분석기사_10회.json">빅데이터분석기사 제10회 필기 기출문제</option>
+      </select>
+
+      <div style="margin-bottom: 24px; text-align: left; background: #f1f5f9; padding: 16px; border-radius: 8px;">
+        <h4 style="margin-bottom:8px; font-size:0.95rem;">📌 합격 판정 기준:</h4>
+        <ul style="font-size:0.85rem; color:#475569; padding-left:20px; line-height:1.5;">
+          <li>과목당 25점 만점 (문항당 1.25점)</li>
+          <li>과목별 과락 기준: <b>10점 미만</b> (8문항 미만) 시 불합격</li>
+          <li>총점 합격 기준: <b>60점 이상</b> (48문항 이상) 득점 시 합격</li>
+        </ul>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%; padding:14px; font-size:1.1rem;" onclick="startExam()">🚀 응시 시작하기</button>
+    </div>
+  </div>
+
+  <!-- 2. 시험 응시 화면 -->
+  <div class="exam-layout" id="examLayout">
+    <div class="question-pane" id="questionPane"></div>
+    
+    <div class="omr-pane">
+      <div class="omr-header">
+        <span>OMR 답안지</span>
+        <span style="font-size:0.85rem; font-weight:normal; color:var(--primary);" id="omrProgress">0 완료</span>
+      </div>
+      <div class="omr-body" id="omrBody"></div>
+    </div>
+  </div>
+
+  <!-- 3. 결과 리포트 화면 -->
+  <div class="result-screen" id="resultScreen">
+    <div class="result-card">
+      <div style="text-align:center;">
+        <div class="status-badge" id="resStatusBadge">PASSED</div>
+        <h2 id="resTitle">시험 결과 분석 리포트</h2>
+        <p style="color:var(--text-muted); margin-top:6px;" id="resDate"></p>
+      </div>
+
+      <div class="score-summary">
+        <div class="score-box">
+          <h4>총점 (100점 만점)</h4>
+          <div class="val" id="resTotalScore">0.0점</div>
+        </div>
+        <div class="score-box">
+          <h4>맞힌 문항 수</h4>
+          <div class="val" id="resCount">0 / 0</div>
+        </div>
+      </div>
+
+      <h3>과목별 득점 및 과락 판정</h3>
+      <table class="subject-table">
+        <thead>
+          <tr>
+            <th>과목명</th>
+            <th>맞힌 문항</th>
+            <th>점수 (25점 만점)</th>
+            <th>판정</th>
+          </tr>
+        </thead>
+        <tbody id="resSubjectTable"></tbody>
+      </table>
+
+      <div style="margin-top:32px; display:flex; gap:12px; justify-content:center;">
+        <button class="btn btn-success" style="padding: 12px 24px; font-size:1.05rem;" onclick="showReviewMode()">🔍 정답 및 오답 확인하기</button>
+        <button class="btn btn-primary" style="padding: 12px 24px; font-size:1.05rem;" onclick="location.reload()">🔄 다시 응시하기</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let currentExamData = null;
+let userAnswers = {};
+let timerInterval = null;
+let totalSeconds = 7200;
+let isReviewMode = false;
+
+// 페이지 로드 시 /api/exams 탐색
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/api/exams');
+    if(res.ok) {
+      const list = await res.json();
+      if(list.length > 0) {
+        const sel = document.getElementById('examSelect');
+        sel.innerHTML = '';
+        list.forEach(ex => {
+          const opt = document.createElement('option');
+          opt.value = ex.path;
+          opt.innerText = ex.title;
+          sel.appendChild(opt);
+        });
+      }
+    }
+  } catch(e) {}
+});
+
+async function startExam() {
+  const jsonPath = document.getElementById('examSelect').value;
+  try {
+    const res = await fetch(jsonPath);
+    if(!res.ok) throw new Error("Status " + res.status);
+    currentExamData = await res.json();
+  } catch(e) {
+    alert("시험 데이터를 불러오는데 실패했습니다: " + e.message);
+    return;
+  }
+
+  userAnswers = {};
+  isReviewMode = false;
+  totalSeconds = (currentExamData.exam_info.time_limit_minutes || 120) * 60;
+
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('examLayout').style.display = 'flex';
+  document.getElementById('timerBadge').style.display = 'flex';
+  document.getElementById('btnSubmitHeader').style.display = 'block';
+
+  renderQuestions();
+  renderOMR();
+  startTimer();
+}
+
+function renderQuestions() {
+  const pane = document.getElementById('questionPane');
+  pane.innerHTML = '';
+
+  if (currentExamData && currentExamData.exam_info && currentExamData.exam_info.title) {
+    const examHeader = document.createElement('div');
+    examHeader.style.cssText = 'background: #1e293b; color: #ffffff; padding: 14px 20px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between;';
+    examHeader.innerHTML = `<span>📋 ${escapeHtml(currentExamData.exam_info.title)} ${isReviewMode ? '<span style="background:#ef4444; margin-left:8px; padding:3px 8px; border-radius:4px; font-size:0.85rem;">[채점 및 정답 확인]</span>' : ''}</span> <span style="font-size:0.85rem; background:#3b82f6; padding:4px 10px; border-radius:12px; font-weight:normal;">${isReviewMode ? '오답노트 모드' : '실전 모의고사'}</span>`;
+    pane.appendChild(examHeader);
+  }
+
+  let currentSubId = 0;
+
+  currentExamData.questions.forEach((q) => {
+    if (q.subject_id !== currentSubId) {
+      currentSubId = q.subject_id;
+      const subInfo = currentExamData.subjects.find(s => s.id === currentSubId);
+      const subHeader = document.createElement('div');
+      subHeader.className = 'subject-header';
+      subHeader.innerText = subInfo ? subInfo.name : `${currentSubId}과목`;
+      pane.appendChild(subHeader);
+    }
+
+    const qCard = document.createElement('div');
+    qCard.className = 'question-card';
+    qCard.id = `qCard_${q.id}`;
+
+    const uAns = userAnswers[q.id];
+    const isCorrect = (uAns === q.answer);
+
+    let statusTag = '';
+    if (isReviewMode) {
+      if (isCorrect) {
+        statusTag = `<span class="q-result-tag correct">⭕ 정답</span>`;
+      } else {
+        statusTag = `<span class="q-result-tag wrong">❌ 오답 (내 선택: ${uAns ? uAns + '번' : '미응답'} / 정답: ${q.answer}번)</span>`;
+      }
+    }
+
+    let optionsHtml = '';
+    q.options.forEach((opt, optIdx) => {
+      const optNum = optIdx + 1;
+      let optClass = 'option-item';
+
+      if (isReviewMode) {
+        if (optNum === q.answer) {
+          optClass += ' correct-answer';
+        } else if (uAns === optNum && !isCorrect) {
+          optClass += ' user-wrong';
+        }
+      } else if (uAns === optNum) {
+        optClass += ' selected';
+      }
+
+      optionsHtml += `
+        <label class="${optClass}" id="optLabel_${q.id}_${optNum}">
+          <input type="radio" name="q_${q.id}" value="${optNum}" ${uAns === optNum ? 'checked' : ''} ${isReviewMode ? 'disabled' : ''} onchange="selectOption(${q.id}, ${optNum})">
+          ${escapeHtml(opt)}
+        </label>
+      `;
+    });
+
+    qCard.innerHTML = `
+      <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(q.question)} ${statusTag}</div>
+      <div class="options-list">${optionsHtml}</div>
+    `;
+
+    pane.appendChild(qCard);
+  });
+}
+
+function renderOMR() {
+  const omrBody = document.getElementById('omrBody');
+  omrBody.innerHTML = '';
+
+  currentExamData.subjects.forEach(sub => {
+    const subTitle = document.createElement('div');
+    subTitle.className = 'omr-subject-title';
+    subTitle.innerText = sub.name;
+    omrBody.appendChild(subTitle);
+
+    const grid = document.createElement('div');
+    grid.className = 'omr-grid';
+
+    const subQuestions = currentExamData.questions.filter(q => q.subject_id === sub.id);
+    subQuestions.forEach(q => {
+      const item = document.createElement('div');
+      const uAns = userAnswers[q.id];
+      const isCorrect = (uAns === q.answer);
+
+      let itemClass = 'omr-item';
+      if (isReviewMode) {
+        itemClass += isCorrect ? ' correct' : ' wrong';
+      } else if (uAns) {
+        itemClass += ' answered';
+      }
+
+      item.className = itemClass;
+      item.id = `omr_${q.id}`;
+      item.innerText = q.id;
+      item.onclick = () => scrollToQuestion(q.id);
+      grid.appendChild(item);
+    });
+
+    omrBody.appendChild(grid);
+  });
+
+  updateOMRProgress();
+}
+
+function selectOption(qId, optNum) {
+  if (isReviewMode) return;
+  userAnswers[qId] = optNum;
+  for(let i=1; i<=4; i++) {
+    const lbl = document.getElementById(`optLabel_${qId}_${i}`);
+    if(lbl) {
+      if(i === optNum) lbl.classList.add('selected');
+      else lbl.classList.remove('selected');
+    }
+  }
+  const omrItem = document.getElementById(`omr_${qId}`);
+  if(omrItem) omrItem.classList.add('answered');
+  updateOMRProgress();
+}
+
+function updateOMRProgress() {
+  const count = Object.keys(userAnswers).length;
+  const total = currentExamData.questions.length;
+  document.getElementById('omrProgress').innerText = isReviewMode ? `OMR 채점 완료` : `${count} / ${total} 완료`;
+}
+
+function scrollToQuestion(qId) {
+  const el = document.getElementById(`qCard_${qId}`);
+  if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function startTimer() {
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    totalSeconds--;
+    updateTimerDisplay();
+    if(totalSeconds <= 0) {
+      clearInterval(timerInterval);
+      alert("시험 시간이 종료되었습니다!");
+      submitExam();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  document.getElementById('timerStr').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  if(totalSeconds < 300) document.getElementById('timerBadge').classList.add('warning');
+}
+
+function submitExam() {
+  if(totalSeconds > 0) {
+    const answeredCount = Object.keys(userAnswers).length;
+    const totalCount = currentExamData.questions.length;
+    if(answeredCount < totalCount && !confirm(`총 ${totalCount}문제 중 ${answeredCount}문제만 답변했습니다. 제출할까요?`)) return;
+    if(answeredCount === totalCount && !confirm("답안을 최종 제출하시겠습니까?")) return;
+  }
+
+  clearInterval(timerInterval);
+  const rules = currentExamData.exam_info.passing_rules;
+  const ptsPerQ = rules.points_per_question || 1.25;
+  const cutoffScore = rules.subject_cutoff_score || 10;
+  const passScore = rules.total_pass_score || 60;
+
+  let totalCorrect = 0;
+  const subjectResults = currentExamData.subjects.map(sub => {
+    const subQs = currentExamData.questions.filter(q => q.subject_id === sub.id);
+    let correctCount = 0;
+    subQs.forEach(q => { if(userAnswers[q.id] === q.answer) correctCount++; });
+    totalCorrect += correctCount;
+    const score = correctCount * ptsPerQ;
+    return { name: sub.name, correct: correctCount, total: subQs.length, score: score, isCutoff: score < cutoffScore };
+  });
+
+  const grandTotalScore = totalCorrect * ptsPerQ;
+  const hasAnyCutoff = subjectResults.some(r => r.isCutoff);
+  const isFinalPass = (!hasAnyCutoff) && (grandTotalScore >= passScore);
+
+  document.getElementById('examLayout').style.display = 'none';
+  document.getElementById('timerBadge').style.display = 'none';
+  document.getElementById('btnSubmitHeader').style.display = 'none';
+  document.getElementById('resultScreen').style.display = 'flex';
+
+  const badge = document.getElementById('resStatusBadge');
+  if(isFinalPass) {
+    badge.innerText = "🎉 최종 합격 (PASSED)";
+    badge.className = "status-badge pass";
+  } else {
+    badge.innerText = hasAnyCutoff ? "❌ 과락 불합격 (FAILED)" : "❌ 총점 미달 불합격 (FAILED)";
+    badge.className = "status-badge fail";
+  }
+
+  document.getElementById('resTitle').innerText = currentExamData.exam_info.title;
+  document.getElementById('resDate').innerText = `응시 일시: ${new Date().toLocaleString()}`;
+  document.getElementById('resTotalScore').innerText = `${grandTotalScore.toFixed(1)}점`;
+  document.getElementById('resCount').innerText = `${totalCorrect} / ${currentExamData.questions.length}`;
+
+  const tbody = document.getElementById('resSubjectTable');
+  tbody.innerHTML = '';
+  subjectResults.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><b>${r.name}</b></td>
+      <td>${r.correct} / ${r.total}</td>
+      <td><b>${r.score.toFixed(1)}점</b></td>
+      <td><span style="color:${r.isCutoff ? '#dc2626' : '#16a34a'}; font-weight:bold;">${r.isCutoff ? '과락 (10점 미만)' : '통과'}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function showReviewMode() {
+  isReviewMode = true;
+  document.getElementById('resultScreen').style.display = 'none';
+  document.getElementById('examLayout').style.display = 'flex';
+  document.getElementById('timerBadge').style.display = 'none';
+  document.getElementById('btnSubmitHeader').style.display = 'none';
+
+  renderQuestions();
+  renderOMR();
+}
+
+function escapeHtml(text) {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+</script>
+</body>
+</html>
