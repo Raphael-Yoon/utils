@@ -5,6 +5,7 @@
 
 import sys
 import json
+import re
 import urllib.parse
 import webbrowser
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -36,8 +37,16 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                     except Exception:
                         pass
             
+            # 회차 숫자를 추출하여 내림차순(10회 -> 9회 -> ... -> 3회) 정렬
+            def get_round_num(item):
+                m = re.search(r'(\d+)회', item['filename'])
+                return int(m.group(1)) if m else 0
+
+            exam_list.sort(key=get_round_num, reverse=True)
+
             self.wfile.write(json.dumps(exam_list, ensure_ascii=False).encode('utf-8'))
             return
+
 
         super().do_GET()
 
