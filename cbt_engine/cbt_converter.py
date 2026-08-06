@@ -9,10 +9,21 @@ import re
 from pathlib import Path
 
 class CBTConverter:
-    def __init__(self, exam_title="필기 기출문제", category="자격증", time_limit=120):
+    def __init__(self, exam_title="필기 기출문제", category="자격증", time_limit=120, subjects=None, passing_rules=None):
         self.exam_title = exam_title
         self.category = category
         self.time_limit = time_limit
+        self.subjects = subjects or [
+            { "id": 1, "name": "1과목 : 빅데이터 분석 기획", "question_count": 20 },
+            { "id": 2, "name": "2과목 : 빅데이터 탐색", "question_count": 20 },
+            { "id": 3, "name": "3과목 : 빅데이터 모델링", "question_count": 20 },
+            { "id": 4, "name": "4과목 : 빅데이터 결과 해석", "question_count": 20 }
+        ]
+        self.passing_rules = passing_rules or {
+            "total_pass_score": 60,
+            "subject_cutoff_score": 10,
+            "points_per_question": 1.25
+        }
 
     def convert(self, md_path: Path, answer_path: Path, output_json_path: Path):
         md_path = Path(md_path)
@@ -62,32 +73,30 @@ class CBTConverter:
             if len(clean_options) > 4:
                 clean_options = clean_options[:4]
 
-            questions.append({
+            img_m = re.search(r'!\[.*?\]\((.*?)\)', block)
+            image_url = img_m.group(1) if img_m else None
+
+            q_obj = {
                 "id": q_id,
                 "subject_id": current_subject_id,
                 "question": q_text,
                 "options": clean_options,
                 "answer": answers.get(q_id, 1),
                 "explanation": f"{self.exam_title} {q_id}번 문항입니다."
-            })
+            }
+            if image_url:
+                q_obj["image_url"] = image_url
+
+            questions.append(q_obj)
 
         cbt_data = {
             "exam_info": {
                 "title": self.exam_title,
                 "category": self.category,
                 "time_limit_minutes": self.time_limit,
-                "passing_rules": {
-                    "total_pass_score": 60,
-                    "subject_cutoff_score": 10,
-                    "points_per_question": 1.25
-                }
+                "passing_rules": self.passing_rules
             },
-            "subjects": [
-                { "id": 1, "name": "1과목 : 빅데이터 분석 기획", "question_count": 20 },
-                { "id": 2, "name": "2과목 : 빅데이터 탐색", "question_count": 20 },
-                { "id": 3, "name": "3과목 : 빅데이터 모델링", "question_count": 20 },
-                { "id": 4, "name": "4과목 : 빅데이터 결과 해석", "question_count": 20 }
-            ],
+            "subjects": self.subjects,
             "questions": questions
         }
 
