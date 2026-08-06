@@ -77,6 +77,9 @@
     .btn-primary:hover { background: var(--primary-hover); }
     .btn-outline { background: transparent; border: 1px solid #475569; color: #f8fafc; }
     .btn-outline:hover { background: #334155; }
+    .btn-outline-dark { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+    .btn-outline-dark:hover { background: #f1f5f9; }
+    .btn-outline-dark:disabled { color: var(--text-muted); opacity: 0.5; cursor: not-allowed; }
     .btn-success { background: var(--accent-success); color: #fff; }
     .btn-success:hover { background: #15803d; }
 
@@ -125,6 +128,9 @@
       padding: 24px 36px;
       overflow-y: auto;
       background: var(--bg-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .subject-header {
@@ -141,15 +147,54 @@
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 28px;
       margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
+      display: none; /* 기본적으로는 페이징 처리를 위해 숨김 */
+    }
+    .question-card.active {
+      display: block; /* 활성화된 문항만 노출 */
+    }
+    .question-subject-badge {
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: inline-block;
+      border: 1px solid #bfdbfe;
+    }
+    .cbt-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      padding: 16px 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      margin-top: auto;
+    }
+    .nav-info {
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .nav-info span {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .nav-btn-group {
+      display: flex;
+      gap: 10px;
     }
     .q-title {
       font-size: 1.15rem;
       font-weight: 600;
       margin-bottom: 16px;
-      line-height: 1.5;
+      line-height: 1.6;
+      white-space: pre-wrap; /* \n에 의한 개행 문자를 화면상에 줄바꿈으로 표현 */
     }
     .q-title .q-num {
       color: var(--primary);
@@ -515,6 +560,7 @@ let userAnswers = {};
 let timerInterval = null;
 let totalSeconds = 7200;
 let isReviewMode = false;
+let currentQuestionIdx = 0; // 현재 활성화된 문항 인덱스 (0-indexed)
 
 // 페이지 로드 시 /api/exams 탐색
 window.addEventListener('DOMContentLoaded', async () => {
@@ -549,6 +595,7 @@ async function startExam() {
 
   userAnswers = {};
   isReviewMode = false;
+  currentQuestionIdx = 0; // 시작 시 첫 문제
   totalSeconds = (currentExamData.exam_info.time_limit_minutes || 120) * 60;
 
   document.getElementById('startScreen').style.display = 'none';
@@ -559,6 +606,7 @@ async function startExam() {
   renderQuestions();
   renderOMR();
   startTimer();
+  goToQuestion(0); // 0번째(첫 번째) 질문 활성화
 }
 
 function renderQuestions() {
@@ -572,20 +620,12 @@ function renderQuestions() {
     pane.appendChild(examHeader);
   }
 
-  let currentSubId = 0;
-
-  currentExamData.questions.forEach((q) => {
-    if (q.subject_id !== currentSubId) {
-      currentSubId = q.subject_id;
-      const subInfo = currentExamData.subjects.find(s => s.id === currentSubId);
-      const subHeader = document.createElement('div');
-      subHeader.className = 'subject-header';
-      subHeader.innerText = subInfo ? subInfo.name : `${currentSubId}과목`;
-      pane.appendChild(subHeader);
-    }
+  currentExamData.questions.forEach((q, idx) => {
+    const subInfo = currentExamData.subjects.find(s => s.id === q.subject_id);
+    const subjectName = subInfo ? subInfo.name : `${q.subject_id}과목`;
 
     const qCard = document.createElement('div');
-    qCard.className = 'question-card';
+    qCard.className = `question-card${idx === currentQuestionIdx ? ' active' : ''}`;
     qCard.id = `qCard_${q.id}`;
 
     const uAns = userAnswers[q.id];
@@ -624,12 +664,63 @@ function renderQuestions() {
     });
 
     qCard.innerHTML = `
+      <div class="question-subject-badge">📚 ${escapeHtml(subjectName)}</div>
       <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(q.question)} ${statusTag}</div>
       <div class="options-list">${optionsHtml}</div>
     `;
 
     pane.appendChild(qCard);
   });
+
+  // 네비게이션 컨트롤 컨테이너 배치
+  const navBar = document.createElement('div');
+  navBar.className = 'cbt-nav-bar';
+  navBar.id = 'cbtNavBar';
+  pane.appendChild(navBar);
+}
+
+function renderNavigationBar() {
+  const navBar = document.getElementById('cbtNavBar');
+  if (!navBar || !currentExamData) return;
+
+  const total = currentExamData.questions.length;
+  const currentNum = currentQuestionIdx + 1;
+
+  navBar.innerHTML = `
+    <div class="nav-info">문항 <span>${currentNum}</span> / ${total}</div>
+    <div class="nav-btn-group">
+      <button class="btn btn-outline-dark" onclick="goToQuestion(${currentQuestionIdx - 1})" ${currentQuestionIdx === 0 ? 'disabled' : ''}>이전 문제</button>
+      <button class="btn btn-primary" onclick="goToQuestion(${currentQuestionIdx + 1})" ${currentQuestionIdx === total - 1 ? 'disabled' : ''}>다음 문제</button>
+    </div>
+  `;
+}
+
+function goToQuestion(idx) {
+  if (!currentExamData) return;
+  const total = currentExamData.questions.length;
+  if (idx < 0 || idx >= total) return;
+
+  // 이전 활성 질문의 active 제거
+  const prevCard = document.querySelector('.question-card.active');
+  if (prevCard) prevCard.classList.remove('active');
+
+  currentQuestionIdx = idx;
+  const activeQ = currentExamData.questions[idx];
+
+  // 새 활성 질문에 active 추가
+  const currentCard = document.getElementById(`qCard_${activeQ.id}`);
+  if (currentCard) {
+    currentCard.classList.add('active');
+  }
+
+  // OMR 하이라이트 활성화
+  document.querySelectorAll('.omr-item').forEach(el => el.style.border = '1px solid var(--border-color)');
+  const currentOmr = document.getElementById(`omr_${activeQ.id}`);
+  if (currentOmr) {
+    currentOmr.style.border = '2px solid var(--primary)';
+  }
+
+  renderNavigationBar();
 }
 
 function renderOMR() {
@@ -661,7 +752,10 @@ function renderOMR() {
       item.className = itemClass;
       item.id = `omr_${q.id}`;
       item.innerText = q.id;
-      item.onclick = () => scrollToQuestion(q.id);
+      
+      // OMR 클릭 시 해당 문제 인덱스로 이동
+      const qIdx = currentExamData.questions.findIndex(question => question.id === q.id);
+      item.onclick = () => goToQuestion(qIdx);
       grid.appendChild(item);
     });
 
@@ -690,11 +784,6 @@ function updateOMRProgress() {
   const count = Object.keys(userAnswers).length;
   const total = currentExamData.questions.length;
   document.getElementById('omrProgress').innerText = isReviewMode ? `OMR 채점 완료` : `${count} / ${total} 완료`;
-}
-
-function scrollToQuestion(qId) {
-  const el = document.getElementById(`qCard_${qId}`);
-  if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function startTimer() {
@@ -787,6 +876,7 @@ function showReviewMode() {
 
   renderQuestions();
   renderOMR();
+  goToQuestion(0); // 리뷰 모드에서도 첫 번째 문제 활성화
 }
 
 function escapeHtml(text) {
