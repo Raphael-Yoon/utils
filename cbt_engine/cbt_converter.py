@@ -33,10 +33,16 @@ class CBTConverter:
         answers = {}
         if answer_path.exists():
             ans_content = answer_path.read_text(encoding="utf-8")
-            matches = re.findall(r'\*\*\s*(\d+)\s*\*\*\s*\|\s*([①②③④1234])', ans_content)
             symbol_map = {'①': 1, '②': 2, '③': 3, '④': 4, '1': 1, '2': 2, '3': 3, '4': 4}
-            for q_num, ans in matches:
-                answers[int(q_num)] = symbol_map.get(ans.strip(), 1)
+            for line in ans_content.splitlines():
+                if '|' not in line:
+                    continue
+                parts = [p.strip() for p in line.split('|') if p.strip()]
+                for i in range(0, len(parts)-1, 2):
+                    q_str = parts[i].replace('*', '').strip()
+                    a_str = parts[i+1].replace('*', '').strip()
+                    if q_str.isdigit() and a_str in symbol_map:
+                        answers[int(q_str)] = symbol_map[a_str]
 
         md_content = md_path.read_text(encoding="utf-8")
         questions = []
