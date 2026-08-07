@@ -146,6 +146,39 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
 
         self.send_error(404, "Not Found")
 
+    def do_DELETE(self):
+        # /api/results - 응시 이력 삭제 (단건 삭제: ?id=X, 전체 삭제: ?all=true)
+        parsed = urllib.parse.urlparse(self.path)
+        path_only = parsed.path
+        query = urllib.parse.parse_qs(parsed.query)
+
+        if path_only == '/api/results':
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+
+            if 'id' in query:
+                result_id = query['id'][0]
+                cursor.execute('DELETE FROM exam_results WHERE id = ?', (result_id,))
+                deleted_cnt = cursor.rowcount
+            elif query.get('all', [''])[0] == 'true':
+                cursor.execute('DELETE FROM exam_results')
+                deleted_cnt = cursor.rowcount
+            else:
+                conn.close()
+                self.send_error(400, "Bad Request: Missing 'id' or 'all=true' parameter")
+                return
+
+            conn.commit()
+            conn.close()
+
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok", "deleted_count": deleted_cnt}, ensure_ascii=False).encode('utf-8'))
+            return
+
+        self.send_error(404, "Not Found")
+
     def translate_path(self, path):
         # URL 디코딩 처리 (한글 파일명 %EB%B9%85... 인코딩 해제)
         decoded_path = urllib.parse.unquote(path)
