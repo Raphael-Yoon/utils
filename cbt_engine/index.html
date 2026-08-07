@@ -75,10 +75,12 @@
     }
     .btn-primary { background: var(--primary); color: #fff; }
     .btn-primary:hover { background: var(--primary-hover); }
-    .btn-outline { background: transparent; border: 1px solid #475569; color: #f8fafc; }
-    .btn-outline:hover { background: #334155; }
-    .btn-outline-dark { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
-    .btn-outline-dark:hover { background: #f1f5f9; }
+    .btn-outline { background: #ffffff; border: 1.5px solid #2563eb; color: #1d4ed8; font-weight: 600; }
+    .btn-outline:hover { background: #eff6ff; border-color: #1d4ed8; color: #1e40af; }
+    .btn-header-outline { background: transparent; border: 1px solid #64748b; color: #ffffff; }
+    .btn-header-outline:hover { background: #334155; color: #ffffff; }
+    .btn-outline-dark { background: #ffffff; border: 1px solid var(--border-color); color: var(--text-main); font-weight: 600; }
+    .btn-outline-dark:hover { background: #f1f5f9; color: #0f172a; }
     .btn-outline-dark:disabled { color: var(--text-muted); opacity: 0.5; cursor: not-allowed; }
     .btn-success { background: var(--accent-success); color: #fff; }
     .btn-success:hover { background: #15803d; }
@@ -469,7 +471,7 @@
     ⏱️ <span id="timerStr">120:00</span>
   </div>
   <div class="header-actions">
-    <button class="btn btn-outline" id="btnHome" onclick="location.reload()">🏠 시험 목록</button>
+    <button class="btn btn-header-outline" id="btnHome" onclick="location.reload()">🏠 시험 목록</button>
     <button class="btn btn-success" id="btnSubmitHeader" style="display:none;" onclick="submitExam()">📝 답안 제출</button>
   </div>
 </header>
