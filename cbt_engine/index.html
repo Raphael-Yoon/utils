@@ -615,6 +615,55 @@ window.addEventListener('DOMContentLoaded', async () => {
   checkDraftSession();
 });
 
+// 키보드 단축키 (Enter: 다음 문제 이동, 1~4: 답안 선택, 방향키: 문제 이동)
+window.addEventListener('keydown', (e) => {
+  const historyModal = document.getElementById('historyModal');
+  const imgModal = document.getElementById('imgModal');
+  if ((historyModal && historyModal.style.display === 'flex') || 
+      (imgModal && imgModal.style.display === 'flex')) {
+    return;
+  }
+
+  const examLayout = document.getElementById('examLayout');
+  if (!examLayout || examLayout.style.display === 'none' || !currentExamData) return;
+
+  const key = e.key;
+
+  // 엔터키: 다음 문제로 이동
+  if (key === 'Enter') {
+    e.preventDefault();
+    if (currentQuestionIdx < currentExamData.questions.length - 1) {
+      goToQuestion(currentQuestionIdx + 1);
+    }
+    return;
+  }
+
+  // 방향키(Right/Down: 다음 문제, Left/Up: 이전 문제)
+  if (key === 'ArrowRight' || key === 'ArrowDown') {
+    e.preventDefault();
+    if (currentQuestionIdx < currentExamData.questions.length - 1) {
+      goToQuestion(currentQuestionIdx + 1);
+    }
+    return;
+  }
+  if (key === 'ArrowLeft' || key === 'ArrowUp') {
+    e.preventDefault();
+    if (currentQuestionIdx > 0) {
+      goToQuestion(currentQuestionIdx - 1);
+    }
+    return;
+  }
+
+  // 1~4 숫자키 입력 시 답안 선택
+  if (['1', '2', '3', '4'].includes(key)) {
+    const optNum = parseInt(key, 10);
+    const activeQ = currentExamData.questions[currentQuestionIdx];
+    if (activeQ) {
+      selectOption(activeQ.id, optNum);
+    }
+  }
+});
+
 function updateRulesUI() {
   const selPath = document.getElementById('examSelect').value;
   const ex = examList.find(item => item.path === selPath);
