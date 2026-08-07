@@ -7,6 +7,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- 수식 렌더링 지원 (KaTeX 및 MathJax) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     :root {
       --bg-main: #f8fafc;
@@ -805,6 +818,34 @@ function renderQuestions() {
   navBar.className = 'cbt-nav-bar';
   navBar.id = 'cbtNavBar';
   pane.appendChild(navBar);
+
+  renderMath();
+}
+
+function renderMath() {
+  const container = document.getElementById('questionPane');
+  if (!container) return;
+
+  if (window.renderMathInElement) {
+    try {
+      window.renderMathInElement(container, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+      return;
+    } catch(e) {}
+  }
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    try {
+      window.MathJax.typesetPromise([container]);
+      return;
+    } catch(e) {}
+  }
 }
 
 function renderNavigationBar() {
@@ -850,6 +891,7 @@ function goToQuestion(idx) {
 
   renderNavigationBar();
   saveDraftSession();
+  renderMath();
 }
 
 function renderOMR() {
