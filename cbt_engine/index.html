@@ -484,6 +484,19 @@
       <h2>🎓 SMART CBT 실전 모의고사</h2>
       <p>응시하고자 하는 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
       
+      <!-- 진행 중인 시험 이어서 풀기 배너 -->
+      <div id="resumeBanner" style="display:none; background:#fffbeb; border:1.5px solid #f59e0b; padding:16px; border-radius:10px; margin-bottom:20px; text-align:left; box-shadow:0 2px 6px rgba(245,158,11,0.15);">
+        <div style="font-weight:bold; color:#b45309; font-size:1.05rem;">⚠️ 진행 중인 시험이 있습니다!</div>
+        <div style="font-size:0.88rem; color:#92400e; margin-top:8px; line-height:1.4;">
+          <div id="resumeTitle" style="font-weight:bold; color:#78350f;"></div>
+          <div id="resumeDetails" style="margin-top:4px;"></div>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:12px;">
+          <button class="btn" style="flex:1; background:#f59e0b; color:#ffffff; font-weight:bold; padding:10px;" onclick="resumeDraftExam()">🚀 이어서 응시하기</button>
+          <button class="btn" style="background:#ffffff; border:1px solid #d97706; color:#b45309; font-weight:bold; padding:10px;" onclick="discardDraftExam()">🗑️ 삭제</button>
+        </div>
+      </div>
+
       <select class="exam-select-box" id="examSelect" onchange="updateRulesUI()">
         <option value="/exams/bigdata_10.json">빅데이터분석기사 제10회 필기 기출문제</option>
       </select>
@@ -566,7 +579,7 @@ let totalSeconds = 7200;
 let isReviewMode = false;
 let currentQuestionIdx = 0; // 현재 활성화된 문항 인덱스 (0-indexed)
 
-// 페이지 로드 시 /api/exams 탐색
+// 페이지 로드 시 /api/exams 탐색 및 임시저장(이어하기) 확인
 window.addEventListener('DOMContentLoaded', async () => {
   try {
     const res = await fetch('/api/exams');
@@ -585,6 +598,8 @@ window.addEventListener('DOMContentLoaded', async () => {
       }
     }
   } catch(e) {}
+
+  checkDraftSession();
 });
 
 function updateRulesUI() {
@@ -614,12 +629,83 @@ function updateRulesUI() {
   `;
 }
 
+function saveDraftSession() {
+  if (isReviewMode || !currentExamData) return;
+  const jsonPath = document.getElementById('examSelect').value;
+  const draft = {
+    examPath: jsonPath,
+    examTitle: (currentExamData.exam_info && currentExamData.exam_info.title) ? currentExamData.exam_info.title : '시험',
+    userAnswers: userAnswers,
+    remainingSeconds: totalSeconds,
+    currentQuestionIdx: currentQuestionIdx,
+    savedAt: new Date().toISOString()
+  };
+  localStorage.setItem('cbt_resume_draft', JSON.stringify(draft));
+}
+
+function checkDraftSession() {
+  const raw = localStorage.getItem('cbt_resume_draft');
+  if (!raw) return;
+  try {
+    const draft = JSON.parse(raw);
+    if (!draft || !draft.examPath || !draft.userAnswers) return;
+
+    const answeredCount = Object.keys(draft.userAnswers).length;
+    const min = Math.floor((draft.remainingSeconds || 0) / 60);
+    const sec = (draft.remainingSeconds || 0) % 60;
+
+    document.getElementById('resumeTitle').innerText = draft.examTitle;
+    document.getElementById('resumeDetails').innerText = `풀이 완료: ${answeredCount}문항 | 남은시간: ${min}분 ${sec}초`;
+    document.getElementById('resumeBanner').style.display = 'block';
+  } catch (e) {
+    localStorage.removeItem('cbt_resume_draft');
+  }
+}
+
+async function resumeDraftExam() {
+  const raw = localStorage.getItem('cbt_resume_draft');
+  if (!raw) return;
+  let draft;
+  try { draft = JSON.parse(raw); } catch (e) { return; }
+
+  try {
+    const res = await fetch(draft.examPath);
+    if (!res.ok) throw new Error("Status " + res.status);
+    currentExamData = await res.json();
+    currentExamData.filename = draft.examPath.replace('/exams/', '');
+  } catch (e) {
+    alert("시험 데이터를 불러오는데 실패했습니다: " + e.message);
+    return;
+  }
+
+  userAnswers = draft.userAnswers || {};
+  isReviewMode = false;
+  totalSeconds = draft.remainingSeconds || 7200;
+  currentQuestionIdx = draft.currentQuestionIdx || 0;
+
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('examLayout').style.display = 'flex';
+  document.getElementById('timerBadge').style.display = 'flex';
+  document.getElementById('btnSubmitHeader').style.display = 'block';
+
+  renderQuestions();
+  renderOMR();
+  startTimer();
+  goToQuestion(currentQuestionIdx);
+}
+
+function discardDraftExam() {
+  localStorage.removeItem('cbt_resume_draft');
+  document.getElementById('resumeBanner').style.display = 'none';
+}
+
 async function startExam() {
   const jsonPath = document.getElementById('examSelect').value;
   try {
     const res = await fetch(jsonPath);
     if(!res.ok) throw new Error("Status " + res.status);
     currentExamData = await res.json();
+    currentExamData.filename = jsonPath.replace('/exams/', '');
   } catch(e) {
     alert("시험 데이터를 불러오는데 실패했습니다: " + e.message);
     return;
@@ -629,6 +715,7 @@ async function startExam() {
   isReviewMode = false;
   currentQuestionIdx = 0; // 시작 시 첫 문제
   totalSeconds = (currentExamData.exam_info.time_limit_minutes || 120) * 60;
+  localStorage.removeItem('cbt_resume_draft');
 
   document.getElementById('startScreen').style.display = 'none';
   document.getElementById('examLayout').style.display = 'flex';
@@ -639,6 +726,7 @@ async function startExam() {
   renderOMR();
   startTimer();
   goToQuestion(0); // 0번째(첫 번째) 질문 활성화
+  saveDraftSession();
 }
 
 function renderQuestions() {
@@ -761,6 +849,7 @@ function goToQuestion(idx) {
   }
 
   renderNavigationBar();
+  saveDraftSession();
 }
 
 function renderOMR() {
@@ -818,6 +907,7 @@ function selectOption(qId, optNum) {
   const omrItem = document.getElementById(`omr_${qId}`);
   if(omrItem) omrItem.classList.add('answered');
   updateOMRProgress();
+  saveDraftSession();
 }
 
 function updateOMRProgress() {
@@ -831,6 +921,7 @@ function startTimer() {
   timerInterval = setInterval(() => {
     totalSeconds--;
     updateTimerDisplay();
+    if (totalSeconds % 5 === 0) saveDraftSession();
     if(totalSeconds <= 0) {
       clearInterval(timerInterval);
       alert("시험 시간이 종료되었습니다!");
@@ -855,6 +946,7 @@ function submitExam() {
   }
 
   clearInterval(timerInterval);
+  localStorage.removeItem('cbt_resume_draft');
   const rules = currentExamData.exam_info.passing_rules;
   const ptsPerQ = rules.points_per_question || 1.25;
   const cutoffScore = rules.subject_cutoff_score || 10;
