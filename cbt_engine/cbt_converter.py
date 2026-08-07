@@ -82,6 +82,21 @@ class CBTConverter:
             img_m = re.search(r'!\[.*?\]\((.*?)\)', block)
             image_url = img_m.group(1) if img_m else None
 
+            # markdown에 이미지 태그가 없는 경우 images/ 폴더의 기존 캡처 이미지 파일 자동 탐색
+            if not image_url and output_json_path:
+                exam_stem = output_json_path.stem
+                images_dir = output_json_path.parent / "images"
+                # bigdata_10_q29.png 또는 bigdata_5_q27.png 등 형식을 모두 검색
+                round_digits = str(int(re.search(r'\d+', exam_stem).group(0))) if re.search(r'\d+', exam_stem) else ""
+                candidates = [
+                    images_dir / f"{exam_stem}_q{q_id}.png",
+                    images_dir / f"bigdata_{round_digits}_q{q_id}.png"
+                ]
+                for cand in candidates:
+                    if cand.exists():
+                        image_url = f"/exams/images/{cand.name}"
+                        break
+
             q_obj = {
                 "id": q_id,
                 "subject_id": current_subject_id,

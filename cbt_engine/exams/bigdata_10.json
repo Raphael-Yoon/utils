@@ -407,7 +407,8 @@
         "④ Q1은 하위 25% 지점의 값이다."
       ],
       "answer": 2,
-      "explanation": "빅데이터분석기사 제10회 필기 기출문제 29번 문항입니다."
+      "explanation": "빅데이터분석기사 제10회 필기 기출문제 29번 문항입니다.",
+      "image_url": "/exams/images/bigdata_10_q29.png"
     },
     {
       "id": 30,
@@ -563,7 +564,8 @@
         "④ 4개"
       ],
       "answer": 2,
-      "explanation": "빅데이터분석기사 제10회 필기 기출문제 41번 문항입니다."
+      "explanation": "빅데이터분석기사 제10회 필기 기출문제 41번 문항입니다.",
+      "image_url": "/exams/images/bigdata_10_q41.png"
     },
     {
       "id": 42,
@@ -732,7 +734,8 @@
         "④ 표본 상관계수로 상관관계를 추정할 수 있다."
       ],
       "answer": 4,
-      "explanation": "빅데이터분석기사 제10회 필기 기출문제 54번 문항입니다."
+      "explanation": "빅데이터분석기사 제10회 필기 기출문제 54번 문항입니다.",
+      "image_url": "/exams/images/bigdata_10_q54.png"
     },
     {
       "id": 55,

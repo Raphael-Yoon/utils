@@ -550,7 +550,8 @@
         "④ X2에 이상값이 존재한다."
       ],
       "answer": 2,
-      "explanation": "빅데이터분석기사 제4회 필기 기출문제 40번 문항입니다."
+      "explanation": "빅데이터분석기사 제4회 필기 기출문제 40번 문항입니다.",
+      "image_url": "/exams/images/bigdata_4_q40.png"
     },
     {
       "id": 41,
@@ -849,7 +850,8 @@
         "④ 박스플롯"
       ],
       "answer": 2,
-      "explanation": "빅데이터분석기사 제4회 필기 기출문제 63번 문항입니다."
+      "explanation": "빅데이터분석기사 제4회 필기 기출문제 63번 문항입니다.",
+      "image_url": "/exams/images/bigdata_4_q63.png"
     },
     {
       "id": 64,

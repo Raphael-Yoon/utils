@@ -446,7 +446,8 @@
         "④ X2에 이상값이 있을 수 있다."
       ],
       "answer": 3,
-      "explanation": "빅데이터분석기사 제9회 필기 기출문제 32번 문항입니다."
+      "explanation": "빅데이터분석기사 제9회 필기 기출문제 32번 문항입니다.",
+      "image_url": "/exams/images/bigdata_9_q32.png"
     },
     {
       "id": 33,
@@ -485,7 +486,8 @@
         "④ p-value가 유의수준보다 작으면 귀무가설을 기각할 수 있다."
       ],
       "answer": 3,
-      "explanation": "빅데이터분석기사 제9회 필기 기출문제 35번 문항입니다."
+      "explanation": "빅데이터분석기사 제9회 필기 기출문제 35번 문항입니다.",
+      "image_url": "/exams/images/bigdata_9_q35.png"
     },
     {
       "id": 36,

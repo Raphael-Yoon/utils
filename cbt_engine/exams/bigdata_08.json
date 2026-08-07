@@ -966,7 +966,8 @@
         "④ 출생자수와 주택매매가는 음의 상관관계가 있다."
       ],
       "answer": 1,
-      "explanation": "빅데이터분석기사 제8회 필기 기출문제 72번 문항입니다."
+      "explanation": "빅데이터분석기사 제8회 필기 기출문제 72번 문항입니다.",
+      "image_url": "/exams/images/bigdata_8_q72.png"
     },
     {
       "id": 73,
@@ -992,7 +993,8 @@
         "④ 유럽 국가의 IQR은 2000이다."
       ],
       "answer": 2,
-      "explanation": "빅데이터분석기사 제8회 필기 기출문제 74번 문항입니다."
+      "explanation": "빅데이터분석기사 제8회 필기 기출문제 74번 문항입니다.",
+      "image_url": "/exams/images/bigdata_8_q74.png"
     },
     {
       "id": 75,
