@@ -110,7 +110,7 @@ if __name__ == "__main__":
     converter = CBTConverter(f"빅데이터분석기사 제{round_num}회 필기 기출문제", "빅데이터분석기사")
     base_src = Path(r"c:\Dev\Pythons\writer\빅데이터분석기사")
     target_dir = Path(__file__).parent / "exams"
-    target_file = target_dir / f"빅데이터분석기사_{round_num}회.json"
+    target_file = target_dir / f"bigdata_{round_num.zfill(2)}.json"
     
     cnt = converter.convert(base_src / f"{round_num}회_기출문제.md", base_src / f"{round_num}회_정답표.md", target_file)
     print(f"[cbt_converter] 제{round_num}회 {cnt}문항 변환 완료 -> {target_file}")

@@ -32,6 +32,10 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                             "filename": json_file.name,
                             "title": info.get('title', json_file.stem),
                             "category": info.get('category', '자격증'),
+                            "time_limit_minutes": info.get('time_limit_minutes', 120),
+                            "passing_rules": info.get('passing_rules', {}),
+                            "subjects": data.get('subjects', []),
+                            "questions_count": len(data.get('questions', [])),
                             "path": f"/exams/{json_file.name}"
                         })
                     except Exception:
@@ -39,7 +43,9 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             
             # 회차 숫자를 추출하여 내림차순(10회 -> 9회 -> ... -> 3회) 정렬
             def get_round_num(item):
-                m = re.search(r'(\d+)회', item['filename'])
+                m = re.search(r'(\d+)', item['filename'])
+                if not m:
+                    m = re.search(r'(\d+)회', item['title'])
                 return int(m.group(1)) if m else 0
 
             exam_list.sort(key=get_round_num, reverse=True)

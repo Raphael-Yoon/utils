@@ -482,13 +482,13 @@
       <h2>🎓 SMART CBT 실전 모의고사</h2>
       <p>응시하고자 하는 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
       
-      <select class="exam-select-box" id="examSelect">
-        <option value="/exams/빅데이터분석기사_10회.json">빅데이터분석기사 제10회 필기 기출문제</option>
+      <select class="exam-select-box" id="examSelect" onchange="updateRulesUI()">
+        <option value="/exams/bigdata_10.json">빅데이터분석기사 제10회 필기 기출문제</option>
       </select>
 
       <div style="margin-bottom: 24px; text-align: left; background: #f1f5f9; padding: 16px; border-radius: 8px;">
-        <h4 style="margin-bottom:8px; font-size:0.95rem;">📌 합격 판정 기준:</h4>
-        <ul style="font-size:0.85rem; color:#475569; padding-left:20px; line-height:1.5;">
+        <h4 style="margin-bottom:8px; font-size:0.95rem;" id="rulesTitle">📌 합격 판정 기준:</h4>
+        <ul style="font-size:0.85rem; color:#475569; padding-left:20px; line-height:1.5;" id="rulesList">
           <li>과목당 25점 만점 (문항당 1.25점)</li>
           <li>과목별 과락 기준: <b>10점 미만</b> (8문항 미만) 시 불합격</li>
           <li>총점 합격 기준: <b>60점 이상</b> (48문항 이상) 득점 시 합격</li>
@@ -556,6 +556,7 @@
 
 <script>
 let currentExamData = null;
+let examList = [];
 let userAnswers = {};
 let timerInterval = null;
 let totalSeconds = 7200;
@@ -567,20 +568,48 @@ window.addEventListener('DOMContentLoaded', async () => {
   try {
     const res = await fetch('/api/exams');
     if(res.ok) {
-      const list = await res.json();
-      if(list.length > 0) {
+      examList = await res.json();
+      if(examList.length > 0) {
         const sel = document.getElementById('examSelect');
         sel.innerHTML = '';
-        list.forEach(ex => {
+        examList.forEach(ex => {
           const opt = document.createElement('option');
           opt.value = ex.path;
           opt.innerText = ex.title;
           sel.appendChild(opt);
         });
+        updateRulesUI();
       }
     }
   } catch(e) {}
 });
+
+function updateRulesUI() {
+  const selPath = document.getElementById('examSelect').value;
+  const ex = examList.find(item => item.path === selPath);
+  if (!ex) return;
+
+  const rules = ex.passing_rules || {};
+  const ptsPerQ = rules.points_per_question || 1.25;
+  const cutoffScore = rules.subject_cutoff_score || 10;
+  const passScore = rules.total_pass_score || 60;
+  
+  const subjects = ex.subjects || [];
+  const qCountPerSub = (subjects[0] && subjects[0].question_count) ? subjects[0].question_count : 20;
+  const subMaxScore = qCountPerSub * ptsPerQ;
+  const cutoffQs = Math.ceil(cutoffScore / ptsPerQ);
+  const totalPassQs = Math.ceil(passScore / ptsPerQ);
+  const totalQs = ex.questions_count || (qCountPerSub * (subjects.length || 4));
+  const totalMaxScore = totalQs * ptsPerQ;
+
+  document.getElementById('rulesTitle').innerHTML = `📌 <b>${escapeHtml(ex.title)}</b> 합격 판정 기준:`;
+  document.getElementById('rulesList').innerHTML = `
+    <li>과목당 <b>${subMaxScore}점 만점</b> (문항당 ${ptsPerQ}점)</li>
+    <li>과목별 과락 기준: <b>${cutoffScore}점 미만</b> (${cutoffQs}문항 미만) 시 불합격</li>
+    <li>총점 합격 기준: <b>${passScore}점 이상</b> (${totalPassQs}문항 이상 / ${totalMaxScore}점 만점) 득점 시 합격</li>
+    <li>시험 시간: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length || 4}개 과목)</li>
+  `;
+}
 
 async function startExam() {
   const jsonPath = document.getElementById('examSelect').value;
