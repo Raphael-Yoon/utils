@@ -864,8 +864,8 @@ function renderQuestions() {
       }
 
       optionsHtml += `
-        <label class="${optClass}" id="optLabel_${q.id}_${optNum}">
-          <input type="radio" name="q_${q.id}" value="${optNum}" ${uAns === optNum ? 'checked' : ''} ${isReviewMode ? 'disabled' : ''} onchange="selectOption(${q.id}, ${optNum})">
+        <label class="${optClass}" id="optLabel_${q.id}_${optNum}" onclick="selectOption(${q.id}, ${optNum})">
+          <input type="radio" id="optRadio_${q.id}_${optNum}" name="q_${q.id}" value="${optNum}" ${uAns === optNum ? 'checked' : ''} ${isReviewMode ? 'disabled' : ''}>
           ${escapeHtml(opt)}
         </label>
       `;
@@ -1026,9 +1026,15 @@ function selectOption(qId, optNum) {
   userAnswers[qId] = optNum;
   for(let i=1; i<=4; i++) {
     const lbl = document.getElementById(`optLabel_${qId}_${i}`);
+    const rdo = document.getElementById(`optRadio_${qId}_${i}`);
     if(lbl) {
-      if(i === optNum) lbl.classList.add('selected');
-      else lbl.classList.remove('selected');
+      if(i === optNum) {
+        lbl.classList.add('selected');
+        if(rdo) rdo.checked = true;
+      } else {
+        lbl.classList.remove('selected');
+        if(rdo) rdo.checked = false;
+      }
     }
   }
   const omrItem = document.getElementById(`omr_${qId}`);
