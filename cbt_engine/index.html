@@ -629,21 +629,17 @@ window.addEventListener('keydown', (e) => {
 
   const key = e.key;
 
-  // 엔터키: 다음 문제로 이동
+  // 엔터키: 다음 문제로 이동 (마지막 문제일 시 제출 검수)
   if (key === 'Enter') {
     e.preventDefault();
-    if (currentQuestionIdx < currentExamData.questions.length - 1) {
-      goToQuestion(currentQuestionIdx + 1);
-    }
+    goToNextQuestion();
     return;
   }
 
   // 방향키(Right/Down: 다음 문제, Left/Up: 이전 문제)
   if (key === 'ArrowRight' || key === 'ArrowDown') {
     e.preventDefault();
-    if (currentQuestionIdx < currentExamData.questions.length - 1) {
-      goToQuestion(currentQuestionIdx + 1);
-    }
+    goToNextQuestion();
     return;
   }
   if (key === 'ArrowLeft' || key === 'ArrowUp') {
@@ -663,6 +659,36 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
+
+function goToNextQuestion() {
+  if (!currentExamData) return;
+  const total = currentExamData.questions.length;
+
+  if (currentQuestionIdx < total - 1) {
+    goToQuestion(currentQuestionIdx + 1);
+  } else {
+    // 마지막 문항일 때 [다음 문제] 또는 Enter 누른 경우
+    if (isReviewMode) return;
+
+    const unansweredQs = currentExamData.questions.filter(q => !userAnswers[q.id]);
+    if (unansweredQs.length > 0) {
+      const unansweredList = unansweredQs.map(q => q.id + '번').join(', ');
+      const msg = `마지막 문항입니다.\n\n총 ${total}문항 중 미답변 문항이 ${unansweredQs.length}개 남아있습니다.\n(미답변 문항: ${unansweredList})\n\n[확인] ➔ 미답변 무시하고 최종 제출\n[취소] ➔ 미답변 문항으로 이동`;
+      if (confirm(msg)) {
+        submitExam(true);
+      } else {
+        const firstUnansweredIdx = currentExamData.questions.findIndex(q => !userAnswers[q.id]);
+        if (firstUnansweredIdx >= 0) {
+          goToQuestion(firstUnansweredIdx);
+        }
+      }
+    } else {
+      if (confirm("모든 문항의 답안을 작성하셨습니다! 답안을 최종 제출하시겠습니까?")) {
+        submitExam(true);
+      }
+    }
+  }
+}
 
 function updateRulesUI() {
   const selPath = document.getElementById('examSelect').value;
@@ -903,12 +929,22 @@ function renderNavigationBar() {
 
   const total = currentExamData.questions.length;
   const currentNum = currentQuestionIdx + 1;
+  const isLast = (currentQuestionIdx === total - 1);
+
+  let nextBtnHtml = '';
+  if (isReviewMode) {
+    nextBtnHtml = `<button class="btn btn-primary" onclick="goToQuestion(${currentQuestionIdx + 1})" ${isLast ? 'disabled' : ''}>다음 문제</button>`;
+  } else if (isLast) {
+    nextBtnHtml = `<button class="btn btn-success" onclick="goToNextQuestion()">📝 답안 제출하기</button>`;
+  } else {
+    nextBtnHtml = `<button class="btn btn-primary" onclick="goToNextQuestion()">다음 문제</button>`;
+  }
 
   navBar.innerHTML = `
     <div class="nav-info">문항 <span>${currentNum}</span> / ${total}</div>
     <div class="nav-btn-group">
       <button class="btn btn-outline-dark" onclick="goToQuestion(${currentQuestionIdx - 1})" ${currentQuestionIdx === 0 ? 'disabled' : ''}>이전 문제</button>
-      <button class="btn btn-primary" onclick="goToQuestion(${currentQuestionIdx + 1})" ${currentQuestionIdx === total - 1 ? 'disabled' : ''}>다음 문제</button>
+      ${nextBtnHtml}
     </div>
   `;
 }
@@ -1028,8 +1064,8 @@ function updateTimerDisplay() {
   if(totalSeconds < 300) document.getElementById('timerBadge').classList.add('warning');
 }
 
-function submitExam() {
-  if(totalSeconds > 0) {
+function submitExam(skipConfirm = false) {
+  if(!skipConfirm && totalSeconds > 0) {
     const answeredCount = Object.keys(userAnswers).length;
     const totalCount = currentExamData.questions.length;
     if(answeredCount < totalCount && !confirm(`총 ${totalCount}문제 중 ${answeredCount}문제만 답변했습니다. 제출할까요?`)) return;
