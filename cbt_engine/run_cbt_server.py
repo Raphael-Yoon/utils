@@ -7,7 +7,6 @@ import sys
 import json
 import re
 import urllib.parse
-import webbrowser
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
@@ -168,11 +167,6 @@ def run(port=8080):
     print(f"🗄️ 성적 DB 파일: {DB_PATH}")
     print(f"🌐 접속 주소: {url}")
     print(f"==================================================")
-    
-    try:
-        webbrowser.open(url)
-    except Exception:
-        pass
 
     try:
         httpd.serve_forever()
