@@ -105,12 +105,20 @@ class CBTConverter:
         return len(questions)
 
 if __name__ == "__main__":
-    round_num = sys.argv[1] if len(sys.argv) > 1 else "10"
+    base_src = Path(__file__).resolve().parent.parent.parent / "writer" / "빅데이터분석기사"
+    target_dir = Path(__file__).resolve().parent / "exams"
     
-    converter = CBTConverter(f"빅데이터분석기사 제{round_num}회 필기 기출문제", "빅데이터분석기사")
-    base_src = Path(r"c:\Dev\Pythons\writer\빅데이터분석기사")
-    target_dir = Path(__file__).parent / "exams"
-    target_file = target_dir / f"bigdata_{round_num.zfill(2)}.json"
+    rounds = [sys.argv[1]] if len(sys.argv) > 1 else [str(r) for r in range(3, 11)]
     
-    cnt = converter.convert(base_src / f"{round_num}회_기출문제.md", base_src / f"{round_num}회_정답표.md", target_file)
-    print(f"[cbt_converter] 제{round_num}회 {cnt}문항 변환 완료 -> {target_file}")
+    for round_num in rounds:
+        converter = CBTConverter(f"빅데이터분석기사 제{round_num}회 필기 기출문제", "빅데이터분석기사")
+        target_file = target_dir / f"bigdata_{round_num.zfill(2)}.json"
+        
+        md_file = base_src / f"{round_num}회_기출문제.md"
+        ans_file = base_src / f"{round_num}회_정답표.md"
+        
+        if md_file.exists():
+            cnt = converter.convert(md_file, ans_file, target_file)
+            print(f"[cbt_converter] 제{round_num}회 {cnt}문항 변환 완료 -> {target_file}")
+        else:
+            print(f"[cbt_converter] 경고: {md_file} 파일이 존재하지 않습니다.")
