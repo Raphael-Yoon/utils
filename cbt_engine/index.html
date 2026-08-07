@@ -878,11 +878,21 @@ function renderQuestions() {
       </div>
     ` : '';
 
+    const expHtml = (isReviewMode && q.explanation) ? `
+      <div class="q-explanation-box" style="margin-top: 18px; padding: 16px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; font-size: 0.92rem; color: #0369a1; line-height: 1.6;">
+        <div style="font-weight: bold; margin-bottom: 6px; color: #0284c7; font-size: 0.98rem; display: flex; align-items: center; gap: 6px;">
+          💡 <span>문제 상세 해설 및 핀포인트 분석</span>
+        </div>
+        <div style="white-space: pre-wrap; word-break: break-word;">${escapeHtml(q.explanation)}</div>
+      </div>
+    ` : '';
+
     qCard.innerHTML = `
       <div class="question-subject-badge">📚 ${escapeHtml(subjectName)}</div>
       <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(q.question)} ${statusTag}</div>
       ${imgHtml}
       <div class="options-list">${optionsHtml}</div>
+      ${expHtml}
     `;
 
     pane.appendChild(qCard);
