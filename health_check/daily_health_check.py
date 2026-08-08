@@ -51,6 +51,11 @@ AP_TARGETS = [
         "name": "infosd (정보보호공시)",
         "local_url": "http://127.0.0.1:5003",
         "external_url": "https://infosd.snowball.pe.kr"
+    },
+    {
+        "name": "CBT Engine (모의고사 시스템)",
+        "local_url": "http://127.0.0.1:5004",
+        "external_url": "https://cbt.snowball.pe.kr"
     }
 ]
 

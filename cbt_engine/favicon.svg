@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1e40af" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Shield/Rounded Rect -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bgGrad)" />
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+
+  <!-- Computer/CBT Monitor Screen -->
+  <rect x="12" y="12" width="40" height="28" rx="4" fill="#0f172a" stroke="url(#accentGrad)" stroke-width="2" />
+  
+  <!-- Screen Header Line -->
+  <line x1="12" y1="18" x2="52" y2="18" stroke="#1e293b" stroke-width="1" />
+  
+  <!-- Checkmark / Test Indicators on Screen -->
+  <path d="M18 24 L22 28 L30 20" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <line x1="33" y1="23" x2="46" y2="23" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" />
+  <line x1="33" y1="27" x2="42" y2="27" stroke="#64748b" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Monitor Stand -->
+  <path d="M26 40 L38 40 L40 45 L24 45 Z" fill="#64748b" />
+  <rect x="20" y="45" width="24" height="3" rx="1.5" fill="#94a3b8" />
+
+  <!-- Pencil / Graduation Element -->
+  <path d="M44 32 L54 42 L51 45 L41 35 Z" fill="url(#goldGrad)" />
+  <polygon points="54,42 56,47 51,45" fill="#e11d48" />
+  <polygon points="41,35 44,32 46,34 43,37" fill="#cbd5e1" />
+</svg>
