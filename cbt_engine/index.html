@@ -638,16 +638,34 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 방향키(Right/Down: 다음 문제, Left/Up: 이전 문제)
-  if (key === 'ArrowRight' || key === 'ArrowDown') {
+  // 좌/우 방향키(Right: 다음 문제, Left: 이전 문제)
+  if (key === 'ArrowRight') {
     e.preventDefault();
     goToNextQuestion();
     return;
   }
-  if (key === 'ArrowLeft' || key === 'ArrowUp') {
+  if (key === 'ArrowLeft') {
     e.preventDefault();
     if (currentQuestionIdx > 0) {
       goToQuestion(currentQuestionIdx - 1);
+    }
+    return;
+  }
+
+  // 위/아래 방향키(Down: 문제 영역 아래로 스크롤, Up: 문제 영역 위로 스크롤)
+  if (key === 'ArrowDown') {
+    const pane = document.getElementById('questionPane');
+    if (pane) {
+      e.preventDefault();
+      pane.scrollBy({ top: 80, behavior: 'smooth' });
+    }
+    return;
+  }
+  if (key === 'ArrowUp') {
+    const pane = document.getElementById('questionPane');
+    if (pane) {
+      e.preventDefault();
+      pane.scrollBy({ top: -80, behavior: 'smooth' });
     }
     return;
   }
@@ -987,6 +1005,8 @@ function goToQuestion(idx) {
   }
 
   renderNavigationBar();
+  const pane = document.getElementById('questionPane');
+  if (pane) pane.scrollTop = 0;
   saveDraftSession();
   renderMath();
 }
