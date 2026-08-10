@@ -638,16 +638,34 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 방향키(Right/Down: 다음 문제, Left/Up: 이전 문제)
-  if (key === 'ArrowRight' || key === 'ArrowDown') {
+  // 좌/우 방향키(Right: 다음 문제, Left: 이전 문제)
+  if (key === 'ArrowRight') {
     e.preventDefault();
     goToNextQuestion();
     return;
   }
-  if (key === 'ArrowLeft' || key === 'ArrowUp') {
+  if (key === 'ArrowLeft') {
     e.preventDefault();
     if (currentQuestionIdx > 0) {
       goToQuestion(currentQuestionIdx - 1);
+    }
+    return;
+  }
+
+  // 위/아래 방향키(Down: 문제 영역 아래로 스크롤, Up: 문제 영역 위로 스크롤)
+  if (key === 'ArrowDown') {
+    const pane = document.getElementById('questionPane');
+    if (pane) {
+      e.preventDefault();
+      pane.scrollBy({ top: 80, behavior: 'smooth' });
+    }
+    return;
+  }
+  if (key === 'ArrowUp') {
+    const pane = document.getElementById('questionPane');
+    if (pane) {
+      e.preventDefault();
+      pane.scrollBy({ top: -80, behavior: 'smooth' });
     }
     return;
   }
@@ -994,6 +1012,8 @@ function goToQuestion(idx) {
   }
 
   renderNavigationBar();
+  const pane = document.getElementById('questionPane');
+  if (pane) pane.scrollTop = 0;
   saveDraftSession();
   renderMath();
 }
@@ -1206,48 +1226,137 @@ async function showHistoryModal() {
       return;
     }
 
-    // 회차별/시험별 응시 횟수 계산
+    // 회차별/시험별 응시 횟수 계산 및 그룹화
     const examAttemptsCount = {};
-    // list는 최신순(id DESC)이므로 역순(오래된 순)으로 차수(1차, 2차...) 부여
-    const sortedAsc = [...list].sort((a, b) => a.id - b.id);
     const itemAttemptNumMap = {};
+    const sortedAsc = [...list].sort((a, b) => a.id - b.id);
     sortedAsc.forEach(item => {
       examAttemptsCount[item.exam_id] = (examAttemptsCount[item.exam_id] || 0) + 1;
       itemAttemptNumMap[item.id] = examAttemptsCount[item.exam_id];
     });
 
+    // 시험 종목별 그룹화 맵 구축
+    const groupedExams = {};
+    list.forEach(item => {
+      const key = item.exam_id || item.exam_title;
+      if (!groupedExams[key]) {
+        groupedExams[key] = {
+          exam_id: item.exam_id,
+          exam_title: item.exam_title,
+          attempts: [],
+          maxScore: 0,
+          latestDate: item.created_at
+        };
+      }
+      const grp = groupedExams[key];
+      grp.attempts.push(item);
+      if (item.total_score > grp.maxScore) grp.maxScore = item.total_score;
+    });
+
+    // 그룹별 최신 응시일 기준 내림차순 정렬
+    const groupedList = Object.values(groupedExams).sort((a, b) => new Date(b.latestDate) - new Date(a.latestDate));
+
     let html = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <span style="font-size:0.88rem; color:#475569;">총 <b>${list.length}회</b>의 누적 응시 기록이 누적되어 있습니다.</span>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid #e2e8f0;">
+        <span style="font-size:0.88rem; color:#475569;">총 <b>${groupedList.length}개 시험</b> (${list.length}회 누적 응시)</span>
         <button class="btn" style="background:#ef4444; color:#ffffff; font-size:0.8rem; padding:6px 12px;" onclick="clearAllHistory()">🗑️ 전체 이력 삭제</button>
       </div>
-      <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; flex-direction:column; gap:10px;">
     `;
-    list.forEach(item => {
-      const attemptNum = itemAttemptNumMap[item.id] || 1;
-      const passTag = item.is_pass ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격 (${escapeHtml(item.fail_reason || '')})</span>`;
-      const dateStr = new Date(item.created_at).toLocaleString();
+
+    groupedList.forEach((grp, idx) => {
+      const latestItem = grp.attempts[0];
+      const latestAttemptNum = itemAttemptNumMap[latestItem.id] || 1;
+      const latestPassTag = latestItem.is_pass ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
+      const latestDateStr = new Date(latestItem.created_at).toLocaleString();
+
+      const hasHistory = grp.attempts.length > 1;
+      const safeKey = `grp_${idx}_${(grp.exam_id || 'ex').replace(/[^a-zA-Z0-9]/g, '_')}`;
+
       html += `
-        <div style="border:1px solid #cbd5e1; border-radius:8px; padding:14px; background:#f8fafc; display:flex; justify-content:space-between; align-items:center; gap:12px;">
-          <div style="flex:1;">
-            <div style="font-weight:bold; font-size:1.05rem; color:#1e293b; display:flex; align-items:center; gap:8px;">
-              <span>${escapeHtml(item.exam_title)}</span>
-              <span style="background:#3b82f6; color:#ffffff; font-size:0.75rem; padding:2px 8px; border-radius:12px; font-weight:600;">${attemptNum}회차 응시</span>
+        <div style="border:1px solid #cbd5e1; border-radius:10px; background:#ffffff; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.04); padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
+          <!-- 1행: 시험 제목 (풀네임) + 뱃지 VS 우측 버튼 그룹 -->
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+              <span style="font-weight:700; font-size:1.05rem; color:#0f172a; word-break:keep-all;">
+                📚 ${escapeHtml(grp.exam_title)}
+              </span>
+              <span style="background:#e0f2fe; color:#0369a1; font-size:0.75rem; padding:3px 10px; border-radius:12px; font-weight:700; white-space:nowrap; flex-shrink:0;">
+                총 ${grp.attempts.length}회 응시
+              </span>
             </div>
-            <div style="font-size:0.85rem; color:#64748b; margin-top:4px;">응시일: ${dateStr} | 점수: <b>${item.total_score.toFixed(1)}점</b> / ${item.max_score}점</div>
-            <div style="font-size:0.85rem; margin-top:2px;">상태: ${passTag}</div>
+            <div style="display:flex; gap:8px; align-items:center; flex-shrink:0;">
+              <button class="btn btn-primary" style="padding:7px 14px; font-size:0.85rem; font-weight:600;" onclick="loadHistoryDetail(${latestItem.id})">🔍 최근 오답노트</button>
+              ${hasHistory ? `<button class="btn" id="btn_toggle_${safeKey}" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#334155; padding:7px 12px; font-size:0.85rem; font-weight:600;" onclick="toggleHistoryGroup('${safeKey}', ${grp.attempts.length - 1})">▼ 이전 기록 (${grp.attempts.length - 1})</button>` : ''}
+              <button class="btn" style="background:#fee2e2; border:1px solid #fca5a5; color:#dc2626; padding:7px 10px; font-size:0.85rem;" onclick="deleteHistoryItem(${latestItem.id})" title="최근 응시 이력 삭제">🗑️</button>
+            </div>
           </div>
-          <div style="display:flex; gap:6px;">
-            <button class="btn btn-primary" style="padding:8px 12px; font-size:0.85rem;" onclick="loadHistoryDetail(${item.id})">🔍 오답노트</button>
-            <button class="btn" style="background:#fee2e2; border:1px solid #fca5a5; color:#dc2626; padding:8px 12px; font-size:0.85rem;" onclick="deleteHistoryItem(${item.id})">🗑️ 삭제</button>
+
+          <!-- 2행: 응시 상세 현황 서브 바 (최근 점수, 최고 점수, 응시 일시) -->
+          <div style="background:#f8fafc; border:1px solid #f1f5f9; padding:8px 14px; border-radius:8px; font-size:0.86rem; color:#475569; display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+            <span>최근(${latestAttemptNum}회차): <b style="color:#0f172a;">${latestItem.total_score.toFixed(1)}점</b> / ${latestItem.max_score}점 (${latestPassTag})</span>
+            <span style="color:#cbd5e1;">|</span>
+            <span>최고 점수: <b style="color:#2563eb;">${grp.maxScore.toFixed(1)}점</b></span>
+            <span style="color:#cbd5e1;">|</span>
+            <span style="color:#64748b; font-size:0.82rem;">최근 응시일: ${latestDateStr}</span>
           </div>
+
+          <!-- 이전 응시 이력 (아코디언 토글) -->
+          ${hasHistory ? `
+          <div id="body_${safeKey}" style="display:none; background:#f8fafc; border-top:1px solid #e2e8f0; padding:12px 16px; border-radius:8px; margin-top:4px;">
+            <div style="font-size:0.8rem; font-weight:700; color:#475569; margin-bottom:8px;">📜 이전 응시 기록 (${grp.attempts.length - 1}건)</div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+          ` : ''}
+      `;
+
+      if (hasHistory) {
+        for (let i = 1; i < grp.attempts.length; i++) {
+          const item = grp.attempts[i];
+          const attemptNum = itemAttemptNumMap[item.id] || (grp.attempts.length - i);
+          const passTag = item.is_pass ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
+          const dateStr = new Date(item.created_at).toLocaleString();
+          html += `
+            <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; padding:8px 14px; display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+              <div style="display:flex; gap:12px; align-items:center; flex:1; white-space:nowrap; overflow:hidden;">
+                <span style="background:#64748b; color:#ffffff; font-size:0.72rem; padding:2px 8px; border-radius:10px; font-weight:600; flex-shrink:0;">${attemptNum}회차</span>
+                <span>점수: <b>${item.total_score.toFixed(1)}점</b> / ${item.max_score}점 (${passTag})</span>
+                <span style="color:#94a3b8; font-size:0.8rem;">응시일: ${dateStr}</span>
+              </div>
+              <div style="display:flex; gap:6px; flex-shrink:0;">
+                <button class="btn btn-primary" style="padding:5px 10px; font-size:0.8rem;" onclick="loadHistoryDetail(${item.id})">🔍 오답노트</button>
+                <button class="btn" style="background:#fee2e2; border:1px solid #fca5a5; color:#dc2626; padding:5px 8px; font-size:0.8rem;" onclick="deleteHistoryItem(${item.id})">🗑️ 삭제</button>
+              </div>
+            </div>
+          `;
+        }
+        html += `
+            </div>
+          </div>
+        `;
+      }
+
+      html += `
         </div>
       `;
     });
+
     html += '</div>';
     container.innerHTML = html;
   } catch (e) {
     container.innerHTML = `<div style="color:#dc2626; padding:20px; text-align:center;">이력을 불러오지 못했습니다: ${e.message}</div>`;
+  }
+}
+
+function toggleHistoryGroup(key, count) {
+  const body = document.getElementById(`body_${key}`);
+  const btn = document.getElementById(`btn_toggle_${key}`);
+  if (!body) return;
+  if (body.style.display === 'none') {
+    body.style.display = 'block';
+    if (btn) btn.innerHTML = `▲ 이전 이력 접기`;
+  } else {
+    body.style.display = 'none';
+    if (btn) btn.innerHTML = `▼ 이전 기록 (${count})`;
   }
 }
 
@@ -1324,7 +1433,7 @@ function closeImageModal() {
 
 <!-- 응시 이력 & 오답노트 모달 -->
 <div id="historyModal" style="display:none; position:fixed; z-index:9998; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; backdrop-filter:blur(2px);" onclick="closeHistoryModal()">
-  <div style="background:#ffffff; border-radius:12px; width:90%; max-width:700px; max-height:85vh; overflow-y:auto; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.2); position:relative;" onclick="event.stopPropagation()">
+  <div style="background:#ffffff; border-radius:12px; width:92%; max-width:820px; max-height:85vh; overflow-y:auto; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.2); position:relative;" onclick="event.stopPropagation()">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:2px solid #e2e8f0; padding-bottom:12px;">
       <h3 style="margin:0; font-size:1.2rem; color:#1e293b;">📜 응시 이력 & 오답노트</h3>
       <button onclick="closeHistoryModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:#64748b;">&times;</button>
