@@ -721,7 +721,10 @@ function updateRulesUI() {
 
 function saveDraftSession() {
   if (isReviewMode || !currentExamData) return;
-  const jsonPath = document.getElementById('examSelect').value;
+  // [손현호] 드롭다운(examSelect) 값이 아닌, 실제로 로드되어 진행 중인 시험(currentExamData)을 기준으로 저장해야 함.
+  // 드롭다운은 새로고침 시 목록이 재구성되며 기본값(회차 내림차순 정렬상 최상단)으로 초기화되므로,
+  // 이를 기준으로 저장하면 진행 중인 회차와 다른 회차로 draft가 오염될 수 있음.
+  const jsonPath = currentExamData.filename ? `/exams/${currentExamData.filename}` : document.getElementById('examSelect').value;
   const draft = {
     examPath: jsonPath,
     examTitle: (currentExamData.exam_info && currentExamData.exam_info.title) ? currentExamData.exam_info.title : '시험',
@@ -767,6 +770,10 @@ async function resumeDraftExam() {
     alert("시험 데이터를 불러오는데 실패했습니다: " + e.message);
     return;
   }
+
+  // [손현호] 드롭다운을 실제 재개하는 회차로 동기화 (재개 후 자동저장이 엉뚱한 회차를 가리키지 않도록 방어)
+  const examSelectEl = document.getElementById('examSelect');
+  if (examSelectEl) examSelectEl.value = draft.examPath;
 
   userAnswers = draft.userAnswers || {};
   isReviewMode = false;
