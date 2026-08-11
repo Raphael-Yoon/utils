@@ -737,30 +737,40 @@ function updateRulesUI() {
   `;
 }
 
-function saveDraftSession() {
+let cachedServerDraft = null;
+
+async function saveDraftSession() {
   if (isReviewMode || !currentExamData) return;
-  // [손현호] 드롭다운(examSelect) 값이 아닌, 실제로 로드되어 진행 중인 시험(currentExamData)을 기준으로 저장해야 함.
-  // 드롭다운은 새로고침 시 목록이 재구성되며 기본값(회차 내림차순 정렬상 최상단)으로 초기화되므로,
-  // 이를 기준으로 저장하면 진행 중인 회차와 다른 회차로 draft가 오염될 수 있음.
   const jsonPath = currentExamData.filename ? `/exams/${currentExamData.filename}` : document.getElementById('examSelect').value;
   const draft = {
+    user_name: '응시자',
     examPath: jsonPath,
     examTitle: (currentExamData.exam_info && currentExamData.exam_info.title) ? currentExamData.exam_info.title : '시험',
     userAnswers: userAnswers,
     remainingSeconds: totalSeconds,
-    currentQuestionIdx: currentQuestionIdx,
-    savedAt: new Date().toISOString()
+    currentQuestionIdx: currentQuestionIdx
   };
-  localStorage.setItem('cbt_resume_draft', JSON.stringify(draft));
+  try {
+    await fetch('/api/draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(draft)
+    });
+  } catch (e) {}
 }
 
-function checkDraftSession() {
-  const raw = localStorage.getItem('cbt_resume_draft');
-  if (!raw) return;
+async function checkDraftSession() {
   try {
-    const draft = JSON.parse(raw);
-    if (!draft || !draft.examPath || !draft.userAnswers) return;
+    const res = await fetch('/api/draft?user_name=응시자');
+    if (!res.ok) return;
+    const draft = await res.json();
+    if (!draft || !draft.examPath || !draft.userAnswers) {
+      document.getElementById('resumeBanner').style.display = 'none';
+      cachedServerDraft = null;
+      return;
+    }
 
+    cachedServerDraft = draft;
     const answeredCount = Object.keys(draft.userAnswers).length;
     const min = Math.floor((draft.remainingSeconds || 0) / 60);
     const sec = (draft.remainingSeconds || 0) % 60;
@@ -769,15 +779,13 @@ function checkDraftSession() {
     document.getElementById('resumeDetails').innerText = `풀이 완료: ${answeredCount}문항 | 남은시간: ${min}분 ${sec}초`;
     document.getElementById('resumeBanner').style.display = 'block';
   } catch (e) {
-    localStorage.removeItem('cbt_resume_draft');
+    document.getElementById('resumeBanner').style.display = 'none';
   }
 }
 
 async function resumeDraftExam() {
-  const raw = localStorage.getItem('cbt_resume_draft');
-  if (!raw) return;
-  let draft;
-  try { draft = JSON.parse(raw); } catch (e) { return; }
+  const draft = cachedServerDraft;
+  if (!draft) return;
 
   try {
     const res = await fetch(draft.examPath);
@@ -789,7 +797,6 @@ async function resumeDraftExam() {
     return;
   }
 
-  // [손현호] 드롭다운을 실제 재개하는 회차로 동기화 (재개 후 자동저장이 엉뚱한 회차를 가리키지 않도록 방어)
   const examSelectEl = document.getElementById('examSelect');
   if (examSelectEl) examSelectEl.value = draft.examPath;
 
@@ -809,8 +816,11 @@ async function resumeDraftExam() {
   goToQuestion(currentQuestionIdx);
 }
 
-function discardDraftExam() {
-  localStorage.removeItem('cbt_resume_draft');
+async function discardDraftExam() {
+  try {
+    await fetch('/api/draft?user_name=응시자', { method: 'DELETE' });
+  } catch (e) {}
+  cachedServerDraft = null;
   document.getElementById('resumeBanner').style.display = 'none';
 }
 
@@ -830,7 +840,7 @@ async function startExam() {
   isReviewMode = false;
   currentQuestionIdx = 0; // 시작 시 첫 문제
   totalSeconds = (currentExamData.exam_info.time_limit_minutes || 120) * 60;
-  localStorage.removeItem('cbt_resume_draft');
+  discardDraftExam();
 
   document.getElementById('startScreen').style.display = 'none';
   document.getElementById('examLayout').style.display = 'flex';
@@ -1118,7 +1128,7 @@ function submitExam(skipConfirm = false) {
   }
 
   clearInterval(timerInterval);
-  localStorage.removeItem('cbt_resume_draft');
+  cachedServerDraft = null;
   const rules = currentExamData.exam_info.passing_rules;
   const ptsPerQ = rules.points_per_question || 1.25;
   const cutoffScore = rules.subject_cutoff_score || 10;

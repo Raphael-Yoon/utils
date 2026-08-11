@@ -35,6 +35,17 @@ def init_db():
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS exam_drafts (
+            user_name TEXT PRIMARY KEY,
+            exam_path TEXT,
+            exam_title TEXT,
+            user_answers_json TEXT,
+            remaining_seconds INTEGER,
+            current_question_idx INTEGER,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
     conn.commit()
     conn.close()
 
@@ -43,6 +54,34 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
         parsed = urllib.parse.urlparse(self.path)
         path_only = parsed.path
         query = urllib.parse.parse_qs(parsed.query)
+
+        # /api/draft - 서버 임시저장 조회
+        if path_only == '/api/draft':
+            user_name = query.get('user_name', ['응시자'])[0]
+            conn = sqlite3.connect(DB_PATH)
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute('SELECT * FROM exam_drafts WHERE user_name = ?', (user_name,))
+            row = cursor.fetchone()
+            conn.close()
+
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            if row:
+                draft_data = {
+                    "user_name": row["user_name"],
+                    "examPath": row["exam_path"],
+                    "examTitle": row["exam_title"],
+                    "userAnswers": json.loads(row["user_answers_json"] or '{}'),
+                    "remainingSeconds": row["remaining_seconds"],
+                    "currentQuestionIdx": row["current_question_idx"],
+                    "updatedAt": row["updated_at"]
+                }
+                self.wfile.write(json.dumps(draft_data, ensure_ascii=False).encode('utf-8'))
+            else:
+                self.wfile.write(json.dumps(None, ensure_ascii=False).encode('utf-8'))
+            return
 
         # /api/exams 요청 시 exams/ 폴더 내 전체 시험 파일 목록 반환
         if path_only == '/api/exams':
@@ -110,6 +149,43 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
         super().do_GET()
 
     def do_POST(self):
+        # /api/draft - 시험 진행 상태 서버 임시저장
+        if self.path == '/api/draft':
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            payload = json.loads(body.decode('utf-8'))
+
+            user_name = payload.get('user_name', '응시자')
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            cursor.execute('''
+                INSERT INTO exam_drafts (
+                    user_name, exam_path, exam_title, user_answers_json, remaining_seconds, current_question_idx, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+                ON CONFLICT(user_name) DO UPDATE SET
+                    exam_path = excluded.exam_path,
+                    exam_title = excluded.exam_title,
+                    user_answers_json = excluded.user_answers_json,
+                    remaining_seconds = excluded.remaining_seconds,
+                    current_question_idx = excluded.current_question_idx,
+                    updated_at = CURRENT_TIMESTAMP
+            ''', (
+                user_name,
+                payload.get('examPath', ''),
+                payload.get('examTitle', ''),
+                json.dumps(payload.get('userAnswers', {}), ensure_ascii=False),
+                payload.get('remainingSeconds', 0),
+                payload.get('currentQuestionIdx', 0)
+            ))
+            conn.commit()
+            conn.close()
+
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok"}, ensure_ascii=False).encode('utf-8'))
+            return
+
         # /api/results - 시험 채점 결과 저장
         if self.path == '/api/results':
             content_length = int(self.headers.get('Content-Length', 0))
@@ -135,6 +211,9 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                 json.dumps(payload.get('user_answers', {}), ensure_ascii=False)
             ))
             new_id = cursor.lastrowid
+
+            # 제출 완료 시 해당 유저의 draft 삭제
+            cursor.execute('DELETE FROM exam_drafts WHERE user_name = ?', (payload.get('user_name', '응시자'),))
             conn.commit()
             conn.close()
 
@@ -147,11 +226,27 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
         self.send_error(404, "Not Found")
 
     def do_DELETE(self):
-        # /api/results - 응시 이력 삭제 (단건 삭제: ?id=X, 전체 삭제: ?all=true)
         parsed = urllib.parse.urlparse(self.path)
         path_only = parsed.path
         query = urllib.parse.parse_qs(parsed.query)
 
+        # /api/draft - 임시저장 삭제
+        if path_only == '/api/draft':
+            user_name = query.get('user_name', ['응시자'])[0]
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            cursor.execute('DELETE FROM exam_drafts WHERE user_name = ?', (user_name,))
+            deleted_cnt = cursor.rowcount
+            conn.commit()
+            conn.close()
+
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok", "deleted_count": deleted_cnt}, ensure_ascii=False).encode('utf-8'))
+            return
+
+        # /api/results - 응시 이력 삭제 (단건 삭제: ?id=X, 전체 삭제: ?all=true)
         if path_only == '/api/results':
             conn = sqlite3.connect(DB_PATH)
             cursor = conn.cursor()
