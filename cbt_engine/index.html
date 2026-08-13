@@ -1399,35 +1399,43 @@ async function showHistoryModal(filterMode) {
       return;
     }
 
-    // 현재 선택된 시험 파악 (examSelect 또는 currentExamData)
-    const examSel = document.getElementById('examSelect');
-    let currentExamId = '';
-    let currentExamTitle = '';
-    if (currentExamData && (currentExamData.filename || currentExamData.path)) {
-      currentExamId = (currentExamData.filename || currentExamData.path).replace(/^\/exams\//, '');
-      currentExamTitle = currentExamData.exam_info ? currentExamData.exam_info.title : '';
-    } else if (examSel && examSel.value) {
-      currentExamId = examSel.value.replace(/^\/exams\//, '');
-      if (examSel.selectedIndex >= 0) {
-        currentExamTitle = examSel.options[examSel.selectedIndex].innerText;
-      }
+    // 현재 선택된 자격증 시험 종목(카테고리) 파악
+    const catSel = document.getElementById('categorySelect');
+    let selectedCategory = catSel ? catSel.value : '';
+    if (!selectedCategory && currentExamData && currentExamData.exam_info) {
+      selectedCategory = currentExamData.exam_info.category || '';
     }
 
-    // 필터링 적용 (현재 시험 선택 vs 전체 선택)
+    // examList에서 각 exam_id별 category 맵 구축
+    const examCategoryMap = {};
+    if (typeof examList !== 'undefined' && Array.isArray(examList)) {
+      examList.forEach(ex => {
+        const eid = ex.filename || (ex.path ? ex.path.replace(/^\/exams\//, '') : '');
+        if (eid) examCategoryMap[eid] = ex.category;
+      });
+    }
+
+    // 필터링 적용 (현재 시험 종목 카테고리 전체 회차 포함 vs 전체 이력)
     let displayList = list;
-    if (currentHistoryFilterMode === 'current' && currentExamId) {
-      displayList = list.filter(item => item.exam_id === currentExamId);
+    if (currentHistoryFilterMode === 'current' && selectedCategory) {
+      displayList = list.filter(item => {
+        const itemCat = examCategoryMap[item.exam_id] || '';
+        if (itemCat) return itemCat === selectedCategory;
+        return item.exam_title && item.exam_title.includes(selectedCategory);
+      });
     }
 
     // 필터 탭 HTML 구조
     const currentBtnClass = currentHistoryFilterMode === 'current' ? 'btn-primary' : 'btn-outline-dark';
     const allBtnClass = currentHistoryFilterMode === 'all' ? 'btn-primary' : 'btn-outline-dark';
 
+    const categoryLabel = selectedCategory ? `선택 종목: ${selectedCategory}` : '선택한 시험 종목';
+
     let filterHeaderHtml = `
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #e2e8f0; flex-wrap:wrap; gap:10px;">
         <div style="display:flex; gap:8px;">
           <button class="btn ${currentBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('current')">
-            🎯 선택한 시험 (${displayList.length}건)
+            🎯 ${escapeHtml(categoryLabel)} (${displayList.length}건)
           </button>
           <button class="btn ${allBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('all')">
             🌐 전체 응시 이력 (${list.length}건)
@@ -1440,7 +1448,7 @@ async function showHistoryModal(filterMode) {
     if (displayList.length === 0) {
       container.innerHTML = filterHeaderHtml + `
         <div style="text-align:center; padding:36px 16px; color:#64748b; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0; margin-top:10px;">
-          <div style="font-size:1.05rem; font-weight:700; color:#334155; margin-bottom:6px;">🎯 선택한 시험의 응시 이력이 없습니다.</div>
+          <div style="font-size:1.05rem; font-weight:700; color:#334155; margin-bottom:6px;">🎯 '${escapeHtml(selectedCategory || '선택한 종목')}'의 응시 이력이 없습니다.</div>
           <div style="font-size:0.86rem; color:#64748b; margin-bottom:16px;">시험 풀이 완료 후 [제출하기]를 누르시면 이곳에 이력과 오답노트가 저장됩니다.</div>
           <button class="btn btn-primary" style="font-size:0.85rem; padding:8px 18px;" onclick="showHistoryModal('all')">🌐 전체 응시 이력 (${list.length}건) 보기</button>
         </div>
