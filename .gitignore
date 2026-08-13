@@ -6,4 +6,6 @@ __pycache__/
 inbox.json
 outbox.json
 *.log
+*.pid
+backups/
 migration_secrets.tar.gz

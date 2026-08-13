@@ -35,27 +35,45 @@ except ImportError:
 TELEGRAM_BOT_TOKEN = "8439778551:AAHMXpbmR1_JgxKDFGjNIUzH6YOSnXrJF5A"
 DEFAULT_CHAT_ID = "8587089093"  # Raphael's chat_id
 
+import subprocess
+
 # Target AP Servers configuration
 AP_TARGETS = [
     {
         "name": "snowball (K-Sox)",
         "local_url": "http://127.0.0.1:5001",
-        "external_url": "https://ksox.snowball.pe.kr"
+        "external_url": "https://ksox.snowball.pe.kr",
+        "start_script": os.path.join(PROJECT_ROOT, "snowball", "snowball_start.sh"),
+        "working_dir": os.path.join(PROJECT_ROOT, "snowball"),
+        "tunnel_unit": "cloudflared-ksox",
+        "tunnel_cmd": f"cloudflared tunnel run --url http://127.0.0.1:5001 84e81d82-14e0-4c05-b317-6caa923e0bd4 > '{os.path.join(PROJECT_ROOT, 'snowball', 'cloudflared_ksox.log')}' 2>&1"
     },
     {
         "name": "Jonathan's Coffee House (트레이딩 시스템)",
         "local_url": "http://127.0.0.1:5000",
-        "external_url": "https://trade.snowball.pe.kr"
+        "external_url": "https://trade.snowball.pe.kr",
+        "start_script": os.path.join(PROJECT_ROOT, "trade", "coffee_house_start.sh"),
+        "working_dir": os.path.join(PROJECT_ROOT, "trade"),
+        "tunnel_unit": "cloudflared-trade",
+        "tunnel_cmd": f"cloudflared tunnel run --url http://127.0.0.1:5000 10d06dea-316c-452d-97a0-6d89a1adb223 > '{os.path.join(PROJECT_ROOT, 'trade', 'cloudflared_trade.log')}' 2>&1"
     },
     {
         "name": "infosd (정보보호공시)",
         "local_url": "http://127.0.0.1:5003",
-        "external_url": "https://infosd.snowball.pe.kr"
+        "external_url": "https://infosd.snowball.pe.kr",
+        "start_script": os.path.join(PROJECT_ROOT, "infosd", "infosd_start.sh"),
+        "working_dir": os.path.join(PROJECT_ROOT, "infosd"),
+        "tunnel_unit": "cloudflared-infosd",
+        "tunnel_cmd": f"cloudflared tunnel run --url http://127.0.0.1:5003 89a30767-5899-4985-9723-59b7a9eebea2 > '{os.path.join(PROJECT_ROOT, 'infosd', 'cloudflared_infosd.log')}' 2>&1"
     },
     {
         "name": "CBT Engine (모의고사 시스템)",
         "local_url": "http://127.0.0.1:5004",
-        "external_url": "https://cbt.snowball.pe.kr"
+        "external_url": "https://cbt.snowball.pe.kr",
+        "start_script": os.path.join(PROJECT_ROOT, "utils", "cbt_engine", "cbt_start.sh"),
+        "working_dir": os.path.join(PROJECT_ROOT, "utils", "cbt_engine"),
+        "tunnel_unit": "cloudflared-cbt",
+        "tunnel_cmd": f"cloudflared tunnel run --url http://127.0.0.1:5004 f8af40cf-0088-45f0-82bc-3befe3bb6dbd > '{os.path.join(PROJECT_ROOT, 'utils', 'cbt_engine', 'cloudflared_cbt.log')}' 2>&1"
     }
 ]
 
@@ -67,7 +85,8 @@ DB_TARGETS = [
         "host": "127.0.0.1",
         "port": 3306,
         "user": "root",
-        "password": "150606"
+        "password": "150606",
+        "docker_container": "snowball-mysql"
     }
 ]
 
@@ -80,11 +99,12 @@ def check_ap(ap):
         t0 = time.time()
         resp = requests.get(ap["local_url"], timeout=5, allow_redirects=True)
         t1 = time.time()
+        is_ok = 200 <= resp.status_code < 400
         results["local"] = {
-            "status": "UP",
+            "status": "UP" if is_ok else "DOWN",
             "code": resp.status_code,
             "time_ms": int((t1 - t0) * 1000),
-            "error": None
+            "error": None if is_ok else f"HTTP {resp.status_code}"
         }
     except Exception as e:
         results["local"] = {
@@ -99,11 +119,12 @@ def check_ap(ap):
         t0 = time.time()
         resp = requests.get(ap["external_url"], timeout=5, allow_redirects=True)
         t1 = time.time()
+        is_ok = 200 <= resp.status_code < 400
         results["external"] = {
-            "status": "UP",
+            "status": "UP" if is_ok else "DOWN",
             "code": resp.status_code,
             "time_ms": int((t1 - t0) * 1000),
-            "error": None
+            "error": None if is_ok else f"HTTP {resp.status_code}"
         }
     except Exception as e:
         results["external"] = {
@@ -114,6 +135,7 @@ def check_ap(ap):
         }
 
     return results
+
 
 
 def check_db(db):
@@ -156,9 +178,74 @@ def check_db(db):
     return {"status": "UNKNOWN", "time_ms": 0, "error": "Unsupported database type"}
 
 
-def build_html_report(ap_results, db_results):
+def heal_ap(ap, local_down, external_down):
+    healed = False
+    details = []
+
+    if local_down and ap.get("start_script"):
+        try:
+            print(f"🔄 [Auto-Healing] {ap['name']} 로컬 프로세스 재기동 시도중...")
+            subprocess.run(["bash", ap["start_script"]], cwd=ap["working_dir"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            details.append("로컬 프로세스 재기동 완료")
+            healed = True
+        except Exception as e:
+            details.append(f"로컬 재기동 실패: {e}")
+
+    if external_down and ap.get("tunnel_unit"):
+        try:
+            print(f"🔄 [Auto-Healing] {ap['name']} Cloudflare 터널 재기동 시도중...")
+            subprocess.run(f"systemctl --user stop {ap['tunnel_unit']} 2>/dev/null || true", shell=True)
+            cmd = f"systemd-run --user --unit={ap['tunnel_unit']} bash -c \"exec {ap['tunnel_cmd']}\""
+            subprocess.run(cmd, shell=True, check=True)
+            details.append("Cloudflare 터널 재기동 완료")
+            healed = True
+        except Exception as e:
+            details.append(f"터널 재기동 실패: {e}")
+
+    return healed, ", ".join(details)
+
+
+def heal_db(db):
+    if db.get("docker_container"):
+        try:
+            print(f"🔄 [Auto-Healing] {db['name']} Docker 컨테이너 재기동 시도중...")
+            subprocess.run(["docker", "restart", db["docker_container"]], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            return True, f"Docker {db['docker_container']} 재기동 완료"
+        except Exception as e:
+            return False, f"Docker 재기동 실패: {e}"
+    return False, "자동 조치 스크립트 없음"
+
+
+def build_html_report(ap_results, db_results, healing_history=None):
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
+    healing_section = ""
+    if healing_history:
+        healing_rows = ""
+        for item in healing_history:
+            healing_rows += f"""
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">{item['target']}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{item['action']}</td>
+                <td style="padding: 8px; border: 1px solid #ddd; text-align: center; color: {'#28a745' if item['result'] == 'SUCCESS' else '#dc3545'}; font-weight: bold;">{item['result']}</td>
+            </tr>
+            """
+        healing_section = f"""
+        <h3>⚡ 자동 복구 (Auto-healing) 조치 내역</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>대상</th>
+                    <th>조치 내용</th>
+                    <th>복구 결과</th>
+                </tr>
+            </thead>
+            <tbody>
+                {healing_rows}
+            </tbody>
+        </table>
+        """
+
     # Generate AP table rows
     ap_rows = ""
     for ap, res in zip(AP_TARGETS, ap_results):
@@ -209,6 +296,8 @@ def build_html_report(ap_results, db_results):
                 <p>점검 일시: {now_str}</p>
             </div>
             <div class="content">
+                {healing_section}
+
                 <h3>1. Application Server (AP) 접속 상태</h3>
                 <table>
                     <thead>
@@ -252,7 +341,7 @@ def build_html_report(ap_results, db_results):
     return html
 
 
-def build_telegram_message(ap_results, db_results):
+def build_telegram_message(ap_results, db_results, healing_history=None):
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     # AP status summary
@@ -267,9 +356,17 @@ def build_telegram_message(ap_results, db_results):
         icon = "✅" if res["status"] == "UP" else "❌"
         db_summaries.append(f"{icon} {db['name']}: {res['status']}")
 
+    healing_text = ""
+    if healing_history:
+        h_lines = []
+        for h in healing_history:
+            h_icon = "🔄✅" if h["result"] == "SUCCESS" else "🔄❌"
+            h_lines.append(f"{h_icon} <b>{h['target']}</b>: {h['action']} ({h['result']})")
+        healing_text = f"\n<b>■ ⚡ 자동 복구(Auto-Healing) 결과</b>\n" + "\n".join(h_lines) + "\n"
+
     message = f"""<b>[📡 시스템 헬스체크 보고]</b>
 일시: {now_str}
-
+{healing_text}
 <b>■ AP 서버 상태</b>
 {chr(10).join(ap_summaries)}
 
@@ -353,15 +450,54 @@ def main():
         send_email_flag = True
         send_telegram_flag = True
 
-    print("1. AP 서버 점검 시작...")
+    print("1. 1차 AP/DB 서버 점검 시작...")
     ap_results = [check_ap(ap) for ap in AP_TARGETS]
-
-    print("2. DB 서버 점검 시작...")
     db_results = [check_db(db) for db in DB_TARGETS]
 
+    # Check for failures and trigger auto-healing
+    healing_history = []
+    need_recheck = False
+
+    for ap, res in zip(AP_TARGETS, ap_results):
+        l_down = (res["local"]["status"] != "UP")
+        e_down = (res["external"]["status"] != "UP")
+        if l_down or e_down:
+            print(f"⚠️ {ap['name']} 장애 감지 (로컬:{res['local']['status']}, 외부:{res['external']['status']})")
+            healed, action_msg = heal_ap(ap, l_down, e_down)
+            if healed:
+                need_recheck = True
+                healing_history.append({"target": ap["name"], "action": action_msg, "result": "PENDING"})
+
+    for db, res in zip(DB_TARGETS, db_results):
+        if res["status"] != "UP":
+            print(f"⚠️ {db['name']} 장애 감지 ({res['status']})")
+            healed, action_msg = heal_db(db)
+            if healed:
+                need_recheck = True
+                healing_history.append({"target": db["name"], "action": action_msg, "result": "PENDING"})
+
+    # Re-check after healing
+    if need_recheck:
+        print("⏱️ 자동 조치 완료 후 3초 대기 중...")
+        time.sleep(3)
+        print("2. 2차 (재점검) AP/DB 서버 점검 시작...")
+        ap_results = [check_ap(ap) for ap in AP_TARGETS]
+        db_results = [check_db(db) for db in DB_TARGETS]
+
+        # Update healing history results based on second check
+        for h in healing_history:
+            ap_match = next((res for ap, res in zip(AP_TARGETS, ap_results) if ap["name"] == h["target"]), None)
+            if ap_match:
+                is_recovered = (ap_match["local"]["status"] == "UP" and ap_match["external"]["status"] == "UP")
+                h["result"] = "SUCCESS" if is_recovered else "FAILED"
+            else:
+                db_match = next((res for db, res in zip(DB_TARGETS, db_results) if db["name"] == h["target"]), None)
+                if db_match:
+                    h["result"] = "SUCCESS" if db_match["status"] == "UP" else "FAILED"
+
     print("3. 보고서 빌드 중...")
-    html_report = build_html_report(ap_results, db_results)
-    telegram_msg = build_telegram_message(ap_results, db_results)
+    html_report = build_html_report(ap_results, db_results, healing_history)
+    telegram_msg = build_telegram_message(ap_results, db_results, healing_history)
 
     print("4. 리포트 전송 중...")
     if send_email_flag:
@@ -370,14 +506,15 @@ def main():
     if send_telegram_flag:
         has_failure = any(res["local"]["status"] != "UP" or res["external"]["status"] != "UP" for res in ap_results) or \
                       any(res["status"] != "UP" for res in db_results)
-        # 데일리 리포트(--email)와 함께 가동되거나 오류가 있을 시 텔레그램 발송
-        if has_failure or send_email_flag:
+        # 데일리 리포트(--email)와 함께 가동되거나 오류가 발생하였거나 자동 복구를 시도한 경우 텔레그램 발송
+        if has_failure or send_email_flag or healing_history:
             send_telegram(telegram_msg)
         else:
             print("🔊 모든 시스템 정상: 텔레그램 알림 전송을 생략합니다.")
     
-    print("5. 헬스체크 프로세스 종료.")
+    print("5. 헬스체크 및 자동 복구 프로세스 종료.")
 
 
 if __name__ == "__main__":
     main()
+
