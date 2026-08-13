@@ -1,0 +1,773 @@
+{
+  "exam_info": {
+    "title": "제79회 한국사능력검정시험 (기본)",
+    "category": "한국사능력검정시험 (기본)",
+    "time_limit_minutes": 70,
+    "passing_rules": {
+      "total_pass_score": 60,
+      "points_per_question": 2.0,
+      "tier_4_score": 80,
+      "tier_5_score": 70,
+      "tier_6_score": 60
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "한국사능력검정시험 (기본) (50문항)",
+      "question_count": 50
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "제1번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_01.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 1번 문항입니다. (배점: 1점, 정답: 4번)"
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "제2번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_02.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 2번 문항입니다. (배점: 1점, 정답: 3번)"
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "제3번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_03.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 3번 문항입니다. (배점: 3점, 정답: 2번)"
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "제4번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_04.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 4번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "제5번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_05.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 5번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "제6번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_06.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 6번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "제7번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_07.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 7번 문항입니다. (배점: 3점, 정답: 3번)"
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "제8번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_08.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 8번 문항입니다. (배점: 1점, 정답: 2번)"
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "제9번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_09.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 9번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "제10번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_10.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 10번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "제11번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_11.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 11번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "제12번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_12.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 12번 문항입니다. (배점: 1점, 정답: 3번)"
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "제13번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_13.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 13번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "제14번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_14.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 14번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "제15번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_15.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 15번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "제16번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_16.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 16번 문항입니다. (배점: 3점, 정답: 4번)"
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "제17번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_17.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 17번 문항입니다. (배점: 1점, 정답: 1번)"
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "제18번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_18.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 18번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "제19번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_19.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 19번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "제20번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_20.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 20번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "제21번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_21.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 21번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "제22번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_22.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 22번 문항입니다. (배점: 3점, 정답: 4번)"
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "제23번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_23.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 23번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "제24번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_24.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 24번 문항입니다. (배점: 1점, 정답: 1번)"
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "제25번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_25.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 25번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 26,
+      "subject_id": 1,
+      "question": "제26번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_26.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 26번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 27,
+      "subject_id": 1,
+      "question": "제27번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_27.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 27번 문항입니다. (배점: 1점, 정답: 3번)"
+    },
+    {
+      "id": 28,
+      "subject_id": 1,
+      "question": "제28번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_28.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 28번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 29,
+      "subject_id": 1,
+      "question": "제29번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_29.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 29번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 30,
+      "subject_id": 1,
+      "question": "제30번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_30.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 30번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 31,
+      "subject_id": 1,
+      "question": "제31번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_31.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 31번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 32,
+      "subject_id": 1,
+      "question": "제32번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_32.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 32번 문항입니다. (배점: 1점, 정답: 1번)"
+    },
+    {
+      "id": 33,
+      "subject_id": 1,
+      "question": "제33번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_33.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 33번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 34,
+      "subject_id": 1,
+      "question": "제34번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_34.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 34번 문항입니다. (배점: 3점, 정답: 3번)"
+    },
+    {
+      "id": 35,
+      "subject_id": 1,
+      "question": "제35번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_35.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 35번 문항입니다. (배점: 1점, 정답: 1번)"
+    },
+    {
+      "id": 36,
+      "subject_id": 1,
+      "question": "제36번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_36.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 36번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 37,
+      "subject_id": 1,
+      "question": "제37번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_37.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 37번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 38,
+      "subject_id": 1,
+      "question": "제38번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_38.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 38번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 39,
+      "subject_id": 1,
+      "question": "제39번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_39.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 39번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 40,
+      "subject_id": 1,
+      "question": "제40번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_40.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 40번 문항입니다. (배점: 1점, 정답: 3번)"
+    },
+    {
+      "id": 41,
+      "subject_id": 1,
+      "question": "제41번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_41.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 41번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 42,
+      "subject_id": 1,
+      "question": "제42번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_79_basic/q_42.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 42번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 43,
+      "subject_id": 1,
+      "question": "제43번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_43.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 43번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 44,
+      "subject_id": 1,
+      "question": "제44번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_44.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 44번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 45,
+      "subject_id": 1,
+      "question": "제45번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_45.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 45번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 46,
+      "subject_id": 1,
+      "question": "제46번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_79_basic/q_46.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 46번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 47,
+      "subject_id": 1,
+      "question": "제47번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_47.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 47번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 48,
+      "subject_id": 1,
+      "question": "제48번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_48.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 48번 문항입니다. (배점: 3점, 정답: 4번)"
+    },
+    {
+      "id": 49,
+      "subject_id": 1,
+      "question": "제49번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_79_basic/q_49.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 49번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 50,
+      "subject_id": 1,
+      "question": "제50번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_79_basic/q_50.png",
+      "explanation": "제79회 한국사능력검정시험 (기본) 50번 문항입니다. (배점: 2점, 정답: 2번)"
+    }
+  ]
+}
