@@ -512,9 +512,12 @@
         </div>
       </div>
 
-      <select class="exam-select-box" id="examSelect" onchange="updateRulesUI()">
-        <option value="/exams/bigdata_10.json">빅데이터분석기사 제10회 필기 기출문제</option>
-      </select>
+      <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+        <select class="exam-select-box" id="categorySelect" style="flex: 1; margin-bottom: 0;" onchange="onCategoryChange()">
+        </select>
+        <select class="exam-select-box" id="examSelect" style="flex: 1.5; margin-bottom: 0;" onchange="updateRulesUI()">
+        </select>
+      </div>
 
       <div style="margin-bottom: 24px; text-align: left; background: #f1f5f9; padding: 16px; border-radius: 8px;">
         <h4 style="margin-bottom:8px; font-size:0.95rem;" id="rulesTitle">📌 합격 판정 기준:</h4>
@@ -601,21 +604,53 @@ window.addEventListener('DOMContentLoaded', async () => {
     if(res.ok) {
       examList = await res.json();
       if(examList.length > 0) {
-        const sel = document.getElementById('examSelect');
-        sel.innerHTML = '';
-        examList.forEach(ex => {
-          const opt = document.createElement('option');
-          opt.value = ex.path;
-          opt.innerText = ex.title;
-          sel.appendChild(opt);
-        });
-        updateRulesUI();
+        initCategoryDropdown();
       }
     }
   } catch(e) {}
 
   checkDraftSession();
 });
+
+function initCategoryDropdown() {
+  const catSel = document.getElementById('categorySelect');
+  if(!catSel) return;
+  catSel.innerHTML = '';
+
+  // 자격증 카테고리 추출
+  const categories = Array.from(new Set(examList.map(ex => ex.category || '기타')));
+  categories.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat;
+    opt.innerText = cat;
+    catSel.appendChild(opt);
+  });
+
+  onCategoryChange();
+}
+
+function onCategoryChange() {
+  const catSel = document.getElementById('categorySelect');
+  const examSel = document.getElementById('examSelect');
+  if(!catSel || !examSel) return;
+
+  const selectedCategory = catSel.value;
+  const filteredExams = examList.filter(ex => (ex.category || '기타') === selectedCategory);
+
+  examSel.innerHTML = '';
+  filteredExams.forEach(ex => {
+    const opt = document.createElement('option');
+    opt.value = ex.path;
+    // 선택된 자격증명을 제거하고 회차/종류 위주로 정돈
+    let displayTitle = ex.title;
+    displayTitle = displayTitle.replace(selectedCategory, '').trim();
+    if (!displayTitle) displayTitle = ex.title;
+    opt.innerText = displayTitle;
+    examSel.appendChild(opt);
+  });
+
+  updateRulesUI();
+}
 
 // 키보드 단축키 (Enter: 다음 문제 이동, 1~4: 답안 선택, 방향키: 문제 이동)
 window.addEventListener('keydown', (e) => {
@@ -716,25 +751,44 @@ function updateRulesUI() {
   if (!ex) return;
 
   const rules = ex.passing_rules || {};
-  const ptsPerQ = rules.points_per_question || 1.25;
-  const cutoffScore = rules.subject_cutoff_score || 10;
+  const ptsPerQ = rules.points_per_question || 1.0;
+  const cutoffScore = rules.subject_cutoff_score || 40;
   const passScore = rules.total_pass_score || 60;
   
   const subjects = ex.subjects || [];
-  const qCountPerSub = (subjects[0] && subjects[0].question_count) ? subjects[0].question_count : 20;
-  const subMaxScore = qCountPerSub * ptsPerQ;
-  const cutoffQs = Math.ceil(cutoffScore / ptsPerQ);
-  const totalPassQs = Math.ceil(passScore / ptsPerQ);
-  const totalQs = ex.questions_count || (qCountPerSub * (subjects.length || 4));
-  const totalMaxScore = totalQs * ptsPerQ;
+  const totalQs = ex.questions_count || subjects.reduce((sum, s) => sum + (s.question_count || 0), 0);
+
+  // 과목별 문항 수가 동일한지 체크
+  const firstSubCount = subjects[0] ? subjects[0].question_count : 0;
+  const isUniformSubject = subjects.length > 0 && subjects.every(s => s.question_count === firstSubCount);
 
   document.getElementById('rulesTitle').innerHTML = `📌 <b>${escapeHtml(ex.title)}</b> 합격 판정 기준:`;
-  document.getElementById('rulesList').innerHTML = `
-    <li>과목당 <b>${subMaxScore}점 만점</b> (문항당 ${ptsPerQ}점)</li>
-    <li>과목별 과락 기준: <b>${cutoffScore}점 미만</b> (${cutoffQs}문항 미만) 시 불합격</li>
-    <li>총점 합격 기준: <b>${passScore}점 이상</b> (${totalPassQs}문항 이상 / ${totalMaxScore}점 만점) 득점 시 합격</li>
-    <li>시험 시간: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length || 4}개 과목)</li>
-  `;
+  
+  if (isUniformSubject) {
+    const subMaxScore = firstSubCount * ptsPerQ;
+    const cutoffQs = Math.ceil(cutoffScore / ptsPerQ);
+    const totalPassQs = Math.ceil(passScore / ptsPerQ);
+    const totalMaxScore = totalQs * ptsPerQ;
+    document.getElementById('rulesList').innerHTML = `
+      <li>과목당 <b>${subMaxScore}점 만점</b> (문항당 ${ptsPerQ}점)</li>
+      <li>과목별 과락 기준: <b>${cutoffScore}점 미만</b> (${cutoffQs}문항 미만) 시 불합격</li>
+      <li>총점 합격 기준: <b>${passScore}점 이상</b> (${totalPassQs}문항 이상 / ${totalMaxScore}점 만점) 득점 시 합격</li>
+      <li>시험 시간: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length}개 과목, ${totalQs}문항)</li>
+    `;
+  } else {
+    // 디지털포렌식 등 과목별 문항 수가 다를 때
+    const subjectListHtml = subjects.map((s, idx) => {
+      const minPassQs = Math.ceil(s.question_count * (cutoffScore / 100.0));
+      return `${idx + 1}과목: ${s.question_count}문항 (과락 기준: ${minPassQs}문항 미만)`;
+    }).join('<br>• ');
+
+    document.getElementById('rulesList').innerHTML = `
+      <li>과목별 문항 구성:<br>• ${subjectListHtml}</li>
+      <li>과목별 과락 기준: 각 과목 <b>${cutoffScore}점 미만</b> (맞은 비율 ${cutoffScore}% 미만) 시 과락 불합격</li>
+      <li>총점 합격 기준: <b>전체 평균 ${passScore}점 이상</b> (100점 만점 환산 평균) 득점 시 최종 합격</li>
+      <li>시험 시간: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length}개 과목, ${totalQs}문항)</li>
+    `;
+  }
 }
 
 let cachedServerDraft = null;
@@ -1135,16 +1189,20 @@ function submitExam(skipConfirm = false) {
   const passScore = rules.total_pass_score || 60;
 
   let totalCorrect = 0;
+  let sumSubjectScores = 0;
   const subjectResults = currentExamData.subjects.map(sub => {
     const subQs = currentExamData.questions.filter(q => q.subject_id === sub.id);
     let correctCount = 0;
     subQs.forEach(q => { if(userAnswers[q.id] === q.answer) correctCount++; });
     totalCorrect += correctCount;
-    const score = correctCount * ptsPerQ;
+    // 과목별 100점 만점 환산 점수
+    const score = subQs.length > 0 ? (correctCount / subQs.length) * 100 : 0;
+    sumSubjectScores += score;
     return { name: sub.name, correct: correctCount, total: subQs.length, score: score, isCutoff: score < cutoffScore };
   });
 
-  const grandTotalScore = totalCorrect * ptsPerQ;
+  // 전체 평균 점수 (각 과목 100점 만점 환산 점수의 평균)
+  const grandTotalScore = currentExamData.subjects.length > 0 ? (sumSubjectScores / currentExamData.subjects.length) : 0;
   const hasAnyCutoff = subjectResults.some(r => r.isCutoff);
   const isFinalPass = (!hasAnyCutoff) && (grandTotalScore >= passScore);
 
