@@ -640,10 +640,22 @@ function onCategoryChange() {
   // 회차 번호 추출 후 오름차순 정렬 (제1회 -> 제2회 ... 제77회 -> 제78회 -> 제79회)
   filteredExams.sort((a, b) => {
     const parseNum = (item) => {
-      const m1 = item.title.match(/(\d+)/);
-      if (m1) return parseInt(m1[1], 10);
-      const m2 = item.filename.match(/(\d+)/);
-      if (m2) return parseInt(m2[1], 10);
+      if (!item) return 0;
+      const title = item.title || '';
+      const filename = item.filename || '';
+      
+      // 1. '제N회' 또는 'N회' 회차 패턴 우선 추출 (예: '디지털포렌식 전문가 2급 필기 모의고사 [제3회]' -> 3)
+      const mRound = title.match(/제\s*(\d+)\s*회/) || title.match(/(\d+)\s*회/);
+      if (mRound) return parseInt(mRound[1], 10);
+      
+      // 2. 파일명 내 회차 번호 추출 (예: digital_forensic_mock_03.json -> 3)
+      const mFile = filename.match(/(\d+)/);
+      if (mFile) return parseInt(mFile[1], 10);
+      
+      // 3. 폴백: 제목 내 마지막 숫자 추출
+      const matches = title.match(/\d+/g);
+      if (matches && matches.length > 0) return parseInt(matches[matches.length - 1], 10);
+
       return 0;
     };
     return parseNum(a) - parseNum(b);

@@ -4,7 +4,9 @@
 # 개발4팀 (PM: 손현호 차장)
 # -----------------------------------------------------------------------------
 
-WORKSPACE_DIR="/home/raphael/Dev/pythons"
+# 스크립트 경로 기준으로 워크스페이스 디렉토리 동적 지정
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
 
 echo "=== [1/6] Docker Databases 기동 ==="
 docker start snowball-mysql

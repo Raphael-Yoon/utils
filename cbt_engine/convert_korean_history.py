@@ -133,11 +133,38 @@ def process_all_korean_history_exams():
         # 기본 4지선다, 심화 5지선다
         opt_count = 4 if is_basic else 5
 
+        # PDF 텍스트 및 OCR 기반 실제 보기(선택지) 추출
+        parsed_options = {q: {} for q in range(1, 51)}
+        symbols = ['①','②','③','④','⑤']
+
+        for page_idx, page in enumerate(doc):
+            text = page.get_text('text')
+            lines = [l.strip() for l in text.split('\n') if l.strip()]
+            cur_q = None
+            for line in lines:
+                m_q = re.match(r'^(\d+)\.\s*', line)
+                if m_q:
+                    qn = int(m_q.group(1))
+                    if 1 <= qn <= 50: cur_q = qn
+                if cur_q:
+                    m_opt = re.match(r'^([①②③④⑤])\s*(.*)', line)
+                    if m_opt:
+                        sym, txt = m_opt.group(1), m_opt.group(2)
+                        idx = symbols.index(sym)
+                        if txt.strip(): parsed_options[cur_q][idx] = txt.strip()
+
         for q_id in range(1, 51):
             ans_val, pts_val = exam_data["answers"][q_id]
             img_filename = f"q_{str(q_id).zfill(2)}.png"
 
-            opts = [f"{['①','②','③','④','⑤'][i]}번 선택지" for i in range(opt_count)]
+            opts = []
+            for i in range(opt_count):
+                txt = parsed_options[q_id].get(i, '')
+                if not txt:
+                    txt = f"{symbols[i]}번 선택지"
+                elif not any(txt.startswith(s) for s in symbols):
+                    txt = f"{symbols[i]} {txt}"
+                opts.append(txt)
 
             q_obj = {
                 "id": q_id,

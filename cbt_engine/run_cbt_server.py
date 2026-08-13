@@ -110,10 +110,18 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             
             # 시험 목록 정렬 (카테고리 가나다순, 회차 번호 오름차순: 제1회->제2회... / 77회->78회->79회)
             def get_sort_key(item):
-                m = re.search(r'(\d+)', item['title'])
-                if not m:
-                    m = re.search(r'(\d+)', item['filename'])
-                num = int(m.group(1)) if m else 0
+                title = item.get('title', '')
+                filename = item.get('filename', '')
+                m_round = re.search(r'제\s*(\d+)\s*회', title) or re.search(r'(\d+)\s*회', title)
+                if m_round:
+                    num = int(m_round.group(1))
+                else:
+                    m_file = re.search(r'(\d+)', filename)
+                    if m_file:
+                        num = int(m_file.group(1))
+                    else:
+                        matches = re.findall(r'\d+', title)
+                        num = int(matches[-1]) if matches else 0
                 return (item.get('category', ''), num)
 
             exam_list.sort(key=get_sort_key)

@@ -3,7 +3,7 @@
 # Developed by Dev Team 4
 
 # Move to workspace directory
-cd /home/raphael/Dev/pythons
+cd /home/yuju/Dev/Pythons
 
 # Activate virtual environment and run python health check
-/home/raphael/Dev/pythons/.venv/bin/python /home/raphael/Dev/pythons/utils/health_check/daily_health_check.py >> /home/raphael/Dev/pythons/utils/health_check/health_check.log 2>&1
+/home/yuju/Dev/Pythons/.venv/bin/python /home/yuju/Dev/Pythons/utils/health_check/daily_health_check.py >> /home/yuju/Dev/Pythons/utils/health_check/health_check.log 2>&1

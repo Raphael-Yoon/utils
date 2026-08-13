@@ -62,9 +62,9 @@ AP_TARGETS = [
 # Target Databases configuration
 DB_TARGETS = [
     {
-        "name": "MySQL (100.103.64.85)",
+        "name": "MySQL (127.0.0.1)",
         "type": "mysql",
-        "host": "100.103.64.85",
+        "host": "127.0.0.1",
         "port": 3306,
         "user": "root",
         "password": "150606"
