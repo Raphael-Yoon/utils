@@ -1382,7 +1382,10 @@ function showReviewMode() {
   goToQuestion(0); // 리뷰 모드에서도 첫 번째 문제 활성화
 }
 
-async function showHistoryModal() {
+let currentHistoryFilterMode = 'current';
+
+async function showHistoryModal(filterMode) {
+  if (filterMode) currentHistoryFilterMode = filterMode;
   document.getElementById('historyModal').style.display = 'flex';
   const container = document.getElementById('historyListContainer');
   container.innerHTML = '<div style="text-align:center; padding:20px;">🔄 응시 이력을 불러오는 중...</div>';
@@ -1393,6 +1396,55 @@ async function showHistoryModal() {
     const list = await res.json();
     if (!list || list.length === 0) {
       container.innerHTML = '<div style="text-align:center; color:#64748b; padding:30px;">저장된 응시 이력이 없습니다.</div>';
+      return;
+    }
+
+    // 현재 선택된 시험 파악 (examSelect 또는 currentExamData)
+    const examSel = document.getElementById('examSelect');
+    let currentExamId = '';
+    let currentExamTitle = '';
+    if (currentExamData && (currentExamData.filename || currentExamData.path)) {
+      currentExamId = (currentExamData.filename || currentExamData.path).replace(/^\/exams\//, '');
+      currentExamTitle = currentExamData.exam_info ? currentExamData.exam_info.title : '';
+    } else if (examSel && examSel.value) {
+      currentExamId = examSel.value.replace(/^\/exams\//, '');
+      if (examSel.selectedIndex >= 0) {
+        currentExamTitle = examSel.options[examSel.selectedIndex].innerText;
+      }
+    }
+
+    // 필터링 적용 (현재 시험 선택 vs 전체 선택)
+    let displayList = list;
+    if (currentHistoryFilterMode === 'current' && currentExamId) {
+      displayList = list.filter(item => item.exam_id === currentExamId);
+    }
+
+    // 필터 탭 HTML 구조
+    const currentBtnClass = currentHistoryFilterMode === 'current' ? 'btn-primary' : 'btn-outline-dark';
+    const allBtnClass = currentHistoryFilterMode === 'all' ? 'btn-primary' : 'btn-outline-dark';
+
+    let filterHeaderHtml = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #e2e8f0; flex-wrap:wrap; gap:10px;">
+        <div style="display:flex; gap:8px;">
+          <button class="btn ${currentBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('current')">
+            🎯 선택한 시험 (${displayList.length}건)
+          </button>
+          <button class="btn ${allBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('all')">
+            🌐 전체 응시 이력 (${list.length}건)
+          </button>
+        </div>
+        <button class="btn" style="background:#ef4444; color:#ffffff; font-size:0.8rem; padding:6px 12px;" onclick="clearAllHistory()">🗑️ 전체 이력 삭제</button>
+      </div>
+    `;
+
+    if (displayList.length === 0) {
+      container.innerHTML = filterHeaderHtml + `
+        <div style="text-align:center; padding:36px 16px; color:#64748b; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0; margin-top:10px;">
+          <div style="font-size:1.05rem; font-weight:700; color:#334155; margin-bottom:6px;">🎯 선택한 시험의 응시 이력이 없습니다.</div>
+          <div style="font-size:0.86rem; color:#64748b; margin-bottom:16px;">시험 풀이 완료 후 [제출하기]를 누르시면 이곳에 이력과 오답노트가 저장됩니다.</div>
+          <button class="btn btn-primary" style="font-size:0.85rem; padding:8px 18px;" onclick="showHistoryModal('all')">🌐 전체 응시 이력 (${list.length}건) 보기</button>
+        </div>
+      `;
       return;
     }
 
@@ -1407,7 +1459,7 @@ async function showHistoryModal() {
 
     // 시험 종목별 그룹화 맵 구축
     const groupedExams = {};
-    list.forEach(item => {
+    displayList.forEach(item => {
       const key = item.exam_id || item.exam_title;
       if (!groupedExams[key]) {
         groupedExams[key] = {
@@ -1426,13 +1478,7 @@ async function showHistoryModal() {
     // 그룹별 최신 응시일 기준 내림차순 정렬
     const groupedList = Object.values(groupedExams).sort((a, b) => new Date(b.latestDate) - new Date(a.latestDate));
 
-    let html = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid #e2e8f0;">
-        <span style="font-size:0.88rem; color:#475569;">총 <b>${groupedList.length}개 시험</b> (${list.length}회 누적 응시)</span>
-        <button class="btn" style="background:#ef4444; color:#ffffff; font-size:0.8rem; padding:6px 12px;" onclick="clearAllHistory()">🗑️ 전체 이력 삭제</button>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-    `;
+    let html = filterHeaderHtml + '<div style="display:flex; flex-direction:column; gap:10px;">';
 
     groupedList.forEach((grp, idx) => {
       const latestItem = grp.attempts[0];
