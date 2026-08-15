@@ -15,10 +15,12 @@ fi
 pkill -f "run_cbt_server.py"
 
 # 2. 깃허브 원격 최신 파일 동기화
+# 주의: "git checkout origin/master -- cbt_engine/" 방식은 원격에서 삭제된 파일을
+# 로컬에 그대로 남겨두는 문제가 있어(예: 파일명 변경 시 구 파일 잔존), reset --hard로 대체함.
 echo "Pulling latest code from GitHub..."
 cd /home/raphael/Dev/pythons/utils
 git fetch origin
-git checkout origin/master -- cbt_engine/
+git reset --hard origin/master
 cd /home/raphael/Dev/pythons/utils/cbt_engine
 
 # 3. 포트가 풀리도록 대기
