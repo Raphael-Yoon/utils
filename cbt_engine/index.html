@@ -272,10 +272,11 @@
     .omr-calculator {
       border-top: 1px solid var(--border-color);
       background: #f8fafc;
-      padding: 12px;
+      padding: 10px 12px;
       display: flex;
       flex-direction: column;
       gap: 8px;
+      transition: all 0.2s ease;
     }
     .calc-header {
       display: flex;
@@ -284,6 +285,36 @@
       font-size: 0.85rem;
       font-weight: 700;
       color: #334155;
+      cursor: pointer;
+      user-select: none;
+      padding: 2px 0;
+    }
+    .calc-header:hover {
+      color: var(--primary);
+    }
+    .calc-toggle-btn {
+      background: #e2e8f0;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      cursor: pointer;
+      color: #475569;
+      transition: all 0.15s ease;
+    }
+    .calc-toggle-btn:hover {
+      background: #cbd5e1;
+      color: #1e293b;
+    }
+    .calc-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: max-height 0.25s ease, opacity 0.2s ease;
+    }
+    .calc-body.hidden {
+      display: none;
     }
     .calc-display {
       background: #0f172a;
@@ -631,36 +662,40 @@
       </div>
       <div class="omr-body" id="omrBody"></div>
       
-      <!-- 계산기 영역 -->
+      <!-- 계산기 영역 (접기/펼치기 토글, 단축키 C/Esc) -->
       <div class="omr-calculator">
-        <div class="calc-header">
-          <span>🧮 연습용 계산기</span>
-          <button class="calc-btn clear" style="padding: 2px 8px; font-size: 0.75rem;" onclick="clearCalculator()">C</button>
+        <div class="calc-header" onclick="toggleCalculator()">
+          <span>🧮 연습용 계산기 <span style="font-size:0.72rem; font-weight:normal; color:#64748b;">[단축키: C]</span></span>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <button class="calc-toggle-btn" id="calcToggleBtn" type="button">계산기 열기 (C) ▴</button>
+          </div>
         </div>
-        <div class="calc-display" id="calcDisplay">0</div>
-        <div class="calc-buttons">
-          <button class="calc-btn clear" onclick="clearCalculator()">C</button>
-          <button class="calc-btn op" onclick="appendCalcOp('/')">÷</button>
-          <button class="calc-btn op" onclick="appendCalcOp('*')">×</button>
-          <button class="calc-btn op" onclick="deleteCalcChar()">⌫</button>
+        <div class="calc-body hidden" id="calcBody">
+          <div class="calc-display" id="calcDisplay">0</div>
+          <div class="calc-buttons">
+            <button class="calc-btn clear" onclick="clearCalculator()">C</button>
+            <button class="calc-btn op" onclick="appendCalcOp('/')">÷</button>
+            <button class="calc-btn op" onclick="appendCalcOp('*')">×</button>
+            <button class="calc-btn op" onclick="deleteCalcChar()">⌫</button>
 
-          <button class="calc-btn" onclick="appendCalcNum('7')">7</button>
-          <button class="calc-btn" onclick="appendCalcNum('8')">8</button>
-          <button class="calc-btn" onclick="appendCalcNum('9')">9</button>
-          <button class="calc-btn op" onclick="appendCalcOp('-')">-</button>
+            <button class="calc-btn" onclick="appendCalcNum('7')">7</button>
+            <button class="calc-btn" onclick="appendCalcNum('8')">8</button>
+            <button class="calc-btn" onclick="appendCalcNum('9')">9</button>
+            <button class="calc-btn op" onclick="appendCalcOp('-')">-</button>
 
-          <button class="calc-btn" onclick="appendCalcNum('4')">4</button>
-          <button class="calc-btn" onclick="appendCalcNum('5')">5</button>
-          <button class="calc-btn" onclick="appendCalcNum('6')">6</button>
-          <button class="calc-btn op" onclick="appendCalcOp('+')">+</button>
+            <button class="calc-btn" onclick="appendCalcNum('4')">4</button>
+            <button class="calc-btn" onclick="appendCalcNum('5')">5</button>
+            <button class="calc-btn" onclick="appendCalcNum('6')">6</button>
+            <button class="calc-btn op" onclick="appendCalcOp('+')">+</button>
 
-          <button class="calc-btn" onclick="appendCalcNum('1')">1</button>
-          <button class="calc-btn" onclick="appendCalcNum('2')">2</button>
-          <button class="calc-btn" onclick="appendCalcNum('3')">3</button>
-          <button class="calc-btn" onclick="appendCalcNum('.')">.</button>
+            <button class="calc-btn" onclick="appendCalcNum('1')">1</button>
+            <button class="calc-btn" onclick="appendCalcNum('2')">2</button>
+            <button class="calc-btn" onclick="appendCalcNum('3')">3</button>
+            <button class="calc-btn" onclick="appendCalcNum('.')">.</button>
 
-          <button class="calc-btn" style="grid-column: span 2;" onclick="appendCalcNum('0')">0</button>
-          <button class="calc-btn equals" style="grid-column: span 2;" onclick="calculateResult()">=</button>
+            <button class="calc-btn" style="grid-column: span 2;" onclick="appendCalcNum('0')">0</button>
+            <button class="calc-btn equals" style="grid-column: span 2;" onclick="calculateResult()">=</button>
+          </div>
         </div>
       </div>
     </div>
@@ -810,6 +845,48 @@ window.addEventListener('keydown', (e) => {
 
   const key = e.key;
 
+  // 'c' 또는 'C' 키 입력 시 계산기 열기/닫기 토글 (단, Alt/Ctrl/Cmd 조합키 제외)
+  if (key.toLowerCase() === 'c' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    e.preventDefault();
+    toggleCalculator();
+    return;
+  }
+
+  // [계산기가 열려있는 경우]: 키보드 입력을 계산기로 자연스럽게 라우팅
+  if (isCalcOpen) {
+    if (key === 'Escape') {
+      e.preventDefault();
+      toggleCalculator(); // Esc 누르면 계산기 닫기
+      return;
+    }
+    if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'].includes(key)) {
+      e.preventDefault();
+      appendCalcNum(key);
+      return;
+    }
+    if (['+', '-', '*', '/'].includes(key)) {
+      e.preventDefault();
+      appendCalcOp(key);
+      return;
+    }
+    if (key === 'Backspace') {
+      e.preventDefault();
+      deleteCalcChar();
+      return;
+    }
+    if (key === '=' || key === 'Enter') {
+      e.preventDefault();
+      calculateResult();
+      return;
+    }
+    if (key.toLowerCase() === 'delete') {
+      e.preventDefault();
+      clearCalculator();
+      return;
+    }
+  }
+
+  // [계산기가 닫혀있는 경우]: 기본 CBT 네비게이션 및 답안 선택
   // 엔터키: 다음 문제로 이동 (마지막 문제일 시 제출 검수)
   if (key === 'Enter') {
     e.preventDefault();
@@ -849,7 +926,7 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 1~4 숫자키 입력 시 답안 선택
+  // 1~4 숫자키 입력 시 답안 선택 (계산기가 닫혀있을 때만 동작)
   if (['1', '2', '3', '4'].includes(key)) {
     const optNum = parseInt(key, 10);
     const activeQ = currentExamData.questions[currentQuestionIdx];
@@ -929,6 +1006,19 @@ function updateRulesUI() {
           &nbsp;&nbsp;• <b>❌ 탈락</b>: 60점 미만
       </li>
       <li>시험 시간: <b>${ex.time_limit_minutes || 70}분</b></li>
+    `;
+  } else if (ex.category === '정보시스템감리사' || (ex.title && ex.title.includes('정보시스템감리사'))) {
+    document.getElementById('rulesList').innerHTML = `
+      <li><b>전체 시험 구성 (총 5과목 120문항, 120분 단일교시)</b>:<br>
+          &nbsp;&nbsp;• <b>1과목</b>: 감리 및 사업관리 (25문항 / 과목당 100점 환산 문항당 4.0점)<br>
+          &nbsp;&nbsp;• <b>2과목</b>: 소프트웨어공학 (25문항 / 과목당 100점 환산 문항당 4.0점)<br>
+          &nbsp;&nbsp;• <b>3과목</b>: 데이터베이스 (25문항 / 과목당 100점 환산 문항당 4.0점)<br>
+          &nbsp;&nbsp;• <b>4과목</b>: 시스템구조 (25문항 / 과목당 100점 환산 문항당 4.0점)<br>
+          &nbsp;&nbsp;• <b>5과목</b>: 보안 (20문항 / 과목당 100점 환산 문항당 5.0점)
+      </li>
+      <li><b>과락 기준</b>: 과목별 <b>40점 미만</b> (1~4과목: 10문항 미만, 5과목: 8문항 미만 득점) 시 <b>과락 탈락</b></li>
+      <li><b>목표 합격선 (상대평가 기준)</b>: <b>총점 ${passScore}점 이상</b> (선발예정인원 약 40명 기준 합격권 목표 점수: 80점)</li>
+      <li><b>현재 모의고사 제한시간</b>: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length}개 과목, ${totalQs}문항)</li>
     `;
   } else if (isUniformSubject) {
     const subMaxScore = firstSubCount * ptsPerQ;
@@ -1447,18 +1537,17 @@ function submitExam(skipConfirm = false) {
   document.getElementById('resTotalScore').innerText = `${grandTotalScore.toFixed(1)}점`;
   document.getElementById('resCount').innerText = `${totalCorrect} / ${currentExamData.questions.length}`;
 
-  const tbody = document.getElementById('resSubjectTable');
-  tbody.innerHTML = '';
-  subjectResults.forEach(r => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><b>${r.name}</b></td>
-      <td>${r.correct} / ${r.total}</td>
-      <td><b>${r.score.toFixed(1)}점</b></td>
-      <td><span style="color:${r.isCutoff ? '#dc2626' : '#16a34a'}; font-weight:bold;">${r.isCutoff ? '과락 (10점 미만)' : '통과'}</span></td>
-    `;
-    tbody.appendChild(tr);
-  });
+    const cutoffText = `과락 (${cutoffScore}점 미만)`;
+    subjectResults.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><b>${r.name}</b></td>
+        <td>${r.correct} / ${r.total}</td>
+        <td><b>${r.score.toFixed(1)}점</b></td>
+        <td><span style="color:${r.isCutoff ? '#dc2626' : '#16a34a'}; font-weight:bold;">${r.isCutoff ? cutoffText : '통과'}</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
 
   // DB에 채점 결과 자동 저장 (POST /api/results)
   let examId = 'exam.json';
@@ -1768,6 +1857,23 @@ function closeImageModal() {
 
 // 계산기 로직
 let calcExpr = '';
+let isCalcOpen = false;
+
+function toggleCalculator(e) {
+  if (e) e.stopPropagation();
+  const body = document.getElementById('calcBody');
+  const btn = document.getElementById('calcToggleBtn');
+  if (!body || !btn) return;
+  
+  isCalcOpen = !isCalcOpen;
+  if (isCalcOpen) {
+    body.classList.remove('hidden');
+    btn.innerText = '숨기기 (C) ▾';
+  } else {
+    body.classList.add('hidden');
+    btn.innerText = '계산기 열기 (C) ▴';
+  }
+}
 
 function updateCalcDisplay() {
   const disp = document.getElementById('calcDisplay');
