@@ -100,6 +100,31 @@ RAW_COMMANDS = [
         "cmd": "./infosd_stop.sh",
         "cwd": "/home/raphael/Dev/pythons/infosd",
         "desc": "정보보호공시 AP 서버 종료"
+    },
+    # 4. CBT Engine (모의고사)
+    {
+        "system": "4. CBT Engine (모의고사)",
+        "num": "4-1",
+        "alias": "cbt-start",
+        "cmd": "./cbt_start.sh",
+        "cwd": "/home/raphael/Dev/pythons/utils/cbt_engine",
+        "desc": "CBT Engine AP 서버 시작"
+    },
+    {
+        "system": "4. CBT Engine (모의고사)",
+        "num": "4-2",
+        "alias": "cbt-reset",
+        "cmd": "./cbt_reset.sh",
+        "cwd": "/home/raphael/Dev/pythons/utils/cbt_engine",
+        "desc": "CBT Engine AP 서버 재설정 및 재기동"
+    },
+    {
+        "system": "4. CBT Engine (모의고사)",
+        "num": "4-3",
+        "alias": "cbt-stop",
+        "cmd": "./cbt_stop.sh",
+        "cwd": "/home/raphael/Dev/pythons/utils/cbt_engine",
+        "desc": "CBT Engine AP 서버 종료"
     }
 ]
 
@@ -120,7 +145,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # 앞의 슬래시(/) 제거 및 소문자 변환으로 유연하게 처리
     command = raw_text.lstrip("/").lower()
 
-    print(f"[📡 원격 명령 수신] {user.first_name}: {raw_text} (매핑: {command})")
+    print(f"[📡 원격 명령 수신] {user.first_name}: {raw_text} (매핑: {command})", flush=True)
 
     # 1. 큐에 기록 (히스토리용)
     try:
@@ -152,8 +177,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f"⚡️ <code>{info['desc']}</code> 실행 중...", parse_mode='HTML')
     
     try:
-        # 지정된 cwd 디렉토리로 이동하여 쉘 명령어 실행
-        result = subprocess.run(
+        # 지정된 cwd 디렉토리로 이동하여 쉘 명령어 비동기로 실행 (이벤트 루프 차단 방지)
+        result = await asyncio.to_thread(
+            subprocess.run,
             info["cmd"], 
             shell=True, 
             capture_output=True, 
@@ -188,7 +214,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     if not TOKEN:
-        print("에러: .env 파일에 TELEGRAM_BOT_TOKEN이 없습니다.")
+        print("에러: .env 파일에 TELEGRAM_BOT_TOKEN이 없습니다.", flush=True)
         return
 
     application = ApplicationBuilder().token(TOKEN).build()
@@ -196,8 +222,8 @@ def main():
     # 텔레그램의 모든 텍스트 메시지를 하나의 핸들러에서 처리
     application.add_handler(MessageHandler(filters.TEXT, handle_message))
         
-    print("--- 📡 Antigravity Remote Shell 가동 시작 (단축 명령어 모드) ---")
-    print(f"사용 가능한 명령어: {', '.join(COMMAND_MAPPING.keys())}")
+    print("--- 📡 Antigravity Remote Shell 가동 시작 (단축 명령어 모드) ---", flush=True)
+    print(f"사용 가능한 명령어: {', '.join(COMMAND_MAPPING.keys())}", flush=True)
     
     application.run_polling()
 

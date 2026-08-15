@@ -1,0 +1,773 @@
+{
+  "exam_info": {
+    "title": "제77회 한국사능력검정시험 (기본)",
+    "category": "한국사능력검정시험 (기본)",
+    "time_limit_minutes": 70,
+    "passing_rules": {
+      "total_pass_score": 60,
+      "points_per_question": 2.0,
+      "tier_4_score": 80,
+      "tier_5_score": 70,
+      "tier_6_score": 60
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "한국사능력검정시험 (기본) (50문항)",
+      "question_count": 50
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "제1번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① 철제 무기를 사용하였다.",
+        "② 우경이 널리 보급되었다.",
+        "③ 가락바퀴를 이용하여 실을 뽑았다.",
+        "④ 주먹도끼 등의 뗀석기를 처음 제작하였다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_01.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 1번 문항입니다. (배점: 1점, 정답: 3번)"
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "제2번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① (가)",
+        "② (나)",
+        "③ (다)",
+        "④ (라)"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_02.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 2번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "제3번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 태학을 설립하였다.",
+        "② 평양으로 도읍을 옮겼다.",
+        "③ 불교를 처음으로 공인하였다.",
+        "④ 영락이라는 연호를 사용하였다."
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_03.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 3번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "제4번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 22담로를 설치하다",
+        "② 독서삼품과를 시행하다",
+        "③ 국호를 남부여로 바꾸다",
+        "④ 고국원왕을 전사시키다"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_04.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 4번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "제5번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_05.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 5번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "제6번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① 기인 제도를 실시하였다.",
+        "② 전성기에 해동성국이라 불렸다.",
+        "③ 중앙군으로 9서당을 설치하였다.",
+        "④ 제가 회의에서 국가 중대사를 결정하였다."
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_06.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 6번 문항입니다. (배점: 1점, 정답: 2번)"
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "제7번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 대가야가 신라에 정복되었다.",
+        "② 당이 안동도호부를 설치하였다.",
+        "③ 신라가 기벌포에서 당군을 격파하였다.",
+        "④ 고구려가 안시성 전투에서 당군을 물리쳤다."
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_07.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 7번 문항입니다. (배점: 3점, 정답: 4번)"
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "제8번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 의상",
+        "② 원효",
+        "③ 원광",
+        "④ 유정"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_08.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 8번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "제9번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_09.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 9번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "제10번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 훈요 10조를 남김",
+        "② 국호를 태봉으로 바꿈",
+        "③ 공산 전투에서 승리함",
+        "④ 경주의 사심관으로 임명됨"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_10.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 10번 문항입니다. (배점: 3점, 정답: 2번)"
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "제11번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① 상평창",
+        "② 어사대",
+        "③ 의금부",
+        "④ 식목도감"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_11.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 11번 문항입니다. (배점: 1점, 정답: 2번)"
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "제12번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 김흠돌이 반란을 도모하였다.",
+        "② 장문휴가 등주를 공격하였다.",
+        "③ 계백이 황산벌에서 항전하였다.",
+        "④ 강감찬이 귀주에서 대승을 거두었다."
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_12.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 12번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "제13번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_13.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 13번 문항입니다. (배점: 1점, 정답: 1번)"
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "제14번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① (가)",
+        "② (나)",
+        "③ (다)",
+        "④ (라)"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_14.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 14번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "제15번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_15.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 15번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "제16번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 청주 흥덕사에서 간행하였다.",
+        "② 김부식 등이 왕명을 받아 편찬하였다.",
+        "③ 몽골의 침입을 물리치고자 제작하였다.",
+        "④ 단군의 고조선 건국 이야기가 수록되어 있다."
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_16.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 16번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "제17번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_17.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 17번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "제18번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 정도전",
+        "② 조광조",
+        "③ 박제가",
+        "④ 채제공"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_18.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 18번 문항입니다. (배점: 3점, 정답: 3번)"
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "제19번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 종묘",
+        "② 성균관",
+        "③ 사직단",
+        "④ 소수 서원"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_19.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 19번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "제20번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 집현전이 설치되었다.",
+        "② 직전법이 실시되었다.",
+        "③ 경국대전이 완성되었다.",
+        "④ 백두산정계비가 건립되었다."
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_20.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 20번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "제21번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_21.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 21번 문항입니다. (배점: 1점, 정답: 2번)"
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "제22번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 탕평비를 건립하였다.",
+        "② 홍문관을 설치하였다.",
+        "③ 대전회통을 편찬하였다.",
+        "④ 초계문신제를 실시하였다."
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_22.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 22번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "제23번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 군포를 2필에서 1필로 줄였다.",
+        "② 공인이 등장하는 배경이 되었다.",
+        "③ 전세를 1결당 4~6두로 고정하였다.",
+        "④ 토지 소유자에게 지계를 발급하였다."
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_23.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 23번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "제24번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 박위가 쓰시마섬을 정벌하였다.",
+        "② 인조가 남한산성으로 피란하였다.",
+        "③ 곽재우가 의령에서 의병을 일으켰다.",
+        "④ 김윤후가 처인성 전투에서 승리하였다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_24.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 24번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "제25번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_25.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 25번 문항입니다. (배점: 1점, 정답: 4번)"
+    },
+    {
+      "id": 26,
+      "subject_id": 1,
+      "question": "제26번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_26.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 26번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 27,
+      "subject_id": 1,
+      "question": "제27번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① (가) - (나) - (다)",
+        "② (가) - (다) - (나)",
+        "③ (나) - (가) - (다)",
+        "④ (다) - (가) - (나)"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_27.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 27번 문항입니다. (배점: 3점, 정답: 4번)"
+    },
+    {
+      "id": 28,
+      "subject_id": 1,
+      "question": "제28번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 주자감에서 공부하는 학생",
+        "② 삼별초에 소속되어 훈련받는 군인",
+        "③ 암태도 소작 쟁의에 참여하는 농민",
+        "④ 척화비를 세우기 위해 돌을 다듬는 석공"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_28.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 28번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 29,
+      "subject_id": 1,
+      "question": "제29번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_29.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 29번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 30,
+      "subject_id": 1,
+      "question": "제30번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_30.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 30번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 31,
+      "subject_id": 1,
+      "question": "제31번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 광화문",
+        "② 독립문",
+        "③ 대한문",
+        "④ 숭례문"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_31.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 31번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 32,
+      "subject_id": 1,
+      "question": "제32번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 브나로드 운동",
+        "② 국채 보상 운동",
+        "③ 6·10 만세 운동",
+        "④ 민립 대학 설립 운동"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_32.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 32번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 33,
+      "subject_id": 1,
+      "question": "제33번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_33.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 33번 문항입니다. (배점: 1점, 정답: 2번)"
+    },
+    {
+      "id": 34,
+      "subject_id": 1,
+      "question": "제34번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_34.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 34번 문항입니다. (배점: 3점, 정답: 2번)"
+    },
+    {
+      "id": 35,
+      "subject_id": 1,
+      "question": "제35번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① 안중근",
+        "② 윤봉길",
+        "③ 이회영",
+        "④ 최재형"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_35.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 35번 문항입니다. (배점: 1점, 정답: 1번)"
+    },
+    {
+      "id": 36,
+      "subject_id": 1,
+      "question": "제36번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 통감부의 탄압으로 실패하였다.",
+        "② 순종의 인산일을 계기로 일어났다.",
+        "③ 제암리 학살 등 일제의 가혹한 탄압을 받았다.",
+        "④ 신간회에서 진상 조사단을 파견하여 지원하였다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_36.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 36번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 37,
+      "subject_id": 1,
+      "question": "제37번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_37.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 37번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 38,
+      "subject_id": 1,
+      "question": "제38번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_38.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 38번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 39,
+      "subject_id": 1,
+      "question": "제39번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① (가) - 한인 애국단",
+        "② (나) - 중광단",
+        "③ (다) - 황국 중앙 총상회",
+        "④ (라) - 전환국"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_39.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 39번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 40,
+      "subject_id": 1,
+      "question": "제40번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 이상화",
+        "② 이육사",
+        "③ 윤동주",
+        "④ 한용운"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_40.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 40번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 41,
+      "subject_id": 1,
+      "question": "제41번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_41.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 41번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 42,
+      "subject_id": 1,
+      "question": "제42번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_42.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 42번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 43,
+      "subject_id": 1,
+      "question": "제43번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① ㉠",
+        "② ㉡",
+        "③ ㉢",
+        "④ ㉣"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_43.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 43번 문항입니다. (배점: 1점, 정답: 4번)"
+    },
+    {
+      "id": 44,
+      "subject_id": 1,
+      "question": "제44번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 삼청 교육대가 운영되었다.",
+        "② 경부 고속 도로가 준공되었다.",
+        "③ 서울에서 올림픽 대회가 개최되었다.",
+        "④ 국민학교가 초등학교로 명칭이 바뀌었다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_44.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 44번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 45,
+      "subject_id": 1,
+      "question": "제45번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_basic/q_45.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 45번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 46,
+      "subject_id": 1,
+      "question": "제46번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_46.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 46번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 47,
+      "subject_id": 1,
+      "question": "제47번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 4·19 혁명",
+        "② 6월 민주 항쟁",
+        "③ 부마 민주 항쟁",
+        "④ 5·18 민주화 운동"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_47.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 47번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 48,
+      "subject_id": 1,
+      "question": "제48번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 남북 조절 위원회를 구성하였다.",
+        "② 남북한이 유엔에 동시 가입하였다.",
+        "③ 개성 공업 지구 건설에 합의하였다.",
+        "④ 판문점에서 남북 정상 회담을 개최하였다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_basic/q_48.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 48번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 49,
+      "subject_id": 1,
+      "question": "제49번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_basic/q_49.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 49번 문항입니다. (배점: 1점, 정답: 4번)"
+    },
+    {
+      "id": 50,
+      "subject_id": 1,
+      "question": "제50번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_basic/q_50.png",
+      "explanation": "제77회 한국사능력검정시험 (기본) 50번 문항입니다. (배점: 3점, 정답: 1번)"
+    }
+  ]
+}

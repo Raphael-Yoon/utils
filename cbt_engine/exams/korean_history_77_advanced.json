@@ -1,0 +1,823 @@
+{
+  "exam_info": {
+    "title": "제77회 한국사능력검정시험 (심화)",
+    "category": "한국사능력검정시험 (심화)",
+    "time_limit_minutes": 80,
+    "passing_rules": {
+      "total_pass_score": 60,
+      "points_per_question": 2.0,
+      "tier_1_score": 80,
+      "tier_2_score": 70,
+      "tier_3_score": 60
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "한국사능력검정시험 (심화) (50문항)",
+      "question_count": 50
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "제1번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① 철제 무기로 정복 활동을 벌였다.",
+        "② 소를 이용한 깊이갈이가 일반화되었다.",
+        "③ 많은 인력을 동원하여 고인돌을 축조하였다.",
+        "④ 주먹도끼, 찍개 등의 뗀석기를 처음 제작하였다.",
+        "⑤ 가락바퀴와 뼈바늘을 이용하여 옷을 만들기 시작하였다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_01.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 1번 문항입니다. (배점: 1점, 정답: 3번)"
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "제2번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 민며느리제라는 혼인 풍습이 있었다.",
+        "② 국가 중대사를 정사암에서 논의하였다.",
+        "③ 여러 가(加)들이 별도로 사출도를 주관하였다.",
+        "④ 지방의 여러 성에 욕살, 처려근지 등을 두었다.",
+        "⑤ 사회 질서를 유지하기 위해 범금 8조를 만들었다."
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_02.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 2번 문항입니다. (배점: 2점, 정답: 5번)"
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "제3번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 진대법의 시행 목적을 파악한다.",
+        "② 책화의 사회적 의미를 조사한다.",
+        "③ 신성 구역인 소도의 기능을 알아본다.",
+        "④ 화백 회의의 의사 결정 방식을 살펴본다.",
+        "⑤ 포상 8국 전쟁이 전개되는 과정을 찾아본다."
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_03.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 3번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "제4번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_04.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 4번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "제5번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 금마저에 미륵사를 창건하였다.",
+        "② 고흥에게 서기를 편찬하게 하였다.",
+        "③ 지방의 22담로에 왕족을 파견하였다.",
+        "④ 동진에서 온 마라난타를 통해 불교를 수용하였다.",
+        "⑤ 장군 달기를 보내 고구려의 도살성을 점령하였다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_05.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 5번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "제6번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 을지문덕이 살수에서 대승을 거두었다.",
+        "② 복신과 도침이 부여풍을 왕으로 추대하였다.",
+        "③ 윤충이 군사를 이끌고 대야성을 함락시켰다.",
+        "④ 연개소문이 정변을 일으켜 영류왕을 시해하였다.",
+        "⑤ 김춘추가 당으로 건너가 군사 연합을 성사시켰다."
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_06.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 6번 문항입니다. (배점: 3점, 정답: 2번)"
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "제7번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① 안승을 보덕왕으로 봉하였다.",
+        "② 광평성 등의 정치 기구를 마련하였다.",
+        "③ 외교 담판으로 강동 6주를 확보하였다.",
+        "④ 김부를 경주의 사심관으로 임명하였다.",
+        "⑤ 신라를 공격하여 경애왕을 죽게 하였다."
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_07.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 7번 문항입니다. (배점: 1점, 정답: 2번)"
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "제8번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 수도에 서시와 남시를 설치하였다.",
+        "② 활구라고 불리는 은병을 주조하였다.",
+        "③ 집집마다 부경이라는 창고가 있었다.",
+        "④ 관료전을 지급하고 녹읍을 폐지하였다.",
+        "⑤ 풍흉에 따라 9등급으로 전세를 거두었다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_08.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 8번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "제9번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_09.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 9번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "제10번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 계백료서를 읽고 있는 관리",
+        "② 담배를 밭에 심고 있는 농민",
+        "③ 조위총의 난을 진압하는 군인",
+        "④ 진전사에서 참선하는 선종 승려",
+        "⑤ 낙랑군과 교역할 덩이쇠를 주조하는 장인"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_10.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 10번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "제11번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 별무반을 편성하였다.",
+        "② 화통도감을 설치하였다.",
+        "③ 진관 체제를 실시하였다.",
+        "④ 초조대장경을 조판하였다.",
+        "⑤ 동녕부의 반환을 요청하였다."
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_11.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 11번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "제12번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 응방의 설치와 매 서식지의 변화",
+        "② 시화호의 조성과 갯벌 생태계 파괴",
+        "③ 수의 침략과 요하 일대 감염병의 유행",
+        "④ 가죽 제품 수요 증가와 독도 강치의 멸종",
+        "⑤ 을축년 대홍수의 피해와 경성부의 대응 양상"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_12.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 12번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "제13번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_13.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 13번 문항입니다. (배점: 1점, 정답: 4번)"
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "제14번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① (가) - 관군을 이끌고 묘청의 난을 진압하였다.",
+        "② (가) - 시무 28조를 올려 국가 운영 방안을 제시하였다.",
+        "③ (나) - 법화 신앙을 바탕으로 백련 결사를 이끌었다.",
+        "④ (나) - 화폐 발행을 위해 주전도감 설치를 건의하였다.",
+        "⑤ (가), (나) - 심성 도야를 강조하고 유불 일치설을 주장하였다."
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_14.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 14번 문항입니다. (배점: 2점, 정답: 5번)"
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "제15번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 제왕운기를 읽고 있는 왕",
+        "② 만동묘 복구를 건의하는 유생",
+        "③ 동몽선습을 공부하는 서당 학동",
+        "④ 독서삼품과 시행을 준비하는 관리",
+        "⑤ 주자소에서 계미자를 주조하는 장인"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_15.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 15번 문항입니다. (배점: 3점, 정답: 1번)"
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "제16번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 비담과 염종의 반란을 진압하였다.",
+        "② 만권당에서 원의 학자들과 교유하였다.",
+        "③ 인사 행정을 담당하던 정방을 폐지하였다.",
+        "④ 봉사 10조를 올려 시정 개혁을 건의하였다.",
+        "⑤ 오월(吳越)에 사신을 보내고 검교태보의 직을 받았다."
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_16.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 16번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "제17번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_17.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 17번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "제18번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① (가)",
+        "② (나)",
+        "③ (다)",
+        "④ (라)",
+        "⑤ (마)"
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_18.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 18번 문항입니다. (배점: 1점, 정답: 5번)"
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "제19번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① 기대승과 사단칠정 논쟁을 전개하였다.",
+        "② 소학의 보급과 현량과 실시를 주장하였다.",
+        "③ 기축봉사를 올려 명에 대한 의리를 내세웠다.",
+        "④ 임진왜란의 상황 등을 담은 징비록을 저술하였다.",
+        "⑤ 최초로 100리 척을 사용하여 동국지도를 제작하였다."
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_19.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 19번 문항입니다. (배점: 1점, 정답: 1번)"
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "제20번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 조의제문을 빌미로 무오사화가 일어났다.",
+        "② 세계 지도인 혼일강리역대국도지도가 제작되었다.",
+        "③ 예악 질서의 확립을 위한 악학궤범이 완성되었다.",
+        "④ 역대 문물 제도를 정리한 동국문헌비고가 편찬되었다.",
+        "⑤ 현직 관리에게만 수조권을 지급하는 직전법이 시행되었다."
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_20.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 20번 문항입니다. (배점: 3점, 정답: 5번)"
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "제21번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_21.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 21번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "제22번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_22.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 22번 문항입니다. (배점: 2점, 정답: 5번)"
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "제23번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 계해약조의 초안을 작성하는 관리",
+        "② 까치를 소재로 민화를 그리는 화원",
+        "③ 세책가에서 춘향전을 빌리는 부녀자",
+        "④ 시사(詩社)를 조직하여 활동하는 서리",
+        "⑤ 송파장에서 산대놀이를 공연하는 광대"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_23.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 23번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "제24번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 관리에게 전지와 시지가 지급되었다.",
+        "② 솔빈부의 말이 특산품으로 수출되었다.",
+        "③ 관청에 물품을 조달하는 공인이 활동하였다.",
+        "④ 당항성, 영암이 국제 무역항으로 번성하였다.",
+        "⑤ 삼한통보, 해동통보 등의 화폐가 발행되었다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_24.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 24번 문항입니다. (배점: 3점, 정답: 3번)"
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "제25번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_25.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 25번 문항입니다. (배점: 1점, 정답: 3번)"
+    },
+    {
+      "id": 26,
+      "subject_id": 1,
+      "question": "제26번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 이괄이 반란을 일으킨 근거지를 알아본다.",
+        "② 김정희가 세한도를 그린 유배지를 검색한다.",
+        "③ 정약전이 자산어보를 저술한 곳을 조사한다.",
+        "④ 강주룡이 고공 농성을 벌인 을밀대의 위치를 찾아본다.",
+        "⑤ 김윤후가 노비 등을 이끌고 몽골군을 격퇴한 장소를 파악한다."
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_26.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 26번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 27,
+      "subject_id": 1,
+      "question": "제27번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_27.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 27번 문항입니다. (배점: 1점, 정답: 5번)"
+    },
+    {
+      "id": 28,
+      "subject_id": 1,
+      "question": "제28번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 홍경래 등이 봉기하여 정주성을 점령하였다.",
+        "② 신돈이 중심이 되어 전민변정 사업을 운영하였다.",
+        "③ 삼정의 문란을 시정하고자 삼정이정청이 설치되었다.",
+        "④ 기금의 이자로 빈민을 구휼하는 제위보가 만들어졌다.",
+        "⑤ 황사영이 외국 군대의 출병을 요청하는 백서를 작성하였다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_28.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 28번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 29,
+      "subject_id": 1,
+      "question": "제29번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_29.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 29번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 30,
+      "subject_id": 1,
+      "question": "제30번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_30.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 30번 문항입니다. (배점: 3점, 정답: 3번)"
+    },
+    {
+      "id": 31,
+      "subject_id": 1,
+      "question": "제31번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_31.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 31번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 32,
+      "subject_id": 1,
+      "question": "제32번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 김옥균 등 개화파가 주도하였다.",
+        "② 제물포 조약이 체결되는 계기가 되었다.",
+        "③ 전개 과정에서 홍범 14조가 반포되었다.",
+        "④ 통리기무아문이 설치되는 배경이 되었다.",
+        "⑤ 외규장각 도서가 약탈되는 결과를 가져왔다."
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_32.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 32번 문항입니다. (배점: 2점, 정답: 3번)"
+    },
+    {
+      "id": 33,
+      "subject_id": 1,
+      "question": "제33번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_33.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 33번 문항입니다. (배점: 1점, 정답: 2번)"
+    },
+    {
+      "id": 34,
+      "subject_id": 1,
+      "question": "제34번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_34.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 34번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 35,
+      "subject_id": 1,
+      "question": "제35번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_35.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 35번 문항입니다. (배점: 3점, 정답: 5번)"
+    },
+    {
+      "id": 36,
+      "subject_id": 1,
+      "question": "제36번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 7재라는 전문 강좌가 있었다.",
+        "② 덕원부 관민이 합심하여 만들었다.",
+        "③ 교육입국 조서에 근거하여 세워졌다.",
+        "④ 주요 건물로 대성전과 명륜당을 두었다.",
+        "⑤ 좌원과 우원을 구분하여 학생을 선발하였다."
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_36.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 36번 문항입니다. (배점: 2점, 정답: 4번)"
+    },
+    {
+      "id": 37,
+      "subject_id": 1,
+      "question": "제37번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_37.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 37번 문항입니다. (배점: 1점, 정답: 1번)"
+    },
+    {
+      "id": 38,
+      "subject_id": 1,
+      "question": "제38번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_38.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 38번 문항입니다. (배점: 2점, 정답: 5번)"
+    },
+    {
+      "id": 39,
+      "subject_id": 1,
+      "question": "제39번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_39.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 39번 문항입니다. (배점: 2점, 정답: 5번)"
+    },
+    {
+      "id": 40,
+      "subject_id": 1,
+      "question": "제40번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 조선 민립 대학 기성회가 조직되었어요.",
+        "② 메가타의 주도로 화폐 정리 사업이 시행되었어요.",
+        "③ 귀속 재산 관리를 위해 신한 공사가 운영되었어요.",
+        "④ 회사 설립을 허가제로 하는 회사령이 공포되었어요.",
+        "⑤ 농민의 자력갱생을 내세운 농촌 진흥 운동이 추진되었어요."
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_40.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 40번 문항입니다. (배점: 3점, 정답: 2번)"
+    },
+    {
+      "id": 41,
+      "subject_id": 1,
+      "question": "제41번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_41.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 41번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 42,
+      "subject_id": 1,
+      "question": "제42번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 5,
+      "image_url": "/exams/images/korean_history_77_advanced/q_42.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 42번 문항입니다. (배점: 3점, 정답: 5번)"
+    },
+    {
+      "id": 43,
+      "subject_id": 1,
+      "question": "제43번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "① 원산 총파업에 동참하는 노동자",
+        "② 국채 보상 운동에 성금을 내는 상인",
+        "③ 원각사에서 연극 은세계를 공연하는 배우",
+        "④ 황국 신민 서사를 암송하는 국민학교 학생",
+        "⑤ 조선 형평사 창립 대회 현장을 취재하는 기자"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_43.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 43번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 44,
+      "subject_id": 1,
+      "question": "제44번 문항 [1점]",
+      "points": 1,
+      "options": [
+        "① 광복에 대비하여 조선 건국 동맹을 결성하였다.",
+        "② 대한민국 임시 정부 초대 국무총리를 역임하였다.",
+        "③ 정읍에서 남한만의 단독 정부 수립을 주장하였다.",
+        "④ 헤이그에서 열린 만국 평화 회의에 특사로 파견되었다.",
+        "⑤ 민족을 역사 서술의 중심에 둔 독사신론을 발표하였다."
+      ],
+      "answer": 4,
+      "image_url": "/exams/images/korean_history_77_advanced/q_44.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 44번 문항입니다. (배점: 1점, 정답: 4번)"
+    },
+    {
+      "id": 45,
+      "subject_id": 1,
+      "question": "제45번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_45.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 45번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 46,
+      "subject_id": 1,
+      "question": "제46번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 1,
+      "image_url": "/exams/images/korean_history_77_advanced/q_46.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 46번 문항입니다. (배점: 2점, 정답: 1번)"
+    },
+    {
+      "id": 47,
+      "subject_id": 1,
+      "question": "제47번 문항 [3점]",
+      "points": 3,
+      "options": [
+        "① 애치슨 라인이 발표되었다.",
+        "② 부마 민주 항쟁이 일어났다.",
+        "③ 사사오입의 논리로 개헌안이 통과되었다.",
+        "④ 반민족 행위 특별 조사 위원회가 해체되었다.",
+        "⑤ 민의원, 참의원으로 구성된 양원제 국회가 탄생하였다."
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_47.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 47번 문항입니다. (배점: 3점, 정답: 2번)"
+    },
+    {
+      "id": 48,
+      "subject_id": 1,
+      "question": "제48번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_48.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 48번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 49,
+      "subject_id": 1,
+      "question": "제49번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 2,
+      "image_url": "/exams/images/korean_history_77_advanced/q_49.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 49번 문항입니다. (배점: 2점, 정답: 2번)"
+    },
+    {
+      "id": 50,
+      "subject_id": 1,
+      "question": "제50번 문항 [2점]",
+      "points": 2,
+      "options": [
+        "①번 선택지",
+        "②번 선택지",
+        "③번 선택지",
+        "④번 선택지",
+        "⑤번 선택지"
+      ],
+      "answer": 3,
+      "image_url": "/exams/images/korean_history_77_advanced/q_50.png",
+      "explanation": "제77회 한국사능력검정시험 (심화) 50번 문항입니다. (배점: 2점, 정답: 3번)"
+    }
+  ]
+}

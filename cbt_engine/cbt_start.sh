@@ -14,7 +14,14 @@ fi
 # 혹시 모를 잔여 프로세스 정리 (패턴 매칭)
 pkill -f "run_cbt_server.py"
 
-# 2. 포트가 풀리도록 대기
+# 2. 깃허브 원격 최신 파일 동기화
+echo "Pulling latest code from GitHub..."
+cd /home/raphael/Dev/pythons/utils
+git fetch origin
+git checkout origin/master -- cbt_engine/
+cd /home/raphael/Dev/pythons/utils/cbt_engine
+
+# 3. 포트가 풀리도록 대기
 sleep 1
 
 # 3. 127.0.0.1:5004번 포트로 백그라운드 구동 (PID 파일 지정)

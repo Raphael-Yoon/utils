@@ -116,7 +116,7 @@
       padding: 40px;
       border-radius: 16px;
       box-shadow: var(--shadow-md);
-      max-width: 600px;
+      max-width: 640px;
       width: 100%;
       border: 1px solid var(--border-color);
     }
@@ -599,9 +599,12 @@
         </div>
       </div>
 
-      <select class="exam-select-box" id="examSelect" onchange="updateRulesUI()">
-        <option value="/exams/bigdata_10.json">빅데이터분석기사 제10회 필기 기출문제</option>
-      </select>
+      <div style="display: flex; gap: 10px; margin-bottom: 24px;">
+        <select class="exam-select-box" id="categorySelect" style="flex: 2.2; margin-bottom: 0; font-size: 0.92rem; text-overflow: ellipsis;" onchange="onCategoryChange()">
+        </select>
+        <select class="exam-select-box" id="examSelect" style="flex: 1; margin-bottom: 0; font-size: 0.92rem;" onchange="updateRulesUI()">
+        </select>
+      </div>
 
       <div style="margin-bottom: 24px; text-align: left; background: #f1f5f9; padding: 16px; border-radius: 8px;">
         <h4 style="margin-bottom:8px; font-size:0.95rem;" id="rulesTitle">📌 합격 판정 기준:</h4>
@@ -721,21 +724,77 @@ window.addEventListener('DOMContentLoaded', async () => {
     if(res.ok) {
       examList = await res.json();
       if(examList.length > 0) {
-        const sel = document.getElementById('examSelect');
-        sel.innerHTML = '';
-        examList.forEach(ex => {
-          const opt = document.createElement('option');
-          opt.value = ex.path;
-          opt.innerText = ex.title;
-          sel.appendChild(opt);
-        });
-        updateRulesUI();
+        initCategoryDropdown();
       }
     }
   } catch(e) {}
 
   checkDraftSession();
 });
+
+function initCategoryDropdown() {
+  const catSel = document.getElementById('categorySelect');
+  if(!catSel) return;
+  catSel.innerHTML = '';
+
+  // 자격증 카테고리 고유 목록 체계적 정렬
+  const categories = Array.from(new Set(examList.map(ex => ex.category || '기타'))).sort((a, b) => a.localeCompare(b, 'ko'));
+  categories.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat;
+    opt.innerText = cat;
+    catSel.appendChild(opt);
+  });
+
+  onCategoryChange();
+}
+
+function onCategoryChange() {
+  const catSel = document.getElementById('categorySelect');
+  const examSel = document.getElementById('examSelect');
+  if(!catSel || !examSel) return;
+
+  const selectedCategory = catSel.value;
+  const filteredExams = examList.filter(ex => (ex.category || '기타') === selectedCategory);
+
+  // 회차 번호 추출 후 오름차순 정렬 (제1회 -> 제2회 ... 제77회 -> 제78회 -> 제79회)
+  filteredExams.sort((a, b) => {
+    const parseNum = (item) => {
+      if (!item) return 0;
+      const title = item.title || '';
+      const filename = item.filename || '';
+      
+      // 1. '제N회' 또는 'N회' 회차 패턴 우선 추출 (예: '디지털포렌식 전문가 2급 필기 모의고사 [제3회]' -> 3)
+      const mRound = title.match(/제\s*(\d+)\s*회/) || title.match(/(\d+)\s*회/);
+      if (mRound) return parseInt(mRound[1], 10);
+      
+      // 2. 파일명 내 회차 번호 추출 (예: digital_forensic_mock_03.json -> 3)
+      const mFile = filename.match(/(\d+)/);
+      if (mFile) return parseInt(mFile[1], 10);
+      
+      // 3. 폴백: 제목 내 마지막 숫자 추출
+      const matches = title.match(/\d+/g);
+      if (matches && matches.length > 0) return parseInt(matches[matches.length - 1], 10);
+
+      return 0;
+    };
+    return parseNum(a) - parseNum(b);
+  });
+
+  examSel.innerHTML = '';
+  filteredExams.forEach(ex => {
+    const opt = document.createElement('option');
+    opt.value = ex.path;
+    // 선택된 자격증명을 제거하고 회차/종류 위주로 정돈
+    let displayTitle = ex.title;
+    displayTitle = displayTitle.replace(selectedCategory, '').replace(/필기\s*모의고사/g, '').replace(/\[|\]/g, '').trim();
+    if (!displayTitle) displayTitle = ex.title;
+    opt.innerText = displayTitle;
+    examSel.appendChild(opt);
+  });
+
+  updateRulesUI();
+}
 
 // 키보드 단축키 (Enter: 다음 문제 이동, 1~4: 답안 선택, 방향키: 문제 이동)
 window.addEventListener('keydown', (e) => {
@@ -836,25 +895,66 @@ function updateRulesUI() {
   if (!ex) return;
 
   const rules = ex.passing_rules || {};
-  const ptsPerQ = rules.points_per_question || 1.25;
-  const cutoffScore = rules.subject_cutoff_score || 10;
+  const ptsPerQ = rules.points_per_question || 1.0;
+  const cutoffScore = rules.subject_cutoff_score || 40;
   const passScore = rules.total_pass_score || 60;
   
   const subjects = ex.subjects || [];
-  const qCountPerSub = (subjects[0] && subjects[0].question_count) ? subjects[0].question_count : 20;
-  const subMaxScore = qCountPerSub * ptsPerQ;
-  const cutoffQs = Math.ceil(cutoffScore / ptsPerQ);
-  const totalPassQs = Math.ceil(passScore / ptsPerQ);
-  const totalQs = ex.questions_count || (qCountPerSub * (subjects.length || 4));
-  const totalMaxScore = totalQs * ptsPerQ;
+  const totalQs = ex.questions_count || subjects.reduce((sum, s) => sum + (s.question_count || 0), 0);
+
+  // 과목별 문항 수가 동일한지 체크
+  const firstSubCount = subjects[0] ? subjects[0].question_count : 0;
+  const isUniformSubject = subjects.length > 0 && subjects.every(s => s.question_count === firstSubCount);
 
   document.getElementById('rulesTitle').innerHTML = `📌 <b>${escapeHtml(ex.title)}</b> 합격 판정 기준:`;
-  document.getElementById('rulesList').innerHTML = `
-    <li>과목당 <b>${subMaxScore}점 만점</b> (문항당 ${ptsPerQ}점)</li>
-    <li>과목별 과락 기준: <b>${cutoffScore}점 미만</b> (${cutoffQs}문항 미만) 시 불합격</li>
-    <li>총점 합격 기준: <b>${passScore}점 이상</b> (${totalPassQs}문항 이상 / ${totalMaxScore}점 만점) 득점 시 합격</li>
-    <li>시험 시간: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length || 4}개 과목)</li>
-  `;
+  
+  if (rules.tier_1_score !== undefined) {
+    document.getElementById('rulesList').innerHTML = `
+      <li>문항 및 배점 구성: <b>총 50문항 100점 만점</b> (문항별 1점 / 2점 / 3점 차등 배점)</li>
+      <li>등급별 합격 판정 기준:<br>
+          &nbsp;&nbsp;• <b>🏆 1급</b>: 80점 이상<br>
+          &nbsp;&nbsp;• <b>🥈 2급</b>: 70점 ~ 79점<br>
+          &nbsp;&nbsp;• <b>🥉 3급</b>: 60점 ~ 69점<br>
+          &nbsp;&nbsp;• <b>❌ 탈락</b>: 60점 미만
+      </li>
+      <li>시험 시간: <b>${ex.time_limit_minutes || 80}분</b></li>
+    `;
+  } else if (rules.tier_4_score !== undefined) {
+    document.getElementById('rulesList').innerHTML = `
+      <li>문항 및 배점 구성: <b>총 50문항 100점 만점</b> (문항별 1점 / 2점 / 3점 차등 배점)</li>
+      <li>등급별 합격 판정 기준:<br>
+          &nbsp;&nbsp;• <b>🏆 4급</b>: 80점 이상<br>
+          &nbsp;&nbsp;• <b>🥈 5급</b>: 70점 ~ 79점<br>
+          &nbsp;&nbsp;• <b>🥉 6급</b>: 60점 ~ 69점<br>
+          &nbsp;&nbsp;• <b>❌ 탈락</b>: 60점 미만
+      </li>
+      <li>시험 시간: <b>${ex.time_limit_minutes || 70}분</b></li>
+    `;
+  } else if (isUniformSubject) {
+    const subMaxScore = firstSubCount * ptsPerQ;
+    const cutoffQs = Math.ceil(cutoffScore / ptsPerQ);
+    const totalPassQs = Math.ceil(passScore / ptsPerQ);
+    const totalMaxScore = totalQs * ptsPerQ;
+    document.getElementById('rulesList').innerHTML = `
+      <li>과목당 <b>${subMaxScore}점 만점</b> (문항당 ${ptsPerQ}점)</li>
+      <li>과목별 과락 기준: <b>${cutoffScore}점 미만</b> (${cutoffQs}문항 미만) 시 불합격</li>
+      <li>총점 합격 기준: <b>${passScore}점 이상</b> (${totalPassQs}문항 이상 / ${totalMaxScore}점 만점) 득점 시 합격</li>
+      <li>시험 시간: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length}개 과목, ${totalQs}문항)</li>
+    `;
+  } else {
+    // 디지털포렌식 등 과목별 문항 수가 다를 때
+    const subjectListHtml = subjects.map((s, idx) => {
+      const minPassQs = Math.ceil(s.question_count * (cutoffScore / 100.0));
+      return `${idx + 1}과목: ${s.question_count}문항 (과락 기준: ${minPassQs}문항 미만)`;
+    }).join('<br>• ');
+
+    document.getElementById('rulesList').innerHTML = `
+      <li>과목별 문항 구성:<br>• ${subjectListHtml}</li>
+      <li>과목별 과락 기준: 각 과목 <b>${cutoffScore}점 미만</b> (맞은 비율 ${cutoffScore}% 미만) 시 과락 불합격</li>
+      <li>총점 합격 기준: <b>전체 평균 ${passScore}점 이상</b> (100점 만점 환산 평균) 득점 시 최종 합격</li>
+      <li>시험 시간: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length}개 과목, ${totalQs}문항)</li>
+    `;
+  }
 }
 
 let cachedServerDraft = null;
@@ -1030,8 +1130,8 @@ function renderQuestions() {
 
     const imgHtml = q.image_url ? `
       <div class="q-image-container" style="margin: 14px 0; text-align: center;">
-        <img src="${q.image_url}" alt="${q.id}번 문항 차트/그림" style="max-width: 100%; max-height: 360px; border-radius: 8px; border: 1px solid #cbd5e1; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s;" onclick="openImageModal('${q.image_url}')" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'" />
-        <div style="font-size: 0.8rem; color: #64748b; margin-top: 6px;">🔍 이미지를 클릭하면 크게 확대하여 볼 수 있습니다.</div>
+        <img src="${q.image_url}" alt="${q.id}번 문항 차트/그림" style="width: 100%; max-width: 780px; height: auto; border-radius: 8px; border: 1px solid #cbd5e1; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s;" onclick="openImageModal('${q.image_url}')" onmouseover="this.style.transform='scale(1.005)'" onmouseout="this.style.transform='scale(1)'" />
+        <div style="font-size: 0.8rem; color: #64748b; margin-top: 6px;">🔍 원본 이미지를 클릭하면 크게 확대하여 보실 수 있습니다.</div>
       </div>
     ` : '';
 
@@ -1255,16 +1355,46 @@ function submitExam(skipConfirm = false) {
   const passScore = rules.total_pass_score || 60;
 
   let totalCorrect = 0;
+  let grandTotalScore = 0;
+  let maxPossibleScore = 0;
+
+  // 문항별 개별 배점(points)이 지정되어 있는지 체크
+  const hasPerQuestionPoints = currentExamData.questions.some(q => q.points !== undefined);
+
   const subjectResults = currentExamData.subjects.map(sub => {
     const subQs = currentExamData.questions.filter(q => q.subject_id === sub.id);
     let correctCount = 0;
-    subQs.forEach(q => { if(userAnswers[q.id] === q.answer) correctCount++; });
+    let subEarnedPoints = 0;
+    let subMaxPoints = 0;
+
+    subQs.forEach(q => {
+      const qPts = (q.points !== undefined) ? q.points : ptsPerQ;
+      subMaxPoints += qPts;
+      if (userAnswers[q.id] === q.answer) {
+        correctCount++;
+        subEarnedPoints += qPts;
+      }
+    });
+
     totalCorrect += correctCount;
-    const score = correctCount * ptsPerQ;
-    return { name: sub.name, correct: correctCount, total: subQs.length, score: score, isCutoff: score < cutoffScore };
+
+    let score = 0;
+    if (hasPerQuestionPoints) {
+      score = subEarnedPoints;
+      grandTotalScore += subEarnedPoints;
+      maxPossibleScore += subMaxPoints;
+    } else {
+      score = subQs.length > 0 ? (correctCount / subQs.length) * 100 : 0;
+      grandTotalScore += score;
+    }
+
+    return { name: sub.name, correct: correctCount, total: subQs.length, score: score, isCutoff: (!hasPerQuestionPoints) && (score < cutoffScore) };
   });
 
-  const grandTotalScore = totalCorrect * ptsPerQ;
+  if (!hasPerQuestionPoints && currentExamData.subjects.length > 0) {
+    grandTotalScore = grandTotalScore / currentExamData.subjects.length;
+  }
+
   const hasAnyCutoff = subjectResults.some(r => r.isCutoff);
   const isFinalPass = (!hasAnyCutoff) && (grandTotalScore >= passScore);
 
@@ -1274,7 +1404,37 @@ function submitExam(skipConfirm = false) {
   document.getElementById('resultScreen').style.display = 'flex';
 
   const badge = document.getElementById('resStatusBadge');
-  if(isFinalPass) {
+  
+  // 한국사능력검정시험 (심화 / 기본) 등급 평가 지원
+  if (rules.tier_1_score !== undefined) {
+    if (grandTotalScore >= rules.tier_1_score) {
+      badge.innerText = "🏆 1급 합격 (PASSED - Tier 1)";
+      badge.className = "status-badge pass";
+    } else if (grandTotalScore >= rules.tier_2_score) {
+      badge.innerText = "🥈 2급 합격 (PASSED - Tier 2)";
+      badge.className = "status-badge pass";
+    } else if (grandTotalScore >= rules.tier_3_score) {
+      badge.innerText = "🥉 3급 합격 (PASSED - Tier 3)";
+      badge.className = "status-badge pass";
+    } else {
+      badge.innerText = "❌ 불합격 (FAILED - 60점 미만)";
+      badge.className = "status-badge fail";
+    }
+  } else if (rules.tier_4_score !== undefined) {
+    if (grandTotalScore >= rules.tier_4_score) {
+      badge.innerText = "🏆 4급 합격 (PASSED - Tier 4)";
+      badge.className = "status-badge pass";
+    } else if (grandTotalScore >= rules.tier_5_score) {
+      badge.innerText = "🥈 5급 합격 (PASSED - Tier 5)";
+      badge.className = "status-badge pass";
+    } else if (grandTotalScore >= rules.tier_6_score) {
+      badge.innerText = "🥉 6급 합격 (PASSED - Tier 6)";
+      badge.className = "status-badge pass";
+    } else {
+      badge.innerText = "❌ 불합격 (FAILED - 60점 미만)";
+      badge.className = "status-badge fail";
+    }
+  } else if (isFinalPass) {
     badge.innerText = "🎉 최종 합격 (PASSED)";
     badge.className = "status-badge pass";
   } else {
@@ -1342,7 +1502,10 @@ function showReviewMode() {
   goToQuestion(0); // 리뷰 모드에서도 첫 번째 문제 활성화
 }
 
-async function showHistoryModal() {
+let currentHistoryFilterMode = 'current';
+
+async function showHistoryModal(filterMode) {
+  if (filterMode) currentHistoryFilterMode = filterMode;
   document.getElementById('historyModal').style.display = 'flex';
   const container = document.getElementById('historyListContainer');
   container.innerHTML = '<div style="text-align:center; padding:20px;">🔄 응시 이력을 불러오는 중...</div>';
@@ -1353,6 +1516,63 @@ async function showHistoryModal() {
     const list = await res.json();
     if (!list || list.length === 0) {
       container.innerHTML = '<div style="text-align:center; color:#64748b; padding:30px;">저장된 응시 이력이 없습니다.</div>';
+      return;
+    }
+
+    // 현재 선택된 자격증 시험 종목(카테고리) 파악
+    const catSel = document.getElementById('categorySelect');
+    let selectedCategory = catSel ? catSel.value : '';
+    if (!selectedCategory && currentExamData && currentExamData.exam_info) {
+      selectedCategory = currentExamData.exam_info.category || '';
+    }
+
+    // examList에서 각 exam_id별 category 맵 구축
+    const examCategoryMap = {};
+    if (typeof examList !== 'undefined' && Array.isArray(examList)) {
+      examList.forEach(ex => {
+        const eid = ex.filename || (ex.path ? ex.path.replace(/^\/exams\//, '') : '');
+        if (eid) examCategoryMap[eid] = ex.category;
+      });
+    }
+
+    // 필터링 적용 (현재 시험 종목 카테고리 전체 회차 포함 vs 전체 이력)
+    let displayList = list;
+    if (currentHistoryFilterMode === 'current' && selectedCategory) {
+      displayList = list.filter(item => {
+        const itemCat = examCategoryMap[item.exam_id] || '';
+        if (itemCat) return itemCat === selectedCategory;
+        return item.exam_title && item.exam_title.includes(selectedCategory);
+      });
+    }
+
+    // 필터 탭 HTML 구조
+    const currentBtnClass = currentHistoryFilterMode === 'current' ? 'btn-primary' : 'btn-outline-dark';
+    const allBtnClass = currentHistoryFilterMode === 'all' ? 'btn-primary' : 'btn-outline-dark';
+
+    const categoryLabel = selectedCategory ? `선택 종목: ${selectedCategory}` : '선택한 시험 종목';
+
+    let filterHeaderHtml = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #e2e8f0; flex-wrap:wrap; gap:10px;">
+        <div style="display:flex; gap:8px;">
+          <button class="btn ${currentBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('current')">
+            🎯 ${escapeHtml(categoryLabel)} (${displayList.length}건)
+          </button>
+          <button class="btn ${allBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('all')">
+            🌐 전체 응시 이력 (${list.length}건)
+          </button>
+        </div>
+        <button class="btn" style="background:#ef4444; color:#ffffff; font-size:0.8rem; padding:6px 12px;" onclick="clearAllHistory()">🗑️ 전체 이력 삭제</button>
+      </div>
+    `;
+
+    if (displayList.length === 0) {
+      container.innerHTML = filterHeaderHtml + `
+        <div style="text-align:center; padding:36px 16px; color:#64748b; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0; margin-top:10px;">
+          <div style="font-size:1.05rem; font-weight:700; color:#334155; margin-bottom:6px;">🎯 '${escapeHtml(selectedCategory || '선택한 종목')}'의 응시 이력이 없습니다.</div>
+          <div style="font-size:0.86rem; color:#64748b; margin-bottom:16px;">시험 풀이 완료 후 [제출하기]를 누르시면 이곳에 이력과 오답노트가 저장됩니다.</div>
+          <button class="btn btn-primary" style="font-size:0.85rem; padding:8px 18px;" onclick="showHistoryModal('all')">🌐 전체 응시 이력 (${list.length}건) 보기</button>
+        </div>
+      `;
       return;
     }
 
@@ -1367,7 +1587,7 @@ async function showHistoryModal() {
 
     // 시험 종목별 그룹화 맵 구축
     const groupedExams = {};
-    list.forEach(item => {
+    displayList.forEach(item => {
       const key = item.exam_id || item.exam_title;
       if (!groupedExams[key]) {
         groupedExams[key] = {
@@ -1386,13 +1606,7 @@ async function showHistoryModal() {
     // 그룹별 최신 응시일 기준 내림차순 정렬
     const groupedList = Object.values(groupedExams).sort((a, b) => new Date(b.latestDate) - new Date(a.latestDate));
 
-    let html = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid #e2e8f0;">
-        <span style="font-size:0.88rem; color:#475569;">총 <b>${groupedList.length}개 시험</b> (${list.length}회 누적 응시)</span>
-        <button class="btn" style="background:#ef4444; color:#ffffff; font-size:0.8rem; padding:6px 12px;" onclick="clearAllHistory()">🗑️ 전체 이력 삭제</button>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-    `;
+    let html = filterHeaderHtml + '<div style="display:flex; flex-direction:column; gap:10px;">';
 
     groupedList.forEach((grp, idx) => {
       const latestItem = grp.attempts[0];
