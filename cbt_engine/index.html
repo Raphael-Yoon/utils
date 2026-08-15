@@ -835,8 +835,16 @@ function onCategoryChange() {
 window.addEventListener('keydown', (e) => {
   const historyModal = document.getElementById('historyModal');
   const imgModal = document.getElementById('imgModal');
-  if ((historyModal && historyModal.style.display === 'flex') || 
+  if ((historyModal && historyModal.style.display === 'flex') ||
       (imgModal && imgModal.style.display === 'flex')) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      if (imgModal && imgModal.style.display === 'flex') {
+        closeImageModal();
+      } else if (historyModal && historyModal.style.display === 'flex') {
+        closeHistoryModal();
+      }
+    }
     return;
   }
 
