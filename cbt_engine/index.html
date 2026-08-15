@@ -1537,6 +1537,9 @@ function submitExam(skipConfirm = false) {
   document.getElementById('resTotalScore').innerText = `${grandTotalScore.toFixed(1)}점`;
   document.getElementById('resCount').innerText = `${totalCorrect} / ${currentExamData.questions.length}`;
 
+  const tbody = document.getElementById('resSubjectTable');
+  if (tbody) {
+    tbody.innerHTML = '';
     const cutoffText = `과락 (${cutoffScore}점 미만)`;
     subjectResults.forEach(r => {
       const tr = document.createElement('tr');
@@ -1548,6 +1551,7 @@ function submitExam(skipConfirm = false) {
       `;
       tbody.appendChild(tr);
     });
+  }
 
   // DB에 채점 결과 자동 저장 (POST /api/results)
   let examId = 'exam.json';
@@ -1572,11 +1576,17 @@ function submitExam(skipConfirm = false) {
     user_answers: userAnswers
   };
 
-  fetch('/api/results', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  }).catch(e => console.error("DB Save Error:", e));
+  try {
+    fetch('/api/results', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(r => r.json()).then(data => {
+      console.log("DB Result saved successfully:", data);
+    }).catch(e => console.error("DB Save Error:", e));
+  } catch(e) {
+    console.error("Payload send error:", e);
+  }
 }
 
 function showReviewMode() {
