@@ -1,16 +1,7 @@
 #!/bin/bash
 
-# 1. utils 프로젝트 폴더 위치로 이동 (.git 저장소 위치)
-cd /home/raphael/Dev/pythons/utils
-
-# 2. 깃허브 최신 코드 강제 동기화 (원격에서 삭제된 파일도 함께 정리되도록 reset --hard 사용)
-echo "Overriding local files with latest origin/master from GitHub..."
-git fetch origin
-if ! git reset --hard origin/master; then
-    echo "ERROR: git reset failed (network or git error). CBT server will not be restarted." >&2
-    exit 1
-fi
-
-# 3. 최신 코드 반영 후 서버 재시작
+# "재설정"은 cbt_start.sh가 매번 수행하는 강제 동기화(git reset --hard)와 동일하므로,
+# 별도로 git 동기화를 중복 수행하지 않고 시작 스크립트에 그대로 위임한다.
+# (예전에는 여기서도 fetch/reset을 한 번 더 실행해 로그가 두 번 찍히는 문제가 있었음)
 cd /home/raphael/Dev/pythons/utils/cbt_engine
 ./cbt_start.sh

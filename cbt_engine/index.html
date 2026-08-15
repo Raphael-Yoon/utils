@@ -1051,6 +1051,9 @@ let cachedServerDraft = null;
 
 async function saveDraftSession() {
   if (isReviewMode || !currentExamData) return;
+  // 최소 1문항 이상 답을 선택해야 "이어하기" 대상으로 저장한다.
+  // (그렇지 않으면 시험을 시작만 해도 진행률 0인 상태가 즉시 이어하기 배너로 뜨는 문제가 있었음)
+  if (Object.keys(userAnswers).length === 0) return;
   const jsonPath = currentExamData.filename ? `/exams/${currentExamData.filename}` : document.getElementById('examSelect').value;
   const draft = {
     user_name: '응시자',
@@ -1163,7 +1166,6 @@ async function startExam() {
   startTimer();
   resetCalculatorState();
   goToQuestion(0); // 0번째(첫 번째) 질문 활성화
-  saveDraftSession();
 }
 
 function renderQuestions() {

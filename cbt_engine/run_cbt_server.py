@@ -74,18 +74,20 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
             self.end_headers()
-            if row:
+            user_answers = json.loads(row["user_answers_json"] or '{}') if row else {}
+            if row and user_answers:
                 draft_data = {
                     "user_name": row["user_name"],
                     "examPath": row["exam_path"],
                     "examTitle": row["exam_title"],
-                    "userAnswers": json.loads(row["user_answers_json"] or '{}'),
+                    "userAnswers": user_answers,
                     "remainingSeconds": row["remaining_seconds"],
                     "currentQuestionIdx": row["current_question_idx"],
                     "updatedAt": row["updated_at"]
                 }
                 self.wfile.write(json.dumps(draft_data, ensure_ascii=False).encode('utf-8'))
             else:
+                # 응답한 문항이 하나도 없는 임시저장(진행률 0)은 이어하기 대상에서 제외
                 self.wfile.write(json.dumps(None, ensure_ascii=False).encode('utf-8'))
             return
 
