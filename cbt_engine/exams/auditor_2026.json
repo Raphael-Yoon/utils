@@ -386,7 +386,8 @@
         "④ Chain of responsibility 패턴"
       ],
       "answer": 4,
-      "explanation": "정답: ④\n\n[해설]\nMVC 패턴은 모델, 뷰, 컨트롤러의 세 가지 역할로 소프트웨어를 분리하는 아키텍처 패턴으로, 내부적으로 옵서버 패턴(모델 상태 변경을 뷰에 통지), 전략 패턴(컨트롤러가 뷰에 행동 전략을 제공), 컴포지트 패턴(뷰의 계층적 UI 구성) 등 여러 디자인 패턴이 유기적으로 결합되어 있습니다. Chain of Responsibility 패턴은 MVC 구조에서 일반적으로 사용되는 패턴이 아니므로 가장 적절하지 않습니다."
+      "explanation": "정답: ④\n\n[해설]\nMVC 패턴은 모델, 뷰, 컨트롤러의 세 가지 역할로 소프트웨어를 분리하는 아키텍처 패턴으로, 내부적으로 옵서버 패턴(모델 상태 변경을 뷰에 통지), 전략 패턴(컨트롤러가 뷰에 행동 전략을 제공), 컴포지트 패턴(뷰의 계층적 UI 구성) 등 여러 디자인 패턴이 유기적으로 결합되어 있습니다. Chain of Responsibility 패턴은 MVC 구조에서 일반적으로 사용되는 패턴이 아니므로 가장 적절하지 않습니다.",
+      "image_url": "/exams/images/auditor_2026_q27.jpg"
     },
     {
       "id": 28,
@@ -466,7 +467,8 @@
         "④ Overriding, Aggregation, Polymorphism"
       ],
       "answer": 1,
-      "explanation": "정답: ①\n\n[해설]\nClassA()와 ClassA(int)는 매개변수 개수가 다른 동일 이름의 메서드로 오버로딩(Overloading)에 해당합니다. ClassA를 상속받은 자식 클래스 ClassB, ClassC가 존재하므로 상속(Inheritance)이 나타나며, 부모클래스 ClassA의 draw() 메서드를 ClassB와 ClassC가 재정의하고 있으므로 오버라이딩(Overriding)도 존재합니다. 따라서 정답은 ①번입니다."
+      "explanation": "정답: ①\n\n[해설]\nClassA()와 ClassA(int)는 매개변수 개수가 다른 동일 이름의 메서드로 오버로딩(Overloading)에 해당합니다. ClassA를 상속받은 자식 클래스 ClassB, ClassC가 존재하므로 상속(Inheritance)이 나타나며, 부모클래스 ClassA의 draw() 메서드를 ClassB와 ClassC가 재정의하고 있으므로 오버라이딩(Overriding)도 존재합니다. 따라서 정답은 ①번입니다.",
+      "image_url": "/exams/images/auditor_2026_q33.jpg"
     },
     {
       "id": 34,
@@ -532,7 +534,8 @@
         "④ Replace Constructor with Factory Method"
       ],
       "answer": 3,
-      "explanation": "정답: ③\n\n[해설]\n'조건부 로직을 다형성으로 바꾸기(Replace Conditional with Polymorphism)'는 객체의 타입이나 조건에 따라 분기되는 복잡한 switch나 if-else문을 객체 지향의 상속과 다형성으로 대체하는 리팩토링 기법입니다. 이 기법을 적용하면 조건문 중복을 제거하고, 새로운 조건이 추가되더라도 기존 코드를 수정하지 않고 새로운 클래스만 추가(개방 폐쇄 원칙, OCP)하여 확장성을 높일 수 있습니다. 문제의 그림은 type 값에 따라 분기하던 stop() 메서드를 Videoplayer, Musicplayer 서브클래스가 각자 오버라이딩하도록 개선한 것이므로 ③번이 정답입니다."
+      "explanation": "정답: ③\n\n[해설]\n'조건부 로직을 다형성으로 바꾸기(Replace Conditional with Polymorphism)'는 객체의 타입이나 조건에 따라 분기되는 복잡한 switch나 if-else문을 객체 지향의 상속과 다형성으로 대체하는 리팩토링 기법입니다. 이 기법을 적용하면 조건문 중복을 제거하고, 새로운 조건이 추가되더라도 기존 코드를 수정하지 않고 새로운 클래스만 추가(개방 폐쇄 원칙, OCP)하여 확장성을 높일 수 있습니다. 문제의 그림은 type 값에 따라 분기하던 stop() 메서드를 Videoplayer, Musicplayer 서브클래스가 각자 오버라이딩하도록 개선한 것이므로 ③번이 정답입니다.",
+      "image_url": "/exams/images/auditor_2026_q38.jpg"
     },
     {
       "id": 39,
@@ -742,7 +745,8 @@
         "④ 월급직원이면서 동시에 시급직원일 수는 없다."
       ],
       "answer": 4,
-      "explanation": "정답: ④\n\n[해설]\n다이어그램에서 원의 문자 'd'는 분리제약(disjointness constraint)을 의미하며, 슈퍼타입 '직원'의 한 인스턴스가 서브타입 '월급직원'과 '시급직원'에 동시에 속할 수 없음을 나타냅니다. 따라서 월급직원이면서 동시에 시급직원일 수는 없으므로 ④번이 옳은 설명입니다. 참고로 직원은 서브클래스가 아니라 슈퍼클래스(수퍼타입)이므로 ①은 틀렸고, 이중선으로 표시된 전체 참여 제약(completeness constraint가 total)에 의해 슈퍼타입의 모든 인스턴스가 반드시 두 서브타입 중 하나에 속해야 하므로 ②도 틀렸으며, '소속-노조' 관계가 시급직원에만 연결되어 있어 월급직원은 노조에 소속될 수 없으므로 ③도 틀린 설명입니다."
+      "explanation": "정답: ④\n\n[해설]\n다이어그램에서 원의 문자 'd'는 분리제약(disjointness constraint)을 의미하며, 슈퍼타입 '직원'의 한 인스턴스가 서브타입 '월급직원'과 '시급직원'에 동시에 속할 수 없음을 나타냅니다. 따라서 월급직원이면서 동시에 시급직원일 수는 없으므로 ④번이 옳은 설명입니다. 참고로 직원은 서브클래스가 아니라 슈퍼클래스(수퍼타입)이므로 ①은 틀렸고, 이중선으로 표시된 전체 참여 제약(completeness constraint가 total)에 의해 슈퍼타입의 모든 인스턴스가 반드시 두 서브타입 중 하나에 속해야 하므로 ②도 틀렸으며, '소속-노조' 관계가 시급직원에만 연결되어 있어 월급직원은 노조에 소속될 수 없으므로 ③도 틀린 설명입니다.",
+      "image_url": "/exams/images/auditor_2026_q54.jpg"
     },
     {
       "id": 55,
@@ -937,7 +941,8 @@
         "④ ⓓ"
       ],
       "answer": 3,
-      "explanation": "정답: ③\n\n[해설]\n2단계 로킹 규약(2PLP)은 모든 트랜잭션이 lock과 unlock 연산을 확장단계(growing phase: 새 lock만 가능)와 축소단계(shrinking phase: 새 unlock만 가능)로 나누어 실행해야 하는 규약입니다. 로크 포인트(Lock Point)는 트랜잭션이 수행 중 필요한 마지막 로크를 획득한 시점, 즉 확장 단계가 끝나고 축소 단계가 시작되기 직전 로크의 수가 최대가 되는 지점을 의미합니다. 그림에서 로크의 수가 최대가 되는 지점은 ⓒ이므로 정답은 ③번입니다."
+      "explanation": "정답: ③\n\n[해설]\n2단계 로킹 규약(2PLP)은 모든 트랜잭션이 lock과 unlock 연산을 확장단계(growing phase: 새 lock만 가능)와 축소단계(shrinking phase: 새 unlock만 가능)로 나누어 실행해야 하는 규약입니다. 로크 포인트(Lock Point)는 트랜잭션이 수행 중 필요한 마지막 로크를 획득한 시점, 즉 확장 단계가 끝나고 축소 단계가 시작되기 직전 로크의 수가 최대가 되는 지점을 의미합니다. 그림에서 로크의 수가 최대가 되는 지점은 ⓒ이므로 정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2026_q69.jpg"
     },
     {
       "id": 70,
