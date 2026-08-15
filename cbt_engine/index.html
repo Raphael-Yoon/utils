@@ -1123,6 +1123,7 @@ async function resumeDraftExam() {
   renderQuestions();
   renderOMR();
   startTimer();
+  resetCalculatorState();
   goToQuestion(currentQuestionIdx);
 }
 
@@ -1160,6 +1161,7 @@ async function startExam() {
   renderQuestions();
   renderOMR();
   startTimer();
+  resetCalculatorState();
   goToQuestion(0); // 0번째(첫 번째) 질문 활성화
   saveDraftSession();
 }
@@ -1868,6 +1870,16 @@ function closeImageModal() {
 // 계산기 로직
 let calcExpr = '';
 let isCalcOpen = false;
+
+function resetCalculatorState() {
+  calcExpr = '';
+  isCalcOpen = false;
+  const body = document.getElementById('calcBody');
+  const btn = document.getElementById('calcToggleBtn');
+  if (body) body.classList.add('hidden');
+  if (btn) btn.innerText = '계산기 열기 (C) ▴';
+  updateCalcDisplay();
+}
 
 function toggleCalculator(e) {
   if (e) e.stopPropagation();
