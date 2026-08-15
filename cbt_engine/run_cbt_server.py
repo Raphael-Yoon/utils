@@ -286,6 +286,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
 
 def run(port=8080):
     init_db()
+    HTTPServer.allow_reuse_address = True
     server_address = ('', port)
     httpd = HTTPServer(server_address, CBTRequestHandler)
     url = f"http://localhost:{port}"

@@ -267,6 +267,93 @@
       padding: 16px;
       overflow-y: auto;
     }
+
+    /* OMR 하단 공학/기본 사칙연산 계산기 스타일 */
+    .omr-calculator {
+      border-top: 1px solid var(--border-color);
+      background: #f8fafc;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .calc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #334155;
+    }
+    .calc-display {
+      background: #0f172a;
+      color: #38bdf8;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-align: right;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #1e293b;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .calc-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+    .calc-btn {
+      padding: 8px 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.1s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+    .calc-btn:hover {
+      background: #e2e8f0;
+    }
+    .calc-btn:active {
+      transform: scale(0.96);
+    }
+    .calc-btn.op {
+      background: #eff6ff;
+      color: var(--primary);
+      border-color: #bfdbfe;
+    }
+    .calc-btn.op:hover {
+      background: #dbeafe;
+    }
+    .calc-btn.clear {
+      background: #fee2e2;
+      color: #dc2626;
+      border-color: #fca5a5;
+    }
+    .calc-btn.clear:hover {
+      background: #fecaca;
+    }
+    .calc-btn.equals {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary-hover);
+      grid-column: span 2;
+    }
+    .calc-btn.equals:hover {
+      background: var(--primary-hover);
+    }
     .omr-subject-title {
       font-size: 0.85rem;
       font-weight: 700;
@@ -540,6 +627,39 @@
         <span style="font-size:0.85rem; font-weight:normal; color:var(--primary);" id="omrProgress">0 완료</span>
       </div>
       <div class="omr-body" id="omrBody"></div>
+      
+      <!-- 계산기 영역 -->
+      <div class="omr-calculator">
+        <div class="calc-header">
+          <span>🧮 연습용 계산기</span>
+          <button class="calc-btn clear" style="padding: 2px 8px; font-size: 0.75rem;" onclick="clearCalculator()">C</button>
+        </div>
+        <div class="calc-display" id="calcDisplay">0</div>
+        <div class="calc-buttons">
+          <button class="calc-btn clear" onclick="clearCalculator()">C</button>
+          <button class="calc-btn op" onclick="appendCalcOp('/')">÷</button>
+          <button class="calc-btn op" onclick="appendCalcOp('*')">×</button>
+          <button class="calc-btn op" onclick="deleteCalcChar()">⌫</button>
+
+          <button class="calc-btn" onclick="appendCalcNum('7')">7</button>
+          <button class="calc-btn" onclick="appendCalcNum('8')">8</button>
+          <button class="calc-btn" onclick="appendCalcNum('9')">9</button>
+          <button class="calc-btn op" onclick="appendCalcOp('-')">-</button>
+
+          <button class="calc-btn" onclick="appendCalcNum('4')">4</button>
+          <button class="calc-btn" onclick="appendCalcNum('5')">5</button>
+          <button class="calc-btn" onclick="appendCalcNum('6')">6</button>
+          <button class="calc-btn op" onclick="appendCalcOp('+')">+</button>
+
+          <button class="calc-btn" onclick="appendCalcNum('1')">1</button>
+          <button class="calc-btn" onclick="appendCalcNum('2')">2</button>
+          <button class="calc-btn" onclick="appendCalcNum('3')">3</button>
+          <button class="calc-btn" onclick="appendCalcNum('.')">.</button>
+
+          <button class="calc-btn" style="grid-column: span 2;" onclick="appendCalcNum('0')">0</button>
+          <button class="calc-btn equals" style="grid-column: span 2;" onclick="calculateResult()">=</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1430,6 +1550,66 @@ function openImageModal(url) {
 
 function closeImageModal() {
   document.getElementById('imgModal').style.display = 'none';
+}
+
+// 계산기 로직
+let calcExpr = '';
+
+function updateCalcDisplay() {
+  const disp = document.getElementById('calcDisplay');
+  if (!disp) return;
+  if (!calcExpr) {
+    disp.innerText = '0';
+  } else {
+    // 가독성을 위한 연산자 표기 변환
+    disp.innerText = calcExpr.replace(/\*/g, '×').replace(/\//g, '÷');
+  }
+}
+
+function appendCalcNum(num) {
+  if (num === '.' && calcExpr.slice(-1) === '.') return;
+  calcExpr += num;
+  updateCalcDisplay();
+}
+
+function appendCalcOp(op) {
+  if (!calcExpr) {
+    if (op === '-') calcExpr = '-';
+    return;
+  }
+  const lastChar = calcExpr.slice(-1);
+  if (['+', '-', '*', '/'].includes(lastChar)) {
+    calcExpr = calcExpr.slice(0, -1) + op;
+  } else {
+    calcExpr += op;
+  }
+  updateCalcDisplay();
+}
+
+function deleteCalcChar() {
+  calcExpr = calcExpr.slice(0, -1);
+  updateCalcDisplay();
+}
+
+function clearCalculator() {
+  calcExpr = '';
+  updateCalcDisplay();
+}
+
+function calculateResult() {
+  if (!calcExpr) return;
+  try {
+    // 안전한 간단 연산 (숫자, 사칙연산자만 허용)
+    const sanitized = calcExpr.replace(/[^0-9+\-*/.]/g, '');
+    if (!sanitized) return;
+    const res = Function(`'use strict'; return (${sanitized})`)();
+    calcExpr = String(Math.round(res * 1e8) / 1e8);
+    updateCalcDisplay();
+  } catch (e) {
+    const disp = document.getElementById('calcDisplay');
+    if (disp) disp.innerText = 'Error';
+    calcExpr = '';
+  }
 }
 </script>
 
