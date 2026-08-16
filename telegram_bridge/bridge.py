@@ -162,7 +162,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     INBOX_FILE.write_text(json.dumps(data[-20:], indent=4, ensure_ascii=False))
 
     # 2. 명령어 확인 및 처리
-    if command == "help" or command == "?":
+    if command in ["help", "?", "0"]:
         help_text = "📋 <b>사용 가능한 단축 명령어 목록:</b>\n\n"
         current_system = None
         for cmd_info in RAW_COMMANDS:
@@ -171,12 +171,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 help_text += f"\n🖥 <b>{current_system}</b>\n"
             extra_shortcut = f", <code>{cmd_info['num'][0]}</code>" if cmd_info['num'].endswith("-2") else ""
             help_text += f"🔹 <code>{cmd_info['num']}</code> (또는 <code>{cmd_info['alias']}</code>{extra_shortcut}) : {cmd_info['desc']}\n"
-        help_text += "\n* 슬래시(/) 없이 숫자나 명령어를 입력하셔도 작동합니다."
+        help_text += "\n* <code>0</code>, <code>help</code>, <code>?</code> 입력 시 이 안내 메시지가 출력됩니다."
         await update.message.reply_text(help_text, parse_mode='HTML')
         return
 
     if command not in COMMAND_MAPPING:
-        err_msg = f"❌ <b>지원하지 않는 명령어입니다.</b>\n\n<code>help</code>를 입력하여 사용 가능한 단축 명령어 목록을 확인하세요."
+        err_msg = f"❌ <b>지원하지 않는 명령어입니다.</b>\n\n<code>0</code> 또는 <code>help</code>를 입력하여 사용 가능한 단축 명령어 목록을 확인하세요."
         await update.message.reply_text(err_msg, parse_mode='HTML')
         return
 
