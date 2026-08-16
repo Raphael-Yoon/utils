@@ -10,6 +10,13 @@ import urllib.parse
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 import sqlite3
 
 BASE_DIR = Path(__file__).parent
