@@ -133,6 +133,12 @@ for cmd_info in RAW_COMMANDS:
     COMMAND_MAPPING[cmd_info["num"]] = cmd_info
     COMMAND_MAPPING[cmd_info["alias"]] = cmd_info
 
+# 단일 숫자 명령어(1, 2, 3, 4)를 x-2 (Reset) 명령어에 추가 매핑
+SINGLE_DIGIT_MAP = {"1": "1-2", "2": "2-2", "3": "3-2", "4": "4-2"}
+for single, target_num in SINGLE_DIGIT_MAP.items():
+    if target_num in COMMAND_MAPPING:
+        COMMAND_MAPPING[single] = COMMAND_MAPPING[target_num]
+
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """단축 명령어를 입력받아 AP 서버 제어 스크립트 실행"""
     if not update.message or not update.message.text:
@@ -163,7 +169,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if cmd_info["system"] != current_system:
                 current_system = cmd_info["system"]
                 help_text += f"\n🖥 <b>{current_system}</b>\n"
-            help_text += f"🔹 <code>{cmd_info['num']}</code> (또는 <code>{cmd_info['alias']}</code>) : {cmd_info['desc']}\n"
+            extra_shortcut = f", <code>{cmd_info['num'][0]}</code>" if cmd_info['num'].endswith("-2") else ""
+            help_text += f"🔹 <code>{cmd_info['num']}</code> (또는 <code>{cmd_info['alias']}</code>{extra_shortcut}) : {cmd_info['desc']}\n"
         help_text += "\n* 슬래시(/) 없이 숫자나 명령어를 입력하셔도 작동합니다."
         await update.message.reply_text(help_text, parse_mode='HTML')
         return
