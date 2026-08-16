@@ -51,9 +51,9 @@ RAW_COMMANDS = [
         "cwd": "/home/raphael/Dev/pythons/snowball",
         "desc": "Snowball AP 서버 종료"
     },
-    # 2. Trading (Jonathan's Coffee House)
+    # 2. Jonathan's Coffee House (자산관리)
     {
-        "system": "2. Trading (Jonathan's Coffee House)",
+        "system": "2. Jonathan's Coffee House (자산관리)",
         "num": "2-1",
         "alias": "tr-start",
         "cmd": "./coffee_house_start.sh",
@@ -61,7 +61,7 @@ RAW_COMMANDS = [
         "desc": "Jonathan's Coffee House AP 서버 시작"
     },
     {
-        "system": "2. Trading (Jonathan's Coffee House)",
+        "system": "2. Jonathan's Coffee House (자산관리)",
         "num": "2-2",
         "alias": "tr-reset",
         "cmd": "./coffee_house_reset.sh",
@@ -69,7 +69,7 @@ RAW_COMMANDS = [
         "desc": "Jonathan's Coffee House AP 서버 재설정 및 재기동"
     },
     {
-        "system": "2. Trading (Jonathan's Coffee House)",
+        "system": "2. Jonathan's Coffee House (자산관리)",
         "num": "2-3",
         "alias": "tr-stop",
         "cmd": "./coffee_house_stop.sh",
