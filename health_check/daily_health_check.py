@@ -80,9 +80,9 @@ AP_TARGETS = [
 # Target Databases configuration
 DB_TARGETS = [
     {
-        "name": "MySQL (127.0.0.1)",
+        "name": "MySQL (100.103.64.85)",
         "type": "mysql",
-        "host": "127.0.0.1",
+        "host": "100.103.64.85",
         "port": 3306,
         "user": "root",
         "password": "150606",
@@ -152,19 +152,28 @@ def check_db(db):
             return {"status": "DOWN", "time_ms": 0, "error": str(e)}
             
     elif db["type"] == "mysql":
-        try:
-            import pymysql
-            conn = pymysql.connect(
-                host=db["host"],
-                port=db["port"],
-                user=db["user"],
-                password=db["password"],
-                connect_timeout=5
-            )
-            conn.close()
-            return {"status": "UP", "time_ms": int((time.time() - t0) * 1000), "error": None}
-        except Exception as e:
-            return {"status": "DOWN", "time_ms": 0, "error": str(e)}
+        import pymysql
+        hosts_to_try = [db["host"]]
+        for fallback in ["100.103.64.85", "127.0.0.1", "localhost"]:
+            if fallback not in hosts_to_try:
+                hosts_to_try.append(fallback)
+
+        last_error = None
+        for h in hosts_to_try:
+            try:
+                conn = pymysql.connect(
+                    host=h,
+                    port=db["port"],
+                    user=db["user"],
+                    password=db["password"],
+                    connect_timeout=5
+                )
+                conn.close()
+                return {"status": "UP", "time_ms": int((time.time() - t0) * 1000), "error": None}
+            except Exception as e:
+                last_error = e
+
+        return {"status": "DOWN", "time_ms": 0, "error": str(last_error)}
 
     elif db["type"] == "postgres":
         try:
