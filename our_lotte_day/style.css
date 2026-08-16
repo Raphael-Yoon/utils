@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
+
+body {
+  background-color: #fff0f5; /* LavenderBlush: 부드러운 핑크빛 파스텔톤 */
+  font-family: 'Gaegu', cursive;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
+  background-color: #FFFAF0; /* FloralWhite: 부드러운 아이보리 파스텔톤 */
+  background-blend-mode: overlay; /* 배경색과 이미지를 자연스럽게 혼합 */
+
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  color: #ff7f50; /* Coral: 더 밝고 선명한 톤으로 변경 */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.team-name-input {
+    border: 2px dashed #ff8c69;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.team-name-input:focus {
+    border-color: #ff6347; /* Tomato */
+    box-shadow: 0 0 0 0.2rem rgba(255, 99, 71, 0.25);
+}
+
+.progress-container {
+  margin-bottom: 2rem;
+}
+
+.progress {
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progress-bar {
+  background-color: #ff69b4; /* HotPink: 더 선명한 핑크로 변경 */
+  border-radius: 10px;
+}
+
+.list-group-item {
+  flex-direction: column;
+  align-items: stretch;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #c3e6cb; /* 녹색 계열 테두리로 변경 */
+  background-color: #dff0d8; /* 화사한 파스텔톤 녹색으로 변경 */
+  font-size: 1.2rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.list-group-item.completed {
+  background-color: #F5FFFA; /* MintCream: 부드러운 민트색으로 변경 */
+  border-color: #FFB6C1; /* LightPink: 핑크색 계열 테두리로 변경 */
+}
+
+.list-group-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #888; /* 완료된 항목은 회색으로 변경 */
+}
+
+.list-group-item .todo-text {
+    cursor: pointer;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.drag-handle {
+    cursor: grab;
+    color: #ccc;
+}
+
+.list-group-item.dragging {
+    opacity: 0.5;
+}
+
+.right-container {
+    display: flex;
+    align-items: center;
+}
+
+.list-group-item input[type="checkbox"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.input-group .form-control {
+    border-color: #ffc0cb; /* Pink */
+}
+
+.input-group .form-control:focus {
+    border-color: #ff69b4; /* HotPink */
+    box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.25);
+}
+
+.btn-primary {
+  background-color: #ff1493; /* DeepPink: 더 진한 핑크로 변경 */
+  border-color: #ff1493;
+}
+
+.btn-primary:hover {
+  background-color: #c71585; /* MediumVioletRed: 호버 시 더 진하게 */
+  border-color: #c71585;
+}
+
+.btn-danger {
+  background-color: #db7093; /* PaleVioletRed */
+  border-color: #db7093;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 1;
+  font-size: 1rem;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.btn-danger:hover {
+  background-color: #c71585; /* MediumVioletRed */
+  border-color: #c71585;
+}
+
+.add-item-form {
+    margin-bottom: 2rem;
+}
+
+.recommendations {
+    border-top: 2px dashed #ffc0cb;
+    padding-top: 1.5rem;
+}
+
+.recommendations .btn {
+    background-color: #87CEFA; /* LightSkyBlue: 더 산뜻한 파란색으로 변경 */
+    border: none;
+    color: #333;
+    font-weight: 700;
+}
+
+.recommendations .btn:hover {
+    background-color: #00BFFF; /* DeepSkyBlue: 호버 시 더 진하게 */
+}
+
+.btn-success {
+    background-color: #28a745; /* Green */
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.todo-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.todo-image {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.upload-btn {
+    margin-right: 10px;
+    font-size: 0.8rem; /* 버튼 폰트 크기 조정 */
+    padding: 0.2rem 0.5rem; /* 버튼 패딩 조정 */
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.2em;
+}

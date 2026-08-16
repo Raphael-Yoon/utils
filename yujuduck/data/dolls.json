@@ -1,0 +1,24 @@
+{
+  "dolls": [
+    { "id": 1, "name": "인형 1호", "rarity": "Common", "src": "images/doll_01.png", "type": "normal" },
+    { "id": 2, "name": "인형 2호", "rarity": "Common", "src": "images/doll_02.png", "type": "normal" },
+    { "id": 3, "name": "인형 3호", "rarity": "Common", "src": "images/doll_03.png", "type": "normal" },
+    { "id": 4, "name": "인형 4호", "rarity": "Common", "src": "images/doll_04.png", "type": "normal" },
+    { "id": 5, "name": "인형 5호", "rarity": "Common", "src": "images/doll_05.png", "type": "normal" },
+    { "id": 6, "name": "인형 6호", "rarity": "Common", "src": "images/doll_06.png", "type": "normal" },
+    { "id": 7, "name": "인형 7호", "rarity": "Common", "src": "images/doll_07.png", "type": "normal" },
+    { "id": 8, "name": "인형 8호", "rarity": "Common", "src": "images/doll_08.png", "type": "normal" },
+    { "id": 9, "name": "인형 9호", "rarity": "Common", "src": "images/doll_09.png", "type": "normal" },
+    { "id": 10, "name": "인형 10호", "rarity": "Common", "src": "images/doll_10.png", "type": "normal" },
+    { "id": 11, "name": "인형 11호", "rarity": "Rare", "src": "images/doll_11.png", "type": "normal" },
+    { "id": 12, "name": "인형 12호", "rarity": "Rare", "src": "images/doll_12.png", "type": "normal" },
+    { "id": 13, "name": "인형 13호", "rarity": "Rare", "src": "images/doll_13.png", "type": "normal" },
+    { "id": 14, "name": "인형 14호", "rarity": "Rare", "src": "images/doll_14.png", "type": "normal" },
+    { "id": 15, "name": "인형 15호", "rarity": "Rare", "src": "images/doll_15.png", "type": "normal" },
+    { "id": 16, "name": "인형 16호", "rarity": "Rare", "src": "images/doll_16.png", "type": "normal" },
+    { "id": 17, "name": "인형 17호", "rarity": "Super Rare", "src": "images/doll_17.png", "type": "normal" },
+    { "id": 18, "name": "인형 18호", "rarity": "Super Rare", "src": "images/doll_18.png", "type": "normal" },
+    { "id": 19, "name": "폭탄 인형", "rarity": "Super Rare", "src": "images/doll_19.png", "type": "bomb" },
+    { "id": 20, "name": "돈 인형", "rarity": "Super Rare", "src": "images/doll_20.png", "type": "coin" }
+  ]
+}

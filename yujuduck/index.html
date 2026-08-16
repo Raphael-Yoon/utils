@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuju</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" href="images/apple_touch_icon.png">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+</head>
+<body>
+    <div id="main-container">
+        <img src="images/title.png" alt="Catching Duck" id="title-image">
+        <div id="game-wrapper">
+            <canvas id="game-canvas" width="500" height="400"></canvas>
+            <div id="coin-display"></div>
+            <div id="controls">
+                <div id="button-container">
+                    <button class="arrow-button" id="left-button">←</button>
+                    <button id="drop-button">내려가기</button>
+                    <button class="arrow-button" id="right-button">→</button>
+                </div>
+            </div>
+            <div id="result-display"></div>
+            <div id="beg-confirmation-buttons" style="display: none;" class="beg-buttons-container">
+                <div class="beg-message">엄마에게 돈을 조를까요? 🥺</div>
+                <div class="beg-buttons">
+                    <button id="confirm-beg-button" class="beg-btn beg-btn-yes">
+                        <span class="emoji">😭</span>
+                        <span>조르기</span>
+                    </button>
+                    <button id="decline-beg-button" class="beg-btn beg-btn-no">
+                        <span class="emoji">😤</span>
+                        <span>포기</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <h2>나의 컬렉션</h2>
+        <div id="collection-container"></div>
+
+        <h2 id="ranking-title">주간 랭킹</h2>
+        <div id="ranking-container">
+            <table id="ranking-table">
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th>이름</th>
+                        <th>점수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="game-over-modal" class="game-over-modal" style="display: none;">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="game-over-emoji">🎮</div>
+                <h2 class="game-over-title">게임 종료!</h2>
+            </div>
+            <div class="modal-body">
+                <div class="score-display">
+                    <div class="trophy-icon">🏆</div>
+                    <p class="collection-text">수집한 인형</p>
+                    <div class="score-number"><span id="collected-count">0</span>개</div>
+                </div>
+                <div class="name-input-section">
+                    <p class="input-label">랭킹 등록을 위해 이름을 입력해주세요 ✨</p>
+                    <input type="text" id="player-name-input" class="name-input" placeholder="이름을 입력하세요" maxlength="20">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-score-btn" class="modal-btn save-btn">
+                    <span class="btn-icon">💾</span>
+                    <span>점수 저장</span>
+                </button>
+                <button id="restart-game-btn" class="modal-btn restart-btn">
+                    <span class="btn-icon">🔄</span>
+                    <span>다시 시작</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js?v=3"></script>
+</body>
+</html>
