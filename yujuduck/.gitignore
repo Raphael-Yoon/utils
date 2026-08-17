@@ -1,2 +1,8 @@
 # Local Netlify folder
 .netlify
+
+# Backup / temporary files
+*.bak
+*.backup
+*.tmp
+.DS_Store
