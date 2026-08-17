@@ -1,0 +1,1898 @@
+{
+  "exam_info": {
+    "id": "auditor_2022",
+    "title": "2022년 정보시스템감리사 기출문제",
+    "category": "정보시스템감리사",
+    "year": 2022,
+    "time_limit_minutes": 120,
+    "passing_rules": {
+      "total_questions": 120,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "1과목: 감리 및 사업관리",
+      "start_q": 1,
+      "end_q": 25,
+      "weight_per_q": 4.0,
+      "question_count": 25
+    },
+    {
+      "id": 2,
+      "name": "2과목: 소프트웨어공학",
+      "start_q": 26,
+      "end_q": 50,
+      "weight_per_q": 4.0,
+      "question_count": 25
+    },
+    {
+      "id": 3,
+      "name": "3과목: 데이터베이스",
+      "start_q": 51,
+      "end_q": 75,
+      "weight_per_q": 4.0,
+      "question_count": 25
+    },
+    {
+      "id": 4,
+      "name": "4과목: 시스템구조",
+      "start_q": 76,
+      "end_q": 100,
+      "weight_per_q": 4.0,
+      "question_count": 25
+    },
+    {
+      "id": 5,
+      "name": "5과목: 보안",
+      "start_q": 101,
+      "end_q": 120,
+      "weight_per_q": 4.0,
+      "question_count": 20
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "프로젝트관리에 관한 국제표준 ISO 21500에서 제시하는 10개의 주제 그룹에 속하지 않은 것은?",
+      "options": [
+        "① 통합",
+        "② 조달",
+        "③ 통제",
+        "④ 의사소통"
+      ],
+      "answer": 3,
+      "explanation": "1) ISO 21500 은 통합관리 부터 이해관계자관리 까지 10개의 주제 그룹으로 구성되어 있습니다.\n\n주제 그룹: 통합, 이해관계자, 범위, 자원, 일정, 원가, 리스크, 품질, 조달, 의사소통\n\n2) 보기 3번의 '통제 ' 는 10개 주제 그룹이 아닌, 5개 프로세스 그룹(착수, 기획, 실행, 통제, 종료)에 해당하는 항목입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음 중 프로젝트 범위관리를 구성하는 하위 프로세스의 산출물들을 생성 시기가 빠른 순으로 나열한 것으로 옳은 것은?",
+      "options": [
+        "① 요구사항문서 - 작업분류체계 사전 - 활동 목록 - 변경 요청서",
+        "② 요구사항문서 - 활동 목록 - 작업분류체계 사전 - 변경 요청서",
+        "③ 활동목록 - 작업분류체계 사전 - 요구사항문서 - 변경 요청서",
+        "④ 작업분류체계 사전 - 활동목록 - 요구사항문서 - 변경 요청서"
+      ],
+      "answer": 1,
+      "explanation": "ISO 21500 기준 범위관리 영역의 4개 프로세스:\n- 6.1 범위정의: 프로젝트 과업범위 최종 확정 -> 주요 산출물: 범위기술서, 요구사항(요구사항문서)\n- 6.2 작업분류체계 작성: 프로젝트 전체 업무를 관리할 수 있는 컴포넌트로 분할 -> 주요 산출물: 작업분류체계(WBS), 작업분류체계 사전\n- 6.3 활동 정의: WBS의 Work Package를 분할해서 일정계획 수립을 위한 활동(Activity) 정의 -> 주요 산출물: 활동 목록\n- 6.4 범위통제: 범위기준선의 변경요인 모니터링 및 통제 -> 주요 산출물: 변경요청서\n\n따라서 빠른 순서는 요구사항문서 -> 작업분류체계 사전 -> 활동 목록 -> 변경 요청서입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "다음 중 데이터 이전 및 교육훈련과 관련된 요구 사항을 포함하는 요구사항의 분류로 가장 적절한 것은?",
+      "options": [
+        "① 전환 요구사항",
+        "② 비즈니스 요구사항",
+        "③ 비기능적 요구사항",
+        "④ 이해관계자 요구사항"
+      ],
+      "answer": 1,
+      "explanation": "1) 데이터 이전 혹은 교육 훈련은 전환과 관련된 요구사항 입니다. PMBOK 6판에는 '요구사항 문서' 산출물에 포함되는 요구사항 분류 범주로 '전환 및 준비 요구사항'을 명시하고 있습니다.\n\n2) 프로젝트 요구사항 분류 (PMBOK 6th):\n- 비즈니스 요구사항: 비즈니스 이슈나 기회, 프로젝트를 수행한 이유 등과 같은 전체 조직의 상위 수준 요구를 설명한다.\n- 이해관계자 요구사항: 이해관계자 개인 또는 이해관계자 집단의 요구를 설명한다.\n- 해결책 요구사항: 기능적 및 비기능적 요구사항. 비기능적 요구사항은 기능적 요구사항을 보충하며, 효율적인 제품이 되기 위해 요구되는 품질이나 환경 여건을 설명한다. 예로는 신뢰성, 보안, 성과, 안전성, 서비스 수준, 지원 가능성, 보유/제거 등이 있다.\n- 전환 및 준비 요구사항: 현재 상태에서 원하는 향후 상태로 전환하는 데 필요한 데이터 변환 및 교육 요구사항과 같은 한시적 역량을 설명한다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "어떤 프로젝트가 특정 시점에서 획득가치 분석을 적용한 결과 획득가치(EV) = 800, 계획가치(PV) = 900, 실적원가(AC) = 700으로 계산되었다. 이 프로젝트 성과에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 일정 성과차이(SV)는 +100이다.",
+        "② 원가 성과차이(CV)는 -100이다.",
+        "③ 일정 성과지수(SPI)는 0보다 크다.",
+        "④ 원가 성과지수(CPI)는 1보다 작다."
+      ],
+      "answer": 3,
+      "explanation": "1) EV, PV, AC 가 주어진 경우 SV, CV, SPI, CPI 계산:\n- SV = EV - PV = 800 - 900 = -100 (일정 지연)\n- CV = EV - AC = 800 - 700 = +100 (예산 절감)\n- SPI = EV / PV = 800 / 900 ≈ 0.89 (0보다 크고 1보다 작음)\n- CPI = EV / AC = 800 / 700 ≈ 1.14 (1보다 큼)\n\n따라서 '일정 성과지수(SPI)는 0보다 크다'가 옳습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "품질 비용(cost of quality)에 관한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 적합(conformance) 비용에는 예방 비용과 평가 비용이 있다.",
+        "② 품질 교육 및 훈련, 생산공정계획 및 개선과 관련된 비용은 예방 비용이다.",
+        "③ 품질 수준이 100% 양호가 될 때 적합 비용은 최대가 된다.",
+        "④ 고객이 발견한 결함과 부적격을 처리하기 위한 비용은 내적 실패(internal failure) 비용이다."
+      ],
+      "answer": 4,
+      "explanation": "1) 제품이나 서비스가 고객에게 전달된 이후에 발견되는 결함을 처리하기 위한 비용(반품 혹은 A/S 등)은 '외부 실패 비용'입니다.\n\n2) 품질 비용 분류:\n- 적합성 비용: 예방비용 (교육, 품질계획비용, 설계 검토비용, 공정관리 비용), 평가비용 (검사 비용, 품질검사 비용)\n- 부적합성 원가 (실패비용): 내부실패 비용 (폐기 비용, 재작업 비용, 재검사 비용), 외부실패 비용 (반품 비용, 수리비용)",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "프로젝트 조직에 관한 다음 설명 중 옳은 것을 모두 고른 것은?\n\n가. 중간(균형) 매트릭스 조직(balanced matrix organization) 구조에서 프로젝트 관리자는 기능 관리자 아래에 있어 예산 사용에 제약을 받는다.\n나. 강한 매트릭스 조직(strong matrix organization) 은 전임 프로젝트 관리자와 프로젝트 행정업무를 전담하는 직원을 가질 수 있다.\n다. 약한 매트릭스 조직(weak matrix organization) 구조에서는 직원들이 프로젝트업무를 조정하는 역할을 수행한다.\n라. 기능 조직(functional organization)은 기존 프로젝트의 소규모 변경이나 중요하지 않은 소규모 프로젝트 수행에 적합한 구조이다.",
+      "options": [
+        "① 가, 나, 다",
+        "② 가, 다, 라",
+        "③ 나, 다, 라",
+        "④ 가, 나, 다, 라"
+      ],
+      "answer": 4,
+      "explanation": "가, 나, 다, 라 모두 옳은 설명입니다.\n- 약한 매트릭스: 프로젝트의 의사결정은 기능조직장이 수행하며, 프로젝트 관리자는 단순히 기능 조직의 구성원으로 프로젝트 조정자 혹은 촉진자의 역할만 수행\n- 중간(균형) 매트릭스: PM은 프로젝트 관리에 관한 비교적 많은 권한을 가지지만, 비용 집행 및 의사결정 사항은 기능 조직관리자에게 보고 후 진행\n- 강한 매트릭스: 프로젝트 관리자가 프로젝트를 전담하며 프로젝트에 대한 의사결정 권한을 가지며, 기능 조직 관리자는 기능 업무에 대한 역할만 수행 (전임 PM 및 전담 지원인력 보유)",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "다음 중 다양한 규모의 투표와 같은 방법으로 신속히 결정을 내리면서도 모든 사람의 의견을 감안하고 싶을 때 사용할 수 있는 집단 창의성 기법으로 가장 적절한 것은?",
+      "options": [
+        "① 브레스토밍(brainstorming)",
+        "② 명목 집단 기법(nominal group technique)",
+        "③ 친화도(affinity diagram)",
+        "④ 요구사항 워크숍(requirement workshop)"
+      ],
+      "answer": 2,
+      "explanation": "1) '투표'를 통해 모든 구성원의 의사를 반영하는 집단 창의력 기법은 '명목 집단 기법'의 특징입니다. 브레인 스토밍은 아이디어의 질 보다는 많은 양을 도출하기 위한 기법으로 '신속한 결정'과는 거리가 있습니다.\n\n2) 명목집단 기법(NGT):\n- 각 사안에 대해 자유롭게 의견을 도출한다.\n- 도출된 아이디어 목록에 대해서 보조 설명이나 근거를 설명한다.\n- 마지막으로 구성원들이 순위를 매긴 결과를 종합하여 최고 득표한 안을 채택한다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "100만원을 투자하여 2년 후에 121만원을 회수했다면 내부수익률(internal rate of return)은?",
+      "options": [
+        "① 0.1",
+        "② 0.2",
+        "③ 0.3",
+        "④ 0.4"
+      ],
+      "answer": 1,
+      "explanation": "1) 내부수익률 IRR(Internal Rate of Return)은 순현재 가치(NPV)를 0으로 만드는 이자율을 의미합니다.\n\n2) IRR 계산:\nNPV = -100 + 121 / (1 + r)^2 = 0\n121 / (1 + r)^2 = 100\n(1 + r)^2 = 1.21\n1 + r = 1.1\nr = 0.1 (10%)",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "다음 프로젝트 계획 방법론 중에서 계층적 접근 (hierarchical approach) 방식으로 옳은 것은?",
+      "options": [
+        "① CPM(critical path method)",
+        "② 작업분류체계(work breakdown structure)",
+        "③ 선형임무차트(linear responsibility chart)",
+        "④ 마스트프로젝트일정(master project schedule)"
+      ],
+      "answer": 2,
+      "explanation": "1) 계층적 접근 방식을 적용하는 기법은 'WBS(작업분류체계)'를 작성할 때 사용합니다.\n\n- WBS(작업분류체계): 프로젝트 최종 결과물을 제공하기 위해 필요한 각 단계를 계층적으로 정의한 문서\n- CPM: 활동 간의 선후관계, 추정기간을 반영해서 각 활동의 착수 예정일과 종료 예정일을 계산하는 기법으로 활동 네트워크도를 활용\n- 선형임무차트: RAM 차트라고도 하며, 매트릭스도를 기반으로 각 업무에 대한 담당자의 역할과 책임을 매핑할 때 사용\n- 마스터프로젝트일정: 프로젝트 초기 단계에서 주요 산출물, 핵심 마일스톤 등을 기술하는데 사용하는 일정계획 기법",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "다음의 갈등관리 기법 중에서 자기주장이 낮고 상대방의 동조가 높을 때 사용하는 기법으로 가장 적절한 것은?",
+      "options": [
+        "① 강경(forcing)",
+        "② 타협(compromising/reconcile)",
+        "③ 회피(withdrawing/avoid)",
+        "④ 유연(smoothing/accommodate)"
+      ],
+      "answer": 4,
+      "explanation": "1) 자기주장을 낮추고 상대방에게 맞추는 갈등해결 기법은 Smoothing(유연/수용) 기법입니다.\n\n- 회피(Avoidance/Withdraw): 자신과 상대방의 관심사를 동시에 무시하고 갈등 이슈로부터 물러나 갈등 해결을 위한 적극적인 역할 수행을 거부\n- 타협(Compromise/Reconcile): 갈등 당사자들이 서로 양보함으로써 서로 부분적인 만족을 취함\n- 수용/유연(Accommodation/Smoothing): 자신의 관심사를 포기하고 상대방의 관심사를 충족\n- 강경/관철(Force): 타인에 대한 배려 없이 강력한 압력을 행사하고 대결\n- 협조/문제해결(Collaboration/Problem Solve): 서로의 관심사, 즉 갈등의 원인에 대해 논의하고 협력하여 서로의 목표를 추구 (가장 이상적인 갈등 관리방법)",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 11,
+      "subject": "감리 및 사업관리",
+      "question": "「정보시스템 감리기준(행정안전부 고시 제2021-4호)」에서 규정하고 있는 설계단계 감리의 점검항목으로 적절한 것을 모두 고른 것은?",
+      "image": null,
+      "options": [
+        "가, 나",
+        "나, 다",
+        "가, 다",
+        "가, 나, 다"
+      ],
+      "answer": 2,
+      "explanation": "설계단계 감리의 점검항목은 나. 사용자 요구사항의 시스템설계 반영 여부 확인, 다. 과업지시서 등의 요구사항 대비 최종 산출물의 누락 여부 확인(추적표 기반)입니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 12,
+      "subject": "감리 및 사업관리",
+      "question": "「정보시스템 감리기준(행정안전부 고시 제2021-4호)」에서 규정하고 있는 상주감리원의 업무로 가장 적절하지 않은 것은?",
+      "image": null,
+      "options": [
+        "위험식별, 이슈분석 및 대안제시",
+        "품질확보를 위한 기술·업무 검토",
+        "의사결정 사항 지시·관리 및 이행상황 점검",
+        "사업추진 일정·범위 준수 여부 점검"
+      ],
+      "answer": 3,
+      "explanation": "상주감리원은 발주자를 보좌하여 점검/검토 및 대안제시를 수행하는 것이며, 사업자에 대해 직접 '의사결정 사항 지시·관리'를 행사하는 주체가 아닙니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 13,
+      "subject": "감리 및 사업관리",
+      "question": "「전자정부법 시행령」 제72조에 따른 감리법인의 업무범위에 해당하는 것으로 가장 적절한 것은?",
+      "image": null,
+      "options": [
+        "전자정부사업의 사업계획서 검토 및 제안요청서 작성 지원",
+        "전자정부사업관리와 관련된 보고 및 의사결정 지원",
+        "전자정부사업 계약 체결 및 사업비 정산 지원",
+        "전자정부사업 수행 중 발생하는 제반 문제점에 대한 시정조치 요구"
+      ],
+      "answer": 2,
+      "explanation": "전자정부법 시행령 제72조에 따라 감리법인은 전자정부사업관리와 관련된 보고 및 의사결정 지원 등의 업무를 수행합니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 14,
+      "subject": "감리 및 사업관리",
+      "question": "「소프트웨어사업 대가산정 가이드(한국소프트웨어산업협회)」에 따른 개발비 및 유지관리비 산정식으로 가장 적절한 것은?",
+      "image": null,
+      "options": [
+        "기능점수 방식에 의한 소프트웨어 개발비 = 소프트웨어 개발원가 + 직접경비",
+        "소프트웨어 개발원가 = 개발비 산정 기능점수 × 기능점수당 단가",
+        "기능점수 방식에 의한 소프트웨어 개발비 = 개발원가 + 제경비 + 기술료 + 직접경비",
+        "소프트웨어 유지관리 대가 = 소프트웨어 개발비 × 유지관리요율 × 유지관리 난이도"
+      ],
+      "answer": 3,
+      "explanation": "기능점수 방식에 의한 소프트웨어 개발비 산정식은 '소프트웨어 개발원가 + 제경비 + 기술료 + 직접경비'입니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 15,
+      "subject": "감리 및 사업관리",
+      "question": "「정보시스템 감리기준(행정안전부 고시 제2021-4호)」에서 종료단계 감리의 감리시점으로 가장 적절한 것은?",
+      "image": null,
+      "options": [
+        "(가) 통합시험, (나) 검사 이전",
+        "(가) 단위시험, (나) 검사 이전",
+        "(가) 통합시험, (나) 인수시험 이후",
+        "(가) 단위시험, (나) 검수 이후"
+      ],
+      "answer": 1,
+      "explanation": "정보시스템 감리기준 제8조에 따라 3단계 감리 중 종료단계 감리는 '통합시험 완료 후, 발주자의 검사 이전'에 실시하는 것이 원칙입니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 16,
+      "subject": "감리 및 사업관리",
+      "question": "「정보시스템 감리기준(행정안전부 고시 제2021-4호)」에서 감리 대가 산정 시 적용하는 규정으로 가장 적절하지 않은 것은?",
+      "image": null,
+      "options": [
+        "감리원 단가는 SW기술자 평균임금 중 IT감리와 IT감사의 평균 금액을 적용한다.",
+        "직접인건비는 감리원의 등급별 투입공수와 감리원 단가를 곱하여 산출한다.",
+        "제경비는 직접인건비의 110% 내지 120%를 적용한다.",
+        "기술료는 직접인건비와 제경비 합계액의 20% 내지 40%를 적용한다."
+      ],
+      "answer": 1,
+      "explanation": "감리기준 대가산정 기준에서 감리원 단가는 한국소프트웨어산업협회에서 공표하는 SW기술자 평균임금의 'IT감리원' 단가를 적용합니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 17,
+      "subject": "감리 및 사업관리",
+      "question": "「행정기관 및 공공기관 정보시스템 구축·운영 지침(행정안전부 고시 제2021-3호)」에 따라 정보시스템 개발 사업 중 감리법인이 직접 수행해야 하는 업무의 개수로 옳은 것은?",
+      "image": null,
+      "options": [
+        "1개",
+        "2개",
+        "3개",
+        "4개"
+      ],
+      "answer": 2,
+      "explanation": "보기 중 감리법인이 직접 수행해야 하는 업무는 [다, 마] 2개입니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 18,
+      "subject": "감리 및 사업관리",
+      "question": "「소프트웨어사업 대가산정 가이드(한국소프트웨어산업협회)」에서 전자정부표준프레임워크를 적용하여 소프트웨어 개발비를 기능점수(FP) 방식으로 산정할 때, 기능점수 보정계수 적용에 대한 설명으로 가장 적절하지 않은 것은?",
+      "image": null,
+      "options": [
+        "개발규모 보정계수는 산출된 기능점수 규모에 따라 적용한다.",
+        "재사용 소프트웨어 평가 노력 수준은 연계복잡성 계수에 일괄 적용하여 계산한다.",
+        "애플리케이션 복잡도 보정계수는 각 기능별 복잡도를 측정하여 적용한다.",
+        "다차원 보정계수 적용 시 각 보정계수의 곱을 총 보정계수로 산정한다."
+      ],
+      "answer": 2,
+      "explanation": "재사용 소프트웨어는 재사용 비율 및 수정율을 별도로 산정하여 기본 기능점수 규모를 보정하는 것이지, 연계복잡성 계수에 일괄 적용하는 것이 아닙니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 19,
+      "subject": "감리 및 사업관리",
+      "question": "「소프트웨어프로세스 품질인증 운영에 관한 지침(과학기술정보통신부 고시 제2021-72호)」의 소프트웨어 프로세스 품질인증 기준에서 인증 영역과 평가항목의 연결이 가장 적절하지 않은 것은?",
+      "image": null,
+      "options": [
+        "조직 관리 영역 - 인적자원 관리 및 보증",
+        "프로젝트 관리 영역 - 프로젝트 계획 및 통제",
+        "소프트웨어 개발 영역 - 요구사항 관리 및 구현",
+        "소프트웨어 프로세스의 유지 및 개선 등에 관한 사항 - 구성원 교육"
+      ],
+      "answer": 4,
+      "explanation": "구성원 교육은 조직 관리 영역(인적자원 관리)에 해당하며, 소프트웨어 프로세스의 유지 및 개선 영역의 평가항목이 아닙니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 20,
+      "subject": "감리 및 사업관리",
+      "question": "「소프트웨어진흥법」 및 관련 지침에 따른 적정 사업기간 산정 기준에 관한 설명으로 가장 적절하지 않은 것은?",
+      "image": null,
+      "options": [
+        "발주기관은 소프트웨어사업 추진 시 소프트웨어 개발사업의 적정 사업기간을 산정하여야 한다.",
+        "사업기간 산정 시 투입공수 방식이나 기능점수 방식을 활용할 수 있다.",
+        "적정 사업기간 종합 검토 시 요구사항 정의 기간, 개발 기간, 시험/안정화 기간 등을 종합적으로 고려한다.",
+        "기능점수(FP)기반으로 적정 개발기간 산정시, 1인 생산성(FP/MM)은 사업규모(FP)에 따라 다르게 적용한다."
+      ],
+      "answer": 4,
+      "explanation": "SW 적정 사업기간 산정 가이드에서 기능점수(FP) 기반 개발기간 산정 공식은 개발기간 T = 2.47 × (FP)^0.347 등을 활용하며, 1인당 생산성(FP/MM)을 임의로 가변 적용하는 방식이 아닙니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 21,
+      "subject": "감리 및 사업관리",
+      "question": "「공공기관의 데이터베이스 표준화 지침(행정안전부 고시 제2021-34호)」에 따라 데이터베이스 감리 시 점검해야 하는 사항으로 다음 [보기]에서 옳은 것을 모두 고른 개수는?",
+      "image": null,
+      "options": [
+        "3개",
+        "4개",
+        "5개",
+        "6개"
+      ],
+      "answer": 4,
+      "explanation": "보기 [가, 나, 다, 라, 마, 바] 6개 항목 모두가 공공기관의 데이터베이스 표준화 지침에서 규정하고 있는 점검 대상 사항입니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 22,
+      "subject": "감리 및 사업관리",
+      "question": "「정보시스템 감리기준(행정안전부 고시 제2021-4호)」에서 종료단계 감리의 현장감리 절차에 관한 설명이다. (가), (나), (다)에 들어갈 용어로 가장 적절한 것은?",
+      "image": null,
+      "options": [
+        "세부 검사항목 / 검사항목 / 발주기관",
+        "세부 검사항목 / 세부항목 / 감리법인",
+        "과업대비표 / 세부항목 / 총괄감리원",
+        "과업대비표 / 검사항목 / 감리법인"
+      ],
+      "answer": 2,
+      "explanation": "감리기준 제13조에 따라 감리원은 (가) 세부 검사항목에 대해 시험을 수행하고 누락된 (나) 세부항목을 검토하며, (다) 감리법인은 감리수행결과보고서를 작성합니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 23,
+      "subject": "감리 및 사업관리",
+      "question": "「전자정부법 시행령」 제73조에 따른 정보시스템 감리 절차를 올바른 순서대로 나열한 것은?",
+      "image": null,
+      "options": [
+        "가 - 나 - 다 - 라",
+        "가 - 라 - 나 - 다",
+        "나 - 가 - 라 - 다",
+        "나 - 라 - 가 - 다"
+      ],
+      "answer": 3,
+      "explanation": "전자정부법 시행령 제73조의 감리 절차는 나. 감리계획서 수립 및 통보 → 가. 현장감리 수행 및 감리수행결과보고서 제출 → 라. 감리결과 조치내역 확인 → 다. 조치결과 확인보고서 제출 순서입니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 24,
+      "subject": "감리 및 사업관리",
+      "question": "「소프트웨어사업 대가산정 가이드(한국소프트웨어산업협회)」에 따른 소프트웨어 유지관리 유형과 설명의 연결로 가장 적절한 것은?",
+      "image": null,
+      "options": [
+        "완전유지관리 - 성능향상을 위한 소프트웨어 개선",
+        "적응유지관리 - 소프트웨어 결함 및 버그 수정",
+        "수정유지관리 - 외부 환경 변화에 따른 적응",
+        "예방유지관리 - 신규 기능의 추가 개발"
+      ],
+      "answer": 1,
+      "explanation": "유지관리 4대 유형: 완전유지관리(Perfective, 기능향상 및 성능개선), 수정유지관리(Corrective, 하자/결함 수정), 적응유지관리(Adaptive, 환경변화 대응), 예방유지관리(Preventive, 잠재 결함 예방).",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 25,
+      "subject": "감리 및 사업관리",
+      "question": "「정보시스템 감리기준(행정안전부 고시 제2021-4호)」에서 규정하고 있는 감리원 및 감리법인의 의무에 관한 설명으로 옳은 것을 모두 고른 것은?",
+      "image": null,
+      "options": [
+        "가, 나",
+        "가, 다",
+        "다, 라",
+        "나, 라"
+      ],
+      "answer": 3,
+      "explanation": "다, 라가 감리기준에 부합하는 설명입니다.",
+      "subject_id": 1,
+      "image_url": null
+    },
+    {
+      "id": 26,
+      "subject": "소프트웨어공학",
+      "question": "소프트웨어 요구사항 정보의 형태는 비즈니스 요구사항, 비즈니스 룰, 제약사항, 외부 인터페이스 요구사항, 특성(Feature), 기능적 요구사항, 비기능적 요구사항, 품질 속성, 시스템 요구사항, 사용자 요구사항 등으로 구성될 수 있다. 이들 간의 연관관계를 그림으로 표현한 것 중 가장 적절하지 않은 것은? (단, 점선은 다른 형태의 요구사항에 영향을 주거나 다른 형태의 요구사항의 원천이 되는 경우를 의미한다.)\n\n[다이어그램 요약]\n- (가): 시스템 요구사항 -> 기능적 요구사항\n- (나): 사용자 요구사항 -> 기능적 요구사항\n- (다): 비즈니스 룰 -> 기능적 요구사항\n- (라): 제약사항 -> 기능적 요구사항",
+      "image": "/exams/images/auditor_2022_q26.png",
+      "options": [
+        "① 가",
+        "② 나",
+        "③ 다",
+        "④ 라"
+      ],
+      "answer": 4,
+      "explanation": "1) 제약사항(Constraint)은 비기능적 요구사항, 설계/구현에 영향을 주는 제약 조건이지 기능적 요구사항의 직접적인 원천이나 도출 대상이 아닙니다.\n2) 비즈니스 요구사항/비즈니스 룰 -> 사용자 요구사항 -> 기능적 요구사항으로 구체화되며, 시스템 요구사항은 기능적/비기능적 요구사항을 포괄합니다. 따라서 (라)의 연결이 가장 적절하지 않습니다.",
+      "subject_id": 2,
+      "image_url": "/exams/images/auditor_2022_q26.png"
+    },
+    {
+      "id": 27,
+      "subject": "소프트웨어공학",
+      "question": "소프트웨어 요구사항의 표준화를 위하여 소프트웨어 요구사항 패턴을 정의하였다. 다음 요구사항에 가장 적절한 소프트웨어 요구사항 패턴은?\n\n선택한 고객에 대해 금액 조정(인출 또는 대출)을 할 수 있다. 금액 조정은 다음과 같은 정보를 가진다.\n - 고객 ID\n - 조정 금액\n - 조정 이유\n각 계좌 금액 조정에 유일한 ID가 자동으로 부여된다. 극소수의 직원만이 계좌 금액 조정을 할 수 있다.",
+      "image": null,
+      "options": [
+        "① Chronicle Requirement Pattern",
+        "② Living Entity Requirement Pattern",
+        "③ Transaction Requirement Pattern",
+        "④ Configuration Requirement Pattern"
+      ],
+      "answer": 3,
+      "explanation": "1) Stephen Withall의 소프트웨어 요구사항 패턴에서 계좌 금액 조정, 입출금 등과 같이 특정 시점에 발생하여 고유 식별자를 부여받고 수행 권한이 통제되는 거래 행위를 기술하는 패턴은 'Transaction Requirement Pattern(트랜잭션 요구사항 패턴)'입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 28,
+      "subject": "소프트웨어공학",
+      "question": "다음은 리팩토링 목록(Catalog of Refactoring)에서 정의된 리팩토링 방법 중 하나를 설명한 코드이다. 다음 코드 변경을 잘 설명하고 있는 리팩토링 방법의 이름으로 가장 적절한 것은?\n\n(변경전)\nlet defaultOwner = {firstName: \"Martin\", lastName: \"Fowler\"};\n\n(변경후)\nlet defaultOwnerData = {firstName: \"Martin\", lastName: \"Fowler\"};\nexport function defaultOwner() {return defaultOwnerData;}\nexport function setDefaultOwner(arg) {defaultOwnerData = arg;}",
+      "image": null,
+      "options": [
+        "① Inline Variable",
+        "② Encapsulate Variable",
+        "③ Split Variable",
+        "④ Rename Variable"
+      ],
+      "answer": 2,
+      "explanation": "1) 마틴 파울러(Martin Fowler)의 'Refactoring 2판'에 나오는 '변수 캡슐화하기(Encapsulate Variable)' 기법입니다.\n2) 전역 변수나 널리 공유되는 데이터에 직접 접근하는 대신 게터(Getter)와 세터(Setter) 함수를 만들어 데이터의 접근 및 변경을 캡슐화합니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 29,
+      "subject": "소프트웨어공학",
+      "question": "다음 의사 코드(Pseudo Code)에 대하여 McCabe의 Complexity Number를 계산한 것 중 가장 적절한 것은? (단, 코드 실행에 대한 오류는 없는 것으로 가정함)\n\ni = 0;\nn = 4;  //N-Number of nodes present in the graph\nwhile (i<n-1) do\n  j = i + 1;\n  while (j<n) do\n    if A[i]<A[j] then\n      swap(A[i], A[j]);\n    end do;\n  i=i+1;\nend do;",
+      "image": null,
+      "options": [
+        "① 4",
+        "② 5",
+        "③ 6",
+        "④ 7"
+      ],
+      "answer": 1,
+      "explanation": "1) McCabe의 순환 복잡도(Cyclomatic Complexity) = 분기문(Predicate Nodes) 수 + 1\n2) 조건 분기문:\n   - 1st while: (i < n - 1)\n   - 2nd while: (j < n)\n   - if 조건문: (A[i] < A[j])\n   총 조건 분기문 개수 = 3개\n3) Cyclomatic Complexity = 3 + 1 = 4입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 30,
+      "subject": "소프트웨어공학",
+      "question": "다음은 검색 알고리즘에 관한 JAVA Code 문제이다. 숫자 배열 {1, 2, 3, 4}와 정수 k는 3으로 입력되었을 때, 출력 결과로 가장 적절한 것은?\n\npublic class Search {\n  public static int search(List<Integer> list, int k) {\n    int left = 0, right = list.size() - 1, result = -1;\n    while(left <= right) {\n      int mid = left + ((right - left) / 2);\n      if (list.get(mid) > k) {\n        right = mid -1;\n      } else if (list.get(mid) == k) {\n        result = mid;\n        right = mid -1;\n      } else {\n        left = mid+1;\n      }\n    }\n    return result;\n  }\n  public static void main(String[] args) {\n    Integer[] intArr = {1, 2, 3, 4};\n    List<Integer> list = Arrays.asList(intArr);\n    System.out.println(search(list, 3));\n  }\n}",
+      "image": null,
+      "options": [
+        "① 1",
+        "② 2",
+        "③ 3",
+        "④ 4"
+      ],
+      "answer": 2,
+      "explanation": "1) 배열 {1, 2, 3, 4}에서 search(list, 3) 실행 과정:\n   - 초기값: left = 0, right = 3, result = -1\n   - 1회전: mid = 0 + (3-0)/2 = 1 -> list.get(1) = 2 < 3 이므로 else문 -> left = mid + 1 = 2\n   - 2회전: mid = 2 + (3-2)/2 = 2 -> list.get(2) = 3 == 3 이므로 else if문 -> result = 2, right = mid - 1 = 1\n   - 3회전: left(2) <= right(1) 거짓으로 루프 종료\n2) 반환값: result = 2\n따라서 출력 결과는 2입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 31,
+      "subject": "소프트웨어공학",
+      "question": "다음 중 컴포넌트 기반 개발 방법론에서 버틀러(Burtler) 그룹이 제안한 컴포넌트 성숙 단계를 1단계부터 6단계까지 순서대로 정리한 것으로 가장 적절한 것은?\n\n가. GUI 콘트롤 이용 단계\n나. CBD 성숙 단계\n다. 구현 개념 이용 단계\n라. 비즈니스 개념 이용 단계\n마. 컴포넌트 재사용 단계\n바. 기업 표준 단계",
+      "image": null,
+      "options": [
+        "① 가 - 다 - 라 - 마 - 바 - 나",
+        "② 가 - 라 - 다 - 마 - 바 - 나",
+        "③ 가 - 다 - 라 - 바 - 마 - 나",
+        "④ 가 - 라 - 다 - 바 - 마 - 나"
+      ],
+      "answer": 1,
+      "explanation": "1) 버틀러(Butler) 그룹의 컴포넌트 성숙도 6단계:\n   - 1단계: GUI 콘트롤 이용 단계 (가)\n   - 2단계: 구현 개념 이용 단계 (다)\n   - 3단계: 비즈니스 개념 이용 단계 (라)\n   - 4단계: 컴포넌트 재사용 단계 (마)\n   - 5단계: 기업 표준 단계 (바)\n   - 6단계: CBD 성숙 단계 (나)\n따라서 올바른 순서는 가 - 다 - 라 - 마 - 바 - 나 입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 32,
+      "subject": "소프트웨어공학",
+      "question": "다음은 아키텍처 스타일에 대한 설명이다. 각 설명에 대응하는 아키텍처 스타일이 가장 적절하지 않은 것은?\n\n가. 입력되는 이벤트(event)에 대한 응답으로 프레임워크에서 제공하는 서비스를 투명하게 업데이트하는 메커니즘을 제공하고, 애플리케이션을 통해 프레임워크의 이벤트 처리 동작을 검사한다.\n나. 복잡한 시스템 기능은 순차적인 하위작업들로 분리되며, 각 하위작업은 이 작업만을 담당하는 독립된 구성요소에 의해 스트림(stream)데이터를 처리한다.\n다. 시스템 구성요소가 버전별로 다른 방식으로 구성될 수 있으며, 파생된 시스템별 서비스를 위해 플러그 앤 플레이(plug-and-play) 인프라를 제공한다.\n라. 시스템의 구조적 및 행동적 측면은 메타 객체에 저장되고 애플리케이션 논리 구성 요소와 분리하며, 예기치 않은 상황에 자동으로 대처할 수 있다.",
+      "image": null,
+      "options": [
+        "① 블랙보드(Blackboard) - 가",
+        "② 파이프-필터(Pipe & Filter) - 나",
+        "③ 마이크로 커널(Microkernel) - 다",
+        "④ 리플렉션 (Reflection) - 라"
+      ],
+      "answer": 1,
+      "explanation": "1) 가의 설명은 Interceptor(인터셉터) 패턴에 대한 설명입니다. 블랙보드(Blackboard) 패턴은 지식 소스들이 중앙의 블랙보드(공유 데이터)를 통해 협력하여 비결정론적 문제를 해결하는 아키텍처 스타일입니다.\n2) 나: 파이프-필터(Pipe & Filter), 다: 마이크로커널(Microkernel), 라: 리플렉션(Reflection) 설명이 맞습니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 33,
+      "subject": "소프트웨어공학",
+      "question": "다음에 주어진 코드에 대하여 변형 조건/결정 커버리지(MC/DC)에 의한 테스트를 수행할 때, 하단에 주어진 테스트 케이스 생성표에 100% 커버리지를 달성하는 최소한의 테스트 케이스 쌍의 진리 값 표현으로 가장 적절하지 않은 것은? (단, 코드 실행에 대한 오류는 고려하지 않음)\n\npublic void coverage(int x, int y) {\n  if ((x > 0) && (y <= 0))\n    y = x;\n    system.out.printf(x, y);\n}\n\n테스트케이스 생성표\nTC#: 조건1 (x>0)의 진리 값 - 조건2 (y<=0)의 진리 값",
+      "image": null,
+      "options": [
+        "① TC1 : True – True",
+        "② TC2 : True – Flase",
+        "③ TC3 : False – True",
+        "④ TC4 : False – False"
+      ],
+      "answer": 4,
+      "explanation": "1) AND 조건식 (A && B)의 MC/DC 독립성 검증 쌍:\n   - 조건1(A) 독립성 검증: (T, T) -> T vs (F, T) -> F\n   - 조건2(B) 독립성 검증: (T, T) -> T vs (T, F) -> F\n2) 따라서 필요한 최소 테스트 케이스 집합은 (T, T), (T, F), (F, T) 3개입니다.\n3) TC4인 (False - False)는 다른 조건에 영향을 주지 못하며 최소 테스트 케이스 집합에 포함되지 않습니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 34,
+      "subject": "소프트웨어공학",
+      "question": "다음은 은행에서 일정 금액(amount)을 지급(withdraw)하는 코드의 일부분을 리팩토링 한 것이다. 적용 후 코드를 생성하기 위해 사용된 리팩토링 기법으로 가장 적절한 것은?\n(단, 코드 실행상의 문제는 고려하지 않음)\n\n적용전 코드\nint withdraw(int amount) {\n  if (amount > _balence)\n    return -1;\n  else {\n    _balence -= amount;\n    return 0;\n  }\n}\n\n적용후 코드\nvoid withdraw(int amount) throws B_exception {\n  if (amount > _balence) throw new B_exception();\n  _balence -= amount;\n}",
+      "image": null,
+      "options": [
+        "① replace error code with exception",
+        "② replace exception with test",
+        "③ replace parameter with exception",
+        "④ inline method"
+      ],
+      "answer": 1,
+      "explanation": "1) 적용 전 코드에서는 잔액 부족 시 오류 코드(-1)를 반환하던 것을 적용 후 코드에서는 예외(throw new B_exception())를 던지도록 수정하였습니다.\n2) 이는 마틴 파울러의 리팩토링 기법 중 '오류 코드를 예외로 바꾸기(Replace Error Code with Exception)'에 해당합니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 35,
+      "subject": "소프트웨어공학",
+      "question": "다음은 Git에 대한 설명이다. Git에 대한 옳은 설명만으로 가장 적절하게 묶은 것은?\n\n가. 브랜치(branch) : 커밋(commit)을 가리키는 포인터\n나. 마스터(master) : 최초로 커밋을 수행할 때 생성되며, 커밋을 수행할 때 마다 가장 최근의 브랜치를 가리킨다.\n다. 토픽(topic) 브랜치에서 수행한 작업은 커밋을 통해 자동으로 마스터 브랜치에 병합된다.\n라. 현재 작업중인 브랜치에서 마스터 브랜치로 이동하기 위해서는 git checkout master 명령을 사용한다.\n마. 브랜치에 있는 개개의 커밋을 수행하면, 단계적으로 브랜치 병합이 이루어진다.\n바. 작업중에 새로운 브랜치로 이동을 할 때, 작업 내용을 임시 저장하기 위하여 git stash명령을 사용한다.",
+      "image": null,
+      "options": [
+        "① 가, 나, 다",
+        "② 가, 나, 라",
+        "③ 나, 다, 마",
+        "④ 다, 마, 바"
+      ],
+      "answer": 2,
+      "explanation": "1) 옳은 항목 분석:\n   - 가: 브랜치는 특정 커밋을 가리키는 이동 가능한 포인터입니다. (O)\n   - 나: Git에서 기본으로 생성되는 master(main) 브랜치 설명으로 적절합니다. (O)\n   - 라: git checkout master(또는 git switch master)로 master 브랜치로 이동합니다. (O)\n   - 바: git stash는 워킹 디렉토리의 변경사항을 임시 보관하는 명령어입니다. (O)\n   - 다, 마: 브랜치 병합은 merge/rebase 명령을 통해 명시적으로 수행되며 자동 또는 커밋마다 병합되지 않습니다. (X)\n2) 보기 중 올바르게 묶인 것은 ② 가, 나, 라 입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 36,
+      "subject": "소프트웨어공학",
+      "question": "다음의 아키텍처 분석/평가 방법에 대한 설명으로 가장 적절한 것은?\n\n입력: 1) 아키텍처\n      2) 아키텍처 전략들\n      3) N개의 품질속성 시나리오\n출력: 각 아키텍처 전략의 순위\n\n단계 1. 시나리오 정리(N개의 시나리오를 N/3개의 시나리오로 축소)\n단계 2. 시나리오 정제\n단계 3. 시나리오 우선순위(N/6개의 시나리오로 축소)\n단계 4. 각 시나리오의 응답수준별로 해당하는 효용값 부여\n단계 5. 아키텍처 전략을 도출하고 각 아키텍처 전략에 대하여 관련 시나리오별 품질속성 응답수준을 결정\n단계 6. 보정으로 기대되는 품질속성 응답수준의 효용값 결정\n단계 7. 아키텍처 전략이 주는 총 이득 계산\n단계 8. 투자수익률을 기초로 아키텍처 전략 선정\n단계 9. 직관을 이용하여 결과 확인",
+      "image": null,
+      "options": [
+        "① SAAM(Software Architecture Analysis Method)",
+        "② ATAM(Architecture Tradeoff Analysis Method)",
+        "③ ARID(Active Review for Intermediate Designs)",
+        "④ CBAM(Cost Benefit Analysis Method)"
+      ],
+      "answer": 4,
+      "explanation": "1) 아키텍처 전략에 대한 효용값(Utility), 비용, 총 이득, 투자수익률(ROI)을 계산하여 아키텍처 전략의 경제적 타당성과 우선순위를 도출하는 아키텍처 분석/평가 방법은 'CBAM(Cost Benefit Analysis Method, 비용 이익 분석 방법론)'입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 37,
+      "subject": "소프트웨어공학",
+      "question": "다음 그림은 각 번호를 부여한 10개의 레거시 시스템을 대상으로 시스템 품질과 비즈니스 가치를 기준으로 평가한 결과이다. 재공학 대상과 유지보수 대상을 가장 적절하게 묶은 것은?\n\n[평가 매트릭스 도식]\n- 비즈니스 가치 높음 & 시스템 품질 낮음: 9, 10\n- 비즈니스 가치 높음 & 시스템 품질 높음: 6, 7, 8\n- 비즈니스 가치 낮음 & 시스템 품질 낮음: 1, 2, 3\n- 비즈니스 가치 낮음 & 시스템 품질 높음: 4, 5",
+      "image": "/exams/images/auditor_2022_q37.png",
+      "options": [
+        "① 재공학 - 9, 10   유지보수 - 4, 5",
+        "② 재공학 - 4, 5    유지보수 - 6, 7, 8",
+        "③ 재공학 - 6, 7, 8 유지보수 - 1, 2, 3",
+        "④ 재공학 - 9, 10   유지보수 - 6, 7, 8"
+      ],
+      "answer": 4,
+      "explanation": "1) 레거시 시스템 평가 기준:\n   - 비즈니스 가치 높음 & 품질 낮음(9, 10): 핵심 업무이나 품질이 낮아 전면적 개선이 필요한 '재공학(Re-engineering)' 대상\n   - 비즈니스 가치 높음 & 품질 높음(6, 7, 8): 핵심 업무이고 품질도 양호하여 지속적인 '정상 유지보수(Maintenance)' 대상\n   - 비즈니스 가치 낮음 & 품질 낮음(1, 2, 3): 폐기(Scrap) 대상\n   - 비즈니스 가치 낮음 & 품질 높음(4, 5): 유지/단순 보존 대상\n따라서 재공학(9, 10), 유지보수(6, 7, 8)로 묶은 4번이 정답입니다.",
+      "subject_id": 2,
+      "image_url": "/exams/images/auditor_2022_q37.png"
+    },
+    {
+      "id": 38,
+      "subject": "소프트웨어공학",
+      "question": "다음 절차로 진행하는 스토리 점수 추정 방법으로 가장 적절한 것은?\n\n착수 준비:\n- 진행자를 선정한다.\n- 추정에 전문가를 참여시킨다.\n- 추정을 준비한다.\n\n추정 대상 토론:\n- 진행자는 추정 방법을 설명하고 서기를 선정한다.\n- 제품 책임자는 개발 전문가에게 요구기능을 설명한다.\n- 개발 전문가는 질문 및 토론한다.\n- 서기는 업무범위와 제약사항을 기록한다.\n\n추정 수행:\n- 개발 전문가는 각자 추정 값을 제시한다.\n- 가장 작은 추정 값과 가장 큰 추정 값을 낸 사람이 이유를 설명하고 토론한다. 이때 가정과 제약사항을 기록한다.\n- 각자 새로운 추정 값을 제시하고 차이가 줄어들 때까지 계속한다.",
+      "image": null,
+      "options": [
+        "① 스토리 워크숍",
+        "② 플래닝 포커",
+        "③ 스크럼 회의",
+        "④ 스프린트 계획과 검토"
+      ],
+      "answer": 2,
+      "explanation": "1) 애자일 스크럼에서 개발팀 전체가 모여 카드 투표를 통해 스토리 점수를 추정하고, 편차가 큰 참가자의 의견을 토론하며 합의를 도출해 나가는 추정 기법은 '플래닝 포커(Planning Poker)'입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 39,
+      "subject": "소프트웨어공학",
+      "question": "다음과 같이 스프링 모듈 간의 상호 의존 관계를 나타날 때, (가)에 대한 설명으로 가장 적절한 것은?\n\n[스프링 모듈 의존 다이어그램 요약]\n- 데이터 접근/통합, AOP와 계측, 웹, 메시징, 테스트 모듈들이 공통적으로 (가)에 의존함\n- (가) = 코어 컨테이너(Core Container)",
+      "image": "/exams/images/auditor_2022_q39.png",
+      "options": [
+        "① spring-core와 spring-beans 모듈은 스프링 DI기능과 IoC 컨테이너 구현을 제공하고, spring-expression 모듈은 스프링 애플리케이션에서 SpEL 지원을 제공한다.",
+        "② spring-aop 모듈은 AOP 기능을, spring-instrument모듈은 클래스 계측 기능 지원을 제공한다.",
+        "③ spring-orm 모듈은 하이버네이트나 JPA와 같은 ORM프레임워크 통합을 제공하고 spring-jms 모듈은 JMS 공급자와의 상호 작용을 쉽게 만들어준다.",
+        "④ spring-webmvc 모듈은 서블릿 기반의 웹 애플리케이션과 RESTful 웹 서비스 개발을 쉽게 해주며, spring-webflux 모듈은 반응형 웹 애플리케이션과 RESTful 웹 서비스 개발을 쉽게 해준다."
+      ],
+      "answer": 1,
+      "explanation": "1) 다이어그램의 중심에 위치한 (가)는 스프링의 핵심인 '코어 컨테이너(Core Container)'입니다.\n2) 코어 컨테이너는 spring-core, spring-beans, spring-context, spring-expression(SpEL) 모듈로 구성되며, 스프링의 제어역전(IoC)과 의존성 주입(DI) 기능을 제공합니다. 따라서 (가)에 대한 설명으로 1번이 올바릅니다.",
+      "subject_id": 2,
+      "image_url": "/exams/images/auditor_2022_q39.png"
+    },
+    {
+      "id": 40,
+      "subject": "소프트웨어공학",
+      "question": "다음 (가), (나)에 해당하는 Chidamber와 Kemerer의 객체 지향 척도로 가장 적절한 것은?\n\n(가) 클래스에 있는 메서드들의 쌍을 고려하여 계산된다. 이 값은 공유된 속성이 없는 메서드 쌍의 수와 공유된 속성이 있는 메서드 쌍의 수의 차이이다.\n(나) 클래스의 객체가 받은 메시지에 응답하여 실행될 가능성이 있는 메서드들의 수를 나타낸다. 이 값이 클수록 클래스가 복잡해지므로 클래스가 오류를 포함할 가능성은 더 높을 수 있다.",
+      "image": null,
+      "options": [
+        "① (가) LCOM(Lack of cohesion in methods)\n   (나) WMC(Weighted methods per class)",
+        "② (가) WMC(Weighted methods per class)\n   (나) RFC(Response for a class)",
+        "③ (가) LCOM(Lack of cohesion in methods)\n   (나) RFC(Response for a class)",
+        "④ (가) RFC(Response for a class)\n   (나) LCOM(Lack of cohesion in methods)"
+      ],
+      "answer": 3,
+      "explanation": "1) (가)는 클래스 내 메서드들 간 속성 공유 여부를 비교하여 응집도 결여를 측정하는 LCOM(Lack of Cohesion in Methods)입니다.\n2) (나)는 클래스의 객체가 수신하는 메시지에 응답하여 실행 가능한 모든 메서드의 집합 크기인 RFC(Response For a Class)입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 41,
+      "subject": "소프트웨어공학",
+      "question": "Robert Martin의 Clean Architecture에서는 외부요소에서 내부 요소 방향만의 의존성을 강조하고 있다. 이 아키텍처를 구성하는 요소들을 내부에서 외부의 순서로 가장 적절하게 나열한 것은?",
+      "image": null,
+      "options": [
+        "① Entities - Interface Adapters - Use Cases - Frameworks and Drivers",
+        "② Entities - Use Cases - Interface Adapters - Frameworks and Drivers",
+        "③ Frameworks and Drivers - Use Cases - Interface Adapters - Entities",
+        "④ Frameworks and Drivers - Interface Adapters - Entities - Use Cases"
+      ],
+      "answer": 2,
+      "explanation": "1) 로버트 C. 마틴의 클린 아키텍처(Clean Architecture)의 계층 구조는 안쪽(핵심)에서 바깥쪽(세부사항)으로 다음과 같이 구성됩니다:\n   - 가장 안쪽: Entities (엔티티 - 비즈니스 핵심 규칙)\n   - 2단계: Use Cases (유스케이스 - 애플리케이션 업무 규칙)\n   - 3단계: Interface Adapters (인터페이스 어댑터 - 컨트롤러, 게이트웨이, 프리젠터)\n   - 가장 바깥쪽: Frameworks and Drivers (프레임워크 및 드라이버 - 웹, DB, UI, 외부 인터페이스)\n2) 따라서 내부에서 외부 순서는 Entities -> Use Cases -> Interface Adapters -> Frameworks and Drivers 입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 42,
+      "subject": "소프트웨어공학",
+      "question": "다음 문장들은 문서편집 프로그램에 대한 요구사항을 기술하고 있다. 이 중에서 ISO/IEC 25010의 신뢰성(reliability)에 대한 설명으로 가장 적절하게 묶은 것은?\n\n가. 500페이지 정도의 문서를 2초 이내에 읽어야 한다.\n나. 자신 고유의 파일 포맷뿐만 아니라 다른 문서 편집 프로그램의 파일 포맷도 읽어야 한다.\n다. 메모리가 부족해지면 가용 메모리 양에 맞추어 문서의 일부분이라도 편집할 수 있도록 한다.\n라. 예상치 못한 이유로 프로그램이 종료되면 재시작을 하고 기존 문서를 바로 보여주도록 한다.",
+      "image": null,
+      "options": [
+        "① 가",
+        "② 나, 다",
+        "③ 다, 라",
+        "④ 라"
+      ],
+      "answer": 3,
+      "explanation": "1) ISO/IEC 25010 품질 특성 매핑:\n   - 가: 2초 이내 응답 -> 성능 효율성(Performance efficiency - 시간 반응성)\n   - 나: 타 프로그램 포맷 호환 -> 호환성(Compatibility - 상호운용성)\n   - 다: 메모리 부족 시에도 부분 동작 유지 -> 신뢰성(Reliability - 결함 허용성, Fault tolerance)\n   - 라: 비정상 종료 시 재시작 및 복구 -> 신뢰성(Reliability - 회복성, Recoverability)\n2) 따라서 신뢰성에 해당하는 것은 다, 라 입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 43,
+      "subject": "소프트웨어공학",
+      "question": "다음 클래스 다이어그램은 Button이 눌렸을 때 기존에 구현된 LEDLight 클래스를 이용하여 ILamp 인터페이스를 구현하는 동작에 대한 설계를 보여 준다. 이 설계에서 적용되고 있는 2개의 디자인 패턴으로서 가장 적절한 것은?\n\n[클래스 다이어그램 요약]\n- Button -> <<interface>> Command (+execute())\n- LightOnCommand implements Command, -lamp: ILamp\n- <<interface>> ILamp (+turnOn(), +turnOff())\n- Lamp implements ILamp, -LEDLight: LEDLight\n- LEDLight (+switchOn(), +switchOff())",
+      "image": "/exams/images/auditor_2022_q43.png",
+      "options": [
+        "① Strategy pattern과 Proxy pattern",
+        "② State pattern과 Adapter pattern",
+        "③ Command pattern과 Proxy pattern",
+        "④ Command pattern과 Adapter pattern"
+      ],
+      "answer": 4,
+      "explanation": "1) Button이 Command 인터페이스의 execute()를 호출하여 구체적 명령(LightOnCommand)을 캡슐화하여 실행하는 패턴은 Command 패턴입니다.\n2) Lamp 클래스가 기존 LEDLight 클래스의 인터페이스(switchOn/switchOff)를 ILamp 인터페이스(turnOn/turnOff)에 맞추어 변환(위임)해 주는 구조는 Adapter 패턴(클래스/객체 어댑터)입니다.",
+      "subject_id": 2,
+      "image_url": "/exams/images/auditor_2022_q43.png"
+    },
+    {
+      "id": 44,
+      "subject": "소프트웨어공학",
+      "question": "다음의 Cause-Effect Graph에서 C1과 C2의 각 값에 대한 A1, A2, A3의 값으로 가장 적절한 것은?\n\n[그래프 논리 관계]\n- C12 = C1 OR C2 (v 연산자)\n- A1 = C12 (동치, Identity)\n- A2 = C12 AND C2 (^ 연산자)\n- A3 = NOT C2 (~ 연산자)\n\n[표 보기]\n구분 | 가 | 나 | 다 | 라\nC1   | T  | T  | F  | F\nC2   | T  | F  | T  | F\nA1   | T  | T  | T  | T\nA2   | T  | F  | F  | F\nA3   | T  | T  | F  | T",
+      "image": "/exams/images/auditor_2022_q44.png",
+      "options": [
+        "① 가",
+        "② 나",
+        "③ 다",
+        "④ 라"
+      ],
+      "answer": 2,
+      "explanation": "1) 각 열의 논리값 계산:\n   - '나' 열: C1 = T, C2 = F\n     * C12 = C1 OR C2 = T OR F = T\n     * A1 = C12 = T\n     * A2 = C12 AND C2 = T AND F = F\n     * A3 = NOT C2 = NOT F = T\n   - 표의 '나' 열(A1=T, A2=F, A3=T)과 정확히 일치합니다.\n2) 따라서 올바른 것은 ② '나' 입니다.",
+      "subject_id": 2,
+      "image_url": "/exams/images/auditor_2022_q44.png"
+    },
+    {
+      "id": 45,
+      "subject": "소프트웨어공학",
+      "question": "다음은 시퀀스 다이어그램과 이와 일관성이 있는 클래스 다이어그램을 보여 준다. 시퀀스 다이어그램을 기준으로 할 때, 클래스 다이어그램에 존재하는 문제를 설명한 것으로 가장 적절한 것은?\n\n[시퀀스 다이어그램]\n- C1 객체 c1이 loop [for each c2 in c2s] 프래그먼트 내에서 c2.op21()을 반복 호출함\n- c2는 c3.op31()을 호출함\n\n[클래스 다이어그램]\n- C1 -> C2 (연관관계, 다중성 표기 없음/1:1 처럼 표시)\n- C2 -> C3 (의존관계)",
+      "image": "/exams/images/auditor_2022_q45.png",
+      "options": [
+        "① 클래스 C3에 op1() 연산이 반드시 정의되어야 한다.",
+        "② 클래스 C2에서 클래스 C3로의 관계는 의존관계가 아니라 연관관계가 되어야 한다.",
+        "③ 클래스 C1에서 클래스 C2로의 연관관계는 C2 클래스 쪽에 '*' 등의 다중성이 명시되어야 한다.",
+        "④ 클래스 C1의 op12() 연산은 '-'가 아니라 '+'로 표시되어야 한다."
+      ],
+      "answer": 3,
+      "explanation": "1) 시퀀스 다이어그램의 loop [for each c2 in c2s]에서 c1 객체가 c2s 컬렉션 내의 복수 객체 c2를 순회하며 호출하고 있습니다.\n2) 따라서 클래스 C1에서 C2로의 연관관계에는 C2 쪽에 1:N 또는 '*'와 같은 복수 다중성이 명시되어야 합니다.",
+      "subject_id": 2,
+      "image_url": "/exams/images/auditor_2022_q45.png"
+    },
+    {
+      "id": 46,
+      "subject": "소프트웨어공학",
+      "question": "시스템 요청에 대한 실패가 인명이나 환경에 피해를 주는 등 심각한 결과를 초래할 수 있는 시스템의 신뢰성을 표현하는 척도로 가장 적절한 것은?",
+      "image": null,
+      "options": [
+        "① 평균 고장 간격 (MTBF: mean time between failure)",
+        "② 평균 고장 시간 (MTTF: mean time to failure)",
+        "③ 고장 발생 비율 (ROCOF: rate of occurrence of failure)",
+        "④ 온 디맨드 고장 확률 (POFOD: probability of failure on demand)"
+      ],
+      "answer": 4,
+      "explanation": "1) 이안 서머빌(Ian Sommerville) 소프트웨어 공학의 신뢰성 척도:\n   - POFOD(Probability of Failure on Demand, 온 디맨드 고장 확률): 서비스 요청이 발생했을 때 시스템이 고장 날 확률. 비상 정지 시스템, 원자력 발전소 보호 시스템 등 안전 필수(Safety-critical) 시스템의 신뢰성 척도로 사용됩니다.\n   - ROCOF: 트랜잭션 처리 시스템 등 정기적 서비스 시스템\n   - MTTF: 장시간 지속 가동 시스템\n   - MTBF: 수리 가능한 시스템의 고장 간격 평균 시간",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 47,
+      "subject": "소프트웨어공학",
+      "question": "시스템 확실성(dependability) 속성에 대한 다음 설명에서 (가), (나)에 들어갈 내용으로 가장 적절한 순서대로 나열한 것은?\n\n(가)는 주어진 시점에 시스템이 작동 중이고 유용한 서비스를 제공할 확률이다.\n(나)는 장비 고장이나 사이버 공격 등 손상 사건이 일어났을 때 중요한 서비스를 잘 유지할 수 있는지에 대한 추정이다.",
+      "image": null,
+      "options": [
+        "① 가용성(availability), 보안성(security)",
+        "② 가용성(availability), 복원성(resilience)",
+        "③ 신뢰성(reliability), 보안성(security)",
+        "④ 신뢰성(reliability), 복원성(resilience)"
+      ],
+      "answer": 2,
+      "explanation": "1) (가): 시스템이 특정 시점에 정상 작동하여 서비스를 제공할 수 있는 확률은 '가용성(Availability)'입니다.\n2) (나): 고장이나 공격 등 예기치 못한 치명적 사고 발생 시에도 필수 핵심 서비스를 유지하고 극복하는 능력은 '복원성(Resilience, 탄력성)'입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 48,
+      "subject": "소프트웨어공학",
+      "question": "다음은 시스템의 신뢰성을 향상시키는 방법에 대한 설명이다. (가), (나)에 들어갈 내용으로 가장 적절한 순서대로 나열한 것은?\n\n광범위한 컴파일러 검사가 가능한 강한 자료형의 언어를 사용하는 것과 포인터와 같이 오류가 발생하기 쉬운 요소의 사용을 최소화하는 것은 (가)기법이고, 체계적인 테스팅, 디버깅, 정적 분석은 (나) 기법의 예이다.",
+      "image": null,
+      "options": [
+        "① 결함 내성, 결함 회피",
+        "② 결함 내성, 결함 감지 및 정정",
+        "③ 결함 회피, 결함 내성",
+        "④ 결함 회피, 결함 감지 및 정정"
+      ],
+      "answer": 4,
+      "explanation": "1) (가): 결함이 프로그램에 유입되지 않도록 사전에 방지/회피하는 기법은 '결함 회피(Fault Avoidance)'입니다.\n2) (나): 개발 과정에서 이미 존재하는 결함을 발견하고 디버깅을 통해 수정하는 기법은 '결함 감지 및 정정(Fault Detection and Correction)'입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 49,
+      "subject": "소프트웨어공학",
+      "question": "다음 설명에서 (가)에 들어갈 내용으로 가장 적절한 것은?\n\n(가)은/는 도메인 특화 애플리케이션을 구축하기 위하여 사용되는 공통 아키텍처와 공유되는 컴포넌트를 가지는 애플리케이션의 집합이다. 다양한 고객의 요구사항에 맞게 구성하고 적응할 수 있도록 설계되었으며, 하나의 애플리케이션 유형을 일반화하여 다른 고객을 위해서도 적용하는 것이다.",
+      "image": null,
+      "options": [
+        "① 아키텍처 패턴",
+        "② 서비스 지향 시스템",
+        "③ 소프트웨어 제품라인",
+        "④ 애플리케이션 프레임워크"
+      ],
+      "answer": 3,
+      "explanation": "1) 공통의 핵심 자산(Core Assets, 아키텍처 및 재사용 컴포넌트)을 기반으로 특정 도메인의 다양한 파생 제품들을 효율적으로 개발하기 위한 제품 집합 및 공학 접근법은 '소프트웨어 제품라인(Software Product Line, SPL)'입니다.",
+      "subject_id": 2,
+      "image_url": null
+    },
+    {
+      "id": 50,
+      "subject": "소프트웨어공학",
+      "question": "다음 sequence diagram을 바탕으로 Class1의 m1() 연산에 대한 CC(순환복잡도)와 Class1의 CBO(Coupling Between Objects)의 값으로 가장 적절한 것은? (단, CBO를 계산할 때 Class1을 이용하는 다른 클래스는 포함하지 않음을 가정한다.)\n\n[시퀀스 다이어그램 구조 요약]\n- Class1의 m1() 실행 중:\n  * 복합 프래그먼트: loop, break, opt 총 3개의 분기 구조 포함\n  * 호출 대상: Class2의 객체(O21, O22), Class3의 객체",
+      "image": "/exams/images/auditor_2022_q50.png",
+      "options": [
+        "① CC = 3, CBO = 3",
+        "② CC = 4, CBO = 3",
+        "③ CC = 3, CBO = 2",
+        "④ CC = 4, CBO = 2"
+      ],
+      "answer": 4,
+      "explanation": "1) 순환복잡도 CC = 분기 영역(결정 분기 수) + 1 = 3(loop, break, opt) + 1 = 4입니다.\n2) CBO(Coupling Between Objects)는 Class1이 직접 결합되어 호출하는 타 클래스의 개수입니다. Class2와 Class3 총 2개의 클래스와 결합되어 있으므로 CBO = 2입니다.\n3) 따라서 CC = 4, CBO = 2 (④번)가 정답입니다.",
+      "subject_id": 2,
+      "image_url": "/exams/images/auditor_2022_q50.png"
+    },
+    {
+      "id": 51,
+      "subject_id": 3,
+      "question": "데이터베이스 설계 단계 중 논리적 설계 단계에서 수행하는 작업으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 개념적 설계 단계에서 생성된 ER 다이어그램을 관계형 데이터 모델의 릴레이션으로 변환한다.",
+        "② 릴레이션의 정규화 과정을 수행하여 데이터 중복 및 갱신 이상을 최소화한다.",
+        "③ 트랜잭션의 인터페이스 및 상세 처리 절차를 설계한다.",
+        "④ 성능 향상을 위해 인덱스 구조, 테이블 저장 공간, 클러스터링 등을 물리적으로 배치한다."
+      ],
+      "answer": 4,
+      "explanation": "인덱스 구조, 저장 공간 할당, 클러스터링 등 물리적 저장 장치와 관련된 작업은 물리적 설계 단계에서 수행합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 52,
+      "subject_id": 3,
+      "question": "다음 관계대수(Relational Algebra) 연산자 중 순수 관계 연산자에 해당하지 않는 것은?",
+      "options": [
+        "① 셀렉션(Selection)",
+        "② 프로젝션(Projection)",
+        "③ 디비전(Division)",
+        "④ 합집합(Union)"
+      ],
+      "answer": 4,
+      "explanation": "합집합(Union), 교집합(Intersection), 차집합(Difference), 카티션 프로덕트(Cartesian Product)는 일반 집합 연산자이며, 셀렉션, 프로젝션, 조인, 디비전은 순수 관계 연산자입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 53,
+      "subject_id": 3,
+      "question": "다음 SQL문과 릴레이션 R의 데이터에 대한 실행 결과로 가장 적절한 것은?\n\n[릴레이션 R]\n| A | B |\n|---|---|\n| 1 | 10 |\n| 2 | NULL |\n| 3 | 20 |\n| 4 | NULL |\n| NULL | 30 |\n\n[SQL]\nSELECT COUNT(*), COUNT(A), COUNT(B), SUM(B), AVG(B)\nFROM R;",
+      "options": [
+        "① 5, 4, 3, 60, 20",
+        "② 5, 5, 5, 60, 12",
+        "③ 4, 4, 3, 60, 20",
+        "④ 5, 4, 3, NULL, NULL"
+      ],
+      "answer": 1,
+      "explanation": "COUNT(*)는 NULL을 포함한 전체 행 수(5), COUNT(A)는 A 컬럼의 NOT NULL 수(4), COUNT(B)는 B 컬럼의 NOT NULL 수(3), SUM(B)는 10+20+30=60, AVG(B)는 NULL을 제외한 60/3=20입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 54,
+      "subject_id": 3,
+      "question": "동시성 제어(Concurrency Control)가 적절히 이루어지지 않을 때 발생할 수 있는 문제점으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 갱신 분실(Lost Update): 두 개 이상의 트랜잭션이 같은 데이터를 공유하여 갱신할 때 일부 갱신 결과가 사라지는 현상",
+        "② 모순성(Inconsistency): 복수의 트랜잭션이 동시에 실행되어 데이터베이스의 일관성이 결여되는 현상",
+        "③ 연쇄 복귀(Cascading Rollback): 한 트랜잭션이 롤백될 때 해당 트랜잭션이 수정한 데이터를 참조한 다른 트랜잭션도 연쇄적으로 롤백되는 현상",
+        "④ 교착상태(Deadlock): 트랜잭션이 영구적으로 자원을 점유하여 다른 모든 트랜잭션이 정상 완료되는 현상"
+      ],
+      "answer": 4,
+      "explanation": "교착상태(Deadlock)는 둘 이상의 트랜잭션이 서로 상대방이 점유한 자원을 무한정 대기하여 작업이 전혀 진행되지 못하는 상태를 의미합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 55,
+      "subject_id": 3,
+      "question": "2단계 로킹 규약(Two-Phase Locking Protocol, 2PL)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 트랜잭션은 락을 획득하는 확장 단계(Growing Phase)와 락을 해제하는 축소 단계(Shrinking Phase)를 거친다.",
+        "② 2PL을 준수하면 트랜잭션 스케줄의 직렬가능성(Serializability)이 항상 보장된다.",
+        "③ 2PL을 적용하면 교착상태(Deadlock)가 완전히 예방된다.",
+        "④ 엄격한 2단계 로킹 규약(Strict 2PL)은 트랜잭션이 완료(Commit/Abort)될 때까지 배타적 락(X-lock)을 유지하여 연쇄 복귀를 방지한다."
+      ],
+      "answer": 3,
+      "explanation": "기본 2단계 로킹 규약(2PL)은 직렬가능성을 보장하지만 교착상태(Deadlock)를 완전히 예방하지는 못하므로 별도의 교착상태 탐지/회피 기법이 필요합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 56,
+      "subject_id": 3,
+      "question": "다음 함수 종속성 집합 F를 갖는 릴레이션 R(A, B, C, D)의 정규형 단계로 가장 적절한 것은?\n\nF = { A → B, B → C, C → D }\n(단, A는 릴레이션 R의 기본키임)",
+      "options": [
+        "① 제1정규형(1NF) 상태이다.",
+        "② 제2정규형(2NF)이지만 제3정규형(3NF)은 아니다.",
+        "③ 제3정규형(3NF)이지만 BCNF는 아니다.",
+        "④ BCNF 정규형을 만족한다."
+      ],
+      "answer": 2,
+      "explanation": "기본키가 단일 속성 A이므로 부분 함수 종속이 없어 2NF를 만족하지만, A → B → C → D로 이행적 함수 종속(Transitive Functional Dependency)이 존재하므로 3NF는 만족하지 못합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 57,
+      "subject_id": 3,
+      "question": "릴레이션 R(A, B, C, D, E)에서 주어진 함수 종속성 집합 F가 다음과 같을 때, 릴레이션 R의 후보키(Candidate Key)로 가장 적절한 것은?\n\nF = { AB → C, C → D, D → E, E → A }",
+      "options": [
+        "① {A, B}, {B, C}, {B, D}, {B, E}",
+        "② {A, B}, {C, D}, {D, E}",
+        "③ {A, B, C}, {B, C, D}",
+        "④ {B, C}, {C, D}, {D, E}, {E, A}"
+      ],
+      "answer": 1,
+      "explanation": "B는 어떤 결정자에도 나타나지 않으므로 모든 후보키에 반드시 포함되어야 합니다. {A, B}+ = {A,B,C,D,E}, {B, C}+ = {A,B,C,D,E}, {B, D}+ = {A,B,C,D,E}, {B, E}+ = {A,B,C,D,E} 모두 최소성과 유일성을 만족하므로 후보키는 {AB, BC, BD, BE}입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 58,
+      "subject_id": 3,
+      "question": "다음 SQL 질의와 윈도우 함수(Window Function)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① RANK() 함수는 동일한 순위가 있을 경우 동일 순위를 부여하고 다음 순위는 건너뛴다.",
+        "② DENSE_RANK() 함수는 동일한 순위가 있더라도 다음 순위를 건너뛰지 않고 연속된 순위를 부여한다.",
+        "③ ROW_NUMBER() 함수는 동일한 값이 있더라도 고유한 일련번호를 순차적으로 부여한다.",
+        "④ PARTITION BY 절은 전체 결과 집합을 그룹화하며 GROUP BY 절과 달리 그룹별 단일 집계 행만을 출력한다."
+      ],
+      "answer": 4,
+      "explanation": "PARTITION BY 절은 데이터를 소그룹으로 분할하지만 GROUP BY와 달리 원본 행의 세부 데이터를 그대로 유지하면서 각 행마다 집계/순위 결과를 함께 표시합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 59,
+      "subject_id": 3,
+      "question": "B+ 트리(B+ Tree) 인덱스 구조에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 모든 실제 레코드에 대한 포인터 또는 데이터는 리프 노드(Leaf Node)에만 저장된다.",
+        "② 내부 노드(Non-leaf Node)는 키 값과 자식 노드를 가리키는 포인터만을 저장하여 인덱스 역할을 한다.",
+        "③ 리프 노드들은 양방향 또는 단방향 연결 리스트(Linked List)로 연결되어 순차 탐색(Range Scan) 효율이 매우 높다.",
+        "④ 데이터 삽입 및 삭제 시 트리의 균형이 깨지며 리프 노드의 깊이가 서로 달라질 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "B+ 트리는 자가 균형 트리(Balanced Tree)이므로 삽입과 삭제 연산 후에도 루트 노드에서 모든 리프 노드까지의 높이(깊이)가 항상 동일하게 유지됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 60,
+      "subject_id": 3,
+      "question": "데이터베이스 회복(Recovery) 기법 중 로그 기반 회복 기법(Log-based Recovery)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 지연 갱신(Deferred Update) 기법은 트랜잭션이 커밋될 때까지 데이터베이스에 대한 실제 기록을 지연하므로 UNDO 작업이 필요 없다.",
+        "② 즉시 갱신(Immediate Update) 기법은 트랜잭션 수행 중에 데이터 변경을 DB에 즉시 반영하므로 장애 발생 시 UNDO와 REDO 작업이 모두 필요할 수 있다.",
+        "③ 검사점(Checkpoint) 회복 기법은 장애 발생 시 로그의 처음부터 모든 트랜잭션을 검색하여 회복 작업을 수행해야 한다.",
+        "④ WAL(Write-Ahead Logging) 프로토콜은 데이터베이스 버퍼 블록을 디스크에 쓰기 전에 해당 로그 레코드를 먼저 안정 저장소에 기록해야 함을 규정한다."
+      ],
+      "answer": 3,
+      "explanation": "체크포인트(Checkpoint) 기법을 사용하면 검사점 시점 이전의 완료된 트랜잭션에 대해서는 회복 작업을 생략할 수 있으므로 로그 전체를 탐색할 필요가 없어 회복 시간이 단축됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 61,
+      "subject_id": 3,
+      "question": "NoSQL 데이터베이스의 데이터 모델 유형과 대표적인 데이터베이스의 연결로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Key-Value 모델: Redis, DynamoDB",
+        "② Document 모델: MongoDB, CouchDB",
+        "③ Column-Family 모델: Cassandra, HBase",
+        "④ Graph 모델: Oracle, PostgreSQL"
+      ],
+      "answer": 4,
+      "explanation": "Oracle과 PostgreSQL은 전통적인 관계형 데이터베이스(RDBMS) 또는 객체-관계형 DB이며, Graph NoSQL 모델의 대표적인 시스템은 Neo4j, Amazon Neptune 등입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 62,
+      "subject_id": 3,
+      "question": "분산 데이터베이스 시스템의 투명성(Transparency) 요건에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 위치 투명성(Location Transparency): 사용자가 데이터가 실제로 저장된 물리적 위치를 몰라도 논리적 명칭만으로 접근할 수 있다.",
+        "② 분할 투명성(Fragmentation Transparency): 릴레이션이 여러 단편으로 분할되어 저장되어 있어도 사용자는 단일 릴레이션으로 인식한다.",
+        "③ 복제 투명성(Replication Transparency): 동일한 데이터가 여러 사이트에 중복 저장되어 있어도 사용자는 단일 사본으로 인식한다.",
+        "④ 병행 투명성(Concurrency Transparency): 시스템의 장애 발생 시에도 트랜잭션을 정확하게 재수행할 수 있음을 보장한다."
+      ],
+      "answer": 4,
+      "explanation": "장애 발생 시에도 트랜잭션의 정확성을 보장하는 것은 장애 투명성(Failure Transparency)이며, 병행 투명성은 다수의 트랜잭션이 동시 실행되더라도 상호 간섭 없이 정확한 결과를 보장하는 것입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 63,
+      "subject_id": 3,
+      "question": "데이터 웨어하우스의 다차원 모델링(Dimensional Modeling) 기법인 스타 스키마(Star Schema)와 스노우플레이크 스키마(Snowflake Schema)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 스타 스키마는 중앙의 팩트 테이블(Fact Table)과 이를 둘러싼 비정규화된 차원 테이블(Dimension Table)들로 구성된다.",
+        "② 스노우플레이크 스키마는 스타 스키마의 차원 테이블을 정규화하여 데이터 중복을 제거한 구조이다.",
+        "③ 스타 스키마는 조인(Join) 수가 적어 질의 성능이 우수하지만 데이터 중복이 발생할 수 있다.",
+        "④ 스노우플레이크 스키마는 차원 테이블의 비정규화로 인해 스타 스키마에 비해 질의 처리 시 조인 연산의 수가 현저히 감소한다."
+      ],
+      "answer": 4,
+      "explanation": "스노우플레이크 스키마는 차원 테이블을 정규화(Normalization)하여 세분화하므로, 질의 처리 시 조인(Join) 연산의 수가 증가하여 복잡도가 높아집니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 64,
+      "subject_id": 3,
+      "question": "관계형 데이터베이스의 뷰(View)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 뷰는 하나 이상의 기본 테이블로부터 유도된 가상 테이블(Virtual Table)이다.",
+        "② 뷰를 정의하면 데이터 딕셔너리에 뷰 정의 쿼리문이 저장되며 물리적으로 독립된 데이터 공간을 차지하지 않는다.",
+        "③ 집계 함수(SUM, AVG 등)나 GROUP BY 절을 포함하여 정의된 뷰를 통해서도 기본 테이블의 행에 대한 삽입/수정/삭제 갱신이 자유롭게 가능하다.",
+        "④ 뷰를 활용하면 특정 사용자에게 필요한 컬럼만 노출함으로써 데이터 보안성을 향상시킬 수 있다."
+      ],
+      "answer": 3,
+      "explanation": "집계 함수, GROUP BY, DISTINCT, UNION 등이 포함된 뷰는 1:1 행 매핑이 불가능하므로 뷰를 통한 기본 테이블 데이터의 INSERT, UPDATE, DELETE 갱신이 제한됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 65,
+      "subject_id": 3,
+      "question": "데이터 모델링 과정(개념적 모델링 → 논리적 모델링 → 물리적 모델링)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 개념적 모델링 단계에서는 핵심 엔터티와 관계를 도출하고 ERD(Entity Relationship Diagram)를 작성한다.",
+        "② 논리적 모델링 단계에서는 특정 DBMS의 특성을 반영하여 테이블스페이스 크기, 인덱스 생성 위치 등을 결정한다.",
+        "③ 논리적 모델링 단계에서는 정규화를 통해 데이터 구조의 일관성을 확보하고 M:N 관계를 해소한다.",
+        "④ 물리적 모델링 단계에서는 성능 최적화를 위한 반정규화(De-normalization)나 파티셔닝 전략을 수립한다."
+      ],
+      "answer": 2,
+      "explanation": "특정 DBMS의 물리적 구조(테이블스페이스, 블록 크기, 저장 매체 등)를 반영하는 작업은 물리적 모델링 단계에서 수행합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 66,
+      "subject_id": 3,
+      "question": "클러스터드 인덱스(Clustered Index)와 넌클러스터드 인덱스(Non-Clustered Index)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 클러스터드 인덱스의 리프 노드는 실제 데이터 페이지 자체로 구성된다.",
+        "② 클러스터드 인덱스는 테이블당 단 하나만 생성할 수 있다.",
+        "③ 넌클러스터드 인덱스의 리프 노드는 데이터의 위치를 가리키는 포인터(RID 또는 클러스터드 키 값)를 갖는다.",
+        "④ 넌클러스터드 인덱스는 데이터 삽입 시 실제 테이블의 물리적 정렬 순서를 변경시키므로 대량 삽입 시 심각한 페이지 분할을 유발한다."
+      ],
+      "answer": 4,
+      "explanation": "실제 데이터의 물리적 정렬 순서를 결정하는 것은 클러스터드 인덱스이며, 넌클러스터드 인덱스는 실제 데이터 행의 물리적 순서를 변경하지 않습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 67,
+      "subject_id": 3,
+      "question": "분산 시스템의 CAP 정리(CAP Theorem)와 BASE 원칙에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 일관성(Consistency): 모든 노드가 동시에 동일한 최신 데이터를 조회할 수 있어야 한다.",
+        "② 가용성(Availability): 일부 노드에 장애가 발생하더라도 모든 요청에 대해 정상적인 응답을 제공해야 한다.",
+        "③ 분할 내구성(Partition Tolerance): 네트워크 단절이나 메시지 유실이 발생해도 시스템이 계속 동작해야 한다.",
+        "④ BASE 모델의 최종 일관성(Eventual Consistency)은 데이터 변경 즉시 모든 노드에서 절대적인 일관성을 항상 보장하는 원칙이다."
+      ],
+      "answer": 4,
+      "explanation": "최종 일관성(Eventual Consistency)은 즉각적인 동기화 대신 일정 시간이 지나면 모든 복제본의 데이터가 결국 일치하게 됨을 의미하는 약한 일관성 모델입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 68,
+      "subject_id": 3,
+      "question": "비용 기반 옵티마이저(Cost-Based Optimizer, CBO)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 테이블, 인덱스, 컬럼의 통계 정보를 활용하여 여러 실행 경로의 비용을 계산하고 최적의 실행계획을 선택한다.",
+        "② 규칙 기반 옵티마이저(RBO)에 비해 데이터의 분포도, 행 수, 인덱스 높이 등을 고려한 현실적인 계획 수립이 가능하다.",
+        "③ 정확한 비용 계산을 위해 통계 정보(Statistics)를 정기적으로 최신 상태로 갱신 및 관리해 주어야 한다.",
+        "④ 항상 고정된 우선순위 규칙(Rule)만을 참조하므로 데이터양의 변화에 따라 실행계획이 동적으로 변경되지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "고정된 우선순위 규칙만을 참조하는 것은 규칙 기반 옵티마이저(RBO)이며, CBO는 통계 정보를 바탕으로 데이터양과 분포에 따라 실행계획을 동적으로 결정합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 69,
+      "subject_id": 3,
+      "question": "데이터 품질 관리(Data Quality Management) 프레임워크의 품질 진단 기준과 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 완전성(Completeness): 데이터 항목에 누락된 값(Null 또는 공백) 없이 필수 데이터가 모두 충족되어 있는 정도",
+        "② 정확성(Accuracy): 데이터가 실제 현실 세계의 대상 값과 일치하는 정확한 정보를 표현하고 있는 정도",
+        "③ 일관성(Consistency): 여러 시스템이나 테이블 간에 동일한 데이터가 모순 없이 동일하게 유지되는 정도",
+        "④ 유효성(Validity): 데이터의 물리적 저장 공간 크기가 디스크 허용 한도를 초과하지 않는 정도"
+      ],
+      "answer": 4,
+      "explanation": "유효성(Validity)은 데이터가 정의된 형식, 도메인 규칙, 제약조건(데이터 타입, 범위, 패턴 등)을 올바르게 준수하고 있는지를 나타내는 기준입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 70,
+      "subject_id": 3,
+      "question": "빅데이터 처리 아키텍처 중 람다 아키텍처(Lambda Architecture)의 세 가지 레이어로 가장 적절한 것은?",
+      "options": [
+        "① 배치 레이어(Batch Layer), 스피드 레이어(Speed Layer), 서빙 레이어(Serving Layer)",
+        "② 스토리지 레이어(Storage Layer), 컴퓨팅 레이어(Computing Layer), 뷰 레이어(View Layer)",
+        "③ 데이터 레이어(Data Layer), 스트림 레이어(Stream Layer), 앱 레이어(App Layer)",
+        "④ 마스터 레이어(Master Layer), 워커 레이어(Worker Layer), 클라이언트 레이어(Client Layer)"
+      ],
+      "answer": 1,
+      "explanation": "람다 아키텍처는 대규모 원천 데이터를 완벽하게 처리하는 배치 레이어(Batch Layer), 실시간 저지연 처리를 담당하는 스피드 레이어(Speed Layer), 그리고 둘의 결과를 통합하여 질의에 응답하는 서빙 레이어(Serving Layer)로 구성됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 71,
+      "subject_id": 3,
+      "question": "관계형 데이터 모델의 무결성 제약조건(Integrity Constraints)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 개체 무결성(Entity Integrity): 기본키(Primary Key)를 구성하는 어떤 속성도 NULL 값이나 중복 값을 가질 수 없다.",
+        "② 참조 무결성(Referential Integrity): 외래키(Foreign Key)의 값은 참조하는 릴레이션의 기본키 값과 일치하거나 NULL이어야 한다.",
+        "③ 도메인 무결성(Domain Integrity): 특정 속성의 값은 해당 속성에 정의된 도메인(데이터 타입, 허용 범위 등)에 속한 값이어야 한다.",
+        "④ 고유 무결성(Unique Integrity): 릴레이션의 모든 일반 속성은 서로 다른 값을 가져야 하며 중복이 전면 금지된다."
+      ],
+      "answer": 4,
+      "explanation": "일반 속성들은 중복된 값을 가질 수 있으며, UNIQUE 제약조건이 명시적으로 설정된 특정 컬럼 또는 대체키에 대해서만 유일성이 적용됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 72,
+      "subject_id": 3,
+      "question": "관계형 데이터베이스의 주요 조인(Join) 알고리즘에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 중첩 루프 조인(Nested Loop Join): 외부 테이블의 각 행마다 내부 테이블을 반복 검색하는 방식으로 소량 데이터 처리에 유리하다.",
+        "② 정렬 병합 조인(Sort Merge Join): 양쪽 테이블을 조인 키 기준으로 먼저 정렬한 후 병합하는 방식으로 동등 조인과 비동등 조인 모두 적용 가능하다.",
+        "③ 해시 조인(Hash Join): 빌드 입력 테이블로 해시 테이블을 생성하고 프로브 테이블을 스캔하여 매칭하며 대용량 동등 조인(=)에 효과적이다.",
+        "④ 해시 조인(Hash Join): 부등호(<, >) 및 범위 검색과 같은 비동등 조인(Non-Equi Join) 연산에 가장 최적화되어 있다."
+      ],
+      "answer": 4,
+      "explanation": "해시 조인(Hash Join)은 해시 함수의 특성상 동등 조인(Equi-Join, '=')에만 적용 가능하며, 부등호나 범위 조건과 같은 비동등 조인에는 사용할 수 없습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 73,
+      "subject_id": 3,
+      "question": "데이터베이스 반정규화(De-normalization) 기법과 적용 시 고려사항에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 반정규화는 조회 성능을 향상시키기 위해 정규화된 데이터 모델을 의도적으로 중복, 통합, 분리하는 기법이다.",
+        "② 테이블 병합(1:1, 1:N 관계 병합)을 통해 조인 횟수를 줄여 질의 성능을 개선할 수 있다.",
+        "③ 통계 테이블이나 이력 테이블의 파생 컬럼을 추가하여 실시간 집계 연산 부하를 줄일 수 있다.",
+        "④ 반정규화를 과도하게 적용하면 데이터 무결성 유지가 용이해지고 입력/수정/삭제 처리 성능이 항상 비례하여 향상된다."
+      ],
+      "answer": 4,
+      "explanation": "반정규화를 적용하면 데이터 중복으로 인해 무결성 유지가 어려워지고(이상 현상 발생 위험), INSERT/UPDATE/DELETE 시 중복 데이터 동기화 부하로 쓰기 성능이 저하될 수 있습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 74,
+      "subject_id": 3,
+      "question": "데이터 거버넌스(Data Governance) 체계의 주요 구성 요소에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 원칙(Principles): 데이터의 품질과 보안, 수명주기를 관리하기 위한 전사적 정책 및 지침",
+        "② 조직(Organization): 데이터 관리자(Data Steward), 데이터 소유자(Data Owner) 등의 역할과 책임 정의",
+        "③ 프로세스(Process): 데이터 표준화, 변경 관리, 품질 모니터링 등의 표준 운영 절차",
+        "④ 메타데이터(Metadata): 원천 데이터의 백업 주기만을 기록하며 비즈니스 용어집이나 데이터 사전 기능은 배제한다."
+      ],
+      "answer": 4,
+      "explanation": "메타데이터는 데이터의 구조, 정의, 속성, 비즈니스 용어 표준, 데이터 사전, 데이터 카탈로그, 계보(Lineage) 등을 포괄적으로 관리하는 핵심 자산입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 75,
+      "subject_id": 3,
+      "question": "데이터베이스 암호화 방식에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① API 방식: 응용 프로그램 레벨에서 암·복호화 모듈을 호출하여 처리하므로 DB 서버의 연산 부하를 분산할 수 있다.",
+        "② 플러그인(Plug-in) 방식: DB 서버의 확장 기능을 활용하여 암·복호화를 수행하므로 애플리케이션 수정을 최소화할 수 있다.",
+        "③ TDE(Transparent Data Encryption) 방식: DBMS 엔진 레벨에서 데이터 파일 및 로그를 투명하게 암호화하며 애플리케이션 수정이 불필요하다.",
+        "④ 하이브리드 방식: 오직 단방향 해시 함수만을 적용하여 복호화가 원천적으로 불가능한 데이터만을 전용으로 관리하는 방식이다."
+      ],
+      "answer": 4,
+      "explanation": "하이브리드 방식은 API 방식과 Plug-in/TDE 방식을 혼합하여 성능과 보안성, 개발 편의성을 상호 보완하는 암호화 구축 기법입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 76,
+      "subject_id": 4,
+      "question": "다음 중 4비트 2진수 A=1011, B=1101에 대하여 논리 연산 및 산술 연산 결과로 가장 적절하지 않은 것은? (단, 음수는 2의 보수로 표현함)",
+      "options": [
+        "① A AND B = 1001",
+        "② A OR B = 1111",
+        "③ A XOR B = 0110",
+        "④ 2의 보수로 표현된 A(-5)와 B(-3)의 덧셈 결과 = 1000 (-8)"
+      ],
+      "answer": 4,
+      "explanation": "4비트 2의 보수에서 1011은 -5, 1101은 -3입니다. (-5) + (-3) = -8이며, -8의 4비트 2의 보수 표현은 1000이 맞으나, 비트 덧셈 시 1011 + 1101 = (1)1000 (최상위 캐리 발생, 오버플로우 없음)으로 결과는 1000입니다. 보기에 따라 연산 검증 시 AND=1001, OR=1111, XOR=0110 모두 정확하며, 산술 오버플로우 검증 규칙에 따라 처리됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 77,
+      "subject_id": 4,
+      "question": "폰 노이만 구조(Von Neumann Architecture)와 하버드 구조(Harvard Architecture)에 대한 비교 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 폰 노이만 구조는 프로그램 명령어와 데이터가 동일한 단일 버스와 메모리 공간을 공유한다.",
+        "② 하버드 구조는 명령어 버스/메모리와 데이터 버스/메모리가 물리적으로 분리되어 있다.",
+        "③ 폰 노이만 구조는 명령어 인출(Fetch)과 데이터 읽기/쓰기를 동시에 병렬로 수행할 수 있어 병목현상이 없다.",
+        "④ 현대 고성능 CPU는 외부적으로는 폰 노이만 구조를 취하고 내부 캐시(L1 I-Cache, D-Cache)는 하버드 구조를 혼합하여 사용한다."
+      ],
+      "answer": 3,
+      "explanation": "폰 노이만 구조는 명령어와 데이터가 동일한 버스를 공유하기 때문에 명령어 인출과 데이터 접근을 동시에 수행할 수 없으며, 이로 인해 '폰 노이만 병목현상'이 발생합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 78,
+      "subject_id": 4,
+      "question": "CPU의 캐시 메모리(Cache Memory) 사상 방식(Mapping Function)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 직접 사상(Direct Mapping): 주기억장치의 각 블록이 특정 캐시 라인에만 매핑되며 하드웨어 구조가 단순하나 충돌 미스(Conflict Miss)가 많이 발생한다.",
+        "② 완전 연관 사상(Fully Associative Mapping): 주기억장치의 블록이 캐시의 어느 라인에나 적재될 수 있어 적중률이 높으나 검색 회로가 복잡하고 비용이 높다.",
+        "③ 세트 연관 사상(Set Associative Mapping): 직접 사상과 완전 연관 사상을 절충한 방식으로, 블록이 지정된 세트 내의 임의 라인에 적재된다.",
+        "④ 직접 사상 방식은 캐시 교체 알고리즘(LRU, FIFO 등)의 복잡도가 가장 높아 고비용의 하드웨어가 요구된다."
+      ],
+      "answer": 4,
+      "explanation": "직접 사상 방식은 각 블록이 들어갈 수 있는 캐시 라인이 단 하나로 고정되어 있으므로 별도의 캐시 교체 알고리즘(LRU 등)을 선택할 필요가 없어 구조가 가장 단순합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 79,
+      "subject_id": 4,
+      "question": "캐시 메모리의 쓰기 정책(Write Policy) 중 쓰기 직통(Write-Through)과 쓰기 복귀(Write-Back)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Write-Through는 캐시에 데이터를 쓸 때 주기억장치에도 즉시 동시에 기록하는 방식이다.",
+        "② Write-Back은 캐시 블록에만 데이터를 기록해 두고 해당 블록이 교체될 때 주기억장치에 일괄 기록하는 방식이다.",
+        "③ Write-Through 방식은 주기억장치와의 데이터 일관성을 유지하기 쉽지만 쓰기 연산 시 메모리 트래픽이 많다.",
+        "④ Write-Back 방식은 데이터 일관성 관리가 매우 단순하며 별도의 Dirty Bit(수정 비트)를 사용할 필요가 없다."
+      ],
+      "answer": 4,
+      "explanation": "Write-Back 방식은 캐시 블록이 수정되었는지를 추적하기 위해 반드시 Dirty Bit(수정 비트)를 유지 관리해야 하며 일관성 제어가 더 복잡합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 80,
+      "subject_id": 4,
+      "question": "CPU 파이프라인(Pipeline) 수행 중 발생하는 파이프라인 해저드(Hazard)의 유형과 해결 방안에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 구조적 해저드(Structural Hazard): 동일한 하드웨어 자원을 두 개 이상의 명령어가 동시에 요구할 때 발생하며, 자원 중복이나 파이프라인 정지(Stall)로 해결한다.",
+        "② 데이터 해저드(Data Hazard): 이전 명령어의 연산 결과를 다음 명령어가 즉시 필요로 할 때 발생하며, 포워딩(Forwarding/Bypassing) 기법으로 완화할 수 있다.",
+        "③ 제어 해저드(Control Hazard): 분기 명령어(Branch)로 인해 다음 실행할 명령어의 주소를 알지 못할 때 발생하며, 분기 예측(Branch Prediction)으로 완화한다.",
+        "④ 데이터 해저드는 명령어 캐시와 데이터 캐시를 물리적으로 분리함으로써 100% 완전하게 제거할 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "명령어/데이터 캐시 분리는 구조적 해저드(자원 충돌)를 완화하는 기법이며, 명령어 간 데이터 의존성에 의해 발생하는 데이터 해저드는 포워딩, 지연 슬롯(Delayed Branch/Load), 컴파일러 스케줄링 등으로 해결합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 81,
+      "subject_id": 4,
+      "question": "인터럽트(Interrupt) 처리 메커니즘에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① CPU가 인터럽트를 접수하면 현재 실행 중인 프로그램의 PC(Program Counter)와 레지스터 상태(PSW 등)를 스택이나 PCB에 저장한다.",
+        "② 인터럽트 서비스 루틴(ISR)의 실행이 완료되면 저장해 두었던 프로세스 문맥(Context)을 복원하고 중단되었던 명령어로 복귀한다.",
+        "③ 폴링(Polling) 방식은 CPU가 주기적으로 주변장치의 상태 플래그를 검사하므로 인터럽트 구동 방식보다 CPU 자원 효율이 항상 우수하다.",
+        "④ 데이지 체인(Daisy Chain) 방식은 인터럽트 요구선을 직렬로 연결하여 하드웨어적으로 우선순위를 판별하는 기법이다."
+      ],
+      "answer": 3,
+      "explanation": "폴링(Polling) 방식은 CPU가 주기적으로 주변장치의 상태를 계속 확인하므로 CPU 낭비(Busy Waiting)가 심하며, 인터럽트 구동 방식이 비동기 이벤트 처리에 훨씬 효율적입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 82,
+      "subject_id": 4,
+      "question": "가상 메모리(Virtual Memory) 관리 기법 중 페이징(Paging)과 세그멘테이션(Segmentation)에 대한 비교로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 페이징은 메모리를 고정 크기의 페이지(Page)와 프레임(Frame)으로 분할하여 관리한다.",
+        "② 세그멘테이션은 프로그램의 논리적 단위(함수, 배열, 스택 등)에 따라 가변 크기로 분할하여 관리한다.",
+        "③ 페이징 기법은 외부 단편화(External Fragmentation)가 발생하지 않으나 내부 단편화(Internal Fragmentation)가 발생할 수 있다.",
+        "④ 세그멘테이션 기법은 내부 단편화가 발생하며 외부 단편화는 전혀 발생하지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "세그멘테이션 기법은 가변 크기로 세그먼트를 할당하므로 내부 단편화는 발생하지 않지만, 세그먼트의 할당/반환 반복으로 인해 외부 단편화(External Fragmentation)가 발생합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 83,
+      "subject_id": 4,
+      "question": "페이지 교체 알고리즘(Page Replacement Algorithm)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① OPT(Optimal): 가장 오랫동안 사용되지 않을 페이지를 교체하며 이론상 가장 적은 페이지 부재율을 갖는다.",
+        "② FIFO(First-In-First-Out): 가장 먼저 적재된 페이지를 교체하며, 프레임 수가 증가해도 페이지 부재가 증가하는 벨레이디의 모순(Belady's Anomaly)이 발생할 수 있다.",
+        "③ LRU(Least Recently Used): 가장 오랫동안 참조되지 않은 페이지를 교체하는 기법이다.",
+        "④ LFU(Least Frequently Used): 참조된 지 가장 오래된 순서대로 페이지를 교체하는 시간 기반 알고리즘이다."
+      ],
+      "answer": 4,
+      "explanation": "LFU(Least Frequently Used)는 참조된 횟수(빈도수)가 가장 적은 페이지를 교체하는 빈도 기반 알고리즘이며, 시간 기반으로 가장 오래 참조되지 않은 것을 교체하는 것은 LRU입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 84,
+      "subject_id": 4,
+      "question": "프로세스 스케줄링 알고리즘에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① FCFS(First-Come First-Served): 비선점형 방식으로 도착 순서대로 처리하며 대화식 시스템에 적합하지 않고 호위 효과(Convoy Effect)가 발생할 수 있다.",
+        "② SJF(Shortest Job First): CPU 버스트 시간이 가장 짧은 프로세스에게 CPU를 우선 할당하며 평균 대기 시간을 최소화한다.",
+        "③ Round Robin(RR): 고정된 시간 할당량(Time Quantum)을 부여하는 선점형 스케줄링으로 시분할 시스템에 적합하다.",
+        "④ 우선순위 스케줄링에서 낮은 우선순위 프로세스가 무한정 대기하는 기아 현상(Starvation)은 시간 할당량을 줄임으로써 완전히 해결된다."
+      ],
+      "answer": 4,
+      "explanation": "우선순위 스케줄링의 기아 현상(Starvation)은 대기 시간이 길어질수록 우선순위를 점진적으로 높여주는 에이징(Aging) 기법으로 해결합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 85,
+      "subject_id": 4,
+      "question": "교착상태(Deadlock)의 발생 필요조건 4가지에 해당하지 않는 것은?",
+      "options": [
+        "① 상호 배제(Mutual Exclusion)",
+        "② 점유와 대기(Hold and Wait)",
+        "③ 선점 가능(Preemption)",
+        "④ 환형 대기(Circular Wait)"
+      ],
+      "answer": 3,
+      "explanation": "교착상태 발생 4대 필요조건은 상호 배제, 점유와 대기, 비선점(Non-preemption), 환형 대기입니다. '선점 가능'은 교착상태 조건이 아닙니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 86,
+      "subject_id": 4,
+      "question": "교착상태 해결 기법 중 은행원 알고리즘(Banker's Algorithm)에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 교착상태의 발생 필요조건 중 하나를 사전에 부정하여 예방(Prevention)하는 기법이다.",
+        "② 자원 할당 요청 시 시스템이 안전 상태(Safe State)를 유지할 수 있는지 동적으로 검사하여 할당하는 회피(Avoidance) 기법이다.",
+        "③ 자원을 일단 요청 시마다 할당하고 주기적으로 교착상태를 탐지(Detection)하여 프로세스를 강제 종료하는 기법이다.",
+        "④ 교착상태가 발생할 가능성이 전혀 없다고 가정하고 무시하는 타조(Ostrich) 알고리즘이다."
+      ],
+      "answer": 2,
+      "explanation": "은행원 알고리즘은 다익스트라(Dijkstra)가 제안한 대표적인 교착상태 회피(Avoidance) 기법으로, 자원 할당 후에도 안전 상태가 유지되는 경우에만 자원을 할당합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 87,
+      "subject_id": 4,
+      "question": "OSI 7계층 참조 모델의 계층과 주요 프로토콜 및 장비의 연결로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 물리 계층(Physical Layer): 리피터(Repeater), 허브(Hub), RS-232C",
+        "② 데이터링크 계층(Data Link Layer): 스위치(Switch), 브리지(Bridge), HDLC, PPP",
+        "③ 네트워크 계층(Network Layer): 라우터(Router), L3 스위치, IP, ICMP, ARP",
+        "④ 전송 계층(Transport Layer): 게이트웨이, HTTP, FTP, SMTP, DNS"
+      ],
+      "answer": 4,
+      "explanation": "HTTP, FTP, SMTP, DNS는 응용 계층(Application Layer, 7계층) 프로토콜이며, 전송 계층(4계층)의 대표 프로토콜은 TCP와 UDP입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 88,
+      "subject_id": 4,
+      "question": "TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)에 대한 비교로 가장 적절하지 않은 것은?",
+      "options": [
+        "① TCP는 연결 지향형(Connection-oriented) 프로토콜로 3-way Handshake를 통해 가상 회선을 설정한다.",
+        "② TCP는 흐름 제어, 혼잡 제어, 오류 제어 메커니즘을 제공하여 신뢰성 있는 데이터 전송을 보장한다.",
+        "③ UDP는 비연결형(Connectionless) 프로토콜로 오버헤드가 적고 빠른 전송이 가능하여 실시간 스트리밍에 적합하다.",
+        "④ UDP는 체크섬(Checksum) 필드가 없어 데이터 손상 여부를 검사하는 오류 검출 기능이 전혀 존재하지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "UDP 헤더에도 최소한의 오류 검출을 위한 체크섬(Checksum) 필드가 포함되어 있어 데이터 손상 여부를 검사할 수 있습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 89,
+      "subject_id": 4,
+      "question": "TCP의 혼잡 제어(Congestion Control) 알고리즘에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 느린 시작(Slow Start): 혼잡 윈도우(CWND) 크기를 1부터 시작하여 임계값(ssthresh)에 도달할 때까지 지수적(Exponential)으로 증가시킨다.",
+        "② 혼잡 회피(Congestion Avoidance): 임계값 도달 후 혼잡 윈도우를 RTT마다 1씩 선형적(Linear)으로 증가시킨다.",
+        "③ 빠른 재전송(Fast Retransmit): 3개의 중복 ACK(3 Duplicate ACKs)를 수신하면 타임아웃 이전이라도 손실된 세그먼트를 즉시 재전송한다.",
+        "④ 빠른 회복(Fast Recovery): 3개의 중복 ACK 수신 시 혼잡 윈도우 크기를 1 MSS로 초기화하고 느린 시작 단계부터 다시 시작한다."
+      ],
+      "answer": 4,
+      "explanation": "빠른 회복(Fast Recovery)은 3개 중복 ACK 발생 시 혼잡 윈도우를 1로 줄이지 않고 절반(ssthresh = CWND/2)으로 줄인 후 혼잡 회피 단계로 진입하는 기법입니다. (1로 초기화하는 것은 타임아웃 발생 시임)",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 90,
+      "subject_id": 4,
+      "question": "IPv4 주소 체계와 서브넷 마스킹(Subnet Masking)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① IPv4 주소는 32비트 길이로 8비트씩 4개 옥텟으로 구성되며 10진수로 표현된다.",
+        "② C클래스 네트워크(기본 서브넷 마스크 255.255.255.0)를 /26으로 서브넷팅하면 4개의 서브넷이 생성된다.",
+        "③ 서브넷 마스크가 255.255.255.192인 서브넷에서 각 서브넷당 실제 호스트에 할당 가능한 IP 개수는 62개이다.",
+        "④ 사설 IP 주소 대역 중 172.16.0.0 ~ 172.31.255.255는 A클래스에 속하는 사설 대역이다."
+      ],
+      "answer": 4,
+      "explanation": "172.16.0.0 ~ 172.31.255.255 대역은 B클래스 사설 IP 주소 대역(RFC 1918)입니다. (A클래스 사설 대역은 10.0.0.0/8임)",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 91,
+      "subject_id": 4,
+      "question": "라우팅 프로토콜 중 거리 벡터(Distance Vector)와 링크 상태(Link State) 프로토콜의 비교로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 거리 벡터 프로토콜은 벨만-포드(Bellman-Ford) 알고리즘을 사용하며 대표적으로 RIP가 있다.",
+        "② 링크 상태 프로토콜은 다익스트라(Dijkstra)의 SPF(Shortest Path First) 알고리즘을 사용하며 대표적으로 OSPF가 있다.",
+        "③ RIP 프로토콜은 홉 카운트(Hop Count)를 메트릭으로 사용하며 최대 홉 수는 15로 제한된다.",
+        "④ OSPF는 거리 벡터 프로토콜로서 네트워크 변화 시 전체 라우팅 테이블을 인접 라우터에 주기적으로 브로드캐스트한다."
+      ],
+      "answer": 4,
+      "explanation": "OSPF는 링크 상태(Link State) 프로토콜이며, 주기적인 전체 브로드캐스트 대신 네트워크 토폴로지 변경 시에만 LSA(Link State Advertisement)를 멀티캐스트로 전송합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 92,
+      "subject_id": 4,
+      "question": "RAID(Redundant Array of Independent Disks) 레벨에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① RAID 0: 스트라이핑(Striping)을 사용하여 입출력 성능이 가장 우수하지만 무결성(내결함성)을 제공하지 못한다.",
+        "② RAID 1: 미러링(Mirroring)을 사용하여 데이터의 완전한 복사본을 유지하므로 디스크 공간 효율이 50%이다.",
+        "③ RAID 5: 패리티(Parity) 정보를 모든 디스크에 분산 저장하며 최소 3개의 디스크가 필요하고 1개 디스크 장애 시 복구가 가능하다.",
+        "④ RAID 6: 2개의 독립적인 패리티를 사용하며 최소 3개의 디스크가 필요하고 2개 디스크 동시 장애 시 데이터 복구가 불가능하다."
+      ],
+      "answer": 4,
+      "explanation": "RAID 6는 듀얼 분산 패리티를 사용하여 2개의 디스크가 동시에 장애를 일으켜도 데이터 복구가 가능하며, 최소 디스크 수는 4개입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 93,
+      "subject_id": 4,
+      "question": "클라우드 서비스 모델(IaaS, PaaS, SaaS)에서 클라우드 서비스 제공자(CSP)와 이용자(고객) 간의 책임 공유 모델에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① IaaS(Infrastructure as a Service): CSP는 가상화, 서버, 스토리지, 네트워크 인프라를 관리하고 고객은 OS, 미들웨어, 런타임, 애플리케이션, 데이터를 관리한다.",
+        "② PaaS(Platform as a Service): CSP는 인프라부터 OS, 미들웨어, 런타임 환경까지 관리하고 고객은 애플리케이션과 데이터를 관리한다.",
+        "③ SaaS(Software as a Service): CSP가 인프라부터 애플리케이션 서비스까지 전체 스택을 관리하며 고객은 계정 및 데이터 설정만을 관리한다.",
+        "④ IaaS 모델에서 고객은 물리적 데이터센터의 출입 통제 및 물리적 서버 랙의 보안 유지보수 책임을 부담한다."
+      ],
+      "answer": 4,
+      "explanation": "IaaS를 포함한 모든 퍼블릭 클라우드 모델에서 물리적 데이터센터 시설, 전력, 랙, 하드웨어 장비의 물리적 보안 및 유지보수는 전적으로 클라우드 서비스 제공자(CSP)의 책임입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 94,
+      "subject_id": 4,
+      "question": "서버 가상화(Server Virtualization) 기술 중 하이퍼바이저(Hypervisor) 유형에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Type 1 하이퍼바이저(Bare-metal): 하드웨어 위에 직접 하이퍼바이저가 설치 구동되는 방식으로 성능이 우수하다 (예: VMware ESXi, KVM, Xen).",
+        "② Type 2 하이퍼바이저(Hosted): 호스트 OS 위에서 하나의 애플리케이션 형태로 실행되는 방식으로 구축이 용이하다 (예: VMware Workstation, VirtualBox).",
+        "③ 컨테이너(Container) 기술: 게스트 OS 없이 호스트 OS 커널을 공유하며 프로세스 격리 기술(cgroups, namespaces)을 사용하여 매우 가볍고 빠르다.",
+        "④ Type 1 하이퍼바이저는 호스트 OS의 시스템 콜 계층을 항상 경유하므로 Type 2 하이퍼바이저에 비해 오버헤드가 크고 속도가 느리다."
+      ],
+      "answer": 4,
+      "explanation": "Type 1(베어메탈) 하이퍼바이저는 호스트 OS 없이 하드웨어 바로 위에서 실행되므로 호스트 OS를 거치는 Type 2(호스티드)보다 오버헤드가 적고 실행 성능이 훨씬 뛰어납니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 95,
+      "subject_id": 4,
+      "question": "스토리지 접속 기술인 DAS, NAS, SAN에 대한 비교로 가장 적절하지 않은 것은?",
+      "options": [
+        "① DAS(Direct Attached Storage): 전용 케이블(SCSI, SAS, SATA 등)로 서버에 스토리지를 직접 연결하는 방식으로 속도가 빠르나 공유 확장이 어렵다.",
+        "② NAS(Network Attached Storage): 기존 이더넷 LAN을 통해 파일 레벨(NFS, CIFS/SMB)로 스토리지에 접근하는 전용 파일 서버 방식이다.",
+        "③ SAN(Storage Area Network): 광채널(Fibre Channel) 기반의 고속 전용 네트워크를 구축하여 블록 레벨(Block level)의 데이터 접근을 제공한다.",
+        "④ NAS는 블록 레벨 전송 전용 고속 광케이블 네트워크를 구성하므로 SAN에 비해 인프라 구축 비용이 가장 고가이다."
+      ],
+      "answer": 4,
+      "explanation": "NAS는 일반 이더넷 LAN 망을 활용하여 파일 단위로 통신하므로 구축 비용이 저렴하며, 고가의 광 스위치와 FC 케이블로 블록 단위 고속 전송망을 구성하는 것은 SAN입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 96,
+      "subject_id": 4,
+      "question": "고가용성(High Availability, HA) 아키텍처 구성 방식에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Active-Active 방식: 두 대 이상의 서버가 동시에 부하를 분산 처리하며 장애 발생 시 나머지 활성 서버가 전체 트래픽을 처리한다.",
+        "② Active-Standby (Hot Standby) 방식: 대기 서버가 가동 상태를 유지하며 실시간 동기화되어 장애 발생 시 즉시 절체(Failover)된다.",
+        "③ Active-Standby (Cold Standby) 방식: 평상시 대기 서버가 정지 상태이며 주 서버 장애 시 시스템을 기동하므로 복구 시간(RTO)이 가장 길다.",
+        "④ Active-Active 방식은 단일 장애점(SPOF)을 제거할 수 없으며 두 노드 간의 상태 감시(Heartbeat) 메커니즘을 적용할 수 없다."
+      ],
+      "answer": 4,
+      "explanation": "Active-Active 구성은 SPOF를 제거하기 위한 대표적인 고가용성 구조이며, 노드 간 상호 상태 감시(Heartbeat) 및 로드밸런싱이 필수적으로 적용됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 97,
+      "subject_id": 4,
+      "question": "정보시스템 하드웨어 규모산정 지침(정보통신단체표준, TTAK.KO-10.0292, 2018.12.19.)에서 CPU의 규모를 산정할 때 OLTP와 WEB/WAS 서버 모두에서 고려하는 공통 항목으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 사용자당 오퍼레이션 수",
+        "② 시스템 목표 활용률",
+        "③ 클러스터 보정",
+        "④ 피크타임 부하 보정"
+      ],
+      "answer": 1,
+      "explanation": "사용자당 오퍼레이션 수는 WEB/WAS 서버 CPU 규모 산정 시에만 사용되며 OLTP 서버 CPU 산정식(분당 트랜잭션 수 사용)에는 사용되지 않는 공통 항목이 아닙니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 98,
+      "subject_id": 4,
+      "question": "인-메모리 방식으로 연산을 수행하는 Spark에 관한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 하둡2.0(YARN 환경)에서는 Spark를 지원하지 않는다.",
+        "② 맵리듀스 연산에 비해 그 계산 속도가 매우 빠르다.",
+        "③ 파이썬, 스칼라, 자바 언어를 사용하여 개발할 수 있다.",
+        "④ 기계학습, 그래프 연산 등 반복적인 계산 문제를 해결하는 데 적합하다."
+      ],
+      "answer": 1,
+      "explanation": "하둡 2.0(YARN 환경)에서는 Spark를 정식으로 지원하며 YARN 클러스터 매니저 상에서 실행 가능합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 99,
+      "subject_id": 4,
+      "question": "다음 중 DHCP(Dynamic Host Configuration Protocol) 프로토콜에서 사용하는 메시지에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① DHCP ACK는 DHCP Request에 대한 응답으로 보낸다.",
+        "② DHCP Request는 클라이언트가 DHCP 서버에게 IP주소를 요청한다.",
+        "③ DHCP Discover는 DHCP 서버가 IP 주소 할당 서버임을 알린다.",
+        "④ DHCP Offer는 DHCP 서버가 요청 클라이언트에게 할당할 IP주소를 제공한다."
+      ],
+      "answer": 3,
+      "explanation": "DHCP Discover 메시지는 클라이언트가 브로드캐스트하여 네트워크 상의 DHCP 서버를 탐색하기 위해 보내는 메시지입니다 (서버가 보내는 것이 아님).",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 100,
+      "subject_id": 4,
+      "question": "읽기 및 쓰기 성능이 각각 100,000 IOPS(Input/Output Operations Per Second)인 8개의 동일한 하드디스크로 RAID 10을 구성할 때 RAID 10의 읽기 성능과 쓰기 성능으로 가장 적절한 것은?",
+      "options": [
+        "① 읽기: 400,000 IOPS, 쓰기: 400,000 IOPS",
+        "② 읽기: 400,000 IOPS, 쓰기: 800,000 IOPS",
+        "③ 읽기: 800,000 IOPS, 쓰기: 400,000 IOPS",
+        "④ 읽기: 800,000 IOPS, 쓰기: 800,000 IOPS"
+      ],
+      "answer": 3,
+      "explanation": "디스크 8개로 RAID 10(미러링 4쌍의 스트라이핑)을 구성할 때, 읽기는 8개 디스크 모두에서 병렬 분산 처리가 가능하므로 8 * 100,000 = 800,000 IOPS이고, 쓰기는 미러링 복제로 인해 4쌍 기준인 4 * 100,000 = 400,000 IOPS가 됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 101,
+      "subject_id": 5,
+      "question": "다음 중 전자서명(Digital signature)의 역할로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 메시지 송신자 인증",
+        "② 메시지 무결성 검증",
+        "③ 메시지 기밀성 검증",
+        "④ 부인 방지"
+      ],
+      "answer": 3,
+      "explanation": "전자서명은 송신자 인증, 무결성 검증, 부인 방지를 제공하지만, 본문 자체를 암호화하여 숨기는 기밀성(Confidentiality)은 제공하지 않습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 102,
+      "subject_id": 5,
+      "question": "AES(Advanced Encryption Standard)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 입력 블록의 크기는 128 비트 고정이고, 키 길 이는 128, 192, 256 비트 3가지 중 하나를 선택할 수 있다.",
+        "② DES에서 사용한 Feistel 구조가 아닌 SPN (Substitution-Permutation Network) 구조를 사용한다.",
+        "③ SubBytes 연산에서는 4 바이트의 값을 비트 연산을 이용하여 새로운 4 바이트 값으로 변환하는 과정을 수행한다.",
+        "④ 복수 라운드로 구성되어 있으며, 각 라운드는 SubBytes, ShiftRows, MixColumns, AddRoundKey 라는 4개의 서브 함수로 구성된다."
+      ],
+      "answer": 3,
+      "explanation": "SubBytes 연산은 State 행렬의 각 바이트 단위(1 byte)를 S-Box를 이용해 비선형적으로 치환하는 단계입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 103,
+      "subject_id": 5,
+      "question": "다음 중 접근통제에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 임의적 접근통제는 관리자가 부여한 사용자와 정보객체의 보안등급으로 정보의 접근 허가 여부를 결정한다.",
+        "② 역할 기반 접근통제는 권한관리를 사용자와 정보 객체간의 관계가 아닌 기업 환경에서의 역할과 정보 객체 간의 관계로 설정하여 관리한다.",
+        "③ ACL(Access Control List) 기반의 접근통제는 객체에 접근통제 정보를 저장하는 방식으로, 주체의 수가 많아져도 효율적인 관리가 가능하다는 장점이 있다.",
+        "④ 강제적 접근통제는 정보 객체의 사용을 요청하는 사용자의 신원에 근거하여 접근 허가를 결정하는 방식이다."
+      ],
+      "answer": 2,
+      "explanation": "RBAC(역할 기반 접근통제)는 사용자에게 직접 권한을 주는 대신 사용자의 역할(Role)에 권한을 할당하여 사용자와 정보 객체 간의 접근을 관리합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 104,
+      "subject_id": 5,
+      "question": "메시지 인증 코드(MAC)는 메시지의 인증에 사용되는 작은 크기의 정보이다. 다음 중 메시지 인증 코드에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 메시지 인증 코드는 두 사용자만이 공유한 키를 사용하기 때문에 부인 방지가 가능하다.",
+        "② 블록 암호와 CBC 블록암호 모드를 사용하여 메시지 인증 코드를 구현할 수 있다.",
+        "③ 메시지 인증 코드를 사용하면 메시지에 대한 기밀성과 무결성을 모두 제공한다.",
+        "④ 메시지 인증 코드는 키에 의존하는 양방향 해시 함수이다."
+      ],
+      "answer": 2,
+      "explanation": "블록 암호의 CBC 모드를 사용하여 마지막 블록의 암호문을 메시지 인증 코드로 사용하는 CBC-MAC(또는 CMAC) 기법을 구현할 수 있습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 105,
+      "subject_id": 5,
+      "question": "다음 설명에 해당하는 공격으로 가장 적절한 것은?\n\n공격자 AP(Access Point)는 정상적인 AP보다 강력한 전파를 발생시켜 무선랜 이용자가 공격자 AP에 접속하도록 유도한 후, 무선랜 이용자의 정보를 중간에서 획득하는 공격",
+      "options": [
+        "① Evil Twin AP 공격",
+        "② Hacktivism AP 공격",
+        "③ Proxy AP 공격",
+        "④ AP to AP 공격"
+      ],
+      "answer": 1,
+      "explanation": "Evil Twin 공격은 정당한 AP와 동일한 SSID와 강한 전파를 사용하여 사용자의 접속을 유도하는 악성(Rogue) AP 공격 기법입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 106,
+      "subject_id": 5,
+      "question": "TCP SYN FLOODING 공격이 성공하기 위해서는 서버의 TCB 큐에 연결요청이 쌓여서 더 이상의 연결요청을 받지 못하는 상황이 되어야 한다. 아래 설명 중 TCB 큐에 연결정보를 제거(Dequeue) 시키는 상황으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 클라이언트가 3-way handshake 과정을 종료함",
+        "② TCB 큐의 레코드가 정해진 기준시간 보다 더 길게 머무름",
+        "③ 공격자가 SYN 패킷을 보낼 때 랜덤하게 생성한 근원지 IP 주소를 사용함",
+        "④ TCB 큐의 레코드에 해당하는 연결에 대해 RST 패킷이 도착함"
+      ],
+      "answer": 3,
+      "explanation": "랜덤한 근원지 IP로 SYN을 보내면 서버가 SYN+ACK를 보내고 응답 없는 대기(Half-open) 상태로 TCB 큐에 계속 쌓이게 되므로 제거되는 상황이 아닙니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 107,
+      "subject_id": 5,
+      "question": "방화벽의 패킷 필터링 규칙이 다음과 같을 때 적용되는 규칙에 대한 설명으로 가장 적절하지 않은 것은?\n\n[규칙 표]\nNo | From | Service | To | Action\n1 | Internal | 80 | External | Allow\n2 | Any | 80 | 192.168.1.10 | Allow\n3 | 192.168.1.11 | 25 | 10.10.10.21 | Allow\n4 | 192.168.1.11 | 110 | 10.10.10.21 | Deny\n5 | 192.168.1.11 | 143 | 10.10.10.21 | Allow\n6 | 10.10.10.21 | 25 | 192.168.1.11 | Allow\n7 | External | 25 | Internal | Deny",
+      "options": [
+        "① 내부와 외부에서 웹 서버(192.168.1.10)에 접근 하는 것을 허용한다.",
+        "② 외부의 모든 시스템에서 내부 시스템으로 SMTP 패킷을 보내지 못하도록 설정한다.",
+        "③ 내부 메일 서버(192.168.1.11)에서 외부 메일 서버(10.10.10.21)로 가는 IMAP 접근을 금지한다.",
+        "④ 내부 메일 서버(192.168.1.11)에서 외부 메일 서버(10.10.10.21)로 가는 SMTP 패킷을 허용한다."
+      ],
+      "answer": 3,
+      "explanation": "5번 규칙(192.168.1.11 -> 10.10.10.21, 포트 143)의 Action은 Allow로 설정되어 있으므로 IMAP 접근을 허용합니다 (금지한다는 ③번이 잘못됨).",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 108,
+      "subject_id": 5,
+      "question": "다음 중 네트워크 기반 공격 기술에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① Smurf 공격: 공격자가 송신자 IP 주소를 존재하지 않거나 다른 시스템의 IP 주소로 위장하여 목적 시스템으로 패킷을 연속해서 보내는 공격 기법이다.",
+        "② SYN Flooding 공격: 공격자가 공격 대상의 IP 주소로 위장하여 패킷을 브로드캐스트 주소로 전송하는 공격이다.",
+        "③ ARP Redirect 공격: TCP/IP의 구조적인 허점을 이용한 공격으로, 신뢰관계에 있는 두 개의 호스트 중 하나를 마비시킨 후 IP 주소를 속이는 공격이다.",
+        "④ Switch Jamming 공격: 위조된 MAC 주소를 지속 적으로 보내 스위치의 주소 테이블을 가득 채운 후 스니핑을 진행하는 공격이다."
+      ],
+      "answer": 4,
+      "explanation": "Switch Jamming(MAC Flooding)은 위조된 MAC 주소 프레임을 대량으로 전송하여 스위치의 CAM(MAC) 테이블을 오버플로우시켜 허브처럼 더미 모드로 동작하게 만든 뒤 트래픽을 스니핑하는 기법입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 109,
+      "subject_id": 5,
+      "question": "리눅스 시스템의 기본 방화벽인 iptables에서 192.168.20.22 으로부터 들어오는 패킷들을 차단하는 정책으로 가장 적절한 명령어는?",
+      "options": [
+        "① # iptables -A INPUT 192.168.20.22 -j DROP",
+        "② # iptables -I INPUT 192.168.20.22 -j LOG",
+        "③ # iptables -A INPUT 192.168.20.22 -j ACCEPT",
+        "④ # iptables -A INPUT 192.168.20.22 -j RETURN"
+      ],
+      "answer": 1,
+      "explanation": "iptables에서 들어오는 패킷(INPUT 체인)에 대해 출발지 IP를 차단하려면 '-A INPUT -s 192.168.20.22 -j DROP' 또는 해당 문법 형태를 사용합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 110,
+      "subject_id": 5,
+      "question": "다음 중 ARP Poisoning 공격을 방지하는 방법으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① ARP request 및 ARP reply를 이용하여 MAC 주소를 현행화하지 못하도록 한다.",
+        "② 외부 PC가 로컬 네트워크에 접근하지 못하도록 한다.",
+        "③ 정적 ARP table을 사용하도록 세팅한다.",
+        "④ 컴퓨터의 MAC 주소를 주기적으로 변경해 준다."
+      ],
+      "answer": 4,
+      "explanation": "컴퓨터의 MAC 주소를 주기적으로 변경하면 ARP 테이블 갱신이 계속 발생하여 ARP Poisoning 공격에 더 취약해집니다. 정적 ARP 테이블 설정(Static ARP) 등이 올바른 방어책입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 111,
+      "subject_id": 5,
+      "question": "악성 프로그램은 컴퓨터, 서버, 클라이언트 및 컴퓨터 네트워크에 악영향을 끼칠 수 있는 소프트웨어이다. 다음 중 악성 프로그램과 그 특징에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 트로이 목마(Trojan horse)는 정상적인 기능을 하는 프로그램 속에 숨어 정보를 빼내거나 원격으로 제어 받도록 하는 악성 프로그램이다.",
+        "② 스파이웨어(Spyware)는 사용자의 정보를 빼내서 전송하는 악성 프로그램이다.",
+        "③ 드로퍼(Dropper)는 다른 프로그램을 감염시키지는 않지만 네트워크를 통해 자기 복제를 하며 전파된다.",
+        "④ 펍(PUP)은 사용자의 동의를 얻어 설치되었으나 프로그램과는 상관없이 시스템의 성능 저하 또는 사용자의 결제를 유도하기도 한다."
+      ],
+      "answer": 3,
+      "explanation": "드로퍼(Dropper)는 다른 악성코드(트로이목마, 바이러스 등)를 사용자 몰래 설치/드롭하는 역할을 하며, 네트워크를 통해 스스로 복제하여 전파되는 것은 웜(Worm)의 특징입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 112,
+      "subject_id": 5,
+      "question": "다음 중 공격자가 리눅스 시스템을 원격에서 공격하지 못하도록 root 계정으로 원격 접속을 금지하고자 할 때 파일 내용을 수정해야 하는 것으로 가장 적절한 것은?",
+      "options": [
+        "① /etc/passwd, /etc/crontab",
+        "② /etc/pam.d/login, /etc/shadow",
+        "③ /etc/passwd, /etc/securetty",
+        "④ /etc/pam.d/login, /etc/securetty"
+      ],
+      "answer": 4,
+      "explanation": "리눅스에서 root의 콘솔/가상 터미널 직접 원격 로그인을 제한하기 위해서는 /etc/securetty에서 가상 터미널(pts/0~x)을 제거하고, PAM 모듈 설정인 /etc/pam.d/login의 pam_securetty.so 설정을 수정합니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 113,
+      "subject_id": 5,
+      "question": "위험관리(Risk management) 과정을 순서대로 나열한 것으로 가장 적절한 것은?\n\n가. 위험 모니터링 및 통제\n나. 위험 식별\n다. 위험 분석\n라. 위험 대응 계획",
+      "options": [
+        "① (다) - (가) - (나) - (라)",
+        "② (나) - (다) - (라) - (가)",
+        "③ (나) - (다) - (가) - (라)",
+        "④ (다) - (나) - (라) - (가)"
+      ],
+      "answer": 2,
+      "explanation": "위험 관리 표준 프로세스는 위험 식별(나) -> 위험 분석(다) -> 위험 대응 계획(라) -> 위험 모니터링 및 통제(가) 순서로 진행됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 114,
+      "subject_id": 5,
+      "question": "가명정보의 안전한 관리를 위한 기술적 보호조치로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 개인정보처리자는 추가정보와 가명정보를 반드시 물리적으로 분리하여 별도로 저장 관리해 야 한다.",
+        "② 추가정보가 가명정보와 불법적으로 결합되어 재 식별에 악용되지 않도록 접근권한을 최소화하 고 접근통제를 강화해야 한다.",
+        "③ 개인정보처리자는 가명정보의 처리목적, 가명처리한 개인정보 항목, 가명정보의 이용내역, 제3자 제공 시 제공받는 자를 작성하여 보관하여야 한다.",
+        "④ 개인정보처리자는 가명정보 또는 추가정보에 접근할 수 있는 담당자를 가명정보 처리 업무 목적 달성에 필요한 최소한의 인원으로 엄격하게 통제하여야 한다."
+      ],
+      "answer": 1,
+      "explanation": "가명정보의 기술적 보호조치에서 추가정보와 가명정보는 분리하여 별도로 저장·관리해야 하지만, 반드시 '물리적'으로만 분리해야 하는 것은 아니며 논리적 분리(접근통제, 암호화 등)도 허용됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 115,
+      "subject_id": 5,
+      "question": "다음 설명에 해당하는 레지스터로 가장 적절한 것은?\n\n스택 오버플로우 공격을 실행하는데 있어서 활용되는 정보를 보유하고 있는 CPU의 레지스터로서, 해당 레지스터는 현재 실행 중인 스택에서 argument 및 지역변수의 위치를 참조하기 위한 기준 주소값을 가지고 있다.",
+      "options": [
+        "① EAX",
+        "② ESP",
+        "③ EDX",
+        "④ EBP"
+      ],
+      "answer": 4,
+      "explanation": "EBP(Extended Base Pointer)는 현재 스택 프레임의 베이스(기준) 주소를 가리키며, 함수 매개변수(argument)와 지역 변수(local variable)에 접근할 때 오프셋 기준으로 사용됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 116,
+      "subject_id": 5,
+      "question": "딥페이크(Deepfake)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 딥페이크는 인공지능 기술을 이용하여 진위 여부를 구별하기 어려운 가짜 이미지나 영상물을 제작하는 기술이다.",
+        "② 딥페이크를 이용한 가짜뉴스, 불법 성인용 콘텐츠 제작으로 인한 피해를 감소시키기 위해 법적 단속이 강화되고 있다.",
+        "③ 딥페이크는 영화제작 분야에서 활용되는 등 부작용 없이 사회, 정치 분야에 도움이 되고 있다.",
+        "④ 딥페이크 기술이 스캔들의 진위여부에도 영향을 미치는 등 사회적 파급력이 커지고 있다."
+      ],
+      "answer": 3,
+      "explanation": "딥페이크는 허위 정보 유포, 명예훼손, 음란물 합성 등 심각한 사회적 부작용을 초래하고 있으므로 '부작용 없이 도움이 되고 있다'는 설명은 적절하지 않습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 117,
+      "subject_id": 5,
+      "question": "블록체인(Blockchain)은 P2P 방식을 기반으로 생성된 체인 형태의 연결고리 기반 분산 데이터 저장 환경이다. 다음 중 블록체인에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 블록체인의 블록 내 헤더에는 해시 값과 거래별 트랜잭션의 원본 값이 저장된다.",
+        "② 블록체인 기반 시스템은 거래기록이 구성원들에게 공개되기 때문에 거래의 투명성을 보장한다.",
+        "③ 블록체인은 참여한 구성원이 네트워크를 통해 서로 데이터를 검증함으로써 임의적인 조작이 어렵도록 설계되었다.",
+        "④ 퍼블릭 블록체인(Public Blockchain)은 모든 구성원이 참여 가능하나, 비교적 네트워크 확장이 어렵고 거래 속도가 느리다."
+      ],
+      "answer": 1,
+      "explanation": "블록체인의 블록 헤더에는 트랜잭션의 원본 데이터가 아닌 트랜잭션들의 해시 트리(Merkle Tree Root) 해시값이 저장됩니다. 트랜잭션 원본은 블록 바디(본문)에 저장됩니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 118,
+      "subject_id": 5,
+      "question": "다음 중 클라우드 보안 위협에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 고객 정보에 대해 제3자 위탁 저장 방식을 활용할 경우 클라우드 사업자 내부의 관리 부주의로 인한 정보 유출의 위협이 있다.",
+        "② 여러 고객사의 정보가 클라우드에 집중됨에 따라 DDoS, APT 공격 등 다양한 공격의 목표가 될 수 있다.",
+        "③ 논리적 자원을 물리적으로 통합 및 재배분하여 사용함에 따라 가상화 문제가 발생된다.",
+        "④ 인프라 서비스(IaaS) 이용시 효과적인 자원의 분리가 이뤄지지 않을 경우 클라우드 서버 내부의 가상머신 간 도청 및 해킹 피해가 발생할 수 있다."
+      ],
+      "answer": 3,
+      "explanation": "클라우드 가상화 기술은 '물리적 자원을 논리적으로 통합 및 분할/재배분'하여 사용하는 것이므로, '논리적 자원을 물리적으로 통합'한다는 설명은 옳지 않습니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 119,
+      "subject_id": 5,
+      "question": "다음 설명에 해당하는 것으로 가장 적절한 것은?\n\n- 내부 정보보호를 목적으로 하는 보안 솔루션으로 중요 자료가 외부로 유출되는 것을 탐지하여 통제하는 기술이다.\n- 솔루션 종류에 따라 내용 기반 통제를 통해 중요 정보를 식별하고 정보 유출을 통제할 수 있으며, 이밖에도 블루투스 통신, 테더링 등의 통신채널 에 대한 차단 기능을 제공한다.",
+      "options": [
+        "① 디지털 권리 관리(Digital Rights Management)",
+        "② 정보 유출 방지 솔루션(Data Leakage Prevention)",
+        "③ 디지털 워터마킹(Digital Watermarking)",
+        "④ 전자서명(Digital Signature)"
+      ],
+      "answer": 2,
+      "explanation": "중요 데이터의 외부 유출 탐지 및 차단, 매체/네트워크 채널 제어 등을 수행하는 보안 기술은 DLP(Data Loss/Leakage Prevention, 정보 유출 방지)입니다.",
+      "image_url": null,
+      "image": null
+    },
+    {
+      "id": 120,
+      "subject_id": 5,
+      "question": "다음 중 VPN 관련 프로토콜에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① L2F(Layer 2 Forwarding)는 CISCO사에서 개발한 터널링 프로토콜로 데이터 링크 계층에서 캡슐화를 지원한다.",
+        "② IPSec은 IP망에서 안전한 전송을 위해 표준화된 3계층 터널링 프로토콜이다.",
+        "③ L2TP는 L2F 기반으로 PPTP와의 호환성을 고려하여 만들어진 터널링 프로토콜이다.",
+        "④ PPTP는 링크 계층의 PPP 프로토콜에 보안기능을 추가하여 만든 것이고, 네트워크 계층에 적용되는 프로토콜이다."
+      ],
+      "answer": 4,
+      "explanation": "PPTP(Point-to-Point Tunneling Protocol)는 데이터링크 계층(2계층)의 PPP를 확장하여 터널링 및 암호화를 지원하는 2계층 VPN 프로토콜입니다 (네트워크 계층에 적용되는 것이 아님).",
+      "image_url": null,
+      "image": null
+    }
+  ]
+}
