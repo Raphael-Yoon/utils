@@ -914,18 +914,18 @@ function onCategoryChange() {
   const selectedCategory = catSel.value;
   const filteredExams = examList.filter(ex => (ex.category || '기타') === selectedCategory);
 
-  // 회차 번호 추출 후 오름차순 정렬 (제1회 -> 제2회 ... 제77회 -> 제78회 -> 제79회)
+  // 회차 번호/연도 추출 후 내림차순 정렬 (최신 회차가 가장 먼저 보이도록 역순 정렬)
   filteredExams.sort((a, b) => {
     const parseNum = (item) => {
       if (!item) return 0;
       const title = item.title || '';
       const filename = item.filename || '';
       
-      // 1. '제N회' 또는 'N회' 회차 패턴 우선 추출 (예: '디지털포렌식 전문가 2급 필기 모의고사 [제3회]' -> 3)
+      // 1. '제N회' 또는 'N회' 회차 패턴 우선 추출
       const mRound = title.match(/제\s*(\d+)\s*회/) || title.match(/(\d+)\s*회/);
       if (mRound) return parseInt(mRound[1], 10);
       
-      // 2. 파일명 내 회차 번호 추출 (예: digital_forensic_mock_03.json -> 3)
+      // 2. 파일명 내 회차 번호/연도 추출
       const mFile = filename.match(/(\d+)/);
       if (mFile) return parseInt(mFile[1], 10);
       
@@ -935,7 +935,7 @@ function onCategoryChange() {
 
       return 0;
     };
-    return parseNum(a) - parseNum(b);
+    return parseNum(b) - parseNum(a);
   });
 
   examSel.innerHTML = '';

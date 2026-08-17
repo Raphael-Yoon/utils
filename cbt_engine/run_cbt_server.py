@@ -123,7 +123,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                     except Exception:
                         pass
             
-            # 시험 목록 정렬 (카테고리 가나다순, 회차 번호 오름차순: 제1회->제2회... / 77회->78회->79회)
+            # 시험 목록 정렬 (카테고리 가나다순, 회차 번호/연도 내림차순: 최신회차가 상단에 위치)
             def get_sort_key(item):
                 title = item.get('title', '')
                 filename = item.get('filename', '')
@@ -137,7 +137,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                     else:
                         matches = re.findall(r'\d+', title)
                         num = int(matches[-1]) if matches else 0
-                return (item.get('category', ''), num)
+                return (item.get('category', ''), -num)
 
             exam_list.sort(key=get_sort_key)
 
