@@ -9,3 +9,4 @@ outbox.json
 *.pid
 backups/
 migration_secrets.tar.gz
+.DS_Store
