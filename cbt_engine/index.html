@@ -1172,6 +1172,16 @@ function updateRulesUI() {
       </li>
       <li>시험 시간: <b>${ex.time_limit_minutes || 70}분</b></li>
     `;
+  } else if ((ex.title && ex.title.includes('[5개년]')) || (ex.filename && ex.filename.includes('subject_')) || (ex.category && ex.category.includes('과목별'))) {
+    const minPassQs = Math.ceil(totalQs * 0.6);
+    document.getElementById('rulesList').innerHTML = `
+      <li><b>학습 유형</b>: <b>5개년 (2022년 ~ 2026년) 특정 과목 집중 마스터</b></li>
+      <li><b>연도별 구성 (${totalQs}문항)</b>:<br>
+          &nbsp;&nbsp;• <b>2026년 기출</b> → <b>2025년 기출</b> → <b>2024년 기출</b> → <b>2023년 기출</b> → <b>2022년 기출</b> 순차 수록
+      </li>
+      <li><b>권장 합격 목표선</b>: 정답률 <b>60% 이상</b> (총 ${totalQs}문항 중 <b>${minPassQs}문항 이상</b> 정답 목표)</li>
+      <li><b>모의고사 제한시간</b>: <b>${ex.time_limit_minutes || 120}분</b> (문항당 1분 페이스 권장)</li>
+    `;
   } else if (ex.category === '정보시스템감리사' || (ex.title && ex.title.includes('정보시스템감리사'))) {
     document.getElementById('rulesList').innerHTML = `
       <li><b>전체 시험 구성 (총 5과목 120문항, 120분 단일교시)</b>:<br>
