@@ -375,20 +375,21 @@
     .calc-header:hover {
       color: var(--primary);
     }
-    .calc-toggle-btn {
+    .calc-toggle-badge {
       background: var(--bg-subtle);
       border: 1px solid var(--border-color);
       border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 600;
       padding: 2px 8px;
-      cursor: pointer;
       color: var(--text-muted);
       transition: all 0.15s ease;
+      pointer-events: none;
     }
-    .calc-toggle-btn:hover {
-      background: var(--border-color);
-      color: var(--text-main);
+    .calc-header:hover .calc-toggle-badge {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
     }
     .calc-body {
       display: flex;
@@ -682,6 +683,68 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* 시험용 연습장(메모장) 및 계산기 플로팅 위젯 스타일 */
+    .floating-widget {
+      position: fixed;
+      top: 80px;
+      right: 340px;
+      width: 320px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      z-index: 9900;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .widget-header {
+      background: #1e293b;
+      color: #ffffff;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: move;
+      user-select: none;
+    }
+    .widget-actions button {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .widget-actions button:hover {
+      color: #ffffff;
+      background: #334155;
+    }
+    .widget-body {
+      padding: 12px;
+    }
+    #memoTextArea {
+      width: 100%;
+      height: 220px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      resize: vertical;
+      outline: none;
+      line-height: 1.5;
+      background: var(--bg-main);
+      color: var(--text-main);
+    }
+    #memoTextArea:focus {
+      border-color: var(--primary);
+      background: var(--bg-card);
+    }
   </style>
 </head>
 <body>
@@ -753,13 +816,21 @@
       </div>
       <div class="omr-body" id="omrBody"></div>
       
-      <!-- 계산기 영역 (접기/펼치기 토글, 단축키 C/Esc) -->
+      <!-- 연습용 메모장 영역 -->
+      <div class="omr-calculator" style="border-bottom: 1px solid var(--border-color);">
+        <div class="calc-header" onclick="toggleMemoPad(event)" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; margin-bottom:4px;">
+          <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">📝 연습용 메모장 <span id="memoArrow" style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">▴</span></span>
+          <button type="button" class="btn" style="background:#fee2e2; border:1px solid #fca5a5; color:#dc2626; font-size:0.75rem; padding:2px 8px; border-radius:4px; font-weight:600;" onclick="clearOmrMemo(event)">🗑️ 메모 지우기</button>
+        </div>
+        <div class="calc-body hidden" id="memoBody">
+          <textarea id="omrMemoTextArea" style="width:100%; height:95px; border:1px solid var(--border-color); border-radius:6px; padding:8px; font-size:0.88rem; font-family:inherit; background:var(--bg-main); color:var(--text-main); outline:none; resize:vertical;" placeholder="시험 진행 중 필기 및 계산 메모를 작성하세요... (자동 저장 없음)"></textarea>
+        </div>
+      </div>
+
+      <!-- 연습용 계산기 영역 -->
       <div class="omr-calculator">
-        <div class="calc-header" onclick="toggleCalculator()">
-          <span>🧮 연습용 계산기 <span style="font-size:0.72rem; font-weight:normal; color:#64748b;">[단축키: C]</span></span>
-          <div style="display: flex; gap: 6px; align-items: center;">
-            <button class="calc-toggle-btn" id="calcToggleBtn" type="button">계산기 열기 (C) ▴</button>
-          </div>
+        <div class="calc-header" onclick="toggleCalculator(event)" style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:4px; cursor:pointer; user-select:none;">
+          <span>🧮 연습용 계산기 <span id="calcArrow" style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">▴</span></span>
         </div>
         <div class="calc-body hidden" id="calcBody">
           <div class="calc-display" id="calcDisplay">0</div>
@@ -876,6 +947,7 @@ function toggleTheme() {
 // 페이지 로드 시 테마 초기화, /api/exams 탐색 및 임시저장(이어하기) 확인
 window.addEventListener('DOMContentLoaded', async () => {
   initTheme();
+  initDraggableWidgets();
   try {
     const res = await fetch('/api/exams');
     if(res.ok) {
@@ -1036,6 +1108,13 @@ window.addEventListener('keydown', (e) => {
   if (key.toLowerCase() === 'c' && !e.ctrlKey && !e.metaKey && !e.altKey) {
     e.preventDefault();
     toggleCalculator();
+    return;
+  }
+
+  // 'm' 또는 'M' 키 입력 시 연습용 메모장 열기/닫기 토글 (단, 입력 폼 활성 시 제외)
+  if (key.toLowerCase() === 'm' && !e.ctrlKey && !e.metaKey && !e.altKey && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+    e.preventDefault();
+    toggleMemoPad();
     return;
   }
 
@@ -1319,6 +1398,8 @@ async function resumeDraftExam() {
   document.getElementById('examLayout').style.display = 'flex';
   document.getElementById('timerBadge').style.display = 'flex';
   document.getElementById('btnSubmitHeader').style.display = 'block';
+  if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'block';
+  if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'block';
 
   renderQuestions();
   renderOMR();
@@ -1357,6 +1438,8 @@ async function startExam() {
   document.getElementById('examLayout').style.display = 'flex';
   document.getElementById('timerBadge').style.display = 'flex';
   document.getElementById('btnSubmitHeader').style.display = 'block';
+  if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'block';
+  if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'block';
 
   renderQuestions();
   renderOMR();
@@ -1705,6 +1788,10 @@ function submitExam(skipConfirm = false) {
   document.getElementById('examLayout').style.display = 'none';
   document.getElementById('timerBadge').style.display = 'none';
   document.getElementById('btnSubmitHeader').style.display = 'none';
+  if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'none';
+  if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'none';
+  hideMemoWidget();
+  hideCalcWidget();
   document.getElementById('resultScreen').style.display = 'flex';
 
   const badge = document.getElementById('resStatusBadge');
@@ -1809,6 +1896,8 @@ function showReviewMode() {
   document.getElementById('examLayout').style.display = 'flex';
   document.getElementById('timerBadge').style.display = 'none';
   document.getElementById('btnSubmitHeader').style.display = 'none';
+  if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'block';
+  if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'block';
 
   renderQuestions();
   renderOMR();
@@ -2135,25 +2224,61 @@ function resetCalculatorState() {
   calcExpr = '';
   isCalcOpen = false;
   const body = document.getElementById('calcBody');
-  const btn = document.getElementById('calcToggleBtn');
+  const arrow = document.getElementById('calcArrow');
   if (body) body.classList.add('hidden');
-  if (btn) btn.innerText = '계산기 열기 (C) ▴';
+  if (arrow) arrow.innerText = '▴';
   updateCalcDisplay();
+
+  isMemoOpen = false;
+  const mBody = document.getElementById('memoBody');
+  const mArrow = document.getElementById('memoArrow');
+  if (mBody) mBody.classList.add('hidden');
+  if (mArrow) mArrow.innerText = '▴';
 }
 
 function toggleCalculator(e) {
   if (e) e.stopPropagation();
   const body = document.getElementById('calcBody');
-  const btn = document.getElementById('calcToggleBtn');
-  if (!body || !btn) return;
+  const arrow = document.getElementById('calcArrow');
+  if (!body) return;
   
   isCalcOpen = !isCalcOpen;
   if (isCalcOpen) {
     body.classList.remove('hidden');
-    btn.innerText = '숨기기 (C) ▾';
+    if (arrow) arrow.innerText = '▾';
   } else {
     body.classList.add('hidden');
-    btn.innerText = '계산기 열기 (C) ▴';
+    if (arrow) arrow.innerText = '▴';
+  }
+}
+
+// 연습용 메모장 제어 로직
+let isMemoOpen = false;
+
+function toggleMemoPad(e) {
+  if (e && e.target && e.target.tagName === 'BUTTON') return;
+  if (e) e.stopPropagation();
+  const body = document.getElementById('memoBody');
+  const arrow = document.getElementById('memoArrow');
+  if (!body) return;
+  
+  isMemoOpen = !isMemoOpen;
+  if (isMemoOpen) {
+    body.classList.remove('hidden');
+    if (arrow) arrow.innerText = '▾';
+    const ta = document.getElementById('omrMemoTextArea');
+    if (ta) ta.focus();
+  } else {
+    body.classList.add('hidden');
+    if (arrow) arrow.innerText = '▴';
+  }
+}
+
+function clearOmrMemo(e) {
+  if (e) e.stopPropagation();
+  const ta = document.getElementById('omrMemoTextArea');
+  if (ta && confirm('메모 내용을 모두 지우시겠습니까?')) {
+    ta.value = '';
   }
 }
 
@@ -2213,7 +2338,80 @@ function calculateResult() {
     calcExpr = '';
   }
 }
+
+/* 연습장 (메모장) 플로팅 위젯 관련 스크립트 */
+function toggleMemoWidget() {
+  const w = document.getElementById('memoWidget');
+  if(!w) return;
+  if(w.style.display === 'none' || w.style.display === '') {
+    w.style.display = 'flex';
+    document.getElementById('memoTextArea').focus();
+  } else {
+    w.style.display = 'none';
+  }
+}
+
+function hideMemoWidget() {
+  const w = document.getElementById('memoWidget');
+  if(w) w.style.display = 'none';
+}
+
+function clearMemoText() {
+  if(confirm("연습장 메모 내용을 모두 지우시겠습니까?")) {
+    document.getElementById('memoTextArea').value = '';
+  }
+}
+
+function initDraggableWidgets() {
+  makeElementDraggable(document.getElementById('memoWidget'), document.getElementById('memoWidgetHeader'));
+}
+
+function makeElementDraggable(elmnt, headerElmnt) {
+  if (!elmnt || !headerElmnt) return;
+  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  headerElmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    if (e.target.tagName === 'BUTTON') return;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = Math.max(10, (elmnt.offsetTop - pos2)) + "px";
+    elmnt.style.left = Math.max(10, (elmnt.offsetLeft - pos1)) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
 </script>
+
+<!-- 드래그 가능한 시험용 메모장/연습장 위젯 -->
+<div id="memoWidget" class="floating-widget" style="display:none;">
+  <div class="widget-header" id="memoWidgetHeader">
+    <span>📝 시험 연습장 (메모)</span>
+    <div class="widget-actions">
+      <button onclick="clearMemoText()" title="내용 초기화">🗑️</button>
+      <button onclick="toggleMemoWidget()" title="닫기">&times;</button>
+    </div>
+  </div>
+  <div class="widget-body">
+    <textarea id="memoTextArea" placeholder="시험 도중 계산이나 메모가 필요한 내용을 자유롭게 적으세요...&#10;(별도의 저장 없이 시험 중 자유롭게 이용하실 수 있습니다)"></textarea>
+  </div>
+</div>
 
 <!-- 이미지 확대 및 회전 모달 -->
 <div id="imgModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.88); justify-content:center; align-items:center; backdrop-filter:blur(5px); flex-direction:column; padding:20px;" onclick="closeImageModal()">
@@ -2243,6 +2441,8 @@ function calculateResult() {
   <!-- 이미지 표시 영역 -->
   <div style="position:relative; max-width:90%; max-height:80vh; display:flex; justify-content:center; align-items:center; overflow:hidden;" onclick="event.stopPropagation()">
     <img id="imgModalContent" style="max-width:100%; max-height:78vh; border-radius:10px; box-shadow:0 12px 40px rgba(0,0,0,0.6); border:2px solid rgba(255,255,255,0.8); transform-origin:center center;" />
+  </div>
+</div>
   </div>
 </div>
 
