@@ -142,6 +142,11 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                 if m_sub:
                     return (cat, 2, int(m_sub.group(1)), 0)
 
+                # 1-b) 실전 모의고사 세트: 기출문제(제N회)와 겹치지 않도록 별도 그룹으로 묶어 회차 오름차순 정렬
+                m_mock = re.search(r'모의고사\s*(\d+)\s*회', title)
+                if m_mock:
+                    return (cat, 1.5, int(m_mock.group(1)), 0)
+
                 # 1) 일반 회차/연도별 시험인 경우: 최신순(내림차순) 정렬
                 m_round = re.search(r'제\s*(\d+)\s*회', title) or re.search(r'(\d+)\s*회', title)
                 if m_round:
