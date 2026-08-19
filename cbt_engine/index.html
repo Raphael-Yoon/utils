@@ -122,6 +122,18 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+    .timer-badge:hover {
+      transform: scale(1.03);
+      filter: brightness(1.15);
+    }
+    .timer-badge.paused {
+      background: #b45309 !important;
+      border: 1.5px solid #f59e0b !important;
+      animation: pulse 1.5s infinite;
     }
     [data-theme="dark"] .timer-badge {
       background: #1e293b;
@@ -753,8 +765,8 @@
   <div class="brand">
     <span>SMART CBT</span> 국가자격시험 CBT 모의고사 시스템
   </div>
-  <div class="timer-badge" id="timerBadge" style="display:none;">
-    ⏱️ <span id="timerStr">120:00</span>
+  <div class="timer-badge" id="timerBadge" style="display:none;" onclick="toggleTimerPause()" title="클릭하여 타이머 일시정지 / 재생">
+    <span id="timerIcon">⏱️</span> <span id="timerStr">120:00</span>
   </div>
   <div class="header-actions">
     <button class="btn btn-header-outline" id="btnThemeToggle" onclick="toggleTheme()" title="다크 모드 / 라이트 모드 전환 (단축키: T)">🌙 다크 모드</button>
@@ -1249,6 +1261,9 @@ function updateRulesUI() {
   const firstSubCount = subjects[0] ? subjects[0].question_count : 0;
   const isUniformSubject = subjects.length > 0 && subjects.every(s => s.question_count === firstSubCount);
 
+  const fn = (ex.filename || (ex.path ? ex.path.replace('/exams/', '') : '')).toLowerCase();
+  const isAuditorSingleSubject = !!fn.match(/auditor_\d{4}_subject\d+\.json$/);
+
   document.getElementById('rulesTitle').innerHTML = `📌 <b>${escapeHtml(ex.title)}</b> 합격 판정 기준:`;
   
   if (rules.tier_1_score !== undefined) {
@@ -1273,7 +1288,17 @@ function updateRulesUI() {
       </li>
       <li>시험 시간: <b>${ex.time_limit_minutes || 70}분</b></li>
     `;
-  } else if ((ex.title && ex.title.includes('[5개년]')) || (ex.filename && ex.filename.includes('subject_')) || (ex.category && ex.category.includes('과목별'))) {
+  } else if (isAuditorSingleSubject) {
+    const subCutoffScore = rules.fail_score_per_subject || 40;
+    const minPassQs = Math.ceil(totalQs * (subCutoffScore / 100.0));
+    document.getElementById('rulesList').innerHTML = `
+      <li><b>학습 유형</b>: <b>연도/과목별 세분화 세트 (단일 과목 과락 검증 테스트)</b></li>
+      <li><b>문항 구성</b>: <b>단일 과목 ${totalQs}문항</b> (100점 만점 환산, 문항당 ${(100/totalQs).toFixed(1)}점)</li>
+      <li><b>과락 면제 (통과) 기준</b>: 과목 득점 <b>${subCutoffScore}점 이상</b> (${minPassQs}문항 이상 정답 시 <b>과락 면제/통과</b>)</li>
+      <li><b>과락 불합격 기준</b>: 과목 득점 <b>${subCutoffScore}점 미만</b> (${minPassQs}문항 미만 득점 시 <b>과락 불합격</b>)</li>
+      <li><b>시험 제한시간</b>: <b>${ex.time_limit_minutes || 25}분</b></li>
+    `;
+  } else if ((ex.title && ex.title.includes('[5개년]')) || fn.includes('5years') || (ex.category && ex.category.includes('과목별'))) {
     const minPassQs = Math.ceil(totalQs * 0.6);
     document.getElementById('rulesList').innerHTML = `
       <li><b>학습 유형</b>: <b>5개년 (2022년 ~ 2026년) 특정 과목 집중 마스터</b></li>
@@ -1705,9 +1730,19 @@ function updateOMRProgress() {
   document.getElementById('omrProgress').innerText = isReviewMode ? `OMR 채점 완료` : `${count} / ${total} 완료`;
 }
 
+let isTimerPaused = false;
+
 function startTimer() {
+  isTimerPaused = false;
+  const icon = document.getElementById('timerIcon');
+  if (icon) icon.innerText = "⏱️";
+  const badge = document.getElementById('timerBadge');
+  if (badge) badge.classList.remove('paused');
+
   updateTimerDisplay();
+  if (timerInterval) clearInterval(timerInterval);
   timerInterval = setInterval(() => {
+    if (isTimerPaused) return; // 일시정지 중일 때는 시간 차감 중단
     totalSeconds--;
     updateTimerDisplay();
     if (totalSeconds % 5 === 0) saveDraftSession();
@@ -1719,11 +1754,42 @@ function startTimer() {
   }, 1000);
 }
 
+function toggleTimerPause() {
+  if (isReviewMode) return;
+  isTimerPaused = !isTimerPaused;
+  const badge = document.getElementById('timerBadge');
+  const icon = document.getElementById('timerIcon');
+
+  if (isTimerPaused) {
+    if (badge) {
+      badge.classList.add('paused');
+      badge.title = "타이머 일시정지됨 (클릭 시 다시 시작)";
+    }
+    if (icon) icon.innerText = "⏸️";
+  } else {
+    if (badge) {
+      badge.classList.remove('paused');
+      badge.title = "클릭하여 타이머 일시정지";
+    }
+    if (icon) icon.innerText = "⏱️";
+  }
+}
+
 function updateTimerDisplay() {
   const m = Math.floor(totalSeconds / 60);
   const s = totalSeconds % 60;
-  document.getElementById('timerStr').innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-  if(totalSeconds < 300) document.getElementById('timerBadge').classList.add('warning');
+  const strEl = document.getElementById('timerStr');
+  if (strEl) {
+    strEl.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  }
+  const badge = document.getElementById('timerBadge');
+  if (badge) {
+    if (totalSeconds < 300 && !isTimerPaused) {
+      badge.classList.add('warning');
+    } else if (!isTimerPaused) {
+      badge.classList.remove('warning');
+    }
+  }
 }
 
 function submitExam(skipConfirm = false) {
@@ -1825,12 +1891,26 @@ function submitExam(skipConfirm = false) {
       badge.innerText = "❌ 불합격 (FAILED - 60점 미만)";
       badge.className = "status-badge fail";
     }
-  } else if (isFinalPass) {
-    badge.innerText = "🎉 최종 합격 (PASSED)";
-    badge.className = "status-badge pass";
   } else {
-    badge.innerText = hasAnyCutoff ? "❌ 과락 불합격 (FAILED)" : "❌ 총점 미달 불합격 (FAILED)";
-    badge.className = "status-badge fail";
+    const fnSub = (currentExamData.filename || '').replace(/^\/exams\//, '').toLowerCase();
+    const isAuditorSingleSubjectRes = !!fnSub.match(/auditor_\d{4}_subject\d+\.json$/);
+
+    if (isAuditorSingleSubjectRes) {
+      const subCutoff = rules.fail_score_per_subject || 40;
+      if (grandTotalScore >= subCutoff) {
+        badge.innerText = `🎉 과락 면제 / 과락 통과 (PASSED - ${grandTotalScore.toFixed(1)}점)`;
+        badge.className = "status-badge pass";
+      } else {
+        badge.innerText = `❌ 과락 불합격 (FAILED - ${subCutoff}점 미만 / ${grandTotalScore.toFixed(1)}점)`;
+        badge.className = "status-badge fail";
+      }
+    } else if (isFinalPass) {
+      badge.innerText = "🎉 최종 합격 (PASSED)";
+      badge.className = "status-badge pass";
+    } else {
+      badge.innerText = hasAnyCutoff ? "❌ 과락 불합격 (FAILED)" : "❌ 총점 미달 불합격 (FAILED)";
+      badge.className = "status-badge fail";
+    }
   }
 
   document.getElementById('resTitle').innerText = currentExamData.exam_info.title;
