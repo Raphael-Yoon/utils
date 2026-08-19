@@ -914,28 +914,50 @@ function onCategoryChange() {
   const selectedCategory = catSel.value;
   const filteredExams = examList.filter(ex => (ex.category || '기타') === selectedCategory);
 
-  // 회차 번호/연도 추출 후 내림차순 정렬 (최신 회차가 가장 먼저 보이도록 역순 정렬)
+  // 정렬: 1.연도별 세트(최신순) -> 2.과목별 세트(1~5과목순) -> 3.연도/과목별 세트(과목순 -> 연도 최신순)
   filteredExams.sort((a, b) => {
-    const parseNum = (item) => {
-      if (!item) return 0;
+    const getSortKey = (item) => {
+      if (!item) return [1, 0, 0];
       const title = item.title || '';
       const filename = item.filename || '';
-      
-      // 1. '제N회' 또는 'N회' 회차 패턴 우선 추출
-      const mRound = title.match(/제\s*(\d+)\s*회/) || title.match(/(\d+)\s*회/);
-      if (mRound) return parseInt(mRound[1], 10);
-      
-      // 2. 파일명 내 회차 번호/연도 추출
-      const mFile = filename.match(/(\d+)/);
-      if (mFile) return parseInt(mFile[1], 10);
-      
-      // 3. 폴백: 제목 내 마지막 숫자 추출
-      const matches = title.match(/\d+/g);
-      if (matches && matches.length > 0) return parseInt(matches[matches.length - 1], 10);
 
-      return 0;
+      // 3) 연도/과목별 세트 (예: auditor_2022_subject1.json): 과목 오름차순 -> 연도 내림차순
+      const mYearSub = filename.match(/(\d{4})_subject(\d+)\.json$/);
+      if (mYearSub) {
+        const year = parseInt(mYearSub[1], 10);
+        const subj = parseInt(mYearSub[2], 10);
+        return [3, subj, -year];
+      }
+
+      // 2) 과목별 집중학습(연도 통합) 세트: 1~5과목 오름차순
+      const mSub = title.match(/(\d+)\s*과목/) || filename.match(/subject_(\d+)/);
+      if (mSub) {
+        return [2, parseInt(mSub[1], 10), 0];
+      }
+
+      // 1) 일반 회차/연도별 시험: 최신순(내림차순)
+      const mRound = title.match(/제\s*(\d+)\s*회/) || title.match(/(\d+)\s*회/);
+      let num;
+      if (mRound) {
+        num = parseInt(mRound[1], 10);
+      } else {
+        const mFile = filename.match(/(\d+)/);
+        if (mFile) {
+          num = parseInt(mFile[1], 10);
+        } else {
+          const matches = title.match(/\d+/g);
+          num = (matches && matches.length > 0) ? parseInt(matches[matches.length - 1], 10) : 0;
+        }
+      }
+      return [1, -num, 0];
     };
-    return parseNum(b) - parseNum(a);
+
+    const ka = getSortKey(a);
+    const kb = getSortKey(b);
+    for (let i = 0; i < ka.length; i++) {
+      if (ka[i] !== kb[i]) return ka[i] - kb[i];
+    }
+    return 0;
   });
 
   examSel.innerHTML = '';

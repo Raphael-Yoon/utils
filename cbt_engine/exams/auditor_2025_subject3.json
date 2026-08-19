@@ -1,0 +1,427 @@
+{
+  "exam_info": {
+    "id": "auditor_2025_sub3",
+    "title": "[2025년] 3과목 : 데이터베이스 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2025,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2025년 3과목 : 데이터베이스 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "릴레이션 R과 함수적 종속성(functional dependency)을 기준으로 결정한 후보키(candidate key)로 가장 적절한 것은?\n\n(릴레이션) R(A, B, C, D, E, F)\n(함수적 종속성) A → B, C → A, C → D, (A, F) → E",
+      "options": [
+        "① AF",
+        "② CF",
+        "③ AC",
+        "④ AFC"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[해설]\n폐포(X+)를 계산하면 (AF)+={A,F,B,E}(전체X), (CF)+={C,F,A,D,B,E}(전체 속성 포함, 후보키 가능), (AC)+={A,C,B,D}(전체X), (AFC)+={A,F,C,B,D,E}(전체 포함하나 AF만으로 E까지 도출 가능해 최소성 위배, 슈퍼키). 최소성을 만족하며 전체 속성을 결정하는 것은 CF뿐이므로 정답은 ②번(CF)입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 51
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음은 릴레이션 R(A, B, C, D)와 해당 릴레이션에서 성립하는 함수적 종속성이다. 릴레이션 R을 두 개의 릴레이션 R1, R2로 분해한 후, 공통 속성을 이용하여 다시 조인했을 때 원래 릴레이션을 복구할 수 없는 분해는 어느 것인가?",
+      "options": [
+        "① (함수적 종속성) (A,B)→D, B→C, C→D / (분해) R1(A,B,C,D), R2(C,D)",
+        "② (함수적 종속성) A→B, B→C, C→D / (분해) R1(A,B,C), R2(C,D)",
+        "③ (함수적 종속성) (A,B)→C, A→C / (분해) R1(A,C), R2(A,B)",
+        "④ (함수적 종속성) (A,B)→C, C→D, C→A / (분해) R1(A,B), R2(A,C,D)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③ 또는 ④ (복수정답)\n\n[해설]\n무손실 조인분해(lossless-join decomposition)는 분해된 릴레이션들을 공통 속성으로 다시 조인했을 때 원래 정보가 손실되지 않아야 함을 의미합니다. R(A,B,C,D)을 R1, R2로 분해한 후 조인으로 복구 가능한지 폐포를 이용해 판별한 결과, ③번(R1(A,C), R2(A,B))과 ④번(R1(A,B), R2(A,C,D))이 모두 공통 속성만으로는 원래 릴레이션의 정보를 복원할 수 없는 손실 분해로 판별되어 복수 정답 처리되었습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 52
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "다음과 같이 릴레이션 R과 S가 있다. R과 S를 완전 외부 조인(full outer join)한 결과로 나올 수 없는 투플(tuple)은? (단, 널(NULL) 값은 '-'으로 표시한다.)\n\n릴레이션 R(A,B,C): (a1,b1,c1),(a2,b1,c2),(a3,b1,c2),(a4,b2,c3)\n릴레이션 S(B,C,D): (b1,c1,d1),(b1,c2,d2),(b1,c2,d3),(b3,c3,d3)",
+      "options": [
+        "① a1,b1,c1,d1",
+        "② -,b1,c2,d2",
+        "③ a4,b2,c3,-",
+        "④ -,b3,c3,d3"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[해설]\n완전 외부 조인은 자연조인을 수행하되 양쪽에서 매칭되지 않는 행도 NULL로 채워 모두 포함합니다. R의 (a2,b1,c2)와 (a3,b1,c2)가 S의 (b1,c2,d2)·(b1,c2,d3)와 각각 조인되어 (a2,b1,c2,d2),(a2,b1,c2,d3),(a3,b1,c2,d2),(a3,b1,c2,d3)이 생성되지만, A값이 NULL이면서 (b1,c2,d2)인 조합은 R의 어떤 행과도 대응하지 않으므로 나올 수 없습니다. 따라서 정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 53
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "릴레이션 R과 R에 포함된 함수적 종속성(functional dependency)이 다음과 같이 주어졌다고 하자.\n\n릴레이션: R(EmpID, DeptID, ProjID, EmpName, DeptName)\n함수적 종속성: EmpID → EmpName, DeptID → DeptName, (EmpID, ProjID) → DeptID\n\n이때 R을 제2정규형(2NF)이 만족하도록 정규화한다면 총 몇 개의 릴레이션이 생성되는가?",
+      "options": [
+        "① 1",
+        "② 2",
+        "③ 3",
+        "④ 4"
+      ],
+      "answer": 2,
+      "explanation": "정답: ② 또는 ③ (복수정답)\n\n[해설]\n(EmpID, ProjID)를 후보키로 가정하고 2NF로 분해하면(EmpID→EmpName의 부분함수종속 제거) R1(EmpID,ProjID,DeptID,DeptName), R2(EmpID,EmpName)의 2개 릴레이션으로 분해됩니다. 다만 R1에 남아있는 DeptID→DeptName의 이행함수종속까지 추가로 분해(3NF)하면 R1(EmpID,ProjID,DeptID), R2(EmpID,EmpName), R3(DeptID,DeptName)의 3개가 됩니다. 문제의 '2NF를 만족하도록' 정규화 범위 해석에 따라 2개 또는 3개 모두 될 수 있어 복수 정답으로 처리되었습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 54
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "다음과 같은 ER 스키마를 관계 모델의 릴레이션으로 사상할 때 가장 적절하지 않은 것은?\n\n(엔터티 E1(속성 A1, 기본키 PK1)과 E2(속성 A2, 기본키 PK2)가 관계 R을 통해 1:1로 서로 부분참여하는 구조)",
+      "options": [
+        "① E1(PK1,A1,K1) / E2(PK2,A2,FK1,K2)",
+        "② E1(PK1,A1,FK2,K1,K2) / E2(PK2,A2,K2)",
+        "③ E1(PK1,A1,K1) / E2(PK2,A2,K2)",
+        "④ E1E2(PK1,A1,PK2,A2,K1,K2) — 단일 통합 테이블"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[해설]\n두 엔터티 타입이 1:1 관계로 서로 부분참여(optional)하는 경우, 실무적으로는 각 엔터티를 독립된 릴레이션으로 도출하고, 일대일 관계 타입도 두 릴레이션의 기본키(PK1, PK2)만으로 구성된 별도의 릴레이션으로 스키마를 도출하는 것이 가장 일반적입니다. 어느 한쪽에 상대방 기본키를 외래키로 흡수시키는 방식(①②)이나 하나로 통합하는 방식(④)은 부분참여 관계에서 NULL이 다수 발생하거나 유연성이 떨어질 수 있어, 별도 릴레이션으로 관계를 표현하지 않은 ③번(E1, E2만 독립적으로 존재)이 가장 적절하지 않습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 55
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "릴레이션 R(StudentID, CourseID, Grade, Semester)이 다음 조건을 만족한다고 가정할 때, R의 최대 가능한 투플 개수로 옳은 것은? (단, 릴레이션 R에서 (StudentID, CourseID, Semester)가 기본키(primary key)이다.)\n\nStudentID 도메인 크기: 1000 (총 1000명 학생)\nCourseID 도메인 크기: 50 (총 50개 강좌)\nSemester 도메인 크기: 8 (총 8학기)\nGrade 도메인 크기: 5 (A, B, C, D, F)",
+      "options": [
+        "① 2,000,000",
+        "② 400,000",
+        "③ 50,000",
+        "④ 8,000"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[해설]\n기본키의 도메인 조합을 통해 저장 가능한 투플의 개수를 구할 수 있습니다. 가능 투플 개수 = StudentID 도메인크기 × CourseID 도메인크기 × Semester 도메인크기 = 1,000 × 50 × 8 = 400,000이며, 정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 56
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "다음은 고객(customer)과 주문(orders) 릴레이션이다. 밑줄 친 속성은 기본 키를 나타낸다. 다음 중 결과가 다른 하나는 무엇인가?\n\ncustomer(custid, name)\norders(orderid, custid, bookid, saleprice)",
+      "options": [
+        "① SELECT cs.custid, cs.name, SUM(od.saleprice) total_sales FROM customer cs LEFT JOIN orders od ON cs.custid = od.custid GROUP BY cs.custid, cs.name;",
+        "② SELECT cs.custid, cs.name, (SELECT SUM(saleprice) FROM orders od WHERE cs.custid = od.custid) total_sales FROM customer cs;",
+        "③ SELECT cs.custid, cs.name, SUM(od.saleprice) total_sales FROM customer cs LEFT JOIN orders od ON cs.custid = od.custid GROUP BY cs.custid, cs.name HAVING total_sales >= 0;",
+        "④ SELECT cs.custid, cs.name, s FROM customer cs LEFT JOIN (SELECT custid, SUM(saleprice) AS s FROM orders GROUP BY custid) od ON cs.custid = od.custid;"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[해설]\n①②④는 모두 주문내역이 없는 고객도 total_sales가 NULL(또는 0)로 결과에 포함되지만, ③번은 HAVING total_sales >= 0 조건으로 인해 total_sales가 NULL인 행(주문내역이 없는 고객)은 비교 결과가 불명(UNKNOWN) 처리되어 제외되므로, 주문내역이 있는 고객만 추출된다는 차이가 있습니다. 따라서 결과가 다른 것은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 57
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "세 릴레이션 직원 E(ENO, Name), 프로젝트 P(PNO, DNO), 참가 W(ENO, PNO, Hour)에 대해 표현한 다음 SQL문에 대한 설명으로 옳지 않은 것은?\n\nSELECT ENO\nFROM E\nWHERE NOT EXISTS ((SELECT PNO\n                    FROM P\n                    WHERE DNO=1)\n                   EXCEPT (SELECT PNO\n                           FROM W\n                           WHERE E.ENO=ENO));",
+      "options": [
+        "① 1번 부서(DNO=1)가 수행하는 프로젝트에 참가하지 않은 직원의 번호(ENO)를 검색하는 질의이다.",
+        "② 1번 부서(DNO=1)가 수행하는 모든 프로젝트에 참가한 직원의 번호(ENO)를 검색하는 질의이다.",
+        "③ 두 번째 부속질의는 상관(correlated) 질의로 현재 고려 중인 특정 직원(E)이 참가한 모든 프로젝트를 선택한다.",
+        "④ 관계 대수 (∏ENO,PNO(W)) ÷ (∏PNO(σDNO=1(P)))를 이용하면 동일한 결과를 얻을 수 있다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[해설]\n1번 부서가 수행하는 프로젝트 PNO 집합에서, 특정 직원이 참가한 프로젝트 PNO 집합을 차집합(EXCEPT)한 결과가 존재하지 않는다(NOT EXISTS)는 것은, 그 직원이 1번 부서의 모든 프로젝트에 참가했음을 의미합니다. 즉 이 질의는 '1번 부서가 수행하는 모든 프로젝트에 참가한 직원'을 검색하는 질의(②)이며, 의미를 반대로 해석한 ①번이 옳지 않은 설명입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 58
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "프로야구 선수(일련번호, 이름, 소속팀, 연봉) 릴레이션에 L 소속팀 선수가 10명, H 소속팀 선수가 40명, K 소속팀 선수가 30명, 소속팀이 정해지지 않은 선수가 20명으로 구성되어 있을 때, 가, 나, 다의 실행 결과 카디날리티(cardinality)로 옳은 것은?\n\n가. SELECT 소속팀 FROM 선수;\n나. SELECT DISTINCT 소속팀 FROM 선수;\n다. SELECT 소속팀, COUNT(*) FROM 선수 GROUP BY 소속팀 HAVING COUNT(*) >= 20;",
+      "options": [
+        "① 가: 80  나: 3  다: 2",
+        "② 가: 80  나: 3  다: 3",
+        "③ 가: 100  나: 4  다: 3",
+        "④ 가: 100  나: 4  다: 4"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[해설]\n가는 전체 레코드 수인 100건(10+40+30+20)입니다. 나는 소속팀을 중복 제거하므로 {L,H,K,NULL} 4건입니다. 다는 소속팀별 그룹 중 건수가 20 이상인 그룹만 반환하므로 {H,40},{K,30},{NULL,20} 3건입니다. 따라서 정답은 ③번(80이 아닌 100, 4, 3)입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 59
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "세 개의 릴레이션이 다음과 같다.\n배(배 번호, 배이름, 색깔),\n항해사(항해사 번호, 이름, 등급),\n예약(항해사 번호, 배 번호, 예약일)\n각각의 기본 키는 밑줄 친 속성이라고 하자.\n\"모든 배를 예약 받은 항해사의 항해사 번호를 검색하라.\"는 질의를 관계 대수로 나타낼 때 포함되어야 할 연산자를 모두 고른 것으로 가장 적절한 것은? (단, 배가 몇 척인지 알 수 없다.)\n\n가. 합집합  나. 곱집합  다. 차집합  라. 프로젝트",
+      "options": [
+        "① 가, 나, 다",
+        "② 가, 나, 라",
+        "③ 가, 다, 라",
+        "④ 나, 다, 라"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[해설]\n\"모든 배를 예약한 항해사\"를 찾는 질의는 R(Z,Y) ÷ S(Y) 형태의 디비전(division) 연산이 필요하며, 디비전은 기본연산만으로 R[Z] - ((R[Z]×S) - R)[Z] 형태로 표현됩니다. 이때 필요한 기본연산은 프로젝트, 카티션 프로덕트(곱집합), 차집합이므로 정답은 ④번(나, 다, 라)입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 60
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "관계 대수 연산의 완전 집합 {σ, ∏, ∪, ρ, -, ×} 중에서 디비전(division) 연산의 표현을 위해 필요한 연산만을 모아 놓은 것으로 옳은 것은?",
+      "options": [
+        "① σ, ∏, -",
+        "② σ, ∪, ρ, -, ×",
+        "③ ∏, -, ×",
+        "④ ∏, ∪, -, ×"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[해설]\n디비전(division) 연산은 R(Z,Y)÷S(Y) = R[Z] - ((R[Z]×S) - R)[Z] 로, 프로젝션(∏), 차집합(-), 카티션 프로덕트(×)의 조합만으로 표현할 수 있습니다. 따라서 정답은 ③번(∏, -, ×)입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 61
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "다음 SQL 정의문은 직원 EMPLOYEE(ENO, Name, Super_ENO, DNO) 릴레이션을 정의한 것이다. 이와 관련된 설명으로 옳지 않은 것은? (단, DEPARTMENT는 부서 릴레이션, ENO는 직원번호, Name은 이름, Super_ENO는 상사 직원번호, DNO는 부서번호를 의미한다.)\n\nCREATE TABLE EMPLOYEE\n(ENO INT NOT NULL,\n Name VARCHAR(15) NOT NULL,\n Super_ENO INT,\n DNO INT NOT NULL DEFAULT 1,\n PRIMARY KEY(ENO),\n CONSTRAINT EMPSUPERFK FOREIGN KEY (Super_ENO) REFERENCES EMPLOYEE(ENO)\n     ON DELETE SET NULL ON UPDATE CASCADE,\n CONSTRAINT EMPDEPTFK FOREIGN KEY (DNO) REFERENCES DEPARTMENT(DNO)\n     ON DELETE SET DEFAULT ON UPDATE CASCADE);",
+      "options": [
+        "① 100번 직원의 상사인 200번 직원이 삭제되면 100번 직원의 상사 값은 NULL이 된다.",
+        "② 100번 직원이 속한 부서가 부서 릴레이션에서 삭제되면 100번 직원도 연쇄적으로 삭제된다.",
+        "③ 100번 직원이 속한 부서번호가 부서 릴레이션에서 5에서 6으로 변경되면 직원 릴레이션에서 100번 직원의 부서번호도 5에서 6으로 변경된다.",
+        "④ 100번 직원의 상사의 직원번호가 직원 릴레이션에서 200번에서 300번으로 변경되면 100번 직원 투플의 상사번호도 300번으로 변경된다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[해설]\nDNO 외래키의 참조무결성 옵션이 'ON DELETE SET DEFAULT'이므로, 참조하는 부서가 삭제되면 직원이 연쇄 삭제되는 것이 아니라 DNO 값이 기본값(DEFAULT 1)으로 변경됩니다. 따라서 '연쇄적으로 삭제된다'는 ②번 설명이 옳지 않습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 62
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음 데이터가 순서대로 삽입되어 만들어진 차수가 3인 B+-트리에 대해 적절하게 설명된 것을 모두 나열한 것은? (단, B+-트리가 생성될 때 첫 노드는 최대 3개 키 값을 저장한다. 이후 리프 노드는 최소 2개, 최대 3개 키 값을 저장하고 루트 노드와 내부 노드는 최소 1개, 최대 2개 키 값을 저장한다. 키 값 a의 왼쪽 서브트리에 있는 노드들의 모든 키 값들은 a보다 작거나 같다. 노드에 키의 개수가 짝수 m일 때, 중간 키 값은 m/2 번째 값으로 한다.)\n\n69, 15, 110, 90, 20, 120, 40, 125\n\n가. 전체 노드의 개수는 7개이다.\n나. 루트 노드의 키 값은 69이다.\n다. 가장 왼쪽에 있는 리프 노드에 들어갈 키 값은 15, 40이다.\n라. 루트 노드의 레벨이 1이라고 할 때, 트리의 높이는 3이다.",
+      "options": [
+        "① 가, 다",
+        "② 가, 나, 라",
+        "③ 나, 다, 라",
+        "④ 가, 나, 다, 라"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[해설]\n가·나·라 설명은 맞으며, 다는 틀린 설명입니다. 가장 왼쪽 리프 노드에 들어갈 키 값은 15, 40이 아니라 15, 20입니다. 따라서 정답은 ②번(가, 나, 라)입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 63
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "확장성 해싱(extendible hashing) 파일에서 d는 전역 깊이(global depth)를 나타내고 p는 지역 깊이(local depth)를 나타낸다고 하자. 모조키 (a), (b), (c)를 차례로 삭제한 후, 변경된 확장성 해싱 파일에 대한 설명으로 옳지 않은 것은? (단, 각 버킷에는 최대 4개의 모조키 값이 들어갈 수 있다.)",
+      "options": [
+        "① 지역 깊이의 합은 8이다.",
+        "② 전역 깊이는 2로 변경된다.",
+        "③ 3개의 모조키를 포함한 버킷이 존재한다.",
+        "④ 디렉터리가 오름차순으로 정렬될 때, 가장 아래 버킷에는 모조키 110100 한 개만 포함한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[해설]\n모조키 (a)001001, (b)111010, (c)101101을 순서대로 삭제하고 병합 가능한 버킷을 합친 결과, 3개의 모조키를 포함하는 버킷은 존재하지 않게 됩니다. 따라서 ③번 설명이 옳지 않습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 64
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "다음과 같은 student 릴레이션이 있다고 하자.\n\ns_id(학번) | year(학년) | dept(학과)\n1001 | 1 | 전기공학과\n1002 | 3 | 전자공학과\n1003 | 2 | 전기공학과\n1004 | 1 | 컴퓨터공학과\n1005 | 2 | 전기공학과\n1006 | 4 | 전자공학과\n1007 | 1 | 컴퓨터공학과\n\n이 릴레이션에 대해 전기공학과 3명, 전자공학과 2명, 컴퓨터공학과 2명으로 인원을 계산하는 뷰를 정의하려고 할 때, 다음 중 가장 적절하게 정의된 뷰는?",
+      "options": [
+        "① CREATE VIEW size(year, t_size) AS SELECT year, count(*) FROM student;",
+        "② CREATE VIEW size(year, t_size) AS SELECT year, count(*) FROM student GROUP BY year;",
+        "③ CREATE VIEW size(dept, t_size) AS SELECT dept, count(*) FROM student;",
+        "④ CREATE VIEW size(dept, t_size) AS SELECT dept, count(*) FROM student GROUP BY dept;"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[해설]\n학과(dept)별 학생 수를 구하려면 dept를 기준으로 GROUP BY 하여 count(*)를 계산해야 합니다. dept를 그룹화 기준으로 사용하고 GROUP BY dept를 포함한 ④번이 정답입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 65
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "다중 단위 로킹(multiple granularity locking) 기법에서 IX(Intension eXclusive)와 SIX(Shared and Intension eXclusive) 로크에 대한 양립성 행렬 중 (가)~(라)에 들어갈 표현으로 옳은 것은?\n\n(요청 중인 로크: IX, SIX / 현재 걸려 있는 로크: IX, SIX 에 대한 2x2 양립성 표)",
+      "options": [
+        "① 허용, 허용, 허용, 허용",
+        "② 허용, 허용, 허용, 대기",
+        "③ 허용, 허용, 대기, 대기",
+        "④ 허용, 대기, 대기, 대기"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[해설]\n의도형 로크 양립성 행렬에 따르면 IX-IX는 허용(가)되지만, IX-SIX, SIX-IX, SIX-SIX 조합은 모두 대기(충돌)합니다. 따라서 (가)허용, (나)대기, (다)대기, (라)대기이며 정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 66
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "HDFS(Hadoop Distributed File System)에서 데이터 읽기(read)와 쓰기(write)의 성능 차이와 이에 대한 설명으로 옳은 것은?",
+      "options": [
+        "① 읽기는 가까운 DataNode에서 데이터를 가져오기 때문에 빠르고, 쓰기는 모든 복제본 저장을 기다리기 때문에 느리다.",
+        "② 읽기는 모든 DataNode에서 데이터를 수집해야 하므로 느리고, 쓰기는 특정 DataNode에만 기록하면 되므로 빠르다.",
+        "③ HDFS는 데이터를 항상 NameNode에서 읽고 쓰므로 읽기와 쓰기에서의 성능 차이가 없다.",
+        "④ HDFS는 쓰기가 완료된 후에만 읽기가 가능하기 때문에 쓰기에 비해 읽기가 느리다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[해설]\nHDFS는 데이터를 여러 DataNode에 복제 저장하여 읽기(조회) 성능과 가용성을 높이지만, 쓰기(갱신) 시에는 모든 복제본에 대한 갱신을 기다려야 하므로 상대적으로 느립니다. 읽기는 가까운 DataNode에서 가져올 수 있어 빠르므로 정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 67
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "Apriori 알고리즘의 핵심 원리인 비단조(anti-monotone) 성질에 대한 설명으로 옳은 것은?",
+      "options": [
+        "① 어떤 항목집합이 빈발하지 않다면, 그 상위 집합(superset) 또한 빈발하지 않다.",
+        "② 항목집합의 크기가 증가할수록 지지도(support)도 증가한다.",
+        "③ 빈발한 항목집합의 모든 상위 집합(superset) 또한 빈발하다.",
+        "④ 지지도가 낮은 항목집합은 높은 항목집합에 비해 연관 규칙이 될 가능성이 높다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[해설]\n비단조성(anti-monotonicity)은 어떤 아이템셋이 최소 지지도를 만족하지 않으면(빈발하지 않으면), 그 아이템셋을 포함하는 상위 집합(superset)도 빈발할 수 없다는 성질입니다. 이는 Apriori 알고리즘의 핵심 가지치기(pruning) 원리이며, 정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 68
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "어떤 데이터셋에서 클래스 C1과 C2의 사전 확률이 각각 0.5, 0.5이고, 특정 특성 X가 클래스 C1에서 발생할 확률이 0.6, 클래스 C2에서 발생할 확률이 0.4라고 하자. 이때 베이즈 정리(Bayes theorem)로 계산한 P(C1|X) 값으로 옳은 것은?",
+      "options": [
+        "① 0.24",
+        "② 0.3",
+        "③ 0.4",
+        "④ 0.6"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[해설]\n베이즈 정리에 따라 P(C1|X) = P(X|C1)*P(C1) / P(X)로 계산합니다. P(X) = P(X|C1)*P(C1) + P(X|C2)*P(C2) = 0.6*0.5 + 0.4*0.5 = 0.5입니다. 따라서 P(C1|X) = (0.6*0.5)/0.5 = 0.6이며, 정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 69
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "다음은 트랜잭션들이 병행 수행되던 도중 시스템 장애(system crash)가 발생한 후의 로그 기록이다. 로그는 즉시 변경(immediate update) 방법을 사용하며, <T, D, v1, v2>는 <트랜잭션이름, 데이터, 변경 전 값, 변경 후 값>을 의미한다. 복구 후 데이터 값 중 틀린 것은?\n\n<start,T1> <T1,A,10,15> <start,T2> <T2,B,5,7> <commit,T1> <checkpoint> <start,T3> <T3,C,8,9> <T2,A,15,20> <T3,D,12,14> <commit,T3> *system crash*",
+      "options": [
+        "① A : 15",
+        "② B : 5",
+        "③ C : 8",
+        "④ D : 14"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[해설]\n검사시점 이후 COMMIT되지 않은 T2는 UNDO, COMMIT된 T3는 REDO를 수행합니다. UNDO-list(T2)의 로그를 역순으로 UNDO하면 A는 변경 전 값 15, B는 변경 전 값 5가 되고, REDO-list(T3)의 로그를 순서대로 REDO하면 C는 변경 후 값 9, D는 변경 후 값 14가 됩니다. 따라서 복구 후 C는 8이 아니라 9이므로, 틀린 것은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 70
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "다음과 같이 XML DTD를 정의하였다고 할 때, 파싱 오류가 발생하는 XML 문장으로 가장 적절한 것은?\n\n<!ELEMENT x (a, (b | c), d)*>\n<!ELEMENT a (#PCDATA)>\n<!ELEMENT b (#PCDATA)>\n<!ELEMENT c (#PCDATA)>\n<!ELEMENT d (#PCDATA)>",
+      "options": [
+        "① <x></x>",
+        "② <x><a/><d/></x>",
+        "③ <x><a/><b/><d/></x>",
+        "④ <x><a/><b/><d/><a/><c/><d/></x>"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[해설]\nDTD 정의에 따르면 x 요소는 (a, (b|c), d) 시퀀스를 0회 이상(*) 반복할 수 있으며, 이때 하위 2번째 데이터 요소는 반드시 b 또는 c 중 하나가 와야 합니다. ②번(<a/><d/>)은 b 또는 c에 해당하는 2번째 요소가 누락되어 있으므로 구문 오류가 발생하며, 정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 71
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "다음에서 JDBC를 이용한 데이터베이스 프로그램의 작성 순서를 올바르게 나열한 것으로 가장 적절한 것은?\n\n가. SQLExecute를 이용하여 SQL 문장을 실행\n나. 질의 스트링에 있는 매개변수를 SQL/CLI 함수 SQLBindParameter를 이용하여 프로그램 변수에 연결\n다. 환경변수를 설정\n라. 질의 결과가 리턴되면 SQLBindCol 함수를 이용하여 질의 결과의 각 열을 C 프로그램 변수에 연결\n마. SQL/CLI 함수 SQLPrepare를 이용하여 SQL 문장을 준비",
+      "options": [
+        "① 마 – 가 – 다 – 나 – 라",
+        "② 마 – 라 – 가 – 다 - 나",
+        "③ 다 – 마 – 라 – 가 - 나",
+        "④ 다 – 마 – 나 – 가 - 라"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[해설]\nSQL/CLI(JDBC) 연동 절차는 환경 설정(다) → SQL 문장 준비(마) → 매개변수 바인딩(나) → SQL 실행(가) → 결과 열 바인딩(라) 순으로 진행됩니다. 따라서 정답은 ④번(다-마-나-가-라)입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 72
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "다음 박스 안의 '가'~'마' 중, 데이터베이스가 유지해야 할 중요한 성질들 중에서 NoSQL과 관련이 있는 성질만을 모아놓은 것으로 가장 적절한 것은?\n\n가. 원자성(atomicity)  나. 일관성(consistency)  다. 분할 감내성(partition tolerance)  라. 격리성(isolation)  마. 가용성(availability)",
+      "options": [
+        "① 가, 나, 라",
+        "② 가, 나, 다, 라",
+        "③ 나, 다, 마",
+        "④ 나, 다, 라, 마"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[해설]\nCAP 이론에 따르면 분산 시스템은 일관성(Consistency), 가용성(Availability), 분할 감내성(Partition Tolerance)을 모두 동시에 만족할 수 없으며, NoSQL은 가용성과 분할감내성(CP 또는 AP)을 강조한 모델입니다. 원자성(가)과 격리성(라)은 트랜잭션의 ACID 특성으로 관계형 데이터베이스와 관련이 깊습니다. 따라서 NoSQL과 관련 있는 성질은 나, 다, 마이며 정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 73
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "이진 분류를 위한 의사결정 트리(decision tree) 구축에서 불순도(impurity)와 분류 오류에 대한 설명으로 옳지 않은 것은?",
+      "options": [
+        "① 두 클래스를 구분하는 현재 노드에서 각 클래스의 해당 개수가 0개, 6개라면 Gini Index는 0이다.",
+        "② 두 클래스를 구분하는 현재 노드에서 각 클래스의 해당 개수가 1개, 5개라면 Gini Index의 값은 0보다 크다.",
+        "③ 두 클래스를 구분하는 현재 노드에서 각 클래스의 해당 개수가 3개, 3개라면 분류 오류(classification error) 비율은 0.5이다.",
+        "④ 두 클래스를 구분하는 현재 노드에서 각 클래스의 해당 개수가 3개, 3개라면 Gini Index는 1이다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[해설]\n지니 불순도는 IG=1-Σfi²로 계산합니다. 각 클래스가 3개, 3개(비율 1/2, 1/2)일 때 IG = 1-(1/2)²-(1/2)² = 0.5이며, 1이 아닙니다. 따라서 ④번 설명이 옳지 않습니다. 참고로 ①(0,6개→IG=0), ②(1,5개→IG≈0.277>0), ③(3,3개→분류오류비율=0.5)은 모두 옳은 설명입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 74
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "데이터 저장 및 교환을 위한 다양한 데이터 포맷이 존재하며, 각각의 형식은 특정한 구조와 특징을 가진다. 다음 중 대표적인 데이터 저장 형식과 이에 대한 설명으로 가장 적합하지 않은 것은?",
+      "options": [
+        "① Key-Value Store: 키(Key)와 값(Value) 형태로 데이터를 저장하며, 고속 검색이 가능한 구조이다. 일반적으로 NoSQL 데이터베이스에서 많이 사용된다.",
+        "② JSON(JavaScript Object Notation): 속성-이름 쌍으로 데이터를 저장하며, 트리 구조를 가지며 XML과 유사한 역할을 한다. 문자열 기반의 데이터 표현 방식이며, 네트워크 통신에서 자주 사용된다.",
+        "③ XML(eXtensible Markup Language): 태그를 사용하여 계층적 구조의 데이터를 표현하며, 문서 형식의 데이터 저장과 교환에 주로 사용된다.",
+        "④ CSV(Comma-Separated Values): 쉼표(,) 또는 탭(Tab)으로 데이터를 구분하여 저장하며, 행(row)과 열(column) 구조를 갖는다. 정형 데이터 저장에 적합하며, 중첩 구조를 표현할 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[해설]\nCSV는 단순한 2차원 행/열 구조의 텍스트 기반 포맷으로, 데이터의 타입 정보나 중첩(계층적) 구조를 표현할 수 없는 한계가 있습니다. '중첩 구조를 표현할 수 있다'는 ④번 설명이 실제와 반대이므로 가장 적합하지 않습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2025,
+      "origin_id": 75
+    }
+  ]
+}

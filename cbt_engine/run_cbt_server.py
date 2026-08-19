@@ -123,18 +123,26 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                     except Exception:
                         pass
             
-            # 시험 목록 정렬 (카테고리 가나다순, 연도/회차별 시험은 최신순 내림차순, 과목별 시험은 1~5과목 오름차순)
+            # 시험 목록 정렬 (카테고리 가나다순 -> 1.연도별 세트(최신순) -> 2.과목별 세트(1~5과목순)
+            #               -> 3.연도/과목별 세트(과목순 -> 연도 최신순))
             def get_sort_key(item):
                 title = item.get('title', '')
                 filename = item.get('filename', '')
                 cat = item.get('category', '')
-                
-                # 1) 과목별 집중학습 시험인 경우: 연도별 시험 뒤에 1과목 -> 2과목 -> 3과목 ... 오름차순 정렬
+
+                # 3) 연도/과목별 세트 (예: auditor_2022_subject1.json): 과목 오름차순 -> 연도 내림차순
+                m_year_sub = re.search(r'(\d{4})_subject(\d+)\.json$', filename)
+                if m_year_sub:
+                    year = int(m_year_sub.group(1))
+                    subj = int(m_year_sub.group(2))
+                    return (cat, 3, subj, -year)
+
+                # 2) 과목별 집중학습(연도 통합) 세트: 1과목 -> 2과목 -> 3과목 ... 오름차순 정렬
                 m_sub = re.search(r'(\d+)\s*과목', title) or re.search(r'subject_(\d+)', filename)
                 if m_sub:
-                    return (cat, 2, int(m_sub.group(1)))
-                    
-                # 2) 일반 회차/연도별 시험인 경우: 최신순(내림차순) 정렬
+                    return (cat, 2, int(m_sub.group(1)), 0)
+
+                # 1) 일반 회차/연도별 시험인 경우: 최신순(내림차순) 정렬
                 m_round = re.search(r'제\s*(\d+)\s*회', title) or re.search(r'(\d+)\s*회', title)
                 if m_round:
                     num = int(m_round.group(1))
@@ -145,7 +153,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                     else:
                         matches = re.findall(r'\d+', title)
                         num = int(matches[-1]) if matches else 0
-                return (cat, 1, -num)
+                return (cat, 1, -num, 0)
 
             exam_list.sort(key=get_sort_key)
 

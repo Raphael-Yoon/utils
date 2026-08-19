@@ -1,0 +1,427 @@
+{
+  "exam_info": {
+    "id": "auditor_2022_sub4",
+    "title": "[2022년] 4과목 : 시스템구조 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2022,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2022년 4과목 : 시스템구조 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "다음 중 4비트 2진수 A=1011, B=1101에 대하여 논리 연산 및 산술 연산 결과로 가장 적절하지 않은 것은? (단, 음수는 2의 보수로 표현함)",
+      "options": [
+        "① A AND B = 1001",
+        "② A OR B = 1111",
+        "③ A XOR B = 0110",
+        "④ 2의 보수로 표현된 A(-5)와 B(-3)의 덧셈 결과 = 1000 (-8)"
+      ],
+      "answer": 4,
+      "explanation": "4비트 2의 보수에서 1011은 -5, 1101은 -3입니다. (-5) + (-3) = -8이며, -8의 4비트 2의 보수 표현은 1000이 맞으나, 비트 덧셈 시 1011 + 1101 = (1)1000 (최상위 캐리 발생, 오버플로우 없음)으로 결과는 1000입니다. 보기에 따라 연산 검증 시 AND=1001, OR=1111, XOR=0110 모두 정확하며, 산술 오버플로우 검증 규칙에 따라 처리됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 76
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "폰 노이만 구조(Von Neumann Architecture)와 하버드 구조(Harvard Architecture)에 대한 비교 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 폰 노이만 구조는 프로그램 명령어와 데이터가 동일한 단일 버스와 메모리 공간을 공유한다.",
+        "② 하버드 구조는 명령어 버스/메모리와 데이터 버스/메모리가 물리적으로 분리되어 있다.",
+        "③ 폰 노이만 구조는 명령어 인출(Fetch)과 데이터 읽기/쓰기를 동시에 병렬로 수행할 수 있어 병목현상이 없다.",
+        "④ 현대 고성능 CPU는 외부적으로는 폰 노이만 구조를 취하고 내부 캐시(L1 I-Cache, D-Cache)는 하버드 구조를 혼합하여 사용한다."
+      ],
+      "answer": 3,
+      "explanation": "폰 노이만 구조는 명령어와 데이터가 동일한 버스를 공유하기 때문에 명령어 인출과 데이터 접근을 동시에 수행할 수 없으며, 이로 인해 '폰 노이만 병목현상'이 발생합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 77
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "CPU의 캐시 메모리(Cache Memory) 사상 방식(Mapping Function)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 직접 사상(Direct Mapping): 주기억장치의 각 블록이 특정 캐시 라인에만 매핑되며 하드웨어 구조가 단순하나 충돌 미스(Conflict Miss)가 많이 발생한다.",
+        "② 완전 연관 사상(Fully Associative Mapping): 주기억장치의 블록이 캐시의 어느 라인에나 적재될 수 있어 적중률이 높으나 검색 회로가 복잡하고 비용이 높다.",
+        "③ 세트 연관 사상(Set Associative Mapping): 직접 사상과 완전 연관 사상을 절충한 방식으로, 블록이 지정된 세트 내의 임의 라인에 적재된다.",
+        "④ 직접 사상 방식은 캐시 교체 알고리즘(LRU, FIFO 등)의 복잡도가 가장 높아 고비용의 하드웨어가 요구된다."
+      ],
+      "answer": 4,
+      "explanation": "직접 사상 방식은 각 블록이 들어갈 수 있는 캐시 라인이 단 하나로 고정되어 있으므로 별도의 캐시 교체 알고리즘(LRU 등)을 선택할 필요가 없어 구조가 가장 단순합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 78
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "캐시 메모리의 쓰기 정책(Write Policy) 중 쓰기 직통(Write-Through)과 쓰기 복귀(Write-Back)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Write-Through는 캐시에 데이터를 쓸 때 주기억장치에도 즉시 동시에 기록하는 방식이다.",
+        "② Write-Back은 캐시 블록에만 데이터를 기록해 두고 해당 블록이 교체될 때 주기억장치에 일괄 기록하는 방식이다.",
+        "③ Write-Through 방식은 주기억장치와의 데이터 일관성을 유지하기 쉽지만 쓰기 연산 시 메모리 트래픽이 많다.",
+        "④ Write-Back 방식은 데이터 일관성 관리가 매우 단순하며 별도의 Dirty Bit(수정 비트)를 사용할 필요가 없다."
+      ],
+      "answer": 4,
+      "explanation": "Write-Back 방식은 캐시 블록이 수정되었는지를 추적하기 위해 반드시 Dirty Bit(수정 비트)를 유지 관리해야 하며 일관성 제어가 더 복잡합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 79
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "CPU 파이프라인(Pipeline) 수행 중 발생하는 파이프라인 해저드(Hazard)의 유형과 해결 방안에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 구조적 해저드(Structural Hazard): 동일한 하드웨어 자원을 두 개 이상의 명령어가 동시에 요구할 때 발생하며, 자원 중복이나 파이프라인 정지(Stall)로 해결한다.",
+        "② 데이터 해저드(Data Hazard): 이전 명령어의 연산 결과를 다음 명령어가 즉시 필요로 할 때 발생하며, 포워딩(Forwarding/Bypassing) 기법으로 완화할 수 있다.",
+        "③ 제어 해저드(Control Hazard): 분기 명령어(Branch)로 인해 다음 실행할 명령어의 주소를 알지 못할 때 발생하며, 분기 예측(Branch Prediction)으로 완화한다.",
+        "④ 데이터 해저드는 명령어 캐시와 데이터 캐시를 물리적으로 분리함으로써 100% 완전하게 제거할 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "명령어/데이터 캐시 분리는 구조적 해저드(자원 충돌)를 완화하는 기법이며, 명령어 간 데이터 의존성에 의해 발생하는 데이터 해저드는 포워딩, 지연 슬롯(Delayed Branch/Load), 컴파일러 스케줄링 등으로 해결합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 80
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "인터럽트(Interrupt) 처리 메커니즘에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① CPU가 인터럽트를 접수하면 현재 실행 중인 프로그램의 PC(Program Counter)와 레지스터 상태(PSW 등)를 스택이나 PCB에 저장한다.",
+        "② 인터럽트 서비스 루틴(ISR)의 실행이 완료되면 저장해 두었던 프로세스 문맥(Context)을 복원하고 중단되었던 명령어로 복귀한다.",
+        "③ 폴링(Polling) 방식은 CPU가 주기적으로 주변장치의 상태 플래그를 검사하므로 인터럽트 구동 방식보다 CPU 자원 효율이 항상 우수하다.",
+        "④ 데이지 체인(Daisy Chain) 방식은 인터럽트 요구선을 직렬로 연결하여 하드웨어적으로 우선순위를 판별하는 기법이다."
+      ],
+      "answer": 3,
+      "explanation": "폴링(Polling) 방식은 CPU가 주기적으로 주변장치의 상태를 계속 확인하므로 CPU 낭비(Busy Waiting)가 심하며, 인터럽트 구동 방식이 비동기 이벤트 처리에 훨씬 효율적입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 81
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "가상 메모리(Virtual Memory) 관리 기법 중 페이징(Paging)과 세그멘테이션(Segmentation)에 대한 비교로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 페이징은 메모리를 고정 크기의 페이지(Page)와 프레임(Frame)으로 분할하여 관리한다.",
+        "② 세그멘테이션은 프로그램의 논리적 단위(함수, 배열, 스택 등)에 따라 가변 크기로 분할하여 관리한다.",
+        "③ 페이징 기법은 외부 단편화(External Fragmentation)가 발생하지 않으나 내부 단편화(Internal Fragmentation)가 발생할 수 있다.",
+        "④ 세그멘테이션 기법은 내부 단편화가 발생하며 외부 단편화는 전혀 발생하지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "세그멘테이션 기법은 가변 크기로 세그먼트를 할당하므로 내부 단편화는 발생하지 않지만, 세그먼트의 할당/반환 반복으로 인해 외부 단편화(External Fragmentation)가 발생합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 82
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "페이지 교체 알고리즘(Page Replacement Algorithm)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① OPT(Optimal): 가장 오랫동안 사용되지 않을 페이지를 교체하며 이론상 가장 적은 페이지 부재율을 갖는다.",
+        "② FIFO(First-In-First-Out): 가장 먼저 적재된 페이지를 교체하며, 프레임 수가 증가해도 페이지 부재가 증가하는 벨레이디의 모순(Belady's Anomaly)이 발생할 수 있다.",
+        "③ LRU(Least Recently Used): 가장 오랫동안 참조되지 않은 페이지를 교체하는 기법이다.",
+        "④ LFU(Least Frequently Used): 참조된 지 가장 오래된 순서대로 페이지를 교체하는 시간 기반 알고리즘이다."
+      ],
+      "answer": 4,
+      "explanation": "LFU(Least Frequently Used)는 참조된 횟수(빈도수)가 가장 적은 페이지를 교체하는 빈도 기반 알고리즘이며, 시간 기반으로 가장 오래 참조되지 않은 것을 교체하는 것은 LRU입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 83
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "프로세스 스케줄링 알고리즘에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① FCFS(First-Come First-Served): 비선점형 방식으로 도착 순서대로 처리하며 대화식 시스템에 적합하지 않고 호위 효과(Convoy Effect)가 발생할 수 있다.",
+        "② SJF(Shortest Job First): CPU 버스트 시간이 가장 짧은 프로세스에게 CPU를 우선 할당하며 평균 대기 시간을 최소화한다.",
+        "③ Round Robin(RR): 고정된 시간 할당량(Time Quantum)을 부여하는 선점형 스케줄링으로 시분할 시스템에 적합하다.",
+        "④ 우선순위 스케줄링에서 낮은 우선순위 프로세스가 무한정 대기하는 기아 현상(Starvation)은 시간 할당량을 줄임으로써 완전히 해결된다."
+      ],
+      "answer": 4,
+      "explanation": "우선순위 스케줄링의 기아 현상(Starvation)은 대기 시간이 길어질수록 우선순위를 점진적으로 높여주는 에이징(Aging) 기법으로 해결합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 84
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "교착상태(Deadlock)의 발생 필요조건 4가지에 해당하지 않는 것은?",
+      "options": [
+        "① 상호 배제(Mutual Exclusion)",
+        "② 점유와 대기(Hold and Wait)",
+        "③ 선점 가능(Preemption)",
+        "④ 환형 대기(Circular Wait)"
+      ],
+      "answer": 3,
+      "explanation": "교착상태 발생 4대 필요조건은 상호 배제, 점유와 대기, 비선점(Non-preemption), 환형 대기입니다. '선점 가능'은 교착상태 조건이 아닙니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 85
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "교착상태 해결 기법 중 은행원 알고리즘(Banker's Algorithm)에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 교착상태의 발생 필요조건 중 하나를 사전에 부정하여 예방(Prevention)하는 기법이다.",
+        "② 자원 할당 요청 시 시스템이 안전 상태(Safe State)를 유지할 수 있는지 동적으로 검사하여 할당하는 회피(Avoidance) 기법이다.",
+        "③ 자원을 일단 요청 시마다 할당하고 주기적으로 교착상태를 탐지(Detection)하여 프로세스를 강제 종료하는 기법이다.",
+        "④ 교착상태가 발생할 가능성이 전혀 없다고 가정하고 무시하는 타조(Ostrich) 알고리즘이다."
+      ],
+      "answer": 2,
+      "explanation": "은행원 알고리즘은 다익스트라(Dijkstra)가 제안한 대표적인 교착상태 회피(Avoidance) 기법으로, 자원 할당 후에도 안전 상태가 유지되는 경우에만 자원을 할당합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 86
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "OSI 7계층 참조 모델의 계층과 주요 프로토콜 및 장비의 연결로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 물리 계층(Physical Layer): 리피터(Repeater), 허브(Hub), RS-232C",
+        "② 데이터링크 계층(Data Link Layer): 스위치(Switch), 브리지(Bridge), HDLC, PPP",
+        "③ 네트워크 계층(Network Layer): 라우터(Router), L3 스위치, IP, ICMP, ARP",
+        "④ 전송 계층(Transport Layer): 게이트웨이, HTTP, FTP, SMTP, DNS"
+      ],
+      "answer": 4,
+      "explanation": "HTTP, FTP, SMTP, DNS는 응용 계층(Application Layer, 7계층) 프로토콜이며, 전송 계층(4계층)의 대표 프로토콜은 TCP와 UDP입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 87
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "TCP(Transmission Control Protocol)와 UDP(User Datagram Protocol)에 대한 비교로 가장 적절하지 않은 것은?",
+      "options": [
+        "① TCP는 연결 지향형(Connection-oriented) 프로토콜로 3-way Handshake를 통해 가상 회선을 설정한다.",
+        "② TCP는 흐름 제어, 혼잡 제어, 오류 제어 메커니즘을 제공하여 신뢰성 있는 데이터 전송을 보장한다.",
+        "③ UDP는 비연결형(Connectionless) 프로토콜로 오버헤드가 적고 빠른 전송이 가능하여 실시간 스트리밍에 적합하다.",
+        "④ UDP는 체크섬(Checksum) 필드가 없어 데이터 손상 여부를 검사하는 오류 검출 기능이 전혀 존재하지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "UDP 헤더에도 최소한의 오류 검출을 위한 체크섬(Checksum) 필드가 포함되어 있어 데이터 손상 여부를 검사할 수 있습니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 88
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "TCP의 혼잡 제어(Congestion Control) 알고리즘에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 느린 시작(Slow Start): 혼잡 윈도우(CWND) 크기를 1부터 시작하여 임계값(ssthresh)에 도달할 때까지 지수적(Exponential)으로 증가시킨다.",
+        "② 혼잡 회피(Congestion Avoidance): 임계값 도달 후 혼잡 윈도우를 RTT마다 1씩 선형적(Linear)으로 증가시킨다.",
+        "③ 빠른 재전송(Fast Retransmit): 3개의 중복 ACK(3 Duplicate ACKs)를 수신하면 타임아웃 이전이라도 손실된 세그먼트를 즉시 재전송한다.",
+        "④ 빠른 회복(Fast Recovery): 3개의 중복 ACK 수신 시 혼잡 윈도우 크기를 1 MSS로 초기화하고 느린 시작 단계부터 다시 시작한다."
+      ],
+      "answer": 4,
+      "explanation": "빠른 회복(Fast Recovery)은 3개 중복 ACK 발생 시 혼잡 윈도우를 1로 줄이지 않고 절반(ssthresh = CWND/2)으로 줄인 후 혼잡 회피 단계로 진입하는 기법입니다. (1로 초기화하는 것은 타임아웃 발생 시임)",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 89
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "IPv4 주소 체계와 서브넷 마스킹(Subnet Masking)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① IPv4 주소는 32비트 길이로 8비트씩 4개 옥텟으로 구성되며 10진수로 표현된다.",
+        "② C클래스 네트워크(기본 서브넷 마스크 255.255.255.0)를 /26으로 서브넷팅하면 4개의 서브넷이 생성된다.",
+        "③ 서브넷 마스크가 255.255.255.192인 서브넷에서 각 서브넷당 실제 호스트에 할당 가능한 IP 개수는 62개이다.",
+        "④ 사설 IP 주소 대역 중 172.16.0.0 ~ 172.31.255.255는 A클래스에 속하는 사설 대역이다."
+      ],
+      "answer": 4,
+      "explanation": "172.16.0.0 ~ 172.31.255.255 대역은 B클래스 사설 IP 주소 대역(RFC 1918)입니다. (A클래스 사설 대역은 10.0.0.0/8임)",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 90
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "라우팅 프로토콜 중 거리 벡터(Distance Vector)와 링크 상태(Link State) 프로토콜의 비교로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 거리 벡터 프로토콜은 벨만-포드(Bellman-Ford) 알고리즘을 사용하며 대표적으로 RIP가 있다.",
+        "② 링크 상태 프로토콜은 다익스트라(Dijkstra)의 SPF(Shortest Path First) 알고리즘을 사용하며 대표적으로 OSPF가 있다.",
+        "③ RIP 프로토콜은 홉 카운트(Hop Count)를 메트릭으로 사용하며 최대 홉 수는 15로 제한된다.",
+        "④ OSPF는 거리 벡터 프로토콜로서 네트워크 변화 시 전체 라우팅 테이블을 인접 라우터에 주기적으로 브로드캐스트한다."
+      ],
+      "answer": 4,
+      "explanation": "OSPF는 링크 상태(Link State) 프로토콜이며, 주기적인 전체 브로드캐스트 대신 네트워크 토폴로지 변경 시에만 LSA(Link State Advertisement)를 멀티캐스트로 전송합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 91
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "RAID(Redundant Array of Independent Disks) 레벨에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① RAID 0: 스트라이핑(Striping)을 사용하여 입출력 성능이 가장 우수하지만 무결성(내결함성)을 제공하지 못한다.",
+        "② RAID 1: 미러링(Mirroring)을 사용하여 데이터의 완전한 복사본을 유지하므로 디스크 공간 효율이 50%이다.",
+        "③ RAID 5: 패리티(Parity) 정보를 모든 디스크에 분산 저장하며 최소 3개의 디스크가 필요하고 1개 디스크 장애 시 복구가 가능하다.",
+        "④ RAID 6: 2개의 독립적인 패리티를 사용하며 최소 3개의 디스크가 필요하고 2개 디스크 동시 장애 시 데이터 복구가 불가능하다."
+      ],
+      "answer": 4,
+      "explanation": "RAID 6는 듀얼 분산 패리티를 사용하여 2개의 디스크가 동시에 장애를 일으켜도 데이터 복구가 가능하며, 최소 디스크 수는 4개입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 92
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "클라우드 서비스 모델(IaaS, PaaS, SaaS)에서 클라우드 서비스 제공자(CSP)와 이용자(고객) 간의 책임 공유 모델에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① IaaS(Infrastructure as a Service): CSP는 가상화, 서버, 스토리지, 네트워크 인프라를 관리하고 고객은 OS, 미들웨어, 런타임, 애플리케이션, 데이터를 관리한다.",
+        "② PaaS(Platform as a Service): CSP는 인프라부터 OS, 미들웨어, 런타임 환경까지 관리하고 고객은 애플리케이션과 데이터를 관리한다.",
+        "③ SaaS(Software as a Service): CSP가 인프라부터 애플리케이션 서비스까지 전체 스택을 관리하며 고객은 계정 및 데이터 설정만을 관리한다.",
+        "④ IaaS 모델에서 고객은 물리적 데이터센터의 출입 통제 및 물리적 서버 랙의 보안 유지보수 책임을 부담한다."
+      ],
+      "answer": 4,
+      "explanation": "IaaS를 포함한 모든 퍼블릭 클라우드 모델에서 물리적 데이터센터 시설, 전력, 랙, 하드웨어 장비의 물리적 보안 및 유지보수는 전적으로 클라우드 서비스 제공자(CSP)의 책임입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 93
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "서버 가상화(Server Virtualization) 기술 중 하이퍼바이저(Hypervisor) 유형에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Type 1 하이퍼바이저(Bare-metal): 하드웨어 위에 직접 하이퍼바이저가 설치 구동되는 방식으로 성능이 우수하다 (예: VMware ESXi, KVM, Xen).",
+        "② Type 2 하이퍼바이저(Hosted): 호스트 OS 위에서 하나의 애플리케이션 형태로 실행되는 방식으로 구축이 용이하다 (예: VMware Workstation, VirtualBox).",
+        "③ 컨테이너(Container) 기술: 게스트 OS 없이 호스트 OS 커널을 공유하며 프로세스 격리 기술(cgroups, namespaces)을 사용하여 매우 가볍고 빠르다.",
+        "④ Type 1 하이퍼바이저는 호스트 OS의 시스템 콜 계층을 항상 경유하므로 Type 2 하이퍼바이저에 비해 오버헤드가 크고 속도가 느리다."
+      ],
+      "answer": 4,
+      "explanation": "Type 1(베어메탈) 하이퍼바이저는 호스트 OS 없이 하드웨어 바로 위에서 실행되므로 호스트 OS를 거치는 Type 2(호스티드)보다 오버헤드가 적고 실행 성능이 훨씬 뛰어납니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 94
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "스토리지 접속 기술인 DAS, NAS, SAN에 대한 비교로 가장 적절하지 않은 것은?",
+      "options": [
+        "① DAS(Direct Attached Storage): 전용 케이블(SCSI, SAS, SATA 등)로 서버에 스토리지를 직접 연결하는 방식으로 속도가 빠르나 공유 확장이 어렵다.",
+        "② NAS(Network Attached Storage): 기존 이더넷 LAN을 통해 파일 레벨(NFS, CIFS/SMB)로 스토리지에 접근하는 전용 파일 서버 방식이다.",
+        "③ SAN(Storage Area Network): 광채널(Fibre Channel) 기반의 고속 전용 네트워크를 구축하여 블록 레벨(Block level)의 데이터 접근을 제공한다.",
+        "④ NAS는 블록 레벨 전송 전용 고속 광케이블 네트워크를 구성하므로 SAN에 비해 인프라 구축 비용이 가장 고가이다."
+      ],
+      "answer": 4,
+      "explanation": "NAS는 일반 이더넷 LAN 망을 활용하여 파일 단위로 통신하므로 구축 비용이 저렴하며, 고가의 광 스위치와 FC 케이블로 블록 단위 고속 전송망을 구성하는 것은 SAN입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 95
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "고가용성(High Availability, HA) 아키텍처 구성 방식에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Active-Active 방식: 두 대 이상의 서버가 동시에 부하를 분산 처리하며 장애 발생 시 나머지 활성 서버가 전체 트래픽을 처리한다.",
+        "② Active-Standby (Hot Standby) 방식: 대기 서버가 가동 상태를 유지하며 실시간 동기화되어 장애 발생 시 즉시 절체(Failover)된다.",
+        "③ Active-Standby (Cold Standby) 방식: 평상시 대기 서버가 정지 상태이며 주 서버 장애 시 시스템을 기동하므로 복구 시간(RTO)이 가장 길다.",
+        "④ Active-Active 방식은 단일 장애점(SPOF)을 제거할 수 없으며 두 노드 간의 상태 감시(Heartbeat) 메커니즘을 적용할 수 없다."
+      ],
+      "answer": 4,
+      "explanation": "Active-Active 구성은 SPOF를 제거하기 위한 대표적인 고가용성 구조이며, 노드 간 상호 상태 감시(Heartbeat) 및 로드밸런싱이 필수적으로 적용됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 96
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "정보시스템 하드웨어 규모산정 지침(정보통신단체표준, TTAK.KO-10.0292, 2018.12.19.)에서 CPU의 규모를 산정할 때 OLTP와 WEB/WAS 서버 모두에서 고려하는 공통 항목으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 사용자당 오퍼레이션 수",
+        "② 시스템 목표 활용률",
+        "③ 클러스터 보정",
+        "④ 피크타임 부하 보정"
+      ],
+      "answer": 1,
+      "explanation": "사용자당 오퍼레이션 수는 WEB/WAS 서버 CPU 규모 산정 시에만 사용되며 OLTP 서버 CPU 산정식(분당 트랜잭션 수 사용)에는 사용되지 않는 공통 항목이 아닙니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 97
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "인-메모리 방식으로 연산을 수행하는 Spark에 관한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 하둡2.0(YARN 환경)에서는 Spark를 지원하지 않는다.",
+        "② 맵리듀스 연산에 비해 그 계산 속도가 매우 빠르다.",
+        "③ 파이썬, 스칼라, 자바 언어를 사용하여 개발할 수 있다.",
+        "④ 기계학습, 그래프 연산 등 반복적인 계산 문제를 해결하는 데 적합하다."
+      ],
+      "answer": 1,
+      "explanation": "하둡 2.0(YARN 환경)에서는 Spark를 정식으로 지원하며 YARN 클러스터 매니저 상에서 실행 가능합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 98
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "다음 중 DHCP(Dynamic Host Configuration Protocol) 프로토콜에서 사용하는 메시지에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① DHCP ACK는 DHCP Request에 대한 응답으로 보낸다.",
+        "② DHCP Request는 클라이언트가 DHCP 서버에게 IP주소를 요청한다.",
+        "③ DHCP Discover는 DHCP 서버가 IP 주소 할당 서버임을 알린다.",
+        "④ DHCP Offer는 DHCP 서버가 요청 클라이언트에게 할당할 IP주소를 제공한다."
+      ],
+      "answer": 3,
+      "explanation": "DHCP Discover 메시지는 클라이언트가 브로드캐스트하여 네트워크 상의 DHCP 서버를 탐색하기 위해 보내는 메시지입니다 (서버가 보내는 것이 아님).",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 99
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "읽기 및 쓰기 성능이 각각 100,000 IOPS(Input/Output Operations Per Second)인 8개의 동일한 하드디스크로 RAID 10을 구성할 때 RAID 10의 읽기 성능과 쓰기 성능으로 가장 적절한 것은?",
+      "options": [
+        "① 읽기: 400,000 IOPS, 쓰기: 400,000 IOPS",
+        "② 읽기: 400,000 IOPS, 쓰기: 800,000 IOPS",
+        "③ 읽기: 800,000 IOPS, 쓰기: 400,000 IOPS",
+        "④ 읽기: 800,000 IOPS, 쓰기: 800,000 IOPS"
+      ],
+      "answer": 3,
+      "explanation": "디스크 8개로 RAID 10(미러링 4쌍의 스트라이핑)을 구성할 때, 읽기는 8개 디스크 모두에서 병렬 분산 처리가 가능하므로 8 * 100,000 = 800,000 IOPS이고, 쓰기는 미러링 복제로 인해 4쌍 기준인 4 * 100,000 = 400,000 IOPS가 됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2022,
+      "origin_id": 100
+    }
+  ]
+}

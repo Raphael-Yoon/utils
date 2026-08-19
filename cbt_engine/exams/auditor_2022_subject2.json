@@ -1,0 +1,427 @@
+{
+  "exam_info": {
+    "id": "auditor_2022_sub2",
+    "title": "[2022년] 2과목 : 소프트웨어공학 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2022,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2022년 2과목 : 소프트웨어공학 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "소프트웨어 요구사항 정보의 형태는 비즈니스 요구사항, 비즈니스 룰, 제약사항, 외부 인터페이스 요구사항, 특성(Feature), 기능적 요구사항, 비기능적 요구사항, 품질 속성, 시스템 요구사항, 사용자 요구사항 등으로 구성될 수 있다. 이들 간의 연관관계를 그림으로 표현한 것 중 가장 적절하지 않은 것은? (단, 점선은 다른 형태의 요구사항에 영향을 주거나 다른 형태의 요구사항의 원천이 되는 경우를 의미한다.)\n\n[다이어그램 요약]\n- (가): 시스템 요구사항 -> 기능적 요구사항\n- (나): 사용자 요구사항 -> 기능적 요구사항\n- (다): 비즈니스 룰 -> 기능적 요구사항\n- (라): 제약사항 -> 기능적 요구사항",
+      "options": [
+        "① 가",
+        "② 나",
+        "③ 다",
+        "④ 라"
+      ],
+      "answer": 4,
+      "explanation": "1) 제약사항(Constraint)은 비기능적 요구사항, 설계/구현에 영향을 주는 제약 조건이지 기능적 요구사항의 직접적인 원천이나 도출 대상이 아닙니다.\n2) 비즈니스 요구사항/비즈니스 룰 -> 사용자 요구사항 -> 기능적 요구사항으로 구체화되며, 시스템 요구사항은 기능적/비기능적 요구사항을 포괄합니다. 따라서 (라)의 연결이 가장 적절하지 않습니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 26
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "소프트웨어 요구사항의 표준화를 위하여 소프트웨어 요구사항 패턴을 정의하였다. 다음 요구사항에 가장 적절한 소프트웨어 요구사항 패턴은?\n\n선택한 고객에 대해 금액 조정(인출 또는 대출)을 할 수 있다. 금액 조정은 다음과 같은 정보를 가진다.\n - 고객 ID\n - 조정 금액\n - 조정 이유\n각 계좌 금액 조정에 유일한 ID가 자동으로 부여된다. 극소수의 직원만이 계좌 금액 조정을 할 수 있다.",
+      "options": [
+        "① Chronicle Requirement Pattern",
+        "② Living Entity Requirement Pattern",
+        "③ Transaction Requirement Pattern",
+        "④ Configuration Requirement Pattern"
+      ],
+      "answer": 3,
+      "explanation": "1) Stephen Withall의 소프트웨어 요구사항 패턴에서 계좌 금액 조정, 입출금 등과 같이 특정 시점에 발생하여 고유 식별자를 부여받고 수행 권한이 통제되는 거래 행위를 기술하는 패턴은 'Transaction Requirement Pattern(트랜잭션 요구사항 패턴)'입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 27
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "다음은 리팩토링 목록(Catalog of Refactoring)에서 정의된 리팩토링 방법 중 하나를 설명한 코드이다. 다음 코드 변경을 잘 설명하고 있는 리팩토링 방법의 이름으로 가장 적절한 것은?\n\n(변경전)\nlet defaultOwner = {firstName: \"Martin\", lastName: \"Fowler\"};\n\n(변경후)\nlet defaultOwnerData = {firstName: \"Martin\", lastName: \"Fowler\"};\nexport function defaultOwner() {return defaultOwnerData;}\nexport function setDefaultOwner(arg) {defaultOwnerData = arg;}",
+      "options": [
+        "① Inline Variable",
+        "② Encapsulate Variable",
+        "③ Split Variable",
+        "④ Rename Variable"
+      ],
+      "answer": 2,
+      "explanation": "1) 마틴 파울러(Martin Fowler)의 'Refactoring 2판'에 나오는 '변수 캡슐화하기(Encapsulate Variable)' 기법입니다.\n2) 전역 변수나 널리 공유되는 데이터에 직접 접근하는 대신 게터(Getter)와 세터(Setter) 함수를 만들어 데이터의 접근 및 변경을 캡슐화합니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 28
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음 의사 코드(Pseudo Code)에 대하여 McCabe의 Complexity Number를 계산한 것 중 가장 적절한 것은? (단, 코드 실행에 대한 오류는 없는 것으로 가정함)\n\ni = 0;\nn = 4;  //N-Number of nodes present in the graph\nwhile (i<n-1) do\n  j = i + 1;\n  while (j<n) do\n    if A[i]<A[j] then\n      swap(A[i], A[j]);\n    end do;\n  i=i+1;\nend do;",
+      "options": [
+        "① 4",
+        "② 5",
+        "③ 6",
+        "④ 7"
+      ],
+      "answer": 1,
+      "explanation": "1) McCabe의 순환 복잡도(Cyclomatic Complexity) = 분기문(Predicate Nodes) 수 + 1\n2) 조건 분기문:\n   - 1st while: (i < n - 1)\n   - 2nd while: (j < n)\n   - if 조건문: (A[i] < A[j])\n   총 조건 분기문 개수 = 3개\n3) Cyclomatic Complexity = 3 + 1 = 4입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 29
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "다음은 검색 알고리즘에 관한 JAVA Code 문제이다. 숫자 배열 {1, 2, 3, 4}와 정수 k는 3으로 입력되었을 때, 출력 결과로 가장 적절한 것은?\n\npublic class Search {\n  public static int search(List<Integer> list, int k) {\n    int left = 0, right = list.size() - 1, result = -1;\n    while(left <= right) {\n      int mid = left + ((right - left) / 2);\n      if (list.get(mid) > k) {\n        right = mid -1;\n      } else if (list.get(mid) == k) {\n        result = mid;\n        right = mid -1;\n      } else {\n        left = mid+1;\n      }\n    }\n    return result;\n  }\n  public static void main(String[] args) {\n    Integer[] intArr = {1, 2, 3, 4};\n    List<Integer> list = Arrays.asList(intArr);\n    System.out.println(search(list, 3));\n  }\n}",
+      "options": [
+        "① 1",
+        "② 2",
+        "③ 3",
+        "④ 4"
+      ],
+      "answer": 2,
+      "explanation": "1) 배열 {1, 2, 3, 4}에서 search(list, 3) 실행 과정:\n   - 초기값: left = 0, right = 3, result = -1\n   - 1회전: mid = 0 + (3-0)/2 = 1 -> list.get(1) = 2 < 3 이므로 else문 -> left = mid + 1 = 2\n   - 2회전: mid = 2 + (3-2)/2 = 2 -> list.get(2) = 3 == 3 이므로 else if문 -> result = 2, right = mid - 1 = 1\n   - 3회전: left(2) <= right(1) 거짓으로 루프 종료\n2) 반환값: result = 2\n따라서 출력 결과는 2입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 30
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음 중 컴포넌트 기반 개발 방법론에서 버틀러(Burtler) 그룹이 제안한 컴포넌트 성숙 단계를 1단계부터 6단계까지 순서대로 정리한 것으로 가장 적절한 것은?\n\n가. GUI 콘트롤 이용 단계\n나. CBD 성숙 단계\n다. 구현 개념 이용 단계\n라. 비즈니스 개념 이용 단계\n마. 컴포넌트 재사용 단계\n바. 기업 표준 단계",
+      "options": [
+        "① 가 - 다 - 라 - 마 - 바 - 나",
+        "② 가 - 라 - 다 - 마 - 바 - 나",
+        "③ 가 - 다 - 라 - 바 - 마 - 나",
+        "④ 가 - 라 - 다 - 바 - 마 - 나"
+      ],
+      "answer": 1,
+      "explanation": "1) 버틀러(Butler) 그룹의 컴포넌트 성숙도 6단계:\n   - 1단계: GUI 콘트롤 이용 단계 (가)\n   - 2단계: 구현 개념 이용 단계 (다)\n   - 3단계: 비즈니스 개념 이용 단계 (라)\n   - 4단계: 컴포넌트 재사용 단계 (마)\n   - 5단계: 기업 표준 단계 (바)\n   - 6단계: CBD 성숙 단계 (나)\n따라서 올바른 순서는 가 - 다 - 라 - 마 - 바 - 나 입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 31
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "다음은 아키텍처 스타일에 대한 설명이다. 각 설명에 대응하는 아키텍처 스타일이 가장 적절하지 않은 것은?\n\n가. 입력되는 이벤트(event)에 대한 응답으로 프레임워크에서 제공하는 서비스를 투명하게 업데이트하는 메커니즘을 제공하고, 애플리케이션을 통해 프레임워크의 이벤트 처리 동작을 검사한다.\n나. 복잡한 시스템 기능은 순차적인 하위작업들로 분리되며, 각 하위작업은 이 작업만을 담당하는 독립된 구성요소에 의해 스트림(stream)데이터를 처리한다.\n다. 시스템 구성요소가 버전별로 다른 방식으로 구성될 수 있으며, 파생된 시스템별 서비스를 위해 플러그 앤 플레이(plug-and-play) 인프라를 제공한다.\n라. 시스템의 구조적 및 행동적 측면은 메타 객체에 저장되고 애플리케이션 논리 구성 요소와 분리하며, 예기치 않은 상황에 자동으로 대처할 수 있다.",
+      "options": [
+        "① 블랙보드(Blackboard) - 가",
+        "② 파이프-필터(Pipe & Filter) - 나",
+        "③ 마이크로 커널(Microkernel) - 다",
+        "④ 리플렉션 (Reflection) - 라"
+      ],
+      "answer": 1,
+      "explanation": "1) 가의 설명은 Interceptor(인터셉터) 패턴에 대한 설명입니다. 블랙보드(Blackboard) 패턴은 지식 소스들이 중앙의 블랙보드(공유 데이터)를 통해 협력하여 비결정론적 문제를 해결하는 아키텍처 스타일입니다.\n2) 나: 파이프-필터(Pipe & Filter), 다: 마이크로커널(Microkernel), 라: 리플렉션(Reflection) 설명이 맞습니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 32
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음에 주어진 코드에 대하여 변형 조건/결정 커버리지(MC/DC)에 의한 테스트를 수행할 때, 하단에 주어진 테스트 케이스 생성표에 100% 커버리지를 달성하는 최소한의 테스트 케이스 쌍의 진리 값 표현으로 가장 적절하지 않은 것은? (단, 코드 실행에 대한 오류는 고려하지 않음)\n\npublic void coverage(int x, int y) {\n  if ((x > 0) && (y <= 0))\n    y = x;\n    system.out.printf(x, y);\n}\n\n테스트케이스 생성표\nTC#: 조건1 (x>0)의 진리 값 - 조건2 (y<=0)의 진리 값",
+      "options": [
+        "① TC1 : True – True",
+        "② TC2 : True – Flase",
+        "③ TC3 : False – True",
+        "④ TC4 : False – False"
+      ],
+      "answer": 4,
+      "explanation": "1) AND 조건식 (A && B)의 MC/DC 독립성 검증 쌍:\n   - 조건1(A) 독립성 검증: (T, T) -> T vs (F, T) -> F\n   - 조건2(B) 독립성 검증: (T, T) -> T vs (T, F) -> F\n2) 따라서 필요한 최소 테스트 케이스 집합은 (T, T), (T, F), (F, T) 3개입니다.\n3) TC4인 (False - False)는 다른 조건에 영향을 주지 못하며 최소 테스트 케이스 집합에 포함되지 않습니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 33
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "다음은 은행에서 일정 금액(amount)을 지급(withdraw)하는 코드의 일부분을 리팩토링 한 것이다. 적용 후 코드를 생성하기 위해 사용된 리팩토링 기법으로 가장 적절한 것은?\n(단, 코드 실행상의 문제는 고려하지 않음)\n\n적용전 코드\nint withdraw(int amount) {\n  if (amount > _balence)\n    return -1;\n  else {\n    _balence -= amount;\n    return 0;\n  }\n}\n\n적용후 코드\nvoid withdraw(int amount) throws B_exception {\n  if (amount > _balence) throw new B_exception();\n  _balence -= amount;\n}",
+      "options": [
+        "① replace error code with exception",
+        "② replace exception with test",
+        "③ replace parameter with exception",
+        "④ inline method"
+      ],
+      "answer": 1,
+      "explanation": "1) 적용 전 코드에서는 잔액 부족 시 오류 코드(-1)를 반환하던 것을 적용 후 코드에서는 예외(throw new B_exception())를 던지도록 수정하였습니다.\n2) 이는 마틴 파울러의 리팩토링 기법 중 '오류 코드를 예외로 바꾸기(Replace Error Code with Exception)'에 해당합니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 34
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "다음은 Git에 대한 설명이다. Git에 대한 옳은 설명만으로 가장 적절하게 묶은 것은?\n\n가. 브랜치(branch) : 커밋(commit)을 가리키는 포인터\n나. 마스터(master) : 최초로 커밋을 수행할 때 생성되며, 커밋을 수행할 때 마다 가장 최근의 브랜치를 가리킨다.\n다. 토픽(topic) 브랜치에서 수행한 작업은 커밋을 통해 자동으로 마스터 브랜치에 병합된다.\n라. 현재 작업중인 브랜치에서 마스터 브랜치로 이동하기 위해서는 git checkout master 명령을 사용한다.\n마. 브랜치에 있는 개개의 커밋을 수행하면, 단계적으로 브랜치 병합이 이루어진다.\n바. 작업중에 새로운 브랜치로 이동을 할 때, 작업 내용을 임시 저장하기 위하여 git stash명령을 사용한다.",
+      "options": [
+        "① 가, 나, 다",
+        "② 가, 나, 라",
+        "③ 나, 다, 마",
+        "④ 다, 마, 바"
+      ],
+      "answer": 2,
+      "explanation": "1) 옳은 항목 분석:\n   - 가: 브랜치는 특정 커밋을 가리키는 이동 가능한 포인터입니다. (O)\n   - 나: Git에서 기본으로 생성되는 master(main) 브랜치 설명으로 적절합니다. (O)\n   - 라: git checkout master(또는 git switch master)로 master 브랜치로 이동합니다. (O)\n   - 바: git stash는 워킹 디렉토리의 변경사항을 임시 보관하는 명령어입니다. (O)\n   - 다, 마: 브랜치 병합은 merge/rebase 명령을 통해 명시적으로 수행되며 자동 또는 커밋마다 병합되지 않습니다. (X)\n2) 보기 중 올바르게 묶인 것은 ② 가, 나, 라 입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 35
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "다음의 아키텍처 분석/평가 방법에 대한 설명으로 가장 적절한 것은?\n\n입력: 1) 아키텍처\n      2) 아키텍처 전략들\n      3) N개의 품질속성 시나리오\n출력: 각 아키텍처 전략의 순위\n\n단계 1. 시나리오 정리(N개의 시나리오를 N/3개의 시나리오로 축소)\n단계 2. 시나리오 정제\n단계 3. 시나리오 우선순위(N/6개의 시나리오로 축소)\n단계 4. 각 시나리오의 응답수준별로 해당하는 효용값 부여\n단계 5. 아키텍처 전략을 도출하고 각 아키텍처 전략에 대하여 관련 시나리오별 품질속성 응답수준을 결정\n단계 6. 보정으로 기대되는 품질속성 응답수준의 효용값 결정\n단계 7. 아키텍처 전략이 주는 총 이득 계산\n단계 8. 투자수익률을 기초로 아키텍처 전략 선정\n단계 9. 직관을 이용하여 결과 확인",
+      "options": [
+        "① SAAM(Software Architecture Analysis Method)",
+        "② ATAM(Architecture Tradeoff Analysis Method)",
+        "③ ARID(Active Review for Intermediate Designs)",
+        "④ CBAM(Cost Benefit Analysis Method)"
+      ],
+      "answer": 4,
+      "explanation": "1) 아키텍처 전략에 대한 효용값(Utility), 비용, 총 이득, 투자수익률(ROI)을 계산하여 아키텍처 전략의 경제적 타당성과 우선순위를 도출하는 아키텍처 분석/평가 방법은 'CBAM(Cost Benefit Analysis Method, 비용 이익 분석 방법론)'입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 36
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "다음 그림은 각 번호를 부여한 10개의 레거시 시스템을 대상으로 시스템 품질과 비즈니스 가치를 기준으로 평가한 결과이다. 재공학 대상과 유지보수 대상을 가장 적절하게 묶은 것은?\n\n[평가 매트릭스 도식]\n- 비즈니스 가치 높음 & 시스템 품질 낮음: 9, 10\n- 비즈니스 가치 높음 & 시스템 품질 높음: 6, 7, 8\n- 비즈니스 가치 낮음 & 시스템 품질 낮음: 1, 2, 3\n- 비즈니스 가치 낮음 & 시스템 품질 높음: 4, 5",
+      "options": [
+        "① 재공학 - 9, 10   유지보수 - 4, 5",
+        "② 재공학 - 4, 5    유지보수 - 6, 7, 8",
+        "③ 재공학 - 6, 7, 8 유지보수 - 1, 2, 3",
+        "④ 재공학 - 9, 10   유지보수 - 6, 7, 8"
+      ],
+      "answer": 4,
+      "explanation": "1) 레거시 시스템 평가 기준:\n   - 비즈니스 가치 높음 & 품질 낮음(9, 10): 핵심 업무이나 품질이 낮아 전면적 개선이 필요한 '재공학(Re-engineering)' 대상\n   - 비즈니스 가치 높음 & 품질 높음(6, 7, 8): 핵심 업무이고 품질도 양호하여 지속적인 '정상 유지보수(Maintenance)' 대상\n   - 비즈니스 가치 낮음 & 품질 낮음(1, 2, 3): 폐기(Scrap) 대상\n   - 비즈니스 가치 낮음 & 품질 높음(4, 5): 유지/단순 보존 대상\n따라서 재공학(9, 10), 유지보수(6, 7, 8)로 묶은 4번이 정답입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 37
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음 절차로 진행하는 스토리 점수 추정 방법으로 가장 적절한 것은?\n\n착수 준비:\n- 진행자를 선정한다.\n- 추정에 전문가를 참여시킨다.\n- 추정을 준비한다.\n\n추정 대상 토론:\n- 진행자는 추정 방법을 설명하고 서기를 선정한다.\n- 제품 책임자는 개발 전문가에게 요구기능을 설명한다.\n- 개발 전문가는 질문 및 토론한다.\n- 서기는 업무범위와 제약사항을 기록한다.\n\n추정 수행:\n- 개발 전문가는 각자 추정 값을 제시한다.\n- 가장 작은 추정 값과 가장 큰 추정 값을 낸 사람이 이유를 설명하고 토론한다. 이때 가정과 제약사항을 기록한다.\n- 각자 새로운 추정 값을 제시하고 차이가 줄어들 때까지 계속한다.",
+      "options": [
+        "① 스토리 워크숍",
+        "② 플래닝 포커",
+        "③ 스크럼 회의",
+        "④ 스프린트 계획과 검토"
+      ],
+      "answer": 2,
+      "explanation": "1) 애자일 스크럼에서 개발팀 전체가 모여 카드 투표를 통해 스토리 점수를 추정하고, 편차가 큰 참가자의 의견을 토론하며 합의를 도출해 나가는 추정 기법은 '플래닝 포커(Planning Poker)'입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 38
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "다음과 같이 스프링 모듈 간의 상호 의존 관계를 나타날 때, (가)에 대한 설명으로 가장 적절한 것은?\n\n[스프링 모듈 의존 다이어그램 요약]\n- 데이터 접근/통합, AOP와 계측, 웹, 메시징, 테스트 모듈들이 공통적으로 (가)에 의존함\n- (가) = 코어 컨테이너(Core Container)",
+      "options": [
+        "① spring-core와 spring-beans 모듈은 스프링 DI기능과 IoC 컨테이너 구현을 제공하고, spring-expression 모듈은 스프링 애플리케이션에서 SpEL 지원을 제공한다.",
+        "② spring-aop 모듈은 AOP 기능을, spring-instrument모듈은 클래스 계측 기능 지원을 제공한다.",
+        "③ spring-orm 모듈은 하이버네이트나 JPA와 같은 ORM프레임워크 통합을 제공하고 spring-jms 모듈은 JMS 공급자와의 상호 작용을 쉽게 만들어준다.",
+        "④ spring-webmvc 모듈은 서블릿 기반의 웹 애플리케이션과 RESTful 웹 서비스 개발을 쉽게 해주며, spring-webflux 모듈은 반응형 웹 애플리케이션과 RESTful 웹 서비스 개발을 쉽게 해준다."
+      ],
+      "answer": 1,
+      "explanation": "1) 다이어그램의 중심에 위치한 (가)는 스프링의 핵심인 '코어 컨테이너(Core Container)'입니다.\n2) 코어 컨테이너는 spring-core, spring-beans, spring-context, spring-expression(SpEL) 모듈로 구성되며, 스프링의 제어역전(IoC)과 의존성 주입(DI) 기능을 제공합니다. 따라서 (가)에 대한 설명으로 1번이 올바릅니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 39
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "다음 (가), (나)에 해당하는 Chidamber와 Kemerer의 객체 지향 척도로 가장 적절한 것은?\n\n(가) 클래스에 있는 메서드들의 쌍을 고려하여 계산된다. 이 값은 공유된 속성이 없는 메서드 쌍의 수와 공유된 속성이 있는 메서드 쌍의 수의 차이이다.\n(나) 클래스의 객체가 받은 메시지에 응답하여 실행될 가능성이 있는 메서드들의 수를 나타낸다. 이 값이 클수록 클래스가 복잡해지므로 클래스가 오류를 포함할 가능성은 더 높을 수 있다.",
+      "options": [
+        "① (가) LCOM(Lack of cohesion in methods)\n   (나) WMC(Weighted methods per class)",
+        "② (가) WMC(Weighted methods per class)\n   (나) RFC(Response for a class)",
+        "③ (가) LCOM(Lack of cohesion in methods)\n   (나) RFC(Response for a class)",
+        "④ (가) RFC(Response for a class)\n   (나) LCOM(Lack of cohesion in methods)"
+      ],
+      "answer": 3,
+      "explanation": "1) (가)는 클래스 내 메서드들 간 속성 공유 여부를 비교하여 응집도 결여를 측정하는 LCOM(Lack of Cohesion in Methods)입니다.\n2) (나)는 클래스의 객체가 수신하는 메시지에 응답하여 실행 가능한 모든 메서드의 집합 크기인 RFC(Response For a Class)입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 40
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "Robert Martin의 Clean Architecture에서는 외부요소에서 내부 요소 방향만의 의존성을 강조하고 있다. 이 아키텍처를 구성하는 요소들을 내부에서 외부의 순서로 가장 적절하게 나열한 것은?",
+      "options": [
+        "① Entities - Interface Adapters - Use Cases - Frameworks and Drivers",
+        "② Entities - Use Cases - Interface Adapters - Frameworks and Drivers",
+        "③ Frameworks and Drivers - Use Cases - Interface Adapters - Entities",
+        "④ Frameworks and Drivers - Interface Adapters - Entities - Use Cases"
+      ],
+      "answer": 2,
+      "explanation": "1) 로버트 C. 마틴의 클린 아키텍처(Clean Architecture)의 계층 구조는 안쪽(핵심)에서 바깥쪽(세부사항)으로 다음과 같이 구성됩니다:\n   - 가장 안쪽: Entities (엔티티 - 비즈니스 핵심 규칙)\n   - 2단계: Use Cases (유스케이스 - 애플리케이션 업무 규칙)\n   - 3단계: Interface Adapters (인터페이스 어댑터 - 컨트롤러, 게이트웨이, 프리젠터)\n   - 가장 바깥쪽: Frameworks and Drivers (프레임워크 및 드라이버 - 웹, DB, UI, 외부 인터페이스)\n2) 따라서 내부에서 외부 순서는 Entities -> Use Cases -> Interface Adapters -> Frameworks and Drivers 입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 41
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "다음 문장들은 문서편집 프로그램에 대한 요구사항을 기술하고 있다. 이 중에서 ISO/IEC 25010의 신뢰성(reliability)에 대한 설명으로 가장 적절하게 묶은 것은?\n\n가. 500페이지 정도의 문서를 2초 이내에 읽어야 한다.\n나. 자신 고유의 파일 포맷뿐만 아니라 다른 문서 편집 프로그램의 파일 포맷도 읽어야 한다.\n다. 메모리가 부족해지면 가용 메모리 양에 맞추어 문서의 일부분이라도 편집할 수 있도록 한다.\n라. 예상치 못한 이유로 프로그램이 종료되면 재시작을 하고 기존 문서를 바로 보여주도록 한다.",
+      "options": [
+        "① 가",
+        "② 나, 다",
+        "③ 다, 라",
+        "④ 라"
+      ],
+      "answer": 3,
+      "explanation": "1) ISO/IEC 25010 품질 특성 매핑:\n   - 가: 2초 이내 응답 -> 성능 효율성(Performance efficiency - 시간 반응성)\n   - 나: 타 프로그램 포맷 호환 -> 호환성(Compatibility - 상호운용성)\n   - 다: 메모리 부족 시에도 부분 동작 유지 -> 신뢰성(Reliability - 결함 허용성, Fault tolerance)\n   - 라: 비정상 종료 시 재시작 및 복구 -> 신뢰성(Reliability - 회복성, Recoverability)\n2) 따라서 신뢰성에 해당하는 것은 다, 라 입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 42
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "다음 클래스 다이어그램은 Button이 눌렸을 때 기존에 구현된 LEDLight 클래스를 이용하여 ILamp 인터페이스를 구현하는 동작에 대한 설계를 보여 준다. 이 설계에서 적용되고 있는 2개의 디자인 패턴으로서 가장 적절한 것은?\n\n[클래스 다이어그램 요약]\n- Button -> <<interface>> Command (+execute())\n- LightOnCommand implements Command, -lamp: ILamp\n- <<interface>> ILamp (+turnOn(), +turnOff())\n- Lamp implements ILamp, -LEDLight: LEDLight\n- LEDLight (+switchOn(), +switchOff())",
+      "options": [
+        "① Strategy pattern과 Proxy pattern",
+        "② State pattern과 Adapter pattern",
+        "③ Command pattern과 Proxy pattern",
+        "④ Command pattern과 Adapter pattern"
+      ],
+      "answer": 4,
+      "explanation": "1) Button이 Command 인터페이스의 execute()를 호출하여 구체적 명령(LightOnCommand)을 캡슐화하여 실행하는 패턴은 Command 패턴입니다.\n2) Lamp 클래스가 기존 LEDLight 클래스의 인터페이스(switchOn/switchOff)를 ILamp 인터페이스(turnOn/turnOff)에 맞추어 변환(위임)해 주는 구조는 Adapter 패턴(클래스/객체 어댑터)입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 43
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "다음의 Cause-Effect Graph에서 C1과 C2의 각 값에 대한 A1, A2, A3의 값으로 가장 적절한 것은?\n\n[그래프 논리 관계]\n- C12 = C1 OR C2 (v 연산자)\n- A1 = C12 (동치, Identity)\n- A2 = C12 AND C2 (^ 연산자)\n- A3 = NOT C2 (~ 연산자)\n\n[표 보기]\n구분 | 가 | 나 | 다 | 라\nC1   | T  | T  | F  | F\nC2   | T  | F  | T  | F\nA1   | T  | T  | T  | T\nA2   | T  | F  | F  | F\nA3   | T  | T  | F  | T",
+      "options": [
+        "① 가",
+        "② 나",
+        "③ 다",
+        "④ 라"
+      ],
+      "answer": 2,
+      "explanation": "1) 각 열의 논리값 계산:\n   - '나' 열: C1 = T, C2 = F\n     * C12 = C1 OR C2 = T OR F = T\n     * A1 = C12 = T\n     * A2 = C12 AND C2 = T AND F = F\n     * A3 = NOT C2 = NOT F = T\n   - 표의 '나' 열(A1=T, A2=F, A3=T)과 정확히 일치합니다.\n2) 따라서 올바른 것은 ② '나' 입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 44
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "다음은 시퀀스 다이어그램과 이와 일관성이 있는 클래스 다이어그램을 보여 준다. 시퀀스 다이어그램을 기준으로 할 때, 클래스 다이어그램에 존재하는 문제를 설명한 것으로 가장 적절한 것은?\n\n[시퀀스 다이어그램]\n- C1 객체 c1이 loop [for each c2 in c2s] 프래그먼트 내에서 c2.op21()을 반복 호출함\n- c2는 c3.op31()을 호출함\n\n[클래스 다이어그램]\n- C1 -> C2 (연관관계, 다중성 표기 없음/1:1 처럼 표시)\n- C2 -> C3 (의존관계)",
+      "options": [
+        "① 클래스 C3에 op1() 연산이 반드시 정의되어야 한다.",
+        "② 클래스 C2에서 클래스 C3로의 관계는 의존관계가 아니라 연관관계가 되어야 한다.",
+        "③ 클래스 C1에서 클래스 C2로의 연관관계는 C2 클래스 쪽에 '*' 등의 다중성이 명시되어야 한다.",
+        "④ 클래스 C1의 op12() 연산은 '-'가 아니라 '+'로 표시되어야 한다."
+      ],
+      "answer": 3,
+      "explanation": "1) 시퀀스 다이어그램의 loop [for each c2 in c2s]에서 c1 객체가 c2s 컬렉션 내의 복수 객체 c2를 순회하며 호출하고 있습니다.\n2) 따라서 클래스 C1에서 C2로의 연관관계에는 C2 쪽에 1:N 또는 '*'와 같은 복수 다중성이 명시되어야 합니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 45
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "시스템 요청에 대한 실패가 인명이나 환경에 피해를 주는 등 심각한 결과를 초래할 수 있는 시스템의 신뢰성을 표현하는 척도로 가장 적절한 것은?",
+      "options": [
+        "① 평균 고장 간격 (MTBF: mean time between failure)",
+        "② 평균 고장 시간 (MTTF: mean time to failure)",
+        "③ 고장 발생 비율 (ROCOF: rate of occurrence of failure)",
+        "④ 온 디맨드 고장 확률 (POFOD: probability of failure on demand)"
+      ],
+      "answer": 4,
+      "explanation": "1) 이안 서머빌(Ian Sommerville) 소프트웨어 공학의 신뢰성 척도:\n   - POFOD(Probability of Failure on Demand, 온 디맨드 고장 확률): 서비스 요청이 발생했을 때 시스템이 고장 날 확률. 비상 정지 시스템, 원자력 발전소 보호 시스템 등 안전 필수(Safety-critical) 시스템의 신뢰성 척도로 사용됩니다.\n   - ROCOF: 트랜잭션 처리 시스템 등 정기적 서비스 시스템\n   - MTTF: 장시간 지속 가동 시스템\n   - MTBF: 수리 가능한 시스템의 고장 간격 평균 시간",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 46
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "시스템 확실성(dependability) 속성에 대한 다음 설명에서 (가), (나)에 들어갈 내용으로 가장 적절한 순서대로 나열한 것은?\n\n(가)는 주어진 시점에 시스템이 작동 중이고 유용한 서비스를 제공할 확률이다.\n(나)는 장비 고장이나 사이버 공격 등 손상 사건이 일어났을 때 중요한 서비스를 잘 유지할 수 있는지에 대한 추정이다.",
+      "options": [
+        "① 가용성(availability), 보안성(security)",
+        "② 가용성(availability), 복원성(resilience)",
+        "③ 신뢰성(reliability), 보안성(security)",
+        "④ 신뢰성(reliability), 복원성(resilience)"
+      ],
+      "answer": 2,
+      "explanation": "1) (가): 시스템이 특정 시점에 정상 작동하여 서비스를 제공할 수 있는 확률은 '가용성(Availability)'입니다.\n2) (나): 고장이나 공격 등 예기치 못한 치명적 사고 발생 시에도 필수 핵심 서비스를 유지하고 극복하는 능력은 '복원성(Resilience, 탄력성)'입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 47
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "다음은 시스템의 신뢰성을 향상시키는 방법에 대한 설명이다. (가), (나)에 들어갈 내용으로 가장 적절한 순서대로 나열한 것은?\n\n광범위한 컴파일러 검사가 가능한 강한 자료형의 언어를 사용하는 것과 포인터와 같이 오류가 발생하기 쉬운 요소의 사용을 최소화하는 것은 (가)기법이고, 체계적인 테스팅, 디버깅, 정적 분석은 (나) 기법의 예이다.",
+      "options": [
+        "① 결함 내성, 결함 회피",
+        "② 결함 내성, 결함 감지 및 정정",
+        "③ 결함 회피, 결함 내성",
+        "④ 결함 회피, 결함 감지 및 정정"
+      ],
+      "answer": 4,
+      "explanation": "1) (가): 결함이 프로그램에 유입되지 않도록 사전에 방지/회피하는 기법은 '결함 회피(Fault Avoidance)'입니다.\n2) (나): 개발 과정에서 이미 존재하는 결함을 발견하고 디버깅을 통해 수정하는 기법은 '결함 감지 및 정정(Fault Detection and Correction)'입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 48
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "다음 설명에서 (가)에 들어갈 내용으로 가장 적절한 것은?\n\n(가)은/는 도메인 특화 애플리케이션을 구축하기 위하여 사용되는 공통 아키텍처와 공유되는 컴포넌트를 가지는 애플리케이션의 집합이다. 다양한 고객의 요구사항에 맞게 구성하고 적응할 수 있도록 설계되었으며, 하나의 애플리케이션 유형을 일반화하여 다른 고객을 위해서도 적용하는 것이다.",
+      "options": [
+        "① 아키텍처 패턴",
+        "② 서비스 지향 시스템",
+        "③ 소프트웨어 제품라인",
+        "④ 애플리케이션 프레임워크"
+      ],
+      "answer": 3,
+      "explanation": "1) 공통의 핵심 자산(Core Assets, 아키텍처 및 재사용 컴포넌트)을 기반으로 특정 도메인의 다양한 파생 제품들을 효율적으로 개발하기 위한 제품 집합 및 공학 접근법은 '소프트웨어 제품라인(Software Product Line, SPL)'입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 49
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "다음 sequence diagram을 바탕으로 Class1의 m1() 연산에 대한 CC(순환복잡도)와 Class1의 CBO(Coupling Between Objects)의 값으로 가장 적절한 것은? (단, CBO를 계산할 때 Class1을 이용하는 다른 클래스는 포함하지 않음을 가정한다.)\n\n[시퀀스 다이어그램 구조 요약]\n- Class1의 m1() 실행 중:\n  * 복합 프래그먼트: loop, break, opt 총 3개의 분기 구조 포함\n  * 호출 대상: Class2의 객체(O21, O22), Class3의 객체",
+      "options": [
+        "① CC = 3, CBO = 3",
+        "② CC = 4, CBO = 3",
+        "③ CC = 3, CBO = 2",
+        "④ CC = 4, CBO = 2"
+      ],
+      "answer": 4,
+      "explanation": "1) 순환복잡도 CC = 분기 영역(결정 분기 수) + 1 = 3(loop, break, opt) + 1 = 4입니다.\n2) CBO(Coupling Between Objects)는 Class1이 직접 결합되어 호출하는 타 클래스의 개수입니다. Class2와 Class3 총 2개의 클래스와 결합되어 있으므로 CBO = 2입니다.\n3) 따라서 CC = 4, CBO = 2 (④번)가 정답입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2022,
+      "origin_id": 50
+    }
+  ]
+}

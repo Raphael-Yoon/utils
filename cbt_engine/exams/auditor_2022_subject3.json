@@ -1,0 +1,427 @@
+{
+  "exam_info": {
+    "id": "auditor_2022_sub3",
+    "title": "[2022년] 3과목 : 데이터베이스 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2022,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2022년 3과목 : 데이터베이스 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "데이터베이스 설계 단계 중 논리적 설계 단계에서 수행하는 작업으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 개념적 설계 단계에서 생성된 ER 다이어그램을 관계형 데이터 모델의 릴레이션으로 변환한다.",
+        "② 릴레이션의 정규화 과정을 수행하여 데이터 중복 및 갱신 이상을 최소화한다.",
+        "③ 트랜잭션의 인터페이스 및 상세 처리 절차를 설계한다.",
+        "④ 성능 향상을 위해 인덱스 구조, 테이블 저장 공간, 클러스터링 등을 물리적으로 배치한다."
+      ],
+      "answer": 4,
+      "explanation": "인덱스 구조, 저장 공간 할당, 클러스터링 등 물리적 저장 장치와 관련된 작업은 물리적 설계 단계에서 수행합니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 51
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음 관계대수(Relational Algebra) 연산자 중 순수 관계 연산자에 해당하지 않는 것은?",
+      "options": [
+        "① 셀렉션(Selection)",
+        "② 프로젝션(Projection)",
+        "③ 디비전(Division)",
+        "④ 합집합(Union)"
+      ],
+      "answer": 4,
+      "explanation": "합집합(Union), 교집합(Intersection), 차집합(Difference), 카티션 프로덕트(Cartesian Product)는 일반 집합 연산자이며, 셀렉션, 프로젝션, 조인, 디비전은 순수 관계 연산자입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 52
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "다음 SQL문과 릴레이션 R의 데이터에 대한 실행 결과로 가장 적절한 것은?\n\n[릴레이션 R]\n| A | B |\n|---|---|\n| 1 | 10 |\n| 2 | NULL |\n| 3 | 20 |\n| 4 | NULL |\n| NULL | 30 |\n\n[SQL]\nSELECT COUNT(*), COUNT(A), COUNT(B), SUM(B), AVG(B)\nFROM R;",
+      "options": [
+        "① 5, 4, 3, 60, 20",
+        "② 5, 5, 5, 60, 12",
+        "③ 4, 4, 3, 60, 20",
+        "④ 5, 4, 3, NULL, NULL"
+      ],
+      "answer": 1,
+      "explanation": "COUNT(*)는 NULL을 포함한 전체 행 수(5), COUNT(A)는 A 컬럼의 NOT NULL 수(4), COUNT(B)는 B 컬럼의 NOT NULL 수(3), SUM(B)는 10+20+30=60, AVG(B)는 NULL을 제외한 60/3=20입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 53
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "동시성 제어(Concurrency Control)가 적절히 이루어지지 않을 때 발생할 수 있는 문제점으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 갱신 분실(Lost Update): 두 개 이상의 트랜잭션이 같은 데이터를 공유하여 갱신할 때 일부 갱신 결과가 사라지는 현상",
+        "② 모순성(Inconsistency): 복수의 트랜잭션이 동시에 실행되어 데이터베이스의 일관성이 결여되는 현상",
+        "③ 연쇄 복귀(Cascading Rollback): 한 트랜잭션이 롤백될 때 해당 트랜잭션이 수정한 데이터를 참조한 다른 트랜잭션도 연쇄적으로 롤백되는 현상",
+        "④ 교착상태(Deadlock): 트랜잭션이 영구적으로 자원을 점유하여 다른 모든 트랜잭션이 정상 완료되는 현상"
+      ],
+      "answer": 4,
+      "explanation": "교착상태(Deadlock)는 둘 이상의 트랜잭션이 서로 상대방이 점유한 자원을 무한정 대기하여 작업이 전혀 진행되지 못하는 상태를 의미합니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 54
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "2단계 로킹 규약(Two-Phase Locking Protocol, 2PL)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 트랜잭션은 락을 획득하는 확장 단계(Growing Phase)와 락을 해제하는 축소 단계(Shrinking Phase)를 거친다.",
+        "② 2PL을 준수하면 트랜잭션 스케줄의 직렬가능성(Serializability)이 항상 보장된다.",
+        "③ 2PL을 적용하면 교착상태(Deadlock)가 완전히 예방된다.",
+        "④ 엄격한 2단계 로킹 규약(Strict 2PL)은 트랜잭션이 완료(Commit/Abort)될 때까지 배타적 락(X-lock)을 유지하여 연쇄 복귀를 방지한다."
+      ],
+      "answer": 3,
+      "explanation": "기본 2단계 로킹 규약(2PL)은 직렬가능성을 보장하지만 교착상태(Deadlock)를 완전히 예방하지는 못하므로 별도의 교착상태 탐지/회피 기법이 필요합니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 55
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음 함수 종속성 집합 F를 갖는 릴레이션 R(A, B, C, D)의 정규형 단계로 가장 적절한 것은?\n\nF = { A → B, B → C, C → D }\n(단, A는 릴레이션 R의 기본키임)",
+      "options": [
+        "① 제1정규형(1NF) 상태이다.",
+        "② 제2정규형(2NF)이지만 제3정규형(3NF)은 아니다.",
+        "③ 제3정규형(3NF)이지만 BCNF는 아니다.",
+        "④ BCNF 정규형을 만족한다."
+      ],
+      "answer": 2,
+      "explanation": "기본키가 단일 속성 A이므로 부분 함수 종속이 없어 2NF를 만족하지만, A → B → C → D로 이행적 함수 종속(Transitive Functional Dependency)이 존재하므로 3NF는 만족하지 못합니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 56
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "릴레이션 R(A, B, C, D, E)에서 주어진 함수 종속성 집합 F가 다음과 같을 때, 릴레이션 R의 후보키(Candidate Key)로 가장 적절한 것은?\n\nF = { AB → C, C → D, D → E, E → A }",
+      "options": [
+        "① {A, B}, {B, C}, {B, D}, {B, E}",
+        "② {A, B}, {C, D}, {D, E}",
+        "③ {A, B, C}, {B, C, D}",
+        "④ {B, C}, {C, D}, {D, E}, {E, A}"
+      ],
+      "answer": 1,
+      "explanation": "B는 어떤 결정자에도 나타나지 않으므로 모든 후보키에 반드시 포함되어야 합니다. {A, B}+ = {A,B,C,D,E}, {B, C}+ = {A,B,C,D,E}, {B, D}+ = {A,B,C,D,E}, {B, E}+ = {A,B,C,D,E} 모두 최소성과 유일성을 만족하므로 후보키는 {AB, BC, BD, BE}입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 57
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음 SQL 질의와 윈도우 함수(Window Function)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① RANK() 함수는 동일한 순위가 있을 경우 동일 순위를 부여하고 다음 순위는 건너뛴다.",
+        "② DENSE_RANK() 함수는 동일한 순위가 있더라도 다음 순위를 건너뛰지 않고 연속된 순위를 부여한다.",
+        "③ ROW_NUMBER() 함수는 동일한 값이 있더라도 고유한 일련번호를 순차적으로 부여한다.",
+        "④ PARTITION BY 절은 전체 결과 집합을 그룹화하며 GROUP BY 절과 달리 그룹별 단일 집계 행만을 출력한다."
+      ],
+      "answer": 4,
+      "explanation": "PARTITION BY 절은 데이터를 소그룹으로 분할하지만 GROUP BY와 달리 원본 행의 세부 데이터를 그대로 유지하면서 각 행마다 집계/순위 결과를 함께 표시합니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 58
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "B+ 트리(B+ Tree) 인덱스 구조에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 모든 실제 레코드에 대한 포인터 또는 데이터는 리프 노드(Leaf Node)에만 저장된다.",
+        "② 내부 노드(Non-leaf Node)는 키 값과 자식 노드를 가리키는 포인터만을 저장하여 인덱스 역할을 한다.",
+        "③ 리프 노드들은 양방향 또는 단방향 연결 리스트(Linked List)로 연결되어 순차 탐색(Range Scan) 효율이 매우 높다.",
+        "④ 데이터 삽입 및 삭제 시 트리의 균형이 깨지며 리프 노드의 깊이가 서로 달라질 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "B+ 트리는 자가 균형 트리(Balanced Tree)이므로 삽입과 삭제 연산 후에도 루트 노드에서 모든 리프 노드까지의 높이(깊이)가 항상 동일하게 유지됩니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 59
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "데이터베이스 회복(Recovery) 기법 중 로그 기반 회복 기법(Log-based Recovery)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 지연 갱신(Deferred Update) 기법은 트랜잭션이 커밋될 때까지 데이터베이스에 대한 실제 기록을 지연하므로 UNDO 작업이 필요 없다.",
+        "② 즉시 갱신(Immediate Update) 기법은 트랜잭션 수행 중에 데이터 변경을 DB에 즉시 반영하므로 장애 발생 시 UNDO와 REDO 작업이 모두 필요할 수 있다.",
+        "③ 검사점(Checkpoint) 회복 기법은 장애 발생 시 로그의 처음부터 모든 트랜잭션을 검색하여 회복 작업을 수행해야 한다.",
+        "④ WAL(Write-Ahead Logging) 프로토콜은 데이터베이스 버퍼 블록을 디스크에 쓰기 전에 해당 로그 레코드를 먼저 안정 저장소에 기록해야 함을 규정한다."
+      ],
+      "answer": 3,
+      "explanation": "체크포인트(Checkpoint) 기법을 사용하면 검사점 시점 이전의 완료된 트랜잭션에 대해서는 회복 작업을 생략할 수 있으므로 로그 전체를 탐색할 필요가 없어 회복 시간이 단축됩니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 60
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "NoSQL 데이터베이스의 데이터 모델 유형과 대표적인 데이터베이스의 연결로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Key-Value 모델: Redis, DynamoDB",
+        "② Document 모델: MongoDB, CouchDB",
+        "③ Column-Family 모델: Cassandra, HBase",
+        "④ Graph 모델: Oracle, PostgreSQL"
+      ],
+      "answer": 4,
+      "explanation": "Oracle과 PostgreSQL은 전통적인 관계형 데이터베이스(RDBMS) 또는 객체-관계형 DB이며, Graph NoSQL 모델의 대표적인 시스템은 Neo4j, Amazon Neptune 등입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 61
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "분산 데이터베이스 시스템의 투명성(Transparency) 요건에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 위치 투명성(Location Transparency): 사용자가 데이터가 실제로 저장된 물리적 위치를 몰라도 논리적 명칭만으로 접근할 수 있다.",
+        "② 분할 투명성(Fragmentation Transparency): 릴레이션이 여러 단편으로 분할되어 저장되어 있어도 사용자는 단일 릴레이션으로 인식한다.",
+        "③ 복제 투명성(Replication Transparency): 동일한 데이터가 여러 사이트에 중복 저장되어 있어도 사용자는 단일 사본으로 인식한다.",
+        "④ 병행 투명성(Concurrency Transparency): 시스템의 장애 발생 시에도 트랜잭션을 정확하게 재수행할 수 있음을 보장한다."
+      ],
+      "answer": 4,
+      "explanation": "장애 발생 시에도 트랜잭션의 정확성을 보장하는 것은 장애 투명성(Failure Transparency)이며, 병행 투명성은 다수의 트랜잭션이 동시 실행되더라도 상호 간섭 없이 정확한 결과를 보장하는 것입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 62
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "데이터 웨어하우스의 다차원 모델링(Dimensional Modeling) 기법인 스타 스키마(Star Schema)와 스노우플레이크 스키마(Snowflake Schema)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 스타 스키마는 중앙의 팩트 테이블(Fact Table)과 이를 둘러싼 비정규화된 차원 테이블(Dimension Table)들로 구성된다.",
+        "② 스노우플레이크 스키마는 스타 스키마의 차원 테이블을 정규화하여 데이터 중복을 제거한 구조이다.",
+        "③ 스타 스키마는 조인(Join) 수가 적어 질의 성능이 우수하지만 데이터 중복이 발생할 수 있다.",
+        "④ 스노우플레이크 스키마는 차원 테이블의 비정규화로 인해 스타 스키마에 비해 질의 처리 시 조인 연산의 수가 현저히 감소한다."
+      ],
+      "answer": 4,
+      "explanation": "스노우플레이크 스키마는 차원 테이블을 정규화(Normalization)하여 세분화하므로, 질의 처리 시 조인(Join) 연산의 수가 증가하여 복잡도가 높아집니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 63
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "관계형 데이터베이스의 뷰(View)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 뷰는 하나 이상의 기본 테이블로부터 유도된 가상 테이블(Virtual Table)이다.",
+        "② 뷰를 정의하면 데이터 딕셔너리에 뷰 정의 쿼리문이 저장되며 물리적으로 독립된 데이터 공간을 차지하지 않는다.",
+        "③ 집계 함수(SUM, AVG 등)나 GROUP BY 절을 포함하여 정의된 뷰를 통해서도 기본 테이블의 행에 대한 삽입/수정/삭제 갱신이 자유롭게 가능하다.",
+        "④ 뷰를 활용하면 특정 사용자에게 필요한 컬럼만 노출함으로써 데이터 보안성을 향상시킬 수 있다."
+      ],
+      "answer": 3,
+      "explanation": "집계 함수, GROUP BY, DISTINCT, UNION 등이 포함된 뷰는 1:1 행 매핑이 불가능하므로 뷰를 통한 기본 테이블 데이터의 INSERT, UPDATE, DELETE 갱신이 제한됩니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 64
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "데이터 모델링 과정(개념적 모델링 → 논리적 모델링 → 물리적 모델링)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 개념적 모델링 단계에서는 핵심 엔터티와 관계를 도출하고 ERD(Entity Relationship Diagram)를 작성한다.",
+        "② 논리적 모델링 단계에서는 특정 DBMS의 특성을 반영하여 테이블스페이스 크기, 인덱스 생성 위치 등을 결정한다.",
+        "③ 논리적 모델링 단계에서는 정규화를 통해 데이터 구조의 일관성을 확보하고 M:N 관계를 해소한다.",
+        "④ 물리적 모델링 단계에서는 성능 최적화를 위한 반정규화(De-normalization)나 파티셔닝 전략을 수립한다."
+      ],
+      "answer": 2,
+      "explanation": "특정 DBMS의 물리적 구조(테이블스페이스, 블록 크기, 저장 매체 등)를 반영하는 작업은 물리적 모델링 단계에서 수행합니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 65
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "클러스터드 인덱스(Clustered Index)와 넌클러스터드 인덱스(Non-Clustered Index)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 클러스터드 인덱스의 리프 노드는 실제 데이터 페이지 자체로 구성된다.",
+        "② 클러스터드 인덱스는 테이블당 단 하나만 생성할 수 있다.",
+        "③ 넌클러스터드 인덱스의 리프 노드는 데이터의 위치를 가리키는 포인터(RID 또는 클러스터드 키 값)를 갖는다.",
+        "④ 넌클러스터드 인덱스는 데이터 삽입 시 실제 테이블의 물리적 정렬 순서를 변경시키므로 대량 삽입 시 심각한 페이지 분할을 유발한다."
+      ],
+      "answer": 4,
+      "explanation": "실제 데이터의 물리적 정렬 순서를 결정하는 것은 클러스터드 인덱스이며, 넌클러스터드 인덱스는 실제 데이터 행의 물리적 순서를 변경하지 않습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 66
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "분산 시스템의 CAP 정리(CAP Theorem)와 BASE 원칙에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 일관성(Consistency): 모든 노드가 동시에 동일한 최신 데이터를 조회할 수 있어야 한다.",
+        "② 가용성(Availability): 일부 노드에 장애가 발생하더라도 모든 요청에 대해 정상적인 응답을 제공해야 한다.",
+        "③ 분할 내구성(Partition Tolerance): 네트워크 단절이나 메시지 유실이 발생해도 시스템이 계속 동작해야 한다.",
+        "④ BASE 모델의 최종 일관성(Eventual Consistency)은 데이터 변경 즉시 모든 노드에서 절대적인 일관성을 항상 보장하는 원칙이다."
+      ],
+      "answer": 4,
+      "explanation": "최종 일관성(Eventual Consistency)은 즉각적인 동기화 대신 일정 시간이 지나면 모든 복제본의 데이터가 결국 일치하게 됨을 의미하는 약한 일관성 모델입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 67
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "비용 기반 옵티마이저(Cost-Based Optimizer, CBO)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 테이블, 인덱스, 컬럼의 통계 정보를 활용하여 여러 실행 경로의 비용을 계산하고 최적의 실행계획을 선택한다.",
+        "② 규칙 기반 옵티마이저(RBO)에 비해 데이터의 분포도, 행 수, 인덱스 높이 등을 고려한 현실적인 계획 수립이 가능하다.",
+        "③ 정확한 비용 계산을 위해 통계 정보(Statistics)를 정기적으로 최신 상태로 갱신 및 관리해 주어야 한다.",
+        "④ 항상 고정된 우선순위 규칙(Rule)만을 참조하므로 데이터양의 변화에 따라 실행계획이 동적으로 변경되지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "고정된 우선순위 규칙만을 참조하는 것은 규칙 기반 옵티마이저(RBO)이며, CBO는 통계 정보를 바탕으로 데이터양과 분포에 따라 실행계획을 동적으로 결정합니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 68
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "데이터 품질 관리(Data Quality Management) 프레임워크의 품질 진단 기준과 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 완전성(Completeness): 데이터 항목에 누락된 값(Null 또는 공백) 없이 필수 데이터가 모두 충족되어 있는 정도",
+        "② 정확성(Accuracy): 데이터가 실제 현실 세계의 대상 값과 일치하는 정확한 정보를 표현하고 있는 정도",
+        "③ 일관성(Consistency): 여러 시스템이나 테이블 간에 동일한 데이터가 모순 없이 동일하게 유지되는 정도",
+        "④ 유효성(Validity): 데이터의 물리적 저장 공간 크기가 디스크 허용 한도를 초과하지 않는 정도"
+      ],
+      "answer": 4,
+      "explanation": "유효성(Validity)은 데이터가 정의된 형식, 도메인 규칙, 제약조건(데이터 타입, 범위, 패턴 등)을 올바르게 준수하고 있는지를 나타내는 기준입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 69
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "빅데이터 처리 아키텍처 중 람다 아키텍처(Lambda Architecture)의 세 가지 레이어로 가장 적절한 것은?",
+      "options": [
+        "① 배치 레이어(Batch Layer), 스피드 레이어(Speed Layer), 서빙 레이어(Serving Layer)",
+        "② 스토리지 레이어(Storage Layer), 컴퓨팅 레이어(Computing Layer), 뷰 레이어(View Layer)",
+        "③ 데이터 레이어(Data Layer), 스트림 레이어(Stream Layer), 앱 레이어(App Layer)",
+        "④ 마스터 레이어(Master Layer), 워커 레이어(Worker Layer), 클라이언트 레이어(Client Layer)"
+      ],
+      "answer": 1,
+      "explanation": "람다 아키텍처는 대규모 원천 데이터를 완벽하게 처리하는 배치 레이어(Batch Layer), 실시간 저지연 처리를 담당하는 스피드 레이어(Speed Layer), 그리고 둘의 결과를 통합하여 질의에 응답하는 서빙 레이어(Serving Layer)로 구성됩니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 70
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "관계형 데이터 모델의 무결성 제약조건(Integrity Constraints)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 개체 무결성(Entity Integrity): 기본키(Primary Key)를 구성하는 어떤 속성도 NULL 값이나 중복 값을 가질 수 없다.",
+        "② 참조 무결성(Referential Integrity): 외래키(Foreign Key)의 값은 참조하는 릴레이션의 기본키 값과 일치하거나 NULL이어야 한다.",
+        "③ 도메인 무결성(Domain Integrity): 특정 속성의 값은 해당 속성에 정의된 도메인(데이터 타입, 허용 범위 등)에 속한 값이어야 한다.",
+        "④ 고유 무결성(Unique Integrity): 릴레이션의 모든 일반 속성은 서로 다른 값을 가져야 하며 중복이 전면 금지된다."
+      ],
+      "answer": 4,
+      "explanation": "일반 속성들은 중복된 값을 가질 수 있으며, UNIQUE 제약조건이 명시적으로 설정된 특정 컬럼 또는 대체키에 대해서만 유일성이 적용됩니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 71
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "관계형 데이터베이스의 주요 조인(Join) 알고리즘에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 중첩 루프 조인(Nested Loop Join): 외부 테이블의 각 행마다 내부 테이블을 반복 검색하는 방식으로 소량 데이터 처리에 유리하다.",
+        "② 정렬 병합 조인(Sort Merge Join): 양쪽 테이블을 조인 키 기준으로 먼저 정렬한 후 병합하는 방식으로 동등 조인과 비동등 조인 모두 적용 가능하다.",
+        "③ 해시 조인(Hash Join): 빌드 입력 테이블로 해시 테이블을 생성하고 프로브 테이블을 스캔하여 매칭하며 대용량 동등 조인(=)에 효과적이다.",
+        "④ 해시 조인(Hash Join): 부등호(<, >) 및 범위 검색과 같은 비동등 조인(Non-Equi Join) 연산에 가장 최적화되어 있다."
+      ],
+      "answer": 4,
+      "explanation": "해시 조인(Hash Join)은 해시 함수의 특성상 동등 조인(Equi-Join, '=')에만 적용 가능하며, 부등호나 범위 조건과 같은 비동등 조인에는 사용할 수 없습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 72
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "데이터베이스 반정규화(De-normalization) 기법과 적용 시 고려사항에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 반정규화는 조회 성능을 향상시키기 위해 정규화된 데이터 모델을 의도적으로 중복, 통합, 분리하는 기법이다.",
+        "② 테이블 병합(1:1, 1:N 관계 병합)을 통해 조인 횟수를 줄여 질의 성능을 개선할 수 있다.",
+        "③ 통계 테이블이나 이력 테이블의 파생 컬럼을 추가하여 실시간 집계 연산 부하를 줄일 수 있다.",
+        "④ 반정규화를 과도하게 적용하면 데이터 무결성 유지가 용이해지고 입력/수정/삭제 처리 성능이 항상 비례하여 향상된다."
+      ],
+      "answer": 4,
+      "explanation": "반정규화를 적용하면 데이터 중복으로 인해 무결성 유지가 어려워지고(이상 현상 발생 위험), INSERT/UPDATE/DELETE 시 중복 데이터 동기화 부하로 쓰기 성능이 저하될 수 있습니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 73
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "데이터 거버넌스(Data Governance) 체계의 주요 구성 요소에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 원칙(Principles): 데이터의 품질과 보안, 수명주기를 관리하기 위한 전사적 정책 및 지침",
+        "② 조직(Organization): 데이터 관리자(Data Steward), 데이터 소유자(Data Owner) 등의 역할과 책임 정의",
+        "③ 프로세스(Process): 데이터 표준화, 변경 관리, 품질 모니터링 등의 표준 운영 절차",
+        "④ 메타데이터(Metadata): 원천 데이터의 백업 주기만을 기록하며 비즈니스 용어집이나 데이터 사전 기능은 배제한다."
+      ],
+      "answer": 4,
+      "explanation": "메타데이터는 데이터의 구조, 정의, 속성, 비즈니스 용어 표준, 데이터 사전, 데이터 카탈로그, 계보(Lineage) 등을 포괄적으로 관리하는 핵심 자산입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 74
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "데이터베이스 암호화 방식에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① API 방식: 응용 프로그램 레벨에서 암·복호화 모듈을 호출하여 처리하므로 DB 서버의 연산 부하를 분산할 수 있다.",
+        "② 플러그인(Plug-in) 방식: DB 서버의 확장 기능을 활용하여 암·복호화를 수행하므로 애플리케이션 수정을 최소화할 수 있다.",
+        "③ TDE(Transparent Data Encryption) 방식: DBMS 엔진 레벨에서 데이터 파일 및 로그를 투명하게 암호화하며 애플리케이션 수정이 불필요하다.",
+        "④ 하이브리드 방식: 오직 단방향 해시 함수만을 적용하여 복호화가 원천적으로 불가능한 데이터만을 전용으로 관리하는 방식이다."
+      ],
+      "answer": 4,
+      "explanation": "하이브리드 방식은 API 방식과 Plug-in/TDE 방식을 혼합하여 성능과 보안성, 개발 편의성을 상호 보완하는 암호화 구축 기법입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2022,
+      "origin_id": 75
+    }
+  ]
+}

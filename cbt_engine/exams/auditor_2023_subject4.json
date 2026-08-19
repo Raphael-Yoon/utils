@@ -1,0 +1,427 @@
+{
+  "exam_info": {
+    "id": "auditor_2023_sub4",
+    "title": "[2023년] 4과목 : 시스템구조 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2023,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2023년 4과목 : 시스템구조 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "가상 메모리를 관리하기 위한 페이지 교체 알고리즘으로 가장 오랫동안 사용하지 않은 페이지를 교체하는 알고리즘으로 가장 적절한 것은?",
+      "options": [
+        "① FIFO",
+        "② LRU",
+        "③ Round-Robin",
+        "④ SPN"
+      ],
+      "answer": 2,
+      "explanation": "가장 오랫동안 참조되지 않은 페이지를 교체하는 알고리즘은 LRU(Least Recently Used)입니다. FIFO는 가장 먼저 들어온 페이지 교체, LFU는 참조 횟수가 가장 적은 페이지 교체이며, Round-Robin과 SPN은 CPU 스케줄링 알고리즘입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 76
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음 중 TCP와 UDP 프로토콜의 헤더 정보에 공통적으로 존재하는 필드로 가장 적절한 것은?",
+      "options": [
+        "① 체크섬(Checksum)",
+        "② 순서 번호(Sequence number)",
+        "③ 긴급 포인터(Urgent pointer)",
+        "④ ACK 번호(Acknowledgment number)"
+      ],
+      "answer": 1,
+      "explanation": "TCP 헤더와 UDP 헤더에 공통으로 존재하는 필드는 Source Port, Destination Port, Checksum, Data 필드입니다. Sequence Number, Acknowledgment Number, Urgent Pointer 등은 TCP 헤더에만 존재합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 77
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "디지털 창작물이 생성된 일시, 크기, 창작자 서명, 소유권과 판매 이력 등의 데이터를 분산 저장하는 것으로서 마치 등기부등본처럼 원본의 소유권이 이전되었을 때에도 투명하게 보증하는 것으로 가장 적절한 것은?",
+      "options": [
+        "① NFT",
+        "② 블록체인",
+        "③ 암호화폐",
+        "④ 메타버스"
+      ],
+      "answer": 1,
+      "explanation": "NFT(Non-Fungible Token, 대체 불가능 토큰)는 블록체인 기술을 활용하여 디지털 자산에 고유한 인식 값을 부여하고 소유권 및 거래 이력 등을 투명하게 증명하는 디지털 인증서입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 78
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음 설명하는 RAID(Redundant Array of Independent Disk) 유형으로 가장 적절한 것은?\n\n데이터를 블록 단위로 분산하고 패리티도 분산하여 통합 저장한 하드디스크로 구성된 RAID로 블록 인터 리브된 분산 패리티(block-interleaved striping with distributed parity)방식이라고 한다. 패리티도 모든 하드디스크에 분산하여 저장하기 때문에 패리티 디스크의 병목 현상을 없앨 수 있다.",
+      "options": [
+        "① RAID 2",
+        "② RAID 3",
+        "③ RAID 4",
+        "④ RAID 5"
+      ],
+      "answer": 4,
+      "explanation": "RAID 5는 패리티 블록을 하나의 전용 디스크에 저장하지 않고 모든 디스크에 분산하여 기록함으로써 RAID 4의 전용 패리티 디스크 병목 문제를 해결한 방식입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 79
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "HTTP 메소드 중 메시지 몸체(body)를 통해 신규 데이터 등록에 필요한 요청 자료를 서버에 전달하는 것으로 가장 적절한 것은?",
+      "options": [
+        "① GET",
+        "② POST",
+        "③ DELETE",
+        "④ HEAD"
+      ],
+      "answer": 2,
+      "explanation": "POST 메소드는 요청 데이터를 HTTP 메시지 Body에 담아 서버로 전송하며, 리소스 생성 및 등록에 주로 사용됩니다. GET은 URL 쿼리스트링으로 자원을 조회하고, DELETE는 삭제, HEAD는 헤더 정보만 조회합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 80
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "32-bit로 구성된 임의의 16진수 0x12345678을 메모리 0번지부터 Little-Endian 방식으로 저장한 16진수 값으로 가장 적절한 것은?",
+      "options": [
+        "① 0번지:12, 1번지:34, 2번지:56, 3번지:78",
+        "② 0번지:21, 1번지:43, 2번지:65, 3번지:87",
+        "③ 0번지:78, 1번지:56, 2번지:34, 3번지:12",
+        "④ 0번지:87, 1번지:65, 2번지:43, 3번지:21"
+      ],
+      "answer": 3,
+      "explanation": "리틀 엔디언(Little-Endian)은 최하위 바이트(LSB)부터 낮은 메모리 주소에 저장하는 방식입니다. 0x12345678에서 최하위 바이트는 78, 다음은 56, 34, 12 순이므로 0번지:78, 1번지:56, 2번지:34, 3번지:12 가 됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 81
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "C 프로그램 코드 char C = '9'; 와 같이 8-bit 문자변수 C에 '9'를 할당하였을 때, 문자변수 C의 메모리 값을 16진법으로 표시한 것으로 가장 적절한 것은?\n(단, ASCII Code 표에서 문자 '0'은 0011 0000 임)",
+      "options": [
+        "① 0x09",
+        "② 0x19",
+        "③ 0x29",
+        "④ 0x39"
+      ],
+      "answer": 4,
+      "explanation": "문자 '0'은 2진수로 0011 0000(16진수 0x30)입니다. 문자 '9'는 '0'에서 9를 더한 값이므로 0011 1001(16진수 0x39)가 됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 82
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음 중 유닉스 운영체제의 파일 관리에 대해 적절하게 설명한 것을 모두 고른 것은?\n\n가. 파이프 파일은 프로세스간 선입선출 방식으로 데이터를 전달하기 위해 사용한다.\n나. 단말기나 프린터와 같은 장치들은 특수파일로 관리한다.\n다. 파일은 inode를 통해 운영체제가 관리한다.\n라. inode는 파일 소유자의 이름을 포함한다.",
+      "options": [
+        "① 가, 나, 다",
+        "② 가, 나, 라",
+        "③ 가, 다, 라",
+        "④ 나, 다, 라"
+      ],
+      "answer": 1,
+      "explanation": "라의 설명에서 inode는 파일 소유자의 이름(문자열)이 아니라 소유자의 식별자인 User ID(UID)와 Group ID(GID)를 저장하므로 옳지 않습니다. 가, 나, 다는 올바른 설명입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 83
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "다음 중 네트워크 계층의 주소를 링크 계층의 주소로 변환하는 기능을 제공하는 프로토콜로 가장 적절한 것은?",
+      "options": [
+        "① ARP",
+        "② RARP",
+        "③ ICMP",
+        "④ IGMP"
+      ],
+      "answer": 1,
+      "explanation": "ARP(Address Resolution Protocol)는 3계층 논리 주소(IP 주소)를 2계층 물리 주소(MAC 주소)로 변환하는 프로토콜입니다. RARP는 반대로 MAC 주소를 IP 주소로 변환합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 84
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "다음은 에러 검출을 위해 사용하는 CRC(Cyclic Redundancy Check)의 생성다항식이다. 생성다항식에 대응하는 비트열로 가장 적절한 것은?\n\n생성다항식 : x^16 + x^12 + x^5 + 1",
+      "options": [
+        "① 1000 1000 0001 0001",
+        "② 0111 0111 1110 1110",
+        "③ 1 0001 0000 0010 0001",
+        "④ 0 1110 1111 1101 1110"
+      ],
+      "answer": 3,
+      "explanation": "다항식 x^16 + x^12 + x^5 + 1은 최고차항 16차(계수 1), 12차(1), 5차(1), 0차(1)이고 나머지는 0이므로, 17자리 비트열인 \"1 0001 0000 0010 0001\" (16차~0차)이 됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 85
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "'정보시스템 하드웨어 규모산정 지침(TTAK.KO-10. 0292/R2, 2018.12.19.)'에서 WEB/WAS의 산정항목 및 적용값에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 기본 OPS보정은 실험 환경에서 측정한 OPS 수치를 복잡한 실제 환경에 맞게 적용하기 위한 보정으로 고정값 6을 적용한다.",
+        "② 인터페이스 부해보정은 서버가 타 서버와 통신하게 될 때 인터페이스에서 발생하는 부하를 고려한 보정으로 적용범위는 2.0 ~ 2.3이다.",
+        "③ 클러스터 보정은 클러스터 환경에서 장애 발생 시를 대비한 보정으로 2-NODE의 경우 1.3을 적용한다.",
+        "④ 업무용도 보정은 적용 대상 시스템 유형에 따른 보정으로 WEB은 0.7을 그리고 WAS는 2를 적용한다."
+      ],
+      "answer": 4,
+      "explanation": "WEB/WAS 규모산정에서 업무용도 보정(S4)은 WEB 시스템 0.7, WAS 시스템 2.0을 적용합니다. 기본 OPS보정(S3)은 3, 인터페이스 부하보정(S5)은 1.1~1.2(일반값 1.1), 클러스터 보정(S7)은 2-NODE 시 1.4~1.5를 적용합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 86
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "다음 중 이더넷과 같은 링크계층 프로토콜에서 사용하는 MAC(Media Access Control) 주소 유형으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 유니캐스트(Unicast) 주소",
+        "② 애니캐스트(Anycast) 주소",
+        "③ 멀티캐스트(Multicast) 주소",
+        "④ 브로드캐스트(Broadcast) 주소"
+      ],
+      "answer": 2,
+      "explanation": "이더넷 MAC 주소 유형에는 유니캐스트(단일 호스트), 멀티캐스트(특정 그룹 호스트), 브로드캐스트(네트워크 내 전체 호스트)가 있습니다. 애니캐스트는 네트워크 계층(IPv6 등)에서 주로 지원하는 주소 전달 방식입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 87
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음 설명하는 소켓함수로 가장 적절한 것은?\n\n상대 프로세스가 전송한 데이터를 소켓을 통해서 읽을 수 있으며, 연결성 서비스에 사용한다.",
+      "options": [
+        "① connect()",
+        "② listen()",
+        "③ recv()",
+        "④ sendto()"
+      ],
+      "answer": 3,
+      "explanation": "recv()는 TCP 등 연결형 소켓(SOCK_STREAM)에서 상대 프로세스가 전송한 데이터를 읽어들이는 함수입니다. sendto()는 UDP 등 비연결형 소켓에서 데이터를 송신할 때 사용됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 88
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "다음 중 BGP4(Border Gateway Protocol Version 4)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 자신의 BGP 정보를 상대방에게 알려주기 위해서 Notification 메시지를 사용한다.",
+        "② BGP 이웃(neighbor)들과의 정보 교환은 TCP를 이용하며, 포트 번호는 179번이다.",
+        "③ AS(Autonomous System) 간에 경로 설정 정보를 교환하기 위한 외부 게이트웨이 프로토콜이다.",
+        "④ eBGP(external BGP)는 서로 다른 AS 간에 사용되며, iBGP(internal BGP)는 동일 AS 안에서 사용된다."
+      ],
+      "answer": 1,
+      "explanation": "자신의 BGP 라우팅 정보를 전달하거나 철회할 때는 UPDATE 메시지를 사용합니다. NOTIFICATION 메시지는 에러가 발생하여 BGP 연결을 종료할 때 에러 유형을 알리기 위해 전송합니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 89
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "다음 설명하는 프로토콜로 가장 적절한 것은?\n\n멀티캐스트 라우터는 멀티캐스트 패킷을 호스트로 전달해야 하는데, 이 프로토콜은 멀티캐스트 가입 상태에 대한 정보를 줄 수 있다. 멀티캐스트 가입에 관한 내용을 확인하거나 응답하는 메시지를 갖고 있으며, IP 패킷으로 캡슐화되어 전송된다.",
+      "options": [
+        "① CBT(Core-Based Tree)",
+        "② PIM(Protocol Independent Multicast)",
+        "③ IGMP(Internet Group Management Protocol)",
+        "④ DVMRP(Distance Vector Multicast Routing Protocol)"
+      ],
+      "answer": 3,
+      "explanation": "호스트와 로컬 라우터 간에 멀티캐스트 그룹 가입/유지/탈퇴 상태를 관리하고 질의/보고하는 프로토콜은 IGMP(Internet Group Management Protocol)입니다. PIM, DVMRP, CBT 등은 라우터 간 멀티캐스트 라우팅 프로토콜입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 90
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "다음 중 PPP(Point-to-Point Protocol)와 관련된 프로토콜에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① LCP(Link Control Protocol)는 링크를 설정하고 구성하며 해제하기 위해 사용된다.",
+        "② NCP(Network Control Protocol)들은 네트워크 계층 프로토콜을 설정하고 구성하기 위해 사용된다.",
+        "③ IPCP(Internet Protocol Control Protocol)는 인터넷 프로토콜을 설정하고 구성하기 위한 NCP(Network Control Protocol)이다.",
+        "④ CHAP(Challenge Handshake Authentication Protocol)은 인증을 위해 사용하는 프로토콜로서 클라이언트가 인증요청 패킷에서 사용자 이름과 비밀번호를 보낸다."
+      ],
+      "answer": 4,
+      "explanation": "CHAP은 인증 요청 시 평문 비밀번호를 전송하지 않고, 서버가 보낸 Challenge 메시지에 대해 비밀번호를 포함하여 계산한 해시(Hash) 값을 응답하여 인증하는 방식입니다. 평문 ID와 비밀번호를 전송하는 것은 PAP(Password Authentication Protocol)입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 91
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "다음과 같은 IP주소와 마스크가 주어진 경우, 네트워크 주소로 가장 적절한 것은?\n\n206.17.38.36/28",
+      "options": [
+        "① 206.17.38.32",
+        "② 206.17.38.34",
+        "③ 206.17.38.36",
+        "④ 206.17.38.38"
+      ],
+      "answer": 1,
+      "explanation": "슬래쉬 표기법 /28의 서브넷 마스크는 255.255.255.240(11110000)입니다. 마지막 옥텟 36(00100100)과 240(11110000)을 비트 AND 연산하면 00100000(32)가 되므로 네트워크 주소는 206.17.38.32가 됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 92
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "kNN(k-Nearest Neighbor)알고리즘의 특징에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 기계학습 알고리즘 중 비교적 간단하고 이해하기 쉬운 형태의 분류 알고리즘이다.",
+        "② 새로운 데이터를 가까운 이웃 클래스에 할당한다.",
+        "③ 가까운 이웃을 찾기 위해 많은 계산시간이 필요하다.",
+        "④ 학습 시 교사가 존재하지 않는 비지도학습에 속한다."
+      ],
+      "answer": 4,
+      "explanation": "k-NN(k-Nearest Neighbor) 알고리즘은 정답(레이블)이 존재하는 학습 데이터를 기반으로 새로운 데이터의 클래스를 분류(Classification)하는 지도 학습(Supervised Learning) 알고리즘입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 93
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "다음 중 신경망 기반의 기계학습 알고리즘으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① SVM(Support Vector Machine)",
+        "② GAN(Generative Adversarial Network)",
+        "③ DBN(Deep Belief Network)",
+        "④ VAE(Variational Auto Encoder)"
+      ],
+      "answer": 1,
+      "explanation": "SVM(Support Vector Machine)은 두 카테고리 데이터 간의 최대 마진(여백)을 갖는 결정 경계(초평면)를 찾는 통계학습 이론 기반의 선형/비선형 분류 모델로 신경망 기반 알고리즘이 아닙니다. GAN, DBN, VAE는 모두 인공신경망 기반의 딥러닝 알고리즘입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 94
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "다음 중 컨테이너를 사용한 가상화에 대해 적절하게 설명한 것을 모두 고른 것은?\n\n가. 컨테이너를 사용한 가상화의 경우 하이퍼바이저를 사용하여 높은 입출력 성능을 보인다.\n나. 컨테이너를 사용한 가상화의 경우 프로세스 수준에서 가상화가 구현된다.\n다. 컨테이너를 사용한 가상화의 경우 가상머신을 사용하는 가상화 보다 자원 사용을 절감할 수 있다.\n라. 컨테이너를 사용한 가상화의 경우 응용을 위한 별도의 분리된 환경을 제공하므로 가상머신 보다 높은 보안성을 갖는다.",
+      "options": [
+        "① 가, 나",
+        "② 가, 라",
+        "③ 나, 다",
+        "④ 다, 라"
+      ],
+      "answer": 3,
+      "explanation": "가: 컨테이너 가상화는 하이퍼바이저를 사용하지 않고 OS 커널을 공유합니다(틀림).\n나: 컨테이너는 프로세스(애플리케이션) 격리 수준에서 가상화를 구현합니다(맞음).\n다: 게스트 OS가 불필요하여 가상머신 대비 오버헤드가 적고 자원 사용을 절감할 수 있습니다(맞음).\n라: 호스트 OS 커널을 공유하므로 VM 방식에 비해 격리성 및 보안성이 상대적으로 낮습니다(틀림).",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 95
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "다음 중 가상화에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 전가상화는 게스트 운영체제에서 물리적인 컴퓨터 자원인 하드웨어에 대한 직접적인 접근 기능을 제공한다.",
+        "② 전가상화는 하드웨어와 게스트 운영체제 중간에 하이퍼바이저가 위치하므로 커널 코드 변경이 필요하다.",
+        "③ 반가상화는 게스트 운영체제의 커널을 수정하여야 하는 단점이 있으며 젠서버가 대표적인 예이다.",
+        "④ 전가상화는 반가상화보다 성능이 우수하다."
+      ],
+      "answer": 3,
+      "explanation": "반가상화(Para-virtualization)는 하이퍼콜을 위해 게스트 OS의 커널 수정을 요구하는 단점이 있지만 전가상화보다 성능이 우수하며, 대표적인 예로 Xen 등이 있습니다. 전가상화는 커널 수정이 필요 없으나(하드웨어 완전 가상화) 하이퍼바이저 중재로 인해 반가상화 대비 성능이 다소 떨어집니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 96
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "다음 중 신경망 학습을 위한 활성화함수로 가장 적절한 것은?",
+      "options": [
+        "① RMSProp",
+        "② ReLU",
+        "③ SGD(Stochastic Gradient Descent)",
+        "④ Adam(Adaptive Moment Estimation)"
+      ],
+      "answer": 2,
+      "explanation": "ReLU(Rectified Linear Unit)는 입력값이 0보다 작으면 0, 0보다 크면 입력값을 그대로 출력하는 대표적인 신경망 활성화 함수(Activation Function)입니다. RMSProp, SGD, Adam은 신경망 가중치 최적화(Optimizer) 알고리즘입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 97
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "다음 괄호 안에 들어갈 용어를 순서대로 나열한 것으로 가장 적절한 것은?\n\n( ㄱ )는 자연어 문장 생성에 특화된 모델로, 트랜스포머의 디코더 부분만 따로 떼어서 학습 모형으로 사용했다. 반면, ( ㄴ )는 트랜스포머의 인코드 부분을 떼어서 사용했다. 따라서, ( ㄱ )가 단방향 혹은 순방향으로의 셀프 어텐션만을 사용하는 것에 반해, ( ㄴ )는 양방향 셀프 어텐션을 모두 활용할 수 있다.",
+      "options": [
+        "① BERT   GPT",
+        "② GPT    CBOW",
+        "③ CBOW   BERT",
+        "④ GPT    BERT"
+      ],
+      "answer": 4,
+      "explanation": "트랜스포머의 디코더(Decoder) 구조를 기반으로 단방향/순방향 언어 모델링(문장 생성 특화)을 수행하는 것은 GPT이며, 트랜스포머의 인코더(Encoder) 구조를 기반으로 양방향 문맥을 이해하는 마스크 언어 모델은 BERT입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 98
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "대규모 신경망을 학습시키는 데는 매우 많은 시간이 걸리며 데이터도 대량으로 필요하므로, 이런 경우 대량의 데이터로 미리 학습되어 공개된 모델을 이용하는 것이 효과적이다. 학습된 모델을 이용하여 새로운 모델을 학습시키는 것으로 가장 적절한 것은?",
+      "options": [
+        "① 사전 학습",
+        "② 전이 학습",
+        "③ 지도 학습",
+        "④ 강화 학습"
+      ],
+      "answer": 2,
+      "explanation": "전이 학습(Transfer Learning)은 이미 대규모 데이터셋으로 사전 학습된(Pre-trained) 모델의 가중치와 지식을 기반으로 새로운 도메인이나 유사한 다른 과제(Task)의 모델을 효과적으로 학습시키는 기법입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 99
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "다음 중 TCP/IP 모델의 트랜스포트 계층 프로토콜에서 사용하는 포트 번호(Port Number)에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 소스 포트 번호는 일반적으로 32비트를 사용한다.",
+        "② 포트 번호는 프로세스 간의 전달(process-to-process delivery)을 위해서 사용된다.",
+        "③ TCP에서 사용하는 포트 번호와 UDP에서 사용하는 포트 번호는 중복될 수 없다.",
+        "④ 소스 포트 번호는 클라이언트 프로그램에서 주로 사용하는 Well-known 포트 번호와 서버 프로그램에서 주로 사용하는 동적 포트 번호 등이 있다."
+      ],
+      "answer": 2,
+      "explanation": "포트 번호(16비트)는 호스트 내에서 특정 애플리케이션 프로세스를 식별하여 종단 간 프로세스 통신(process-to-process delivery)을 가능하게 합니다. ① 포트 번호는 16비트(0~65535)입니다. ③ TCP와 UDP는 별개의 프로토콜이므로 동일한 포트 번호를 각각 독립적으로 사용할 수 있습니다(중복 가능). ④ Well-known 포트는 서버 데몬용(0~1023), 동적/사설 포트는 클라이언트용(49152~65535)으로 주로 할당됩니다.",
+      "subject": "시스템구조",
+      "origin_year": 2023,
+      "origin_id": 100
+    }
+  ]
+}
