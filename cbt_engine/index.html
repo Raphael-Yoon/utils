@@ -1857,7 +1857,7 @@ function submitExam(skipConfirm = false) {
   if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'none';
   if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'none';
   hideMemoWidget();
-  hideCalcWidget();
+  resetCalculatorState();
   document.getElementById('resultScreen').style.display = 'flex';
 
   const badge = document.getElementById('resStatusBadge');
