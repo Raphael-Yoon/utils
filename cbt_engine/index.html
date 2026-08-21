@@ -1499,6 +1499,7 @@ function renderQuestions() {
     qCard.className = `question-card${idx === currentQuestionIdx ? ' active' : ''}`;
     qCard.id = `qCard_${q.id}`;
 
+    const uAns = userAnswers[q.id] || userAnswers[String(q.id)];
     const isAllCorrect = (q.answer === 5 || q.answer === 0 || q.answer === 'all');
     const isCorrect = isAnswerCorrect(uAns, q.answer);
 
