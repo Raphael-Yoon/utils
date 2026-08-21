@@ -1473,6 +1473,13 @@ async function startExam() {
   goToQuestion(0); // 0번째(첫 번째) 질문 활성화
 }
 
+function isAnswerCorrect(uAns, qAns) {
+  if (qAns === 5 || qAns === 0 || qAns === 'all') return true; // 공식 전체 정답 처리 문항
+  if (Array.isArray(qAns)) return qAns.includes(Number(uAns));
+  if (uAns === undefined || uAns === null || uAns === '') return false;
+  return Number(uAns) === Number(qAns);
+}
+
 function renderQuestions() {
   const pane = document.getElementById('questionPane');
   pane.innerHTML = '';
@@ -1492,12 +1499,14 @@ function renderQuestions() {
     qCard.className = `question-card${idx === currentQuestionIdx ? ' active' : ''}`;
     qCard.id = `qCard_${q.id}`;
 
-    const uAns = userAnswers[q.id] || userAnswers[String(q.id)];
-    const isCorrect = (uAns === q.answer);
+    const isAllCorrect = (q.answer === 5 || q.answer === 0 || q.answer === 'all');
+    const isCorrect = isAnswerCorrect(uAns, q.answer);
 
     let statusTag = '';
     if (isReviewMode) {
-      if (isCorrect) {
+      if (isAllCorrect) {
+        statusTag = `<span class="q-result-tag correct">🎉 정답 (공식 전체 정답 처리 문항)</span>`;
+      } else if (isCorrect) {
         statusTag = `<span class="q-result-tag correct">⭕ 정답</span>`;
       } else {
         statusTag = `<span class="q-result-tag wrong">❌ 오답 (내 선택: ${uAns ? uAns + '번' : '미응답'} / 정답: ${q.answer}번)</span>`;
@@ -1510,7 +1519,7 @@ function renderQuestions() {
       let optClass = 'option-item';
 
       if (isReviewMode) {
-        if (optNum === q.answer) {
+        if (isAllCorrect || optNum === q.answer || (Array.isArray(q.answer) && q.answer.includes(optNum))) {
           optClass += ' correct-answer';
         } else if (uAns === optNum && !isCorrect) {
           optClass += ' user-wrong';
@@ -1677,7 +1686,7 @@ function renderOMR() {
     subQuestions.forEach(q => {
       const item = document.createElement('div');
       const uAns = userAnswers[q.id] || userAnswers[String(q.id)];
-      const isCorrect = (uAns === q.answer);
+      const isCorrect = isAnswerCorrect(uAns, q.answer);
 
       let itemClass = 'omr-item';
       if (isReviewMode) {
@@ -1823,7 +1832,7 @@ function submitExam(skipConfirm = false) {
     subQs.forEach(q => {
       const qPts = (q.points !== undefined) ? q.points : ptsPerQ;
       subMaxPoints += qPts;
-      if (userAnswers[q.id] === q.answer) {
+      if (isAnswerCorrect(userAnswers[q.id], q.answer)) {
         correctCount++;
         subEarnedPoints += qPts;
       }

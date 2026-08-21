@@ -85,7 +85,8 @@
       "explanation": "정답: ①\n\n[해설]\nMaster가 다수의 Slave(Worker)에게 작업을 분배하고 각 Slave의 처리 결과를 취합하여 최종 결과를 반환하는 구조는 병렬/분산 처리에 흔히 사용되는 Master-Slave(Master-Worker) 패턴에 해당합니다. 따라서 정답은 ①번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
-      "origin_id": 29
+      "origin_id": 29,
+      "image_url": "/exams/images/auditor_2025_q29.jpg"
     },
     {
       "id": 5,
@@ -101,7 +102,8 @@
       "explanation": "정답: ②\n\n[해설]\nabstract class를 상속(extends)하는 관계는 UML에서 일반화(Generalization) 관계이며, 속이 빈 삼각형과 실선으로 표기합니다. 인터페이스를 구현(implements)할 때 사용하는 점선+속이 빈 삼각형(실체화)과는 다르므로, 정답은 ②번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
-      "origin_id": 30
+      "origin_id": 30,
+      "image_url": "/exams/images/auditor_2025_q30.jpg"
     },
     {
       "id": 6,
@@ -165,7 +167,8 @@
       "explanation": "정답: ①\n\n[해설]\n두 점 사이의 거리 측도에는 대표적으로 유클리드 거리(가장 짧은 직선 거리), 맨해튼 거리(축 방향으로만 이동하는 거리), 체비쇼프 거리(각 축 차이 중 최댓값) 등이 있습니다. 그림에서 '가'는 두 점을 잇는 대각선 직선 거리이므로 유클리드 거리에 해당하여 정답은 ①번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
-      "origin_id": 34
+      "origin_id": 34,
+      "image_url": "/exams/images/auditor_2025_q34.jpg"
     },
     {
       "id": 10,
@@ -325,7 +328,8 @@
       "explanation": "정답: ④\n\n[해설]\nStaff가 Service 인터페이스를 implements하는 관계는 실체화(Realization, 점선+속이 빈 삼각형)로, Person 클래스를 extends하는 관계는 일반화(Generalization, 실선+속이 빈 삼각형)로 표현합니다. 또한 doWork() 메서드 내에서 Task 객체를 지역적으로 생성해 사용하는 것은 의존/연관 관계로 실선 화살표를 사용합니다. 이 세 관계를 모두 올바르게 표현한 것은 ④번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
-      "origin_id": 44
+      "origin_id": 44,
+      "image_url": "/exams/images/auditor_2025_q44.jpg"
     },
     {
       "id": 20,
@@ -421,7 +425,8 @@
       "explanation": "정답: ②\n\n[해설]\n임계경로(주공정, Critical Path)는 여유시간(slack time)이 0인 활동을 연결한 경로입니다. 바 차트에서 여유시간이 없는 활동은 T1, T3, T9, T11, T12이며, 이를 연결하면 T1→T3→T9→T11→T12가 임계경로가 됩니다. 이 중 임계경로 상의 활동에만 투입되는 작업자는 B(T1, T3, T9)이므로 정답은 ②번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
-      "origin_id": 50
+      "origin_id": 50,
+      "image_url": "/exams/images/auditor_2025_q50.jpg"
     }
   ]
 }

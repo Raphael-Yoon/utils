@@ -85,7 +85,8 @@
       "explanation": "정답: ④\n\n[해설]\n다이어그램에서 원의 문자 'd'는 분리제약(disjointness constraint)을 의미하며, 슈퍼타입 '직원'의 한 인스턴스가 서브타입 '월급직원'과 '시급직원'에 동시에 속할 수 없음을 나타냅니다. 따라서 월급직원이면서 동시에 시급직원일 수는 없으므로 ④번이 옳은 설명입니다. 참고로 직원은 서브클래스가 아니라 슈퍼클래스(수퍼타입)이므로 ①은 틀렸고, 이중선으로 표시된 전체 참여 제약(completeness constraint가 total)에 의해 슈퍼타입의 모든 인스턴스가 반드시 두 서브타입 중 하나에 속해야 하므로 ②도 틀렸으며, '소속-노조' 관계가 시급직원에만 연결되어 있어 월급직원은 노조에 소속될 수 없으므로 ③도 틀린 설명입니다.",
       "subject": "데이터베이스",
       "origin_year": 2026,
-      "origin_id": 54
+      "origin_id": 54,
+      "image_url": "/exams/images/auditor_2026_q54.jpg"
     },
     {
       "id": 5,
@@ -325,7 +326,8 @@
       "explanation": "정답: ③\n\n[해설]\n2단계 로킹 규약(2PLP)은 모든 트랜잭션이 lock과 unlock 연산을 확장단계(growing phase: 새 lock만 가능)와 축소단계(shrinking phase: 새 unlock만 가능)로 나누어 실행해야 하는 규약입니다. 로크 포인트(Lock Point)는 트랜잭션이 수행 중 필요한 마지막 로크를 획득한 시점, 즉 확장 단계가 끝나고 축소 단계가 시작되기 직전 로크의 수가 최대가 되는 지점을 의미합니다. 그림에서 로크의 수가 최대가 되는 지점은 ⓒ이므로 정답은 ③번입니다.",
       "subject": "데이터베이스",
       "origin_year": 2026,
-      "origin_id": 69
+      "origin_id": 69,
+      "image_url": "/exams/images/auditor_2026_q69.jpg"
     },
     {
       "id": 20,

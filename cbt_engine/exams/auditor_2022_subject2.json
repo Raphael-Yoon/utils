@@ -37,7 +37,8 @@
       "explanation": "1) 제약사항(Constraint)은 비기능적 요구사항, 설계/구현에 영향을 주는 제약 조건이지 기능적 요구사항의 직접적인 원천이나 도출 대상이 아닙니다.\n2) 비즈니스 요구사항/비즈니스 룰 -> 사용자 요구사항 -> 기능적 요구사항으로 구체화되며, 시스템 요구사항은 기능적/비기능적 요구사항을 포괄합니다. 따라서 (라)의 연결이 가장 적절하지 않습니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2022,
-      "origin_id": 26
+      "origin_id": 26,
+      "image_url": "/exams/images/auditor_2022_q26.png"
     },
     {
       "id": 2,
@@ -213,7 +214,8 @@
       "explanation": "1) 레거시 시스템 평가 기준:\n   - 비즈니스 가치 높음 & 품질 낮음(9, 10): 핵심 업무이나 품질이 낮아 전면적 개선이 필요한 '재공학(Re-engineering)' 대상\n   - 비즈니스 가치 높음 & 품질 높음(6, 7, 8): 핵심 업무이고 품질도 양호하여 지속적인 '정상 유지보수(Maintenance)' 대상\n   - 비즈니스 가치 낮음 & 품질 낮음(1, 2, 3): 폐기(Scrap) 대상\n   - 비즈니스 가치 낮음 & 품질 높음(4, 5): 유지/단순 보존 대상\n따라서 재공학(9, 10), 유지보수(6, 7, 8)로 묶은 4번이 정답입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2022,
-      "origin_id": 37
+      "origin_id": 37,
+      "image_url": "/exams/images/auditor_2022_q37.png"
     },
     {
       "id": 13,
@@ -245,7 +247,8 @@
       "explanation": "1) 다이어그램의 중심에 위치한 (가)는 스프링의 핵심인 '코어 컨테이너(Core Container)'입니다.\n2) 코어 컨테이너는 spring-core, spring-beans, spring-context, spring-expression(SpEL) 모듈로 구성되며, 스프링의 제어역전(IoC)과 의존성 주입(DI) 기능을 제공합니다. 따라서 (가)에 대한 설명으로 1번이 올바릅니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2022,
-      "origin_id": 39
+      "origin_id": 39,
+      "image_url": "/exams/images/auditor_2022_q39.png"
     },
     {
       "id": 15,
@@ -309,7 +312,8 @@
       "explanation": "1) Button이 Command 인터페이스의 execute()를 호출하여 구체적 명령(LightOnCommand)을 캡슐화하여 실행하는 패턴은 Command 패턴입니다.\n2) Lamp 클래스가 기존 LEDLight 클래스의 인터페이스(switchOn/switchOff)를 ILamp 인터페이스(turnOn/turnOff)에 맞추어 변환(위임)해 주는 구조는 Adapter 패턴(클래스/객체 어댑터)입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2022,
-      "origin_id": 43
+      "origin_id": 43,
+      "image_url": "/exams/images/auditor_2022_q43.png"
     },
     {
       "id": 19,
@@ -325,7 +329,8 @@
       "explanation": "1) 각 열의 논리값 계산:\n   - '나' 열: C1 = T, C2 = F\n     * C12 = C1 OR C2 = T OR F = T\n     * A1 = C12 = T\n     * A2 = C12 AND C2 = T AND F = F\n     * A3 = NOT C2 = NOT F = T\n   - 표의 '나' 열(A1=T, A2=F, A3=T)과 정확히 일치합니다.\n2) 따라서 올바른 것은 ② '나' 입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2022,
-      "origin_id": 44
+      "origin_id": 44,
+      "image_url": "/exams/images/auditor_2022_q44.png"
     },
     {
       "id": 20,
@@ -341,7 +346,8 @@
       "explanation": "1) 시퀀스 다이어그램의 loop [for each c2 in c2s]에서 c1 객체가 c2s 컬렉션 내의 복수 객체 c2를 순회하며 호출하고 있습니다.\n2) 따라서 클래스 C1에서 C2로의 연관관계에는 C2 쪽에 1:N 또는 '*'와 같은 복수 다중성이 명시되어야 합니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2022,
-      "origin_id": 45
+      "origin_id": 45,
+      "image_url": "/exams/images/auditor_2022_q45.png"
     },
     {
       "id": 21,
@@ -421,7 +427,8 @@
       "explanation": "1) 순환복잡도 CC = 분기 영역(결정 분기 수) + 1 = 3(loop, break, opt) + 1 = 4입니다.\n2) CBO(Coupling Between Objects)는 Class1이 직접 결합되어 호출하는 타 클래스의 개수입니다. Class2와 Class3 총 2개의 클래스와 결합되어 있으므로 CBO = 2입니다.\n3) 따라서 CC = 4, CBO = 2 (④번)가 정답입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2022,
-      "origin_id": 50
+      "origin_id": 50,
+      "image_url": "/exams/images/auditor_2022_q50.png"
     }
   ]
 }

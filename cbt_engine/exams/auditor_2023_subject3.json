@@ -69,7 +69,8 @@
       "explanation": "수퍼키(Super Key)는 후보키를 포함하는 모든 속성 집합입니다. Registration과 Vehicle_id가 후보키이므로, 이 중 하나를 포함하는 속성 조합은 모두 수퍼키가 될 수 있습니다. ②(Vehicle_id, Number), ③(Registration, State), ④(Registration, Vehicle_id, Year)는 모두 후보키를 포함하므로 수퍼키이지만, ①(State, Year, Model)은 후보키인 Registration이나 Vehicle_id를 포함하지 않으므로 수퍼키가 아닙니다. 따라서 정답은 ①번입니다.",
       "subject": "데이터베이스",
       "origin_year": 2023,
-      "origin_id": 53
+      "origin_id": 53,
+      "image_url": "/exams/images/auditor_2023_q53.jpg"
     },
     {
       "id": 4,
@@ -117,7 +118,8 @@
       "explanation": "EMPLOYEE와 PROJECT는 N:M 관계인 WORKS_ON을 중심으로 연결되어 있으므로, 각 엔터티 타입(EMPLOYEE, PROJECT)과 다대다 관계 타입(WORKS_ON)을 각각 별도의 릴레이션으로 도출해야 합니다. 또한 PROJECT의 Location은 다치 속성(이중타원)이므로 별도의 릴레이션으로 분리해야 합니다. 따라서 EMPLOYEE(ENO, Name), PROJECT(PNO, Name), WORKS_ON(ENO, PNO, Hours), LOCATION(PNO, Location)의 4개 릴레이션이 생성되며 정답은 ③번입니다.",
       "subject": "데이터베이스",
       "origin_year": 2023,
-      "origin_id": 56
+      "origin_id": 56,
+      "image_url": "/exams/images/auditor_2023_q56.jpg"
     },
     {
       "id": 7,
@@ -245,7 +247,8 @@
       "explanation": "검사시점(checkpoint) 회복 기법에서 Undo는 트랜잭션 로그를 처음부터 끝까지 역순으로, Redo는 체크포인트 이후부터 끝까지 순서대로 수행합니다. T1은 체크포인트 이전에 완료되어 추가 작업이 필요 없고, T2는 체크포인트에 걸쳐 있지만 시스템 다운 전에 커밋되었으므로 체크포인트 이후 부분만 Redo하면 됩니다. T3은 체크포인트에 걸쳐 있으나 완료되지 못했으므로 Undo, T4는 체크포인트 이후 시작되어 완료되었으므로 Redo, T5도 체크포인트 이후 시작되었지만 완료되지 못했으므로 Undo 대상입니다. 따라서 재수행(Redo) 대상은 T2, T4이며 정답은 ①번입니다.",
       "subject": "데이터베이스",
       "origin_year": 2023,
-      "origin_id": 64
+      "origin_id": 64,
+      "image_url": "/exams/images/auditor_2023_q64.jpg"
     },
     {
       "id": 15,
@@ -277,7 +280,8 @@
       "explanation": "T1이 고객 테이블을 집계하는 도중, T2가 새로운 레코드를 삽입하고 커밋한 뒤 T1이 다시 같은 테이블을 집계하면 이전에 없던 레코드(유령 레코드)가 나타나게 됩니다. 이는 유령 데이터 읽기(Phantom Read) 현상이므로 정답은 ②번입니다.",
       "subject": "데이터베이스",
       "origin_year": 2023,
-      "origin_id": 66
+      "origin_id": 66,
+      "image_url": "/exams/images/auditor_2023_q66.jpg"
     },
     {
       "id": 17,

@@ -37,7 +37,8 @@
       "explanation": "클라이언트의 요청을 처리하는 핸들러들이 연쇄적으로 연결되어 요청을 다음 객체로 전달하는 Sequence Diagram은 Chain of Responsibility(책임 연쇄) 패턴을 나타냅니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2023,
-      "origin_id": 26
+      "origin_id": 26,
+      "image_url": "/exams/images/auditor_2023_q26.jpg"
     },
     {
       "id": 2,
@@ -53,7 +54,8 @@
       "explanation": "각 테스트케이스가 해당하는 Rule을 판정하면: TC1(X=-200,Y=0)은 C1:F, C2:F, C3:F로 Rule 8. TC2(X=0,Y=200)는 C1:T, C2:T, C3:T로 Rule 1. TC3(X=-100,Y=150)은 C1:T, C2:F(150<150은 거짓), C3:F(50>=150은 거짓)로 Rule 4. TC4(X=-100,Y=250)는 C1:T, C2:T, C3:T로 Rule 1입니다. 따라서 TC1~TC4는 Rule 1, 4, 8을 커버하며(Rule 1이 중복), 전체 8개 Rule 중 3개를 커버하므로 커버리지는 3/8입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2023,
-      "origin_id": 27
+      "origin_id": 27,
+      "image_url": "/exams/images/auditor_2023_q27.jpg"
     },
     {
       "id": 3,
@@ -261,7 +263,8 @@
       "explanation": "UML 상태 머신에서 복합 상태 내부에서 외부로 전이할 때의 실행 순서는: 서브상태 Y 탈출(exit/ B) -> 이벤트 트리거 액션(C) -> 슈퍼상태 X 탈출(exit/ A) -> 전이 액션(D) -> 타겟상태 Z 진입(entry/ E) 순인 B, C, A, D, E 입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2023,
-      "origin_id": 40
+      "origin_id": 40,
+      "image_url": "/exams/images/auditor_2023_q40.jpg"
     },
     {
       "id": 16,
@@ -309,7 +312,8 @@
       "explanation": "Ian Sommerville 소프트웨어 공학의 형상관리 용어 정의:\n- 코드라인(Codeline): 컴포넌트와 그에 관련된 형상항목 버전들의 집합\n- 베이스라인(Baseline): 시스템을 구성하는 통제된 컴포넌트 버전의 집합\n- 메인라인(Mainline): 시스템의 여러 버전들을 나타내는 일련의 베이스라인 시퀀스",
       "subject": "소프트웨어공학",
       "origin_year": 2023,
-      "origin_id": 43
+      "origin_id": 43,
+      "image_url": "/exams/images/auditor_2023_q43.jpg"
     },
     {
       "id": 19,
@@ -325,7 +329,8 @@
       "explanation": "Cc로 들어오는 의존성(Fan-in) = Ca(2) + Cb(1) = 3\nCc에서 나가는 의존성(Fan-out) = Cd(1) = 1\n불안정성 지표 I = Fan-out / (Fan-in + Fan-out) = 1 / (3 + 1) = 1/4 입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2023,
-      "origin_id": 44
+      "origin_id": 44,
+      "image_url": "/exams/images/auditor_2023_q44.jpg"
     },
     {
       "id": 20,

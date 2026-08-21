@@ -53,7 +53,8 @@
       "explanation": "정답: ④\n\n[해설]\nMVC 패턴은 모델, 뷰, 컨트롤러의 세 가지 역할로 소프트웨어를 분리하는 아키텍처 패턴으로, 내부적으로 옵서버 패턴(모델 상태 변경을 뷰에 통지), 전략 패턴(컨트롤러가 뷰에 행동 전략을 제공), 컴포지트 패턴(뷰의 계층적 UI 구성) 등 여러 디자인 패턴이 유기적으로 결합되어 있습니다. Chain of Responsibility 패턴은 MVC 구조에서 일반적으로 사용되는 패턴이 아니므로 가장 적절하지 않습니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2026,
-      "origin_id": 27
+      "origin_id": 27,
+      "image_url": "/exams/images/auditor_2026_q27.jpg"
     },
     {
       "id": 3,
@@ -69,7 +70,8 @@
       "explanation": "정답: ③\n\n[해설]\nSubject는 interface이므로 이를 구현(implements)하는 RealSubject, Proxy와의 관계는 실체화(Realization)이며, UML에서 실체화는 점선 + 속이 빈 삼각형으로 표기합니다. 한편 Proxy는 RealSubject 타입의 멤버변수(realSubject)를 소유하고 있으므로 이는 연관관계(Association)이며, 연관관계는 실선 화살표로 표기합니다. 따라서 Subject와의 관계는 점선 삼각형, Proxy-RealSubject 관계는 실선 화살표로 나타낸 ③번이 정답입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2026,
-      "origin_id": 28
+      "origin_id": 28,
+      "image_url": "/exams/images/auditor_2026_q28.jpg"
     },
     {
       "id": 4,
@@ -117,7 +119,8 @@
       "explanation": "정답: ②\n\n[해설]\nbreak 문은 가드조건이 참이면 operand 안의 interaction을 실행하고 바깥부분 fragment는 생략하며, 조건이 거짓이면 반대로 동작합니다. 문제에는 z와 w에 대한 구체적인 값이 주어지지 않았으므로 가장 일반적인 실행 흐름은 두 break 조건이 모두 거짓인 경우입니다. 이 경우 z>3이 거짓이므로 b, c는 건너뛰고 d가 수행되며, w==2도 거짓이므로 e를 건너뛰고 f가 수행되어 최종적으로 a → d → f가 됩니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2026,
-      "origin_id": 31
+      "origin_id": 31,
+      "image_url": "/exams/images/auditor_2026_q31.jpg"
     },
     {
       "id": 7,
@@ -149,7 +152,8 @@
       "explanation": "정답: ①\n\n[해설]\nClassA()와 ClassA(int)는 매개변수 개수가 다른 동일 이름의 메서드로 오버로딩(Overloading)에 해당합니다. ClassA를 상속받은 자식 클래스 ClassB, ClassC가 존재하므로 상속(Inheritance)이 나타나며, 부모클래스 ClassA의 draw() 메서드를 ClassB와 ClassC가 재정의하고 있으므로 오버라이딩(Overriding)도 존재합니다. 따라서 정답은 ①번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2026,
-      "origin_id": 33
+      "origin_id": 33,
+      "image_url": "/exams/images/auditor_2026_q33.jpg"
     },
     {
       "id": 9,
@@ -165,7 +169,8 @@
       "explanation": "정답: ③\n\n[해설]\n초기상태에서 x=1이 대입되고, A상태 진입 시 entry 액티비티로 x=x*2=2가 됩니다. E1 이벤트 발생 시 B상태로 전이되며 진입 시 entry로 x=x+1=3이 됩니다. E2 이벤트 발생 시 A상태 내부의 종료상태로 전이되며, B를 나갈 때 exit로 x=x+2=5가 되고, 이어서 A의 종료상태 도달로 A를 나갈 때 exit로 x=x-1=4가 됩니다. 이후 자동으로 C상태로 전이되어 진입 시 entry로 x=x*2=8이 됩니다. 최종 상태는 C이며 x 값은 8입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2026,
-      "origin_id": 34
+      "origin_id": 34,
+      "image_url": "/exams/images/auditor_2026_q34.jpg"
     },
     {
       "id": 10,
@@ -229,7 +234,8 @@
       "explanation": "정답: ③\n\n[해설]\n'조건부 로직을 다형성으로 바꾸기(Replace Conditional with Polymorphism)'는 객체의 타입이나 조건에 따라 분기되는 복잡한 switch나 if-else문을 객체 지향의 상속과 다형성으로 대체하는 리팩토링 기법입니다. 이 기법을 적용하면 조건문 중복을 제거하고, 새로운 조건이 추가되더라도 기존 코드를 수정하지 않고 새로운 클래스만 추가(개방 폐쇄 원칙, OCP)하여 확장성을 높일 수 있습니다. 문제의 그림은 type 값에 따라 분기하던 stop() 메서드를 Videoplayer, Musicplayer 서브클래스가 각자 오버라이딩하도록 개선한 것이므로 ③번이 정답입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2026,
-      "origin_id": 38
+      "origin_id": 38,
+      "image_url": "/exams/images/auditor_2026_q38.jpg"
     },
     {
       "id": 14,
@@ -373,7 +379,8 @@
       "explanation": "정답: ④\n\n[해설]\n패키지 응집성 원칙 중 SDP(안정된 의존성 원칙, The Stable Dependencies Principle)에서 비안정성 지표는 I = Fan-out / (Fan-in + Fan-out)로 계산합니다. 그림에서 Package A의 내부 클래스에 의존하는 외부 클래스(Fan-in)는 C5, C6, C4로 3개이고, Package A의 클래스 중 외부 클래스에 의존하는 것(Fan-out)은 C2 하나입니다. 따라서 I = 1 / (3+1) = 1/4이며 ④번이 정답입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2026,
-      "origin_id": 47
+      "origin_id": 47,
+      "image_url": "/exams/images/auditor_2026_q47.jpg"
     },
     {
       "id": 23,
@@ -405,7 +412,8 @@
       "explanation": "정답: ②\n\n[해설]\n그림은 로드밸런서, 오케스트레이터, 메시지 브로커를 통해 서비스 간 직접 호출 대신 메시지 기반으로 통신하는 이벤트 기반 마이크로서비스 구조(MSA)를 보여줍니다. 각 마이크로서비스(famousNewsService, sportsNewsService, politicsNewsService)가 자신만의 데이터베이스를 소유하는 Database per Service 패턴이 적용되어 있으므로, 데이터 조회(Query)와 업데이트(Command)의 책임을 분리하여 복잡한 도메인 모델의 성능을 최적화하는 CQRS 패턴을 함께 적용하는 것이 Best Practice로 가장 적절합니다. 따라서 ②번이 정답입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2026,
-      "origin_id": 49
+      "origin_id": 49,
+      "image_url": "/exams/images/auditor_2026_q49.jpg"
     },
     {
       "id": 25,

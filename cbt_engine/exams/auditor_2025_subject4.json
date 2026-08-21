@@ -309,7 +309,8 @@
       "explanation": "정답: ②\n\n[해설]\n차분 맨체스터 방식은 각 비트 구간의 시작점에서 전이(inversion)가 있으면 0, 전이가 없으면 1을 의미합니다(비트 구간 중간의 반전은 동기화용). 그림의 파형을 이 규칙에 따라 해석하면 이진수 0111001이 되며, 정답은 ②번입니다.",
       "subject": "시스템구조",
       "origin_year": 2025,
-      "origin_id": 93
+      "origin_id": 93,
+      "image_url": "/exams/images/auditor_2025_q93.jpg"
     },
     {
       "id": 19,
