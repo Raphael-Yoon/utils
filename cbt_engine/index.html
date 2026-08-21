@@ -1848,8 +1848,13 @@ function submitExam(skipConfirm = false) {
     grandTotalScore = grandTotalScore / currentExamData.subjects.length;
   }
 
-  const hasAnyCutoff = subjectResults.some(r => r.isCutoff);
-  const isFinalPass = (!hasAnyCutoff) && (grandTotalScore >= passScore);
+  const fnSub = (currentExamData.filename || currentExamData.path || '').replace(/^\/exams\//, '').toLowerCase();
+  const isSingleSubject = (currentExamData.subjects.length === 1 && currentExamData.questions.length <= 25) || !!fnSub.match(/subject\d+\.json$/);
+
+  // [개발4팀/손현호] 단일 과목 분할 모드(25문항)에서는 40점 과락 기준 통과 시 합격(과락 통과) 처리 (방안 B)
+  const effectivePassScore = isSingleSubject ? (rules.fail_score_per_subject || rules.subject_cutoff_score || 40) : passScore;
+  const hasAnyCutoff = isSingleSubject ? (grandTotalScore < effectivePassScore) : subjectResults.some(r => r.isCutoff);
+  const isFinalPass = isSingleSubject ? (grandTotalScore >= effectivePassScore) : ((!hasAnyCutoff) && (grandTotalScore >= passScore));
 
   document.getElementById('examLayout').style.display = 'none';
   document.getElementById('timerBadge').style.display = 'none';
@@ -1892,16 +1897,12 @@ function submitExam(skipConfirm = false) {
       badge.className = "status-badge fail";
     }
   } else {
-    const fnSub = (currentExamData.filename || '').replace(/^\/exams\//, '').toLowerCase();
-    const isAuditorSingleSubjectRes = !!fnSub.match(/auditor_\d{4}_subject\d+\.json$/);
-
-    if (isAuditorSingleSubjectRes) {
-      const subCutoff = rules.fail_score_per_subject || 40;
-      if (grandTotalScore >= subCutoff) {
-        badge.innerText = `🎉 과락 면제 / 과락 통과 (PASSED - ${grandTotalScore.toFixed(1)}점)`;
+    if (isSingleSubject) {
+      if (isFinalPass) {
+        badge.innerText = `🎉 과락 통과 / 합격 (PASSED - ${grandTotalScore.toFixed(1)}점)`;
         badge.className = "status-badge pass";
       } else {
-        badge.innerText = `❌ 과락 불합격 (FAILED - ${subCutoff}점 미만 / ${grandTotalScore.toFixed(1)}점)`;
+        badge.innerText = `❌ 과락 불합격 (FAILED - ${effectivePassScore}점 미만 / ${grandTotalScore.toFixed(1)}점)`;
         badge.className = "status-badge fail";
       }
     } else if (isFinalPass) {
@@ -1950,7 +1951,7 @@ function submitExam(skipConfirm = false) {
     exam_title: currentExamData.exam_info.title,
     total_score: grandTotalScore,
     max_score: currentExamData.questions.length * ptsPerQ,
-    is_pass: isFinalPass,
+    is_pass: isFinalPass ? 1 : 0,
     fail_reason: isFinalPass ? '' : (hasAnyCutoff ? '과락 불합격' : '총점 미달 불합격'),
     time_taken_seconds: (currentExamData.exam_info.time_limit_minutes || 120) * 60 - totalSeconds,
     subject_scores: subjectResults,
@@ -2093,7 +2094,9 @@ async function showHistoryModal(filterMode) {
     groupedList.forEach((grp, idx) => {
       const latestItem = grp.attempts[0];
       const latestAttemptNum = itemAttemptNumMap[latestItem.id] || 1;
-      const latestPassTag = latestItem.is_pass ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
+      const isSingleSub = (latestItem.exam_id && latestItem.exam_id.includes('subject')) || (latestItem.exam_title && latestItem.exam_title.includes('과목') && latestItem.exam_title.includes('25문항'));
+      const isPassVal = isSingleSub ? (latestItem.total_score >= 40.0) : Boolean(latestItem.is_pass);
+      const latestPassTag = isPassVal ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
       const latestDateStr = new Date(latestItem.created_at).toLocaleString();
 
       const hasHistory = grp.attempts.length > 1;
@@ -2139,7 +2142,9 @@ async function showHistoryModal(filterMode) {
         for (let i = 1; i < grp.attempts.length; i++) {
           const item = grp.attempts[i];
           const attemptNum = itemAttemptNumMap[item.id] || (grp.attempts.length - i);
-          const passTag = item.is_pass ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
+          const isSingleSubItem = (item.exam_id && item.exam_id.includes('subject')) || (item.exam_title && item.exam_title.includes('과목') && item.exam_title.includes('25문항'));
+          const isItemPass = isSingleSubItem ? (item.total_score >= 40.0) : Boolean(item.is_pass);
+          const passTag = isItemPass ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
           const dateStr = new Date(item.created_at).toLocaleString();
           html += `
             <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:8px 14px; display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--text-main);">
