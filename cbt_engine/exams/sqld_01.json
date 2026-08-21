@@ -1,0 +1,676 @@
+{
+  "exam_info": {
+    "title": "SQLD 제1회 기출 유형 문제",
+    "category": "SQLD",
+    "time_limit_minutes": 90,
+    "passing_rules": {
+      "total_pass_score": 60,
+      "subject_cutoff_score": 40,
+      "points_per_question": 2
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "1과목: 데이터 모델링의 이해",
+      "question_count": 10
+    },
+    {
+      "id": 2,
+      "name": "2과목: SQL 기본 및 활용",
+      "question_count": 40
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "다음은 데이터 모델링 과정에서 도출되는 특정 엔터티 유형에 대한 설명이다. 이를 가장 잘 설명하는 엔터티는 무엇인가?\n\n[설명]\n두 개 이상의 부모 엔터티로부터 발생한다.\n내용이 자주 변경되거나 지속적으로 데이터량이 증가하는 특징이 있다.",
+      "options": [
+        "① 기본 엔터티",
+        "② 중심 엔터티",
+        "③ 행위 엔터티",
+        "④ 사건 엔터티"
+      ],
+      "answer": 3,
+      "explanation": "① 기본 엔터티는 업무에 원래 존재하는 독립적인 엔터티로 제시된 설명과 다르다.\n② 중심 엔터티는 기본 엔터티로부터 발생해 업무의 중심 역할을 하는 엔터티이므로 핵심 조건과 일치하지 않는다.\n④ 사건 엔터티는 용어상 혼동하기 쉽지만, 제시된 특징은 SQLD 기준 행위 엔터티에 해당하는 설명이다."
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음은 어떤 속성에 대한 설명인가?\n\n[설명]\n다른 속성을 바탕으로 계산해서 얻는 속성이다. 예를 들어, 합계금액, 평균점수, 이자금액 같은 속성이다.",
+      "options": [
+        "① 기본 속성",
+        "② 설계 속성",
+        "③ 파생 속성",
+        "④ 업무 속성"
+      ],
+      "answer": 3,
+      "explanation": "① 기본 속성은 업무에서 원래부터 존재하는 일반적인 속성이므로 계산 결과 속성과 다르다.\n② 설계 속성은 모델링 과정에서 업무 규칙이나 식별 목적상 새로 만들거나 변형한 속성이므로 계산 속성과 다르다.\n④ 업무 속성은 SQLD의 대표 분류 기준으로 쓰이는 유형이 아니며, 제시된 설명의 핵심 키워드는 계산으로 얻는 속성이라는 점이다."
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "인스턴스와 속성, 속성값의 관계 설명으로 틀린 것은?",
+      "options": [
+        "① 엔터티는 여러 인스턴스로 구성된 집합이다. 보통 2개 이상의 인스턴스를 가진다.",
+        "② 인스턴스에 속한 속성은 속성의 값이 2개 이상이다.",
+        "③ 엔터티는 반드시 속성을 가져야 한다.",
+        "④ 인스턴스는 두 개 이상의 속성을 갖는다."
+      ],
+      "answer": 2,
+      "explanation": "② 한 개의 속성은 한 개의 인스턴스에 대해 하나의 속성값만 가진다."
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음 업무 설명을 고려할 때 제시된 모델에서 재설계가 필요한 엔터티는?\n\n[업무 설명]\n고객은 서비스를 여러 개 가입할 수 있다.\n동일 고객이 동일 서비스를 가입, 해지를 반복해 여러 번 이용할 수 있다.\n청구는 서비스 이용에 대해 여러 번 나눠서 청구할 수 있다.\n납부는 청구를 나눠서 분할 청구할 수 있다.\n\n[데이터 모델]\n고객(고객번호PK) - 서비스이용(고객번호FK, 서비스번호FK, 신청일자, 종료일자) - 서비스(서비스번호PK)\n서비스이용 - 납부(납부번호PK, 신청자번호FK, 청구번호FK) - 청구(청구번호PK, 신청자번호FK, 서비스번호FK)",
+      "options": [
+        "① 서비스",
+        "② 서비스이용",
+        "③ 납부",
+        "④ 청구"
+      ],
+      "answer": 2,
+      "explanation": "서비스이용 엔터티는 고객번호와 서비스번호만으로 식별되고 있어, 동일 고객이 동일 서비스를 여러 번 이용하는 경우를 구분하기 어려운 구조이다.\n신청일자, 종료일자 같은 이력성 속성을 가지고 있으므로 반복 발생을 식별할 수 있는 키가 추가되어야 자연스러운 설계다.\n납부와 청구는 업무 처리 과정에서 발생하는 행위성 엔터티로 큰 문제가 없다. 따라서 가장 잘못 설계된 엔터티는 서비스이용이다."
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "다음 업무를 만족하는 SQL로 가장 적절한 것은?\n\n[업무 설명]\n고객별로 주문 이력을 조회하되, 한 번의 주문이라도 주문 수량이 10개 이상인 고객만 대상으로 하여 고객ID와 그 고객의 최대 주문 수량을 조회한다.",
+      "options": [
+        "① SELECT 주문.고객ID, COUNT(*) FROM 주문 GROUP BY 주문.고객ID HAVING COUNT(*) >= 10;",
+        "② SELECT 주문.고객ID, MAX(주문.수량) FROM 주문 GROUP BY 주문.고객ID HAVING MAX(주문.수량) >= 10;",
+        "③ SELECT 주문.고객ID, MAX(주문.상품ID) FROM 주문 GROUP BY 주문.고객ID HAVING MAX(주문.상품ID) >= 10;",
+        "④ SELECT 주문.고객ID, SUM(주문.수량) FROM 주문 GROUP BY 주문.고객ID HAVING SUM(주문.수량) >= 10;"
+      ],
+      "answer": 2,
+      "explanation": "문제의 핵심은 한 번의 주문이라도 수량이 10개 이상인 고객을 찾는 것이다. 고객별로 그룹화한 뒤 각 고객의 주문 수량 중 가장 큰 값을 찾아야 하므로 MAX(주문.수량)을 사용해야 하며, 그 최댓값이 10 이상인 고객만 남기기 위해 HAVING MAX(주문.수량) >= 10 조건을 사용해야 한다.\n① COUNT(*) >= 10은 주문 건수가 10건 이상인 고객을 찾는 조건이므로 업무 조건과 다르다.\n③ MAX(주문.상품ID) >= 10은 최대 주문상품의 종류를 기준으로 하므로 무관하다.\n④ SUM(주문.수량) >= 10은 전체 주문 수량 합계가 10 이상인 고객을 찾는 것으로, 3개씩 여러 번 주문해 합계가 10이 되어도 한 번도 10개 이상 주문한 적이 없다면 업무 조건을 만족하지 않는다."
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음 중 식별/비식별 관계에 대한 설명으로 옳지 않은 것은?",
+      "options": [
+        "① 식별 관계에서는 부모의 주식별자가 자식의 주식별자에 포함될 수 있다.",
+        "② 비식별 관계는 부모의 주식별자가 자식의 주식별자와 동일하다.",
+        "③ 비식별 관계에서는 부모의 주식별자가 자식 엔터티에서 일반 속성(외래키)으로만 사용될 수 있다.",
+        "④ 식별 관계는 부모 엔터티가 삭제되면 연관된 자식 엔터티도 함께 삭제되는 강한 의존 관계가 되는 경우가 많다."
+      ],
+      "answer": 2,
+      "explanation": "비식별 관계는 부모 엔터티의 주식별자를 자식 엔터티가 주식별자로 사용하지 않고 일반 속성(외래키)으로만 참조하는 관계이므로 ②는 잘못된 설명이다.\n부모와 자식의 주식별자가 동일한 경우는 1:1의 식별 관계에 해당한다."
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "다음 중 피터 첸(Peter Chen) 표기법에서 관계(Relationship)를 나타내는 도형으로 옳은 것은?",
+      "options": [
+        "① 사각형",
+        "② 역삼각형",
+        "③ 마름모",
+        "④ 타원"
+      ],
+      "answer": 3,
+      "explanation": "피터 첸 표기법에서 관계(Relationship)는 마름모로 표현한다. 참고로 사각형은 엔터티, 타원은 속성을 나타낸다."
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음 설명은 식별자의 어떤 특성을 설명한 것인가?\n\n[설명]\n식별자를 구성하는 여러 속성 중 일부를 제외할 경우, 나머지 속성들만으로는 더 이상 엔터티 내의 각 인스턴스를 유일하게 구별해 낼 수 없는 성질을 말한다.",
+      "options": [
+        "① 유일성",
+        "② 최소성",
+        "③ 불변성",
+        "④ 존재성"
+      ],
+      "answer": 2,
+      "explanation": "식별자를 구성하는 속성 집합에서 하나라도 누락되면 인스턴스를 식별할 수 없게 된다는 것은, 식별자가 꼭 필요한 최소한의 속성들만으로 구성되어야 한다는 '최소성(Minimality)'을 의미한다."
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "본질 식별자와 인조 식별자의 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 본질 식별자는 업무에 의해 자연스럽게 정의된 식별자이다.",
+        "② 인조 식별자는 별도의 처리행위 없이 의미를 유추할 수 있는 식별자이다.",
+        "③ 본질 식별자가 복합 속성으로 구성되어 자식 엔터티로 상속될 때 복잡도가 높아지면, 인조 식별자를 도입하여 식별 구조를 단순화할 수 있다.",
+        "④ 인조 식별자는 데이터 값 자체만으로는 업무와 직접적인 의미를 갖지 않는 경우가 많다."
+      ],
+      "answer": 2,
+      "explanation": "인조 식별자는 인위적으로 생성한 값이므로, 값 자체만으로 업무의 의미를 바로 유추하기 어렵다.\n본질 식별자가 복합 식별자일 때 자식 엔터티까지 상속되면 PK 구조가 복잡해질 수 있으므로 인조 식별자를 활용해 단순화할 수 있다.\n인조 식별자는 업무 자체에서 직접 발생한 값이라기보다 식별 편의성을 위해 인위적으로 만든 값이다."
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "다음 중 외부 스키마에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 부 단계로서 여러 개의 사용자 관점으로 구성되며, 사용자가 보는 개인적 데이터베이스 스키마이다.",
+        "② 데이터베이스의 개별 사용자나 응용 프로그래머가 접근하는 데이터베이스 정의이다.",
+        "③ 전체 데이터베이스 중 사용자가 필요로 하는 논리적 부분을 표현하므로 서브 스키마라고도 한다.",
+        "④ 모든 응용 시스템과 사용자들이 필요로 하는 데이터를 통합한 조직 전체의 데이터베이스를 기술한다."
+      ],
+      "answer": 4,
+      "explanation": "④는 '모든 응용 시스템과 사용자들', '조직 전체'라는 표현이 들어가 있어 범위가 너무 크며, 이는 개념 스키마의 특징이다. 외부 스키마는 사용자별 개인 관점(부분 뷰), 개념 스키마는 조직 전체 통합 뷰이다."
+    },
+    {
+      "id": 11,
+      "subject_id": 2,
+      "question": "다음 중 COUNT(*) 결과가 나머지 셋과 다른 하나는?(단, TAB 테이블에는 5개 이상의 행이 존재한다고 가정한다.)",
+      "options": [
+        "① SELECT COUNT(*) FROM TAB WHERE ROWNUM IN (1, 2);",
+        "② SELECT COUNT(*) FROM TAB WHERE ROWNUM = 2;",
+        "③ SELECT COUNT(*) FROM TAB WHERE ROWNUM > 2;",
+        "④ SELECT COUNT(*) FROM TAB WHERE ROWNUM < 1;"
+      ],
+      "answer": 1,
+      "explanation": "ROWNUM은 Oracle에서 결과 행이 반환될 때마다 순차적으로 부여되는 가상 컬럼이며 항상 1부터 시작한다.\n① ROWNUM IN (1,2): 1행 통과→ROWNUM=1, 다음 행 통과→ROWNUM=2 부여되어 2건이 반환된다.\n② ROWNUM = 2: 첫 행은 항상 ROWNUM=1이므로 ROWNUM=2인 행은 존재할 수 없어 0건이다.\n③ ROWNUM > 2: 첫 행(ROWNUM=1)이 조건을 만족하지 못해 이후 행에 번호가 부여되지 않으므로 항상 0건이다.\n④ ROWNUM < 1: ROWNUM의 최솟값은 1이므로 조건을 만족하는 행이 없어 0건이다.\n따라서 결과가 다른 하나는 2건이 반환되는 ①이다."
+    },
+    {
+      "id": 12,
+      "subject_id": 2,
+      "question": "다음 SQL 문은 부서명이 'IT'인 부서에 근무하는 사원들의 정보를 조회하는 쿼리이다. 오류 없이 쿼리가 항상 정상적으로 수행됨을 데이터베이스 차원에서 보장하기 위해, DEPT 테이블의 DEPT_NAME 컬럼에 설정해야 하는 가장 적절한 제약조건(Constraint)은 무엇인가?\n\nSELECT EMP_ID, EMP_NAME\nFROM EMP\nWHERE DEPT_ID = (\n    SELECT DEPT_ID\n    FROM DEPT\n    WHERE DEPT_NAME = 'IT'\n);",
+      "options": [
+        "① NOT NULL",
+        "② UNIQUE",
+        "③ CHECK (DEPT_NAME = 'IT')",
+        "④ FOREIGN KEY"
+      ],
+      "answer": 2,
+      "explanation": "메인쿼리에서 단일 행 비교 연산자 =를 사용했기 때문에 서브쿼리 결과는 반드시 1건 이하여야 한다. 'IT' 부서가 2개 이상 존재하면 서브쿼리가 다중 행을 반환해 실행 오류가 발생한다.\n쿼리를 수정하지 않고 오류를 원천 차단하려면 DEPT_NAME에 중복 값이 입력될 수 없도록 유일성을 보장하는 UNIQUE(또는 PRIMARY KEY) 제약조건을 설정해야 한다."
+    },
+    {
+      "id": 13,
+      "subject_id": 2,
+      "question": "다음 SQL 수행 결과로 옳은 것은?\n\nCREATE TABLE TAB (\n    col1 INT PRIMARY KEY,\n    col2 INT IDENTITY(1,1)\n);\nINSERT INTO TAB (col1) VALUES(-1);\nINSERT INTO TAB VALUES(0,1);\nINSERT INTO TAB VALUES(1,2);\n\nSELECT COUNT(*) FROM TAB;",
+      "options": [
+        "① 0",
+        "② 1",
+        "③ 2",
+        "④ 3"
+      ],
+      "answer": 2,
+      "explanation": "col2는 IDENTITY(1,1)로 정의된 컬럼이므로 일반 INSERT 문에서 값을 직접 명시할 수 없다.\nINSERT INTO TAB (col1) VALUES(-1);는 정상 수행되며 col2에는 자동으로 1이 입력되어 1건이 저장된다.\n두 번째 문장 INSERT INTO TAB VALUES(0,1);은 IDENTITY 컬럼인 col2에 값을 직접 지정하려 하므로 오류가 발생하고, 이어지는 세 번째 문장도 정상 반영되지 않는다.\n따라서 최종적으로 저장된 행 수는 1건이다."
+    },
+    {
+      "id": 14,
+      "subject_id": 2,
+      "question": "다음 TAB1 테이블에 대한 SQL 중 오류가 발생하지 않는 것은?\n\n[TAB1 테이블 정보]\nCOL1: NUMBER\nCOL2: VARCHAR2(3)\nCOL3: DATE\nCOL4: VARCHAR2(5) — 예시 데이터: '12345', '45677'",
+      "options": [
+        "① ALTER TABLE TAB1 MODIFY COL1 VARCHAR2(10);",
+        "② ALTER TABLE TAB1 MODIFY COL2 VARCHAR2(2);",
+        "③ ALTER TABLE TAB1 MODIFY COL3 TIMESTAMP;",
+        "④ ALTER TABLE TAB1 MODIFY COL4 NUMBER;"
+      ],
+      "answer": 3,
+      "explanation": "③ DATE와 TIMESTAMP는 날짜/시간 관련 타입으로 호환되어 기존 DATE 데이터를 TIMESTAMP로 변환할 수 있으므로 오류가 발생하지 않는다.\n① NUMBER와 VARCHAR2는 서로 다른 타입 계열이라 직접 변환이 허용되지 않아 오류가 발생한다.\n② 이미 데이터가 저장된 컬럼은 Oracle이 기존 데이터의 최대 길이보다 크기를 줄이는 것을 원칙적으로 허용하지 않아 오류가 발생한다.\n④ 데이터 값이 숫자처럼 보여도 VARCHAR2에서 NUMBER로의 타입 자체 변경은 허용되지 않아 오류가 발생한다."
+    },
+    {
+      "id": 15,
+      "subject_id": 2,
+      "question": "다음 SQL을 실행했을 때 EMP1 테이블의 결과 집합으로 가장 알맞은 것은?\n\n[EMP1 데이터] empno,sal : 1,100 / 2,50 / 3,100\n[EMP2 데이터] empno,sal : 2,100 / 3,100\n\nMERGE INTO emp1 a\nUSING emp2 b\nON (a.empno = b.empno)\nWHEN MATCHED THEN\n    UPDATE SET a.sal = b.sal\nWHEN NOT MATCHED THEN\n    INSERT VALUES (b.empno, b.sal);",
+      "options": [
+        "① empno,sal : 1,100 / 2,50 / 3,100",
+        "② empno,sal : 1,100 / 2,100 / 3,200",
+        "③ empno,sal : 1,100 / 2,100 / 3,100",
+        "④ empno,sal : 2,100 / 3,100"
+      ],
+      "answer": 3,
+      "explanation": "MERGE INTO emp1 a USING emp2 b는 emp2를 기준 데이터로 emp1을 갱신하는 문장이므로 결과는 emp1에 반영된다.\nempno=2, 3은 양쪽에 모두 존재하므로 WHEN MATCHED UPDATE가 수행되어 empno=2의 sal은 50→100으로 바뀌고, empno=3은 원래 100이므로 그대로 유지된다.\nempno=1은 emp1에만 있고 emp2에는 없어 MATCHED도, NOT MATCHED(emp2 기준)도 아니므로 이 SQL에 DELETE 절이 없는 이상 그대로 남는다.\nemp2의 행(empno=2,3)은 모두 이미 emp1에 존재하므로 WHEN NOT MATCHED INSERT는 발생하지 않는다."
+    },
+    {
+      "id": 16,
+      "subject_id": 2,
+      "question": "다음 SQL 문의 실행 결과로 가장 적절한 것은?\n\nSELECT REGEXP_REPLACE('2025-12-25', '^(\\d{4})-(\\d{2})-(\\d{2})$', '\\3\\2\\1') AS RESULT\nFROM DUAL;",
+      "options": [
+        "① 2025/12/25",
+        "② 2025-12-25",
+        "③ 12/25/2025",
+        "④ 25/12/2025"
+      ],
+      "answer": 4,
+      "explanation": "정규표현식 '^(\\d{4})-(\\d{2})-(\\d{2})$'는 하이픈을 기준으로 문자열을 3개 그룹으로 캡처한다: 1번 그룹=2025, 2번 그룹=12, 3번 그룹=25.\n치환 패턴 '\\3\\2\\1'은 3번 그룹→2번 그룹→1번 그룹 순서로 재배치하므로 결과는 25/12/2025가 된다(그룹 사이의 슬래시는 치환 문자열에 포함된 리터럴이다)."
+    },
+    {
+      "id": 17,
+      "subject_id": 2,
+      "question": "다음 SQL을 수행했을 때, GROUP BY CUBE(a, b)의 그룹핑 결과(그룹 목록)를 개념적으로 올바르게 표현한 것은?\n\nSELECT a, b, COUNT(*)\nFROM TAB\nGROUP BY CUBE(a, b);",
+      "options": [
+        "① (a, b), (a, NULL), (NULL, NULL)",
+        "② (a, b), (a, NULL), (NULL, b)",
+        "③ (a, b), (a, NULL), (NULL, b), (NULL, NULL)",
+        "④ (a, NULL), (NULL, b)"
+      ],
+      "answer": 3,
+      "explanation": "CUBE는 인자로 들어간 컬럼들의 모든 조합에 대한 그룹을 생성하며, 인자가 2개일 때는 4개의 그룹이 만들어진다.\n(a,b): a,b 둘 다 기준, (a,NULL): a만 기준(b는 전체 소계), (NULL,b): b만 기준(a는 전체 소계), (NULL,NULL): 전체 총계.\n이를 보기 형식으로 쓰면 ③번과 일치한다."
+    },
+    {
+      "id": 18,
+      "subject_id": 2,
+      "question": "다음 SQL을 실행한 결과로 가장 적합한 것은?(단, 출력 순서는 EMP_NO 오름차순이라고 가정한다.)\n\n[EMP 테이블] EMP_NO,SAL : 1,1000 / 2,2000 / 3,3000\n\nSELECT FIRST_VALUE(SAL) OVER (\n    PARTITION BY EMP_NO\n    ORDER BY SAL\n    ROWS BETWEEN UNBOUNDED PRECEDING AND 1 FOLLOWING\n) AS FV_SAL\nFROM EMP;",
+      "options": [
+        "① 1000 / 1000 / 1000",
+        "② 1000 / 2000 / 3000",
+        "③ 3000 / 2000 / 1000",
+        "④ 3000 / 3000 / 3000"
+      ],
+      "answer": 2,
+      "explanation": "FIRST_VALUE는 각 윈도우에서 정렬 기준상 첫 번째 값을 반환하는 분석 함수다. PARTITION BY EMP_NO는 EMP_NO가 모두 서로 달라 각 파티션에 행이 1개씩만 존재하게 만든다.\n따라서 각 파티션의 첫 번째 값은 자기 자신의 SAL이 되어 결과는 1000, 2000, 3000이 된다. 윈도우 프레임이 있어도 파티션당 행이 1건뿐이므로 결과는 변하지 않는다."
+    },
+    {
+      "id": 19,
+      "subject_id": 2,
+      "question": "아래의 테이블 데이터가 있을 때 다음 SQL의 실행 결과로 가장 알맞은 것은?\n\n[테이블 데이터]\nTAB_A: 1, 2, 3, 4\nTAB_B: 1, 3, 5\nTAB_C: 2, 6\n\nSELECT COUNT(*)\nFROM (\n    SELECT COL1 FROM TAB_A\n    UNION\n    SELECT COL1 FROM TAB_B\n    EXCEPT\n    SELECT COL1 FROM TAB_C\n) X;",
+      "options": [
+        "① 1",
+        "② 3",
+        "③ 4",
+        "④ 5"
+      ],
+      "answer": 3,
+      "explanation": "UNION은 중복을 제거한 합집합을 구하므로 TAB_A UNION TAB_B의 결과는 {1,2,3,4,5}가 된다.\nEXCEPT는 앞 결과에서 뒤 결과에 포함된 값을 제외하는 차집합 연산이므로, TAB_C={2,6}를 제외하면 {1,3,4,5}가 남는다.\n최종 결과 집합의 원소 개수는 4개이므로 COUNT(*)의 결과는 4가 된다."
+    },
+    {
+      "id": 20,
+      "subject_id": 2,
+      "question": "다음 [보기] SQL과 동일한 결과가 나오는 선택지를 모두 고르시오.\n\n[보기 SQL]\nSELECT A, B, SUM(C)\nFROM TAB1\nGROUP BY CUBE(A, B);\n\n[선택지]\n가) SELECT A, B, SUM(C) FROM TAB1 GROUP BY ROLLUP(A, B)\n    UNION ALL\n    SELECT NULL, B, SUM(C) FROM TAB1 GROUP BY B;\n\n나) SELECT A, B, SUM(C) FROM TAB1 GROUP BY GROUPING SETS (A, B, (A, B), ());\n\n다) SELECT A, B, SUM(C) FROM TAB1 GROUP BY A, B\n    UNION ALL\n    SELECT A, NULL, SUM(C) FROM TAB1 GROUP BY A\n    UNION ALL\n    SELECT NULL, B, SUM(C) FROM TAB1 GROUP BY B;",
+      "options": [
+        "① 가",
+        "② 가, 나",
+        "③ 가, 나, 다",
+        "④ 없음"
+      ],
+      "answer": 2,
+      "explanation": "CUBE(A,B)는 (A,B),(A),(B),() 총 4가지 형태의 소계/합계를 반환한다.\n가) [동일] ROLLUP(A,B)는 (A,B),(A),() 3가지를 반환하며, 여기에 누락된 (B)별 소계를 UNION ALL로 추가하면 CUBE(A,B)와 동일한 4가지 결과가 된다.\n나) [동일] GROUPING SETS에 (A,B),(A),(B),()를 모두 명시했으므로 CUBE(A,B)와 결과가 같다.\n다) [다름] 전체 합계(NULL,NULL)가 빠져 있으므로 CUBE(A,B)와 결과가 다르다.\n따라서 동일한 결과를 내는 것은 가, 나이다."
+    },
+    {
+      "id": 21,
+      "subject_id": 2,
+      "question": "다음 EMP 테이블을 대상으로 아래의 SQL 문을 수행하였을 때, 출력되는 tile_no 컬럼의 값을 순서대로 바르게 나열한 것은?(단, 출력되는 행의 위에서부터 아래 순서를 기준으로 한다.)\n\n[EMP 테이블] EMP_ID,SCORE : 1,100 / 2,95 / 3,90 / 4,85 / 5,80 / 6,75 / 7,70 / 8,65\n\nSELECT emp_id, score,\n    NTILE(3) OVER (ORDER BY score DESC) AS tile_no\nFROM EMP;",
+      "options": [
+        "① 1,1,2,2,2,3,3,3",
+        "② 1,1,1,2,2,2,3,3",
+        "③ 1,1,1,1,2,2,3,3",
+        "④ 1,2,3,1,2,3,1,2"
+      ],
+      "answer": 2,
+      "explanation": "전체 8개 행을 NTILE(3)으로 3개 그룹에 배분한다. 8÷3은 몫 2, 나머지 2이므로 기본적으로 각 그룹에 2개씩 배정되고, 남는 2개는 첫 번째 그룹부터 순서대로 1개씩 추가된다.\n따라서 1번(Tile 1)에 3개, 2번(Tile 2)에 3개, 3번(Tile 3)에 2개가 배정되며, ORDER BY score DESC로 이미 내림차순 정렬된 상태이므로 결과는 1,1,1,2,2,2,3,3이 된다."
+    },
+    {
+      "id": 22,
+      "subject_id": 2,
+      "question": "다음 SQL과 논리적으로 동일한 결과를 반환하는 SQL을 고르시오.(단, TAB 테이블은 컬럼 COL1과 COL2로 구성되어 있으며, DBMS는 다중 컬럼 비교를 지원한다고 가정한다.)\n\nSELECT *\nFROM TAB\nWHERE (COL1, COL2) IN (('A', 1000), ('B', 2000));",
+      "options": [
+        "① SELECT * FROM TAB WHERE (COL1 = 'A' AND COL2 = 1000) OR (COL1 = 'B' AND COL2 = 2000);",
+        "② SELECT * FROM TAB WHERE COL1 IN ('A', 'B') AND COL2 IN (1000, 2000);",
+        "③ SELECT * FROM TAB WHERE (COL1 = 'A' OR COL2 = 1000) AND (COL1 = 'B' OR COL2 = 2000);",
+        "④ SELECT * FROM TAB WHERE COL1 = 'A' AND COL1 = 'B' OR (COL2 = 1000 AND COL2 = 2000);"
+      ],
+      "answer": 1,
+      "explanation": "다중 컬럼 IN 조건은 괄호 안의 컬럼들을 하나의 쌍(Tuple)으로 묶어, 명시된 값 쌍과 정확히 일치하는 행만 추출한다.\n즉 COL1='A'이면서 COL2=1000이거나, COL1='B'이면서 COL2=2000인 경우를 조회하는 것과 논리적으로 일치하므로 정답은 ①이다."
+    },
+    {
+      "id": 23,
+      "subject_id": 2,
+      "question": "다음 SALES 테이블의 데이터를 조회하는 SQL 중, 실행했을 때 반환되는 결과(행의 수 또는 출력 값)가 나머지 셋과 다른 하나는 무엇인가?\n\n[SALES 테이블] ORD_NO,AMOUNT,DISCOUNT : 1001,50000,NULL",
+      "options": [
+        "① SELECT AMOUNT + DISCOUNT FROM SALES;",
+        "② SELECT AMOUNT * DISCOUNT FROM SALES;",
+        "③ SELECT DISCOUNT / AMOUNT FROM SALES;",
+        "④ SELECT ORD_NO FROM SALES WHERE DISCOUNT = NULL;"
+      ],
+      "answer": 4,
+      "explanation": "④ WHERE 절에서 DISCOUNT = NULL로 비교를 시도하고 있다. NULL은 등호/부등호로 비교할 수 없어 결과가 항상 UNKNOWN이 되므로 조회되는 행이 없다.\n①,②,③은 SELECT 절에서 NULL이 포함된 DISCOUNT와 산술 연산(+,*,/)을 수행하며, NULL과의 모든 산술 연산 결과는 NULL이므로 'NULL' 값을 가진 1개 행이 정상 출력된다."
+    },
+    {
+      "id": 24,
+      "subject_id": 2,
+      "question": "다음 SQL 문의 출력 결과 중 다른 하나는 무엇인가?(EMP 테이블에는 데이터가 5건 이상 존재함)\n\nSELECT NVL(AVG(SAL), 0)\n     , COALESCE(SUM(SAL), 0)\n     , MIN(SAL)\n     , COUNT(*)\nFROM EMP_C\nWHERE 1 = 2;",
+      "options": [
+        "① NVL(AVG(SAL), 0)",
+        "② COALESCE(SUM(SAL), 0)",
+        "③ MIN(SAL)",
+        "④ COUNT(*)"
+      ],
+      "answer": 3,
+      "explanation": "조건을 만족하는 행이 없으면 AVG, SUM, MIN 같은 일반 집계 함수는 NULL을 반환할 수 있으나 COUNT(*)는 0을 반환한다.\nNVL(AVG(SAL),0)과 COALESCE(SUM(SAL),0)은 NULL을 0으로 변환하므로 0이 되고, COUNT(*)도 0이 된다.\n반면 MIN(SAL)은 별도 처리 없이 NULL 그대로 반환되므로 나머지 셋(모두 0)과 값이 다르다."
+    },
+    {
+      "id": 25,
+      "subject_id": 2,
+      "question": "다음 SQL 스크립트에서 마지막에 user2가 emp 테이블을 조회하는 과정에서 오류가 발생하였다. 오류가 발생하지 않게 하려면 어떤 조치를 추가로 취해야 하는가?(Oracle 기준)\n\nuser1> CREATE TABLE r1.emp (\n    empno NUMBER,\n    ename VARCHAR2(20)\n);\nuser1> DISCONNECT\nuser2> CONNECT user2\nuser2> SELECT * FROM emp;  -- ORA-00942: table or view does not exist",
+      "options": [
+        "① user2> CREATE TABLE emp (empno NUMBER, ename VARCHAR2(20));",
+        "② user1> GRANT SELECT ON r1.emp TO user2;",
+        "③ user2> CREATE SYNONYM emp FOR r1.emp;",
+        "④ user1> REVOKE SELECT ON r1.emp FROM user1;"
+      ],
+      "answer": 2,
+      "explanation": "r1.emp 테이블은 user1(스키마 r1)에만 존재하며 user2는 이 테이블에 대한 어떤 객체 권한도 부여받지 못한 상태다.\nuser2가 r1.emp를 조회하려면 먼저 user1이 GRANT SELECT ON r1.emp TO user2;로 SELECT 권한을 부여해야 한다.\n① user2 스키마에 별도의 emp 테이블을 새로 만드는 것으로 'r1.emp 조회'라는 요구와 무관하다.\n③ 시노님은 이름만 간편하게 해줄 뿐 접근 권한을 자동으로 부여하지 않으므로, 권한이 없는 상태에서는 여전히 조회가 불가능하다.\n④ user1 자신의 권한을 회수하는 조치이므로 user2의 문제 해결과 관련이 없다."
+    },
+    {
+      "id": 26,
+      "subject_id": 2,
+      "question": "다음 SQL 문의 계산 결과로 옳은 것은?\n\n[TAB 테이블] COL1,COL2,COL3,COL4\n1, 1, 1, 1\n2, NULL, 2, 1\n3, 4, NULL, NULL\nNULL, 5, 1, 1\n\nSELECT SUM(COL1+COL2+COL3+COL4),\n       SUM(COL1)+SUM(COL2)+SUM(COL3)+SUM(COL4)\nFROM TAB;",
+      "options": [
+        "① (4, 23)",
+        "② (23, 23)",
+        "③ (4, 4)",
+        "④ (NULL, 23)"
+      ],
+      "answer": 1,
+      "explanation": "SUM(COL1+COL2+COL3+COL4)는 각 행에서 먼저 네 컬럼을 더한다. NULL이 포함된 행의 연산 결과는 NULL이 되므로 1행(1+1+1+1=4)만 값을 가지고 나머지는 NULL이 되어, 첫 번째 결과는 SUM(4,NULL,NULL,NULL)=4가 된다.\nSUM(COL1)+SUM(COL2)+SUM(COL3)+SUM(COL4)는 컬럼별로 각각 집계하며 SUM은 NULL을 무시한다. SUM(COL1)=6, SUM(COL2)=10, SUM(COL3)=4, SUM(COL4)=3이므로 합계는 23이 된다.\n따라서 결과는 (4, 23)인 ①이다."
+    },
+    {
+      "id": 27,
+      "subject_id": 2,
+      "question": "다음 중 데이터베이스 트랜잭션의 특성 중 고립성에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 트랜잭션에서 정의된 모든 연산은 데이터베이스에 모두 성공적으로 반영되든지, 아니면 전혀 반영되지 않아야 한다.",
+        "② 트랜잭션이 성공적으로 완료된 후에는 시스템에 오류가 발생하더라도 그 결과가 데이터베이스에 영구적으로 보존되어야 한다.",
+        "③ 다수의 트랜잭션이 동시에 실행되는 동안, 실행 중인 트랜잭션의 중간 결과에 다른 트랜잭션이 접근하거나 끼어들 수 없다.",
+        "④ 트랜잭션이 실행을 성공적으로 완료하면, 데이터베이스는 모순 없이 항상 논리적으로 일관성 있는 상태를 유지해야 한다."
+      ],
+      "answer": 3,
+      "explanation": "① '모두 반영되거나 전혀 반영되지 않아야 한다'는 원자성(Atomicity)에 대한 설명이다.\n② '시스템 고장 시에도 결과가 영구적으로 보존되어야 한다'는 영속성(Durability)에 대한 설명이다.\n④ 무결성 제약조건 등 데이터베이스 구조가 모순 없이 유지되어야 한다는 일관성(Consistency)에 대한 설명이다.\n따라서 고립성(Isolation)에 대한 설명은 ③이다."
+    },
+    {
+      "id": 28,
+      "subject_id": 2,
+      "question": "다음 중 테이블의 데이터를 삭제하는 명령어인 TRUNCATE와 DELETE에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① TRUNCATE TABLE 명령어는 테이블의 모든 데이터를 삭제하여 데이터 조작의 역할을 수행하므로, DML에 속한다.",
+        "② DELETE 명령어는 데이터를 삭제할 때 트랜잭션 로그를 기록하므로, 대용량의 데이터를 삭제할 경우 TRUNCATE보다 시스템 부하가 크고 처리 시간이 오래 걸린다.",
+        "③ TRUNCATE 명령어는 테이블 안의 모든 행을 삭제하지만, DROP 명령어와 달리 테이블의 구조 자체는 삭제하지 않고 그대로 유지한다.",
+        "④ DELETE 명령어는 롤백(ROLLBACK)을 통해 삭제된 데이터를 복구할 수 있으나, TRUNCATE 명령어는 실행 시 기본적으로 자동 커밋이 발생하므로 복구가 불가능하다."
+      ],
+      "answer": 1,
+      "explanation": "TRUNCATE는 데이터를 삭제하는 명령이지만 DDL에 속하며, DDL이므로 실행 즉시 자동 커밋이 발생한다. 따라서 ①처럼 DML에 속한다고 설명하는 것은 옳지 않다."
+    },
+    {
+      "id": 29,
+      "subject_id": 2,
+      "question": "다음은 TAB 테이블의 데이터이다. 아래 SQL 문의 실행 결과가 나머지 셋과 다른 하나를 고르시오.\n\n[TAB 테이블] COL1,COL2 : a,1 / a,2 / a,2 / b,1 / c,1 / c,2",
+      "options": [
+        "① SELECT COL1, COL2 FROM (SELECT COL1, COL2, RANK() OVER (ORDER BY COL1, COL2) AS RN FROM TAB) WHERE RN < 4;",
+        "② SELECT COL1, COL2 FROM (SELECT COL1, COL2, DENSE_RANK() OVER (ORDER BY COL1, COL2) AS RN FROM TAB) WHERE RN < 4;",
+        "③ SELECT COL1, COL2 FROM (SELECT COL1, COL2, ROW_NUMBER() OVER (ORDER BY COL1, COL2) AS RN FROM TAB) WHERE RN < 4;",
+        "④ SELECT COL1, COL2 FROM (SELECT COL1, COL2 FROM TAB ORDER BY COL1, COL2) WHERE ROWNUM < 4;"
+      ],
+      "answer": 2,
+      "explanation": "ORDER BY COL1,COL2 기준 정렬 결과는 (a,1),(a,2),(a,2),(b,1),(c,1),(c,2) 순이다.\n② DENSE_RANK()는 동일 값에 같은 순위를 부여하고 다음 순위를 건너뛰지 않으므로 순위는 1,2,2,3,4,5가 되어 RN<4를 만족하는 행이 (a,1),(a,2),(a,2),(b,1) 4건이다.\n① RANK()는 동일 값에 같은 순위를 부여하고 다음 순위를 건너뛰므로 순위는 1,2,2,4,5,6이 되어 RN<4인 행은 (a,1),(a,2),(a,2) 3건이다.\n③ ROW_NUMBER()는 중복이 있어도 서로 다른 번호를 부여하므로 1~6이 매겨지고 RN<4인 행은 (a,1),(a,2),(a,2) 3건이다.\n④ 인라인 뷰에서 정렬 후 ROWNUM을 부여하므로 앞 3건인 (a,1),(a,2),(a,2)가 선택된다.\n따라서 ①,③,④는 모두 3건이고 ②만 4건이므로 결과가 다른 하나는 ②이다."
+    },
+    {
+      "id": 30,
+      "subject_id": 2,
+      "question": "다음 SQL의 실행 결과로 가장 적절한 것은?\n\n[ORDER 테이블] 회원ID,등급,구매금액\nM01, GOLD, 300\nM02, SILVER, 100\nM03, SILVER, 150\nM04, BRONZE, 100\nM05, BRONZE, 100\nM06, BRONZE, 60\n\nSELECT 등급,\n       COUNT(*) AS 인원수,\n       SUM(구매금액) AS 금액\nFROM ORDER\nWHERE 구매금액 BETWEEN 100 AND 350\nGROUP BY 등급\nHAVING SUM(구매금액) > 200\nORDER BY 인원수;",
+      "options": [
+        "① SILVER,2,250 / GOLD,1,300",
+        "② GOLD,1,300 / BRONZE,3,150 / SILVER,2,250",
+        "③ SILVER,2,250 / GOLD,1,300 / BRONZE,3,150",
+        "④ GOLD,1,300 / SILVER,2,250"
+      ],
+      "answer": 4,
+      "explanation": "WHERE 구매금액 BETWEEN 100 AND 350을 적용한 뒤 등급별로 묶으면 GOLD는 인원수 1, 금액 300 / SILVER는 인원수 2, 금액 250 / BRONZE는 인원수 2, 금액 200이 된다.\nHAVING SUM(구매금액) > 200 조건에 의해 BRONZE(200)는 제외된다.\nORDER BY 인원수는 오름차순이 기본이므로 인원수가 작은 GOLD(1) 다음 SILVER(2) 순으로 출력되어 결과는 ④번이다."
+    },
+    {
+      "id": 31,
+      "subject_id": 2,
+      "question": "다음 SQL을 실행했을 때 결과로 가장 알맞은 것은?\n\n[TAB 테이블] COL1 : 1, 2, 3, NULL\n\nSELECT A.COL1\nFROM TAB A\nWHERE A.COL1 NOT IN (\n    SELECT B.COL1\n    FROM TAB B\n    WHERE B.COL1 <= 2 OR B.COL1 IS NULL\n);",
+      "options": [
+        "① 1과 2를 제외한 3만 조회된다.",
+        "② NULL을 제외한 모든 행이 조회된다.",
+        "③ 오류가 발생한다.",
+        "④ 결과 없음"
+      ],
+      "answer": 4,
+      "explanation": "서브쿼리의 결과 집합에는 COL1<=2에 해당하는 1,2와, COL1 IS NULL에 해당하는 NULL이 포함된다.\nNOT IN 서브쿼리 결과에 NULL이 하나라도 포함되면, NULL과의 비교는 일반 비교 연산으로 참/거짓을 판단할 수 없어 결과가 UNKNOWN이 된다.\nUNKNOWN이 섞인 NOT IN 조건은 어떤 행에 대해서도 TRUE로 확정될 수 없으므로 WHERE 절을 만족하는 행이 없어 최종 결과는 없음이다."
+    },
+    {
+      "id": 32,
+      "subject_id": 2,
+      "question": "다음 중 아래의 [EMP] 테이블과 [PROJECT] 테이블을 대상으로 [보기]의 SQL 문을 실행했을 때의 결과로 가장 적절한 것은?\n\n[EMP] EMP_ID,EMP_NAME,DEPT_CD\n10, 홍기훈, D01\n20, 김미주, D01\n30, 고민정, D02\n\n[PROJECT] PROJ_ID,EMP_ID,PROJ_NAME\nP01, 30, 차세대 시스템 구축\nP02, 30, 데이터 마이그레이션\nP03, 40, 보안 인프라 개선\nP04, NULL, TBD 프로젝트\n\n[보기 SQL]\nSELECT E.EMP_ID\nFROM EMP E\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM PROJECT P\n    WHERE P.EMP_ID = E.EMP_ID\n)\nORDER BY E.EMP_ID;",
+      "options": [
+        "① 10",
+        "② 10, 20",
+        "③ 공집합",
+        "④ 오류 발생(SQL 구문 오류)"
+      ],
+      "answer": 2,
+      "explanation": "EMP의 각 행에 대해 서브쿼리를 평가한다.\nEMP_ID=10: PROJECT에 EMP_ID=10인 행이 없어 서브쿼리 결과가 공집합 → NOT EXISTS TRUE → 결과 포함.\nEMP_ID=20: 마찬가지로 PROJECT에 없어 결과 포함.\nEMP_ID=30: PROJECT에 EMP_ID=30인 행이 2건(P01,P02) 존재 → NOT EXISTS FALSE → 제외.\nPROJECT의 EMP_ID가 NULL인 P04는 P.EMP_ID=E.EMP_ID 비교가 항상 UNKNOWN이 되어 어떤 E.EMP_ID와도 매칭되지 않고 단순히 무시되는 행일 뿐이다.\n따라서 조건을 만족하는 EMP_ID는 10, 20이다."
+    },
+    {
+      "id": 33,
+      "subject_id": 2,
+      "question": "다음은 Oracle 데이터베이스에서 뷰를 생성하고 삭제하는 작업을 순서대로 수행한 것이다. 아래 SQL을 모두 수행했을 때 결과에 대한 설명으로 옳은 것은?\n\nCREATE TABLE EMP (\n    EMPNO NUMBER,\n    ENAME VARCHAR2(20),\n    DEPTNO NUMBER\n);\n\nCREATE VIEW V_EMP\nAS\nSELECT EMPNO, ENAME, DEPTNO\nFROM EMP;\n\nCREATE VIEW V_EMP10\nAS\nSELECT EMPNO, ENAME\nFROM V_EMP\nWHERE DEPTNO = 10;\n\nDROP VIEW V_EMP RESTRICT;",
+      "options": [
+        "① 삭제하려는 V_EMP 뷰 1개만 삭제된다.",
+        "② 삭제하려는 V_EMP와 이를 참조하는 V_EMP10까지 총 2개의 뷰가 삭제된다.",
+        "③ 원본 테이블 EMP와 두 개의 뷰 V_EMP, V_EMP10이 모두 삭제된다.",
+        "④ 아무것도 삭제되지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "V_EMP10은 V_EMP를 기반으로 생성된 하위 뷰이므로 V_EMP는 다른 뷰에 참조되고 있는 부모 뷰이다.\nDROP VIEW ... RESTRICT는 해당 뷰를 참조하는 다른 객체가 있으면 삭제를 허용하지 않는 옵션이므로, V_EMP10이 V_EMP를 참조하는 이상 이 DROP 문은 실패하고 결과적으로 아무것도 삭제되지 않는다."
+    },
+    {
+      "id": 34,
+      "subject_id": 2,
+      "question": "다음은 EMP 테이블의 일부 데이터이다. 각 행에서 \"처음 행부터 현재 행까지\"의 급여 누적합계를 구하는 SQL로 가장 알맞은 것을 고르시오.\n\n[EMP 테이블] EMPNO,ENAME,SAL\n7369, SMITH, 800\n7499, ALLEN, 1000\n7521, WARD, 1000\n7566, JONES, 1001\n7654, MARTIN, 1500\n7698, BLAKE, 2000",
+      "options": [
+        "① SELECT SAL, SUM(SAL) OVER(ORDER BY SAL ROWS UNBOUNDED PRECEDING) AS 누적합계 FROM EMP;",
+        "② SELECT SAL, SUM(SAL) OVER(ORDER BY SAL ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS 누적합계 FROM EMP;",
+        "③ SELECT SAL, SUM(SAL) OVER(ORDER BY SAL RANGE UNBOUNDED PRECEDING) AS 누적합계 FROM EMP;",
+        "④ SELECT SAL, SUM(SAL) OVER(ORDER BY SAL RANGE BETWEEN UNBOUNDED PRECEDING AND 1 FOLLOWING) AS 누적합계 FROM EMP;"
+      ],
+      "answer": 1,
+      "explanation": "① 'ROWS UNBOUNDED PRECEDING'은 'ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW'와 같은 의미로, 첫 행부터 현재 행까지의 행 기준 누적합을 구하므로 정답이다.\n② 프레임 끝이 '1 PRECEDING'이라 현재 행이 빠지므로 '현재 행까지'라는 요구와 다르다.\n③ RANGE 기준이라 같은 정렬값을 가진 행을 함께 묶으므로, SAL이 중복된 이 데이터에서는 행 기준 누적합과 결과가 달라진다.\n④ RANGE이면서 'AND 1 FOLLOWING'이라 정렬값 기준으로 뒤 범위까지 포함되어 다르게 계산된다.\n①을 실행하면 SAL 순서(800,1000,1000,1001,1500,2000)에 대해 누적합계는 800,1800,2800,3801,5301,7301이 된다."
+    },
+    {
+      "id": 35,
+      "subject_id": 2,
+      "question": "다음은 Oracle의 EMP 테이블에서 급여(SAL)와 커미션(COMM)을 이용해 조회한 결과이다. 아래 SQL 문에서 S1, S2, S3에 대한 설명으로 틀린 것은 무엇인가?\n\nSELECT ENAME,\n       NVL(COMM, SAL)      AS S1,\n       NVL(COMM, 0) + SAL  AS S2,\n       NVL(COMM + SAL, SAL) AS S3\nFROM EMP;",
+      "options": [
+        "① S2는 COMM 값이 NULL이면 0으로 대체한 후 SAL과 덧셈 연산을 수행한다.",
+        "② COMM이 NULL이 아니면 S1은 COMM 값을 반환한다.",
+        "③ COMM이 NULL이면 S1과 S3는 같은 값을 반환한다.",
+        "④ S2은 COMM이 NULL이면 덧셈 연산을 하지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "④ S2는 COMM이 NULL이면 NVL에 의해 0으로 대체된 뒤 그 결과와 SAL을 더하는 덧셈 연산을 여전히 수행하므로 옳지 않은 설명이다.\n① NVL(COMM,0)이므로 옳다.\n② NVL(COMM,SAL)이므로 COMM이 NULL이 아니면 COMM 값을 그대로 반환하여 옳다.\n③ COMM이 NULL이면 S1=NVL(NULL,SAL)=SAL이 되고, S3=NVL(NULL+SAL,SAL)에서 NULL+SAL은 NULL이므로 결국 SAL이 되어 S1과 S3는 같은 값을 반환하므로 옳다."
+    },
+    {
+      "id": 36,
+      "subject_id": 2,
+      "question": "아래는 두 테이블의 데이터이다. 다음 SQL 중 결과 집합이 다른 하나를 고르시오.(단, Oracle SQL 기준으로 판단한다.)\n\n[A_MAP 테이블] A_MAP,JOIN_CD : A1,10 / A2,20 / A3,NULL\n[B_MAP 테이블] B_MAP,JOIN_CD : B1,10 / B2,30",
+      "options": [
+        "① SELECT A.A_ID, B.B_ID, NVL(A.JOIN_CD, B.JOIN_CD) AS JOIN_CD FROM A_MAP A CROSS JOIN B_MAP B WHERE NVL(A.JOIN_CD, -1) = NVL(B.JOIN_CD, -1);",
+        "② SELECT A.A_ID, B.B_ID, NVL(A.JOIN_CD, B.JOIN_CD) AS JOIN_CD FROM A_MAP A FULL OUTER JOIN B_MAP B ON NVL(A.JOIN_CD, -1) = NVL(B.JOIN_CD, -1);",
+        "③ SELECT A.A_ID, B.B_ID, NVL(A.JOIN_CD, B.JOIN_CD) AS JOIN_CD FROM A_MAP A FULL OUTER JOIN B_MAP B ON A.JOIN_CD = B.JOIN_CD;",
+        "④ SELECT A.A_ID, B.B_ID, NVL(A.JOIN_CD, B.JOIN_CD) AS JOIN_CD FROM A_MAP A LEFT OUTER JOIN B_MAP B ON A.JOIN_CD = B.JOIN_CD UNION SELECT A.A_ID, B.B_ID, NVL(A.JOIN_CD, B.JOIN_CD) AS JOIN_CD FROM A_MAP A RIGHT OUTER JOIN B_MAP B ON A.JOIN_CD = B.JOIN_CD;"
+      ],
+      "answer": 1,
+      "explanation": "①번은 CROSS JOIN으로 카테시안 곱을 만든 뒤 WHERE 절로 걸러 사실상 INNER JOIN처럼 동작하므로 JOIN_CD가 10으로 일치하는 1건만 남고, A2/A3/B2는 결과에서 사라진다.\n②,③,④는 모두 A1-B1(10), A2-NULL(20), A3-NULL(NULL), NULL-B2(30)의 4행을 반환하여 서로 동일한 결과가 된다.\n따라서 결과가 다른 하나는 ①이다."
+    },
+    {
+      "id": 37,
+      "subject_id": 2,
+      "question": "다음 쿼리에 대한 설명으로 가장 올바른 것은?\n\n[EMP 테이블 구조]\nEMP_ID: 사원번호(PK)\nEMP_NAME: 사원명\nMGR_ID: 상위 관리자 사원번호(자기 참조 FK)\n\n루트 노드는 MGR_ID가 NULL인 최고 경영자이며, 아래의 SQL을 실행하였다.\n\nSELECT LEVEL, EMP_ID, EMP_NAME, MGR_ID\nFROM EMP\nSTART WITH MGR_ID IS NULL\nCONNECT BY PRIOR EMP_ID = MGR_ID;",
+      "options": [
+        "① 이 쿼리는 역방향 전개이므로, 말단 직원(리프 노드)부터 시작하여 최고 경영자(루트) 방향으로 조회한다.",
+        "② PRIOR EMP_ID = MGR_ID는 \"현재 행의 MGR_ID를 이전 행의 EMP_ID와 비교\"하는 것이므로, 자식에서 부모로 올라가는 역방향 전개이다.",
+        "③ START WITH MGR_ID IS NULL은 루트 노드를 지정하며, PRIOR EMP_ID = MGR_ID는 순방향 전개이므로 최고 경영자에서 하위 직원 방향으로 조회한다.",
+        "④ PRIOR는 항상 = 기호 왼쪽에 위치해야 순방향 전개가 성립하므로, MGR_ID = PRIOR EMP_ID로 작성하면 역방향 전개가 된다."
+      ],
+      "answer": 3,
+      "explanation": "① START WITH MGR_ID IS NULL은 루트(최고 경영자)를 시작점으로 지정하므로 말단 직원부터 시작한다는 설명은 틀리다.\n② PRIOR가 붙은 쪽(EMP_ID)이 자식 컬럼, 반대쪽(MGR_ID)이 부모 컬럼이므로 자식→부모 조건이 아니라 부모→자식으로 내려가는 순방향 전개다.\n④ 순방향/역방향은 = 기호의 좌우 위치가 아니라 PRIOR가 자식 컬럼에 붙는지 부모 컬럼에 붙는지로 결정되므로, MGR_ID = PRIOR EMP_ID도 PRIOR EMP_ID = MGR_ID와 동일한 순방향 전개다.\n따라서 옳은 설명은 ③이다."
+    },
+    {
+      "id": 38,
+      "subject_id": 2,
+      "question": "다음 중 기본키(Primary Key)의 특성으로 가장 올바른 것은?",
+      "options": [
+        "① UNIQUE 제약만 자동으로 적용되며, NULL은 허용된다.",
+        "② NOT NULL 제약만 자동으로 적용되며, 중복값은 허용된다.",
+        "③ UNIQUE + NOT NULL 제약이 자동으로 적용되며, 테이블당 여러 개 생성할 수 있다.",
+        "④ UNIQUE + NOT NULL 제약이 자동으로 적용되며, 테이블당 하나만 생성할 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "기본키는 UNIQUE(유일성: 모든 행을 고유하게 식별해야 하므로 중복값 불허)와 NOT NULL(반드시 값이 존재해야 함) 제약을 자동으로 가지며, 하나의 테이블에는 기본키를 하나만 정의할 수 있다(복합키 구성은 가능하나 PK 제약 자체는 1개)."
+    },
+    {
+      "id": 39,
+      "subject_id": 2,
+      "question": "다음 중 아래의 [DEPT] 테이블과 EMP 테이블을 대상으로 수행한 SQL의 결과가 나머지 셋과 다른 하나는?\n\n[DEPT] DEPT_ID,DEPT_NAME : 10,인사팀 / 20,개발팀 / 30,총무팀\n[EMP] EMP_ID,EMP_NAME,DEPT_ID,STATUS\n100, 김하나, 10, Y\n101, 박둘리, 10, N\n102, 이서준, 20, N\n103, 최민아, 40, Y",
+      "options": [
+        "① SELECT A.DEPT_ID, B.STATUS FROM DEPT A LEFT OUTER JOIN EMP B ON A.DEPT_ID = B.DEPT_ID WHERE B.STATUS = 'Y';",
+        "② SELECT A.DEPT_ID, B.STATUS FROM EMP B RIGHT OUTER JOIN DEPT A ON A.DEPT_ID = B.DEPT_ID WHERE B.STATUS = 'Y';",
+        "③ SELECT A.DEPT_ID, B.STATUS FROM DEPT A INNER JOIN EMP B ON A.DEPT_ID = B.DEPT_ID WHERE B.STATUS = 'Y';",
+        "④ SELECT A.DEPT_ID, B.STATUS FROM DEPT A LEFT OUTER JOIN EMP B ON A.DEPT_ID = B.DEPT_ID AND B.STATUS = 'Y';"
+      ],
+      "answer": 4,
+      "explanation": "OUTER JOIN을 하더라도 WHERE 절에서 NULL이 생기는 쪽 컬럼을 조건으로 걸면 사실상 INNER JOIN처럼 동작한다는 점이 이 문제의 핵심이다.\n④는 B.STATUS='Y' 조건이 ON 절에 있어 Y인 사원이 없어도 DEPT 쪽 행은 살아남으므로 결과가 다르다.\n①은 LEFT OUTER JOIN이지만 WHERE B.STATUS='Y'로 인해 B가 NULL인 행이 제거되어 INNER JOIN과 같은 결과가 된다.\n②는 RIGHT OUTER JOIN이지만 마찬가지로 WHERE 조건에 의해 결국 INNER JOIN과 동일한 결과가 된다.\n③은 원래부터 INNER JOIN이므로 ①,②와 같다."
+    },
+    {
+      "id": 40,
+      "subject_id": 2,
+      "question": "다음 중 아래 스키마와 데이터를 가진 SALES_DATA 테이블에 대하여 수행된 SQL 문의 결과로 가장 적절한 것은?\n\n[SALES_DATA 테이블] EMP_ID,TARGET_CNT,ACTUAL_CNT\n101, 10, 5\n102, 10, 0\n103, 10, NULL\n\nSELECT TARGET_CNT / NULLIF(ACTUAL_CNT, 0) AS RATIO\nFROM SALES_DATA\nWHERE EMP_ID = '102';",
+      "options": [
+        "① 10",
+        "② 0",
+        "③ NULL",
+        "④ 에러 발생"
+      ],
+      "answer": 3,
+      "explanation": "NULLIF(ACTUAL_CNT,0)은 두 값이 같으면 NULL을, 다르면 첫 번째 값을 반환한다. EMP_ID='102'의 ACTUAL_CNT는 0이므로 NULLIF(0,0)은 NULL이 된다.\n따라서 연산식은 10 / NULL이 되며, NULL이 포함된 모든 사칙연산 결과는 에러 없이 NULL이 되므로 최종 결과는 NULL이다."
+    },
+    {
+      "id": 41,
+      "subject_id": 2,
+      "question": "다음 중 아래 TBL1, TBL2 테이블에 대하여 수행된 SQL 문의 결과 값으로 가장 적절한 것은?\n\n[TBL1 데이터] ID,AMT : 1,10 / 1,20 / 2,40 / 3,50\n[TBL2 데이터] EMP_ID(=ID) : 1 / 1 / 2\n\nSELECT SUM(A.AMT)\nFROM TBL1 A JOIN TBL2 B\n    ON A.ID = B.ID;",
+      "options": [
+        "① 70",
+        "② 100",
+        "③ 120",
+        "④ NULL"
+      ],
+      "answer": 2,
+      "explanation": "조인 시 발생하는 카테시안 곱 형태의 데이터 증식을 추적해야 한다.\nID=1: TBL1에 2행(AMT 10,20), TBL2에 2행이 있어 2×2=4개의 결합 행이 생기며, AMT 합계는 10+10+20+20=60이 된다.\nID=2: TBL1과 TBL2에 각각 1행씩 있어 1×1=1개 행이 생기고 AMT는 40이 그대로 반영된다.\nID=3: TBL2에 매칭되는 행이 없으므로 INNER JOIN 조건에 의해 완전히 제외된다.\n따라서 최종 SUM(A.AMT)는 60+40=100이 된다."
+    },
+    {
+      "id": 42,
+      "subject_id": 2,
+      "question": "다음 SQL 문을 실행했을 때의 결과로 가장 적절한 것을 고르시오.\n\n[SALES_1Q 테이블] SEQ,PLACE_ID,MONTH_CD,SALES_AMT\n1,PLACE_1,JAN,100 / 2,PLACE_2,FEB,150 / 3,PLACE_3,MAR,200\n4,PLACE_4,JAN,300 / 5,PLACE_5,FEB,350 / 6,PLACE_6,MAR,400\n7,PLACE_7,JAN,500 / 8,PLACE_8,FEB,550 / 9,PLACE_9,MAR,600\n\nSELECT *\nFROM (\n    SELECT PLACE_ID, MONTH_CD, SALES_AMT\n    FROM SALES_1Q\n)\nPIVOT (\n    SUM(SALES_AMT)\n    FOR MONTH_CD IN ('JAN' AS JAN, 'FEB' AS FEB, 'MAR' AS MAR)\n)\nORDER BY PLACE_ID;",
+      "options": [
+        "① PLACE_1,100,150,200 / PLACE_2,300,350,400 / PLACE_3,500,550,600 (3행 출력, NULL 없음)",
+        "② PLACE_1,100,NULL,NULL / PLACE_2,NULL,350,NULL / PLACE_3,NULL,NULL,600 (3행 출력, NULL 다수 포함)",
+        "③ PLACE별로 자신의 월 데이터만 값이 있고 나머지 두 달은 NULL로 표시되며 총 9행이 출력된다.",
+        "④ PLACE_ID별로 각 행에 월 하나씩만 채워진 형태로 총 9행이 출력된다(SEQ 컬럼이 포함되어 그룹핑이 세분화된 경우)."
+      ],
+      "answer": 1,
+      "explanation": "②,③ PIVOT 결과에 당연히 NULL이 섞일 것이라 착각하기 쉽지만, 원본 데이터는 PLACE_1~9가 JAN/FEB/MAR 중 정확히 한 달의 데이터만 1건씩 가지고 있고 PLACE_ID 자체가 서로 겹치지 않으므로, PLACE_ID 3개(PLACE_1,2,3 등 각기 다른 월)로 묶이는 실제 그룹은 없다.\n④ PIVOT 시 불필요한 식별자 컬럼(SEQ)이 포함되어 암묵적 GROUP BY가 세분화되면 나타나는 결과다. 본 SQL은 인라인 뷰로 SEQ를 사전에 제거했으므로 PLACE_ID 기준으로 정상 집계되어 3행으로 압축 출력되며, 각 PLACE는 자신이 가진 월의 값만 채워지고 나머지는 NULL 없이 정상적으로 3개 값이 모두 채워진 케이스(①)가 정답이다."
+    },
+    {
+      "id": 43,
+      "subject_id": 2,
+      "question": "다음의 데이터 모델에 대한 설명으로 가장 적절하지 않은 것은?\n\n[모델]\n부서: 부서ID(PK), 부서명, 야근사원수\n사원: 사원번호(PK), 사원명, 직급, 부서ID(FK)",
+      "options": [
+        "① 하나의 부서에는 사원이 1명만 소속되어도 된다.",
+        "② 사원 데이터가 없어도 부서 데이터를 먼저 등록할 수 있다.",
+        "③ 사원 엔터티는 제2정규형을 위반한 엔터티이다.",
+        "④ 특정 시점에 모든 부서의 야근사원수가 0일 수도 있다."
+      ],
+      "answer": 3,
+      "explanation": "제2정규형은 기본키가 둘 이상인 복합식별자일 때 발생하는 부분 함수 종속을 제거하는 단계인데, 사원 엔터티는 기본키가 사원번호 단일 속성이므로 제2정규형 위반 대상이 될 수 없다.\n① '0명 이상 사원 소속 가능'이라면 1명만 있어도 허용된다.\n② 부서가 부모, 사원이 자식인 구조에서 사원 없이 부서를 먼저 등록하는 것은 가능하다.\n④ 야근사원수는 시점에 따라 0이 될 수 있으며 모든 부서가 동시에 0인 상황도 가능하다."
+    },
+    {
+      "id": 44,
+      "subject_id": 2,
+      "question": "다음 TBL 테이블을 대상으로 아래의 SQL 문을 실행했을 때의 결과로 가장 적절한 것은?\n\n[TBL 테이블] no,col1 : 4,2 / 2,1 / 1,NULL\n\nSELECT COUNT(*)\nFROM TBL\nWHERE NO <> 2\nSTART WITH NO = 4\nCONNECT BY PRIOR COL1 = NO;",
+      "options": [
+        "① 0",
+        "② 1",
+        "③ 2",
+        "④ 3"
+      ],
+      "answer": 3,
+      "explanation": "START WITH NO=4로 NO가 4인 행을 루트로 시작한다.\nCONNECT BY PRIOR COL1=NO는 직전 노드의 COL1 값과 같은 NO를 가진 행을 찾아 연결한다: PRIOR COL1(=2)와 같은 NO=2인 (2,1)이 연결되고, 이어서 PRIOR COL1(=1)과 같은 NO=1인 (1,NULL)이 연결되어 (4,2)→(2,1)→(1,NULL) 총 3개 행의 계층이 만들어진다.\n계층이 모두 완성된 뒤 WHERE NO <> 2 조건이 적용되어 NO가 2인 행 하나만 제외되고, 나머지 2개 행이 남아 COUNT(*)의 결과는 2가 된다."
+    },
+    {
+      "id": 45,
+      "subject_id": 2,
+      "question": "아래 중 총 지급액(TOTAL_PAY = 기본급 + 보너스 + 수당)을 산출하는 SQL 문으로 가장 적절한 것은?(단, 각 항목의 값이 NULL인 경우는 0으로 계산하여 합산한다.)\n\n[SALARY 테이블] EMPNO,BASE_PAY(기본급),BONUS(보너스),ALLOWANCE(수당)\n1001, 3000, NULL, 200\n1002, 4000, 1000, NULL\n1003, 2500, NULL, NULL",
+      "options": [
+        "① SELECT EMPNO, NVL(BASE_PAY,0) + NVL(BONUS,0) + NVL(ALLOWANCE,0) AS TOTAL_PAY FROM SALARY;",
+        "② SELECT EMPNO, NVL(BASE_PAY + BONUS + ALLOWANCE, 0) AS TOTAL_PAY FROM SALARY;",
+        "③ SELECT EMPNO, COALESCE(BASE_PAY + BONUS + ALLOWANCE, 0) AS TOTAL_PAY FROM SALARY;",
+        "④ SELECT EMPNO, BASE_PAY + BONUS + ALLOWANCE AS TOTAL_PAY FROM SALARY;"
+      ],
+      "answer": 1,
+      "explanation": "① 컬럼 단위로 NVL을 개별 적용해 NULL을 먼저 0으로 바꾼 뒤 덧셈하므로 각 사원의 총 지급액이 누락 없이 계산된다(예: 1001번은 3000+0+200=3200).\n②,③ 세 컬럼을 먼저 더하므로 하나라도 NULL이면 연산 결과 전체가 NULL이 되고, 바깥의 NVL/COALESCE에 의해 최종 결과가 0으로 나오는 논리 오류가 발생한다.\n④ 결측치 처리가 없어 NULL이 포함된 행의 총 지급액은 NULL로 반환된다."
+    },
+    {
+      "id": 46,
+      "subject_id": 2,
+      "question": "오라클 환경에서 사원(EMP) 테이블을 대상으로 계층형 질의를 수행하는 다음 SQL 문 중, 실행 시 문법적 오류가 발생하는 것을 모두 고르시오.\n\n가) SELECT EMPNO, ENAME, LEVEL FROM EMP;\n\n나) SELECT EMPNO, ENAME, CONNECT_BY_ROOT(ENAME) AS ROOT_ENAME\n    FROM EMP\n    START WITH MGR IS NULL\n    CONNECT BY PRIOR EMPNO = MGR;\n\n다) SELECT EMPNO, ENAME, SYS_CONNECT_BY_PATH('/', ENAME) AS PATH\n    FROM EMP\n    START WITH MGR IS NULL\n    CONNECT BY PRIOR EMPNO = MGR;\n\n라) SELECT EMPNO, ENAME, CONNECT_BY_IS_LEAF AS IS_LEAF\n    FROM EMP\n    START WITH MGR IS NULL\n    CONNECT BY PRIOR EMPNO = MGR;",
+      "options": [
+        "① 가",
+        "② 가, 나",
+        "③ 가, 나, 다",
+        "④ 가, 나, 다, 라"
+      ],
+      "answer": 4,
+      "explanation": "가) LEVEL 가상 컬럼은 CONNECT BY가 있는 계층형 질의에서만 사용 가능하다. CONNECT BY 없이 LEVEL을 사용하면 ORA-01788 오류가 발생한다.\n나) CONNECT_BY_ROOT는 함수가 아니라 연산자이므로 괄호를 붙인 CONNECT_BY_ROOT(ENAME) 형태는 잘못된 문법이며, CONNECT_BY_ROOT ENAME처럼 괄호 없이 사용해야 한다.\n다) SYS_CONNECT_BY_PATH는 (컬럼명, 구분자) 순서로 인자를 받는데, 이 문제에서는 '/'와 ENAME의 순서가 바뀌어 있어 오류가 발생한다. 올바른 문법은 SYS_CONNECT_BY_PATH(ENAME, '/')이다.\n라) 단말 노드 여부를 나타내는 가상 컬럼의 정확한 이름은 CONNECT_BY_ISLEAF이다. CONNECT_BY_IS_LEAF처럼 언더바가 추가된 형태는 존재하지 않아 ORA-00904 오류가 발생한다.\n따라서 가,나,다,라 모두 오류가 발생한다."
+    },
+    {
+      "id": 47,
+      "subject_id": 2,
+      "question": "다음은 A지점과 B지점의 일일 결제내역을 저장한 테이블이다. 아래 두 개의 SQL 문을 실행했을 때 출력되는 결과의 총 건수(행의 수)로 가장 적절한 것을 고르시오.\n\n[A_PAYMENT(A지점 결제내역)] 고객ID,결제금액 : C001,1000 / C001,1000 / C002,2000 / C003,3000\n[B_PAYMENT(B지점 결제내역)] 고객ID,결제금액 : C001,1000 / C002,5000 / C004,4000 / C004,4000\n\n-- (SQL 1)\nSELECT 고객ID, 결제금액 FROM A_PAYMENT\nUNION\nSELECT 고객ID, 결제금액 FROM B_PAYMENT;\n\n-- (SQL 2)\nSELECT 고객ID, 결제금액 FROM A_PAYMENT\nUNION ALL\nSELECT 고객ID, 결제금액 FROM B_PAYMENT;",
+      "options": [
+        "① SQL1: 4건, SQL2: 8건",
+        "② SQL1: 5건, SQL2: 6건",
+        "③ SQL1: 5건, SQL2: 8건",
+        "④ SQL1: 6건, SQL2: 8건"
+      ],
+      "answer": 3,
+      "explanation": "UNION은 중복 행을 제거하고, UNION ALL은 중복을 제거하지 않고 모두 보여준다.\nA_PAYMENT 4건, B_PAYMENT 4건이므로 두 결과를 그대로 합치는 SQL2(UNION ALL)는 8건이 된다.\n(고객ID,결제금액) 조합으로 중복을 제거하면 (C001,1000)이 A에 2건·B에 1건 있어도 UNION에서는 1건으로 합쳐지고, (C002,2000),(C002,5000),(C003,3000),(C004,4000)이 각각 남아 서로 다른 조합은 총 5개가 된다. 따라서 SQL1(UNION)은 5건이다."
+    },
+    {
+      "id": 48,
+      "subject_id": 2,
+      "question": "다음 SQL 실행 결과로 옳은 것은?\n\n[EMP 테이블] EMP_NO,EMP_NM : 100,MJKIM / 200,KHHONG / 300,MJKO / 400,AHSIM\n[RULE 테이블] RULE_NO,RULE_NM : 1,%O% / 2,K%\n\nSELECT COUNT(*)\nFROM EMP, RULE\nWHERE EMP_NM LIKE RULE_NM;",
+      "options": [
+        "① 0",
+        "② 1",
+        "③ 2",
+        "④ 3"
+      ],
+      "answer": 4,
+      "explanation": "EMP와 RULE이 FROM 절에 명시적 조인 조건 없이 나열되어 카테시안 곱(Cross Join)이 발생하여 총 8개(4행×2행)의 조합이 생성된다.\nRULE_NM='%O%'인 경우 'O'가 포함된 KHHONG, MJKO가 매칭되어 2건이 도출되고, RULE_NM='K%'인 경우 'K'로 시작하는 KHHONG이 매칭되어 1건이 도출된다.\n두 패턴을 만족하는 행의 합은 2+1=3건이므로 COUNT(*)의 결과는 3이다."
+    },
+    {
+      "id": 49,
+      "subject_id": 2,
+      "question": "다음 중 아래의 [SQL 문]과 동일한 결과를 반환하는 SQL 문으로 가장 적절한 것은?\n(단, DEPT 테이블에서 LOC가 '서울'이거나 '경기도'인 부서는 각각 1개씩 총 2개의 행이 존재하며, 각 서브쿼리의 결과는 NULL을 포함하지 않는다.)\n\n[SQL 문]\nSELECT EMPNO, ENAME, DEPTNO\nFROM EMP\nWHERE DEPTNO IN (SELECT DEPTNO\n                  FROM DEPT\n                  WHERE LOC IN ('서울', '경기도'));",
+      "options": [
+        "① SELECT EMPNO, ENAME, DEPTNO FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC IN ('서울', '경기도'));",
+        "② SELECT EMPNO, ENAME, DEPTNO FROM EMP WHERE DEPTNO <> (SELECT DEPTNO FROM DEPT WHERE LOC IN ('서울', '경기도'));",
+        "③ SELECT EMPNO, ENAME, DEPTNO FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC = '서울') AND DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC = '경기도');",
+        "④ SELECT EMPNO, ENAME, DEPTNO FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC = '서울') OR DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC = '경기도');"
+      ],
+      "answer": 4,
+      "explanation": "원본 SQL은 다중 행 비교 연산자 IN을 사용해 서브쿼리 결과와 일치하는 데이터를 조회한다. 서브쿼리는 부서 2건(서울, 경기도 각 1건)을 반환하며, A IN (B,C)는 논리적으로 A=B OR A=C와 동일하다.\n①,② 서브쿼리가 2건을 반환하는 다중 행 상황인데 단일 행 연산자(=, <>)를 사용하여 실행 시 오류가 발생한다.\n③ 서로 다른 두 부서번호를 동시에 만족하는 사원번호는 존재할 수 없어 항상 공집합(False)이 되므로 결과가 다르다.\n④ =와 OR을 조합하여 두 부서번호 중 하나라도 일치하면 되는 구조로, 원본 IN과 동일한 결과를 낸다."
+    },
+    {
+      "id": 50,
+      "subject_id": 2,
+      "question": "다음 SQL 문의 실행 결과로 가장 적절한 것은 무엇인가?(단, 날짜와 시간은 문제에 제시된 형식 그대로 판단하며, 출력 형식은 YYYY-MM-DD HH24:MI:SS이다.)\n\nSELECT\n    TO_CHAR(ROUND(TO_DATE('2024-03-16 11:59:59', 'YYYY-MM-DD HH24:MI:SS'), 'MONTH'), 'YYYY-MM-DD HH24:MI:SS') AS A,\n    TO_CHAR(TRUNC(TO_DATE('2024-03-16 11:59:59', 'YYYY-MM-DD HH24:MI:SS'), 'MONTH'), 'YYYY-MM-DD HH24:MI:SS') AS B,\n    TO_CHAR(ROUND(TO_DATE('2024-03-15 12:00:00', 'YYYY-MM-DD HH24:MI:SS')), 'YYYY-MM-DD HH24:MI:SS') AS C,\n    TO_CHAR(TRUNC(TO_DATE('2024-03-15 12:00:00', 'YYYY-MM-DD HH24:MI:SS')), 'YYYY-MM-DD HH24:MI:SS') AS D\nFROM DUAL;",
+      "options": [
+        "① A=2024-03-01 00:00:00, B=2024-03-01 00:00:00, C=2024-03-15 00:00:00, D=2024-03-15 00:00:00이다.",
+        "② A=2024-04-01 00:00:00, B=2024-03-01 00:00:00, C=2024-03-15 00:00:00, D=2024-03-15 00:00:00이다.",
+        "③ A=2024-03-01 00:00:00, B=2024-03-01 00:00:00, C=2024-03-16 00:00:00, D=2024-03-15 00:00:00이다.",
+        "④ A=2024-04-01 00:00:00, B=2024-03-01 00:00:00, C=2024-03-16 00:00:00, D=2024-03-15 00:00:00이다."
+      ],
+      "answer": 4,
+      "explanation": "A: ROUND(날짜,'MONTH')는 해당 월의 15일 이상이면 다음 달 1일로 반올림하므로, 3월 16일 기준 A는 2024-04-01 00:00:00이다.\nB: TRUNC(날짜,'MONTH')는 해당 월 1일 00:00:00으로 절삭하므로 B는 2024-03-01 00:00:00이다.\nC: 포맷 없이 ROUND(날짜)는 12:00:00 이상이면 다음 날 00:00:00으로 반올림하므로, 3월 15일 12:00:00 기준 C는 2024-03-16 00:00:00이다.\nD: TRUNC(날짜)는 시간 정보를 제거하고 해당 날짜의 00:00:00을 반환하므로 D는 2024-03-15 00:00:00이다.\n따라서 정답은 ④이다."
+    }
+  ]
+}
