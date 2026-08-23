@@ -1115,10 +1115,20 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
+  // 메모장(textarea), 입력창 등에 커서가 위치해 있을 때는 모든 키 입력(숫자, 사칙연산, 알파벳, 백스페이스, 엔터 등)이 해당 폼에만 자연스럽게 입력되도록 보장
+  const activeTag = document.activeElement ? document.activeElement.tagName : '';
+  const isInputActive = ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeTag) || (document.activeElement && document.activeElement.isContentEditable);
+  if (isInputActive) {
+    if (e.key === 'Escape') {
+      document.activeElement.blur();
+    }
+    return;
+  }
+
   const key = e.key;
 
-  // 't' 또는 'T' 키 입력 시 테마(다크모드/라이트모드) 토글 (단, Alt/Ctrl/Cmd 조합키 및 입력 폼 활성 시 제외)
-  if (key.toLowerCase() === 't' && !e.ctrlKey && !e.metaKey && !e.altKey && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+  // 't' 또는 'T' 키 입력 시 테마(다크모드/라이트모드) 토글 (단, Alt/Ctrl/Cmd 조합키 제외)
+  if (key.toLowerCase() === 't' && !e.ctrlKey && !e.metaKey && !e.altKey) {
     e.preventDefault();
     toggleTheme();
     return;
@@ -1134,8 +1144,8 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 'm' 또는 'M' 키 입력 시 연습용 메모장 열기/닫기 토글 (단, 입력 폼 활성 시 제외)
-  if (key.toLowerCase() === 'm' && !e.ctrlKey && !e.metaKey && !e.altKey && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+  // 'm' 또는 'M' 키 입력 시 연습용 메모장 열기/닫기 토글
+  if (key.toLowerCase() === 'm' && !e.ctrlKey && !e.metaKey && !e.altKey) {
     e.preventDefault();
     toggleMemoPad();
     return;
