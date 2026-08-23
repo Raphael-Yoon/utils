@@ -307,6 +307,11 @@
       flex-direction: column;
       gap: 10px;
     }
+    .options-list.grid-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
     .option-item {
       display: flex;
       align-items: center;
@@ -317,6 +322,8 @@
       transition: all 0.15s ease;
       background: var(--bg-card);
       color: var(--text-main);
+      line-height: 1.45;
+      word-break: break-word;
     }
     .option-item:hover {
       border-color: var(--primary);
@@ -328,7 +335,7 @@
       font-weight: 600;
       color: var(--primary);
     }
-    .option-item input { margin-right: 12px; accent-color: var(--primary); width: 18px; height: 18px; }
+    .option-item input { margin-right: 12px; accent-color: var(--primary); width: 18px; height: 18px; flex-shrink: 0; }
 
     .q-image-container img {
       transition: transform 0.2s ease, filter 0.2s ease;
@@ -647,6 +654,10 @@
       .question-pane {
         padding: 16px;
         overflow-y: visible;
+      }
+      .options-list.grid-2x2 {
+        display: flex;
+        flex-direction: column;
       }
       .omr-pane {
         width: 100%;
@@ -1537,6 +1548,14 @@ function renderQuestions() {
       `;
     });
 
+    // 보기 텍스트가 짧은 경우(4지선다 기준, 각 보기 길이 24자 이하 및 줄바꿈 부재) 2x2 그리드 레이아웃 적용
+    const isShortOptions = q.options && q.options.length === 4 && q.options.every(opt => {
+      if (typeof opt !== 'string') return false;
+      const cleanOpt = opt.trim();
+      return cleanOpt.length <= 24 && !cleanOpt.includes('\n') && !cleanOpt.includes('<br');
+    });
+    const optionsContainerClass = isShortOptions ? 'options-list grid-2x2' : 'options-list';
+
     const imgUrl = q.image_url || q.image;
     const imgHtml = imgUrl ? `
       <div class="q-image-container" style="margin: 16px 0; text-align: center; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 10px;">
@@ -1570,7 +1589,7 @@ function renderQuestions() {
       <div class="question-subject-badge">📚 ${escapeHtml(subjectName)}</div>
       <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(q.question)} ${statusTag}</div>
       ${imgHtml}
-      <div class="options-list">${optionsHtml}</div>
+      <div class="${optionsContainerClass}">${optionsHtml}</div>
       ${expHtml}
     `;
 
