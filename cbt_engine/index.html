@@ -923,8 +923,10 @@
         <tbody id="resSubjectTable"></tbody>
       </table>
 
-      <div style="margin-top:32px; display:flex; gap:12px; justify-content:center;">
+      <div style="margin-top:32px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn" id="btnCopyAiPrompt" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; padding: 12px 24px; font-size:1.05rem; font-weight:700; box-shadow:0 4px 12px rgba(99, 102, 241, 0.35); display:inline-flex; align-items:center; gap:8px;" onclick="copyAiAnalysisPrompt()">🤖 AI 맞춤 진단용 텍스트 복사</button>
         <button class="btn btn-success" style="padding: 12px 24px; font-size:1.05rem;" onclick="showReviewMode()">🔍 정답 및 오답 확인하기</button>
+        <button class="btn btn-outline-dark" style="padding: 12px 24px; font-size:1.05rem;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
         <button class="btn btn-primary" style="padding: 12px 24px; font-size:1.05rem;" onclick="location.reload()">🔄 다시 응시하기</button>
       </div>
     </div>
@@ -940,6 +942,7 @@ let timerInterval = null;
 let totalSeconds = 7200;
 let isReviewMode = false;
 let currentQuestionIdx = 0; // 현재 활성화된 문항 인덱스 (0-indexed)
+let lastSubmissionSummary = null; // 최근 시험 제출 요약 데이터 (AI 분석용)
 
 // 테마 (다크 모드 / 라이트 모드) 제어 함수
 function initTheme() {
@@ -2015,6 +2018,20 @@ function submitExam(skipConfirm = false) {
     user_answers: userAnswers
   };
 
+  // AI 분석용 요약 데이터 객체 저장
+  lastSubmissionSummary = {
+    examData: currentExamData,
+    userAnswers: { ...userAnswers },
+    subjectResults: subjectResults,
+    grandTotalScore: grandTotalScore,
+    maxScore: currentExamData.questions.length * ptsPerQ,
+    totalCorrect: totalCorrect,
+    totalQuestions: currentExamData.questions.length,
+    isFinalPass: isFinalPass,
+    timeTakenSeconds: (currentExamData.exam_info.time_limit_minutes || 120) * 60 - totalSeconds,
+    createdAt: new Date().toLocaleString()
+  };
+
   try {
     fetch('/api/results', {
       method: 'POST',
@@ -2044,6 +2061,8 @@ function showReviewMode() {
 }
 
 let currentHistoryFilterMode = 'current';
+let currentFilteredHistoryList = [];
+let currentSelectedCategoryName = '';
 
 async function showHistoryModal(filterMode) {
   if (filterMode) currentHistoryFilterMode = filterMode;
@@ -2066,6 +2085,7 @@ async function showHistoryModal(filterMode) {
     if (!selectedCategory && currentExamData && currentExamData.exam_info) {
       selectedCategory = currentExamData.exam_info.category || '';
     }
+    currentSelectedCategoryName = selectedCategory || '전체_응시이력';
 
     // examList에서 각 exam_id별 category 맵 구축
     const examCategoryMap = {};
@@ -2085,16 +2105,18 @@ async function showHistoryModal(filterMode) {
         return item.exam_title && item.exam_title.includes(selectedCategory);
       });
     }
+    currentFilteredHistoryList = displayList;
 
     // 필터 탭 HTML 구조
     const currentBtnClass = currentHistoryFilterMode === 'current' ? 'btn-primary' : 'btn-outline-dark';
     const allBtnClass = currentHistoryFilterMode === 'all' ? 'btn-primary' : 'btn-outline-dark';
 
     const categoryLabel = selectedCategory ? `선택 종목: ${selectedCategory}` : '선택한 시험 종목';
+    const targetBadgeName = currentHistoryFilterMode === 'current' ? (selectedCategory || '자격증') : '전체';
 
     let filterHeaderHtml = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-color); flex-wrap:wrap; gap:10px;">
-        <div style="display:flex; gap:8px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--border-color); flex-wrap:wrap; gap:10px;">
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
           <button class="btn ${currentBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('current')">
             🎯 ${escapeHtml(categoryLabel)} (${displayList.length}건)
           </button>
@@ -2102,7 +2124,17 @@ async function showHistoryModal(filterMode) {
             🌐 전체 응시 이력 (${list.length}건)
           </button>
         </div>
-        <button class="btn" style="background:var(--accent-danger); color:#ffffff; font-size:0.8rem; padding:6px 12px;" onclick="clearAllHistory()">🗑️ 전체 이력 삭제</button>
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+          ${displayList.length > 0 ? `
+            <button class="btn" style="background:linear-gradient(135deg, #2563eb, #3b82f6); color:#ffffff; font-size:0.82rem; font-weight:700; padding:6px 12px; box-shadow:0 2px 6px rgba(37,99,235,0.25); display:inline-flex; align-items:center; gap:5px;" onclick="downloadCategoryAiReport()" title="현재 선택된 자격증의 모든 응시 이력을 AI 분석용 마크다운(.md) 파일로 다운로드">
+              📥 ${escapeHtml(targetBadgeName)} AI 리포트 다운로드 (.md)
+            </button>
+            <button class="btn" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; font-size:0.82rem; font-weight:700; padding:6px 12px; box-shadow:0 2px 6px rgba(99,102,241,0.25); display:inline-flex; align-items:center; gap:5px;" onclick="copyCategoryAiPrompt()" title="현재 선택된 자격증의 모든 응시 이력을 AI 종합 프롬프트로 복사">
+              🤖 AI 종합 진단 복사
+            </button>
+          ` : ''}
+          <button class="btn" style="background:var(--accent-danger); color:#ffffff; font-size:0.8rem; padding:6px 10px;" onclick="clearAllHistory()">🗑️ 전체 삭제</button>
+        </div>
       </div>
     `;
 
@@ -2174,6 +2206,7 @@ async function showHistoryModal(filterMode) {
             </div>
             <div style="display:flex; gap:8px; align-items:center; flex-shrink:0;">
               <button class="btn btn-primary" style="padding:7px 14px; font-size:0.85rem; font-weight:600;" onclick="loadHistoryDetail(${latestItem.id})">🔍 최근 오답노트</button>
+              <button class="btn" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; padding:7px 12px; font-size:0.85rem; font-weight:600;" onclick="copyHistoryAiPrompt(${latestItem.id})" title="AI 맞춤 진단용 프롬프트 클립보드 복사">🤖 AI 진단</button>
               ${hasHistory ? `<button class="btn" id="btn_toggle_${safeKey}" style="background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); padding:7px 12px; font-size:0.85rem; font-weight:600;" onclick="toggleHistoryGroup('${safeKey}', ${grp.attempts.length - 1})">▼ 이전 기록 (${grp.attempts.length - 1})</button>` : ''}
               <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:7px 10px; font-size:0.85rem;" onclick="deleteHistoryItem(${latestItem.id})" title="최근 응시 이력 삭제">🗑️</button>
             </div>
@@ -2213,6 +2246,7 @@ async function showHistoryModal(filterMode) {
               </div>
               <div style="display:flex; gap:6px; flex-shrink:0;">
                 <button class="btn btn-primary" style="padding:5px 10px; font-size:0.8rem;" onclick="loadHistoryDetail(${item.id})">🔍 오답노트</button>
+                <button class="btn" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; padding:5px 10px; font-size:0.8rem; font-weight:600;" onclick="copyHistoryAiPrompt(${item.id})" title="AI 맞춤 진단용 프롬프트 클립보드 복사">🤖 AI 진단</button>
                 <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:5px 8px; font-size:0.8rem;" onclick="deleteHistoryItem(${item.id})">🗑️ 삭제</button>
               </div>
             </div>
@@ -2293,6 +2327,405 @@ async function loadHistoryDetail(id) {
     showReviewMode();
   } catch(e) {
     alert("오답노트를 불러오지 못했습니다: " + e.message);
+  }
+}
+
+// AI 튜터 맞춤 분석용 프롬프트 생성 및 클립보드 복사 함수
+async function copyAiAnalysisPrompt(summary = lastSubmissionSummary) {
+  if (!summary || !summary.examData) {
+    alert("분석할 시험 응시 데이터가 없습니다.");
+    return;
+  }
+
+  const { examData, userAnswers: uAnsMap, subjectResults, grandTotalScore, maxScore, totalCorrect, totalQuestions, isFinalPass, timeTakenSeconds, createdAt } = summary;
+
+  const min = Math.floor(timeTakenSeconds / 60);
+  const sec = timeTakenSeconds % 60;
+  const timeStr = `${min}분 ${sec}초`;
+
+  // 과목별 점수 마크다운 표
+  let subTableMd = '| 과목명 | 맞힌 문항 | 득점 | 판정 |\n|---|---|---|---|\n';
+  if (subjectResults && subjectResults.length > 0) {
+    subjectResults.forEach(s => {
+      subTableMd += `| ${s.name} | ${s.correct}/${s.total} | ${s.score.toFixed(1)}점 | ${s.isCutoff ? '❌ 과락' : '⭕ 통과'} |\n`;
+    });
+  }
+
+  // 오답 문항 수집 및 분석 데이터 구성
+  const wrongList = [];
+  examData.questions.forEach(q => {
+    const uAns = uAnsMap[q.id] || uAnsMap[String(q.id)];
+    const isCorrect = isAnswerCorrect(uAns, q.answer);
+    if (!isCorrect) {
+      const selectedText = uAns ? (q.options[uAns - 1] || `${uAns}번`) : '미응답';
+      let correctText = '';
+      if (Array.isArray(q.answer)) {
+        correctText = q.answer.map(a => q.options[a - 1] || `${a}번`).join(' 또는 ');
+      } else if (q.answer === 5 || q.answer === 0 || q.answer === 'all') {
+        correctText = '공식 전체 정답';
+      } else {
+        correctText = q.options[q.answer - 1] || `${q.answer}번`;
+      }
+
+      wrongList.push({
+        id: q.id,
+        subject: q.subject || `${q.subject_id}과목`,
+        question: q.question,
+        userAns: selectedText,
+        correctAns: correctText,
+        explanation: (q.explanation || '').trim()
+      });
+    }
+  });
+
+  let wrongDetailsMd = '';
+  if (wrongList.length === 0) {
+    wrongDetailsMd = '🎉 축하합니다! 모든 문제를 맞혔습니다 (오답 문항 없음).\n';
+  } else {
+    wrongList.forEach(w => {
+      wrongDetailsMd += `### [${w.id}번 문항] (${w.subject})\n`;
+      wrongDetailsMd += `**문제**: ${w.question}\n`;
+      wrongDetailsMd += `- **내가 고른 답**: ${w.userAns}\n`;
+      wrongDetailsMd += `- **실제 정답**: ${w.correctAns}\n`;
+      if (w.explanation) {
+        // 핵심 해설 4줄 내외 요약 발췌
+        const expSnippet = w.explanation.split('\n').filter(l => l.trim().length > 0).slice(0, 5).join('\n');
+        wrongDetailsMd += `- **핵심 해설 요약**:\n> ${expSnippet.replace(/\n/g, '\n> ')}\n`;
+      }
+      wrongDetailsMd += '\n';
+    });
+  }
+
+  const promptText = `# 🎓 [CBT 모의고사 결과 분석 및 AI 튜터 맞춤 진단 요청]
+
+## 1. 응시 기본 정보
+- **시험명**: ${examData.exam_info.title}
+- **응시 일시**: ${createdAt}
+- **최종 결과**: **${grandTotalScore.toFixed(1)}점** / ${maxScore.toFixed(1)}점 (${isFinalPass ? '🎉 합격' : '❌ 불합격'})
+- **정답률**: ${totalCorrect} / ${totalQuestions} 문항 (${((totalCorrect / totalQuestions) * 100).toFixed(1)}%)
+- **총 소요 시간**: ${timeStr}
+
+## 2. 과목별 득점 및 과락 판정
+${subTableMd}
+## 3. 주요 오답 및 취약 문항 데이터 (총 ${wrongList.length}문항 오답)
+${wrongDetailsMd}
+---
+## 🎯 [AI 튜터 진단 요청 사항]
+위 시험 결과를 바탕으로 저에게 최적화된 다음 3대 맞춤 진단을 제공해 주세요:
+1. **취약 개념 및 오답 패턴 심층 분석** (법령, 절차, 산출물, 수식 계산 등 어떤 영역에서 오개념이 발생하는지)
+2. **과목별/영역별 위험도 진단 및 과락 방지 전략**
+3. **다음 시험에서 점수를 끌어올리기 위한 맞춤 학습 로드맵 및 핵심 키워드 정리**
+`;
+
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(promptText);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = promptText;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+
+    const btn = document.getElementById('btnCopyAiPrompt');
+    if (btn) {
+      const origHtml = btn.innerHTML;
+      btn.innerHTML = '✅ AI 분석 프롬프트 복사 완료! (채팅창에 붙여넣으세요)';
+      btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+      setTimeout(() => {
+        btn.innerHTML = origHtml;
+        btn.style.background = 'linear-gradient(135deg, #4f46e5, #7c3aed)';
+      }, 3000);
+    } else {
+      alert("✅ AI 분석용 프롬프트가 클립보드에 복사되었습니다!\nAI 채팅창(ChatGPT/Claude/Antigravity 등)에 Ctrl+V로 붙여넣어 진단을 요청하세요.");
+    }
+  } catch (err) {
+    const ta = document.createElement('textarea');
+    ta.value = promptText;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert("✅ AI 분석용 프롬프트가 클립보드에 복사되었습니다!\nAI 채팅창에 Ctrl+V로 붙여넣어 진단을 요청하세요.");
+  }
+}
+
+// 과거 응시 이력 항목에서 AI 분석 프롬프트 복사
+async function copyHistoryAiPrompt(id) {
+  try {
+    const res = await fetch(`/api/results?id=${id}`);
+    if (!res.ok) throw new Error("Fetch failed");
+    const data = await res.json();
+    if (!data) return;
+
+    const examRes = await fetch(`/exams/${data.exam_id}`);
+    if (!examRes.ok) throw new Error("Exam file not found");
+    const examData = await examRes.json();
+    examData.filename = data.exam_id;
+    const uAns = JSON.parse(data.user_answers_json || '{}');
+    const subScores = JSON.parse(data.subject_scores_json || '[]');
+
+    let correctCount = 0;
+    examData.questions.forEach(q => {
+      if (isAnswerCorrect(uAns[q.id] || uAns[String(q.id)], q.answer)) {
+        correctCount++;
+      }
+    });
+
+    const isSingleSub = (data.exam_id && data.exam_id.includes('subject')) || (data.exam_title && data.exam_title.includes('과목') && data.exam_title.includes('25문항'));
+    const isPassVal = isSingleSub ? (data.total_score >= 40.0) : Boolean(data.is_pass);
+
+    const summary = {
+      examData: examData,
+      userAnswers: uAns,
+      subjectResults: subScores,
+      grandTotalScore: data.total_score,
+      maxScore: data.max_score || (examData.questions.length * 4),
+      totalCorrect: correctCount,
+      totalQuestions: examData.questions.length,
+      isFinalPass: isPassVal,
+      timeTakenSeconds: data.time_taken_seconds || 0,
+      createdAt: new Date(data.created_at).toLocaleString()
+    };
+
+    await copyAiAnalysisPrompt(summary);
+  } catch (e) {
+    alert("AI 프롬프트 생성 실패: " + e.message);
+  }
+}
+
+// 자격증 단위 다회차 누적 응시 데이터 종합 마크다운 리포트 생성 함수
+async function generateCategoryAggregatedReport(targetCategory, attempts) {
+  if (!attempts || attempts.length === 0) {
+    throw new Error("분석할 응시 이력이 없습니다.");
+  }
+
+  // 1. 필요한 모든 exam JSON 파일 병렬 로드 (캐시 적용)
+  const uniqueExamIds = Array.from(new Set(attempts.map(a => a.exam_id).filter(Boolean)));
+  const examDataCache = {};
+
+  await Promise.all(uniqueExamIds.map(async eid => {
+    try {
+      const res = await fetch(`/exams/${eid}`);
+      if (res.ok) {
+        examDataCache[eid] = await res.json();
+      }
+    } catch(e) {}
+  }));
+
+  // 2. 전체 다회차 통계 집계
+  const totalAttempts = attempts.length;
+  let passCount = 0;
+  let scoreSum = 0;
+  let maxScore = -Infinity;
+  let minScore = Infinity;
+  let totalSecondsSum = 0;
+
+  const subjectStats = {};
+  const allWrongQuestions = [];
+
+  // 시간순(오래된 순 -> 최신순) 정렬
+  const chronologicalAttempts = [...attempts].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
+  let timeSeriesRows = '';
+
+  chronologicalAttempts.forEach((item, idx) => {
+    const isSingleSub = (item.exam_id && item.exam_id.includes('subject')) || (item.exam_title && item.exam_title.includes('과목') && item.exam_title.includes('25문항'));
+    const isPass = isSingleSub ? (item.total_score >= 40.0) : Boolean(item.is_pass);
+    if (isPass) passCount++;
+
+    scoreSum += item.total_score;
+    if (item.total_score > maxScore) maxScore = item.total_score;
+    if (item.total_score < minScore) minScore = item.total_score;
+    totalSecondsSum += (item.time_taken_seconds || 0);
+
+    const min = Math.floor((item.time_taken_seconds || 0) / 60);
+    const sec = (item.time_taken_seconds || 0) % 60;
+    const timeStr = `${min}분 ${sec}초`;
+    const dateStr = new Date(item.created_at).toLocaleString();
+
+    timeSeriesRows += `| ${idx + 1}회차 | ${item.exam_title} | **${item.total_score.toFixed(1)}점** / ${item.max_score}점 | ${isPass ? '⭕ 합격' : '❌ 불합격'} | ${timeStr} | ${dateStr} |\n`;
+
+    // 과목별 점수 집계
+    let subScores = [];
+    try {
+      subScores = JSON.parse(item.subject_scores_json || '[]');
+    } catch(e) {}
+
+    if (Array.isArray(subScores)) {
+      subScores.forEach(sub => {
+        if (!subjectStats[sub.name]) {
+          subjectStats[sub.name] = { totalCorrect: 0, totalQuestions: 0, cutoffCount: 0, scoreSum: 0, attemptCount: 0 };
+        }
+        const s = subjectStats[sub.name];
+        s.totalCorrect += (sub.correct || 0);
+        s.totalQuestions += (sub.total || 0);
+        s.scoreSum += (sub.score || 0);
+        s.attemptCount += 1;
+        if (sub.isCutoff) s.cutoffCount += 1;
+      });
+    }
+
+    // 오답 문항 수집
+    const examData = examDataCache[item.exam_id];
+    let uAnswers = {};
+    try {
+      uAnswers = JSON.parse(item.user_answers_json || '{}');
+    } catch(e) {}
+
+    if (examData && Array.isArray(examData.questions)) {
+      examData.questions.forEach(q => {
+        const uAns = uAnswers[q.id] || uAnswers[String(q.id)];
+        const isCorrect = isAnswerCorrect(uAns, q.answer);
+        if (!isCorrect) {
+          const selectedText = uAns ? (q.options[uAns - 1] || `${uAns}번`) : '미응답';
+          let correctText = '';
+          if (Array.isArray(q.answer)) {
+            correctText = q.answer.map(a => q.options[a - 1] || `${a}번`).join(' 또는 ');
+          } else if (q.answer === 5 || q.answer === 0 || q.answer === 'all') {
+            correctText = '공식 전체 정답';
+          } else {
+            correctText = q.options[q.answer - 1] || `${q.answer}번`;
+          }
+
+          allWrongQuestions.push({
+            examTitle: item.exam_title,
+            qId: q.id,
+            subject: q.subject || `${q.subject_id}과목`,
+            question: q.question,
+            userAns: selectedText,
+            correctAns: correctText,
+            explanation: (q.explanation || '').trim(),
+            date: dateStr
+          });
+        }
+      });
+    }
+  });
+
+  const avgScore = totalAttempts > 0 ? (scoreSum / totalAttempts) : 0;
+  const passRate = totalAttempts > 0 ? ((passCount / totalAttempts) * 100).toFixed(1) : '0.0';
+  const avgSeconds = totalAttempts > 0 ? Math.round(totalSecondsSum / totalAttempts) : 0;
+  const avgMin = Math.floor(avgSeconds / 60);
+  const avgSec = avgSeconds % 60;
+
+  // 3. 과목별 누적 성적 테이블
+  let subjectTableMd = '| 과목명 | 누적 평균 득점 | 평균 정답률 | 과락 발생 횟수 | 취약 위험도 |\n|---|---|---|---|---|\n';
+  Object.keys(subjectStats).forEach(subName => {
+    const s = subjectStats[subName];
+    const avgSubScore = s.attemptCount > 0 ? (s.scoreSum / s.attemptCount).toFixed(1) : '0.0';
+    const accuracy = s.totalQuestions > 0 ? ((s.totalCorrect / s.totalQuestions) * 100).toFixed(1) : '0.0';
+    const riskLevel = s.cutoffCount > 0 || Number(accuracy) < 60 ? '🚨 고위험 (과락 주의)' : (Number(accuracy) < 75 ? '⚠️ 중위험 (보완 필요)' : '✅ 안정권');
+    subjectTableMd += `| ${subName} | ${avgSubScore}점 | ${s.totalCorrect}/${s.totalQuestions} (${accuracy}%) | ${s.cutoffCount}회 | ${riskLevel} |\n`;
+  });
+
+  // 4. 오답 문항 상세 리스트
+  let wrongListMd = '';
+  if (allWrongQuestions.length === 0) {
+    wrongListMd = '🎉 축하합니다! 모든 응시 회차에서 전 문항을 맞혔습니다 (오답 없음).\n';
+  } else {
+    allWrongQuestions.forEach((w, i) => {
+      wrongListMd += `### [오답 #${i + 1}] ${w.examTitle} - ${w.qId}번 (${w.subject})\n`;
+      wrongListMd += `**문제**: ${w.question}\n`;
+      wrongListMd += `- **내가 선택한 답안**: ${w.userAns}\n`;
+      wrongListMd += `- **실제 정답**: ${w.correctAns}\n`;
+      if (w.explanation) {
+        const expSnippet = w.explanation.split('\n').filter(l => l.trim().length > 0).slice(0, 5).join('\n');
+        wrongListMd += `- **핵심 해설 요약**:\n> ${expSnippet.replace(/\n/g, '\n> ')}\n`;
+      }
+      wrongListMd += '\n';
+    });
+  }
+
+  const markdownContent = `# 🎓 [CBT 모의고사 자격증 누적 응시 이력 종합 분석 및 AI 맞춤 합격 전략 진단]
+
+## 1. 자격증 종합 응시 개요
+- **대상 자격증 종목**: **${targetCategory || '전체 종목'}**
+- **총 응시 횟수**: 총 **${totalAttempts}회** 응시 기록
+- **전체 합격률**: **${passRate}%** (${passCount}회 합격 / ${totalAttempts}회 응시)
+- **성적 통계**: 평균 **${avgScore.toFixed(1)}점** (최고: ${maxScore.toFixed(1)}점 / 최저: ${minScore.toFixed(1)}점)
+- **회차당 평균 소요 시간**: ${avgMin}분 ${avgSec}초
+- **데이터 추출 일시**: ${new Date().toLocaleString()}
+
+## 2. 회차별 성적 변화 추이 (시간순)
+| 회차 | 시험명 | 취득 점수 | 합격 판정 | 소요 시간 | 응시 일시 |
+|---|---|---|---|---|---|
+${timeSeriesRows}
+## 3. 과목별/영역별 누적 취약도 종합 진단
+${subjectTableMd}
+## 4. 다회차 전체 오답 및 취약 문항 총람 (총 ${allWrongQuestions.length}건 오답 분석)
+${wrongListMd}
+---
+## 🎯 [AI 튜터 종합 컨설팅 요청 사항]
+위 다회차 누적 시험 데이터를 바탕으로 수험생의 실력 향상과 최종 합격을 위한 **심층 종합 진단 및 맞춤 솔루션**을 작성해 주세요:
+1. **나의 실력 성장 추이 및 실전 합격 가능성 진단** (점수가 점진적으로 상승하고 있는지, 기복 요인은 무엇인지, 실제 본시험 합격 가능성 % 평가)
+2. **반복적으로 발목을 잡는 '고질적 취약 영역 및 오개념' 정밀 타겟팅** (과목별 과락 방지 및 킬러 문항 대처법)
+3. **남은 시험 준비 기간 동안 점수를 극대화하기 위한 '우선순위 맞춤 학습 로드맵 및 핵심 키워드 정리'**
+`;
+
+  return markdownContent;
+}
+
+// 자격증 단위 AI 리포트 마크다운 파일 다운로드
+async function downloadCategoryAiReport() {
+  try {
+    const catSel = document.getElementById('categorySelect');
+    const selectedCategory = (currentHistoryFilterMode === 'current' && catSel) ? (catSel.value || '자격증') : '전체_응시이력';
+    const targetList = currentFilteredHistoryList || [];
+
+    if (targetList.length === 0) {
+      alert("다운로드할 응시 이력이 없습니다.");
+      return;
+    }
+
+    const mdContent = await generateCategoryAggregatedReport(selectedCategory, targetList);
+    const dateStr = new Date().toISOString().slice(0, 10);
+    const filename = `${dateStr}_${selectedCategory.replace(/[^a-zA-Z0-9가-힣_]/g, '_')}_AI_종합진단리포트.md`;
+
+    const blob = new Blob([mdContent], { type: 'text/markdown;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch(e) {
+    alert("리포트 다운로드 실패: " + e.message);
+  }
+}
+
+// 자격증 단위 AI 종합 진단 프롬프트 클립보드 복사
+async function copyCategoryAiPrompt() {
+  try {
+    const catSel = document.getElementById('categorySelect');
+    const selectedCategory = (currentHistoryFilterMode === 'current' && catSel) ? (catSel.value || '자격증') : '전체_응시이력';
+    const targetList = currentFilteredHistoryList || [];
+
+    if (targetList.length === 0) {
+      alert("복사할 응시 이력이 없습니다.");
+      return;
+    }
+
+    const mdContent = await generateCategoryAggregatedReport(selectedCategory, targetList);
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(mdContent);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = mdContent;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+
+    alert(`✅ '${selectedCategory}'의 전체 누적 응시 데이터(총 ${targetList.length}건)가 AI 종합 분석 프롬프트로 클립보드에 복사되었습니다!\n\nAI 채팅창에 Ctrl+V로 붙여넣어 종합 진단을 요청하세요.`);
+  } catch(e) {
+    alert("AI 프롬프트 복사 실패: " + e.message);
   }
 }
 
