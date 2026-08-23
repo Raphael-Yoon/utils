@@ -354,6 +354,9 @@
       box-shadow: -2px 0 8px rgba(0,0,0,0.03);
       transition: background-color 0.2s ease;
     }
+    .omr-pane.collapsed {
+      display: none !important;
+    }
     .omr-header {
       padding: 16px 20px;
       border-bottom: 1px solid var(--border-color);
@@ -780,6 +783,7 @@
     <span id="timerIcon">⏱️</span> <span id="timerStr">120:00</span>
   </div>
   <div class="header-actions">
+    <button class="btn btn-header-outline" id="btnToggleOmr" style="display:none;" onclick="toggleOmrPane()" title="OMR 답안지 접기/펼치기 (단축키: O)">📋 OMR 접기</button>
     <button class="btn btn-header-outline" id="btnThemeToggle" onclick="toggleTheme()" title="다크 모드 / 라이트 모드 전환 (단축키: T)">🌙 다크 모드</button>
     <button class="btn btn-header-outline" id="btnHome" onclick="location.reload()">🏠 시험 목록</button>
     <button class="btn btn-success" id="btnSubmitHeader" style="display:none;" onclick="submitExam()">📝 답안 제출</button>
@@ -832,7 +836,7 @@
   <div class="exam-layout" id="examLayout">
     <div class="question-pane" id="questionPane"></div>
     
-    <div class="omr-pane">
+    <div class="omr-pane" id="omrPane">
       <div class="omr-header">
         <span>OMR 답안지</span>
         <span style="font-size:0.85rem; font-weight:normal; color:var(--primary);" id="omrProgress">0 완료</span>
@@ -1137,22 +1141,33 @@ window.addEventListener('keydown', (e) => {
   const examLayout = document.getElementById('examLayout');
   if (!examLayout || examLayout.style.display === 'none' || !currentExamData) return;
 
-  // 'c' 또는 'C' 키 입력 시 계산기 열기/닫기 토글 (단, Alt/Ctrl/Cmd 조합키 제외)
+  // 'o' 또는 'O' 키 입력 시 OMR 답안지 영역 접기/펼치기 토글 (단, Alt/Ctrl/Cmd 조합키 제외)
+  if (key.toLowerCase() === 'o' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    e.preventDefault();
+    toggleOmrPane();
+    return;
+  }
+
+  // 'c' 또는 'C' 키 입력 시 계산기 열기/닫기 토글 (단, OMR 패널이 노출되어 있을 때만 동작)
   if (key.toLowerCase() === 'c' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-    e.preventDefault();
-    toggleCalculator();
+    if (isOmrVisible) {
+      e.preventDefault();
+      toggleCalculator();
+    }
     return;
   }
 
-  // 'm' 또는 'M' 키 입력 시 연습용 메모장 열기/닫기 토글
+  // 'm' 또는 'M' 키 입력 시 연습용 메모장 열기/닫기 토글 (단, OMR 패널이 노출되어 있을 때만 동작)
   if (key.toLowerCase() === 'm' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-    e.preventDefault();
-    toggleMemoPad();
+    if (isOmrVisible) {
+      e.preventDefault();
+      toggleMemoPad();
+    }
     return;
   }
 
-  // [계산기가 열려있는 경우]: 키보드 입력을 계산기로 자연스럽게 라우팅
-  if (isCalcOpen) {
+  // [계산기가 열려있는 경우 (OMR 패널 노출 상태)]: 키보드 입력을 계산기로 자연스럽게 라우팅
+  if (isCalcOpen && isOmrVisible) {
     if (key === 'Escape') {
       e.preventDefault();
       toggleCalculator(); // Esc 누르면 계산기 닫기
@@ -1444,6 +1459,7 @@ async function resumeDraftExam() {
   document.getElementById('examLayout').style.display = 'flex';
   document.getElementById('timerBadge').style.display = 'flex';
   document.getElementById('btnSubmitHeader').style.display = 'block';
+  if (document.getElementById('btnToggleOmr')) document.getElementById('btnToggleOmr').style.display = 'inline-flex';
   if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'block';
   if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'block';
 
@@ -1484,6 +1500,7 @@ async function startExam() {
   document.getElementById('examLayout').style.display = 'flex';
   document.getElementById('timerBadge').style.display = 'flex';
   document.getElementById('btnSubmitHeader').style.display = 'block';
+  if (document.getElementById('btnToggleOmr')) document.getElementById('btnToggleOmr').style.display = 'inline-flex';
   if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'block';
   if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'block';
 
@@ -1898,6 +1915,7 @@ function submitExam(skipConfirm = false) {
   document.getElementById('examLayout').style.display = 'none';
   document.getElementById('timerBadge').style.display = 'none';
   document.getElementById('btnSubmitHeader').style.display = 'none';
+  if (document.getElementById('btnToggleOmr')) document.getElementById('btnToggleOmr').style.display = 'none';
   if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'none';
   if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'none';
   hideMemoWidget();
@@ -2016,6 +2034,7 @@ function showReviewMode() {
   document.getElementById('examLayout').style.display = 'flex';
   document.getElementById('timerBadge').style.display = 'none';
   document.getElementById('btnSubmitHeader').style.display = 'none';
+  if (document.getElementById('btnToggleOmr')) document.getElementById('btnToggleOmr').style.display = 'inline-flex';
   if (document.getElementById('btnMemoHeader')) document.getElementById('btnMemoHeader').style.display = 'block';
   if (document.getElementById('btnCalcHeader')) document.getElementById('btnCalcHeader').style.display = 'block';
 
@@ -2340,6 +2359,37 @@ function resetInlineImage(imgId) {
   img.style.transform = 'rotate(0deg)';
 }
 
+// OMR 답안지 패널 접기 / 펼치기 제어 로직
+let isOmrVisible = true;
+
+function toggleOmrPane() {
+  const omrPane = document.getElementById('omrPane');
+  const btn = document.getElementById('btnToggleOmr');
+  if (!omrPane) return;
+
+  isOmrVisible = !isOmrVisible;
+  if (isOmrVisible) {
+    omrPane.classList.remove('collapsed');
+    if (btn) {
+      btn.innerHTML = '📋 OMR 접기';
+      btn.title = 'OMR 답안지 접기 (단축키: O)';
+    }
+  } else {
+    omrPane.classList.add('collapsed');
+    if (btn) {
+      btn.innerHTML = '📋 OMR 펼치기';
+      btn.title = 'OMR 답안지 펼치기 (단축키: O)';
+    }
+    // OMR 패널이 숨겨질 때는 열려있던 계산기 및 메모장도 닫아 단축키 및 화면 오작동 방지
+    if (isCalcOpen) {
+      toggleCalculator();
+    }
+    if (isMemoOpen) {
+      toggleMemoPad();
+    }
+  }
+}
+
 // 계산기 로직
 let calcExpr = '';
 let isCalcOpen = false;
@@ -2358,6 +2408,15 @@ function resetCalculatorState() {
   const mArrow = document.getElementById('memoArrow');
   if (mBody) mBody.classList.add('hidden');
   if (mArrow) mArrow.innerText = '▴';
+
+  isOmrVisible = true;
+  const omrPane = document.getElementById('omrPane');
+  if (omrPane) omrPane.classList.remove('collapsed');
+  const btn = document.getElementById('btnToggleOmr');
+  if (btn) {
+    btn.innerHTML = '📋 OMR 접기';
+    btn.title = 'OMR 답안지 접기 (단축키: O)';
+  }
 }
 
 function toggleCalculator(e) {
