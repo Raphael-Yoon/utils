@@ -1,9 +1,11 @@
 """
 [개발4팀 전사 공통 모듈] CBT 모의고사 전용 HTTP 서버 및 러너 (Run CBT Server)
 기능: utils/cbt_engine/exams/ 폴더의 모든 시험 데이터를 자동 탐색하여 제공합니다. (한글 URL 인코딩 완벽 지원)
+데이터베이스: MySQL 전용 DB 스페이스('cbt') 및 SQLite 듀얼 모드 지원
 """
 
 import sys
+import os
 import json
 import re
 import urllib.parse
@@ -17,44 +19,20 @@ if sys.platform == 'win32':
     except Exception:
         pass
 
-import sqlite3
+BASE_DIR = Path(__file__).resolve().parent
+WORKSPACE_DIR = BASE_DIR.parent.parent
+if str(WORKSPACE_DIR) not in sys.path:
+    sys.path.insert(0, str(WORKSPACE_DIR))
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
 
-BASE_DIR = Path(__file__).parent
+# CBT DB 어댑터 모듈 임포트
+try:
+    from utils.cbt_engine.db import DB, init_db, DB_TYPE, DATABASE_URL
+except ImportError:
+    from db import DB, init_db, DB_TYPE, DATABASE_URL
 EXAMS_DIR = BASE_DIR / "exams"
-DB_PATH = BASE_DIR / "cbt_results.db"
 
-def init_db():
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS exam_results (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_name TEXT DEFAULT '응시자',
-            exam_id TEXT,
-            exam_title TEXT,
-            total_score REAL,
-            max_score REAL,
-            is_pass INTEGER,
-            fail_reason TEXT,
-            time_taken_seconds INTEGER,
-            subject_scores_json TEXT,
-            user_answers_json TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS exam_drafts (
-            user_name TEXT PRIMARY KEY,
-            exam_path TEXT,
-            exam_title TEXT,
-            user_answers_json TEXT,
-            remaining_seconds INTEGER,
-            current_question_idx INTEGER,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    conn.commit()
-    conn.close()
 
 class CBTRequestHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -71,17 +49,13 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
         # /api/draft - 서버 임시저장 조회
         if path_only == '/api/draft':
             user_name = query.get('user_name', ['응시자'])[0]
-            conn = sqlite3.connect(DB_PATH)
-            conn.row_factory = sqlite3.Row
-            cursor = conn.cursor()
-            cursor.execute('SELECT * FROM exam_drafts WHERE user_name = ?', (user_name,))
-            row = cursor.fetchone()
-            conn.close()
+            row = DB.get_draft(user_name)
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
             self.end_headers()
-            user_answers = json.loads(row["user_answers_json"] or '{}') if row else {}
+
+            user_answers = row.get("user_answers_json", {}) if row else {}
             if row and user_answers:
                 draft_data = {
                     "user_name": row["user_name"],
@@ -90,7 +64,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                     "userAnswers": user_answers,
                     "remainingSeconds": row["remaining_seconds"],
                     "currentQuestionIdx": row["current_question_idx"],
-                    "updatedAt": row["updated_at"]
+                    "updatedAt": str(row["updated_at"])
                 }
                 self.wfile.write(json.dumps(draft_data, ensure_ascii=False).encode('utf-8'))
             else:
@@ -118,36 +92,36 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                             "passing_rules": info.get('passing_rules', {}),
                             "subjects": data.get('subjects', []),
                             "questions_count": len(data.get('questions', [])),
-                            "path": f"/exams/{json_file.name}"
                         })
-                    except Exception:
-                        pass
-            
-            # 시험 목록 정렬 (카테고리 가나다순 -> 1.연도별 세트(최신순) -> 2.과목별 세트(1~5과목순)
-            #               -> 3.연도/과목별 세트(과목순 -> 연도 최신순))
+                    except Exception as e:
+                        print(f"시험 파일 읽기 오류 ({json_file.name}): {e}")
+
+            # 시험 목록 정렬 (카테고리 가나다순 -> 1.연도별 세트(최신순) -> 2.과목별 세트(1~5과목순) -> 3.연도/과목별 세트(과목순 -> 연도 최신순))
             def get_sort_key(item):
+                cat = item.get('category', '')
                 title = item.get('title', '')
                 filename = item.get('filename', '')
-                cat = item.get('category', '')
 
-                # 3) 연도/과목별 세트 (예: auditor_2022_subject1.json): 과목 오름차순 -> 연도 내림차순
-                m_year_sub = re.search(r'(\d{4})_subject(\d+)\.json$', filename)
-                if m_year_sub:
-                    year = int(m_year_sub.group(1))
-                    subj = int(m_year_sub.group(2))
-                    return (cat, 3, subj, -year)
+                # 1) 과목별 집중학습(연도 통합) 세트: [5개년] 1과목 ~ 5과목
+                m_5yr = re.search(r'\[5개년\]\s*(\d+)과목', title)
+                if m_5yr:
+                    sub_no = int(m_5yr.group(1))
+                    return (cat, 2, sub_no, 0)
 
-                # 2) 과목별 집중학습(연도 통합) 세트: 1과목 -> 2과목 -> 3과목 ... 오름차순 정렬
-                m_sub = re.search(r'(\d+)\s*과목', title) or re.search(r'subject_(\d+)', filename)
+                # 2) 연도별/과목별 세트: [YYYY년] X과목
+                m_sub = re.search(r'\[(\d{4})년\]\s*(\d+)과목', title)
                 if m_sub:
-                    return (cat, 2, int(m_sub.group(1)), 0)
+                    year = int(m_sub.group(1))
+                    sub_no = int(m_sub.group(2))
+                    return (cat, 3, sub_no, -year)
 
-                # 1-b) 실전 모의고사 세트: 기출문제(제N회)와 겹치지 않도록 별도 그룹으로 묶어 회차 오름차순 정렬
-                m_mock = re.search(r'모의고사\s*(\d+)\s*회', title)
-                if m_mock:
-                    return (cat, 1.5, int(m_mock.group(1)), 0)
+                # 3) 연도별 전체 모의고사: [YYYY년] 정보시스템감리사
+                m_year_all = re.search(r'\[(\d{4})년\]', title)
+                if m_year_all and '과목' not in title:
+                    year = int(m_year_all.group(1))
+                    return (cat, 1, -year, 0)
 
-                # 1) 일반 회차/연도별 시험인 경우: 최신순(내림차순) 정렬
+                # 4) 일반 회차/연도별 시험인 경우: 최신순(내림차순) 정렬
                 m_round = re.search(r'제\s*(\d+)\s*회', title) or re.search(r'(\d+)\s*회', title)
                 if m_round:
                     num = int(m_round.group(1))
@@ -165,29 +139,18 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(exam_list, ensure_ascii=False).encode('utf-8'))
             return
 
-        # /api/results - 응시 이력 목록 조회
+        # /api/results - 응시 이력 목록/상세 조회
         if path_only == '/api/results':
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
             self.end_headers()
-            
-            conn = sqlite3.connect(DB_PATH)
-            conn.row_factory = sqlite3.Row
-            cursor = conn.cursor()
 
             if 'id' in query:
-                result_id = query['id'][0]
-                cursor.execute('SELECT * FROM exam_results WHERE id = ?', (result_id,))
-                row = cursor.fetchone()
-                res_data = dict(row) if row else None
+                result_id = int(query['id'][0])
+                res_data = DB.get_result_detail(result_id)
             else:
-                cursor.execute('''
-                    SELECT id, user_name, exam_id, exam_title, total_score, max_score, is_pass, fail_reason, time_taken_seconds, created_at 
-                    FROM exam_results ORDER BY id DESC LIMIT 50
-                ''')
-                res_data = [dict(r) for r in cursor.fetchall()]
+                res_data = DB.get_results_list(limit=50)
 
-            conn.close()
             self.wfile.write(json.dumps(res_data, ensure_ascii=False).encode('utf-8'))
             return
 
@@ -201,29 +164,14 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             payload = json.loads(body.decode('utf-8'))
 
             user_name = payload.get('user_name', '응시자')
-            conn = sqlite3.connect(DB_PATH)
-            cursor = conn.cursor()
-            cursor.execute('''
-                INSERT INTO exam_drafts (
-                    user_name, exam_path, exam_title, user_answers_json, remaining_seconds, current_question_idx, updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-                ON CONFLICT(user_name) DO UPDATE SET
-                    exam_path = excluded.exam_path,
-                    exam_title = excluded.exam_title,
-                    user_answers_json = excluded.user_answers_json,
-                    remaining_seconds = excluded.remaining_seconds,
-                    current_question_idx = excluded.current_question_idx,
-                    updated_at = CURRENT_TIMESTAMP
-            ''', (
-                user_name,
-                payload.get('examPath', ''),
-                payload.get('examTitle', ''),
-                json.dumps(payload.get('userAnswers', {}), ensure_ascii=False),
-                payload.get('remainingSeconds', 0),
-                payload.get('currentQuestionIdx', 0)
-            ))
-            conn.commit()
-            conn.close()
+            DB.save_draft(
+                user_name=user_name,
+                exam_path=payload.get('examPath', ''),
+                exam_title=payload.get('examTitle', ''),
+                user_answers=payload.get('userAnswers', {}),
+                remaining_seconds=payload.get('remainingSeconds', 0),
+                current_question_idx=payload.get('currentQuestionIdx', 0)
+            )
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
@@ -237,30 +185,18 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             body = self.rfile.read(content_length)
             payload = json.loads(body.decode('utf-8'))
 
-            conn = sqlite3.connect(DB_PATH)
-            cursor = conn.cursor()
-            cursor.execute('''
-                INSERT INTO exam_results (
-                    user_name, exam_id, exam_title, total_score, max_score, is_pass, fail_reason, time_taken_seconds, subject_scores_json, user_answers_json
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ''', (
-                payload.get('user_name', '응시자'),
-                payload.get('exam_id', ''),
-                payload.get('exam_title', ''),
-                payload.get('total_score', 0.0),
-                payload.get('max_score', 100.0),
-                1 if payload.get('is_pass') else 0,
-                payload.get('fail_reason', ''),
-                payload.get('time_taken_seconds', 0),
-                json.dumps(payload.get('subject_scores', []), ensure_ascii=False),
-                json.dumps(payload.get('user_answers', {}), ensure_ascii=False)
-            ))
-            new_id = cursor.lastrowid
-
-            # 제출 완료 시 해당 유저의 draft 삭제
-            cursor.execute('DELETE FROM exam_drafts WHERE user_name = ?', (payload.get('user_name', '응시자'),))
-            conn.commit()
-            conn.close()
+            new_id = DB.save_result(
+                user_name=payload.get('user_name', '응시자'),
+                exam_id=payload.get('exam_id', ''),
+                exam_title=payload.get('exam_title', ''),
+                total_score=float(payload.get('total_score', 0.0)),
+                max_score=float(payload.get('max_score', 100.0)),
+                is_pass=bool(payload.get('is_pass')),
+                fail_reason=payload.get('fail_reason', ''),
+                time_taken_seconds=int(payload.get('time_taken_seconds', 0)),
+                subject_scores=payload.get('subject_scores', []),
+                user_answers=payload.get('user_answers', {})
+            )
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
@@ -278,12 +214,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
         # /api/draft - 임시저장 삭제
         if path_only == '/api/draft':
             user_name = query.get('user_name', ['응시자'])[0]
-            conn = sqlite3.connect(DB_PATH)
-            cursor = conn.cursor()
-            cursor.execute('DELETE FROM exam_drafts WHERE user_name = ?', (user_name,))
-            deleted_cnt = cursor.rowcount
-            conn.commit()
-            conn.close()
+            deleted_cnt = DB.delete_draft(user_name)
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
@@ -293,23 +224,14 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
 
         # /api/results - 응시 이력 삭제 (단건 삭제: ?id=X, 전체 삭제: ?all=true)
         if path_only == '/api/results':
-            conn = sqlite3.connect(DB_PATH)
-            cursor = conn.cursor()
-
             if 'id' in query:
-                result_id = query['id'][0]
-                cursor.execute('DELETE FROM exam_results WHERE id = ?', (result_id,))
-                deleted_cnt = cursor.rowcount
+                result_id = int(query['id'][0])
+                deleted_cnt = DB.delete_result(result_id)
             elif query.get('all', [''])[0] == 'true':
-                cursor.execute('DELETE FROM exam_results')
-                deleted_cnt = cursor.rowcount
+                deleted_cnt = DB.clear_all_results()
             else:
-                conn.close()
                 self.send_error(400, "Bad Request: Missing 'id' or 'all=true' parameter")
                 return
-
-            conn.commit()
-            conn.close()
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
@@ -329,16 +251,18 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
         target = BASE_DIR / rel_path
         return str(target)
 
+
 def run(port=8080):
     init_db()
     HTTPServer.allow_reuse_address = True
     server_address = ('', port)
     httpd = HTTPServer(server_address, CBTRequestHandler)
     url = f"http://localhost:{port}"
+    db_mode = "MySQL (cbt DB)" if DB.is_mysql() else "SQLite"
     print(f"==================================================")
     print(f"🚀 [개발4팀 CBT Engine Server] 구동 성공! (DB 연동 완료)")
     print(f"📁 시험 데이터 폴더: {EXAMS_DIR}")
-    print(f"🗄️ 성적 DB 파일: {DB_PATH}")
+    print(f"🗄️ 성적 DB 모드: {db_mode}")
     print(f"🌐 접속 주소: {url}")
     print(f"==================================================")
 
@@ -347,6 +271,8 @@ def run(port=8080):
     except KeyboardInterrupt:
         print("\nCBT 서버를 종료합니다.")
 
+
 if __name__ == '__main__':
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
+    default_port = int(os.getenv("CBT_PORT", "8080"))
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else default_port
     run(port)

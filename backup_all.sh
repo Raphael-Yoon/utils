@@ -6,7 +6,8 @@
 
 set -e
 
-WORKSPACE_DIR="/home/raphael/Dev/pythons"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
 BACKUP_DIR="$WORKSPACE_DIR/backups"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 BACKUP_FILE="$BACKUP_DIR/server_backup_${TIMESTAMP}.tar.gz"
@@ -20,7 +21,16 @@ mkdir -p "$BACKUP_DIR"
 echo "=== [1/3] MySQL 최신 데이터 SQLite 동기화 백업 ==="
 if [ -f "$WORKSPACE_DIR/.venv/bin/python" ]; then
     MYSQL_HOST="${MYSQL_HOST:-100.103.64.85}" MYSQL_USER="${MYSQL_USER:-root}" MYSQL_PASSWORD="${MYSQL_PASSWORD:-150606}" MYSQL_PORT="${MYSQL_PORT:-3306}" \
-    "$WORKSPACE_DIR/.venv/bin/python" -c "import sys; sys.path.insert(0, '$WORKSPACE_DIR/snowball'); from migrations.backup_mysql_to_sqlite import backup_mysql_to_sqlite; backup_mysql_to_sqlite('$WORKSPACE_DIR/snowball/snowball.db')" || echo "⚠️ MySQL 백업 경고 (SQLite 동기화 스킵)"
+    "$WORKSPACE_DIR/.venv/bin/python" -c "import sys; sys.path.insert(0, '$WORKSPACE_DIR/snowball'); from migrations.backup_mysql_to_sqlite import backup_mysql_to_sqlite; backup_mysql_to_sqlite('$WORKSPACE_DIR/snowball/snowball.db')" || echo "⚠️ Snowball MySQL 백업 경고 (SQLite 동기화 스킵)"
+
+    # Trade MySQL(trade DB) -> SQLite 동기화
+    "$WORKSPACE_DIR/.venv/bin/python" "$WORKSPACE_DIR/trade/migrate_to_sqlite.py" || echo "⚠️ Trade MySQL 백업 경고 (SQLite 동기화 스킵)"
+
+    # CBT 엔진 MySQL(cbt DB) -> SQLite 동기화
+    "$WORKSPACE_DIR/.venv/bin/python" "$WORKSPACE_DIR/utils/cbt_engine/backup_to_sqlite.py" || echo "⚠️ CBT MySQL 백업 경고 (SQLite 동기화 스킵)"
+
+    # InfoSD MySQL(infosd DB) -> SQLite 동기화
+    "$WORKSPACE_DIR/.venv/bin/python" "$WORKSPACE_DIR/infosd/backup_to_sqlite.py" || echo "⚠️ InfoSD MySQL 백업 경고 (SQLite 동기화 스킵)"
 else
     echo "⚠️ Python 가상환경을 찾을 수 없어 DB 역동기화를 스킵합니다."
 fi
@@ -31,7 +41,7 @@ tar -czvf "$BACKUP_FILE" \
     snowball/.env snowball/credentials.json snowball/token.pickle snowball/snowball.db \
     trade/.env trade/trade.db trade/credentials.json trade/token.pickle \
     infosd/.env infosd/infosd.db infosd/credentials.json infosd/token.pickle \
-    utils/cbt_engine/cbt_engine.db \
+    utils/cbt_engine/.env utils/cbt_engine/cbt.db \
     -C "$HOME" .cloudflared 2>/dev/null || true
 
 echo "=== [3/4] 오래된 백업 보관 주기 정리 (7일 초과 및 최근 7개 초과 삭제) ==="

@@ -7,9 +7,14 @@
 # 스크립트 경로 기준으로 워크스페이스 디렉토리 동적 지정
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
+export PATH="$HOME/.local/bin:$PATH"
 
 echo "=== [1/6] Docker Databases 기동 ==="
-docker start snowball-mysql
+if command -v docker &> /dev/null; then
+    docker start snowball-mysql 2>/dev/null || echo "ℹ️ Docker snowball-mysql 컨테이너가 없으므로 로컬 SQLite 모드로 동작합니다."
+else
+    echo "ℹ️ Docker 미설치 환경: 로컬 SQLite 데이터베이스 모드로 동작합니다."
+fi
 
 echo "=== [2/6] AP Gunicorn & Python 서버 재기동 ==="
 # 각 서비스 디렉토리로 이동하여 start 스크립트 실행
@@ -19,19 +24,25 @@ cd "$WORKSPACE_DIR/infosd" && ./infosd_start.sh
 cd "$WORKSPACE_DIR/utils/cbt_engine" && ./cbt_start.sh
 
 echo "=== [3/6] Cloudflared 터널 프로세스 재기동 ==="
-systemctl --user stop cloudflared-ksox cloudflared-trade cloudflared-infosd cloudflared-cbt 2>/dev/null || true
-pkill -f "cloudflared tunnel run"
-sleep 1
-systemd-run --user --unit=cloudflared-ksox bash -c "exec cloudflared tunnel run --url http://127.0.0.1:5001 84e81d82-14e0-4c05-b317-6caa923e0bd4 > '$WORKSPACE_DIR/snowball/cloudflared_ksox.log' 2>&1"
-systemd-run --user --unit=cloudflared-trade bash -c "exec cloudflared tunnel run --url http://127.0.0.1:5000 10d06dea-316c-452d-97a0-6d89a1adb223 > '$WORKSPACE_DIR/trade/cloudflared_trade.log' 2>&1"
-systemd-run --user --unit=cloudflared-infosd bash -c "exec cloudflared tunnel run --url http://127.0.0.1:5003 89a30767-5899-4985-9723-59b7a9eebea2 > '$WORKSPACE_DIR/infosd/cloudflared_infosd.log' 2>&1"
-systemd-run --user --unit=cloudflared-cbt bash -c "exec cloudflared tunnel run --url http://127.0.0.1:5004 f8af40cf-0088-45f0-82bc-3befe3bb6dbd > '$WORKSPACE_DIR/utils/cbt_engine/cloudflared_cbt.log' 2>&1"
+if command -v cloudflared &> /dev/null; then
+    systemctl --user stop cloudflared-ksox cloudflared-trade cloudflared-infosd cloudflared-cbt 2>/dev/null || true
+    pkill -f "cloudflared tunnel run" 2>/dev/null || true
+    sleep 1
+    systemd-run --user --unit=cloudflared-ksox bash -c "exec cloudflared tunnel run --url http://127.0.0.1:5001 84e81d82-14e0-4c05-b317-6caa923e0bd4 > '$WORKSPACE_DIR/snowball/cloudflared_ksox.log' 2>&1" 2>/dev/null || nohup cloudflared tunnel run --url http://127.0.0.1:5001 84e81d82-14e0-4c05-b317-6caa923e0bd4 > "$WORKSPACE_DIR/snowball/cloudflared_ksox.log" 2>&1 &
+    systemd-run --user --unit=cloudflared-trade bash -c "exec cloudflared tunnel run --url http://127.0.0.1:5000 10d06dea-316c-452d-97a0-6d89a1adb223 > '$WORKSPACE_DIR/trade/cloudflared_trade.log' 2>&1" 2>/dev/null || nohup cloudflared tunnel run --url http://127.0.0.1:5000 10d06dea-316c-452d-97a0-6d89a1adb223 > "$WORKSPACE_DIR/trade/cloudflared_trade.log" 2>&1 &
+    systemd-run --user --unit=cloudflared-infosd bash -c "exec cloudflared tunnel run --url http://127.0.0.1:5003 89a30767-5899-4985-9723-59b7a9eebea2 > '$WORKSPACE_DIR/infosd/cloudflared_infosd.log' 2>&1" 2>/dev/null || nohup cloudflared tunnel run --url http://127.0.0.1:5003 89a30767-5899-4985-9723-59b7a9eebea2 > "$WORKSPACE_DIR/infosd/cloudflared_infosd.log" 2>&1 &
+    systemd-run --user --unit=cloudflared-cbt bash -c "exec cloudflared tunnel run --url http://127.0.0.1:5004 f8af40cf-0088-45f0-82bc-3befe3bb6dbd > '$WORKSPACE_DIR/utils/cbt_engine/cloudflared_cbt.log' 2>&1" 2>/dev/null || nohup cloudflared tunnel run --url http://127.0.0.1:5004 f8af40cf-0088-45f0-82bc-3befe3bb6dbd > "$WORKSPACE_DIR/utils/cbt_engine/cloudflared_cbt.log" 2>&1 &
+else
+    echo "ℹ️ Cloudflared 미설치: 로컬 포트 바인딩으로 직접 접근 가능합니다."
+fi
 
 echo "=== [4/6] Telegram Remote Bridge 재기동 ==="
-systemctl --user stop telegram-bridge 2>/dev/null || true
-pkill -f "telegram_bridge/bridge.py" 2>/dev/null || true
-sleep 1
-systemd-run --user --unit=telegram-bridge bash -c "exec '$WORKSPACE_DIR/.venv/bin/python' -u '$WORKSPACE_DIR/utils/telegram_bridge/bridge.py' > '$WORKSPACE_DIR/utils/telegram_bridge/bridge.log' 2>&1"
+if [ -f "$WORKSPACE_DIR/utils/telegram_bridge/bridge.py" ]; then
+    systemctl --user stop telegram-bridge 2>/dev/null || true
+    pkill -f "telegram_bridge/bridge.py" 2>/dev/null || true
+    sleep 1
+    systemd-run --user --unit=telegram-bridge bash -c "exec '$WORKSPACE_DIR/.venv/bin/python' -u '$WORKSPACE_DIR/utils/telegram_bridge/bridge.py' > '$WORKSPACE_DIR/utils/telegram_bridge/bridge.log' 2>&1" 2>/dev/null || nohup "$WORKSPACE_DIR/.venv/bin/python" -u "$WORKSPACE_DIR/utils/telegram_bridge/bridge.py" > "$WORKSPACE_DIR/utils/telegram_bridge/bridge.log" 2>&1 &
+fi
 
 echo "=== [5/6] 헬스체크 수행 및 알림 발송 ==="
 sleep 3

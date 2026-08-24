@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# 1. 기존에 돌고 있는 CBT Engine 프로세스 종료 (PID 파일 활용)
-PID_FILE="/home/raphael/Dev/pythons/utils/cbt_engine/cbt.pid"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PID_FILE="$SCRIPT_DIR/cbt.pid"
 if [ -f "$PID_FILE" ]; then
     PID=$(cat "$PID_FILE")
     if ps -p $PID > /dev/null 2>&1; then

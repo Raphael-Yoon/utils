@@ -24,6 +24,8 @@ if not INBOX_FILE.exists():
 if not OUTBOX_FILE.exists():
     OUTBOX_FILE.write_text(json.dumps([], indent=4))
 
+PROJECT_ROOT = BRIDGE_DIR.parent.parent
+
 # 단축 명령어 매핑 설정
 RAW_COMMANDS = [
     # 1. Snowball (IT 감사)
@@ -32,7 +34,7 @@ RAW_COMMANDS = [
         "num": "1-1",
         "alias": "sb-start",
         "cmd": "./snowball_start.sh",
-        "cwd": "/home/raphael/Dev/pythons/snowball",
+        "cwd": str(PROJECT_ROOT / "snowball"),
         "desc": "Snowball AP 서버 시작"
     },
     {
@@ -40,7 +42,7 @@ RAW_COMMANDS = [
         "num": "1-2",
         "alias": "sb-reset",
         "cmd": "./snowball_reset.sh",
-        "cwd": "/home/raphael/Dev/pythons/snowball",
+        "cwd": str(PROJECT_ROOT / "snowball"),
         "desc": "Snowball AP 서버 재설정 및 재기동"
     },
     {
@@ -48,7 +50,7 @@ RAW_COMMANDS = [
         "num": "1-3",
         "alias": "sb-stop",
         "cmd": "./snowball_stop.sh",
-        "cwd": "/home/raphael/Dev/pythons/snowball",
+        "cwd": str(PROJECT_ROOT / "snowball"),
         "desc": "Snowball AP 서버 종료"
     },
     # 2. Jonathan's Coffee House (자산관리)
@@ -57,7 +59,7 @@ RAW_COMMANDS = [
         "num": "2-1",
         "alias": "tr-start",
         "cmd": "./coffee_house_start.sh",
-        "cwd": "/home/raphael/Dev/pythons/trade",
+        "cwd": str(PROJECT_ROOT / "trade"),
         "desc": "Jonathan's Coffee House AP 서버 시작"
     },
     {
@@ -65,7 +67,7 @@ RAW_COMMANDS = [
         "num": "2-2",
         "alias": "tr-reset",
         "cmd": "./coffee_house_reset.sh",
-        "cwd": "/home/raphael/Dev/pythons/trade",
+        "cwd": str(PROJECT_ROOT / "trade"),
         "desc": "Jonathan's Coffee House AP 서버 재설정 및 재기동"
     },
     {
@@ -73,7 +75,7 @@ RAW_COMMANDS = [
         "num": "2-3",
         "alias": "tr-stop",
         "cmd": "./coffee_house_stop.sh",
-        "cwd": "/home/raphael/Dev/pythons/trade",
+        "cwd": str(PROJECT_ROOT / "trade"),
         "desc": "Jonathan's Coffee House AP 서버 종료"
     },
     # 3. Infosd (정보보호공시)
@@ -82,7 +84,7 @@ RAW_COMMANDS = [
         "num": "3-1",
         "alias": "is-start",
         "cmd": "./infosd_start.sh",
-        "cwd": "/home/raphael/Dev/pythons/infosd",
+        "cwd": str(PROJECT_ROOT / "infosd"),
         "desc": "정보보호공시 AP 서버 시작"
     },
     {
@@ -90,7 +92,7 @@ RAW_COMMANDS = [
         "num": "3-2",
         "alias": "is-reset",
         "cmd": "./infosd_reset.sh",
-        "cwd": "/home/raphael/Dev/pythons/infosd",
+        "cwd": str(PROJECT_ROOT / "infosd"),
         "desc": "정보보호공시 AP 서버 재설정 및 재기동"
     },
     {
@@ -98,7 +100,7 @@ RAW_COMMANDS = [
         "num": "3-3",
         "alias": "is-stop",
         "cmd": "./infosd_stop.sh",
-        "cwd": "/home/raphael/Dev/pythons/infosd",
+        "cwd": str(PROJECT_ROOT / "infosd"),
         "desc": "정보보호공시 AP 서버 종료"
     },
     # 4. CBT Engine (모의고사)
@@ -107,7 +109,7 @@ RAW_COMMANDS = [
         "num": "4-1",
         "alias": "cbt-start",
         "cmd": "./cbt_start.sh",
-        "cwd": "/home/raphael/Dev/pythons/utils/cbt_engine",
+        "cwd": str(PROJECT_ROOT / "utils" / "cbt_engine"),
         "desc": "CBT Engine AP 서버 시작"
     },
     {
@@ -115,7 +117,7 @@ RAW_COMMANDS = [
         "num": "4-2",
         "alias": "cbt-reset",
         "cmd": "./cbt_reset.sh",
-        "cwd": "/home/raphael/Dev/pythons/utils/cbt_engine",
+        "cwd": str(PROJECT_ROOT / "utils" / "cbt_engine"),
         "desc": "CBT Engine AP 서버 재설정 및 재기동"
     },
     {
@@ -123,7 +125,7 @@ RAW_COMMANDS = [
         "num": "4-3",
         "alias": "cbt-stop",
         "cmd": "./cbt_stop.sh",
-        "cwd": "/home/raphael/Dev/pythons/utils/cbt_engine",
+        "cwd": str(PROJECT_ROOT / "utils" / "cbt_engine"),
         "desc": "CBT Engine AP 서버 종료"
     }
 ]

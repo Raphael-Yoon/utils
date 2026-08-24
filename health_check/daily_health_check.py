@@ -77,15 +77,21 @@ AP_TARGETS = [
     }
 ]
 
-# Target Databases configuration
+# MySQL Database Server Configuration (Common Database Infrastructure)
+mysql_host = "127.0.0.1"
+mysql_port = 3306
+mysql_user = "root"
+mysql_password = os.getenv("MYSQL_PASSWORD", "150606")
+
+# Target Database Infrastructure configuration
 DB_TARGETS = [
     {
-        "name": "MySQL (100.103.64.85)",
+        "name": "MySQL Database Server (Port 3306)",
         "type": "mysql",
-        "host": "100.103.64.85",
-        "port": 3306,
-        "user": "root",
-        "password": "150606",
+        "host": mysql_host,
+        "port": mysql_port,
+        "user": mysql_user,
+        "password": mysql_password,
         "docker_container": "snowball-mysql"
     }
 ]
@@ -166,8 +172,11 @@ def check_db(db):
                     port=db["port"],
                     user=db["user"],
                     password=db["password"],
+                    database=db.get("database"),
                     connect_timeout=5
                 )
+                with conn.cursor() as cur:
+                    cur.execute("SELECT 1")
                 conn.close()
                 return {"status": "UP", "time_ms": int((time.time() - t0) * 1000), "error": None}
             except Exception as e:

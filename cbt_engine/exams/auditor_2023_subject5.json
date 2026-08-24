@@ -1,7 +1,7 @@
 {
   "exam_info": {
     "id": "auditor_2023_sub5",
-    "title": "[2023년] 5과목 : 정보보안 (20문항)",
+    "title": "[2023년] 5과목 : 보안 (20문항)",
     "category": "정보시스템감리사",
     "year": 2023,
     "time_limit_minutes": 20,
@@ -15,7 +15,7 @@
   "subjects": [
     {
       "id": 1,
-      "name": "2023년 5과목 : 정보보안 (20문항)",
+      "name": "2023년 5과목 : 보안 (20문항)",
       "start_q": 1,
       "end_q": 20,
       "question_count": 20,
