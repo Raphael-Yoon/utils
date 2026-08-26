@@ -92,6 +92,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                             "passing_rules": info.get('passing_rules', {}),
                             "subjects": data.get('subjects', []),
                             "questions_count": len(data.get('questions', [])),
+                            "path": f"/exams/{json_file.name}",
                         })
                     except Exception as e:
                         print(f"시험 파일 읽기 오류 ({json_file.name}): {e}")

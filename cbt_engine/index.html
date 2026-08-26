@@ -1065,7 +1065,7 @@ function onCategoryChange() {
   examSel.innerHTML = '';
   filteredExams.forEach(ex => {
     const opt = document.createElement('option');
-    opt.value = ex.path;
+    opt.value = ex.path || (`/exams/${ex.filename}`);
     // 선택된 자격증명을 제거하고 회차/종류 위주로 정돈
     let displayTitle = ex.title;
     displayTitle = displayTitle.replace(selectedCategory, '').replace(/필기\s*모의고사/g, '').replace(/\[|\]/g, '').trim();
@@ -1122,12 +1122,17 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 메모장(textarea), 입력창 등에 커서가 위치해 있을 때는 모든 키 입력(숫자, 사칙연산, 알파벳, 백스페이스, 엔터 등)이 해당 폼에만 자연스럽게 입력되도록 보장
-  const activeTag = document.activeElement ? document.activeElement.tagName : '';
-  const isInputActive = ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeTag) || (document.activeElement && document.activeElement.isContentEditable);
-  if (isInputActive) {
+  // 메모장(textarea), 검색창 등 실제 텍스트 입력 폼에 커서가 위치해 있을 때만 단축키를 차단하고 폼 입력을 보장 (라디오/체크박스 클릭 후 엔터/단축키 정상 동작)
+  const activeEl = document.activeElement;
+  const isTextInputActive = activeEl && (
+    activeEl.tagName === 'TEXTAREA' ||
+    (activeEl.tagName === 'INPUT' && !['radio', 'checkbox', 'button', 'submit', 'reset'].includes(activeEl.type)) ||
+    activeEl.tagName === 'SELECT' ||
+    activeEl.isContentEditable
+  );
+  if (isTextInputActive) {
     if (e.key === 'Escape') {
-      document.activeElement.blur();
+      activeEl.blur();
     }
     return;
   }
