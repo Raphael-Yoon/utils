@@ -1,0 +1,201 @@
+:root {
+    --bg-color: #050505;
+    --card-bg: #111;
+    --neon-red: #ff3131;
+    --gold: #ffd700;
+    --text-white: #ffffff;
+    --text-dim: #aaa;
+    --glass: rgba(255, 255, 255, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Ensure top isn't cut off */
+    background: radial-gradient(circle at center, #1a0a0a 0%, #050505 100%);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.lobby-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+.title-sub {
+    color: var(--neon-red);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.main-message {
+    font-size: 1.4rem;
+    color: var(--text-dim);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.main-message strong {
+    color: var(--neon-red);
+    font-weight: 800;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.game-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass);
+    border-radius: 20px;
+    padding: 20px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.game-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    border-color: var(--neon-red);
+    box-shadow: 0 20px 40px rgba(255, 49, 49, 0.2);
+}
+
+.game-card:hover::before {
+    opacity: 1;
+}
+
+.game-icon {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+}
+
+.game-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.game-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.house-edge {
+    font-size: 0.85rem;
+    color: var(--neon-red);
+    font-weight: 700;
+    margin-top: auto;
+    padding: 5px 15px;
+    background: rgba(255, 49, 49, 0.1);
+    border-radius: 20px;
+}
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .main-message {
+        font-size: 1.2rem;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .lobby-container {
+        padding: 30px 15px;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-message {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .title-sub {
+        font-size: 1rem;
+    }
+
+    .game-card {
+        padding: 15px;
+    }
+
+    .game-icon {
+        font-size: 2.22rem;
+    }
+
+    .game-name {
+        font-size: 1.4rem;
+    }
+}

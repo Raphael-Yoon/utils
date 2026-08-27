@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광진랜드 - 식보(Sic Bo)</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sicbo.css">
+    <link rel="stylesheet" href="mobile-ui.css">
+    <script src="shared-header.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="storage.js"></script>
+    <script src="mobile-ui.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header class="game-header" id="global-header">
+            <!-- Loaded by shared-header.js -->
+        </header>
+
+        <main class="main-container">
+            <section class="game-area">
+                <div id="game-message" class="game-message"></div>
+
+                <div class="dice-stage">
+                    <div class="dice-cup" id="dice-cup">
+                        <div class="dice-container">
+                            <div id="dice-1" class="dice">?</div>
+                            <div id="dice-2" class="dice">?</div>
+                            <div id="dice-3" class="dice">?</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="betting-table">
+                    <div class="bet-spot" id="bet-small" onclick="selectBet('SMALL')">
+                        <div class="bet-label">小 (SMALL)</div>
+                        <div class="bet-odds">1:1</div>
+                        <div class="bet-desc">합계 4 ~ 10<br>(트리플 제외)</div>
+                    </div>
+                    <div class="bet-spot" id="bet-big" onclick="selectBet('BIG')">
+                        <div class="bet-label">大 (BIG)</div>
+                        <div class="bet-odds">1:1</div>
+                        <div class="bet-desc">합계 11 ~ 17<br>(트리플 제외)</div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="stats-panel">
+                <div class="stats-group">
+                    <div class="sub-title">시뮬레이션 정보</div>
+                    <div class="stat-row">
+                        <span>진행 라운드</span>
+                        <span id="total-rounds" class="stat-value gold">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>하우스 수익</span>
+                        <span id="house-profit" class="stat-value red">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>최고 자산 달성</span>
+                        <span id="peak-balance" class="stat-value gold">1,000,000</span>
+                    </div>
+                </div>
+
+                <div class="stats-group">
+                    <div class="sub-title">자산 추이 (Balance Trend)</div>
+                    <div class="chart-container" style="height: 180px; margin-top: 5px;">
+                        <canvas id="assetChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="stats-group flex-log">
+                    <div class="sub-title">실시간 확률 분석 (Math Analysis)</div>
+                    <div id="analysis-dashboard" class="analysis-area">
+                        <div class="analysis-card">
+                            <span class="analysis-label">大 vs 小 출현 빈도</span>
+                            <div class="win-rate-bar">
+                                <div id="big-rate-bar" class="rate-p" style="width: 50%; background: var(--neon-red)">
+                                </div>
+                                <div id="small-rate-bar" class="rate-b" style="width: 50%; background: #2196f3"></div>
+                            </div>
+                            <div class="rate-labels">
+                                <span id="big-rate-text">大: 50%</span>
+                                <span id="small-rate-text">小: 50%</span>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">트리플(Triple) 포착 횟수</span>
+                            <div class="streak-box">
+                                <div class="streak-item" style="grid-column: span 2;">
+                                    <span class="s-label">플레이어 자동 패배 원인</span>
+                                    <span id="triple-count" class="s-value red">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">베팅 효율성 (ROI)</span>
+                            <div id="roi-display" class="roi-value">0.0%</div>
+                            <span class="roi-sub">총 베팅액 대비 수익 전환율</span>
+                        </div>
+                    </div>
+                    <div id="game-log" class="game-log" style="margin-top:15px; flex:1; min-height: 150px;"></div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="game-controls">
+            <div class="control-group">
+                <div class="speed-control-box">
+                    <span class="stat-label">시뮬레이션 속도</span>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <input type="range" min="1" max="10" value="5" class="speed-slider" id="speed-slider"
+                            oninput="updateSpeed(this.value)">
+                        <span id="speed-val" class="stat-value" style="font-size: 0.9rem;">5x</span>
+                    </div>
+                </div>
+                <div class="bet-adjust">
+                    <span class="stat-label">베팅 금액</span>
+                    <div class="amount-btns">
+                        <button onclick="adjustBet(-10000)">-1만</button>
+                        <span id="current-bet-display" class="stat-value gold"
+                            style="min-width: 80px; text-align: center;">10,000</span>
+                        <button onclick="adjustBet(10000)">+1만</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button id="play-once-btn" class="secondary-btn" onclick="playRound()">베팅하기</button>
+                <button id="auto-btn" class="start-btn" onclick="toggleAuto()">자동 시작</button>
+            </div>
+
+            <div class="house-rule-info">
+                대/소 홀짝: 1:1 환급<br>
+                트리플(세 주사위 일치) 시<br>
+                대/소 배팅은 무조건 패배
+            </div>
+        </footer>
+    </div>
+
+    <div id="bankruptcy-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>GAME OVER</h2>
+            <p>보유 자산을 모두 잃었습니다.</p>
+            <p style="color: #888; margin-top: 10px; font-size: 0.9rem;">"트리플이라는 하우스 엣지를 이기려 하지 마십시오."</p>
+            <button onclick="refill()">시드 충전 (100만)</button>
+        </div>
+    </div>
+
+    <script src="sicbo.js"></script>
+</body>
+
+</html>

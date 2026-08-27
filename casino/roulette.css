@@ -1,0 +1,626 @@
+:root {
+    --bg-color: #050505;
+    --card-table: #0a2e1f;
+    --neon-red: #ff3131;
+    --gold: #ffd700;
+    --green-0: #00ff41;
+    --text-white: #ffffff;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+#app {
+    display: contents;
+}
+
+
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.game-area {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #1a3a2a 0%, #050505 100%);
+    position: relative;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Roulette Wheel Styles */
+.wheel-stage {
+    position: relative;
+    width: 220px;
+    /* Slimmer */
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    flex-shrink: 0;
+}
+
+.roulette-wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #111;
+    border: 12px solid #333;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    transition: transform 3s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
+.wheel-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#00ff41 0deg 9.73deg, #ff3131 9.73deg 19.46deg, #000 19.46deg 29.19deg,
+            #ff3131 29.19deg 38.92deg, #000 38.92deg 48.65deg, #ff3131 48.65deg 58.38deg,
+            #000 58.38deg 68.11deg, #ff3131 68.11deg 77.84deg, #000 77.84deg 87.57deg,
+            #ff3131 87.57deg 97.3deg, #000 97.3deg 107.03deg, #ff3131 107.03deg 116.76deg,
+            #000 116.76deg 126.49deg, #ff3131 126.49deg 136.22deg, #000 136.22deg 145.95deg,
+            #ff3131 145.95deg 155.68deg, #000 155.68deg 165.41deg, #ff3131 165.41deg 175.14deg,
+            #000 175.14deg 184.87deg, #ff3131 184.87deg 194.6deg, #000 194.6deg 204.33deg,
+            #ff3131 204.33deg 214.06deg, #000 214.06deg 223.79deg, #ff3131 223.79deg 233.52deg,
+            #000 233.52deg 243.25deg, #ff3131 243.25deg 252.98deg, #000 252.98deg 262.71deg,
+            #ff3131 262.71deg 272.44deg, #000 272.44deg 282.17deg, #ff3131 282.17deg 291.9deg,
+            #000 291.9deg 301.63deg, #ff3131 301.63deg 311.36deg, #000 311.36deg 321.09deg,
+            #ff3131 321.09deg 330.82deg, #000 330.82deg 340.55deg, #ff3131 340.55deg 350.28deg,
+            #000 350.28deg 360deg);
+    border: 2px solid #222;
+}
+
+.wheel-ball {
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: calc(50% - 7px);
+    transform-origin: 50% 100px;
+    box-shadow: 0 0 10px #fff;
+    z-index: 5;
+    transition: transform 3s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
+.roulette-display {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    font-weight: 900;
+    background: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 20px var(--gold);
+}
+
+.roulette-display.red {
+    color: var(--neon-red);
+}
+
+.roulette-display.black {
+    color: #fff;
+}
+
+.roulette-display.zero {
+    color: var(--green-0);
+    border-color: var(--green-0);
+    box-shadow: 0 0 20px var(--green-0);
+}
+
+/* Betting Table Styles */
+.betting-table {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    height: 70px;
+    position: relative;
+    z-index: 5;
+    flex-shrink: 0;
+}
+
+.bet-spot {
+    width: 140px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.bet-spot.red {
+    background: rgba(255, 49, 49, 0.1);
+}
+
+.bet-spot.red:hover,
+.bet-spot.red.active {
+    border-color: var(--neon-red);
+    background: rgba(255, 49, 49, 0.2);
+    box-shadow: 0 0 15px var(--neon-red);
+}
+
+.bet-spot.black {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bet-spot.black:hover,
+.bet-spot.black.active {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.chip-marker {
+    position: absolute;
+    top: -15px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 3px dashed var(--gold);
+    background: #222;
+    color: var(--gold);
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.chip-marker.hidden {
+    display: none;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 800px;
+    height: 140px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass);
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: auto;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.stats-panel {
+    background: rgba(0, 0, 0, 0.7);
+    border-left: 1px solid var(--glass);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    backdrop-filter: blur(15px);
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    color: #fff;
+}
+
+.stats-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sub-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--gold);
+    border-bottom: 1px solid var(--glass);
+    padding-bottom: 5px;
+}
+
+.flex-log {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.analysis-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 5px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.analysis-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.analysis-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #bbb;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.win-rate-bar {
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.rate-p {
+    background: var(--neon-red);
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.rate-b {
+    background: #111;
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.rate-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+}
+
+.streak-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.streak-item {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.s-label {
+    display: block;
+    font-size: 0.6rem;
+    color: #666;
+}
+
+.s-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.s-value.green {
+    color: #4caf50;
+}
+
+.s-value.red {
+    color: var(--neon-red);
+}
+
+.roi-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gold);
+    text-align: center;
+}
+
+.roi-sub {
+    display: block;
+    text-align: center;
+    font-size: 0.6rem;
+    color: #555;
+}
+
+.game-controls {
+    height: 100px;
+    padding: 0 40px;
+    background: #000;
+    border-top: 2px solid var(--gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.control-group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.speed-control-box,
+.bet-adjust {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.amount-btns {
+    display: flex;
+    gap: 5px;
+}
+
+.amount-btns button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.start-btn {
+    padding: 12px 35px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(135deg, var(--gold), #b8860b);
+    color: #000;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.start-btn.active {
+    background: var(--neon-red);
+    color: #fff;
+}
+
+.secondary-btn {
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: 2px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 15px;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.secondary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #444;
+    color: #444;
+}
+
+.house-rule-info {
+    font-size: 0.7rem;
+    color: #666;
+    max-width: 250px;
+    text-align: right;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #111;
+    padding: 50px;
+    border-radius: 30px;
+    text-align: center;
+    border: 2px solid var(--neon-red);
+    max-width: 500px;
+}
+
+.modal-content h2 {
+    color: var(--neon-red);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    margin-top: 30px;
+    padding: 12px 40px;
+    border-radius: 10px;
+    border: none;
+    background: var(--gold);
+    color: #000;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 1100px) {
+    .rule-info {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+
+    html,
+    body {
+        height: auto;
+        overflow: visible;
+    }
+
+    body {
+        display: block;
+        position: relative;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        padding-bottom: 150px;
+    }
+
+    .game-area {
+        height: auto;
+        min-height: 300px;
+        overflow: visible;
+        padding: 10px;
+    }
+
+    .wheel-stage {
+        width: 180px;
+        height: 180px;
+        margin-top: 20px;
+    }
+
+    .wheel-ball {
+        transform-origin: 50% 80px;
+    }
+
+    .roulette-display {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+
+    .betting-table {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .bet-spot {
+        width: calc(50% - 10px);
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .stats-panel {
+        border-left: none;
+        border-top: 1px solid var(--glass);
+        height: auto;
+        overflow: visible;
+        padding: 20px;
+    }
+
+    .chart-container {
+        height: 180px;
+        margin-top: 30px;
+    }
+
+    .game-controls {
+        height: auto;
+        padding: 5px 12px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(5, 5, 5, 0.95);
+        border-top: 1px solid rgba(255, 215, 0, 0.4);
+        backdrop-filter: blur(20px);
+    }
+
+    .btn-group {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #play-once-btn,
+    #auto-btn,
+    .secondary-btn,
+    .start-btn {
+        flex: 1;
+        width: auto;
+        height: 44px;
+        padding: 0 5px;
+        font-size: 0.9rem;
+        margin: 0 !important;
+        border-radius: 12px;
+    }
+
+    .house-rule-info {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.6rem;
+    }
+}

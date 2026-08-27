@@ -10,3 +10,7 @@ outbox.json
 backups/
 migration_secrets.tar.gz
 .DS_Store
+credentials.json
+*.pickle
+google_tokens/
+tokens/

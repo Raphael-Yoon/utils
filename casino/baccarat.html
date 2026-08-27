@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광진랜드 - 바카라 시뮬레이터</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-ui.css">
+    <script src="shared-header.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="storage.js"></script>
+    <script src="mobile-ui.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header class="game-header" id="global-header">
+            <!-- Loaded by shared-header.js -->
+        </header>
+
+        <div class="main-container">
+            <main class="game-area">
+                <div id="game-message" class="game-message"></div>
+
+                <div class="hands-container">
+                    <div class="hand-section player-side">
+                        <div class="side-label">PLAYER <span id="player-score" class="score-badge">0</span></div>
+                        <div id="player-cards" class="cards-area"></div>
+                    </div>
+                    <div class="hand-section banker-side">
+                        <div class="side-label">BANKER <span id="banker-score" class="score-badge">0</span></div>
+                        <div id="banker-cards" class="cards-area"></div>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="stats-panel">
+                <div class="stats-group">
+                    <div class="sub-title">시뮬레이션 통계</div>
+                    <div class="stat-box">
+                        <span class="stat-label">총 게임 라운드</span>
+                        <span id="total-rounds" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">카지노 누적 수익 (수수료 포함)</span>
+                        <span id="house-profit" class="stat-value red">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">최고 수익 기록 (Peak)</span>
+                        <span id="peak-balance" class="stat-value gold">1,000,000</span>
+                    </div>
+                </div>
+
+                <div class="stats-group">
+                    <div class="sub-title">자산 추이 (Balance Trend)</div>
+                    <div class="chart-container" style="height: 180px; margin-top: 5px;">
+                        <canvas id="assetChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="stats-group flex-log">
+                    <div class="sub-title">실시간 확률 분석 (Math Analysis)</div>
+                    <div id="analysis-dashboard" class="analysis-area">
+                        <div class="analysis-card">
+                            <span class="analysis-label">플레이어 vs 뱅커 승률</span>
+                            <div class="win-rate-bar">
+                                <div id="p-rate-bar" class="rate-p" style="width: 50%"></div>
+                                <div id="b-rate-bar" class="rate-b" style="width: 50%"></div>
+                            </div>
+                            <div class="rate-labels">
+                                <span id="p-rate-text">P: 50%</span>
+                                <span id="b-rate-text">B: 50%</span>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">최장 연승 / 연패 기록</span>
+                            <div class="streak-box">
+                                <div class="streak-item">
+                                    <span class="s-label">연승</span>
+                                    <span id="max-wins" class="s-value green">0</span>
+                                </div>
+                                <div class="streak-item">
+                                    <span class="s-label">연패</span>
+                                    <span id="max-losses" class="s-value red">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">베팅 효율성 (ROI)</span>
+                            <div id="roi-display" class="roi-value">0.0%</div>
+                            <span class="roi-sub">총 베팅액 대비 수익 전환율</span>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">하우스 수수료 집계</span>
+                            <div id="total-commission" class="commission-value">0원</div>
+                        </div>
+                    </div>
+                    <div id="game-log" class="game-log" style="margin-top:15px; flex:1; min-height: 150px;"></div>
+                </div>
+            </aside>
+        </div>
+
+        <footer class="game-controls">
+            <div class="control-group">
+                <div class="speed-slider-box">
+                    <span class="stat-label">진행 속도 (<span id="speed-val">2x</span>)</span>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:0.7rem; color:#666">느림</span>
+                        <input type="range" min="1" max="10" step="1" value="4" oninput="updateSpeed(this.value)">
+                        <span style="font-size:0.7rem; color:#666">빠름</span>
+                    </div>
+                </div>
+                <div class="bet-adjust">
+                    <span class="stat-label">배팅액 조절</span>
+                    <div class="amount-btns">
+                        <button onclick="adjustBet(-10000)">-1만</button>
+                        <button onclick="adjustBet(10000)">+1만</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bet-side-select">
+                <button id="bet-player" class="bet-btn player" onclick="selectBetSide('PLAYER')">PLAYER</button>
+                <button id="bet-banker" class="bet-btn banker" onclick="selectBetSide('BANKER')">BANKER</button>
+            </div>
+
+            <div class="btn-group">
+                <button id="play-once-btn" class="secondary-btn" onclick="startGame()">베팅하기</button>
+                <button id="auto-btn" class="start-btn" onclick="toggleAuto()">자동 시작</button>
+            </div>
+
+            <div class="house-rule-info">
+                * 뱅커 승리 시 5% 수수료 차감 (하우스 엣지 1.06%)
+            </div>
+        </footer>
+    </div>
+
+    <!-- 파산 분석 리포트 모달 -->
+    <div id="bankruptcy-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>광진랜드의 수학적 우위</h2>
+            <p>"5%의 뱅커 수수료는 시간이 흐를수록 플레이어의 자산을 확실하게 갉아먹습니다."</p>
+            <button onclick="refillMoney()">자산 재충전 및 기록 복구</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

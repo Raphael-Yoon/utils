@@ -41,28 +41,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentTodoId = null;
     const photoUploadInput = document.getElementById('photo-upload');
 
-    const handleDataSnapshot = (snapshot) => {
-        const data = snapshot.val();
-        if (data) {
-            teamNameInput.value = data.teamName || '✨ 우리들의 신나는 모험 ✨';
-
-            if (data.todos) {
-                todos = Object.keys(data.todos).map(key => ({
-                    id: key,
-                    ...data.todos[key]
-                })).sort((a, b) => a.order - b.order);
-            } else {
-                // If todos don't exist, but other data does, initialize todos
-                todos = [];
-                initializeDefaultTodos();
-            }
-        } else {
-            // If no data, initialize with defaults
-            initializeDefaultData();
-        }
-        renderTodos();
-    };
-
     const initializeDefaultTodos = () => {
         allRecommendations.forEach((rec, index) => {
             todosRef.push({ text: rec.text, completed: false, order: index });
@@ -78,10 +56,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         dbRef.child('teamName').set(name);
     };
 
-    // --- Core Functions ---
-    const renderTodos = () => {
-        todoList.innerHTML = '';
-        if (todos.length === 0) {
+    // --- Core Rendering Functions ---
+    const renderEmptyList = () => {
+        if (todoList.children.length === 0) {
+            todoList.innerHTML = ''; // Clear any existing message
             const emptyMsg = document.createElement('li');
             emptyMsg.className = 'list-group-item text-center text-muted';
             emptyMsg.textContent = '모든 임무 완료! 🎉';
@@ -89,86 +67,92 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        todos.forEach(todo => {
-            const li = document.createElement('li');
-            li.className = `list-group-item ${todo.completed ? 'completed' : ''}`;
-            li.dataset.id = todo.id;
+        // If there are items, ensure the empty message is removed
+        const emptyMsg = todoList.querySelector('.text-muted');
+        if (emptyMsg) emptyMsg.remove();
+    };
 
-            const topRow = document.createElement('div');
-            topRow.className = 'todo-top-row';
+    const renderTodoItem = (todo) => {
+        const li = document.createElement('li');
+        li.className = `list-group-item ${todo.completed ? 'completed' : ''}`;
+        li.dataset.id = todo.id;
+        li.dataset.order = todo.order;
 
-            const handle = document.createElement('span');
-            handle.className = 'drag-handle';
-            handle.innerHTML = '&#9776;';
-            handle.addEventListener('mousedown', startDrag);
-            handle.addEventListener('touchstart', startDrag);
+        const topRow = document.createElement('div');
+        topRow.className = 'todo-top-row';
 
-            const textSpan = document.createElement('span');
-            textSpan.className = 'todo-text';
-            textSpan.textContent = todo.text;
-            textSpan.addEventListener('click', () => toggleTodo(todo.id));
+        const handle = document.createElement('span');
+        handle.className = 'drag-handle';
+        handle.innerHTML = '&#9776;';
+        handle.addEventListener('mousedown', startDrag);
+        handle.addEventListener('touchstart', startDrag);
 
-            const rightContainer = document.createElement('div');
-            rightContainer.className = 'right-container';
+        const textSpan = document.createElement('span');
+        textSpan.className = 'todo-text';
+        textSpan.textContent = todo.text;
+        textSpan.addEventListener('click', () => toggleTodo(todo.id, !todo.completed));
 
-            const deleteBtn = document.createElement('button');
-            deleteBtn.className = 'btn btn-danger btn-sm';
-            deleteBtn.textContent = 'X';
-            deleteBtn.addEventListener('click', () => deleteTodo(todo.id));
+        const rightContainer = document.createElement('div');
+        rightContainer.className = 'right-container';
 
-            if (todo.completed) {
-                if (todo.imageUrl) {
-                    // 이미지가 있을 경우: 교체 및 삭제 버튼
-                    const replaceBtn = document.createElement('button');
-                    replaceBtn.className = 'btn btn-sm btn-outline-success upload-btn me-1';
-                    replaceBtn.textContent = '사진 교체';
-                    replaceBtn.onclick = () => {
-                        currentTodoId = todo.id;
-                        photoUploadInput.click();
-                    };
-                    const deletePhotoBtn = document.createElement('button');
-                    deletePhotoBtn.className = 'btn btn-sm btn-outline-danger upload-btn';
-                    deletePhotoBtn.textContent = '사진 삭제';
-                    deletePhotoBtn.onclick = () => deletePhoto(todo.id);
-                    rightContainer.appendChild(replaceBtn);
-                    rightContainer.appendChild(deletePhotoBtn);
-                } else {
-                    // 이미지가 없을 경우: 업로드 버튼
-                    const uploadBtn = document.createElement('button');
-                    uploadBtn.className = 'btn btn-sm btn-outline-primary upload-btn';
-                    uploadBtn.textContent = '사진 올리기';
-                    uploadBtn.onclick = () => {
-                        currentTodoId = todo.id;
-                        photoUploadInput.click();
-                    };
-                    rightContainer.appendChild(uploadBtn);
-                }
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn btn-danger btn-sm';
+        deleteBtn.textContent = 'X';
+        deleteBtn.addEventListener('click', () => deleteTodo(todo.id));
+
+        if (todo.completed) {
+            if (todo.imageUrl) {
+                // 이미지가 있을 경우: 교체 및 삭제 버튼
+                const replaceBtn = document.createElement('button');
+                replaceBtn.className = 'btn btn-sm btn-outline-success upload-btn me-1';
+                replaceBtn.textContent = '사진 교체';
+                replaceBtn.onclick = () => {
+                    currentTodoId = todo.id;
+                    photoUploadInput.click();
+                };
+                const deletePhotoBtn = document.createElement('button');
+                deletePhotoBtn.className = 'btn btn-sm btn-outline-danger upload-btn';
+                deletePhotoBtn.textContent = '사진 삭제';
+                deletePhotoBtn.onclick = () => deletePhoto(todo.id);
+                rightContainer.appendChild(replaceBtn);
+                rightContainer.appendChild(deletePhotoBtn);
+            } else {
+                // 이미지가 없을 경우: 업로드 버튼
+                const uploadBtn = document.createElement('button');
+                uploadBtn.className = 'btn btn-sm btn-outline-primary upload-btn';
+                uploadBtn.textContent = '사진 올리기';
+                uploadBtn.onclick = () => {
+                    currentTodoId = todo.id;
+                    photoUploadInput.click();
+                };
+                rightContainer.appendChild(uploadBtn);
             }
+        }
 
-            rightContainer.appendChild(deleteBtn);
+        rightContainer.appendChild(deleteBtn);
 
-            topRow.appendChild(handle);
-            topRow.appendChild(textSpan);
-            topRow.appendChild(rightContainer);
+        topRow.appendChild(handle);
+        topRow.appendChild(textSpan);
+        topRow.appendChild(rightContainer);
 
-            li.appendChild(topRow);
+        li.appendChild(topRow);
 
-            if (todo.completed && todo.imageUrl) {
-                const img = document.createElement('img');
-                img.src = todo.imageUrl;
-                img.className = 'todo-image';
-                li.appendChild(img);
-            }
+        if (todo.completed && todo.imageUrl) {
+            const img = document.createElement('img');
+            img.src = todo.imageUrl;
+            img.className = 'todo-image';
+            li.appendChild(img);
+        }
 
-            todoList.appendChild(li);
-        });
-        updateProgress();
+        return li;
     };
 
     let draggedItem = null;
     let isDragging = false;
 
     function startDrag(e) {
+        // Prevent text selection while dragging
+        e.preventDefault();
         isDragging = true;
         draggedItem = e.target.closest('li');
         draggedItem.classList.add('dragging');
@@ -177,11 +161,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.addEventListener('touchmove', onDrag, { passive: false });
 
         document.addEventListener('mouseup', endDrag);
-        document.addEventListener('touchend', endDrag);
+        document.addEventListener('touchend', endDrag, { passive: true });
     }
 
     function onDrag(e) {
-        if (!isDragging) return;
+        if (!isDragging || !draggedItem) return;
         e.preventDefault();
 
         const y = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
@@ -195,7 +179,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function endDrag() {
-        if (!isDragging) return;
+        if (!isDragging || !draggedItem) return;
         isDragging = false;
         if (draggedItem) {
             draggedItem.classList.remove('dragging');
@@ -254,9 +238,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         progressBar.style.width = `${percentage}%`;
         progressBar.setAttribute('aria-valuenow', percentage);
 
-        if (percentage === 100 && totalCount > 0) {
-            // You can add a congratulations message here if you want
-        }
+        // --- Milestone Celebration ---
+        maybeCelebrateMilestone(percentage, totalCount);
     };
 
     const addTodo = (text) => {
@@ -265,11 +248,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         todosRef.push(newTodo);
     };
 
-    const toggleTodo = (id) => {
-        const todo = todos.find(t => t.id == id);
-        if (todo) {
-            todosRef.child(`${id}/completed`).set(!todo.completed);
-        }
+    const toggleTodo = (id, isCompleted) => {
+        todosRef.child(`${id}/completed`).set(isCompleted);
     };
 
     const deleteTodo = (id) => {
@@ -282,6 +262,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
+    const restoreUploadButtons = (buttons, spinner) => {
+        spinner.remove();
+        buttons.forEach(btn => {
+            const originalDisplay = btn.dataset.prevDisplay;
+            btn.style.display = originalDisplay !== undefined ? originalDisplay : '';
+            delete btn.dataset.prevDisplay;
+        });
+    };
+
     const uploadPhoto = (file) => {
         if (!currentTodoId || !file) return;
 
@@ -290,7 +279,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!listItem) return;
 
         const rightContainer = listItem.querySelector('.right-container');
-        const uploadBtn = rightContainer.querySelector('.upload-btn');
+        const uploadButtons = rightContainer ? Array.from(rightContainer.querySelectorAll('.upload-btn')) : [];
 
         // 2. 스피너 엘리먼트를 생성합니다.
         const spinner = document.createElement('div');
@@ -299,8 +288,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         spinner.innerHTML = `<span class="visually-hidden">Loading...</span>`;
 
         // 3. 기존 버튼을 숨기고 스피너를 표시합니다.
-        if (uploadBtn) uploadBtn.style.display = 'none';
-        rightContainer.prepend(spinner);
+        uploadButtons.forEach(btn => {
+            btn.dataset.prevDisplay = btn.style.display;
+            btn.style.display = 'none';
+        });
+        if (rightContainer) {
+            rightContainer.prepend(spinner);
+        }
 
         // --- 이미지 리사이징 로직 시작 ---
         const MAX_WIDTH = 800; // 이미지 최대 가로 크기
@@ -330,15 +324,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const resizedImageUrl = canvas.toDataURL('image/jpeg', 0.7);
 
                 // 리사이징된 이미지를 Firebase에 업로드
+              
                 todosRef.child(`${currentTodoId}/imageUrl`).set(resizedImageUrl)
                     .then(() => {
                         currentTodoId = null; // 성공 시 ID 초기화
                     })
                     .catch(error => {
                         alert('데이터베이스에 사진을 저장하지 못했습니다: ' + error.message);
-                        if (uploadBtn) uploadBtn.style.display = 'inline-block';
-                        spinner.remove();
                         currentTodoId = null;
+                    })
+                    .finally(() => {
+                        // 4. 통신이 끝나면 스피너를 제거하고, 버튼을 다시 보이게 합니다.
+                        restoreUploadButtons(uploadButtons, spinner);
                     });
             };
         };
@@ -346,12 +343,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         reader.onerror = (error) => { // 파일 읽기 실패 시
             console.error("Error reading file:", error);
             alert("파일을 읽는 중 오류가 발생했습니다.");
-            if (uploadBtn) uploadBtn.style.display = 'inline-block';
-            spinner.remove();
+            // 에러 발생 시 스피너를 제거하고, 숨겨둔 버튼을 다시 보이게 합니다.
+            restoreUploadButtons(uploadButtons, spinner);
             currentTodoId = null;
         };
 
         reader.readAsDataURL(file);
+
     };
 
     // --- Event Listeners ---
@@ -373,8 +371,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const file = e.target.files[0];
         uploadPhoto(file);
     });
-
-    // --- Initial Load ---
     allRecommendations.forEach(rec => {
         const btn = document.createElement('button');
         btn.className = 'btn btn-sm m-1';
@@ -383,6 +379,93 @@ document.addEventListener('DOMContentLoaded', async () => {
         recommendationsContainer.appendChild(btn);
     });
 
-    // --- Data Persistence Listener ---
-    dbRef.on('value', handleDataSnapshot);
+    // --- Efficient Data Listeners ---
+    dbRef.child('teamName').on('value', (snapshot) => {
+        teamNameInput.value = snapshot.val() || '✨ 우리들의 신나는 모험 ✨';
+    });
+
+    todosRef.on('child_added', (snapshot) => {
+        const newTodo = { id: snapshot.key, ...snapshot.val() };
+        todos.push(newTodo);
+        todos.sort((a, b) => a.order - b.order); // Keep the array sorted
+
+        const newItemElement = renderTodoItem(newTodo);
+
+        // Find the correct position to insert the new item based on its order
+        const existingItems = Array.from(todoList.children);
+        const successor = existingItems.find(item => parseInt(item.dataset.order) > newTodo.order);
+
+        if (successor) {
+            todoList.insertBefore(newItemElement, successor);
+        } else {
+            todoList.appendChild(newItemElement);
+        }
+        renderEmptyList();
+        updateProgress();
+    });
+
+    todosRef.on('child_changed', (snapshot) => {
+        const changedTodo = { id: snapshot.key, ...snapshot.val() };
+        const index = todos.findIndex(t => t.id === changedTodo.id);
+        if (index > -1) {
+            todos[index] = changedTodo;
+            const oldItemElement = todoList.querySelector(`li[data-id="${changedTodo.id}"]`);
+            if (oldItemElement) {
+                const newItemElement = renderTodoItem(changedTodo);
+                oldItemElement.replaceWith(newItemElement);
+                updateProgress();
+            }
+        }
+    });
+
+    todosRef.on('child_removed', (snapshot) => {
+        todos = todos.filter(t => t.id !== snapshot.key);
+        todoList.querySelector(`li[data-id="${snapshot.key}"]`)?.remove();
+        renderEmptyList();
+        updateProgress();
+    });
+
+    // ==========================
+    // Milestone Celebration Utils
+    // ==========================
+    const milestones = [25, 50, 75, 100];
+    let lastCelebratedMilestone = 0;
+
+    function maybeCelebrateMilestone(percentage, totalCount) {
+        if (totalCount === 0) return;
+        const next = milestones.find(m => percentage >= m && lastCelebratedMilestone < m);
+        if (!next) return;
+        lastCelebratedMilestone = next;
+        celebrate(next);
+    }
+
+    function celebrate(level) {
+        // Visual celebration only (no vibration/sound)
+        spawnEmojiConfetti(level);
+    }
+
+    function spawnEmojiConfetti(level) {
+        const count = level === 100 ? 40 : level === 75 ? 28 : level === 50 ? 22 : 16;
+        const emojis = ['🎉', '✨', '💖', '⭐', '🎈'];
+        const duration = 1500;
+        for (let i = 0; i < count; i++) {
+            const span = document.createElement('span');
+            span.className = 'confetti-emoji';
+            span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            const startLeft = Math.random() * 100; // vw
+            const size = 16 + Math.random() * 20; // px
+            const rotate = Math.random() * 360;
+            const delay = Math.random() * 200; // ms
+            span.style.left = startLeft + 'vw';
+            span.style.fontSize = size + 'px';
+            span.style.transform = `rotate(${rotate}deg)`;
+            span.style.animationDuration = (1 + Math.random() * 0.6) + 's';
+            span.style.animationDelay = delay + 'ms';
+            document.body.appendChild(span);
+            setTimeout(() => span.remove(), duration + 600);
+        }
+    }
+
+    // Removed sound (playChime) and vibration for mobile compatibility
+
 });

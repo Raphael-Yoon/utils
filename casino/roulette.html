@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광진랜드 - 룰렛 시뮬레이터</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="roulette.css">
+    <link rel="stylesheet" href="mobile-ui.css">
+    <script src="shared-header.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="storage.js"></script>
+    <script src="mobile-ui.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header class="game-header" id="global-header">
+            <!-- Loaded by shared-header.js -->
+        </header>
+
+        <div class="main-container">
+            <main class="game-area">
+                <div class="wheel-stage">
+                    <div id="roulette-wheel" class="roulette-wheel">
+                        <div class="wheel-inner"></div>
+                        <div id="wheel-ball" class="wheel-ball"></div>
+                    </div>
+                    <div id="roulette-display" class="roulette-display zero">?</div>
+                </div>
+
+                <div class="betting-table">
+                    <div id="bet-area-red" class="bet-spot red" onclick="selectBetSide('RED')">
+                        <span class="bet-label">RED</span>
+                        <div id="chip-red" class="chip-marker hidden">10K</div>
+                    </div>
+                    <div id="bet-area-black" class="bet-spot black" onclick="selectBetSide('BLACK')">
+                        <span class="bet-label">BLACK</span>
+                        <div id="chip-black" class="chip-marker hidden">10K</div>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="stats-panel">
+                <div class="stats-group">
+                    <div class="sub-title">시뮬레이션 통계</div>
+                    <div class="stat-box">
+                        <span class="stat-label">총 게임 라운드</span>
+                        <span id="total-rounds" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">카지노 누적 수익</span>
+                        <span id="house-profit" class="stat-value red">0</span>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                        <div class="stat-box">
+                            <span class="stat-label">'0' 발생 횟수</span>
+                            <span id="zero-count" class="stat-value" style="color:var(--green-0)">0</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">최고 수익 (Peak)</span>
+                            <span id="peak-balance" class="stat-value gold">1,000,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-group">
+                    <div class="sub-title">자산 추이 (Balance Trend)</div>
+                    <div class="chart-container" style="height: 180px; margin-top: 5px;">
+                        <canvas id="assetChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="stats-group flex-log">
+                    <div class="sub-title">실시간 확률 분석 (Math Analysis)</div>
+                    <div id="analysis-dashboard" class="analysis-area">
+                        <div class="analysis-card">
+                            <span class="analysis-label">RED vs BLACK 출현 빈도</span>
+                            <div class="win-rate-bar">
+                                <div id="red-rate-bar" class="rate-p" style="width: 50%; background: var(--neon-red)">
+                                </div>
+                                <div id="black-rate-bar" class="rate-b"
+                                    style="width: 50%; background: #222; border: 1px solid #444;"></div>
+                            </div>
+                            <div class="rate-labels">
+                                <span id="red-rate-text">R: 50%</span>
+                                <span id="black-rate-text">B: 50%</span>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">최장 연승 / 연패 기록</span>
+                            <div class="streak-box">
+                                <div class="streak-item">
+                                    <span class="s-label">연승</span>
+                                    <span id="max-wins" class="s-value green">0</span>
+                                </div>
+                                <div class="streak-item">
+                                    <span class="s-label">연패</span>
+                                    <span id="max-losses" class="s-value red">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">베팅 효율성 (ROI)</span>
+                            <div id="roi-display" class="roi-value">0.0%</div>
+                            <span class="roi-sub">총 베팅액 대비 수익 전환율</span>
+                        </div>
+                    </div>
+                    <div id="game-log" class="game-log" style="margin-top:15px; flex:1; min-height: 150px;"></div>
+                </div>
+            </aside>
+        </div>
+
+        <footer class="game-controls">
+            <div class="control-group">
+                <div class="speed-control-box">
+                    <span class="stat-label">진행 속도 (<span id="speed-val">4x</span>)</span>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:0.7rem; color:#666">느림</span>
+                        <input type="range" min="1" max="10" step="1" value="4" oninput="updateSpeed(this.value)">
+                        <span style="font-size:0.7rem; color:#666">빠름</span>
+                    </div>
+                </div>
+                <div class="bet-adjust">
+                    <span class="stat-label">배팅액 조절</span>
+                    <div class="amount-btns">
+                        <button onclick="adjustBet(-10000)">-1만</button>
+                        <button onclick="adjustBet(10000)">+1만</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button id="play-once-btn" class="secondary-btn" onclick="playRound()">베팅하기</button>
+                <button id="auto-btn" class="start-btn" onclick="toggleAuto()">자동 시작</button>
+            </div>
+
+            <div class="house-rule-info">
+                * 유럽형 룰렛 (0~36). '0' 발생 시 배팅금 전액 몰수.
+            </div>
+        </footer>
+    </div>
+
+    <div id="bankruptcy-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>광진랜드가 승리했습니다</h2>
+            <p>"룰렛의 '0'은 통계적 필패를 완성하는 마침표입니다. (하우스 엣지 2.7%)"</p>
+            <button onclick="refill()">자산 재충전 및 다시 시작</button>
+        </div>
+    </div>
+
+    <script src="roulette.js"></script>
+</body>
+
+</html>

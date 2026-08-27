@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광진랜드 - 슬롯머신</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="slots.css">
+    <link rel="stylesheet" href="mobile-ui.css">
+    <script src="shared-header.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="storage.js"></script>
+    <script src="mobile-ui.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header class="game-header" id="global-header">
+            <!-- Loaded by shared-header.js -->
+        </header>
+
+        <main class="main-container">
+            <section class="game-area">
+                <div id="game-message" class="game-message"></div>
+
+                <div class="slot-machine-container">
+                    <div class="slot-window">
+                        <div class="reel" id="reel-1">
+                            <div class="reel-strip" id="strip-1"></div>
+                        </div>
+                        <div class="reel" id="reel-2">
+                            <div class="reel-strip" id="strip-2"></div>
+                        </div>
+                        <div class="reel" id="reel-3">
+                            <div class="reel-strip" id="strip-3"></div>
+                        </div>
+                    </div>
+                    <div class="slot-decoration">
+                        <div class="jackpot-indicator">JACKPOT 777</div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="stats-panel">
+                <div class="stats-group">
+                    <div class="sub-title">시뮬레이션 정보</div>
+                    <div class="stat-row">
+                        <span>진행 라운드</span>
+                        <span id="total-rounds" class="stat-value gold">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>하우스 수익</span>
+                        <span id="house-profit" class="stat-value red">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>최고 자산 달성</span>
+                        <span id="peak-balance" class="stat-value gold">1,000,000</span>
+                    </div>
+                </div>
+
+                <div class="stats-group">
+                    <div class="sub-title">자산 추이 (Balance Trend)</div>
+                    <div class="chart-container" style="height: 180px; margin-top: 5px;">
+                        <canvas id="assetChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="stats-group flex-log">
+                    <div class="sub-title">실시간 확률 분석 (Math Analysis)</div>
+                    <div id="analysis-dashboard" class="analysis-area">
+                        <div class="analysis-card">
+                            <span class="analysis-label">환급률 추적 (Actual RTP)</span>
+                            <div class="win-rate-bar">
+                                <div id="rtp-bar" class="rate-p" style="width: 94%; background: var(--gold)"></div>
+                            </div>
+                            <div class="rate-labels">
+                                <span id="rtp-text">RTP: 0.0%</span>
+                                <span style="color:#666">Target: 94%</span>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">최장 연패 기록</span>
+                            <div class="streak-box">
+                                <div class="streak-item" style="grid-column: span 2;">
+                                    <span class="s-label">현재 무수익 연패</span>
+                                    <span id="max-losses" class="s-value red">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <span class="analysis-label">베팅 효율성 (ROI)</span>
+                            <div id="roi-display" class="roi-value">0.0%</div>
+                            <span class="roi-sub">총 베팅액 대비 수익 전환율</span>
+                        </div>
+                    </div>
+                    <div id="game-log" class="game-log" style="margin-top:15px; flex:1; min-height: 150px;"></div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="game-controls">
+            <div class="control-group">
+                <div class="speed-control-box">
+                    <span class="stat-label">진행 속도 (<span id="speed-val">5x</span>)</span>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:0.7rem; color:#666">느림</span>
+                        <input type="range" min="1" max="10" step="1" value="5" oninput="updateSpeed(this.value)">
+                        <span style="font-size:0.7rem; color:#666">빠름</span>
+                    </div>
+                </div>
+                <div class="bet-adjust">
+                    <span class="stat-label">배팅액 조절</span>
+                    <div class="amount-btns">
+                        <button onclick="adjustBet(-10000)">-1만</button>
+                        <button onclick="adjustBet(10000)">+1만</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button id="play-once-btn" class="secondary-btn" onclick="spin()">베팅하기</button>
+                <button id="auto-btn" class="start-btn" onclick="toggleAuto()">자동 시작</button>
+            </div>
+
+            <div class="house-rule-info">
+                기본 RTP: 94% 설정<br>
+                잭팟(Logo): 500배<br>
+                777: 100배
+            </div>
+        </footer>
+    </div>
+
+    <!-- 파산 모달 -->
+    <div id="bankruptcy-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>GAME OVER</h2>
+            <p>보유 자산을 모두 잃었습니다.</p>
+            <p style="color: #888; margin-top: 10px; font-size: 0.9rem;">"슬롯머신의 94% RTP는 결국 당신이 6%를 무조건 잃는다는 뜻입니다."</p>
+            <button onclick="refill()">시드 충전 (100만)</button>
+        </div>
+    </div>
+
+    <script src="slots.js"></script>
+</body>
+
+</html>

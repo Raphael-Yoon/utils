@@ -1,0 +1,623 @@
+:root {
+    --bg-color: #050505;
+    --card-table: #0a1a1a;
+    --neon-red: #ff3131;
+    --gold: #ffd700;
+    --text-white: #ffffff;
+    --glass: rgba(255, 255, 255, 0.1);
+    --player-blue: #2196f3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+#app {
+    display: contents;
+}
+
+
+
+/* --- Game Layout --- */
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.game-area {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #1a2a2a 0%, #050a0a 100%);
+    position: relative;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.hand-display {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    margin-top: auto;
+    /* Centering boost */
+    height: 310px;
+    /* Further reduced */
+    flex-shrink: 0;
+}
+
+.hand-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.side-label {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 4px 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.score-badge {
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 800;
+}
+
+.cards-container {
+    display: flex;
+    gap: 10px;
+    height: 120px;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    width: 80px;
+    height: 120px;
+    background: #fff;
+    color: #000;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    font-weight: 800;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    animation: dealIn 0.4s ease-out;
+}
+
+.card.red {
+    color: var(--neon-red);
+}
+
+@keyframes dealIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 800px;
+    height: 140px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass);
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: auto;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.stats-panel {
+    background: rgba(0, 0, 0, 0.7);
+    border-left: 1px solid var(--glass);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    backdrop-filter: blur(15px);
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    color: #fff;
+}
+
+.stats-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sub-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--gold);
+    border-bottom: 1px solid var(--glass);
+    padding-bottom: 5px;
+}
+
+.stat-value.red {
+    color: var(--neon-red);
+}
+
+.stat-value.gold {
+    color: var(--gold);
+}
+
+.flex-log {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.analysis-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 5px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.analysis-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.analysis-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #bbb;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.win-rate-bar {
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.rate-p {
+    background: var(--player-blue);
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.rate-b {
+    background: var(--neon-red);
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.rate-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+}
+
+.streak-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.streak-item {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.s-label {
+    display: block;
+    font-size: 0.6rem;
+    color: #666;
+}
+
+.s-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.s-value.green {
+    color: #4caf50;
+}
+
+.s-value.red {
+    color: var(--neon-red);
+}
+
+.roi-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gold);
+    text-align: center;
+}
+
+.roi-sub {
+    display: block;
+    text-align: center;
+    font-size: 0.6rem;
+    color: #555;
+}
+
+.game-controls {
+    height: 100px;
+    padding: 0 40px;
+    background: #000;
+    border-top: 2px solid var(--gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.control-group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.speed-control,
+.bet-adjust {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.amount-btns {
+    display: flex;
+    gap: 5px;
+}
+
+.amount-btns button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.start-btn {
+    padding: 15px 40px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(135deg, var(--player-blue), #0d47a1);
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
+}
+
+.start-btn.active {
+    background: var(--neon-red);
+}
+
+.secondary-btn {
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: 2px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 15px;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.secondary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #444;
+    color: #444;
+}
+
+.house-rule-info {
+    font-size: 0.75rem;
+    color: #666;
+    max-width: 250px;
+    text-align: right;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #111;
+    padding: 50px;
+    border-radius: 30px;
+    text-align: center;
+    border: 2px solid var(--player-blue);
+    max-width: 500px;
+}
+
+.modal-content h2 {
+    color: var(--player-blue);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    margin-top: 30px;
+    padding: 12px 40px;
+    border-radius: 10px;
+    border: none;
+    background: var(--gold);
+    color: #000;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 1100px) {
+    .rule-info {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+
+    html,
+    body {
+        height: auto;
+        overflow: visible;
+    }
+
+    body {
+        display: block;
+        position: relative;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+
+    .game-area {
+        height: auto;
+        min-height: 250px;
+        overflow: visible;
+        padding: 10px;
+    }
+
+    .hand-display {
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .cards-container {
+        height: 100px;
+        width: 140px;
+        position: relative;
+    }
+
+    .cards-container .card {
+        position: absolute;
+        width: 65px;
+        height: 100px;
+    }
+
+    .cards-container .card:nth-child(1) {
+        left: 0;
+        z-index: 1;
+    }
+
+    .cards-container .card:nth-child(2) {
+        left: 25px;
+        z-index: 2;
+    }
+
+    .cards-container .card:nth-child(3) {
+        left: 50px;
+        z-index: 3;
+    }
+
+    .cards-container .card:nth-child(4) {
+        left: 75px;
+        z-index: 4;
+    }
+
+    .card {
+        width: 65px;
+        height: 100px;
+        font-size: 0.9rem;
+    }
+
+    .stats-panel {
+        border-left: none;
+        border-top: 1px solid var(--glass);
+        height: auto;
+        overflow: visible;
+        padding: 20px;
+    }
+
+    .game-controls {
+        height: auto;
+        padding: 5px 12px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(5, 5, 5, 0.95);
+        border-top: 1px solid rgba(255, 215, 0, 0.4);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        padding-bottom: 150px;
+        /* Precise space for the footer */
+    }
+
+    .control-group {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .speed-control,
+    .bet-adjust,
+    .speed-slider-box {
+        flex: 1;
+        transform: scale(0.9);
+        margin: 0;
+    }
+
+    .btn-group {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #play-once-btn,
+    #auto-btn,
+    .secondary-btn,
+    .start-btn {
+        flex: 1;
+        width: auto;
+        height: 48px;
+        padding: 0 10px;
+        font-size: 0.95rem;
+        margin: 0 !important;
+        border-radius: 12px;
+    }
+
+    .game-controls>button {
+        display: none;
+        /* Fallback */
+    }
+
+    /* Keep buttons side by side */
+    .game-controls {
+        flex-direction: column;
+    }
+
+    .game-controls .btn-row {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .house-rule-info {
+        display: none;
+        /* Save space on mobile */
+    }
+
+    /* Buttons already handled in btn-group */
+
+    .house-rule-info {
+        text-align: center;
+        max-width: none;
+    }
+
+    .chart-container {
+        height: 180px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .side-label {
+        font-size: 1rem;
+    }
+
+    .modal-content {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.6rem;
+    }
+}

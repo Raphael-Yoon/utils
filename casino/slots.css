@@ -1,0 +1,569 @@
+:root {
+    --bg-color: #050505;
+    --card-table: #2a1a2a;
+    /* Purple mood for slots */
+    --neon-red: #ff3131;
+    --gold: #ffd700;
+    --text-white: #ffffff;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+#app {
+    display: contents;
+}
+
+
+
+/* --- Game Layout --- */
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.game-area {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, var(--card-table) 0%, var(--bg-color) 100%);
+    position: relative;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.game-message {
+    font-size: 1.1rem;
+    font-weight: 800;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0 30px;
+    border-radius: 20px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(20, 20, 0, 0.8));
+    margin-top: 15px;
+    margin-bottom: 20px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Slot Machine UI */
+.slot-machine-container {
+    width: 450px;
+    height: 400px;
+    /* Reduced to fit 3x3 box properly */
+    background: linear-gradient(180deg, #666, #222);
+    border: 10px solid #444;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.slot-window {
+    display: flex;
+    gap: 15px;
+    background: #000;
+    padding: 10px;
+    border-radius: 10px;
+    height: 300px;
+    /* To show 3 symbols properly */
+    overflow: hidden;
+    border: 4px solid #111;
+    position: relative;
+}
+
+/* Payline highlighter */
+.slot-window::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    transform: translateY(-50%);
+    border-top: 2px solid rgba(255, 215, 0, 0.3);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.05);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.reel {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.reel-strip {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.symbol {
+    height: 100px;
+    /* Each symbol height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #000;
+    font-weight: 800;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.symbol.jackpot {
+    color: var(--neon-red);
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.slot-decoration {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.jackpot-indicator {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--gold);
+    animation: blink 0.5s infinite alternate;
+}
+
+@keyframes blink {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 800px;
+    height: 140px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass);
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: auto;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+/* Analysis Panel */
+.stats-panel {
+    background: rgba(0, 0, 0, 0.7);
+    border-left: 1px solid var(--glass);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    backdrop-filter: blur(15px);
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    color: #fff;
+}
+
+.stats-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sub-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--gold);
+    border-bottom: 1px solid var(--glass);
+    padding-bottom: 5px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+.analysis-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 5px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.analysis-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.analysis-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #bbb;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.win-rate-bar {
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.rate-p {
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.rate-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+}
+
+.streak-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.streak-item {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.s-label {
+    display: block;
+    font-size: 0.6rem;
+    color: #666;
+}
+
+.s-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.s-value.red {
+    color: var(--neon-red);
+}
+
+.roi-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gold);
+    text-align: center;
+}
+
+.roi-sub {
+    display: block;
+    text-align: center;
+    font-size: 0.6rem;
+    color: #555;
+}
+
+/* Controls */
+.game-controls {
+    height: 100px;
+    padding: 0 40px;
+    background: #000;
+    border-top: 2px solid var(--gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-group {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.amount-btns {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.amount-btns button {
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.start-btn {
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, var(--gold), #b8860b);
+    color: #000;
+    font-weight: 900;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    transition: all 0.2s;
+}
+
+.start-btn.active {
+    background: var(--neon-red);
+    color: #fff;
+}
+
+.secondary-btn {
+    padding: 15px 30px;
+    border-radius: 30px;
+    border: 2px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 15px;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.secondary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: #444;
+    color: #444;
+}
+
+.speed-slider {
+    width: 120px;
+}
+
+.house-rule-info {
+    font-size: 0.75rem;
+    color: #666;
+    text-align: right;
+    line-height: 1.4;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #111;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--gold);
+    max-width: 400px;
+}
+
+.modal-content h2 {
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.modal-content button {
+    margin-top: 25px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: none;
+    background: var(--gold);
+    color: #000;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 1100px) {
+    .rule-info {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+
+    html,
+    body {
+        height: auto;
+        overflow: visible;
+    }
+
+    body {
+        display: block;
+        position: relative;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+        padding-bottom: 150px;
+    }
+
+    .game-area {
+        height: auto;
+        min-height: 250px;
+        overflow: visible;
+        padding: 10px;
+    }
+
+    .slot-machine {
+        width: 100%;
+        max-width: 320px;
+        padding: 15px;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .reel {
+        height: 120px;
+    }
+
+    .symbol {
+        font-size: 2.5rem;
+    }
+
+    .stats-panel {
+        border-left: none;
+        border-top: 1px solid var(--glass);
+        height: auto;
+        overflow: visible;
+        padding: 20px;
+    }
+
+    .chart-container {
+        height: 180px;
+        margin-top: 30px;
+    }
+
+    .game-controls {
+        height: auto;
+        padding: 5px 12px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(5, 5, 5, 0.95);
+        border-top: 1px solid rgba(255, 215, 0, 0.4);
+        backdrop-filter: blur(20px);
+    }
+
+    .btn-group {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #play-once-btn,
+    #auto-btn,
+    .secondary-btn,
+    .start-btn {
+        flex: 1;
+        width: auto;
+        height: 44px;
+        padding: 0 5px;
+        font-size: 0.9rem;
+        margin: 0 !important;
+        border-radius: 12px;
+    }
+
+    .house-rule-info {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-value {
+        font-size: 1rem;
+    }
+
+    .symbol {
+        font-size: 2rem;
+    }
+
+    .modal-content {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+}
