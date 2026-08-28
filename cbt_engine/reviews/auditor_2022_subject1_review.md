@@ -4,9 +4,9 @@
 * **대상 시험**: 2022년도 정보시스템감리사 자격검정
 * **대상 과목**: 제1과목 감리 및 사업관리 (1번 ~ 25번, 총 25문항)
 * **반영 파일**:
-  * [auditor_2022_subject1.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/exams/auditor_2022_subject1.json)
-  * [auditor_2022.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/exams/auditor_2022.json)
-  * [auditor_subject_1_5years.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/exams/auditor_subject_1_5years.json)
+  * [auditor_2022_subject1.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/reviews/auditor_2022_subject1.json)
+  * [auditor_2022.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/reviews/auditor_2022.json)
+  * [auditor_subject_1_5years.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/reviews/auditor_subject_1_5years.json)
 * **작업 목적**: 2022년 1과목 25문항 전반에 대해 10년 차 IT 감사 실무자의 직관적 통찰과 수험 핵심 논점(출제자 함정 분석, 5개년 출제 트렌드, 암기 공식, 거버넌스 R&R)을 완벽히 융합하여 CBT 원천 데이터 해설을 심층 보강하고, 전체 대화 내용을 체계적으로 자산화함.
 
 ---

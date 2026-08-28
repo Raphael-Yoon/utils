@@ -4,9 +4,9 @@
 * **대상 시험**: 2023년도 정보시스템감리사 자격검정
 * **대상 과목**: 제1과목 감리 및 사업관리 (1번 ~ 25번, 총 25문항)
 * **반영 파일**:
-  * [auditor_2023_subject1.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/exams/auditor_2023_subject1.json)
-  * [auditor_2023.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/exams/auditor_2023.json)
-  * [auditor_subject_1_5years.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/exams/auditor_subject_1_5years.json)
+  * [auditor_2023_subject1.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/reviews/auditor_2023_subject1.json)
+  * [auditor_2023.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/reviews/auditor_2023.json)
+  * [auditor_subject_1_5years.json](file:///home/yuju/Dev/Pythons/utils/cbt_engine/reviews/auditor_subject_1_5years.json)
 * **작업 목적**: 2024~2026년도 최신 기출 JSON의 고품질 해설 표준 포맷(`[출처]`, `[해설]`, `💡 [실무 쟁점 & 핵심 Q&A 노트]`)을 2023년 1과목 25문항 전반에 동일하게 적용하고, 실전 대화에서 도출된 핵심 비유와 법리적 통찰을 해설에 영구 반영함.
 
 ---
