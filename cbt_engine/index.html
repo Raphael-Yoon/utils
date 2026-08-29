@@ -2744,10 +2744,41 @@ let currentModalScale = 1;
 
 function updateModalImageTransform() {
   const modalImg = document.getElementById('imgModalContent');
-  if (modalImg) {
-    modalImg.style.transform = `rotate(${currentModalRotation}deg) scale(${currentModalScale})`;
-    modalImg.style.transition = 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)';
-  }
+  if (!modalImg) return;
+  modalImg.style.transform = `rotate(${currentModalRotation}deg) scale(${currentModalScale})`;
+  modalImg.style.transition = 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.2s ease, height 0.2s ease';
+
+  // 90/270도 회전 시 가로<->세로 바운딩 박스가 뒤바뀌므로, 뷰포트 기준 가용 폭/높이(78vh)에
+  // 맞춰 회전 후 크기를 미리 계산해 이미지가 화면 밖으로 잘려나가지 않게 한다.
+  const normalized = ((currentModalRotation % 360) + 360) % 360;
+  const sideways = normalized === 90 || normalized === 270;
+  const wrapper = modalImg.parentElement; // overflow:hidden 래퍼(max-width:90%, max-height:80vh)
+  const resize = () => {
+    const naturalW = modalImg.naturalWidth || 1;
+    const naturalH = modalImg.naturalHeight || 1;
+    const availW = Math.max(1, (wrapper ? wrapper.clientWidth : window.innerWidth) - 24);
+    const availH = Math.max(1, window.innerHeight * 0.78);
+    if (sideways) {
+      // 회전 후 화면상 가로=회전 전 높이, 화면상 세로=회전 전 너비가 되므로,
+      // 회전 후 가로가 availW를, 회전 후 세로가 availH를 넘지 않도록 역산한다.
+      const cssHeight = Math.min(availW, naturalH, availH * (naturalH / naturalW));
+      const cssWidth = cssHeight * (naturalW / naturalH);
+      modalImg.style.maxWidth = 'none';
+      modalImg.style.maxHeight = 'none';
+      modalImg.style.width = `${cssWidth}px`;
+      modalImg.style.height = `${cssHeight}px`;
+      // transform은 레이아웃에 영향을 주지 않으므로, overflow:hidden 래퍼의 높이도
+      // 회전 후 실제 보이는 높이(=회전 전 너비)에 맞춰 직접 늘려줘야 잘리지 않는다.
+      if (wrapper) wrapper.style.height = `${cssWidth}px`;
+    } else {
+      modalImg.style.width = '';
+      modalImg.style.height = '';
+      modalImg.style.maxWidth = '100%';
+      modalImg.style.maxHeight = '78vh';
+      if (wrapper) wrapper.style.height = '';
+    }
+  };
+  if (modalImg.complete && modalImg.naturalWidth) resize(); else modalImg.onload = resize;
 }
 
 function rotateModalImage(deltaDeg) {
@@ -2782,19 +2813,52 @@ function closeImageModal() {
 
 // 인라인 문제 이미지 회전
 const inlineImageRotations = {};
-function rotateInlineImage(imgId, deltaDeg) {
+function applyInlineImageTransform(imgId) {
   const img = document.getElementById(imgId);
   if (!img) return;
-  inlineImageRotations[imgId] = ((inlineImageRotations[imgId] || 0) + deltaDeg) % 360;
-  img.style.transform = `rotate(${inlineImageRotations[imgId]}deg)`;
-  img.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+  const deg = inlineImageRotations[imgId] || 0;
+  const normalized = ((deg % 360) + 360) % 360;
+  const sideways = normalized === 90 || normalized === 270;
+  img.style.transform = `rotate(${deg}deg)`;
+  img.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), width 0.25s ease, height 0.25s ease';
+
+  // 90/270도 회전 시 시각적 바운딩 박스(가로<->세로)가 뒤바뀌므로,
+  // overflow:hidden 컨테이너에 안 잘리도록 이미지 실제 렌더 크기를 미리 맞바꿔 계산한다.
+  const wrapper = img.parentElement; // overflow:hidden 플렉스 래퍼
+  const resize = () => {
+    const naturalW = img.naturalWidth || 1;
+    const naturalH = img.naturalHeight || 1;
+    const wrapperWidth = (wrapper && wrapper.clientWidth) || img.clientWidth || naturalW;
+    const availW = Math.max(1, Math.min(780, wrapperWidth) - 4);
+    if (sideways) {
+      const cssHeight = Math.min(availW, naturalH);
+      const cssWidth = cssHeight * (naturalW / naturalH);
+      img.style.maxWidth = 'none';
+      img.style.width = `${cssWidth}px`;
+      img.style.height = `${cssHeight}px`;
+      // transform은 레이아웃에 영향을 주지 않으므로, 래퍼의 높이도 회전 후 실제
+      // 보이는 높이(=회전 전 너비)에 맞춰 직접 늘려줘야 위아래가 잘리지 않는다.
+      if (wrapper) wrapper.style.height = `${cssWidth}px`;
+    } else {
+      img.style.maxWidth = '780px';
+      img.style.width = '100%';
+      img.style.height = 'auto';
+      if (wrapper) wrapper.style.height = '';
+    }
+  };
+  if (img.complete && img.naturalWidth) resize(); else img.onload = resize;
+}
+
+function rotateInlineImage(imgId, deltaDeg) {
+  if (!document.getElementById(imgId)) return;
+  inlineImageRotations[imgId] = (inlineImageRotations[imgId] || 0) + deltaDeg;
+  applyInlineImageTransform(imgId);
 }
 
 function resetInlineImage(imgId) {
-  const img = document.getElementById(imgId);
-  if (!img) return;
+  if (!document.getElementById(imgId)) return;
   inlineImageRotations[imgId] = 0;
-  img.style.transform = 'rotate(0deg)';
+  applyInlineImageTransform(imgId);
 }
 
 // OMR 답안지 패널 접기 / 펼치기 제어 로직
