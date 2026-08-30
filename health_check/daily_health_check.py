@@ -67,7 +67,7 @@ AP_TARGETS = [
         "tunnel_cmd": f"cloudflared tunnel run --url http://127.0.0.1:5003 89a30767-5899-4985-9723-59b7a9eebea2 > '{os.path.join(PROJECT_ROOT, 'infosd', 'cloudflared_infosd.log')}' 2>&1"
     },
     {
-        "name": "CBT Engine (모의고사 시스템)",
+        "name": "풀어봄 (CBT 모의고사 시스템)",
         "local_url": "http://127.0.0.1:5004",
         "external_url": "https://cbt.snowball.pe.kr",
         "start_script": os.path.join(PROJECT_ROOT, "utils", "cbt_engine", "cbt_start.sh"),

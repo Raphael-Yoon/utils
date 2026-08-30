@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>풀자 (PULZA) - 스마트 CBT 국가자격시험 플랫폼</title>
+  <title>풀어봄 - 스마트 CBT 모의고사 시스템 (Pool-eobom)</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="shortcut icon" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,8 +108,8 @@
       z-index: 10;
       transition: background-color 0.2s ease;
     }
-    .brand { font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-    .brand span { background: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; }
+    .brand { font-size: 1.35rem; font-weight: 800; display: flex; align-items: center; gap: 10px; color: #ffffff; letter-spacing: -0.5px; }
+    .brand .brand-badge { background: var(--primary); color: #ffffff; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0; }
     
     .timer-badge {
       background: #334155;
@@ -777,7 +777,7 @@
 
 <header>
   <div class="brand">
-    <span>PULZA</span> 풀자 국가자격시험 CBT 시스템
+    🌸 풀어봄 <span class="brand-badge">CBT 실전 모의고사</span>
   </div>
   <div class="timer-badge" id="timerBadge" style="display:none;" onclick="toggleTimerPause()" title="클릭하여 타이머 일시정지 / 재생">
     <span id="timerIcon">⏱️</span> <span id="timerStr">120:00</span>
@@ -795,8 +795,8 @@
   <!-- 1. 시험 선택 홈 화면 -->
   <div class="start-screen" id="startScreen">
     <div class="start-card">
-      <h2>🎓 풀자(PULZA) 실전 CBT 모의고사</h2>
-      <p>응시하고자 하는 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
+      <h2>🌸 풀어봄 실전 모의고사</h2>
+      <p>문제를 풀어보고 합격의 봄을 맞이하세요. 응시할 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
       
       <!-- 진행 중인 시험 이어서 풀기 배너 -->
       <div id="resumeBanner" style="display:none; background:#fffbeb; border:1.5px solid #f59e0b; padding:16px; border-radius:10px; margin-bottom:20px; text-align:left; box-shadow:0 2px 6px rgba(245,158,11,0.15);">
@@ -2401,7 +2401,7 @@ async function copyAiAnalysisPrompt(summary = lastSubmissionSummary) {
     });
   }
 
-  const promptText = `# 🎓 [CBT 모의고사 결과 분석 및 AI 튜터 맞춤 진단 요청]
+  const promptText = `# 🌸 [풀어봄 CBT 모의고사 결과 분석 및 AI 튜터 맞춤 진단 요청]
 
 ## 1. 응시 기본 정보
 - **시험명**: ${examData.exam_info.title}
@@ -2644,7 +2644,7 @@ async function generateCategoryAggregatedReport(targetCategory, attempts) {
     });
   }
 
-  const markdownContent = `# 🎓 [CBT 모의고사 자격증 누적 응시 이력 종합 분석 및 AI 맞춤 합격 전략 진단]
+  const markdownContent = `# 🌸 [풀어봄 CBT 모의고사 자격증 누적 응시 이력 종합 분석 및 AI 맞춤 합격 전략 진단]
 
 ## 1. 자격증 종합 응시 개요
 - **대상 자격증 종목**: **${targetCategory || '전체 종목'}**

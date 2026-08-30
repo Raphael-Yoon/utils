@@ -3,12 +3,12 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-# 1. 기존에 돌고 있는 CBT Engine 프로세스 종료 (PID 파일 활용)
+# 1. 기존에 돌고 있는 풀어봄(CBT) 프로세스 종료 (PID 파일 활용)
 PID_FILE="$SCRIPT_DIR/cbt.pid"
 if [ -f "$PID_FILE" ]; then
     PID=$(cat "$PID_FILE")
     if ps -p $PID > /dev/null 2>&1; then
-        echo "Stopping existing CBT Engine process (PID: $PID)..."
+        echo "Stopping existing 풀어봄 CBT process (PID: $PID)..."
         kill -9 $PID
     fi
     rm "$PID_FILE"
@@ -28,8 +28,8 @@ sleep 1
 
 # 4. 결과 출력 (프로세스 생존 여부까지 확인 후 성공/실패를 명확히 알림)
 if ps -p $PID > /dev/null 2>&1; then
-    echo "🚀 CBT Engine 서버가 정상적으로 기동되었습니다 (PID: $PID, 포트: 5004)"
+    echo "🚀 풀어봄(Pool-eobom) CBT 서버가 정상적으로 기동되었습니다 (PID: $PID, 포트: 5004)"
 else
-    echo "❌ CBT Engine 서버 기동 실패. cbt_server.log를 확인하세요."
+    echo "❌ 풀어봄 CBT 서버 기동 실패. cbt_server.log를 확인하세요."
     exit 1
 fi

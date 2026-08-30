@@ -1,5 +1,5 @@
 """
-[개발4팀 전사 공통 모듈] CBT 모의고사 전용 HTTP 서버 및 러너 (Run CBT Server)
+[개발4팀 전사 공통 모듈] 풀어봄 (Pool-eobom) CBT 모의고사 전용 HTTP 서버 및 러너 (Run CBT Server)
 기능: utils/cbt_engine/exams/ 폴더의 모든 시험 데이터를 자동 탐색하여 제공합니다. (한글 URL 인코딩 완벽 지원)
 데이터베이스: MySQL 전용 DB 스페이스('cbt') 및 SQLite 듀얼 모드 지원
 """
@@ -261,7 +261,7 @@ def run(port=8080):
     url = f"http://localhost:{port}"
     db_mode = "MySQL (cbt DB)" if DB.is_mysql() else "SQLite"
     print(f"==================================================")
-    print(f"🚀 [개발4팀 CBT Engine Server] 구동 성공! (DB 연동 완료)")
+    print(f"🚀 [개발4팀 풀어봄 (Pool-eobom) CBT Server] 구동 성공! (DB 연동 완료)")
     print(f"📁 시험 데이터 폴더: {EXAMS_DIR}")
     print(f"🗄️ 성적 DB 모드: {db_mode}")
     print(f"🌐 접속 주소: {url}")

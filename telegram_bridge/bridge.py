@@ -103,30 +103,30 @@ RAW_COMMANDS = [
         "cwd": str(PROJECT_ROOT / "infosd"),
         "desc": "정보보호공시 AP 서버 종료"
     },
-    # 4. CBT Engine (모의고사)
+    # 4. 풀어봄 CBT (모의고사)
     {
-        "system": "4. CBT Engine (모의고사)",
+        "system": "4. 풀어봄 CBT (모의고사)",
         "num": "4-1",
         "alias": "cbt-start",
         "cmd": "./cbt_start.sh",
         "cwd": str(PROJECT_ROOT / "utils" / "cbt_engine"),
-        "desc": "CBT Engine AP 서버 시작"
+        "desc": "풀어봄 CBT AP 서버 시작"
     },
     {
-        "system": "4. CBT Engine (모의고사)",
+        "system": "4. 풀어봄 CBT (모의고사)",
         "num": "4-2",
         "alias": "cbt-reset",
         "cmd": "./cbt_reset.sh",
         "cwd": str(PROJECT_ROOT / "utils" / "cbt_engine"),
-        "desc": "CBT Engine AP 서버 재설정 및 재기동"
+        "desc": "풀어봄 CBT AP 서버 재설정 및 재기동"
     },
     {
-        "system": "4. CBT Engine (모의고사)",
+        "system": "4. 풀어봄 CBT (모의고사)",
         "num": "4-3",
         "alias": "cbt-stop",
         "cmd": "./cbt_stop.sh",
         "cwd": str(PROJECT_ROOT / "utils" / "cbt_engine"),
-        "desc": "CBT Engine AP 서버 종료"
+        "desc": "풀어봄 CBT AP 서버 종료"
     }
 ]
 
