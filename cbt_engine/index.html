@@ -1567,7 +1567,7 @@ async function saveDraftSession() {
   if (Object.keys(userAnswers).length === 0) return;
   const jsonPath = currentExamData.filename ? `/exams/${currentExamData.filename}` : document.getElementById('examSelect').value;
   const draft = {
-    user_name: '응시자',
+    user_name: 'user',
     examPath: jsonPath,
     examTitle: (currentExamData.exam_info && currentExamData.exam_info.title) ? currentExamData.exam_info.title : '시험',
     userAnswers: userAnswers,
@@ -1586,7 +1586,7 @@ async function saveDraftSession() {
 
 async function checkDraftSession() {
   try {
-    const res = await fetch('/api/draft?user_name=응시자');
+    const res = await fetch('/api/draft?user_name=user');
     if (!res.ok) return;
     const draft = await res.json();
     if (!draft || !draft.examPath || !draft.userAnswers) {
@@ -1648,7 +1648,7 @@ async function resumeDraftExam() {
 
 async function discardDraftExam() {
   try {
-    await fetch('/api/draft?user_name=응시자', { method: 'DELETE' });
+    await fetch('/api/draft?user_name=user', { method: 'DELETE' });
   } catch (e) {}
   cachedServerDraft = null;
   document.getElementById('resumeBanner').style.display = 'none';
@@ -2215,7 +2215,7 @@ function submitExam(skipConfirm = false) {
   }
 
   const payload = {
-    user_name: '응시자',
+    user_name: 'user',
     exam_id: examId,
     exam_title: currentExamData.exam_info.title,
     total_score: grandTotalScore,

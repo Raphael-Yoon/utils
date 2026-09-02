@@ -92,7 +92,7 @@ def init_db():
                 """
                 CREATE TABLE IF NOT EXISTS exam_results (
                     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                    user_name VARCHAR(100) DEFAULT '응시자',
+                    user_name VARCHAR(100) DEFAULT 'user',
                     exam_id VARCHAR(100),
                     exam_title VARCHAR(255),
                     total_score DECIMAL(5,2),
@@ -131,7 +131,7 @@ def init_db():
         """
         CREATE TABLE IF NOT EXISTS exam_results (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_name TEXT DEFAULT '응시자',
+            user_name TEXT DEFAULT 'user',
             exam_id TEXT,
             exam_title TEXT,
             total_score REAL,

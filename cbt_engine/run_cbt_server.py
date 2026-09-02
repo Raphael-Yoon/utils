@@ -48,8 +48,10 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
 
         # /api/draft - 서버 임시저장 조회
         if path_only == '/api/draft':
-            user_name = query.get('user_name', ['응시자'])[0]
+            user_name = query.get('user_name', ['user'])[0]
             row = DB.get_draft(user_name)
+            if not row and user_name == 'user':
+                row = DB.get_draft('응시자')
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
@@ -164,7 +166,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             body = self.rfile.read(content_length)
             payload = json.loads(body.decode('utf-8'))
 
-            user_name = payload.get('user_name', '응시자')
+            user_name = payload.get('user_name', 'user')
             DB.save_draft(
                 user_name=user_name,
                 exam_path=payload.get('examPath', ''),
@@ -187,7 +189,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             payload = json.loads(body.decode('utf-8'))
 
             new_id = DB.save_result(
-                user_name=payload.get('user_name', '응시자'),
+                user_name=payload.get('user_name', 'user'),
                 exam_id=payload.get('exam_id', ''),
                 exam_title=payload.get('exam_title', ''),
                 total_score=float(payload.get('total_score', 0.0)),
@@ -214,8 +216,10 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
 
         # /api/draft - 임시저장 삭제
         if path_only == '/api/draft':
-            user_name = query.get('user_name', ['응시자'])[0]
+            user_name = query.get('user_name', ['user'])[0]
             deleted_cnt = DB.delete_draft(user_name)
+            if user_name == 'user':
+                DB.delete_draft('응시자')
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')

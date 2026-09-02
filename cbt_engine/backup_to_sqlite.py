@@ -46,7 +46,7 @@ def backup_cbt_to_sqlite(sqlite_path: Path = DEFAULT_SQLITE_PATH):
             """
             CREATE TABLE IF NOT EXISTS exam_results (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_name TEXT DEFAULT '응시자',
+                user_name TEXT DEFAULT 'user',
                 exam_id TEXT,
                 exam_title TEXT,
                 total_score REAL,
@@ -82,7 +82,7 @@ def backup_cbt_to_sqlite(sqlite_path: Path = DEFAULT_SQLITE_PATH):
                 """,
                 (
                     r["id"],
-                    r.get("user_name", "응시자"),
+                    r.get("user_name", "user"),
                     r.get("exam_id", ""),
                     r.get("exam_title", ""),
                     float(r.get("total_score") or 0.0),
