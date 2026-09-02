@@ -2224,13 +2224,14 @@ function submitExam(skipConfirm = false) {
     fail_reason: isFinalPass ? '' : (hasAnyCutoff ? '과락 불합격' : '총점 미달 불합격'),
     time_taken_seconds: (currentExamData.exam_info.time_limit_minutes || 120) * 60 - totalSeconds,
     subject_scores: subjectResults,
-    user_answers: userAnswers
+    user_answers: { ...userAnswers, _flagged: flaggedQuestions }
   };
 
   // AI 분석용 요약 데이터 객체 저장
   lastSubmissionSummary = {
     examData: currentExamData,
     userAnswers: { ...userAnswers },
+    flaggedQuestions: { ...flaggedQuestions },
     subjectResults: subjectResults,
     grandTotalScore: grandTotalScore,
     maxScore: currentExamData.questions.length * ptsPerQ,
@@ -2529,7 +2530,14 @@ async function loadHistoryDetail(id) {
     if (!examRes.ok) throw new Error("Exam file not found");
     currentExamData = await examRes.json();
     currentExamData.filename = data.exam_id;
-    userAnswers = JSON.parse(data.user_answers_json || '{}');
+    const uData = JSON.parse(data.user_answers_json || '{}');
+    if (uData._flagged) {
+      flaggedQuestions = uData._flagged;
+      delete uData._flagged;
+    } else {
+      flaggedQuestions = {};
+    }
+    userAnswers = uData;
     
     closeHistoryModal();
     document.getElementById('startScreen').style.display = 'none';
