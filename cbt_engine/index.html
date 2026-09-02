@@ -527,6 +527,60 @@
       color: #fff;
       border-color: var(--omr-checked);
     }
+    /* OMR 검토 체크(Flag) 스타일 */
+    .omr-item.flagged {
+      position: relative;
+      border-color: #f59e0b !important;
+      box-shadow: 0 0 0 1.5px #f59e0b inset;
+    }
+    .omr-item.flagged::after {
+      content: "🚩";
+      position: absolute;
+      top: -7px;
+      right: -5px;
+      font-size: 0.72rem;
+      line-height: 1;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+      pointer-events: none;
+      animation: popFlag 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popFlag {
+      0% { transform: scale(0.3); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* 문항 카드 상단 검토 체크 토글 버튼 */
+    .btn-flag-toggle {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .btn-flag-toggle:hover {
+      background: var(--bg-card);
+      border-color: #f59e0b;
+      color: #d97706;
+    }
+    .btn-flag-toggle.active {
+      background: #fef3c7;
+      border-color: #f59e0b;
+      color: #b45309;
+      box-shadow: 0 1px 3px rgba(245, 158, 11, 0.2);
+    }
+    [data-theme="dark"] .btn-flag-toggle.active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: #f59e0b;
+      color: #fcd34d;
+    }
 
     .result-screen {
       display: none;
@@ -982,11 +1036,47 @@
 let currentExamData = null;
 let examList = [];
 let userAnswers = {};
+let flaggedQuestions = {}; // 나중에 다시 볼 문제 (검토 체크 / Flag)
 let timerInterval = null;
 let totalSeconds = 7200;
 let isReviewMode = false;
 let currentQuestionIdx = 0; // 현재 활성화된 문항 인덱스 (0-indexed)
 let lastSubmissionSummary = null; // 최근 시험 제출 요약 데이터 (AI 분석용)
+
+function toggleFlagQuestion(qId) {
+  if (flaggedQuestions[qId]) {
+    delete flaggedQuestions[qId];
+  } else {
+    flaggedQuestions[qId] = true;
+  }
+  updateFlagUI(qId);
+  saveDraftSession();
+}
+
+function updateFlagUI(qId) {
+  const omrItem = document.getElementById(`omr_${qId}`);
+  if (omrItem) {
+    if (flaggedQuestions[qId]) {
+      omrItem.classList.add('flagged');
+    } else {
+      omrItem.classList.remove('flagged');
+    }
+  }
+  const btn = document.getElementById(`btnFlag_${qId}`);
+  if (btn) {
+    const isFlagged = !!flaggedQuestions[qId];
+    if (isFlagged) {
+      btn.classList.add('active');
+      btn.innerHTML = '🚩 검토 체크됨';
+      btn.title = '검토 체크 해제 (단축키: F | OMR 번호 우클릭)';
+    } else {
+      btn.classList.remove('active');
+      btn.innerHTML = '🏳️ 나중에 검토';
+      btn.title = '나중에 다시 검토할 문제로 체크 (단축키: F | OMR 번호 우클릭)';
+    }
+  }
+  updateOMRProgress();
+}
 
 // 테마 (다크 모드 / 라이트 모드) 제어 함수
 function initTheme() {
@@ -1238,6 +1328,18 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
+  // 'f' 또는 'F' 키 입력 시 현재 활성 문항 검토 체크(Flag/Bookmark) 토글
+  if (key.toLowerCase() === 'f' && !e.ctrlKey && !e.metaKey && !e.altKey && !isCalculatorFocused()) {
+    e.preventDefault();
+    if (currentExamData && currentExamData.questions) {
+      const activeQ = currentExamData.questions[currentQuestionIdx];
+      if (activeQ) {
+        toggleFlagQuestion(activeQ.id);
+      }
+    }
+    return;
+  }
+
   // [계산기 전용 키보드 입력 라우팅]: 계산기가 열려있고, 실제 포커스가 계산기 영역 내부일 때만 계산기로 라우팅
   if (isCalculatorFocused()) {
     if (key === 'Escape') {
@@ -1469,6 +1571,7 @@ async function saveDraftSession() {
     examPath: jsonPath,
     examTitle: (currentExamData.exam_info && currentExamData.exam_info.title) ? currentExamData.exam_info.title : '시험',
     userAnswers: userAnswers,
+    flaggedQuestions: flaggedQuestions,
     remainingSeconds: totalSeconds,
     currentQuestionIdx: currentQuestionIdx
   };
@@ -1523,6 +1626,7 @@ async function resumeDraftExam() {
   if (examSelectEl) examSelectEl.value = draft.examPath;
 
   userAnswers = draft.userAnswers || {};
+  flaggedQuestions = draft.flaggedQuestions || {};
   isReviewMode = false;
   totalSeconds = draft.remainingSeconds || 7200;
   currentQuestionIdx = draft.currentQuestionIdx || 0;
@@ -1563,6 +1667,7 @@ async function startExam() {
   }
 
   userAnswers = {};
+  flaggedQuestions = {};
   isReviewMode = false;
   currentQuestionIdx = 0; // 시작 시 첫 문제
   totalSeconds = (currentExamData.exam_info.time_limit_minutes || 120) * 60;
@@ -1623,6 +1728,18 @@ function renderQuestions() {
         statusTag = `<span class="q-result-tag wrong">❌ 오답 (내 선택: ${uAns ? uAns + '번' : '미응답'} / 정답: ${q.answer}번)</span>`;
       }
     }
+
+    const isFlagged = !!flaggedQuestions[q.id];
+    let flagBadge = '';
+    if (isReviewMode && isFlagged) {
+      flagBadge = `<span class="q-result-tag" style="background:#f59e0b; color:#fff; margin-left:6px; font-size:0.8rem; padding:3px 8px; border-radius:4px; font-weight:600;">🚩 수험생 검토 체크 문항</span>`;
+    }
+
+    const flagBtnHtml = `
+      <button type="button" class="btn-flag-toggle ${isFlagged ? 'active' : ''}" id="btnFlag_${q.id}" onclick="toggleFlagQuestion(${q.id})" title="${isFlagged ? '검토 체크 해제 (단축키: F | OMR 번호 우클릭)' : '나중에 다시 검토할 문제로 체크 (단축키: F | OMR 번호 우클릭)'}">
+        ${isFlagged ? '🚩 검토 체크됨' : '🏳️ 나중에 검토'}
+      </button>
+    `;
 
     let optionsHtml = '';
     q.options.forEach((opt, optIdx) => {
@@ -1685,8 +1802,11 @@ function renderQuestions() {
     ` : '';
 
     qCard.innerHTML = `
-      <div class="question-subject-badge">📚 ${escapeHtml(subjectName)}</div>
-      <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(q.question)} ${statusTag}</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <div class="question-subject-badge">📚 ${escapeHtml(subjectName)}</div>
+        ${flagBtnHtml}
+      </div>
+      <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(q.question)} ${statusTag} ${flagBadge}</div>
       ${imgHtml}
       <div class="${optionsContainerClass}">${optionsHtml}</div>
       ${expHtml}
@@ -1813,14 +1933,25 @@ function renderOMR() {
       } else if (uAns) {
         itemClass += ' answered';
       }
+      if (flaggedQuestions[q.id]) {
+        itemClass += ' flagged';
+      }
 
       item.className = itemClass;
       item.id = `omr_${q.id}`;
       item.innerText = q.id;
+      item.title = `좌클릭: ${q.id}번 문항 이동 | 우클릭: 검토 체크(🚩) 토글`;
       
       // OMR 클릭 시 해당 문제 인덱스로 이동
       const qIdx = currentExamData.questions.findIndex(question => question.id === q.id);
       item.onclick = () => goToQuestion(qIdx);
+
+      // OMR 우클릭 시 검토 체크 토글
+      item.oncontextmenu = (e) => {
+        e.preventDefault();
+        toggleFlagQuestion(q.id);
+      };
+
       grid.appendChild(item);
     });
 
@@ -1857,8 +1988,14 @@ function selectOption(qId, optNum) {
 
 function updateOMRProgress() {
   const count = Object.keys(userAnswers).length;
-  const total = currentExamData.questions.length;
-  document.getElementById('omrProgress').innerText = isReviewMode ? `OMR 채점 완료` : `${count} / ${total} 완료`;
+  const total = currentExamData ? currentExamData.questions.length : 0;
+  const flagCount = Object.keys(flaggedQuestions).length;
+  const flagBadgeHtml = flagCount > 0 ? `<span style="font-size:0.8rem; background:#fef3c7; color:#b45309; padding:2px 7px; border-radius:10px; font-weight:700; margin-left:6px; border:1px solid #fde68a;">🚩 ${flagCount}</span>` : '';
+
+  const progEl = document.getElementById('omrProgress');
+  if (progEl) {
+    progEl.innerHTML = (isReviewMode ? `OMR 채점 완료` : `${count} / ${total} 완료`) + flagBadgeHtml;
+  }
 }
 
 let isTimerPaused = false;
