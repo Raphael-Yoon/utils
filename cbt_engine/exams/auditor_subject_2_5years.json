@@ -531,15 +531,15 @@
     {
       "id": 30,
       "subject_id": 2,
-      "question": "[2025년 30번] 다음 Java 코드의 클래스 다이어그램 표현으로 가장 적절한 것은? (추상클래스 Shape을 Circle, Square가 상속받아 구현하는 구조의 코드 제시)",
+      "question": "[2025년 30번] 다음 클래스 다이어그램에 대한 설명으로 가장 적절한 것은?",
       "options": [
-        "① Shape는 인터페이스로, Circle·Square는 실체화(realization) 관계로 표현",
-        "② Shape는 추상클래스로, Circle·Square는 일반화(generalization, 속이 빈 삼각형 실선) 관계로 표현",
-        "③ Shape와 Circle·Square는 연관관계(association)로 표현",
-        "④ Shape와 Circle·Square는 의존관계(dependency, 점선 화살표)로 표현"
+        "① Class1은 인터페이스이며, Class2와 실체화(realization) 관계로 표현된다.",
+        "② Class1은 추상클래스이며, Class2와 일반화(generalization, 속이 빈 삼각형 실선) 관계로 표현된다.",
+        "③ Class1과 Class2는 연관관계(association)로 표현된다.",
+        "④ Class1과 Class2는 의존관계(dependency, 점선 화살표)로 표현된다."
       ],
       "answer": 2,
-      "explanation": "정답: ②\n\n[해설]\nabstract class를 상속(extends)하는 관계는 UML에서 일반화(Generalization) 관계이며, 속이 빈 삼각형과 실선으로 표기합니다. 인터페이스를 구현(implements)할 때 사용하는 점선+속이 빈 삼각형(실체화)과는 다르므로, 정답은 ②번입니다.",
+      "explanation": "정답: ②\n\n[해설]\n1) Class1의 이름이 이탤릭체(기울임꼴)로 표기되어 있으므로 추상클래스(abstract class)입니다.\n2) Class2에서 Class1으로 향하는 '실선 + 속이 빈 삼각형'은 상속(extends)을 나타내는 일반화(Generalization) 관계입니다.\n3) Class2 내부의 `- attr1 : int{readOnly}`는 final 변수(읽기 전용), 밑줄 친 `- attr2 : int`는 static 정적 변수를 의미합니다.\n따라서 정답은 ②번입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• UML 클래스 다이어그램 4대 시각 표기법:\n  1) 이탤릭체(*Class1*): 추상클래스 (Abstract Class)\n  2) 실선 + 속이 빈 삼각형(△): 일반화 (Generalization / 클래스 상속 extends)\n  3) `- attr1: int{readOnly}`: private 접근자 및 Java `final` 읽기 전용 제약\n  4) 밑줄 친 `- <u>attr2: int</u>`: Java `static` 클래스 정적 변수\n• 추상클래스/인터페이스의 본질: 자식 클래스가 필수 기능을 반드시 코딩하도록 강제하는 '구현의 계약(Contract)' 역할.",
       "image_url": "/exams/images/auditor_2025_q30.jpg",
       "subject": "2025년 소프트웨어공학",
       "origin_year": 2025,

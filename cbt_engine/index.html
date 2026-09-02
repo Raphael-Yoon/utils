@@ -771,6 +771,47 @@
       border-color: var(--primary);
       background: var(--bg-card);
     }
+    /* 메모장 세로 크기 마우스 조절 핸들 바 */
+    .memo-resize-handle {
+      height: 12px;
+      cursor: ns-resize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 0;
+      margin-top: 2px;
+      user-select: none;
+      transition: all 0.15s ease;
+      touch-action: none;
+    }
+    .memo-resize-handle-top {
+      height: 12px;
+      cursor: ns-resize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: -6px;
+      margin-bottom: 2px;
+      user-select: none;
+      transition: all 0.15s ease;
+      touch-action: none;
+    }
+    .memo-resize-bar {
+      width: 44px;
+      height: 4px;
+      background: var(--border-color);
+      border-radius: 3px;
+      transition: all 0.2s ease;
+    }
+    .memo-resize-handle:hover .memo-resize-bar,
+    .memo-resize-handle.resizing .memo-resize-bar,
+    .memo-resize-handle-top:hover .memo-resize-bar,
+    .memo-resize-handle-top.resizing .memo-resize-bar {
+      background: var(--primary);
+      width: 60px;
+      height: 5px;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.45);
+    }
   </style>
 </head>
 <body>
@@ -843,24 +884,27 @@
       </div>
       <div class="omr-body" id="omrBody"></div>
       
-      <!-- 연습용 메모장 영역 -->
-      <div class="omr-calculator" style="border-bottom: 1px solid var(--border-color);">
+      <!-- 연습용 메모장 영역 (상단 핸들을 위로 끌어올려 세로 확장) -->
+      <div class="omr-calculator" style="border-bottom: 1px solid var(--border-color); padding-top: 6px;">
+        <div class="memo-resize-handle-top" id="omrMemoResizeHandle" title="마우스로 위/아래로 드래그하여 메모장 높이를 조절하세요 (위로 당기면 확장)">
+          <div class="memo-resize-bar"></div>
+        </div>
         <div class="calc-header" onclick="toggleMemoPad(event)" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; margin-bottom:4px;">
           <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">📝 연습용 메모장 <span id="memoArrow" style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">▴</span></span>
           <button type="button" class="btn" style="background:#fee2e2; border:1px solid #fca5a5; color:#dc2626; font-size:0.75rem; padding:2px 8px; border-radius:4px; font-weight:600;" onclick="clearOmrMemo(event)">🗑️ 메모 지우기</button>
         </div>
         <div class="calc-body hidden" id="memoBody">
-          <textarea id="omrMemoTextArea" style="width:100%; height:95px; border:1px solid var(--border-color); border-radius:6px; padding:8px; font-size:0.88rem; font-family:inherit; background:var(--bg-main); color:var(--text-main); outline:none; resize:vertical;" placeholder="시험 진행 중 필기 및 계산 메모를 작성하세요... (자동 저장 없음)"></textarea>
+          <textarea id="omrMemoTextArea" style="width:100%; height:120px; min-height:60px; max-height:500px; border:1px solid var(--border-color); border-radius:6px; padding:8px; font-size:0.88rem; font-family:inherit; background:var(--bg-main); color:var(--text-main); outline:none; resize:none; box-sizing:border-box;" placeholder="시험 진행 중 필기 및 계산 메모를 작성하세요... (자동 저장 없음)"></textarea>
         </div>
       </div>
 
       <!-- 연습용 계산기 영역 -->
-      <div class="omr-calculator">
+      <div class="omr-calculator" id="omrCalcContainer">
         <div class="calc-header" onclick="toggleCalculator(event)" style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:4px; cursor:pointer; user-select:none;">
           <span>🧮 연습용 계산기 <span id="calcArrow" style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">▴</span></span>
         </div>
         <div class="calc-body hidden" id="calcBody">
-          <div class="calc-display" id="calcDisplay">0</div>
+          <div class="calc-display" id="calcDisplay" tabindex="0">0</div>
           <div class="calc-buttons">
             <button class="calc-btn clear" onclick="clearCalculator()">C</button>
             <button class="calc-btn op" onclick="appendCalcOp('/')">÷</button>
@@ -978,6 +1022,18 @@ function toggleTheme() {
 window.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initDraggableWidgets();
+
+  // 문제 영역 클릭 시 계산기 포커스 해제 (답안 선택 및 엔터 단축키 즉시 활성화)
+  const qPane = document.getElementById('questionPane');
+  if (qPane) {
+    qPane.addEventListener('pointerdown', () => {
+      const calcContainer = document.getElementById('omrCalcContainer');
+      if (calcContainer && calcContainer.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
+    });
+  }
+
   try {
     const res = await fetch('/api/exams');
     if(res.ok) {
@@ -1077,6 +1133,14 @@ function onCategoryChange() {
   updateRulesUI();
 }
 
+// 계산기 영역 내부 포커스 여부 판별
+function isCalculatorFocused() {
+  if (!isCalcOpen || !isOmrVisible) return false;
+  const calcContainer = document.getElementById('omrCalcContainer') || document.getElementById('calcBody');
+  const activeEl = document.activeElement;
+  return !!(calcContainer && activeEl && calcContainer.contains(activeEl));
+}
+
 // 키보드 단축키 (T: 다크모드 토글, Enter: 다음 문제, 1~4: 답안 선택, 방향키: 문제 이동, C: 계산기)
 window.addEventListener('keydown', (e) => {
   const historyModal = document.getElementById('historyModal');
@@ -1174,8 +1238,8 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // [계산기가 열려있는 경우 (OMR 패널 노출 상태)]: 키보드 입력을 계산기로 자연스럽게 라우팅
-  if (isCalcOpen && isOmrVisible) {
+  // [계산기 전용 키보드 입력 라우팅]: 계산기가 열려있고, 실제 포커스가 계산기 영역 내부일 때만 계산기로 라우팅
+  if (isCalculatorFocused()) {
     if (key === 'Escape') {
       e.preventDefault();
       toggleCalculator(); // Esc 누르면 계산기 닫기
@@ -1208,7 +1272,7 @@ window.addEventListener('keydown', (e) => {
     }
   }
 
-  // [계산기가 닫혀있는 경우]: 기본 CBT 네비게이션 및 답안 선택
+  // [기본 CBT 네비게이션 및 답안 선택 (계산기 비포커스 상태)]
   // 엔터키: 다음 문제로 이동 (마지막 문제일 시 제출 검수)
   if (key === 'Enter') {
     e.preventDefault();
@@ -1775,7 +1839,10 @@ function selectOption(qId, optNum) {
     if(lbl) {
       if(i === optNum) {
         lbl.classList.add('selected');
-        if(rdo) rdo.checked = true;
+        if(rdo) {
+          rdo.checked = true;
+          try { rdo.focus(); } catch(err) {}
+        }
       } else {
         lbl.classList.remove('selected');
         if(rdo) rdo.checked = false;
@@ -2931,9 +2998,17 @@ function toggleCalculator(e) {
   if (isCalcOpen) {
     body.classList.remove('hidden');
     if (arrow) arrow.innerText = '▾';
+    const disp = document.getElementById('calcDisplay');
+    if (disp) {
+      try { disp.focus(); } catch(err) {}
+    }
   } else {
     body.classList.add('hidden');
     if (arrow) arrow.innerText = '▴';
+    const calcContainer = document.getElementById('omrCalcContainer');
+    if (calcContainer && calcContainer.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
   }
 }
 
@@ -3049,6 +3124,62 @@ function clearMemoText() {
 
 function initDraggableWidgets() {
   makeElementDraggable(document.getElementById('memoWidget'), document.getElementById('memoWidgetHeader'));
+  initMemoResizeHandlers();
+}
+
+function initMemoResizeHandlers() {
+  // 1. OMR 패널 내 연습용 메모장: 우측 하단에 위치하므로 상단 핸들을 위로 올려서(up) 높이를 늘림
+  setupVerticalResize('omrMemoResizeHandle', 'omrMemoTextArea', 'cbt_omr_memo_height', 60, 500, 'up');
+
+  // 2. 플로팅 연습장 위젯: 하단 핸들을 아래로 내려서(down) 높이를 늘림
+  setupVerticalResize('memoWidgetResizeHandle', 'memoTextArea', 'cbt_floating_memo_height', 100, 750, 'down');
+}
+
+function setupVerticalResize(handleId, targetTextareaId, storageKey, minH = 70, maxH = 500, direction = 'down') {
+  const handle = document.getElementById(handleId);
+  const textarea = document.getElementById(targetTextareaId);
+  if (!handle || !textarea) return;
+
+  // 이전에 저장된 사용자 높이 설정 복원
+  const savedHeight = localStorage.getItem(storageKey);
+  if (savedHeight) {
+    textarea.style.height = savedHeight + 'px';
+  }
+
+  handle.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // 만약 메모장이 접혀있다면 펼침
+    if (targetTextareaId === 'omrMemoTextArea' && !isMemoOpen) {
+      toggleMemoPad();
+    }
+
+    const startY = e.clientY;
+    const startHeight = textarea.offsetHeight || parseInt(textarea.style.height, 10) || 120;
+    handle.classList.add('resizing');
+    document.body.style.cursor = 'ns-resize';
+    document.body.style.userSelect = 'none';
+
+    function onPointerMove(moveEvent) {
+      const rawDelta = moveEvent.clientY - startY;
+      const deltaY = direction === 'up' ? -rawDelta : rawDelta;
+      const newHeight = Math.min(Math.max(startHeight + deltaY, minH), maxH);
+      textarea.style.height = newHeight + 'px';
+    }
+
+    function onPointerUp() {
+      handle.classList.remove('resizing');
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+      localStorage.setItem(storageKey, parseInt(textarea.style.height, 10));
+    }
+
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+  });
 }
 
 function makeElementDraggable(elmnt, headerElmnt) {
@@ -3095,6 +3226,9 @@ function makeElementDraggable(elmnt, headerElmnt) {
   </div>
   <div class="widget-body">
     <textarea id="memoTextArea" placeholder="시험 도중 계산이나 메모가 필요한 내용을 자유롭게 적으세요...&#10;(별도의 저장 없이 시험 중 자유롭게 이용하실 수 있습니다)"></textarea>
+    <div class="memo-resize-handle" id="memoWidgetResizeHandle" title="마우스로 드래그하여 연습장 높이를 조절하세요">
+      <div class="memo-resize-bar"></div>
+    </div>
   </div>
 </div>
 
