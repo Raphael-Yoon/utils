@@ -527,6 +527,18 @@
       color: #fff;
       border-color: var(--omr-checked);
     }
+    /* OMR 현재 응시/열람 중인 문항 하이라이트 (약간의 테두리 및 포커스 링 표시) */
+    .omr-item.current-question {
+      position: relative;
+      border-color: var(--primary) !important;
+      border-width: 2px !important;
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25), 0 2px 5px rgba(0, 0, 0, 0.15);
+      font-weight: 800;
+      transform: scale(1.06);
+      z-index: 2;
+    }
     /* OMR 검토 체크(Flag) 스타일 */
     .omr-item.flagged {
       position: relative;
@@ -1894,11 +1906,13 @@ function goToQuestion(idx) {
     currentCard.classList.add('active');
   }
 
-  // OMR 하이라이트 활성화
-  document.querySelectorAll('.omr-item').forEach(el => el.style.border = '1px solid var(--border-color)');
+  // OMR 현재 문항 테두리 하이라이트 갱신
+  document.querySelectorAll('.omr-item.current-question').forEach(el => el.classList.remove('current-question'));
   const currentOmr = document.getElementById(`omr_${activeQ.id}`);
   if (currentOmr) {
-    currentOmr.style.border = '2px solid var(--primary)';
+    currentOmr.classList.add('current-question');
+    // OMR 패널 안에서 현재 문항 번호가 시야에서 벗어나지 않도록 스크롤 부드럽게 정렬
+    currentOmr.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 
   renderNavigationBar();
@@ -1935,6 +1949,10 @@ function renderOMR() {
       }
       if (flaggedQuestions[q.id]) {
         itemClass += ' flagged';
+      }
+      const isCurrent = (currentExamData && currentExamData.questions[currentQuestionIdx] && currentExamData.questions[currentQuestionIdx].id === q.id);
+      if (isCurrent) {
+        itemClass += ' current-question';
       }
 
       item.className = itemClass;

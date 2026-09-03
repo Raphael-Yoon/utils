@@ -200,23 +200,49 @@ def heal_ap(ap, local_down, external_down):
     healed = False
     details = []
 
+    env = dict(os.environ)
+    if "XDG_RUNTIME_DIR" not in env:
+        uid = os.getuid()
+        env["XDG_RUNTIME_DIR"] = f"/run/user/{uid}"
+        env["DBUS_SESSION_BUS_ADDRESS"] = f"unix:path=/run/user/{uid}/bus"
+    env["PATH"] = f"{os.path.expanduser('~')}/.local/bin:/usr/local/bin:/usr/bin:/bin:{env.get('PATH', '')}"
+    env["PYTHONIOENCODING"] = "utf-8"
+
     if local_down and ap.get("start_script"):
         try:
             print(f"🔄 [Auto-Healing] {ap['name']} 로컬 프로세스 재기동 시도중...")
-            subprocess.run(["bash", ap["start_script"]], cwd=ap["working_dir"], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            details.append("로컬 프로세스 재기동 완료")
-            healed = True
+            proc = subprocess.run(
+                ["bash", ap["start_script"]],
+                cwd=ap["working_dir"],
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=30
+            )
+            if proc.returncode == 0:
+                details.append("로컬 프로세스 재기동 성공")
+                healed = True
+            else:
+                details.append(f"로컬 재기동 경고 (코드 {proc.returncode}): {proc.stderr.strip()[:100]}")
+                healed = True  # 재점검으로 생존 확인
         except Exception as e:
             details.append(f"로컬 재기동 실패: {e}")
 
     if external_down and ap.get("tunnel_unit"):
         try:
             print(f"🔄 [Auto-Healing] {ap['name']} Cloudflare 터널 재기동 시도중...")
-            subprocess.run(f"systemctl --user stop {ap['tunnel_unit']} 2>/dev/null || true", shell=True)
-            cmd = f"systemd-run --user --unit={ap['tunnel_unit']} bash -c \"exec {ap['tunnel_cmd']}\""
-            subprocess.run(cmd, shell=True, check=True)
-            details.append("Cloudflare 터널 재기동 완료")
-            healed = True
+            # 1. systemctl --user restart 시도
+            res = subprocess.run(f"systemctl --user restart {ap['tunnel_unit']}", shell=True, env=env, capture_output=True, timeout=10)
+            if res.returncode == 0:
+                details.append("Cloudflare systemd 터널 재기동 완료")
+                healed = True
+            else:
+                # 2. 실패 시 nohup 백그라운드 직접 실행
+                subprocess.run(f"pkill -f '{ap['tunnel_unit']}' 2>/dev/null || true", shell=True)
+                nohup_cmd = f"nohup {ap['tunnel_cmd']} &"
+                subprocess.run(nohup_cmd, shell=True, env=env)
+                details.append("Cloudflare nohup 터널 재기동 완료")
+                healed = True
         except Exception as e:
             details.append(f"터널 재기동 실패: {e}")
 
@@ -375,14 +401,19 @@ def build_telegram_message(ap_results, db_results, healing_history=None):
         db_summaries.append(f"{icon} {db['name']}: {res['status']}")
 
     healing_text = ""
+    title = "📡 [시스템 헬스체크 보고]"
     if healing_history:
         h_lines = []
         for h in healing_history:
             h_icon = "🔄✅" if h["result"] == "SUCCESS" else "🔄❌"
             h_lines.append(f"{h_icon} <b>{h['target']}</b>: {h['action']} ({h['result']})")
         healing_text = f"\n<b>■ ⚡ 자동 복구(Auto-Healing) 결과</b>\n" + "\n".join(h_lines) + "\n"
+        all_success = all(h["result"] == "SUCCESS" for h in healing_history)
+        title = "🔄⚡ [시스템 자동 복구(Auto-Healing) 완료 보고]" if all_success else "🚨 [시스템 장애 및 복구 실패 경보]"
+    elif any(res["local"]["status"] != "UP" or res["external"]["status"] != "UP" for res in ap_results) or any(res["status"] != "UP" for res in db_results):
+        title = "🚨 [시스템 장애 감지 경보]"
 
-    message = f"""<b>[📡 시스템 헬스체크 보고]</b>
+    message = f"""<b>{title}</b>
 일시: {now_str}
 {healing_text}
 <b>■ AP 서버 상태</b>
@@ -461,12 +492,7 @@ def main():
 
     # Check flags for selective reporting
     send_email_flag = "--email" in sys.argv
-    send_telegram_flag = "--telegram" in sys.argv
-    
-    # If neither flag is specified, default to sending both
-    if not send_email_flag and not send_telegram_flag:
-        send_email_flag = True
-        send_telegram_flag = True
+    send_telegram_force = "--telegram" in sys.argv
 
     print("1. 1차 AP/DB 서버 점검 시작...")
     ap_results = [check_ap(ap) for ap in AP_TARGETS]
@@ -496,8 +522,8 @@ def main():
 
     # Re-check after healing
     if need_recheck:
-        print("⏱️ 자동 조치 완료 후 3초 대기 중...")
-        time.sleep(3)
+        print("⏱️ 자동 조치 완료 후 5초 대기 중 (포트 바인딩 안정화)...")
+        time.sleep(5)
         print("2. 2차 (재점검) AP/DB 서버 점검 시작...")
         ap_results = [check_ap(ap) for ap in AP_TARGETS]
         db_results = [check_db(db) for db in DB_TARGETS]
@@ -521,14 +547,14 @@ def main():
     if send_email_flag:
         send_html_email(html_report)
         
-    if send_telegram_flag:
-        has_failure = any(res["local"]["status"] != "UP" or res["external"]["status"] != "UP" for res in ap_results) or \
-                      any(res["status"] != "UP" for res in db_results)
-        # 데일리 리포트(--email)와 함께 가동되거나 오류가 발생하였거나 자동 복구를 시도한 경우 텔레그램 발송
-        if has_failure or send_email_flag or healing_history:
-            send_telegram(telegram_msg)
-        else:
-            print("🔊 모든 시스템 정상: 텔레그램 알림 전송을 생략합니다.")
+    has_failure = any(res["local"]["status"] != "UP" or res["external"]["status"] != "UP" for res in ap_results) or \
+                  any(res["status"] != "UP" for res in db_results)
+
+    # 1. 장애가 발생했거나, 2. 자가 복구를 시도했거나, 3. 데일리 리포트(--email)이거나, 4. 강제 전송(--telegram)인 경우만 텔레그램 발송
+    if has_failure or healing_history or send_email_flag or send_telegram_force:
+        send_telegram(telegram_msg)
+    else:
+        print("🔊 모든 시스템 정상: 텔레그램 알림 전송을 생략합니다 (Silent Mode).")
     
     print("5. 헬스체크 및 자동 복구 프로세스 종료.")
 
