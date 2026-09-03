@@ -561,6 +561,43 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
+    /* 답안 미선택 시 엔터 입력 경고 토스트 & 보기 흔들림(Shake) 효과 */
+    @keyframes subtleShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+    .options-shake {
+      animation: subtleShake 0.35s ease-in-out;
+    }
+    .answer-warning-toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.94);
+      color: #ffffff;
+      padding: 11px 20px;
+      border-radius: 30px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      z-index: 9999;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+      animation: fadeInOutToast 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeInOutToast {
+      0% { opacity: 0; transform: translate(-50%, 14px); }
+      15% { opacity: 1; transform: translate(-50%, 0); }
+      80% { opacity: 1; transform: translate(-50%, 0); }
+      100% { opacity: 0; transform: translate(-50%, -10px); }
+    }
+
     /* 문항 카드 상단 검토 체크 토글 버튼 */
     .btn-flag-toggle {
       background: var(--bg-subtle);
@@ -1387,9 +1424,19 @@ window.addEventListener('keydown', (e) => {
   }
 
   // [기본 CBT 네비게이션 및 답안 선택 (계산기 비포커스 상태)]
-  // 엔터키: 다음 문제로 이동 (마지막 문제일 시 제출 검수)
+  // 엔터키: 다음 문제로 이동 (단, 실전 시험 모드에서 보기 답안 미선택 시 실수 방지를 위해 이동 차단 및 안내)
   if (key === 'Enter') {
     e.preventDefault();
+    if (!isReviewMode && currentExamData && currentExamData.questions) {
+      const activeQ = currentExamData.questions[currentQuestionIdx];
+      if (activeQ) {
+        const uAns = userAnswers[activeQ.id] || userAnswers[String(activeQ.id)];
+        if (uAns === undefined || uAns === null || uAns === '') {
+          notifyAnswerRequired(activeQ.id);
+          return;
+        }
+      }
+    }
     goToNextQuestion();
     return;
   }
@@ -1435,6 +1482,35 @@ window.addEventListener('keydown', (e) => {
     }
   }
 });
+
+let answerWarningTimer = null;
+function notifyAnswerRequired(qId) {
+  // 1. 기존 토스트 제거 및 신규 토스트 알림 생성
+  const oldToast = document.getElementById('answerNoticeToast');
+  if (oldToast) oldToast.remove();
+  if (answerWarningTimer) clearTimeout(answerWarningTimer);
+
+  const toast = document.createElement('div');
+  toast.id = 'answerNoticeToast';
+  toast.className = 'answer-warning-toast';
+  toast.innerHTML = '<span>⚠️ 보기 중 답안(1~4번)을 먼저 선택해 주세요!</span> <span style="font-size:0.8rem; color:#fde68a; font-weight:normal;">(건너뛰기: ➔ 방향키 또는 OMR 클릭)</span>';
+  document.body.appendChild(toast);
+
+  answerWarningTimer = setTimeout(() => {
+    if (toast && toast.parentNode) toast.remove();
+  }, 1600);
+
+  // 2. 현재 문항 카드 내 보기 선택지 컨테이너에 시각적 흔들림(Shake) 효과 부여
+  const card = document.getElementById(`qCard_${qId}`);
+  if (card) {
+    const optList = card.querySelector('.options-list');
+    if (optList) {
+      optList.classList.remove('options-shake');
+      void optList.offsetWidth; // DOM reflow 강제 발생으로 애니메이션 재실행 보장
+      optList.classList.add('options-shake');
+    }
+  }
+}
 
 function goToNextQuestion() {
   if (!currentExamData) return;
