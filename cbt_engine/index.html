@@ -371,6 +371,7 @@
       flex: 1;
       padding: 16px;
       overflow-y: auto;
+      scroll-behavior: smooth;
     }
 
     /* OMR 하단 공학/기본 사칙연산 계산기 스타일 */
@@ -1987,8 +1988,8 @@ function goToQuestion(idx) {
   const currentOmr = document.getElementById(`omr_${activeQ.id}`);
   if (currentOmr) {
     currentOmr.classList.add('current-question');
-    // OMR 패널 안에서 현재 문항 번호가 시야에서 벗어나지 않도록 스크롤 부드럽게 정렬
-    currentOmr.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    // 풀고 있는 문항 번호가 OMR 답안지 화면 중앙에 자연스럽게 오도록 스크롤 자동 추적
+    scrollOmrToCurrent(currentOmr);
   }
 
   renderNavigationBar();
@@ -1996,6 +1997,31 @@ function goToQuestion(idx) {
   if (pane) pane.scrollTop = 0;
   saveDraftSession();
   renderMath();
+}
+
+// OMR 답안지 스크롤이 현재 풀고 있는 문항 번호를 중앙으로 부드럽게 추적하는 전용 함수
+function scrollOmrToCurrent(currentOmr) {
+  const omrBody = document.getElementById('omrBody');
+  if (!omrBody || !currentOmr) return;
+
+  const bodyRect = omrBody.getBoundingClientRect();
+  const itemRect = currentOmr.getBoundingClientRect();
+
+  // omrBody 내부에서 현재 문항 셀(currentOmr)이 상하 시야의 중앙(Center) 부근에 오도록 정밀 계산
+  const currentScrollTop = omrBody.scrollTop;
+  const relativeTop = itemRect.top - bodyRect.top;
+  const targetScrollTop = currentScrollTop + relativeTop - (omrBody.clientHeight / 2) + (itemRect.height / 2);
+
+  // 모바일/가로 레이아웃인 경우 수평 스크롤도 중앙 추적
+  const currentScrollLeft = omrBody.scrollLeft;
+  const relativeLeft = itemRect.left - bodyRect.left;
+  const targetScrollLeft = currentScrollLeft + relativeLeft - (omrBody.clientWidth / 2) + (itemRect.width / 2);
+
+  omrBody.scrollTo({
+    top: Math.max(0, targetScrollTop),
+    left: Math.max(0, targetScrollLeft),
+    behavior: 'smooth'
+  });
 }
 
 function renderOMR() {
@@ -2053,6 +2079,11 @@ function renderOMR() {
   });
 
   updateOMRProgress();
+  const activeQ = currentExamData && currentExamData.questions && currentExamData.questions[currentQuestionIdx];
+  if (activeQ) {
+    const curOmr = document.getElementById(`omr_${activeQ.id}`);
+    if (curOmr) scrollOmrToCurrent(curOmr);
+  }
 }
 
 function selectOption(qId, optNum) {
