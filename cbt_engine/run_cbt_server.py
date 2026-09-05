@@ -9,6 +9,7 @@ import os
 import json
 import re
 import urllib.parse
+from datetime import datetime, date
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
@@ -169,6 +170,48 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(res_data, ensure_ascii=False).encode('utf-8'))
             return
 
+        # /api/schedules - 시험 일정 목록 조회 (D-Day 및 접수 상태 포함)
+        if path_only == '/api/schedules':
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+
+            schedules = DB.get_schedules()
+            today = datetime.now().date()
+            for s in schedules:
+                # D-Day 계산
+                try:
+                    exam_dt = datetime.strptime(s.get('exam_date', ''), '%Y-%m-%d').date()
+                    s['d_day'] = (exam_dt - today).days
+                except Exception:
+                    s['d_day'] = None
+
+                # 접수 상태 계산
+                try:
+                    start_str = s.get('apply_start_date', '')
+                    end_str = s.get('apply_end_date', '')
+                    if start_str and end_str:
+                        st_dt = datetime.strptime(start_str, '%Y-%m-%d').date()
+                        ed_dt = datetime.strptime(end_str, '%Y-%m-%d').date()
+                        if today < st_dt:
+                            s['apply_status'] = 'upcoming'
+                            s['apply_days_left'] = (st_dt - today).days
+                        elif st_dt <= today <= ed_dt:
+                            s['apply_status'] = 'ongoing'
+                            s['apply_days_left'] = (ed_dt - today).days
+                        else:
+                            s['apply_status'] = 'ended'
+                            s['apply_days_left'] = 0
+                    else:
+                        s['apply_status'] = 'none'
+                        s['apply_days_left'] = 0
+                except Exception:
+                    s['apply_status'] = 'none'
+                    s['apply_days_left'] = 0
+
+            self.wfile.write(json.dumps(schedules, ensure_ascii=False).encode('utf-8'))
+            return
+
         super().do_GET()
 
     def do_POST(self):
@@ -241,6 +284,47 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             }, ensure_ascii=False).encode('utf-8'))
             return
 
+        # /api/schedules - 신규 시험 일정 등록
+        if self.path == '/api/schedules':
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            payload = json.loads(body.decode('utf-8'))
+
+            new_id = DB.save_schedule(payload)
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok", "id": new_id}, ensure_ascii=False).encode('utf-8'))
+            return
+
+        # /api/schedules/update - 시험 일정 수정
+        if self.path == '/api/schedules/update':
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            payload = json.loads(body.decode('utf-8'))
+
+            schedule_id = int(payload.get('id', 0))
+            success = DB.update_schedule(schedule_id, payload)
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok", "success": success}, ensure_ascii=False).encode('utf-8'))
+            return
+
+        # /api/schedules/target - 대표 목표 시험 설정/토글
+        if self.path == '/api/schedules/target':
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            payload = json.loads(body.decode('utf-8'))
+
+            schedule_id = int(payload.get('id', 0))
+            success = DB.set_target_schedule(schedule_id)
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok", "success": success}, ensure_ascii=False).encode('utf-8'))
+            return
+
         self.send_error(404, "Not Found")
 
     def do_DELETE(self):
@@ -277,6 +361,20 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({"status": "ok", "deleted_count": deleted_cnt}, ensure_ascii=False).encode('utf-8'))
             return
+
+        # /api/schedules - 시험 일정 삭제 (?id=X)
+        if path_only == '/api/schedules':
+            if 'id' in query:
+                schedule_id = int(query['id'][0])
+                deleted_cnt = DB.delete_schedule(schedule_id)
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "ok", "deleted_count": deleted_cnt}, ensure_ascii=False).encode('utf-8'))
+                return
+            else:
+                self.send_error(400, "Bad Request: Missing 'id' parameter")
+                return
 
         self.send_error(404, "Not Found")
 

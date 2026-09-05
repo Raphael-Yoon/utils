@@ -176,28 +176,72 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px;
+      padding: 20px 16px;
       text-align: center;
+      overflow-y: auto;
     }
     .start-card {
       background: var(--bg-card);
-      padding: 40px;
-      border-radius: 16px;
+      padding: 24px 28px;
+      border-radius: 14px;
       box-shadow: var(--shadow-md);
-      max-width: 640px;
+      max-width: 620px;
       width: 100%;
       border: 1px solid var(--border-color);
       transition: background-color 0.2s ease, border-color 0.2s ease;
+      box-sizing: border-box;
     }
-    .start-card h2 { margin-bottom: 16px; color: var(--text-main); }
-    .start-card p { color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+    .start-card h2 { margin-bottom: 6px; font-size: 1.45rem; color: var(--text-main); }
+    .start-card p { color: var(--text-muted); margin-bottom: 14px; font-size: 0.9rem; line-height: 1.5; }
+    
+    /* 합격 판정 기준 롤업 스타일 */
+    .rules-rollup {
+      margin-bottom: 16px;
+      text-align: left;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    .rules-rollup summary {
+      padding: 9px 14px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      transition: background-color 0.15s ease;
+    }
+    .rules-rollup summary::-webkit-details-marker { display: none; }
+    .rules-rollup summary:hover {
+      background: rgba(59, 130, 246, 0.06);
+    }
+    .rules-rollup .rollup-icon {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+    .rules-rollup[open] .rollup-icon {
+      transform: rotate(180deg);
+    }
+    .rules-rollup-content {
+      padding: 6px 14px 12px 14px;
+      border-top: 1px solid var(--border-color);
+      animation: fadeIn 0.2s ease;
+    }
+
     .exam-select-box {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       border-radius: 8px;
       border: 1px solid var(--border-color);
-      font-size: 1rem;
-      margin-bottom: 24px;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
       background: var(--bg-input);
       color: var(--text-main);
       transition: all 0.2s ease;
@@ -916,6 +960,174 @@
       height: 5px;
       box-shadow: 0 0 8px rgba(59, 130, 246, 0.45);
     }
+
+    /* === 풀어봄 시험 일정 & 캘린더 전용 스타일 === */
+    .schedule-banner-box {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(147, 51, 234, 0.12) 100%);
+      border: 1.5px solid rgba(59, 130, 246, 0.35);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+      text-align: left;
+    }
+    .schedule-banner-box:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.18);
+    }
+    .cal-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      user-select: none;
+    }
+    .cal-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 8px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+    .cal-day-header {
+      background: var(--bg-subtle);
+      padding: 10px 4px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.84rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+    .cal-day-header.sun { color: #ef4444; }
+    .cal-day-header.sat { color: #3b82f6; }
+    .cal-cell {
+      min-height: 96px;
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      position: relative;
+      background: var(--bg-card);
+      transition: background 0.15s ease;
+      cursor: pointer;
+    }
+    .cal-cell:nth-child(7n) { border-right: none; }
+    .cal-cell:hover {
+      background: rgba(59, 130, 246, 0.05);
+    }
+    .cal-cell.other-month {
+      background: rgba(120, 120, 120, 0.04);
+      opacity: 0.45;
+    }
+    .cal-cell.today {
+      background: rgba(59, 130, 246, 0.09);
+    }
+    .cal-cell.today .cal-num {
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .cal-num {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-main);
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cal-cell.sun .cal-num { color: #ef4444; }
+    .cal-cell.sat .cal-num { color: #3b82f6; }
+    .cal-cell.today .cal-num { color: #ffffff !important; }
+    .cal-badge {
+      font-size: 0.72rem;
+      padding: 3px 6px;
+      border-radius: 5px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: transform 0.1s ease, filter 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      line-height: 1.2;
+    }
+    .cal-badge:hover {
+      filter: brightness(1.12);
+      transform: scale(1.02);
+      z-index: 2;
+    }
+    .cal-badge-exam {
+      background: #ef4444;
+      color: #ffffff;
+    }
+    .cal-badge-apply {
+      background: #3b82f6;
+      color: #ffffff;
+    }
+    .cal-badge-result {
+      background: #10b981;
+      color: #ffffff;
+    }
+    .schedule-list-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .schedule-list-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+    .schedule-list-card.is-target {
+      border: 1.5px solid #f59e0b;
+      background: linear-gradient(to right, rgba(245, 158, 11, 0.04), transparent);
+    }
+    .dday-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+    .dday-urgent { background: #fee2e2; color: #b91c1c; }
+    .dday-soon { background: #fef3c7; color: #b45309; }
+    .dday-normal { background: #e0e7ff; color: #3730a3; }
+    .dday-past { background: #f1f5f9; color: #64748b; }
   </style>
 </head>
 <body>
@@ -928,6 +1140,7 @@
     <span id="timerIcon">⏱️</span> <span id="timerStr">120:00</span>
   </div>
   <div class="header-actions">
+    <button class="btn btn-header-outline" id="btnScheduleCalendar" onclick="openScheduleModal()" title="시험 일정 관리 & 수험 캘린더 (단축키: C)">📅 시험 일정</button>
     <button class="btn btn-header-outline" id="btnToggleOmr" style="display:none;" onclick="toggleOmrPane()" title="OMR 답안지 접기/펼치기 (단축키: O)">📋 OMR 접기</button>
     <button class="btn btn-header-outline" id="btnThemeToggle" onclick="toggleTheme()" title="다크 모드 / 라이트 모드 전환 (단축키: T)">🌙 다크 모드</button>
     <button class="btn btn-header-outline" id="btnHome" onclick="location.reload()">🏠 시험 목록</button>
@@ -943,6 +1156,11 @@
       <h2>🌸 풀어봄 실전 모의고사</h2>
       <p>문제를 풀어보고 합격의 봄을 맞이하세요.<br>응시할 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
       
+      <!-- 시험 일정 / 목표 시험 D-Day 안내 배너 -->
+      <div id="targetScheduleBanner" class="schedule-banner-box" style="display:none;" onclick="openScheduleModal()">
+        <!-- JS 동적 렌더링 -->
+      </div>
+
       <!-- 진행 중인 시험 이어서 풀기 배너 -->
       <div id="resumeBanner" style="display:none; background:#fffbeb; border:1.5px solid #f59e0b; padding:16px; border-radius:10px; margin-bottom:20px; text-align:left; box-shadow:0 2px 6px rgba(245,158,11,0.15);">
         <div style="font-weight:bold; color:#b45309; font-size:1.05rem;">⚠️ 진행 중인 시험이 있습니다!</div>
@@ -985,17 +1203,23 @@
         </button>
       </div>
 
-      <div style="margin-bottom: 24px; text-align: left; background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px;">
-        <h4 style="margin-bottom:8px; font-size:0.95rem; color:var(--text-main);" id="rulesTitle">📌 합격 판정 기준:</h4>
-        <ul style="font-size:0.85rem; color:var(--text-muted); padding-left:20px; line-height:1.5;" id="rulesList">
-          <li>과목당 25점 만점 (문항당 1.25점)</li>
-          <li>과목별 과락 기준: <b>10점 미만</b> (8문항 미만) 시 불합격</li>
-          <li>총점 합격 기준: <b>60점 이상</b> (48문항 이상) 득점 시 합격</li>
-        </ul>
-      </div>
+      <!-- 합격 판정 기준 롤업 (접기/펼치기) -->
+      <details id="rulesRollup" class="rules-rollup">
+        <summary>
+          <span id="rulesTitle">📌 합격 판정 기준 (클릭하여 펼치기)</span>
+          <span class="rollup-icon">▼</span>
+        </summary>
+        <div class="rules-rollup-content">
+          <ul style="font-size:0.83rem; color:var(--text-muted); padding-left:18px; line-height:1.5; margin:0;" id="rulesList">
+            <li>과목당 25점 만점 (문항당 1.25점)</li>
+            <li>과목별 과락 기준: <b>10점 미만</b> (8문항 미만) 시 불합격</li>
+            <li>총점 합격 기준: <b>60점 이상</b> (48문항 이상) 득점 시 합격</li>
+          </ul>
+        </div>
+      </details>
 
-      <button class="btn btn-primary" style="width:100%; padding:14px; font-size:1.1rem;" onclick="startExam()">🚀 응시 시작하기</button>
-      <button class="btn btn-outline" style="width:100%; padding:12px; font-size:1.05rem; margin-top:10px;" onclick="showHistoryModal()">📜 과거 응시 이력 및 오답노트</button>
+      <button class="btn btn-primary" style="width:100%; padding:12px; font-size:1.05rem; font-weight:700;" onclick="startExam()">🚀 응시 시작하기</button>
+      <button class="btn btn-outline" style="width:100%; padding:10px; font-size:0.95rem; margin-top:8px;" onclick="showHistoryModal()">📜 과거 응시 이력 및 오답노트</button>
     </div>
   </div>
 
@@ -1221,6 +1445,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 
   checkDraftSession();
+  loadSchedules();
 });
 
 function initCategoryDropdown(preserveSelected = null) {
@@ -1415,6 +1640,22 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       e.preventDefault();
       closeHistoryModal();
+    }
+    return;
+  }
+  const scheduleFormModal = document.getElementById('scheduleFormModal');
+  if (scheduleFormModal && scheduleFormModal.style.display === 'flex') {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeScheduleForm();
+    }
+    return;
+  }
+  const scheduleModal = document.getElementById('scheduleModal');
+  if (scheduleModal && scheduleModal.style.display === 'flex') {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeScheduleModal();
     }
     return;
   }
@@ -1656,7 +1897,7 @@ function updateRulesUI() {
   const fn = (ex.filename || (ex.path ? ex.path.replace('/exams/', '') : '')).toLowerCase();
   const isAuditorSingleSubject = !!fn.match(/auditor_\d{4}_subject\d+\.json$/);
 
-  document.getElementById('rulesTitle').innerHTML = `📌 <b>${escapeHtml(ex.title)}</b> 합격 판정 기준:`;
+  document.getElementById('rulesTitle').innerHTML = `📌 <b>${escapeHtml(ex.title)}</b> 합격 판정 기준`;
   
   if (rules.tier_1_score !== undefined) {
     document.getElementById('rulesList').innerHTML = `
@@ -3716,6 +3957,545 @@ function makeElementDraggable(elmnt, headerElmnt) {
     document.onmousemove = null;
   }
 }
+
+/* ==========================================================================
+   🌸 풀어봄 (Pool-eobom) 시험 일정 관리 & 수험 캘린더 엔진
+   ========================================================================== */
+
+let allSchedules = [];
+let currentCalDate = new Date();
+let currentScheduleTab = 'calendar';
+
+// 1. 전체 시험 일정 로드
+async function loadSchedules() {
+  try {
+    const res = await fetch('/api/schedules');
+    if (res.ok) {
+      allSchedules = await res.json();
+    } else {
+      allSchedules = [];
+    }
+  } catch (e) {
+    console.error("시험 일정 로드 실패:", e);
+    allSchedules = [];
+  }
+
+  // 홈 화면 D-Day 배너 갱신
+  renderTargetScheduleBanner();
+
+  // 모달 카운트 뱃지 갱신
+  const countBadge = document.getElementById('scheduleCountBadge');
+  if (countBadge) countBadge.innerText = allSchedules.length;
+
+  // 캘린더 및 리스트 갱신
+  renderCalendar();
+  renderScheduleList();
+}
+
+// 2. 홈 화면 목표 시험 D-Day 배너 렌더링
+function renderTargetScheduleBanner() {
+  const banner = document.getElementById('targetScheduleBanner');
+  if (!banner) return;
+
+  const startScreen = document.getElementById('startScreen');
+  if (!startScreen || startScreen.style.display === 'none') {
+    banner.style.display = 'none';
+    return;
+  }
+
+  // 목표 시험 우선 탐색, 없으면 가장 임박한 미래 시험
+  let target = allSchedules.find(s => s.is_target);
+  if (!target && allSchedules.length > 0) {
+    const upcoming = allSchedules.filter(s => s.d_day !== null && s.d_day >= 0);
+    target = upcoming.length > 0 ? upcoming[0] : allSchedules[0];
+  }
+
+  // 등록된 일정이 없는 경우
+  if (allSchedules.length === 0) {
+    banner.innerHTML = `
+      <div style="display:flex; align-items:center; gap:14px; width:100%;">
+        <span style="font-size:1.6rem;">📅</span>
+        <div style="flex:1;">
+          <div style="font-weight:800; font-size:0.95rem; color:var(--text-main);">시험 일정을 등록하고 D-Day를 관리하세요!</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">과목명, 접수기간, 시험일자를 등록할 수 있습니다.</div>
+        </div>
+        <button class="btn btn-primary" style="font-size:0.82rem; padding:6px 14px; font-weight:700; white-space:nowrap;" onclick="event.stopPropagation(); openScheduleForm();">
+          ➕ 일정 등록
+        </button>
+      </div>
+    `;
+    banner.style.display = 'flex';
+    return;
+  }
+
+  // D-Day 헬퍼 함수
+  const getDDayInfo = (s) => {
+    let text = '', cls = 'dday-normal';
+    if (s.d_day === null) {
+      text = '일정 미정';
+    } else if (s.d_day === 0) {
+      text = '🔥 D-DAY 오늘!';
+      cls = 'dday-urgent';
+    } else if (s.d_day > 0) {
+      text = `D-${s.d_day}`;
+      cls = s.d_day <= 7 ? 'dday-urgent' : (s.d_day <= 30 ? 'dday-soon' : 'dday-normal');
+    } else {
+      text = `종료 (D+${Math.abs(s.d_day)})`;
+      cls = 'dday-past';
+    }
+    return { text, cls };
+  };
+
+  // 접수 상태 헬퍼 함수
+  const getApplyStr = (s) => {
+    if (!s.apply_start_date || !s.apply_end_date) return '';
+    if (s.apply_status === 'ongoing') {
+      return `<span style="color:#2563eb; font-weight:700;">📝 접수 중 (마감 D-${s.apply_days_left})</span>`;
+    } else if (s.apply_status === 'upcoming') {
+      return `<span style="color:#059669; font-weight:600;">⏳ 접수 예정 (${s.apply_start_date} ~)</span>`;
+    } else {
+      return `<span style="color:var(--text-muted);">접수 마감</span>`;
+    }
+  };
+
+  // 1) 등록된 일정이 1개인 경우
+  if (allSchedules.length === 1) {
+    const target = allSchedules[0];
+    const { text: ddayText, cls: ddayClass } = getDDayInfo(target);
+    const applyStr = getApplyStr(target);
+
+    banner.innerHTML = `
+      <div style="display:flex; align-items:center; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:1.7rem;">🎯</span>
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-weight:800; font-size:1.05rem; color:var(--text-main);">${escapeHtml(target.title)}</span>
+              ${target.is_target ? `<span style="font-size:0.75rem; background:#fef3c7; color:#b45309; padding:2px 6px; border-radius:4px; font-weight:700;">⭐ 목표</span>` : ''}
+            </div>
+            <div style="font-size:0.83rem; color:var(--text-muted); margin-top:3px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <span>🔴 <b>시험일:</b> ${target.exam_date}</span>
+              ${applyStr ? `<span>• ${applyStr}</span>` : ''}
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="dday-pill ${ddayClass}" style="font-size:1rem; padding:5px 12px;">${ddayText}</span>
+          <button class="btn btn-header-outline" style="font-size:0.8rem; padding:6px 10px; color:var(--text-main); border:1px solid var(--border-color);" onclick="event.stopPropagation(); openScheduleModal();">
+            캘린더 보기 ↗
+          </button>
+        </div>
+      </div>
+    `;
+    banner.style.display = 'flex';
+    return;
+  }
+
+  // 2) 등록된 일정이 2개 이상인 경우: 모든 시험 일정 멀티 뷰 렌더링
+  let itemsHtml = '';
+  allSchedules.forEach(s => {
+    const { text: ddayText, cls: ddayClass } = getDDayInfo(s);
+    const applyStr = getApplyStr(s);
+
+    itemsHtml += `
+      <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.05); padding:7px 12px; border-radius:8px; border:1px solid rgba(59,130,246,0.18); transition:background 0.15s ease;" onmouseover="this.style.background='rgba(59,130,246,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'" onclick="event.stopPropagation(); openScheduleForm(${s.id});" title="클릭하여 상세 정보 확인/수정">
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <span style="font-weight:800; font-size:0.95rem; color:var(--text-main);">${escapeHtml(s.title)}</span>
+          ${s.is_target ? `<span style="font-size:0.7rem; background:#fef3c7; color:#b45309; padding:1px 5px; border-radius:4px; font-weight:700;">⭐</span>` : ''}
+          <span style="font-size:0.82rem; color:var(--text-muted);">🔴 <b>${s.exam_date}</b></span>
+          ${applyStr ? `<span style="font-size:0.8rem;">• ${applyStr}</span>` : ''}
+        </div>
+        <span class="dday-pill ${ddayClass}" style="font-size:0.82rem; padding:3px 10px; white-space:nowrap;">${ddayText}</span>
+      </div>
+    `;
+  });
+
+  banner.innerHTML = `
+    <div style="width:100%; display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(59,130,246,0.2); padding-bottom:6px;">
+        <span style="font-weight:800; font-size:0.92rem; color:var(--text-main); display:flex; align-items:center; gap:6px;">
+          🎯 등록된 시험 일정 (${allSchedules.length}개)
+        </span>
+        <div style="display:flex; gap:6px; align-items:center;">
+          <button class="btn btn-header-outline" style="font-size:0.75rem; padding:3px 8px; color:var(--text-main); border:1px solid var(--border-color);" onclick="event.stopPropagation(); openScheduleForm();">
+            ➕ 일정 추가
+          </button>
+          <button class="btn btn-header-outline" style="font-size:0.75rem; padding:3px 8px; color:var(--text-main); border:1px solid var(--border-color);" onclick="event.stopPropagation(); openScheduleModal();">
+            캘린더 보기 ↗
+          </button>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        ${itemsHtml}
+      </div>
+    </div>
+  `;
+  banner.style.display = 'flex';
+}
+
+// 3. 모달 제어
+function openScheduleModal() {
+  const modal = document.getElementById('scheduleModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    renderCalendar();
+    renderScheduleList();
+  }
+}
+
+function closeScheduleModal() {
+  const modal = document.getElementById('scheduleModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function switchScheduleTab(tab) {
+  currentScheduleTab = tab;
+  const tabCal = document.getElementById('tabBtnCalendar');
+  const tabList = document.getElementById('tabBtnList');
+  const viewCal = document.getElementById('scheduleCalendarView');
+  const viewList = document.getElementById('scheduleListView');
+
+  if (tab === 'calendar') {
+    tabCal.style.background = 'var(--primary)';
+    tabCal.style.color = '#ffffff';
+    tabCal.style.fontWeight = '700';
+    tabList.style.background = 'transparent';
+    tabList.style.color = 'var(--text-muted)';
+    tabList.style.fontWeight = '600';
+    viewCal.style.display = 'block';
+    viewList.style.display = 'none';
+    renderCalendar();
+  } else {
+    tabList.style.background = 'var(--primary)';
+    tabList.style.color = '#ffffff';
+    tabList.style.fontWeight = '700';
+    tabCal.style.background = 'transparent';
+    tabCal.style.color = 'var(--text-muted)';
+    tabCal.style.fontWeight = '600';
+    viewCal.style.display = 'none';
+    viewList.style.display = 'block';
+    renderScheduleList();
+  }
+}
+
+function changeCalMonth(offset) {
+  currentCalDate.setMonth(currentCalDate.getMonth() + offset);
+  renderCalendar();
+}
+
+function goCalToday() {
+  currentCalDate = new Date();
+  renderCalendar();
+}
+
+// 4. 월간 캘린더 렌더링
+function renderCalendar() {
+  const container = document.getElementById('calCellsContainer');
+  const monthText = document.getElementById('calCurrentMonthText');
+  if (!container || !monthText) return;
+
+  const year = currentCalDate.getFullYear();
+  const month = currentCalDate.getMonth();
+  monthText.innerText = `${year}년 ${month + 1}월`;
+
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
+  const prevLastDate = new Date(year, month, 0).getDate();
+
+  let cellsHtml = '';
+
+  // 1) 이전달 일자들
+  for (let i = firstDay - 1; i >= 0; i--) {
+    const d = prevLastDate - i;
+    const prevMonth = month === 0 ? 11 : month - 1;
+    const prevYear = month === 0 ? year - 1 : year;
+    const dateStr = `${prevYear}-${String(prevMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const dayOfWeek = (firstDay - 1 - i) % 7;
+    cellsHtml += renderCalendarCell(dateStr, d, dayOfWeek, true, dateStr === todayStr);
+  }
+
+  // 2) 이번달 일자들
+  for (let d = 1; d <= lastDate; d++) {
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const dayOfWeek = (firstDay + d - 1) % 7;
+    cellsHtml += renderCalendarCell(dateStr, d, dayOfWeek, false, dateStr === todayStr);
+  }
+
+  // 3) 다음달 일자들
+  const totalCells = firstDay + lastDate;
+  const nextDays = totalCells <= 35 ? 35 - totalCells : 42 - totalCells;
+  for (let d = 1; d <= nextDays; d++) {
+    const nextMonth = month === 11 ? 0 : month + 1;
+    const nextYear = month === 11 ? year + 1 : year;
+    const dateStr = `${nextYear}-${String(nextMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const dayOfWeek = (firstDay + lastDate + d - 1) % 7;
+    cellsHtml += renderCalendarCell(dateStr, d, dayOfWeek, true, dateStr === todayStr);
+  }
+
+  container.innerHTML = cellsHtml;
+}
+
+// 날짜 단일 셀 렌더링
+function renderCalendarCell(dateStr, dayNum, dayOfWeek, isOtherMonth, isToday) {
+  let cellClass = 'cal-cell';
+  if (isOtherMonth) cellClass += ' other-month';
+  if (isToday) cellClass += ' today';
+  if (dayOfWeek === 0) cellClass += ' sun';
+  if (dayOfWeek === 6) cellClass += ' sat';
+
+  let eventsHtml = '';
+  allSchedules.forEach(s => {
+    // 시험일
+    if (s.exam_date === dateStr) {
+      eventsHtml += `
+        <div class="cal-badge cal-badge-exam" title="[시험일] ${escapeHtml(s.title)}" onclick="event.stopPropagation(); openScheduleForm(${s.id});">
+          🔴 ${escapeHtml(s.title)}
+        </div>
+      `;
+    }
+    // 접수기간
+    else if (s.apply_start_date && s.apply_end_date && s.apply_start_date <= dateStr && dateStr <= s.apply_end_date) {
+      const isStart = s.apply_start_date === dateStr;
+      const isEnd = s.apply_end_date === dateStr;
+      let label = isStart ? '접수시작' : (isEnd ? '접수마감' : '접수');
+      eventsHtml += `
+        <div class="cal-badge cal-badge-apply" title="[접수] ${escapeHtml(s.title)}" onclick="event.stopPropagation(); openScheduleForm(${s.id});">
+          🔵 ${label}: ${escapeHtml(s.title)}
+        </div>
+      `;
+    }
+  });
+
+  return `
+    <div class="${cellClass}" onclick="openScheduleForm('${dateStr}')" title="${dateStr} - 클릭하여 일정 추가">
+      <div class="cal-num">${dayNum}</div>
+      <div style="display:flex; flex-direction:column; gap:2px; overflow:hidden;">
+        ${eventsHtml}
+      </div>
+    </div>
+  `;
+}
+
+// 5. 일정 목록 (간소화 리스트 뷰)
+function renderScheduleList() {
+  const container = document.getElementById('scheduleListCards');
+  if (!container) return;
+
+  if (allSchedules.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center; padding:40px 16px; color:var(--text-muted);">
+        <div style="font-size:2.2rem; margin-bottom:8px;">📅</div>
+        <div style="font-size:1rem; font-weight:700; color:var(--text-main);">등록된 시험 일정이 없습니다.</div>
+        <div style="font-size:0.84rem; margin-top:4px;">상단의 [➕ 새 시험 일정 등록] 버튼을 눌러 일정을 등록해 보세요.</div>
+      </div>
+    `;
+    return;
+  }
+
+  let html = '';
+  allSchedules.forEach(s => {
+    let ddayBadge = '';
+    if (s.d_day === null) {
+      ddayBadge = `<span class="dday-pill dday-normal">일정 미정</span>`;
+    } else if (s.d_day === 0) {
+      ddayBadge = `<span class="dday-pill dday-urgent">🔥 D-DAY 오늘!</span>`;
+    } else if (s.d_day > 0) {
+      const cls = s.d_day <= 7 ? 'dday-urgent' : (s.d_day <= 30 ? 'dday-soon' : 'dday-normal');
+      ddayBadge = `<span class="dday-pill ${cls}">D-${s.d_day}</span>`;
+    } else {
+      ddayBadge = `<span class="dday-pill dday-past">종료 (D+${Math.abs(s.d_day)})</span>`;
+    }
+
+    html += `
+      <div class="schedule-list-card ${s.is_target ? 'is-target' : ''}" style="padding:14px 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h4 style="margin:0; font-size:1.05rem; font-weight:800; color:var(--text-main);">${escapeHtml(s.title)}</h4>
+              ${s.is_target ? `<span style="font-size:0.75rem; background:#fef3c7; color:#b45309; padding:2px 7px; border-radius:10px; font-weight:700;">⭐ 목표</span>` : ''}
+            </div>
+            
+            <div style="margin-top:6px; display:flex; gap:16px; font-size:0.84rem; color:var(--text-muted); flex-wrap:wrap;">
+              <div>🔴 <b>시험일:</b> <span style="color:var(--text-main); font-weight:700;">${s.exam_date}</span></div>
+              <div>🔵 <b>접수기간:</b> ${s.apply_start_date && s.apply_end_date ? `${s.apply_start_date} ~ ${s.apply_end_date}` : '미정'}</div>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:8px;">
+            ${ddayBadge}
+            <button class="btn" style="padding:4px 8px; font-size:0.78rem; background:${s.is_target ? '#fef3c7' : 'var(--bg-subtle)'}; color:${s.is_target ? '#b45309' : 'var(--text-main)'}; border:1px solid var(--border-color);" onclick="toggleTargetSchedule(${s.id})">
+              ${s.is_target ? '★ 목표 해제' : '☆ 목표 지정'}
+            </button>
+            <button class="btn" style="padding:4px 8px; font-size:0.78rem; background:var(--bg-subtle); color:var(--text-main); border:1px solid var(--border-color);" onclick="openScheduleForm(${s.id})">✏️ 수정</button>
+            <button class="btn" style="padding:4px 8px; font-size:0.78rem; background:rgba(239,68,68,0.1); color:#ef4444; border:1px solid rgba(239,68,68,0.25);" onclick="deleteSchedule(${s.id}, '${escapeHtml(s.title)}')">🗑️</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+// 6. 시험 일정 등록 / 수정 폼 모달 (핵심 4대 항목)
+function openScheduleForm(param = null) {
+  const modal = document.getElementById('scheduleFormModal');
+  const titleEl = document.getElementById('scheduleFormTitle');
+  const catSel = document.getElementById('schedCategorySelect');
+  const frm = document.getElementById('frmSchedule');
+  if (!modal || !frm) return;
+
+  frm.reset();
+  document.getElementById('schedId').value = '';
+  document.getElementById('schedIsTarget').checked = false;
+
+  // 카테고리 셀렉트 채우기
+  catSel.innerHTML = '<option value="direct">✏️ 직접 입력</option>';
+  if (typeof examList !== 'undefined' && examList.length > 0) {
+    const cats = Array.from(new Set(examList.map(e => e.category || '기타'))).sort((a,b) => a.localeCompare(b, 'ko'));
+    cats.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c;
+      catSel.appendChild(opt);
+    });
+  }
+
+  if (typeof param === 'number') {
+    // 수정 모드
+    const item = allSchedules.find(s => s.id === param);
+    if (item) {
+      titleEl.innerText = `✏️ 일정 수정: ${item.title}`;
+      document.getElementById('schedId').value = item.id;
+      document.getElementById('schedTitle').value = item.title || '';
+      document.getElementById('schedExamDate').value = item.exam_date || '';
+      document.getElementById('schedApplyStart').value = item.apply_start_date || '';
+      document.getElementById('schedApplyEnd').value = item.apply_end_date || '';
+      document.getElementById('schedIsTarget').checked = !!item.is_target;
+
+      if (item.category_id && Array.from(catSel.options).some(o => o.value === item.category_id)) {
+        catSel.value = item.category_id;
+      } else {
+        catSel.value = 'direct';
+      }
+    }
+  } else {
+    // 신규 등록 모드
+    titleEl.innerText = '➕ 시험 일정 등록';
+    if (typeof param === 'string' && param.length === 10) {
+      document.getElementById('schedExamDate').value = param;
+    } else {
+      const now = new Date();
+      const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate());
+      document.getElementById('schedExamDate').value = `${nextMonth.getFullYear()}-${String(nextMonth.getMonth() + 1).padStart(2, '0')}-${String(nextMonth.getDate()).padStart(2, '0')}`;
+    }
+    if (allSchedules.length === 0) {
+      document.getElementById('schedIsTarget').checked = true;
+    }
+  }
+
+  modal.style.display = 'flex';
+}
+
+function closeScheduleForm() {
+  const modal = document.getElementById('scheduleFormModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function onScheduleCategorySelectChange(val) {
+  const titleInput = document.getElementById('schedTitle');
+  if (val !== 'direct') {
+    titleInput.value = val;
+  }
+}
+
+// 7. 폼 제출 처리 (핵심 4대 항목)
+async function handleScheduleSubmit(e) {
+  e.preventDefault();
+  const idVal = document.getElementById('schedId').value;
+  const isEdit = !!idVal;
+  const catSel = document.getElementById('schedCategorySelect');
+
+  const payload = {
+    title: document.getElementById('schedTitle').value.trim(),
+    category_id: catSel.value === 'direct' ? '' : catSel.value,
+    round_name: '',
+    exam_date: document.getElementById('schedExamDate').value,
+    apply_start_date: document.getElementById('schedApplyStart').value,
+    apply_end_date: document.getElementById('schedApplyEnd').value,
+    result_date: '',
+    color_tag: '#3b82f6',
+    is_target: document.getElementById('schedIsTarget').checked ? 1 : 0
+  };
+
+  if (!payload.title || !payload.exam_date) {
+    alert("시험과목/종목명과 시험일자는 필수 입력 사항입니다.");
+    return;
+  }
+
+  try {
+    let res;
+    if (isEdit) {
+      payload.id = parseInt(idVal, 10);
+      res = await fetch('/api/schedules/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      res = await fetch('/api/schedules', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }
+
+    if (res.ok) {
+      closeScheduleForm();
+      await loadSchedules();
+    } else {
+      alert("일정 저장에 실패했습니다.");
+    }
+  } catch (err) {
+    console.error("일정 저장 에러:", err);
+    alert("서버 통신 중 오류가 발생했습니다.");
+  }
+}
+
+// 8. 일정 삭제
+async function deleteSchedule(id, title) {
+  if (!confirm(`'${title}' 시험 일정을 삭제하시겠습니까?`)) return;
+  try {
+    const res = await fetch(`/api/schedules?id=${id}`, { method: 'DELETE' });
+    if (res.ok) {
+      await loadSchedules();
+    } else {
+      alert("일정 삭제에 실패했습니다.");
+    }
+  } catch (err) {
+    console.error("일정 삭제 에러:", err);
+  }
+}
+
+// 9. 목표 시험 토글
+async function toggleTargetSchedule(id) {
+  try {
+    const res = await fetch('/api/schedules/target', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: id })
+    });
+    if (res.ok) {
+      await loadSchedules();
+    }
+  } catch (err) {
+    console.error("목표 시험 설정 에러:", err);
+  }
+}
+
 </script>
 
 <!-- 드래그 가능한 시험용 메모장/연습장 위젯 -->
@@ -3794,6 +4574,145 @@ function makeElementDraggable(elmnt, headerElmnt) {
     <div style="margin-top:20px; display:flex; justify-content:flex-end;">
       <button class="btn btn-primary" style="padding:8px 22px; font-weight:700;" onclick="closeCategoryLockModal()">닫기</button>
     </div>
+  </div>
+</div>
+
+<!-- 시험 일정 관리 & 캘린더 모달 -->
+<div id="scheduleModal" style="display:none; position:fixed; z-index:9998; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.65); justify-content:center; align-items:center; backdrop-filter:blur(3px);" onclick="closeScheduleModal()">
+  <div style="background:var(--bg-card); color:var(--text-main); border:1px solid var(--border-color); border-radius:14px; width:94%; max-width:960px; max-height:88vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:var(--shadow-md); position:relative;" onclick="event.stopPropagation()">
+    
+    <!-- 모달 헤더 -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 24px; border-bottom:1px solid var(--border-color); background:var(--bg-subtle);">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:1.4rem;">📅</span>
+        <div>
+          <h3 style="margin:0; font-size:1.18rem; font-weight:800; color:var(--text-main);">시험 일정 관리 & 수험 캘린더</h3>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">목표 시험의 원서접수 기간과 시험일을 체계적으로 관리하세요.</div>
+        </div>
+      </div>
+      <button onclick="closeScheduleModal()" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text-muted); line-height:1;" title="닫기 (Esc)">&times;</button>
+    </div>
+
+    <!-- 서브 헤더 / 탭 및 액션 툴바 -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 24px; border-bottom:1px solid var(--border-color); background:var(--bg-card); flex-wrap:wrap; gap:10px;">
+      <div style="display:flex; gap:6px; background:var(--bg-subtle); padding:4px; border-radius:8px; border:1px solid var(--border-color);">
+        <button id="tabBtnCalendar" class="btn" style="padding:6px 14px; font-size:0.86rem; font-weight:700; background:var(--primary); color:#ffffff; border-radius:6px;" onclick="switchScheduleTab('calendar')">🗓️ 월간 캘린더</button>
+        <button id="tabBtnList" class="btn" style="padding:6px 14px; font-size:0.86rem; font-weight:600; background:transparent; color:var(--text-muted); border-radius:6px;" onclick="switchScheduleTab('list')">📋 일정 목록 (<span id="scheduleCountBadge">0</span>)</button>
+      </div>
+
+      <button class="btn btn-primary" style="padding:7px 16px; font-size:0.86rem; font-weight:700; display:inline-flex; align-items:center; gap:6px;" onclick="openScheduleForm()">
+        <span>➕</span> 새 시험 일정 등록
+      </button>
+    </div>
+
+    <!-- 모달 바디 스크롤 영역 -->
+    <div style="padding:20px 24px; overflow-y:auto; flex:1;">
+      
+      <!-- 1. 월간 캘린더 뷰 -->
+      <div id="scheduleCalendarView">
+        <div class="cal-header-bar" style="margin-bottom:12px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button class="btn btn-header-outline" style="padding:4px 10px; font-size:0.82rem; color:var(--text-main); border:1px solid var(--border-color);" onclick="changeCalMonth(-1)">◀ 이전달</button>
+            <span id="calCurrentMonthText" style="font-size:1.15rem; font-weight:800; min-width:130px; text-align:center; color:var(--text-main);">2026년 9월</span>
+            <button class="btn btn-header-outline" style="padding:4px 10px; font-size:0.82rem; color:var(--text-main); border:1px solid var(--border-color);" onclick="changeCalMonth(1)">다음달 ▶</button>
+            <button class="btn" style="padding:4px 10px; font-size:0.82rem; background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); font-weight:600; border-radius:6px;" onclick="goCalToday()">오늘</button>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:0.78rem; color:var(--text-muted);">
+            <span style="display:flex; align-items:center; gap:4px;"><span style="width:10px; height:10px; border-radius:50%; background:#ef4444; display:inline-block;"></span> 🔴 시험일</span>
+            <span style="display:flex; align-items:center; gap:4px;"><span style="width:10px; height:10px; border-radius:50%; background:#3b82f6; display:inline-block;"></span> 🔵 원서접수</span>
+          </div>
+        </div>
+
+        <!-- 캘린더 그리드 -->
+        <div class="cal-grid">
+          <div class="cal-day-header sun">일</div>
+          <div class="cal-day-header">월</div>
+          <div class="cal-day-header">화</div>
+          <div class="cal-day-header">수</div>
+          <div class="cal-day-header">목</div>
+          <div class="cal-day-header">금</div>
+          <div class="cal-day-header sat">토</div>
+          <div id="calCellsContainer" style="display:contents;">
+            <!-- JS 동적 셀 렌더링 -->
+          </div>
+        </div>
+        <div style="font-size:0.8rem; color:var(--text-muted); margin-top:10px; text-align:right;">
+          💡 캘린더의 원하는 날짜 셀을 클릭하면 해당 일자가 자동 입력된 신규 일정 등록 창이 열립니다.
+        </div>
+      </div>
+
+      <!-- 2. 일정 목록 (타임라인) 뷰 -->
+      <div id="scheduleListView" style="display:none;">
+        <div id="scheduleListCards" style="display:flex; flex-direction:column; gap:12px;">
+          <!-- JS 동적 카드 렌더링 -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 시험 일정 등록 / 수정 모달 (핵심 4대 항목 전용 간소화) -->
+<div id="scheduleFormModal" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.65); justify-content:center; align-items:center; backdrop-filter:blur(3px);" onclick="closeScheduleForm()">
+  <div style="background:var(--bg-card); color:var(--text-main); border:1px solid var(--border-color); border-radius:14px; width:90%; max-width:480px; max-height:85vh; overflow-y:auto; padding:22px; box-shadow:var(--shadow-md); position:relative;" onclick="event.stopPropagation()">
+    
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; border-bottom:1.5px solid var(--border-color); padding-bottom:10px;">
+      <h3 id="scheduleFormTitle" style="margin:0; font-size:1.12rem; font-weight:800; color:var(--text-main);">➕ 시험 일정 등록</h3>
+      <button onclick="closeScheduleForm()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+    </div>
+
+    <form id="frmSchedule" onsubmit="handleScheduleSubmit(event)" style="display:flex; flex-direction:column; gap:16px;">
+      <input type="hidden" id="schedId" value="" />
+
+      <!-- 1. 시험과목 / 종목 -->
+      <div>
+        <label style="display:block; font-size:0.86rem; font-weight:700; margin-bottom:6px; color:var(--text-main);">
+          1. 시험과목 / 종목 <span style="color:#ef4444;">*</span>
+        </label>
+        <div style="display:flex; gap:8px;">
+          <select id="schedCategorySelect" style="flex:1.1; padding:9px 10px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-input); color:var(--text-main); font-size:0.88rem;" onchange="onScheduleCategorySelectChange(this.value)">
+            <option value="direct">✏️ 직접 입력</option>
+          </select>
+          <input type="text" id="schedTitle" placeholder="과목/시험명 입력 (예: 정보시스템감리사 26회)" required style="flex:1.9; padding:9px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-input); color:var(--text-main); font-size:0.9rem;" />
+        </div>
+      </div>
+
+      <!-- 2. 시험 접수기간 -->
+      <div>
+        <label style="display:block; font-size:0.86rem; font-weight:700; margin-bottom:6px; color:var(--text-main);">
+          2. 시험 접수기간
+        </label>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <input type="date" id="schedApplyStart" style="flex:1; padding:8px 10px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-input); color:var(--text-main); font-size:0.88rem;" />
+          <span style="color:var(--text-muted); font-size:0.9rem;">~</span>
+          <input type="date" id="schedApplyEnd" style="flex:1; padding:8px 10px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-input); color:var(--text-main); font-size:0.88rem;" />
+        </div>
+      </div>
+
+      <!-- 3. 시험일자 (필수) -->
+      <div>
+        <label style="display:block; font-size:0.86rem; font-weight:700; margin-bottom:6px; color:var(--text-main);">
+          3. 시험일자 (D-Day 기준일) <span style="color:#ef4444;">*</span>
+        </label>
+        <input type="date" id="schedExamDate" required style="width:100%; box-sizing:border-box; padding:9px 12px; border-radius:8px; border:1.5px solid var(--primary); background:var(--bg-input); color:var(--text-main); font-size:0.95rem; font-weight:700;" />
+      </div>
+
+
+      <!-- 대표 목표 시험 지정 체크 -->
+      <div style="background:var(--bg-subtle); padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); margin-top:2px;">
+        <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600; font-size:0.86rem; color:var(--text-main);">
+          <input type="checkbox" id="schedIsTarget" style="cursor:pointer; width:16px; height:16px; accent-color:var(--primary);" />
+          <span>🎯 메인 목표 시험으로 지정 (홈 화면 D-Day 배너 표시)</span>
+        </label>
+      </div>
+
+      <!-- 버튼 -->
+      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:6px;">
+        <button type="button" class="btn" style="background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); padding:8px 18px; border-radius:8px;" onclick="closeScheduleForm()">취소</button>
+        <button type="submit" class="btn btn-primary" style="padding:8px 24px; font-weight:700; border-radius:8px;">💾 저장</button>
+      </div>
+    </form>
+
   </div>
 </div>
 </body>
