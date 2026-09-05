@@ -956,11 +956,33 @@
         </div>
       </div>
 
-      <div style="display: flex; gap: 10px; margin-bottom: 24px;">
+      <div style="display: flex; gap: 10px; margin-bottom: 8px;">
         <select class="exam-select-box" id="categorySelect" style="flex: 2.2; margin-bottom: 0; font-size: 0.92rem; text-overflow: ellipsis;" onchange="onCategoryChange()">
         </select>
         <select class="exam-select-box" id="examSelect" style="flex: 1; margin-bottom: 0; font-size: 0.92rem;" onchange="updateRulesUI()">
         </select>
+      </div>
+
+      <!-- 잠금 시험 토글 및 시험 단위 관리 바 -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; font-size:0.83rem; flex-wrap:wrap; gap:8px;">
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; color:var(--text-muted);">
+          <input type="checkbox" id="chkShowLockedCategories" onchange="toggleShowLockedCategories(this.checked)" style="cursor:pointer; accent-color:var(--primary);">
+          <span>🔒 잠긴 시험 종목 포함 보기 <span id="lockedCategoriesBadge" style="font-weight:700; color:#ef4444;"></span></span>
+        </label>
+        <button type="button" class="btn" style="background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); font-size:0.8rem; padding:4px 10px; border-radius:6px; cursor:pointer; display:inline-flex; align-items:center; gap:4px; font-weight:600;" onclick="openCategoryLockModal()">
+          ⚙️ 시험 잠금/해제 관리
+        </button>
+      </div>
+
+      <!-- 잠긴 시험 선택 시 안내 배너 -->
+      <div id="lockedCategoryBanner" style="display:none; background:#fef2f2; border:1px solid #fecaca; color:#b91c1c; border-radius:8px; padding:10px 14px; margin-bottom:16px; font-size:0.85rem; text-align:left; justify-content:space-between; align-items:center; box-shadow:0 1px 4px rgba(220,38,38,0.1);">
+        <div>
+          <b>🔒 현재 완료/잠금(숨김) 처리된 시험 종목입니다.</b><br>
+          <span style="font-size:0.8rem; color:#dc2626;">응시하시려면 [잠금 해제]를 눌러 활성화하세요.</span>
+        </div>
+        <button type="button" class="btn" style="background:#dc2626; color:#ffffff; font-size:0.82rem; padding:6px 12px; font-weight:700; border-radius:6px;" onclick="unlockSelectedCategory()">
+          🔓 잠금 해제
+        </button>
       </div>
 
       <div style="margin-bottom: 24px; text-align: left; background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px;">
@@ -1028,10 +1050,10 @@
             <button class="calc-btn" onclick="appendCalcNum('1')">1</button>
             <button class="calc-btn" onclick="appendCalcNum('2')">2</button>
             <button class="calc-btn" onclick="appendCalcNum('3')">3</button>
-            <button class="calc-btn" onclick="appendCalcNum('.')">.</button>
+            <button class="calc-btn op" style="grid-row: span 2;" onclick="calculateResult()">=</button>
 
             <button class="calc-btn" style="grid-column: span 2;" onclick="appendCalcNum('0')">0</button>
-            <button class="calc-btn equals" style="grid-column: span 2;" onclick="calculateResult()">=</button>
+            <button class="calc-btn" onclick="appendCalcNum('.')">.</button>
           </div>
         </div>
       </div>
@@ -1075,6 +1097,7 @@
         <button class="btn" id="btnCopyAiPrompt" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; padding: 12px 24px; font-size:1.05rem; font-weight:700; box-shadow:0 4px 12px rgba(99, 102, 241, 0.35); display:inline-flex; align-items:center; gap:8px;" onclick="copyAiAnalysisPrompt()">🤖 AI 맞춤 진단용 텍스트 복사</button>
         <button class="btn btn-success" style="padding: 12px 24px; font-size:1.05rem;" onclick="showReviewMode()">🔍 정답 및 오답 확인하기</button>
         <button class="btn btn-outline-dark" style="padding: 12px 24px; font-size:1.05rem;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
+        <button class="btn" id="btnLockCategoryResult" style="background:rgba(239, 68, 68, 0.12); border:1.5px solid #f87171; color:#dc2626; padding: 12px 20px; font-size:1.05rem; font-weight:700;" onclick="lockCurrentExamCategory()">🔒 이 시험 종목 완료 잠금</button>
         <button class="btn btn-primary" style="padding: 12px 24px; font-size:1.05rem;" onclick="location.reload()">🔄 다시 응시하기</button>
       </div>
     </div>
@@ -1092,6 +1115,8 @@ let totalSeconds = 7200;
 let isReviewMode = false;
 let currentQuestionIdx = 0; // 현재 활성화된 문항 인덱스 (0-indexed)
 let lastSubmissionSummary = null; // 최근 시험 제출 요약 데이터 (AI 분석용)
+let lockedCategories = new Set(); // 시험 단위(자격시험 종목) 잠금 목록
+let showLockedCategories = false; // 메인 화면에서 잠긴 시험 포함 표시 여부
 
 function toggleFlagQuestion(qId) {
   if (flaggedQuestions[qId]) {
@@ -1158,7 +1183,7 @@ function toggleTheme() {
   applyTheme(isDark ? 'light' : 'dark', true);
 }
 
-// 페이지 로드 시 테마 초기화, /api/exams 탐색 및 임시저장(이어하기) 확인
+// 페이지 로드 시 테마 초기화, /api/exams 및 /api/category-locks 탐색, 임시저장(이어하기) 확인
 window.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initDraggableWidgets();
@@ -1175,31 +1200,77 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const res = await fetch('/api/exams');
-    if(res.ok) {
-      examList = await res.json();
-      if(examList.length > 0) {
+    const [resExams, resLocks] = await Promise.all([
+      fetch('/api/exams'),
+      fetch('/api/category-locks')
+    ]);
+
+    if (resLocks && resLocks.ok) {
+      const lockData = await resLocks.json();
+      lockedCategories = new Set(lockData.locked_categories || []);
+    }
+
+    if (resExams && resExams.ok) {
+      examList = await resExams.json();
+      if (examList.length > 0) {
         initCategoryDropdown();
       }
     }
-  } catch(e) {}
+  } catch(e) {
+    console.error("초기 시험 데이터 로드 실패:", e);
+  }
 
   checkDraftSession();
 });
 
-function initCategoryDropdown() {
+function initCategoryDropdown(preserveSelected = null) {
   const catSel = document.getElementById('categorySelect');
   if(!catSel) return;
+
+  const currentVal = preserveSelected || catSel.value;
   catSel.innerHTML = '';
 
   // 자격증 카테고리 고유 목록 체계적 정렬
-  const categories = Array.from(new Set(examList.map(ex => ex.category || '기타'))).sort((a, b) => a.localeCompare(b, 'ko'));
-  categories.forEach(cat => {
+  const allCategories = Array.from(new Set(examList.map(ex => ex.category || '기타'))).sort((a, b) => a.localeCompare(b, 'ko'));
+
+  // 잠긴 시험 개수 뱃지 갱신
+  const lockedCount = allCategories.filter(c => lockedCategories.has(c)).length;
+  const badgeEl = document.getElementById('lockedCategoriesBadge');
+  if (badgeEl) {
+    badgeEl.innerText = lockedCount > 0 ? `(${lockedCount}개 잠김)` : '';
+  }
+
+  // 메인 노출 카테고리 필터링 (기본: 잠긴 시험 제외)
+  let visibleCategories = allCategories;
+  if (!showLockedCategories) {
+    visibleCategories = allCategories.filter(c => !lockedCategories.has(c));
+  }
+
+  if (visibleCategories.length === 0) {
+    const opt = document.createElement('option');
+    opt.value = '';
+    opt.innerText = '⚠️ 모든 시험이 잠겨 있습니다. [시험 잠금/해제 관리]에서 활성화하세요.';
+    catSel.appendChild(opt);
+    onCategoryChange();
+    return;
+  }
+
+  visibleCategories.forEach(cat => {
     const opt = document.createElement('option');
     opt.value = cat;
-    opt.innerText = cat;
+    const isLocked = lockedCategories.has(cat);
+    opt.innerText = isLocked ? `🔒 [잠김] ${cat}` : cat;
+    if (isLocked) {
+      opt.style.color = '#ef4444';
+    }
     catSel.appendChild(opt);
   });
+
+  if (currentVal && Array.from(catSel.options).some(o => o.value === currentVal)) {
+    catSel.value = currentVal;
+  } else {
+    catSel.selectedIndex = 0;
+  }
 
   onCategoryChange();
 }
@@ -1210,6 +1281,28 @@ function onCategoryChange() {
   if(!catSel || !examSel) return;
 
   const selectedCategory = catSel.value;
+  const isLocked = lockedCategories.has(selectedCategory);
+
+  // 잠긴 시험 선택 시 안내 배너 토글
+  const banner = document.getElementById('lockedCategoryBanner');
+  if (banner) {
+    banner.style.display = isLocked ? 'flex' : 'none';
+  }
+
+  // 시작 버튼 상태 조정
+  const startBtn = document.querySelector('.start-card .btn-primary');
+  if (startBtn) {
+    if (isLocked) {
+      startBtn.setAttribute('data-locked', 'true');
+      startBtn.innerHTML = '🔒 잠긴 시험입니다 (클릭 시 잠금 해제 후 시작)';
+      startBtn.style.opacity = '0.85';
+    } else {
+      startBtn.removeAttribute('data-locked');
+      startBtn.innerHTML = '🚀 응시 시작하기';
+      startBtn.style.opacity = '1';
+    }
+  }
+
   const filteredExams = examList.filter(ex => (ex.category || '기타') === selectedCategory);
 
   // 정렬: 1.연도별 세트(최신순) -> 2.과목별 세트(1~5과목순) -> 3.연도/과목별 세트(과목순 -> 연도 최신순)
@@ -1744,7 +1837,22 @@ async function discardDraftExam() {
 }
 
 async function startExam() {
-  const jsonPath = document.getElementById('examSelect').value;
+  const catSel = document.getElementById('categorySelect');
+  const selectedCat = catSel ? catSel.value : '';
+  if (selectedCat && lockedCategories.has(selectedCat)) {
+    if (confirm(`'${selectedCat}' 시험은 현재 잠금(보관) 상태입니다. 잠금을 해제하고 응시하시겠습니까?`)) {
+      await setCategoryLock(selectedCat, false);
+    } else {
+      return;
+    }
+  }
+
+  const examSel = document.getElementById('examSelect');
+  const jsonPath = examSel ? examSel.value : '';
+  if (!jsonPath) {
+    alert("응시할 시험 회차를 선택해주세요.");
+    return;
+  }
   try {
     const res = await fetch(jsonPath);
     if(!res.ok) throw new Error("Status " + res.status);
@@ -2448,6 +2556,12 @@ async function showHistoryModal(filterMode) {
 
     const categoryLabel = selectedCategory ? `선택 종목: ${selectedCategory}` : '선택한 시험 종목';
     const targetBadgeName = currentHistoryFilterMode === 'current' ? (selectedCategory || '자격증') : '전체';
+    const isCurrentCatLocked = selectedCategory ? lockedCategories.has(selectedCategory) : false;
+    const catLockBtnHtml = (selectedCategory && currentHistoryFilterMode === 'current') ? `
+      <button class="btn" style="padding:6px 12px; font-size:0.82rem; font-weight:700; border-radius:6px; ${isCurrentCatLocked ? 'background:#2563eb; color:#ffffff;' : 'background:rgba(239, 68, 68, 0.1); border:1px solid #f87171; color:#dc2626;'}" onclick="setCategoryLock('${escapeHtml(selectedCategory)}', ${!isCurrentCatLocked})" title="이 자격시험 종목을 메인 화면에서 숨기거나 다시 노출합니다.">
+        ${isCurrentCatLocked ? `🔓 '${escapeHtml(selectedCategory)}' 잠금 해제` : `🔒 '${escapeHtml(selectedCategory)}' 완료 잠금`}
+      </button>
+    ` : '';
 
     let filterHeaderHtml = `
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--border-color); flex-wrap:wrap; gap:10px;">
@@ -2458,6 +2572,7 @@ async function showHistoryModal(filterMode) {
           <button class="btn ${allBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('all')">
             🌐 전체 응시 이력 (${list.length}건)
           </button>
+          ${catLockBtnHtml}
         </div>
         <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
           ${displayList.length > 0 ? `
@@ -2642,6 +2757,124 @@ async function clearAllHistory() {
 
 function closeHistoryModal() {
   document.getElementById('historyModal').style.display = 'none';
+}
+
+// 자격시험 종목 잠금 설정 (API 호출 및 로컬 상태 갱신)
+async function setCategoryLock(category, isLocked) {
+  if (!category) return false;
+  try {
+    const res = await fetch('/api/category-locks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ category, is_locked: isLocked })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      lockedCategories = new Set(data.locked_categories || []);
+      initCategoryDropdown(category);
+      renderCategoryLockModalList();
+      if (document.getElementById('historyModal') && document.getElementById('historyModal').style.display === 'flex') {
+        showHistoryModal();
+      }
+      return true;
+    }
+  } catch (e) {
+    alert(`시험 잠금 설정 변경 실패: ${e.message}`);
+  }
+  return false;
+}
+
+function toggleShowLockedCategories(isChecked) {
+  showLockedCategories = isChecked;
+  initCategoryDropdown();
+}
+
+async function unlockSelectedCategory() {
+  const catSel = document.getElementById('categorySelect');
+  if (catSel && catSel.value) {
+    await setCategoryLock(catSel.value, false);
+  }
+}
+
+function openCategoryLockModal() {
+  const modal = document.getElementById('categoryLockModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    renderCategoryLockModalList();
+  }
+}
+
+function closeCategoryLockModal() {
+  const modal = document.getElementById('categoryLockModal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+function renderCategoryLockModalList() {
+  const container = document.getElementById('categoryLockListContainer');
+  if (!container) return;
+
+  const allCategories = Array.from(new Set(examList.map(ex => ex.category || '기타'))).sort((a, b) => a.localeCompare(b, 'ko'));
+
+  if (allCategories.length === 0) {
+    container.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:20px;">등록된 시험 종목이 없습니다.</div>';
+    return;
+  }
+
+  let html = '<div style="display:flex; flex-direction:column; gap:10px;">';
+
+  allCategories.forEach(cat => {
+    const isLocked = lockedCategories.has(cat);
+    const count = examList.filter(ex => (ex.category || '기타') === cat).length;
+
+    html += `
+      <div style="border:1px solid var(--border-color); background:var(--bg-card); border-radius:8px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; box-shadow:var(--shadow-sm);">
+        <div style="display:flex; align-items:center; gap:12px; min-width:0;">
+          <span style="font-size:1.4rem;">${isLocked ? '🔒' : '📚'}</span>
+          <div>
+            <div style="font-weight:700; font-size:1.02rem; color:${isLocked ? '#dc2626' : 'var(--text-main)'};">
+              ${escapeHtml(cat)}
+            </div>
+            <div style="font-size:0.82rem; color:var(--text-muted); margin-top:3px;">
+              총 ${count}개 시험 세트 • ${isLocked ? '<span style=\"color:#ef4444; font-weight:700;\">메인 목록 숨김 (잠김)</span>' : '<span style=\"color:#16a34a; font-weight:700;\">메인 목록 노출 (활성)</span>'}
+            </div>
+          </div>
+        </div>
+        <div>
+          ${isLocked ? `
+            <button class="btn" style="background:#2563eb; color:#ffffff; font-size:0.84rem; font-weight:700; padding:7px 16px; border-radius:6px; box-shadow:0 2px 6px rgba(37,99,235,0.25);" onclick="setCategoryLock('${escapeHtml(cat)}', false)">
+              🔓 잠금 해제 (활성화)
+            </button>
+          ` : `
+            <button class="btn" style="background:rgba(239, 68, 68, 0.1); border:1px solid #f87171; color:#dc2626; font-size:0.84rem; font-weight:700; padding:7px 16px; border-radius:6px;" onclick="setCategoryLock('${escapeHtml(cat)}', true)">
+              🔒 완료 잠금 (숨기기)
+            </button>
+          `}
+        </div>
+      </div>
+    `;
+  });
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+async function lockCurrentExamCategory() {
+  if (!currentExamData || !currentExamData.exam_info) return;
+  const cat = currentExamData.exam_info.category || '기타';
+  if (confirm(`'${cat}' 시험 종목의 모든 회차를 완료하셨습니까?\n이 시험을 잠금(숨김) 처리하시겠습니까?`)) {
+    const ok = await setCategoryLock(cat, true);
+    if (ok) {
+      alert(`'${cat}' 시험이 잠금(숨김) 처리되었습니다. 메인 시험 선택 드롭다운에서 숨겨집니다.`);
+      const btn = document.getElementById('btnLockCategoryResult');
+      if (btn) {
+        btn.innerHTML = `🔒 '${cat}' 잠금 완료됨`;
+        btn.style.opacity = '0.6';
+        btn.disabled = true;
+      }
+    }
+  }
 }
 
 async function loadHistoryDetail(id) {
@@ -3543,6 +3776,24 @@ function makeElementDraggable(elmnt, headerElmnt) {
       <button onclick="closeHistoryModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
     </div>
     <div id="historyListContainer">로딩 중...</div>
+  </div>
+</div>
+
+<!-- 자격시험 단위 잠금/해제 관리 모달 -->
+<div id="categoryLockModal" style="display:none; position:fixed; z-index:9998; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; backdrop-filter:blur(2px);" onclick="closeCategoryLockModal()">
+  <div style="background:var(--bg-card); color:var(--text-main); border:1px solid var(--border-color); border-radius:12px; width:92%; max-width:680px; max-height:85vh; overflow-y:auto; padding:24px; box-shadow:var(--shadow-md); position:relative;" onclick="event.stopPropagation()">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:2px solid var(--border-color); padding-bottom:12px;">
+      <h3 style="margin:0; font-size:1.2rem; color:var(--text-main);">🔒 자격시험 단위 잠금 / 해제 관리</h3>
+      <button onclick="closeCategoryLockModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+    </div>
+    <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:18px; line-height:1.5;">
+      이미 응시를 완료했거나 합격한 자격시험 종목을 잠금(숨김) 처리하여 메인 화면을 깔끔하게 유지하세요.<br>
+      잠금된 시험은 메인 시험 선택 드롭다운에서 숨겨지며, 언제든지 이곳에서 잠금을 해제(재활성화)할 수 있습니다.
+    </p>
+    <div id="categoryLockListContainer">로딩 중...</div>
+    <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+      <button class="btn btn-primary" style="padding:8px 22px; font-weight:700;" onclick="closeCategoryLockModal()">닫기</button>
+    </div>
   </div>
 </div>
 </body>

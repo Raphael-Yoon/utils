@@ -120,6 +120,15 @@ def init_db():
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
                 """
             )
+            cur.execute(
+                """
+                CREATE TABLE IF NOT EXISTS exam_category_locks (
+                    category_name VARCHAR(100) PRIMARY KEY,
+                    is_locked TINYINT(1) DEFAULT 1,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+                """
+            )
         conn.close()
         print(f"[CBT DB] [운영서버 모드] MySQL '{db_name}' 데이터베이스 및 테이블 준비 완료.")
         return
@@ -154,6 +163,15 @@ def init_db():
             user_answers_json TEXT,
             remaining_seconds INTEGER,
             current_question_idx INTEGER,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS exam_category_locks (
+            category_name TEXT PRIMARY KEY,
+            is_locked INTEGER DEFAULT 1,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
         """
@@ -521,5 +539,63 @@ class DB:
                 cnt = cur.rowcount
                 conn.commit()
                 return cnt
+            finally:
+                conn.close()
+
+    @classmethod
+    def get_locked_categories(cls) -> List[str]:
+        """잠금 처리된 자격시험 종목(카테고리) 목록 조회"""
+        if cls.is_mysql():
+            conn = cls._get_mysql_conn()
+            try:
+                with conn.cursor() as cur:
+                    cur.execute("SELECT category_name FROM exam_category_locks WHERE is_locked = 1")
+                    rows = cur.fetchall()
+                    return [r["category_name"] for r in rows]
+            finally:
+                conn.close()
+        else:
+            conn = cls._get_sqlite_conn()
+            try:
+                cur = conn.cursor()
+                cur.execute("SELECT category_name FROM exam_category_locks WHERE is_locked = 1")
+                rows = cur.fetchall()
+                return [r["category_name"] for r in rows]
+            finally:
+                conn.close()
+
+    @classmethod
+    def set_category_lock(cls, category_name: str, is_locked: bool) -> bool:
+        """자격시험 종목 잠금 상태 설정/해제"""
+        lock_val = 1 if is_locked else 0
+        if cls.is_mysql():
+            conn = cls._get_mysql_conn()
+            try:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        """
+                        INSERT INTO exam_category_locks (category_name, is_locked)
+                        VALUES (%s, %s)
+                        ON DUPLICATE KEY UPDATE is_locked = VALUES(is_locked), updated_at = CURRENT_TIMESTAMP
+                        """,
+                        (category_name, lock_val),
+                    )
+                return True
+            finally:
+                conn.close()
+        else:
+            conn = cls._get_sqlite_conn()
+            try:
+                cur = conn.cursor()
+                cur.execute(
+                    """
+                    INSERT INTO exam_category_locks (category_name, is_locked)
+                    VALUES (?, ?)
+                    ON CONFLICT(category_name) DO UPDATE SET is_locked = excluded.is_locked, updated_at = CURRENT_TIMESTAMP
+                    """,
+                    (category_name, lock_val),
+                )
+                conn.commit()
+                return True
             finally:
                 conn.close()

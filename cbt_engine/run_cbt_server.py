@@ -74,22 +74,34 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps(None, ensure_ascii=False).encode('utf-8'))
             return
 
+        # /api/category-locks - 자격시험 종목 잠금 목록 반환
+        if path_only == '/api/category-locks':
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            locked = DB.get_locked_categories()
+            self.wfile.write(json.dumps({"locked_categories": locked}, ensure_ascii=False).encode('utf-8'))
+            return
+
         # /api/exams 요청 시 exams/ 폴더 내 전체 시험 파일 목록 반환
         if path_only == '/api/exams':
             self.send_response(200)
             self.send_header('Content-type', 'application/json; charset=utf-8')
             self.end_headers()
             
+            locked_cats = set(DB.get_locked_categories())
             exam_list = []
             if EXAMS_DIR.exists():
                 for json_file in EXAMS_DIR.glob('*.json'):
                     try:
                         data = json.loads(json_file.read_text(encoding='utf-8'))
                         info = data.get('exam_info', {})
+                        cat = info.get('category', '자격증')
                         exam_list.append({
                             "filename": json_file.name,
                             "title": info.get('title', json_file.stem),
-                            "category": info.get('category', '자격증'),
+                            "category": cat,
+                            "is_category_locked": cat in locked_cats,
                             "time_limit_minutes": info.get('time_limit_minutes', 120),
                             "passing_rules": info.get('passing_rules', {}),
                             "subjects": data.get('subjects', []),
@@ -205,6 +217,28 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             self.send_header('Content-type', 'application/json; charset=utf-8')
             self.end_headers()
             self.wfile.write(json.dumps({"status": "ok", "id": new_id}, ensure_ascii=False).encode('utf-8'))
+            return
+
+        # /api/category-locks - 자격시험 종목 잠금/해제 설정
+        if self.path == '/api/category-locks':
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            payload = json.loads(body.decode('utf-8'))
+
+            category = payload.get('category', '').strip()
+            is_locked = bool(payload.get('is_locked', True))
+            if category:
+                DB.set_category_lock(category, is_locked)
+
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "status": "ok",
+                "category": category,
+                "is_locked": is_locked,
+                "locked_categories": DB.get_locked_categories()
+            }, ensure_ascii=False).encode('utf-8'))
             return
 
         self.send_error(404, "Not Found")
