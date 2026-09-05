@@ -32,7 +32,9 @@ try:
     from utils.cbt_engine.db import DB, init_db, DB_TYPE, DATABASE_URL
 except ImportError:
     from db import DB, init_db, DB_TYPE, DATABASE_URL
+
 EXAMS_DIR = BASE_DIR / "exams"
+CRAM_SHEETS_DIR = BASE_DIR / "reviews" / "cram_sheets"
 
 
 class CBTRequestHandler(SimpleHTTPRequestHandler):
@@ -82,6 +84,62 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             locked = DB.get_locked_categories()
             self.wfile.write(json.dumps({"locked_categories": locked}, ensure_ascii=False).encode('utf-8'))
+            return
+
+        # /api/cram-sheets - 시험 직전 핵심 요약본(파이널 치트시트) 목록 및 내용 조회
+        if path_only == '/api/cram-sheets':
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+
+            requested_file = query.get('file', [None])[0] or query.get('id', [None])[0]
+            if requested_file:
+                if not requested_file.endswith('.md'):
+                    requested_file = f"{requested_file}_직전요약본.md"
+                target_path = CRAM_SHEETS_DIR / requested_file
+                if target_path.exists():
+                    try:
+                        content = target_path.read_text(encoding='utf-8')
+                        self.wfile.write(json.dumps({
+                            "success": True,
+                            "filename": target_path.name,
+                            "content": content
+                        }, ensure_ascii=False).encode('utf-8'))
+                    except Exception as e:
+                        self.wfile.write(json.dumps({"success": False, "error": str(e)}, ensure_ascii=False).encode('utf-8'))
+                else:
+                    self.wfile.write(json.dumps({"success": False, "error": "요약본 파일을 찾을 수 없습니다."}, ensure_ascii=False).encode('utf-8'))
+                return
+
+            sheets = []
+            CATEGORY_MAP = {
+                "bigdata": "빅데이터분석기사",
+                "auditor": "정보시스템감리사",
+                "sqld": "SQL 개발자",
+                "digital_forensic": "디지털포렌식전문가",
+            }
+            if CRAM_SHEETS_DIR.exists():
+                for md_file in sorted(CRAM_SHEETS_DIR.glob('*_직전요약본.md')):
+                    try:
+                        first_line = ""
+                        with open(md_file, 'r', encoding='utf-8') as f:
+                            for line in f:
+                                line = line.strip()
+                                if line.startswith('#'):
+                                    first_line = line.lstrip('#').strip()
+                                    break
+                        key = md_file.stem.replace('_직전요약본', '')
+                        cat = CATEGORY_MAP.get(key, key)
+                        sheets.append({
+                            "id": key,
+                            "filename": md_file.name,
+                            "title": first_line or md_file.stem,
+                            "category": cat,
+                        })
+                    except Exception as e:
+                        print(f"요약본 파일 읽기 오류 ({md_file.name}): {e}")
+
+            self.wfile.write(json.dumps({"sheets": sheets}, ensure_ascii=False).encode('utf-8'))
             return
 
         # /api/exams 요청 시 exams/ 폴더 내 전체 시험 파일 목록 반환

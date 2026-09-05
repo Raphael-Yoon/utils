@@ -1141,6 +1141,7 @@
   </div>
   <div class="header-actions">
     <button class="btn btn-header-outline" id="btnScheduleCalendar" onclick="openScheduleModal()" title="시험 일정 관리 & 수험 캘린더 (단축키: C)">📅 시험 일정</button>
+    <button class="btn btn-header-outline" id="btnCramSheet" onclick="openCramSheetModal()" title="시험 직전 10분 초압축 파이널 치트시트 (단축키: Y)">⚡ 직전 요약본</button>
     <button class="btn btn-header-outline" id="btnToggleOmr" style="display:none;" onclick="toggleOmrPane()" title="OMR 답안지 접기/펼치기 (단축키: O)">📋 OMR 접기</button>
     <button class="btn btn-header-outline" id="btnThemeToggle" onclick="toggleTheme()" title="다크 모드 / 라이트 모드 전환 (단축키: T)">🌙 다크 모드</button>
     <button class="btn btn-header-outline" id="btnHome" onclick="location.reload()">🏠 시험 목록</button>
@@ -1218,8 +1219,11 @@
         </div>
       </details>
 
-      <button class="btn btn-primary" style="width:100%; padding:12px; font-size:1.05rem; font-weight:700;" onclick="startExam()">🚀 응시 시작하기</button>
-      <button class="btn btn-outline" style="width:100%; padding:10px; font-size:0.95rem; margin-top:8px;" onclick="showHistoryModal()">📜 과거 응시 이력 및 오답노트</button>
+      <button class="btn btn-primary" id="btnStartExam" style="width:100%; padding:12px; font-size:1.05rem; font-weight:700;" onclick="startExam()">🚀 응시 시작하기</button>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button class="btn btn-outline" style="flex:1; padding:10px; font-size:0.92rem; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:6px;" onclick="openCramSheetModal()">⚡ 10분 직전 요약본</button>
+        <button class="btn btn-outline" style="flex:1; padding:10px; font-size:0.92rem; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:6px;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
+      </div>
     </div>
   </div>
 
@@ -1515,7 +1519,7 @@ function onCategoryChange() {
   }
 
   // 시작 버튼 상태 조정
-  const startBtn = document.querySelector('.start-card .btn-primary');
+  const startBtn = document.getElementById('btnStartExam');
   if (startBtn) {
     if (isLocked) {
       startBtn.setAttribute('data-locked', 'true');
@@ -1659,6 +1663,14 @@ window.addEventListener('keydown', (e) => {
     }
     return;
   }
+  const cramSheetModal = document.getElementById('cramSheetModal');
+  if (cramSheetModal && cramSheetModal.style.display === 'flex') {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeCramSheetModal();
+    }
+    return;
+  }
 
   // 메모장(textarea), 검색창 등 실제 텍스트 입력 폼에 커서가 위치해 있을 때만 단축키를 차단하고 폼 입력을 보장 (라디오/체크박스 클릭 후 엔터/단축키 정상 동작)
   const activeEl = document.activeElement;
@@ -1681,6 +1693,13 @@ window.addEventListener('keydown', (e) => {
   if (key.toLowerCase() === 't' && !e.ctrlKey && !e.metaKey && !e.altKey) {
     e.preventDefault();
     toggleTheme();
+    return;
+  }
+
+  // 'y' 또는 'Y' 키 입력 시 직전 요약본 모달 토글
+  if (key.toLowerCase() === 'y' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    e.preventDefault();
+    openCramSheetModal();
     return;
   }
 
@@ -4496,6 +4515,264 @@ async function toggleTargetSchedule(id) {
   }
 }
 
+// ============================================================================
+// 🌸 시험 직전 10분 초압축 파이널 치트시트 뷰어 (Final Cram Sheet Viewer)
+// ============================================================================
+let allCramSheets = [];
+let currentCramSheet = null;
+let cramFontSize = 15;
+
+async function openCramSheetModal(targetKey) {
+  const modal = document.getElementById('cramSheetModal');
+  if (!modal) return;
+  modal.style.display = 'flex';
+
+  try {
+    const res = await fetch('/api/cram-sheets');
+    if (res.ok) {
+      const data = await res.json();
+      allCramSheets = data.sheets || [];
+      renderCramSheetTabs(targetKey);
+    } else {
+      showCramError('요약본 목록을 불러오지 못했습니다.');
+    }
+  } catch (err) {
+    console.error('Cram sheets load error:', err);
+    showCramError('서버 연결 중 오류가 발생했습니다.');
+  }
+}
+
+function closeCramSheetModal() {
+  const modal = document.getElementById('cramSheetModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function renderCramSheetTabs(targetKey) {
+  const tabBar = document.getElementById('cramSheetTabBar');
+  if (!tabBar) return;
+  tabBar.innerHTML = '';
+
+  if (allCramSheets.length === 0) {
+    tabBar.style.display = 'none';
+    document.getElementById('cramSheetContent').innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);">아직 등록된 직전 요약본이 없습니다.<br>에이전트에게 <b>"{시험명} 핵심요약본 생성하자"</b>라고 요청하시면 생성됩니다.</div>';
+    return;
+  }
+
+  // 1개 이하일 때는 불필요한 탭 영역을 숨겨 모바일 본문 열람 공간 극대화
+  if (allCramSheets.length <= 1) {
+    tabBar.style.display = 'none';
+  } else {
+    tabBar.style.display = 'flex';
+  }
+
+  // 기본 선택 타겟 결정: 인자 > 현재 선택된 카테고리 > 첫 번째 요약본
+  const catSel = document.getElementById('categorySelect');
+  const currentCategory = catSel ? catSel.value : '';
+  
+  let selectedSheet = allCramSheets[0];
+  if (targetKey) {
+    const found = allCramSheets.find(s => s.id === targetKey || s.filename.includes(targetKey));
+    if (found) selectedSheet = found;
+  } else if (currentCategory) {
+    const found = allCramSheets.find(s => s.category === currentCategory || currentCategory.includes(s.category));
+    if (found) selectedSheet = found;
+  }
+
+  allCramSheets.forEach(sheet => {
+    const btn = document.createElement('button');
+    btn.className = 'btn';
+    const isSelected = sheet.id === selectedSheet.id;
+    btn.style.cssText = `padding:6px 14px; font-size:0.86rem; font-weight:700; border-radius:8px; white-space:nowrap; cursor:pointer; transition:all 0.15s ease; ${isSelected ? 'background:var(--primary); color:#ffffff; border:1px solid var(--primary);' : 'background:var(--bg-subtle); color:var(--text-muted); border:1px solid var(--border-color);'}`;
+    const icon = sheet.id === 'bigdata' ? '🌸 ' : (sheet.id === 'auditor' ? '🛡️ ' : (sheet.id === 'sqld' ? '💾 ' : (sheet.id.includes('forensic') ? '🔍 ' : '📑 ')));
+    btn.innerHTML = icon + (sheet.category || sheet.id);
+    btn.onclick = () => {
+      Array.from(tabBar.children).forEach(b => {
+        b.style.background = 'var(--bg-subtle)';
+        b.style.color = 'var(--text-muted)';
+        b.style.borderColor = 'var(--border-color)';
+      });
+      btn.style.background = 'var(--primary)';
+      btn.style.color = '#ffffff';
+      btn.style.borderColor = 'var(--primary)';
+      loadCramSheetFile(sheet.filename);
+    };
+    tabBar.appendChild(btn);
+  });
+
+  loadCramSheetFile(selectedSheet.filename);
+}
+
+async function loadCramSheetFile(filename) {
+  const container = document.getElementById('cramSheetContent');
+  if (!container) return;
+  container.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><div style="font-size:1.6rem; margin-bottom:8px;">⏳</div><div>치트시트를 렌더링 중입니다...</div></div>';
+
+  try {
+    const res = await fetch(`/api/cram-sheets?file=${encodeURIComponent(filename)}`);
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.content) {
+        currentCramSheet = data;
+        container.innerHTML = parseCramMarkdown(data.content);
+        container.scrollTop = 0;
+      } else {
+        showCramError(data.error || '내용을 불러오지 못했습니다.');
+      }
+    } else {
+      showCramError('서버 응답 오류가 발생했습니다.');
+    }
+  } catch (err) {
+    console.error('Cram sheet content load error:', err);
+    showCramError('내용 로드 중 네트워크 오류가 발생했습니다.');
+  }
+}
+
+function showCramError(msg) {
+  const container = document.getElementById('cramSheetContent');
+  if (container) {
+    container.innerHTML = `<div style="text-align:center; padding:40px; color:#ef4444;"><div style="font-size:1.6rem; margin-bottom:8px;">⚠️</div><div>${msg}</div></div>`;
+  }
+}
+
+function adjustCramFontSize(delta) {
+  cramFontSize = Math.max(12, Math.min(24, cramFontSize + delta));
+  const container = document.getElementById('cramSheetContent');
+  if (container) {
+    container.style.fontSize = `${cramFontSize}px`;
+  }
+}
+
+function copyCramSheet() {
+  if (!currentCramSheet || !currentCramSheet.content) {
+    alert('복사할 요약본 내용이 없습니다.');
+    return;
+  }
+  navigator.clipboard.writeText(currentCramSheet.content).then(() => {
+    alert('📋 요약본 전체 내용이 클립보드에 복사되었습니다!\n스마트폰 메모 앱이나 카카오톡에 붙여넣어 확인하세요.');
+  }).catch(err => {
+    console.error('Clipboard copy error:', err);
+    alert('클립보드 복사에 실패했습니다.');
+  });
+}
+
+function printCramSheet() {
+  const container = document.getElementById('cramSheetContent');
+  if (!container || !currentCramSheet) {
+    alert('인쇄할 내용이 없습니다.');
+    return;
+  }
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
+    alert('팝업 차단을 해제해 주세요.');
+    return;
+  }
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>${currentCramSheet.filename.replace('.md', '')}</title>
+      <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 24px; line-height: 1.65; color: #111827; font-size: 13px; }
+        h1 { font-size: 1.35rem; border-bottom: 2px solid #111827; padding-bottom: 6px; margin-bottom: 12px; }
+        h2 { font-size: 1.15rem; border-left: 4px solid #2563eb; padding-left: 8px; margin-top: 18px; margin-bottom: 8px; }
+        h3 { font-size: 0.98rem; margin-top: 12px; margin-bottom: 4px; }
+        hr { border: 0; border-top: 1px solid #e5e7eb; margin: 14px 0; }
+        ul { padding-left: 20px; margin: 6px 0; }
+        li { margin-bottom: 4px; }
+        code { background: #f3f4f6; padding: 2px 4px; border-radius: 3px; font-family: monospace; }
+        strong { color: #000000; font-weight: 800; }
+      </style>
+    </head>
+    <body>
+      ${container.innerHTML}
+      <script>
+        window.onload = function() { window.print(); window.close(); };
+      <\/script>
+    </body>
+    </html>
+  `);
+  printWindow.document.close();
+}
+
+function parseCramMarkdown(md) {
+  if (!md) return '';
+  let lines = md.split('\n');
+  let html = [];
+  let inList = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+
+    if (line.startsWith('# ')) {
+      if (inList) { html.push('</ul>'); inList = false; }
+      html.push(`<h1 style="font-size:1.35rem; font-weight:800; margin:0 0 12px 0; color:var(--text-main); border-bottom:2px solid var(--border-color); padding-bottom:8px;">${parseInline(line.substring(2))}</h1>`);
+      continue;
+    }
+    if (line.startsWith('## ')) {
+      if (inList) { html.push('</ul>'); inList = false; }
+      const isFirst = html.length === 0;
+      html.push(`<h2 style="font-size:1.15rem; font-weight:800; margin:${isFirst ? '4px' : '20px'} 0 10px 0; color:var(--text-main); display:flex; align-items:center; gap:6px; border-left:4px solid var(--primary); padding-left:8px;">${parseInline(line.substring(3))}</h2>`);
+      continue;
+    }
+    if (line.startsWith('### ')) {
+      if (inList) { html.push('</ul>'); inList = false; }
+      html.push(`<h3 style="font-size:0.98rem; font-weight:700; margin:14px 0 6px 0; color:var(--text-main);">${parseInline(line.substring(4))}</h3>`);
+      continue;
+    }
+    if (line.startsWith('#### ')) {
+      if (inList) { html.push('</ul>'); inList = false; }
+      html.push(`<h4 style="font-size:0.92rem; font-weight:700; margin:10px 0 4px 0; color:var(--text-muted);">${parseInline(line.substring(5))}</h4>`);
+      continue;
+    }
+    if (line.trim() === '---' || line.trim() === '***') {
+      if (inList) { html.push('</ul>'); inList = false; }
+      html.push(`<hr style="border:0; border-top:1px solid var(--border-color); margin:18px 0;" />`);
+      continue;
+    }
+    if (line.startsWith('> ')) {
+      if (inList) { html.push('</ul>'); inList = false; }
+      html.push(`<div style="background:var(--bg-subtle); border-left:3.5px solid var(--primary); padding:10px 14px; border-radius:6px; margin:10px 0; font-size:0.92em; color:var(--text-muted); line-height:1.6;">${parseInline(line.substring(2))}</div>`);
+      continue;
+    }
+    if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) {
+      if (!inList) {
+        html.push('<ul style="padding-left:20px; margin:6px 0 10px 0;">');
+        inList = true;
+      }
+      const itemText = line.trim().substring(2);
+      html.push(`<li style="margin-bottom:6px; line-height:1.65;">${parseInline(itemText)}</li>`);
+      continue;
+    }
+
+    if (line.trim() === '') {
+      if (inList) { html.push('</ul>'); inList = false; }
+      continue;
+    }
+
+    if (inList) { html.push('</ul>'); inList = false; }
+    html.push(`<p style="margin:6px 0; line-height:1.65;">${parseInline(line)}</p>`);
+  }
+
+  if (inList) { html.push('</ul>'); inList = false; }
+
+  function parseInline(text) {
+    if (!text) return '';
+    let out = text;
+    out = out.replace(/\[⚠️\s*함정[^\]]*\]/g, '<span style="background:rgba(239,68,68,0.15); color:#ef4444; font-weight:800; padding:2px 6px; border-radius:4px; font-size:0.88em;">⚠️ 함정</span>');
+    out = out.replace(/\[⚠️\s*단골 함정[^\]]*\]/g, '<span style="background:rgba(239,68,68,0.15); color:#ef4444; font-weight:800; padding:2px 6px; border-radius:4px; font-size:0.88em;">⚠️ 단골 함정</span>');
+    out = out.replace(/\[VS\s*[^\]]*\]/g, '<span style="background:rgba(59,130,246,0.15); color:#3b82f6; font-weight:800; padding:2px 6px; border-radius:4px; font-size:0.88em;">⚖️ VS 대조</span>');
+    out = out.replace(/\[1초\s*판별[^\]]*\]/g, '<span style="background:rgba(16,185,129,0.15); color:#10b981; font-weight:800; padding:2px 6px; border-radius:4px; font-size:0.88em;">⚡ 1초 컷</span>');
+    out = out.replace(/\[오답\]/g, '<span style="color:#ef4444; font-weight:800;">[오답]</span>');
+    out = out.replace(/\[정답\]/g, '<span style="color:#10b981; font-weight:800;">[정답]</span>');
+    out = out.replace(/\*\*([^*]+)\*\*/g, '<strong style="color:var(--text-main); font-weight:800;">$1</strong>');
+    out = out.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    out = out.replace(/`([^`]+)`/g, '<code style="background:var(--bg-subtle); color:#ec4899; padding:2px 5px; border-radius:4px; font-size:0.9em; font-family:ui-monospace,SFMono-Regular,Consolas,monospace;">$1</code>');
+    return out;
+  }
+
+  return html.join('\n');
+}
+
 </script>
 
 <!-- 드래그 가능한 시험용 메모장/연습장 위젯 -->
@@ -4712,6 +4989,43 @@ async function toggleTargetSchedule(id) {
         <button type="submit" class="btn btn-primary" style="padding:8px 24px; font-weight:700; border-radius:8px;">💾 저장</button>
       </div>
     </form>
+
+  </div>
+</div>
+
+<!-- 🌸 시험 직전 10분 초압축 파이널 치트시트 모달 -->
+<div id="cramSheetModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; backdrop-filter:blur(4px);" onclick="closeCramSheetModal()">
+  <div style="background:var(--bg-card); color:var(--text-main); border:1px solid var(--border-color); border-radius:14px; width:96%; max-width:800px; height:94vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:var(--shadow-md); position:relative;" onclick="event.stopPropagation()">
+    
+    <!-- 모달 헤더 (모바일 최적화: 불필요한 복사/인쇄 버튼 및 설명문 제거) -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 16px; border-bottom:1px solid var(--border-color); background:var(--bg-subtle);">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:1.2rem;">⚡</span>
+        <h3 style="margin:0; font-size:1.05rem; font-weight:800; color:var(--text-main);">
+          시험 직전 10분 핵심 요약본
+        </h3>
+      </div>
+      
+      <!-- 헤더 액션 버튼 (글자 크기 조절 및 닫기만 유지) -->
+      <div style="display:flex; align-items:center; gap:6px;">
+        <button class="btn btn-header-outline" style="padding:4px 9px; font-size:0.82rem; font-weight:700;" onclick="adjustCramFontSize(-1)" title="글자 축소">A-</button>
+        <button class="btn btn-header-outline" style="padding:4px 9px; font-size:0.82rem; font-weight:700;" onclick="adjustCramFontSize(1)" title="글자 확대">A+</button>
+        <button onclick="closeCramSheetModal()" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text-muted); line-height:1; padding:0 4px; margin-left:4px;" title="닫기 (Esc)">&times;</button>
+      </div>
+    </div>
+
+    <!-- 시험 탭 바 -->
+    <div style="display:flex; align-items:center; padding:8px 18px; border-bottom:1px solid var(--border-color); background:var(--bg-card); overflow-x:auto; gap:8px;" id="cramSheetTabBar">
+      <!-- 동적 탭 렌더링 -->
+    </div>
+
+    <!-- 요약본 본문 뷰어 영역 (모바일 여백 최적화) -->
+    <div id="cramSheetContent" style="padding:14px 16px; overflow-y:auto; flex:1; font-size:15px; line-height:1.75; color:var(--text-main); font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+      <div style="text-align:center; padding:40px; color:var(--text-muted);">
+        <div style="font-size:1.6rem; margin-bottom:8px;">⏳</div>
+        <div>요약본 데이터를 불러오는 중입니다...</div>
+      </div>
+    </div>
 
   </div>
 </div>
