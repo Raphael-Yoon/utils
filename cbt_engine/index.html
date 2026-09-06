@@ -1141,8 +1141,6 @@
     <span id="timerIcon">⏱️</span> <span id="timerStr">120:00</span>
   </div>
   <div class="header-actions">
-    <button class="btn btn-header-outline" id="btnScheduleCalendar" onclick="openScheduleModal()" title="시험 일정 관리 & 수험 캘린더 (단축키: C)">📅 시험 일정</button>
-    <button class="btn btn-header-outline" id="btnCramSheet" onclick="openCramSheetModal()" title="시험 직전 10분 초압축 파이널 치트시트 (단축키: Y)">⚡ 직전 요약본</button>
     <button class="btn btn-header-outline" id="btnToggleOmr" style="display:none;" onclick="toggleOmrPane()" title="OMR 답안지 접기/펼치기 (단축키: O)">📋 OMR 접기</button>
     <button class="btn btn-header-outline" id="btnThemeToggle" onclick="toggleTheme()" title="다크 모드 / 라이트 모드 전환 (단축키: T)">🌙 다크 모드</button>
     <button class="btn btn-header-outline" id="btnHome" onclick="location.reload()">🏠 시험 목록</button>
@@ -1216,14 +1214,8 @@
       </details>
 
       <button class="btn btn-primary" id="btnStartExam" style="width:100%; padding:12px; font-size:1.05rem; font-weight:700;" onclick="startExam()">🚀 응시 시작하기</button>
-      <div style="display:flex; gap:8px; margin-top:8px;">
-        <button class="btn btn-outline" style="flex:1; padding:10px; font-size:0.92rem; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:6px;" onclick="openCramSheetModal()">⚡ 10분 직전 요약본</button>
-        <button class="btn btn-outline" style="flex:1; padding:10px; font-size:0.92rem; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:6px;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
-      </div>
-
-      <!-- 시험 일정 / 목표 시험 D-Day 안내 배너 -->
-      <div id="targetScheduleBanner" class="schedule-banner-box" style="display:none;" onclick="openScheduleModal()">
-        <!-- JS 동적 렌더링 -->
+      <div style="margin-top:8px;">
+        <button class="btn btn-outline" style="width:100%; padding:10px; font-size:0.92rem; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:6px;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
       </div>
     </div>
   </div>
@@ -1326,7 +1318,6 @@
         <button class="btn" id="btnCopyAiPrompt" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; padding: 12px 24px; font-size:1.05rem; font-weight:700; box-shadow:0 4px 12px rgba(99, 102, 241, 0.35); display:inline-flex; align-items:center; gap:8px;" onclick="copyAiAnalysisPrompt()">🤖 AI 맞춤 진단용 텍스트 복사</button>
         <button class="btn btn-success" style="padding: 12px 24px; font-size:1.05rem;" onclick="showReviewMode()">🔍 정답 및 오답 확인하기</button>
         <button class="btn btn-outline-dark" style="padding: 12px 24px; font-size:1.05rem;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
-        <button class="btn" id="btnLockCategoryResult" style="background:rgba(239, 68, 68, 0.12); border:1.5px solid #f87171; color:#dc2626; padding: 12px 20px; font-size:1.05rem; font-weight:700;" onclick="lockCurrentExamCategory()">🔒 이 시험 종목 완료 잠금</button>
         <button class="btn btn-primary" style="padding: 12px 24px; font-size:1.05rem;" onclick="location.reload()">🔄 다시 응시하기</button>
       </div>
     </div>
@@ -1587,7 +1578,14 @@ function onCategoryChange() {
     opt.value = ex.path || (`/exams/${ex.filename}`);
     // 선택된 자격증명을 제거하고 회차/종류 위주로 정돈
     let displayTitle = ex.title;
-    displayTitle = displayTitle.replace(selectedCategory, '').replace(/필기\s*모의고사/g, '').replace(/\[|\]/g, '').trim();
+    displayTitle = displayTitle
+      .replace(selectedCategory, '')
+      .replace(/데이터분석\s*준전문가/g, '')
+      .replace(/기출\s*복원(문제)?/g, '')
+      .replace(/기출문제/g, '')
+      .replace(/필기\s*모의고사/g, '')
+      .replace(/\[|\]/g, '')
+      .trim();
     if (!displayTitle) displayTitle = ex.title;
     opt.innerText = displayTitle;
     examSel.appendChild(opt);
@@ -1697,12 +1695,6 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // 'y' 또는 'Y' 키 입력 시 직전 요약본 모달 토글
-  if (key.toLowerCase() === 'y' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-    e.preventDefault();
-    openCramSheetModal();
-    return;
-  }
 
   const examLayout = document.getElementById('examLayout');
   if (!examLayout || examLayout.style.display === 'none' || !currentExamData) return;
