@@ -1249,7 +1249,7 @@
           <button type="button" class="btn" style="background:#fee2e2; border:1px solid #fca5a5; color:#dc2626; font-size:0.75rem; padding:2px 8px; border-radius:4px; font-weight:600;" onclick="clearOmrMemo(event)">🗑️ 메모 지우기</button>
         </div>
         <div class="calc-body hidden" id="memoBody">
-          <textarea id="omrMemoTextArea" style="width:100%; height:120px; min-height:60px; max-height:500px; border:1px solid var(--border-color); border-radius:6px; padding:8px; font-size:0.88rem; font-family:inherit; background:var(--bg-main); color:var(--text-main); outline:none; resize:none; box-sizing:border-box;" placeholder="시험 진행 중 필기 및 계산 메모를 작성하세요... (자동 저장 없음)"></textarea>
+          <textarea id="omrMemoTextArea" style="width:100%; height:120px; min-height:60px; max-height:500px; border:1px solid var(--border-color); border-radius:6px; padding:8px; font-size:0.88rem; font-family:inherit; background:var(--bg-main); color:var(--text-main); outline:none; resize:none; box-sizing:border-box;" placeholder="시험 진행 중 필기 및 계산 메모를 작성하세요... (메모장을 접으면 내용이 모두 지워집니다)"></textarea>
         </div>
       </div>
 
@@ -3728,19 +3728,20 @@ let calcExpr = '';
 let isCalcOpen = false;
 
 function resetCalculatorState() {
-  calcExpr = '';
+  clearCalculator();
   isCalcOpen = false;
   const body = document.getElementById('calcBody');
   const arrow = document.getElementById('calcArrow');
   if (body) body.classList.add('hidden');
   if (arrow) arrow.innerText = '▴';
-  updateCalcDisplay();
 
   isMemoOpen = false;
   const mBody = document.getElementById('memoBody');
   const mArrow = document.getElementById('memoArrow');
   if (mBody) mBody.classList.add('hidden');
   if (mArrow) mArrow.innerText = '▴';
+  const ta = document.getElementById('omrMemoTextArea');
+  if (ta) ta.value = '';
 
   isOmrVisible = true;
   const omrPane = document.getElementById('omrPane');
@@ -3769,6 +3770,7 @@ function toggleCalculator(e) {
   } else {
     body.classList.add('hidden');
     if (arrow) arrow.innerText = '▴';
+    clearCalculator(); // 접으면 계산기 내용 모두 지우기
     const calcContainer = document.getElementById('omrCalcContainer');
     if (calcContainer && calcContainer.contains(document.activeElement)) {
       document.activeElement.blur();
@@ -3795,6 +3797,8 @@ function toggleMemoPad(e) {
   } else {
     body.classList.add('hidden');
     if (arrow) arrow.innerText = '▴';
+    const ta = document.getElementById('omrMemoTextArea');
+    if (ta) ta.value = ''; // 접으면 메모장 내용 모두 지우기
   }
 }
 
@@ -3872,12 +3876,18 @@ function toggleMemoWidget() {
     document.getElementById('memoTextArea').focus();
   } else {
     w.style.display = 'none';
+    const memoTa = document.getElementById('memoTextArea');
+    if (memoTa) memoTa.value = ''; // 닫으면 메모 내용 모두 지우기
   }
 }
 
 function hideMemoWidget() {
   const w = document.getElementById('memoWidget');
-  if(w) w.style.display = 'none';
+  if(w) {
+    w.style.display = 'none';
+    const memoTa = document.getElementById('memoTextArea');
+    if (memoTa) memoTa.value = ''; // 닫으면 메모 내용 모두 지우기
+  }
 }
 
 function clearMemoText() {
@@ -4786,7 +4796,7 @@ function parseCramMarkdown(md) {
     </div>
   </div>
   <div class="widget-body">
-    <textarea id="memoTextArea" placeholder="시험 도중 계산이나 메모가 필요한 내용을 자유롭게 적으세요...&#10;(별도의 저장 없이 시험 중 자유롭게 이용하실 수 있습니다)"></textarea>
+    <textarea id="memoTextArea" placeholder="시험 도중 계산이나 메모가 필요한 내용을 자유롭게 적으세요...&#10;(연습장을 닫으면 내용이 모두 지워집니다)"></textarea>
     <div class="memo-resize-handle" id="memoWidgetResizeHandle" title="마우스로 드래그하여 연습장 높이를 조절하세요">
       <div class="memo-resize-bar"></div>
     </div>
