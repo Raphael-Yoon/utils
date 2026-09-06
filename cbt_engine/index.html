@@ -2248,10 +2248,14 @@ async function saveDraftSession() {
   // (그렇지 않으면 시험을 시작만 해도 진행률 0인 상태가 즉시 이어하기 배너로 뜨는 문제가 있었음)
   if (Object.keys(userAnswers).length === 0) return;
   const jsonPath = currentExamData.filename ? `/exams/${currentExamData.filename}` : document.getElementById('examSelect').value;
+  let draftTitle = (currentExamData.exam_info && currentExamData.exam_info.title) ? currentExamData.exam_info.title : '시험';
+  if (/^\d+회$/.test(draftTitle.trim()) && currentExamData.exam_info.category) {
+    draftTitle = `${currentExamData.exam_info.category} 제${draftTitle.trim()} 기출문제`;
+  }
   const draft = {
     user_name: 'user',
     examPath: jsonPath,
-    examTitle: (currentExamData.exam_info && currentExamData.exam_info.title) ? currentExamData.exam_info.title : '시험',
+    examTitle: draftTitle,
     userAnswers: userAnswers,
     flaggedQuestions: flaggedQuestions,
     remainingSeconds: totalSeconds,
@@ -2282,7 +2286,19 @@ async function checkDraftSession() {
     const min = Math.floor((draft.remainingSeconds || 0) / 60);
     const sec = (draft.remainingSeconds || 0) % 60;
 
-    document.getElementById('resumeTitle').innerText = draft.examTitle;
+    // examList에서 최신 표준 제목 우선 매칭 및 회차 단독 표기 자동 보정
+    let displayTitle = draft.examTitle || '';
+    if (typeof examList !== 'undefined' && Array.isArray(examList)) {
+      const match = examList.find(ex => ex.path === draft.examPath || ex.filename === (draft.examPath || '').replace('/exams/', ''));
+      if (match && match.title) {
+        displayTitle = match.title;
+      }
+    }
+    if (/^\d+회$/.test(displayTitle.trim())) {
+      displayTitle = `ADsP 제${displayTitle.trim()} 기출문제`;
+    }
+
+    document.getElementById('resumeTitle').innerText = displayTitle;
     document.getElementById('resumeDetails').innerText = `풀이 완료: ${answeredCount}문항 | 남은시간: ${min}분 ${sec}초`;
     document.getElementById('resumeBanner').style.display = 'block';
   } catch (e) {
