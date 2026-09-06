@@ -1514,6 +1514,24 @@
 <script>
 let currentDashboardTab = 'exam';
 
+let appToastTimer = null;
+function showToast(message, duration = 2000) {
+  const oldToast = document.getElementById('appGlobalToast');
+  if (oldToast) oldToast.remove();
+  if (appToastTimer) clearTimeout(appToastTimer);
+
+  const toast = document.createElement('div');
+  toast.id = 'appGlobalToast';
+  toast.className = 'answer-warning-toast';
+  toast.style.animation = `fadeInOutToast ${duration / 1000}s cubic-bezier(0.16, 1, 0.3, 1) forwards`;
+  toast.innerHTML = message;
+  document.body.appendChild(toast);
+
+  appToastTimer = setTimeout(() => {
+    if (toast && toast.parentNode) toast.remove();
+  }, duration);
+}
+
 function switchDashboardTab(tab) {
   currentDashboardTab = tab;
   const tabs = ['exam', 'history', 'cram', 'schedule'];
@@ -2316,7 +2334,7 @@ async function resumeDraftExam() {
     currentExamData = await res.json();
     currentExamData.filename = draft.examPath.replace('/exams/', '');
   } catch (e) {
-    alert("시험 데이터를 불러오는데 실패했습니다: " + e.message);
+    showToast("⚠️ 시험 데이터를 불러오는데 실패했습니다: " + e.message, 2500);
     return;
   }
 
@@ -2359,7 +2377,13 @@ async function startExam() {
   const examSel = document.getElementById('examSelect');
   const jsonPath = examSel ? examSel.value : '';
   if (!jsonPath) {
-    alert("응시할 시험 회차를 선택해주세요.");
+    showToast("⚠️ 응시할 시험 회차를 먼저 선택해 주세요.", 2000);
+    if (examSel) {
+      examSel.focus();
+      examSel.classList.remove('options-shake');
+      void examSel.offsetWidth;
+      examSel.classList.add('options-shake');
+    }
     return;
   }
   try {
@@ -2368,7 +2392,7 @@ async function startExam() {
     currentExamData = await res.json();
     currentExamData.filename = jsonPath.replace('/exams/', '');
   } catch(e) {
-    alert("시험 데이터를 불러오는데 실패했습니다: " + e.message);
+    showToast("⚠️ 시험 데이터를 불러오는데 실패했습니다: " + e.message, 2500);
     return;
   }
 
@@ -2768,8 +2792,8 @@ function startTimer() {
     if (totalSeconds % 5 === 0) saveDraftSession();
     if(totalSeconds <= 0) {
       clearInterval(timerInterval);
-      alert("시험 시간이 종료되었습니다!");
-      submitExam();
+      showToast("⏱️ 시험 시간이 종료되어 답안을 자동 제출합니다.", 2500);
+      submitExam(true);
     }
   }, 1000);
 }
@@ -3550,7 +3574,7 @@ async function setCategoryLock(category, isLocked) {
     }
     return true;
   } catch(e) {
-    alert("잠금 설정 중 오류 발생: " + e.message);
+    showToast("⚠️ 잠금 설정 중 오류 발생: " + e.message, 2500);
     return false;
   }
 }
@@ -3653,7 +3677,7 @@ async function deleteHistoryItem(id) {
     if (!res.ok) throw new Error("Delete failed");
     await showHistoryModal();
   } catch(e) {
-    alert("삭제 실패: " + e.message);
+    showToast("⚠️ 삭제 실패: " + e.message, 2000);
   }
 }
 
@@ -3664,7 +3688,7 @@ async function clearAllHistory() {
     if (!res.ok) throw new Error("Delete failed");
     await showHistoryModal();
   } catch(e) {
-    alert("전체 삭제 실패: " + e.message);
+    showToast("⚠️ 전체 삭제 실패: " + e.message, 2000);
   }
 }
 
@@ -3697,7 +3721,7 @@ async function loadHistoryDetail(id) {
     document.getElementById('startScreen').style.display = 'none';
     showReviewMode();
   } catch(e) {
-    alert("오답노트를 불러오지 못했습니다: " + e.message);
+    showToast("⚠️ 오답노트를 불러오지 못했습니다: " + e.message, 2500);
   }
 }
 
@@ -4600,7 +4624,9 @@ async function handleScheduleSubmit(e) {
   };
 
   if (!payload.title || !payload.exam_date) {
-    alert("시험과목/종목명과 시험일자는 필수 입력 사항입니다.");
+    showToast("⚠️ 시험과목/종목명과 시험일자는 필수 입력 사항입니다.", 2500);
+    const titleInput = document.getElementById('schedTitle');
+    if (titleInput && !payload.title) titleInput.focus();
     return;
   }
 
@@ -4624,12 +4650,13 @@ async function handleScheduleSubmit(e) {
     if (res.ok) {
       closeScheduleForm();
       await loadSchedules();
+      showToast(isEdit ? "✅ 일정이 수정되었습니다." : "✅ 새 일정이 등록되었습니다.", 2000);
     } else {
-      alert("일정 저장에 실패했습니다.");
+      showToast("⚠️ 일정 저장에 실패했습니다.", 2000);
     }
   } catch (err) {
     console.error("일정 저장 에러:", err);
-    alert("서버 통신 중 오류가 발생했습니다.");
+    showToast("⚠️ 서버 통신 중 오류가 발생했습니다.", 2000);
   }
 }
 
@@ -4640,11 +4667,13 @@ async function deleteSchedule(id, title) {
     const res = await fetch(`/api/schedules?id=${id}`, { method: 'DELETE' });
     if (res.ok) {
       await loadSchedules();
+      showToast("🗑️ 시험 일정이 삭제되었습니다.", 2000);
     } else {
-      alert("일정 삭제에 실패했습니다.");
+      showToast("⚠️ 일정 삭제에 실패했습니다.", 2000);
     }
   } catch (err) {
     console.error("일정 삭제 에러:", err);
+    showToast("⚠️ 서버 통신 중 오류가 발생했습니다.", 2000);
   }
 }
 
@@ -4800,26 +4829,26 @@ function adjustCramFontSize(delta) {
 
 function copyCramSheet() {
   if (!currentCramSheet || !currentCramSheet.content) {
-    alert('복사할 요약본 내용이 없습니다.');
+    showToast('ℹ️ 복사할 요약본 내용이 없습니다.', 2000);
     return;
   }
   navigator.clipboard.writeText(currentCramSheet.content).then(() => {
-    alert('📋 요약본 전체 내용이 클립보드에 복사되었습니다!\n스마트폰 메모 앱이나 카카오톡에 붙여넣어 확인하세요.');
+    showToast('📋 요약본 전체가 클립보드에 복사되었습니다! (메모 앱에 붙여넣어 확인하세요)', 2500);
   }).catch(err => {
     console.error('Clipboard copy error:', err);
-    alert('클립보드 복사에 실패했습니다.');
+    showToast('⚠️ 클립보드 복사에 실패했습니다.', 2000);
   });
 }
 
 function printCramSheet() {
   const container = document.getElementById('cramSheetContent');
   if (!container || !currentCramSheet) {
-    alert('인쇄할 내용이 없습니다.');
+    showToast('ℹ️ 인쇄할 내용이 없습니다.', 2000);
     return;
   }
   const printWindow = window.open('', '_blank');
   if (!printWindow) {
-    alert('팝업 차단을 해제해 주세요.');
+    showToast('⚠️ 팝업 차단을 해제해 주세요.', 2500);
     return;
   }
   printWindow.document.write(`
