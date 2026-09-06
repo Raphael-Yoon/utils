@@ -2446,10 +2446,16 @@ function renderQuestions() {
         optClass += ' selected';
       }
 
+      // 보기 텍스트에 ①, ②, (1), 1. 등 번호 표시가 누락된 경우(예: ADsP 등) 자동으로 원형 번호 접두사 부여
+      const circled = ['①', '②', '③', '④', '⑤'][optIdx] || `${optNum}.`;
+      const numRegex = new RegExp(`^\\s*(?:${circled}|\\(?${optNum}\\)[\\s\\.]?|${optNum}\\.(?!\\d)[\\s]?|${optNum}\\)[\\s]?)`);
+      const hasPrefix = numRegex.test(opt);
+      const displayOpt = hasPrefix ? opt : `${circled} ${opt}`;
+
       optionsHtml += `
         <label class="${optClass}" id="optLabel_${q.id}_${optNum}" onclick="selectOption(${q.id}, ${optNum})">
           <input type="radio" id="optRadio_${q.id}_${optNum}" name="q_${q.id}" value="${optNum}" ${uAns === optNum ? 'checked' : ''} ${isReviewMode ? 'disabled' : ''}>
-          ${escapeHtml(opt)}
+          ${escapeHtml(displayOpt)}
         </label>
       `;
     });
