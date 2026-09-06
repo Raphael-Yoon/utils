@@ -168,17 +168,19 @@
     .btn-success { background: var(--accent-success); color: #fff; }
     .btn-success:hover { filter: brightness(1.1); }
 
-    .app-container { display: flex; flex: 1; overflow: hidden; }
+    .app-container { display: flex; flex: 1; overflow: hidden; min-height: 0; }
 
     .start-screen {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 20px 16px;
+      justify-content: flex-start;
+      padding: 24px 16px 90px 16px;
       text-align: center;
       overflow-y: auto;
+      min-height: 0;
+      box-sizing: border-box;
     }
     /* 🌸 메인 대시보드 4대 탭 네비게이션 스타일 */
     .dashboard-tab-bar {
@@ -227,12 +229,48 @@
       border: 1px solid var(--border-color);
       transition: background-color 0.2s ease, border-color 0.2s ease, max-width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       box-sizing: border-box;
+      margin: auto 0;
     }
     .start-card.tab-wide {
-      max-width: 920px;
+      max-width: 960px;
     }
     .dash-tab-pane {
       animation: fadeIn 0.2s ease;
+    }
+
+    /* 📜 응시 이력 탭 전용 필터 & 칩 스타일 */
+    .history-filter-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+    .history-chip {
+      padding: 5px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .history-chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .history-chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(59, 130, 246, 0.25);
     }
     @media (max-width: 680px) {
       .dashboard-tab-bar {
@@ -694,6 +732,12 @@
       15% { opacity: 1; transform: translate(-50%, 0); }
       80% { opacity: 1; transform: translate(-50%, 0); }
       100% { opacity: 0; transform: translate(-50%, -10px); }
+    }
+
+    /* 모달 부드러운 등장 애니메이션 */
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     /* 문항 카드 상단 검토 체크 토글 버튼 */
@@ -1196,7 +1240,7 @@
   <div class="header-actions">
     <button class="btn btn-header-outline" id="btnToggleOmr" style="display:none;" onclick="toggleOmrPane()" title="OMR 답안지 접기/펼치기 (단축키: O)">📋 OMR 접기</button>
     <button class="btn btn-header-outline" id="btnThemeToggle" onclick="toggleTheme()" title="다크 모드 / 라이트 모드 전환 (단축키: T)">🌙 다크 모드</button>
-    <button class="btn btn-header-outline" id="btnHome" onclick="location.reload()">🏠 시험 목록</button>
+    <button class="btn btn-header-outline" id="btnHome" onclick="handleGoHome()" title="풀어봄 메인 홈 대시보드로 이동">🏠 홈</button>
     <button class="btn btn-success" id="btnSubmitHeader" style="display:none;" onclick="submitExam()">📝 답안 제출</button>
   </div>
 </header>
@@ -1246,6 +1290,33 @@
           </select>
           <select class="exam-select-box" id="examSelect" style="flex: 1; margin-bottom: 0; font-size: 0.92rem;" onchange="updateRulesUI()">
           </select>
+        </div>
+
+        <!-- 🔒 시험 종목 잠금/해제 및 관리 바 -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding:10px 14px; background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:8px; font-size:0.85rem; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button type="button" id="btnToggleCurrentLock" class="btn" style="padding:6px 12px; font-size:0.82rem; font-weight:700; border-radius:6px; background:rgba(239, 68, 68, 0.1); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger);" onclick="toggleCurrentCategoryLock()">
+              🔒 선택한 시험 잠금
+            </button>
+            <button type="button" class="btn" style="background:var(--bg-card); border:1px solid var(--border-color); color:var(--text-main); font-size:0.82rem; padding:6px 12px; border-radius:6px; font-weight:600;" onclick="openCategoryLockModal()">
+              ⚙️ 전체 종목 잠금 관리
+            </button>
+          </div>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer; user-select:none; color:var(--text-muted); font-size:0.82rem;">
+            <input type="checkbox" id="chkShowLockedCategories" onchange="toggleShowLockedCategories(this.checked)" style="cursor:pointer; accent-color:var(--primary);">
+            <span>🔒 잠긴 시험 종목 포함 보기 <span id="lockedCategoriesBadge" style="font-weight:700; color:#ef4444;"></span></span>
+          </label>
+        </div>
+
+        <!-- 잠긴 시험 선택 시 안내 배너 -->
+        <div id="lockedCategoryBanner" style="display:none; background:rgba(239, 68, 68, 0.08); border:1px solid rgba(239, 68, 68, 0.25); color:var(--accent-danger); border-radius:8px; padding:10px 14px; margin-bottom:14px; font-size:0.85rem; text-align:left; justify-content:space-between; align-items:center;">
+          <div>
+            <b style="color:var(--text-main);">🔒 현재 완료/잠금(숨김) 처리된 시험 종목입니다.</b><br>
+            <span style="font-size:0.8rem; color:var(--text-muted);">응시하시거나 이력을 확인하시려면 [잠금 해제]를 눌러 활성화하세요.</span>
+          </div>
+          <button type="button" class="btn" style="background:#2563eb; color:#ffffff; font-size:0.82rem; padding:6px 12px; font-weight:700; border-radius:6px;" onclick="unlockSelectedCategory()">
+            🔓 잠금 해제
+          </button>
         </div>
 
         <!-- 합격 판정 기준 롤업 (접기/펼치기) -->
@@ -1493,7 +1564,9 @@ let timerInterval = null;
 let totalSeconds = 7200;
 let isReviewMode = false;
 let currentQuestionIdx = 0; // 현재 활성화된 문항 인덱스 (0-indexed)
-
+let lockedCategories = new Set(); // 자격시험 종목 잠금 목록
+let showLockedCategories = false; // 메인 시험 선택에서 잠긴 시험 표시 여부
+let showLockedInHistory = false;  // 응시 이력에서 잠긴 시험 이력 표시 여부 (기본: false로 자동 감춤)
 
 function toggleFlagQuestion(qId) {
   if (flaggedQuestions[qId]) {
@@ -1560,7 +1633,18 @@ function toggleTheme() {
   applyTheme(isDark ? 'light' : 'dark', true);
 }
 
-// 페이지 로드 시 테마 초기화, /api/exams 탐색, 임시저장(이어하기) 확인
+function handleGoHome() {
+  const startScreen = document.getElementById('startScreen');
+  const isExamRunning = startScreen && startScreen.style.display === 'none' && !isReviewMode;
+  if (isExamRunning) {
+    if (!confirm("현재 시험이 진행 중입니다.\n홈 화면으로 나가시겠습니까? (작성 중인 답안 임시저장 내역은 보존됩니다)")) {
+      return;
+    }
+  }
+  location.reload();
+}
+
+// 페이지 로드 시 테마 초기화, /api/exams 및 /api/category-locks 탐색, 임시저장(이어하기) 확인
 window.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initDraggableWidgets();
@@ -1577,7 +1661,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const resExams = await fetch('/api/exams');
+    const [resExams, resLocks] = await Promise.all([
+      fetch('/api/exams'),
+      fetch('/api/category-locks')
+    ]);
+    if (resLocks && resLocks.ok) {
+      const lockData = await resLocks.json();
+      lockedCategories = new Set(lockData.locked_categories || []);
+    }
     if (resExams && resExams.ok) {
       examList = await resExams.json();
       if (examList.length > 0) {
@@ -1601,11 +1692,25 @@ function initCategoryDropdown(preserveSelected = null) {
 
   // 자격증 카테고리 고유 목록 체계적 정렬
   const allCategories = Array.from(new Set(examList.map(ex => ex.category || '기타'))).sort((a, b) => a.localeCompare(b, 'ko'));
+  const lockedCount = allCategories.filter(c => lockedCategories.has(c)).length;
+  const badgeEl = document.getElementById('lockedCategoriesBadge');
+  if (badgeEl) {
+    badgeEl.innerText = lockedCount > 0 ? `(${lockedCount}개 잠김)` : '';
+  }
 
-  allCategories.forEach(cat => {
+  const chkBox = document.getElementById('chkShowLockedCategories');
+  if (chkBox) chkBox.checked = showLockedCategories;
+
+  let visibleCategories = allCategories;
+  if (!showLockedCategories) {
+    visibleCategories = allCategories.filter(c => !lockedCategories.has(c));
+  }
+
+  visibleCategories.forEach(cat => {
     const opt = document.createElement('option');
     opt.value = cat;
-    opt.innerText = cat;
+    const isLocked = lockedCategories.has(cat);
+    opt.innerText = isLocked ? `🔒 ${cat} (잠김)` : cat;
     catSel.appendChild(opt);
   });
 
@@ -1624,13 +1729,41 @@ function onCategoryChange() {
   if(!catSel || !examSel) return;
 
   const selectedCategory = catSel.value;
+  const isLocked = lockedCategories.has(selectedCategory);
 
-  // 시작 버튼 상태 초기화
+  // 선택한 시험 잠금/해제 버튼 상태 동기화
+  const toggleBtn = document.getElementById('btnToggleCurrentLock');
+  if (toggleBtn) {
+    if (isLocked) {
+      toggleBtn.innerHTML = '🔓 선택한 시험 잠금 해제';
+      toggleBtn.style.background = '#2563eb';
+      toggleBtn.style.color = '#ffffff';
+      toggleBtn.style.border = '1px solid #1d4ed8';
+      toggleBtn.title = `'${selectedCategory}' 시험 종목의 잠금을 해제하고 다시 활성화합니다.`;
+    } else {
+      toggleBtn.innerHTML = '🔒 선택한 시험 잠금';
+      toggleBtn.style.background = 'rgba(239, 68, 68, 0.1)';
+      toggleBtn.style.color = 'var(--accent-danger)';
+      toggleBtn.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+      toggleBtn.title = `'${selectedCategory}' 시험 종목을 잠그고 시험선택 및 응시이력에서 숨깁니다.`;
+    }
+  }
+
+  // 잠긴 시험 안내 배너 및 시작 버튼 제어
+  const banner = document.getElementById('lockedCategoryBanner');
   const startBtn = document.getElementById('btnStartExam');
+  if (banner) banner.style.display = isLocked ? 'flex' : 'none';
+
   if (startBtn) {
-    startBtn.removeAttribute('data-locked');
-    startBtn.innerHTML = '🚀 응시 시작하기';
-    startBtn.style.opacity = '1';
+    if (isLocked) {
+      startBtn.setAttribute('data-locked', 'true');
+      startBtn.innerHTML = '🔒 잠긴 시험 종목입니다';
+      startBtn.style.opacity = '0.6';
+    } else {
+      startBtn.removeAttribute('data-locked');
+      startBtn.innerHTML = '🚀 응시 시작하기';
+      startBtn.style.opacity = '1';
+    }
   }
 
   const filteredExams = examList.filter(ex => (ex.category || '기타') === selectedCategory);
@@ -1701,6 +1834,21 @@ function onCategoryChange() {
   });
 
   updateRulesUI();
+}
+
+async function toggleCurrentCategoryLock() {
+  const catSel = document.getElementById('categorySelect');
+  if (!catSel || !catSel.value) return;
+  const cat = catSel.value;
+  const isLocked = lockedCategories.has(cat);
+
+  if (isLocked) {
+    await setCategoryLock(cat, false);
+  } else {
+    if (confirm(`'${cat}' 시험 종목을 잠금(숨김) 처리하시겠습니까?\n\n잠긴 시험은 시험선택 목록과 응시이력 화면에서 자동으로 감춰집니다.`)) {
+      await setCategoryLock(cat, true);
+    }
+  }
 }
 
 // 계산기 영역 내부 포커스 여부 판별
@@ -1975,26 +2123,9 @@ function goToNextQuestion() {
   if (currentQuestionIdx < total - 1) {
     goToQuestion(currentQuestionIdx + 1);
   } else {
-    // 마지막 문항일 때 [다음 문제] 또는 Enter 누른 경우
+    // 마지막 문항일 때 [다음 문제] 또는 Enter 누른 경우: 세련된 제출 모달 노출
     if (isReviewMode) return;
-
-    const unansweredQs = currentExamData.questions.filter(q => !userAnswers[q.id]);
-    if (unansweredQs.length > 0) {
-      const unansweredList = unansweredQs.map(q => q.id + '번').join(', ');
-      const msg = `마지막 문항입니다.\n\n총 ${total}문항 중 미답변 문항이 ${unansweredQs.length}개 남아있습니다.\n(미답변 문항: ${unansweredList})\n\n[확인] ➔ 미답변 무시하고 최종 제출\n[취소] ➔ 미답변 문항으로 이동`;
-      if (confirm(msg)) {
-        submitExam(true);
-      } else {
-        const firstUnansweredIdx = currentExamData.questions.findIndex(q => !userAnswers[q.id]);
-        if (firstUnansweredIdx >= 0) {
-          goToQuestion(firstUnansweredIdx);
-        }
-      }
-    } else {
-      if (confirm("모든 문항의 답안을 작성하셨습니다! 답안을 최종 제출하시겠습니까?")) {
-        submitExam(true);
-      }
-    }
+    openSubmitConfirmModal();
   }
 }
 
@@ -2018,7 +2149,14 @@ function updateRulesUI() {
   const fn = (ex.filename || (ex.path ? ex.path.replace('/exams/', '') : '')).toLowerCase();
   const isAuditorSingleSubject = !!fn.match(/auditor_\d{4}_subject\d+\.json$/);
 
-  document.getElementById('rulesTitle').innerHTML = `📌 <b>${escapeHtml(ex.title)}</b> 합격 판정 기준`;
+  // 회차/모의고사 등 개별 회차 표기를 제외하고 시험(종목) 단위의 명칭 적용
+  const examCategoryName = (ex.category && ex.category !== '기타')
+    ? ex.category
+    : (document.getElementById('categorySelect') && document.getElementById('categorySelect').value && document.getElementById('categorySelect').value !== '기타'
+        ? document.getElementById('categorySelect').value
+        : (ex.title ? ex.title.replace(/\[.*?\]|\d{4}년|제\s*\d+\s*회|모의고사/g, '').trim() : '자격시험'));
+
+  document.getElementById('rulesTitle').innerHTML = `📌 <b>${escapeHtml(examCategoryName)}</b> 합격 판정 기준`;
   
   if (rules.tier_1_score !== undefined) {
     document.getElementById('rulesList').innerHTML = `
@@ -2648,13 +2786,117 @@ function updateTimerDisplay() {
   }
 }
 
-function submitExam(skipConfirm = false) {
-  if(!skipConfirm && totalSeconds > 0) {
-    const answeredCount = Object.keys(userAnswers).length;
-    const totalCount = currentExamData.questions.length;
-    if(answeredCount < totalCount && !confirm(`총 ${totalCount}문제 중 ${answeredCount}문제만 답변했습니다. 제출할까요?`)) return;
-    if(answeredCount === totalCount && !confirm("답안을 최종 제출하시겠습니까?")) return;
+// 🌸 세련된 프리미엄 최종 답안 제출 확인 모달 로직
+function openSubmitConfirmModal() {
+  if (!currentExamData || !currentExamData.questions) return;
+  const modal = document.getElementById('submitConfirmModal');
+  if (!modal) return;
+
+  const total = currentExamData.questions.length;
+  const answered = Object.keys(userAnswers).length;
+  const unanswered = total - answered;
+  const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
+
+  // 1. 남은 시간 표시
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  const timeStr = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  const timeEl = document.getElementById('subModalTimeLeft');
+  if (timeEl) timeEl.innerText = timeStr;
+
+  // 2. 답변 및 미답변 현황
+  const ansEl = document.getElementById('subModalAnswered');
+  if (ansEl) ansEl.innerText = `${answered} / ${total} (${pct}%)`;
+
+  const unansBox = document.getElementById('subModalUnansweredBox');
+  const unansEl = document.getElementById('subModalUnanswered');
+  if (unansEl) unansEl.innerText = `${unanswered}개`;
+
+  // 3. 프로그레스 바
+  const progEl = document.getElementById('subModalProgressBar');
+  if (progEl) progEl.style.width = `${pct}%`;
+
+  // 4. 미답변 안내 배너 & 문항 바로가기 칩 렌더링
+  const alertBox = document.getElementById('subModalStatusAlert');
+  if (alertBox) {
+    if (unanswered > 0) {
+      if (unansBox) unansBox.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+      if (unansEl) unansEl.style.color = 'var(--accent-danger, #ef4444)';
+
+      // 미답변 문항 인덱스 추출
+      const unansweredList = currentExamData.questions
+        .map((q, idx) => (!userAnswers[q.id] ? { num: idx + 1, idx: idx } : null))
+        .filter(Boolean);
+
+      const maxDisplay = 16;
+      let chipsHtml = unansweredList.slice(0, maxDisplay).map(item => `
+        <button type="button" onclick="jumpFromModalToQ(${item.idx})" style="padding:4px 9px; border-radius:6px; background:rgba(239,68,68,0.12); color:#ef4444; border:1px solid rgba(239,68,68,0.3); font-weight:700; font-size:0.82rem; cursor:pointer; display:inline-flex; align-items:center; gap:3px; transition:all 0.15s ease;" title="${item.num}번 문항으로 즉시 이동">
+          <span>${item.num}번</span> <span style="font-size:0.75rem;">➔</span>
+        </button>
+      `).join('');
+
+      if (unansweredList.length > maxDisplay) {
+        chipsHtml += `<span style="font-size:0.82rem; color:var(--text-muted); align-self:center; margin-left:4px;">외 ${unansweredList.length - maxDisplay}개</span>`;
+      }
+
+      alertBox.style.background = 'rgba(239, 68, 68, 0.08)';
+      alertBox.style.border = '1px solid rgba(239, 68, 68, 0.25)';
+      alertBox.innerHTML = `
+        <div style="font-weight:700; color:#ef4444; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+          <span>⚠️ 아직 작성하지 않은 문항이 ${unanswered}개 있습니다!</span>
+        </div>
+        <div style="font-size:0.83rem; color:var(--text-muted); margin-bottom:10px; line-height:1.4;">
+          문항 번호를 클릭하시면 해당 문제로 즉시 이동하여 답안을 작성할 수 있습니다.<br>
+          (미답변 상태로 제출하실 경우 해당 문항은 오답 처리됩니다.)
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; max-height:88px; overflow-y:auto; padding-right:2px;">
+          ${chipsHtml}
+        </div>
+      `;
+    } else {
+      if (unansBox) unansBox.style.borderColor = 'var(--border-color)';
+      if (unansEl) {
+        unansEl.style.color = '#10b981';
+        unansEl.innerText = '0개 (완료)';
+      }
+
+      alertBox.style.background = 'rgba(16, 185, 129, 0.08)';
+      alertBox.style.border = '1px solid rgba(16, 185, 129, 0.25)';
+      alertBox.innerHTML = `
+        <div style="font-weight:700; color:#10b981; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
+          <span>✨ 완벽합니다! 모든 문항(${total}개)의 답안을 작성하셨습니다.</span>
+        </div>
+        <div style="font-size:0.83rem; color:var(--text-muted); line-height:1.4;">
+          우측 하단의 <b>[🚀 최종 제출 및 채점]</b> 버튼을 클릭하시면 즉시 결과 화면과 과목별 상세 성적 분석이 제공됩니다.
+        </div>
+      `;
+    }
   }
+
+  modal.style.display = 'flex';
+}
+
+function closeSubmitConfirmModal() {
+  const modal = document.getElementById('submitConfirmModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function jumpFromModalToQ(idx) {
+  closeSubmitConfirmModal();
+  goToQuestion(idx);
+}
+
+function executeFinalSubmit() {
+  closeSubmitConfirmModal();
+  submitExam(true);
+}
+
+function submitExam(skipConfirm = false) {
+  if (!skipConfirm && totalSeconds > 0) {
+    openSubmitConfirmModal();
+    return;
+  }
+  closeSubmitConfirmModal();
 
   clearInterval(timerInterval);
   cachedServerDraft = null;
@@ -2845,12 +3087,30 @@ function showReviewMode() {
   goToQuestion(0); // 리뷰 모드에서도 첫 번째 문제 활성화
 }
 
-let currentHistoryFilterMode = 'current';
+let allRawHistoryList = [];
+let historyFilterCategory = 'INIT'; // 'INIT', 'ALL', or category name
+let historyFilterExamId = 'ALL';   // 'ALL' or specific exam_id/title
 let currentFilteredHistoryList = [];
 let currentSelectedCategoryName = '';
 
-async function showHistoryModal(filterMode) {
-  if (filterMode) currentHistoryFilterMode = filterMode;
+// 시험 카테고리 판별 헬퍼
+function resolveExamCategory(item, examCategoryMap) {
+  if (item.exam_id && examCategoryMap[item.exam_id]) {
+    return examCategoryMap[item.exam_id];
+  }
+  if (typeof examList !== 'undefined' && Array.isArray(examList)) {
+    const match = examList.find(ex => (ex.filename && ex.filename === item.exam_id) || (ex.title && ex.title === item.exam_title));
+    if (match && match.category) return match.category;
+  }
+  const title = (item.exam_title || '') + ' ' + (item.exam_id || '');
+  if (title.includes('감리') || title.includes('auditor')) return '정보시스템감리사';
+  if (title.includes('조직응용') || title.includes('cappl')) return '전자계산기조직응용기사';
+  if (title.includes('포렌식') || title.includes('forensic')) return '디지털포렌식전문가 2급';
+  if (title.includes('한국사') || title.includes('history')) return '한국사능력검정시험 심화';
+  return '기타';
+}
+
+async function showHistoryModal(categoryArg, examIdArg) {
   const startScreen = document.getElementById('startScreen');
   if (startScreen) startScreen.style.display = 'flex';
   const examLayout = document.getElementById('examLayout');
@@ -2861,196 +3121,489 @@ async function showHistoryModal(filterMode) {
   if (currentDashboardTab !== 'history') {
     switchDashboardTab('history');
   }
+
+  if (categoryArg !== undefined) {
+    historyFilterCategory = categoryArg;
+  }
+  if (examIdArg !== undefined) {
+    historyFilterExamId = examIdArg;
+  }
+
   const container = document.getElementById('historyListContainer');
-  container.innerHTML = '<div style="text-align:center; padding:20px;">🔄 응시 이력을 불러오는 중...</div>';
+  if (!container) return;
+  container.innerHTML = '<div style="text-align:center; padding:30px; color:var(--text-muted); font-size:0.95rem;">🔄 응시 이력을 불러오는 중...</div>';
 
   try {
     const res = await fetch('/api/results');
     if (!res.ok) throw new Error("Fetch failed");
-    const list = await res.json();
-    if (!list || list.length === 0) {
-      container.innerHTML = '<div style="text-align:center; color:#64748b; padding:30px;">저장된 응시 이력이 없습니다.</div>';
+    allRawHistoryList = await res.json();
+    if (!allRawHistoryList || allRawHistoryList.length === 0) {
+      container.innerHTML = `
+        <div style="text-align:center; color:var(--text-muted); padding:40px 16px; background:var(--bg-subtle); border-radius:10px; border:1px solid var(--border-color); margin-top:10px;">
+          <div style="font-size:2rem; margin-bottom:10px;">📜</div>
+          <div style="font-size:1.05rem; font-weight:700; color:var(--text-main); margin-bottom:6px;">저장된 응시 이력이 없습니다.</div>
+          <div style="font-size:0.86rem; color:var(--text-muted); margin-bottom:16px;">시험 풀이를 완료하고 [제출하기]를 누르시면 이곳에 상세 이력과 오답노트가 기록됩니다.</div>
+          <button class="btn btn-primary" style="font-size:0.88rem; padding:8px 18px;" onclick="switchDashboardTab('exam')">🚀 첫 시험 응시하러 가기</button>
+        </div>
+      `;
       return;
     }
 
-    // 현재 선택된 자격증 시험 종목(카테고리) 파악
-    const catSel = document.getElementById('categorySelect');
-    let selectedCategory = catSel ? catSel.value : '';
-    if (!selectedCategory && currentExamData && currentExamData.exam_info) {
-      selectedCategory = currentExamData.exam_info.category || '';
-    }
-    currentSelectedCategoryName = selectedCategory || '전체_응시이력';
-
-    // examList에서 각 exam_id별 category 맵 구축
-    const examCategoryMap = {};
-    if (typeof examList !== 'undefined' && Array.isArray(examList)) {
-      examList.forEach(ex => {
-        const eid = ex.filename || (ex.path ? ex.path.replace(/^\/exams\//, '') : '');
-        if (eid) examCategoryMap[eid] = ex.category;
-      });
+    // 첫 진입 시(INIT), 메인 화면의 categorySelect 값을 기본값으로 반영
+    if (historyFilterCategory === 'INIT') {
+      const catSel = document.getElementById('categorySelect');
+      const activeCat = catSel ? catSel.value : '';
+      historyFilterCategory = activeCat || 'ALL';
     }
 
-    // 필터링 적용 (현재 시험 종목 카테고리 전체 회차 포함 vs 전체 이력)
-    let displayList = list;
-    if (currentHistoryFilterMode === 'current' && selectedCategory) {
-      displayList = list.filter(item => {
-        const itemCat = examCategoryMap[item.exam_id] || '';
-        if (itemCat) return itemCat === selectedCategory;
-        return item.exam_title && item.exam_title.includes(selectedCategory);
-      });
+    renderHistoryView();
+  } catch (e) {
+    container.innerHTML = `<div style="color:var(--accent-danger); padding:24px; text-align:center;">이력을 불러오지 못했습니다: ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+function renderHistoryView() {
+  const container = document.getElementById('historyListContainer');
+  if (!container) return;
+
+  // 1. examList 기준 카테고리 맵 구축
+  const examCategoryMap = {};
+  if (typeof examList !== 'undefined' && Array.isArray(examList)) {
+    examList.forEach(ex => {
+      const eid = ex.filename || (ex.path ? ex.path.replace(/^\/exams\//, '') : '');
+      if (eid) examCategoryMap[eid] = ex.category;
+    });
+  }
+
+  // 2. 각 이력에 resolvedCategory 속성 매핑 및 잠금 통계 산출
+  let lockedHistoryCount = 0;
+  allRawHistoryList.forEach(item => {
+    const cat = resolveExamCategory(item, examCategoryMap);
+    item.resolvedCategory = cat;
+    if (lockedCategories.has(cat)) {
+      lockedHistoryCount++;
     }
-    currentFilteredHistoryList = displayList;
+  });
 
-    // 필터 탭 HTML 구조
-    const currentBtnClass = currentHistoryFilterMode === 'current' ? 'btn-primary' : 'btn-outline-dark';
-    const allBtnClass = currentHistoryFilterMode === 'all' ? 'btn-primary' : 'btn-outline-dark';
+  // 3. 잠금 처리된 종목 응시이력 감춤 필터링 (showLockedInHistory가 false면 잠긴 종목 이력 완전 제외)
+  let visibleRawList = allRawHistoryList;
+  if (!showLockedInHistory) {
+    visibleRawList = allRawHistoryList.filter(item => !lockedCategories.has(item.resolvedCategory));
+  }
 
-    const categoryLabel = selectedCategory ? `선택 종목: ${selectedCategory}` : '선택한 시험 종목';
-    const targetBadgeName = currentHistoryFilterMode === 'current' ? (selectedCategory || '자격증') : '전체';
+  // 4. 고유 카테고리 통계 산출 (보이는 목록 기준)
+  const catCountMap = {};
+  const allCategoriesSet = new Set();
 
-    let filterHeaderHtml = `
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--border-color); flex-wrap:wrap; gap:10px;">
-        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-          <button class="btn ${currentBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('current')">
-            🎯 ${escapeHtml(categoryLabel)} (${displayList.length}건)
-          </button>
-          <button class="btn ${allBtnClass}" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="showHistoryModal('all')">
-            🌐 전체 응시 이력 (${list.length}건)
-          </button>
+  visibleRawList.forEach(item => {
+    const cat = item.resolvedCategory;
+    allCategoriesSet.add(cat);
+    catCountMap[cat] = (catCountMap[cat] || 0) + 1;
+  });
+
+  // 시스템 등록 카테고리 추가 (잠긴 종목은 showLockedInHistory 옵션에 따라)
+  if (typeof examList !== 'undefined' && Array.isArray(examList)) {
+    examList.forEach(ex => {
+      if (ex.category) {
+        if (showLockedInHistory || !lockedCategories.has(ex.category)) {
+          allCategoriesSet.add(ex.category);
+        }
+      }
+    });
+  }
+  const categoryList = Array.from(allCategoriesSet).sort((a, b) => a.localeCompare(b, 'ko'));
+
+  // 현재 선택된 필터 종목이 잠겨있는데 showLockedInHistory가 false면 ALL로 안전 리셋
+  if (!showLockedInHistory && historyFilterCategory !== 'ALL' && lockedCategories.has(historyFilterCategory)) {
+    historyFilterCategory = 'ALL';
+  }
+
+  // 5. 카테고리 1차 필터링
+  let catFilteredList = visibleRawList;
+  if (historyFilterCategory && historyFilterCategory !== 'ALL') {
+    catFilteredList = visibleRawList.filter(item => item.resolvedCategory === historyFilterCategory);
+  }
+
+  // 6. 세부 시험 회차 목록 추출 (현재 카테고리 기준)
+  const examMapInCat = {};
+  catFilteredList.forEach(item => {
+    const key = item.exam_id || item.exam_title;
+    if (!examMapInCat[key]) {
+      examMapInCat[key] = {
+        key: key,
+        title: item.exam_title || item.exam_id,
+        count: 0
+      };
+    }
+    examMapInCat[key].count += 1;
+  });
+  const examsInCat = Object.values(examMapInCat).sort((a, b) => a.title.localeCompare(b.title, 'ko'));
+
+  // 7. 세부 시험 2차 필터링
+  let displayList = catFilteredList;
+  if (historyFilterExamId && historyFilterExamId !== 'ALL') {
+    displayList = catFilteredList.filter(item => (item.exam_id === historyFilterExamId) || (item.exam_title === historyFilterExamId));
+  }
+  currentFilteredHistoryList = displayList;
+
+  // 8. 상단 필터 패널 HTML 렌더링
+  const isAllCat = (historyFilterCategory === 'ALL');
+  const catChipTotalCount = visibleRawList.length;
+
+  let filterCardHtml = `
+    <div class="history-filter-card">
+      <!-- 1행: 종목(자격증) 셀렉트 + 세부 시험 셀렉트 + 관리 버튼들 -->
+      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:12px;">
+        <!-- 카테고리 셀렉트 -->
+        <div style="flex:1.2; min-width:200px;">
+          <label style="font-size:0.75rem; font-weight:700; color:var(--text-muted); display:block; margin-bottom:4px;">🎯 시험 종목 (자격증)</label>
+          <select id="historyCategorySelect" class="exam-select-box" style="width:100%; margin:0; padding:8px 10px; font-size:0.88rem; font-weight:600;" onchange="onHistoryCategoryChange(this.value)">
+            <option value="ALL" ${isAllCat ? 'selected' : ''}>🌐 전체 시험 종목 (${catChipTotalCount}건)</option>
+  `;
+
+  categoryList.forEach(cat => {
+    const count = catCountMap[cat] || 0;
+    const isSelected = (historyFilterCategory === cat);
+    const isLocked = lockedCategories.has(cat);
+    const lockTag = isLocked ? ' 🔒(잠김)' : '';
+    filterCardHtml += `<option value="${escapeHtml(cat)}" ${isSelected ? 'selected' : ''}>${escapeHtml(cat)}${lockTag} (${count}건)</option>`;
+  });
+
+  filterCardHtml += `
+          </select>
         </div>
-        <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-          <button class="btn" style="background:var(--accent-danger); color:#ffffff; font-size:0.8rem; padding:6px 10px;" onclick="clearAllHistory()">🗑️ 전체 삭제</button>
+
+        <!-- 세부 시험/회차 셀렉트 -->
+        <div style="flex:1.8; min-width:240px;">
+          <label style="font-size:0.75rem; font-weight:700; color:var(--text-muted); display:block; margin-bottom:4px;">📚 세부 시험 / 회차 선택</label>
+          <select id="historyExamSelect" class="exam-select-box" style="width:100%; margin:0; padding:8px 10px; font-size:0.88rem; font-weight:600;" onchange="onHistoryExamChange(this.value)">
+            <option value="ALL" ${historyFilterExamId === 'ALL' ? 'selected' : ''}>📚 전체 시험 회차 보기 (${catFilteredList.length}건)</option>
+  `;
+
+  examsInCat.forEach(ex => {
+    const isSelected = (historyFilterExamId === ex.key);
+    filterCardHtml += `<option value="${escapeHtml(ex.key)}" ${isSelected ? 'selected' : ''}>${escapeHtml(ex.title)} (${ex.count}회)</option>`;
+  });
+
+  filterCardHtml += `
+          </select>
+        </div>
+
+        <!-- 우측 액션: 잠금 관리 & 전체 삭제 -->
+        <div style="display:flex; align-items:flex-end; gap:6px; margin-top:auto; flex-wrap:wrap;">
+          <button class="btn" style="background:var(--bg-card); border:1px solid var(--border-color); color:var(--text-main); font-size:0.82rem; padding:8px 10px; font-weight:600; white-space:nowrap;" onclick="openCategoryLockModal()" title="시험 종목 잠금/숨김 관리">
+            ⚙️ 잠금 관리
+          </button>
+          <button class="btn" style="background:rgba(239, 68, 68, 0.12); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); font-size:0.82rem; padding:8px 10px; font-weight:600; white-space:nowrap;" onclick="clearAllHistory()" title="전체 응시 이력 초기화">
+            🗑️ 전체 삭제
+          </button>
         </div>
       </div>
+
+      <!-- 2행: 카테고리 원클릭 퀵 칩 바 + 잠긴 이력 토글 체크박스 -->
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border-color); padding-top:10px;">
+        <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+          <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted); margin-right:4px;">빠른 선택:</span>
+          <button class="history-chip ${isAllCat ? 'active' : ''}" onclick="onHistoryCategoryChange('ALL')">
+            🌐 전체 (${catChipTotalCount})
+          </button>
+  `;
+
+  categoryList.forEach(cat => {
+    const count = catCountMap[cat] || 0;
+    if (count > 0 || isAllCat) {
+      const isSelected = (historyFilterCategory === cat);
+      const isLocked = lockedCategories.has(cat);
+      filterCardHtml += `
+        <button class="history-chip ${isSelected ? 'active' : ''}" onclick="onHistoryCategoryChange('${escapeHtml(cat)}')">
+          ${isLocked ? '🔒 ' : ''}${escapeHtml(cat)} (${count})
+        </button>
+      `;
+    }
+  });
+
+  filterCardHtml += `
+        </div>
+
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <label style="display:inline-flex; align-items:center; gap:5px; font-size:0.8rem; color:var(--text-muted); cursor:pointer; user-select:none;">
+            <input type="checkbox" id="chkShowLockedInHistory" onchange="toggleShowLockedInHistory(this.checked)" ${showLockedInHistory ? 'checked' : ''} style="cursor:pointer; accent-color:var(--primary);">
+            <span>🔒 잠긴 시험 이력도 포함 보기 ${lockedHistoryCount > 0 ? `<b style="color:#ef4444;">(${lockedHistoryCount}건 숨김됨)</b>` : ''}</span>
+          </label>
+          <div style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">
+            조회 결과: <b style="color:var(--primary); font-size:0.92rem;">${displayList.length}</b>건
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // 9. 검색 결과가 없을 때의 Empty State
+  if (displayList.length === 0) {
+    const emptyCatText = isAllCat ? '응시 이력' : `'${historyFilterCategory}' 종목의 응시 이력`;
+    container.innerHTML = filterCardHtml + `
+      <div style="text-align:center; padding:36px 16px; color:var(--text-muted); background:var(--bg-subtle); border-radius:10px; border:1px solid var(--border-color); margin-top:10px;">
+        <div style="font-size:1.05rem; font-weight:700; color:var(--text-main); margin-bottom:6px;">🎯 ${escapeHtml(emptyCatText)}이 없습니다.</div>
+        <div style="font-size:0.86rem; color:var(--text-muted); margin-bottom:16px;">
+          ${lockedHistoryCount > 0 && !showLockedInHistory ? '현재 <b>' + lockedHistoryCount + '건의 잠긴(완료) 시험 이력이 숨김 처리</b>되어 있습니다.<br>상단의 [🔒 잠긴 시험 이력도 포함 보기]를 체크하시면 확인하실 수 있습니다.' : '시험 선택 탭에서 문제를 풀고 제출하시면 이곳에 이력이 저장됩니다.'}
+        </div>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          ${lockedHistoryCount > 0 && !showLockedInHistory ? `<button class="btn btn-outline" style="font-size:0.85rem; padding:8px 16px;" onclick="toggleShowLockedInHistory(true)">🔒 잠긴 이력 (${lockedHistoryCount}건) 보기</button>` : ''}
+          <button class="btn btn-outline-dark" style="font-size:0.85rem; padding:8px 16px;" onclick="onHistoryCategoryChange('ALL')">🌐 전체 응시 이력 보기</button>
+          <button class="btn btn-primary" style="font-size:0.85rem; padding:8px 18px;" onclick="switchDashboardTab('exam')">🚀 시험 응시하러 가기</button>
+        </div>
+      </div>
+      <div style="height:40px;"></div>
+    `;
+    return;
+  }
+
+  // 10. 응시 횟수 및 회차 맵 구축
+  const examAttemptsCount = {};
+  const itemAttemptNumMap = {};
+  const sortedAsc = [...allRawHistoryList].sort((a, b) => a.id - b.id);
+  sortedAsc.forEach(item => {
+    examAttemptsCount[item.exam_id] = (examAttemptsCount[item.exam_id] || 0) + 1;
+    itemAttemptNumMap[item.id] = examAttemptsCount[item.exam_id];
+  });
+
+  // 11. 시험별 그룹화
+  const groupedExams = {};
+  displayList.forEach(item => {
+    const key = item.exam_id || item.exam_title;
+    if (!groupedExams[key]) {
+      groupedExams[key] = {
+        exam_id: item.exam_id,
+        exam_title: item.exam_title,
+        category: item.resolvedCategory || '',
+        attempts: [],
+        maxScore: 0,
+        latestDate: item.created_at
+      };
+    }
+    const grp = groupedExams[key];
+    grp.attempts.push(item);
+    if (item.total_score > grp.maxScore) grp.maxScore = item.total_score;
+  });
+
+  const groupedList = Object.values(groupedExams).sort((a, b) => new Date(b.latestDate) - new Date(a.latestDate));
+
+  let html = filterCardHtml + '<div style="display:flex; flex-direction:column; gap:12px;">';
+
+  groupedList.forEach((grp, idx) => {
+    const latestItem = grp.attempts[0];
+    const latestAttemptNum = itemAttemptNumMap[latestItem.id] || 1;
+    const isSingleSub = (latestItem.exam_id && latestItem.exam_id.includes('subject')) || (latestItem.exam_title && latestItem.exam_title.includes('과목') && latestItem.exam_title.includes('25문항'));
+    const isPassVal = isSingleSub ? (latestItem.total_score >= 40.0) : Boolean(latestItem.is_pass);
+    const latestPassTag = isPassVal ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
+    const latestDateStr = new Date(latestItem.created_at).toLocaleString();
+    const isCatLocked = lockedCategories.has(grp.category);
+
+    const hasHistory = grp.attempts.length > 1;
+    const safeKey = `grp_${idx}_${(grp.exam_id || 'ex').replace(/[^a-zA-Z0-9]/g, '_')}`;
+
+    html += `
+      <div style="border:1px solid var(--border-color); border-radius:10px; background:var(--bg-card); overflow:hidden; box-shadow:var(--shadow-sm); padding:16px 18px; display:flex; flex-direction:column; gap:10px; text-align:left;">
+        <!-- 1행: 시험 제목 (풀네임) + 카테고리 뱃지 + 응시 횟수 VS 우측 액션 버튼들 -->
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:8px; min-width:0; flex-wrap:wrap;">
+            <span style="font-weight:700; font-size:1.05rem; color:var(--text-main); word-break:keep-all;">
+              📚 ${escapeHtml(grp.exam_title)}
+            </span>
+            ${grp.category ? `
+              <span style="background:var(--bg-subtle); color:var(--text-muted); border:1px solid var(--border-color); font-size:0.72rem; padding:2px 8px; border-radius:10px; font-weight:600; white-space:nowrap;">
+                ${isCatLocked ? '🔒 ' : ''}${escapeHtml(grp.category)}
+              </span>
+            ` : ''}
+            <span style="background:var(--primary-light); color:var(--primary); border:1px solid var(--primary-border); font-size:0.75rem; padding:2px 9px; border-radius:12px; font-weight:700; white-space:nowrap; flex-shrink:0;">
+              총 ${grp.attempts.length}회 응시
+            </span>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center; flex-shrink:0; flex-wrap:wrap;">
+            <button class="btn btn-outline" style="padding:6px 12px; font-size:0.82rem; font-weight:600;" onclick="startExamFromHistory('${escapeHtml(grp.exam_id)}', '${escapeHtml(grp.category)}')">🚀 바로 응시</button>
+            <button class="btn btn-primary" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="loadHistoryDetail(${latestItem.id})">🔍 최근 오답노트</button>
+            ${hasHistory ? `<button class="btn" id="btn_toggle_${safeKey}" style="background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); padding:6px 12px; font-size:0.84rem; font-weight:600;" onclick="toggleHistoryGroup('${safeKey}', ${grp.attempts.length - 1})">▼ 이전 기록 (${grp.attempts.length - 1})</button>` : ''}
+            <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:6px 10px; font-size:0.8rem;" onclick="deleteHistoryItem(${latestItem.id})" title="최근 응시 이력 삭제">🗑️</button>
+          </div>
+        </div>
+
+        <!-- 2행: 응시 상세 현황 서브 바 (최근 점수, 최고 점수, 응시 일시) -->
+        <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:8px 14px; border-radius:8px; font-size:0.86rem; color:var(--text-muted); display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+          <span>최근(${latestAttemptNum}회차): <b style="color:var(--text-main);">${latestItem.total_score.toFixed(1)}점</b> / ${latestItem.max_score}점 (${latestPassTag})</span>
+          <span style="color:var(--border-color);">|</span>
+          <span>최고 점수: <b style="color:var(--primary);">${grp.maxScore.toFixed(1)}점</b></span>
+          <span style="color:var(--border-color);">|</span>
+          <span style="color:var(--text-muted); font-size:0.82rem;">최근 응시일: ${latestDateStr}</span>
+        </div>
+
+        <!-- 이전 응시 이력 (아코디언 토글) -->
+        ${hasHistory ? `
+        <div id="body_${safeKey}" style="display:none; background:var(--bg-subtle); border-top:1px solid var(--border-color); padding:12px 16px; border-radius:8px; margin-top:4px;">
+          <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted); margin-bottom:8px;">📜 이전 응시 기록 (${grp.attempts.length - 1}건)</div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+        ` : ''}
     `;
 
-    if (displayList.length === 0) {
-      container.innerHTML = filterHeaderHtml + `
-        <div style="text-align:center; padding:36px 16px; color:var(--text-muted); background:var(--bg-subtle); border-radius:10px; border:1px solid var(--border-color); margin-top:10px;">
-          <div style="font-size:1.05rem; font-weight:700; color:var(--text-main); margin-bottom:6px;">🎯 '${escapeHtml(selectedCategory || '선택한 종목')}'의 응시 이력이 없습니다.</div>
-          <div style="font-size:0.86rem; color:var(--text-muted); margin-bottom:16px;">시험 풀이 완료 후 [제출하기]를 누르시면 이곳에 이력과 오답노트가 저장됩니다.</div>
-          <button class="btn btn-primary" style="font-size:0.85rem; padding:8px 18px;" onclick="showHistoryModal('all')">🌐 전체 응시 이력 (${list.length}건) 보기</button>
-        </div>
-      `;
-      return;
-    }
-
-    // 회차별/시험별 응시 횟수 계산 및 그룹화
-    const examAttemptsCount = {};
-    const itemAttemptNumMap = {};
-    const sortedAsc = [...list].sort((a, b) => a.id - b.id);
-    sortedAsc.forEach(item => {
-      examAttemptsCount[item.exam_id] = (examAttemptsCount[item.exam_id] || 0) + 1;
-      itemAttemptNumMap[item.id] = examAttemptsCount[item.exam_id];
-    });
-
-    // 시험 종목별 그룹화 맵 구축
-    const groupedExams = {};
-    displayList.forEach(item => {
-      const key = item.exam_id || item.exam_title;
-      if (!groupedExams[key]) {
-        groupedExams[key] = {
-          exam_id: item.exam_id,
-          exam_title: item.exam_title,
-          attempts: [],
-          maxScore: 0,
-          latestDate: item.created_at
-        };
-      }
-      const grp = groupedExams[key];
-      grp.attempts.push(item);
-      if (item.total_score > grp.maxScore) grp.maxScore = item.total_score;
-    });
-
-    // 그룹별 최신 응시일 기준 내림차순 정렬
-    const groupedList = Object.values(groupedExams).sort((a, b) => new Date(b.latestDate) - new Date(a.latestDate));
-
-    let html = filterHeaderHtml + '<div style="display:flex; flex-direction:column; gap:10px;">';
-
-    groupedList.forEach((grp, idx) => {
-      const latestItem = grp.attempts[0];
-      const latestAttemptNum = itemAttemptNumMap[latestItem.id] || 1;
-      const isSingleSub = (latestItem.exam_id && latestItem.exam_id.includes('subject')) || (latestItem.exam_title && latestItem.exam_title.includes('과목') && latestItem.exam_title.includes('25문항'));
-      const isPassVal = isSingleSub ? (latestItem.total_score >= 40.0) : Boolean(latestItem.is_pass);
-      const latestPassTag = isPassVal ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
-      const latestDateStr = new Date(latestItem.created_at).toLocaleString();
-
-      const hasHistory = grp.attempts.length > 1;
-      const safeKey = `grp_${idx}_${(grp.exam_id || 'ex').replace(/[^a-zA-Z0-9]/g, '_')}`;
-
-      html += `
-        <div style="border:1px solid var(--border-color); border-radius:10px; background:var(--bg-card); overflow:hidden; box-shadow:var(--shadow-sm); padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
-          <!-- 1행: 시험 제목 (풀네임) + 뱃지 VS 우측 버튼 그룹 -->
-          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
-            <div style="display:flex; align-items:center; gap:10px; min-width:0;">
-              <span style="font-weight:700; font-size:1.05rem; color:var(--text-main); word-break:keep-all;">
-                📚 ${escapeHtml(grp.exam_title)}
-              </span>
-              <span style="background:var(--primary-light); color:var(--primary); border:1px solid var(--primary-border); font-size:0.75rem; padding:3px 10px; border-radius:12px; font-weight:700; white-space:nowrap; flex-shrink:0;">
-                총 ${grp.attempts.length}회 응시
-              </span>
-            </div>
-            <div style="display:flex; gap:8px; align-items:center; flex-shrink:0;">
-              <button class="btn btn-primary" style="padding:7px 14px; font-size:0.85rem; font-weight:600;" onclick="loadHistoryDetail(${latestItem.id})">🔍 최근 오답노트</button>
-              ${hasHistory ? `<button class="btn" id="btn_toggle_${safeKey}" style="background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); padding:7px 12px; font-size:0.85rem; font-weight:600;" onclick="toggleHistoryGroup('${safeKey}', ${grp.attempts.length - 1})">▼ 이전 기록 (${grp.attempts.length - 1})</button>` : ''}
-              <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:7px 10px; font-size:0.8rem;" onclick="deleteHistoryItem(${latestItem.id})" title="최근 응시 이력 삭제">🗑️</button>
-            </div>
-          </div>
-
-          <!-- 2행: 응시 상세 현황 서브 바 (최근 점수, 최고 점수, 응시 일시) -->
-          <div style="background:var(--bg-subtle); border:1px solid var(--border-color); padding:8px 14px; border-radius:8px; font-size:0.86rem; color:var(--text-muted); display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
-            <span>최근(${latestAttemptNum}회차): <b style="color:var(--text-main);">${latestItem.total_score.toFixed(1)}점</b> / ${latestItem.max_score}점 (${latestPassTag})</span>
-            <span style="color:var(--border-color);">|</span>
-            <span>최고 점수: <b style="color:var(--primary);">${grp.maxScore.toFixed(1)}점</b></span>
-            <span style="color:var(--border-color);">|</span>
-            <span style="color:var(--text-muted); font-size:0.82rem;">최근 응시일: ${latestDateStr}</span>
-          </div>
-
-          <!-- 이전 응시 이력 (아코디언 토글) -->
-          ${hasHistory ? `
-          <div id="body_${safeKey}" style="display:none; background:var(--bg-subtle); border-top:1px solid var(--border-color); padding:12px 16px; border-radius:8px; margin-top:4px;">
-            <div style="font-size:0.8rem; font-weight:700; color:var(--text-muted); margin-bottom:8px;">📜 이전 응시 기록 (${grp.attempts.length - 1}건)</div>
-            <div style="display:flex; flex-direction:column; gap:6px;">
-          ` : ''}
-      `;
-
-      if (hasHistory) {
-        for (let i = 1; i < grp.attempts.length; i++) {
-          const item = grp.attempts[i];
-          const attemptNum = itemAttemptNumMap[item.id] || (grp.attempts.length - i);
-          const isSingleSubItem = (item.exam_id && item.exam_id.includes('subject')) || (item.exam_title && item.exam_title.includes('과목') && item.exam_title.includes('25문항'));
-          const isItemPass = isSingleSubItem ? (item.total_score >= 40.0) : Boolean(item.is_pass);
-          const passTag = isItemPass ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
-          const dateStr = new Date(item.created_at).toLocaleString();
-          html += `
-            <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:8px 14px; display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--text-main);">
-              <div style="display:flex; gap:12px; align-items:center; flex:1; white-space:nowrap; overflow:hidden;">
-                <span style="background:#64748b; color:#ffffff; font-size:0.72rem; padding:2px 8px; border-radius:10px; font-weight:600; flex-shrink:0;">${attemptNum}회차</span>
-                <span>점수: <b>${item.total_score.toFixed(1)}점</b> / ${item.max_score}점 (${passTag})</span>
-                <span style="color:var(--text-muted); font-size:0.8rem;">응시일: ${dateStr}</span>
-              </div>
-              <div style="display:flex; gap:6px; flex-shrink:0;">
-                <button class="btn btn-primary" style="padding:5px 10px; font-size:0.8rem;" onclick="loadHistoryDetail(${item.id})">🔍 오답노트</button>
-                <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:5px 8px; font-size:0.8rem;" onclick="deleteHistoryItem(${item.id})">🗑️ 삭제</button>
-              </div>
-            </div>
-          `;
-        }
+    if (hasHistory) {
+      for (let i = 1; i < grp.attempts.length; i++) {
+        const item = grp.attempts[i];
+        const attemptNum = itemAttemptNumMap[item.id] || (grp.attempts.length - i);
+        const isSingleSubItem = (item.exam_id && item.exam_id.includes('subject')) || (item.exam_title && item.exam_title.includes('과목') && item.exam_title.includes('25문항'));
+        const isItemPass = isSingleSubItem ? (item.total_score >= 40.0) : Boolean(item.is_pass);
+        const passTag = isItemPass ? '<span style="color:#16a34a; font-weight:bold;">🎉 합격</span>' : `<span style="color:#dc2626; font-weight:bold;">❌ 불합격</span>`;
+        const dateStr = new Date(item.created_at).toLocaleString();
         html += `
+          <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:6px; padding:8px 14px; display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--text-main); flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; gap:12px; align-items:center; flex:1; min-width:260px; flex-wrap:wrap;">
+              <span style="background:#64748b; color:#ffffff; font-size:0.72rem; padding:2px 8px; border-radius:10px; font-weight:600; flex-shrink:0;">${attemptNum}회차</span>
+              <span>점수: <b>${item.total_score.toFixed(1)}점</b> / ${item.max_score}점 (${passTag})</span>
+              <span style="color:var(--text-muted); font-size:0.8rem;">응시일: ${dateStr}</span>
+            </div>
+            <div style="display:flex; gap:6px; flex-shrink:0;">
+              <button class="btn btn-primary" style="padding:5px 10px; font-size:0.8rem;" onclick="loadHistoryDetail(${item.id})">🔍 오답노트</button>
+              <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:5px 8px; font-size:0.8rem;" onclick="deleteHistoryItem(${item.id})">🗑️ 삭제</button>
             </div>
           </div>
         `;
       }
-
       html += `
+          </div>
         </div>
       `;
-    });
+    }
 
-    html += '</div>';
-    container.innerHTML = html;
-  } catch (e) {
-    container.innerHTML = `<div style="color:var(--accent-danger); padding:20px; text-align:center;">이력을 불러오지 못했습니다: ${e.message}</div>`;
+    html += `
+      </div>
+    `;
+  });
+
+  html += '</div>';
+  // 화면 하단 스크롤 잘림 완벽 방지를 위한 넉넉한 하단 스페이서
+  html += '<div style="height:60px;"></div>';
+
+  container.innerHTML = html;
+}
+
+function onHistoryCategoryChange(category) {
+  historyFilterCategory = category;
+  historyFilterExamId = 'ALL'; // 세부 시험 필터 리셋
+  renderHistoryView();
+}
+
+function onHistoryExamChange(examId) {
+  historyFilterExamId = examId;
+  renderHistoryView();
+}
+
+function toggleShowLockedCategories(checked) {
+  showLockedCategories = checked;
+  initCategoryDropdown();
+}
+
+function toggleShowLockedInHistory(checked) {
+  showLockedInHistory = checked;
+  renderHistoryView();
+}
+
+async function setCategoryLock(category, isLocked) {
+  if (!category) return;
+  try {
+    const res = await fetch('/api/category-locks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ category, is_locked: isLocked })
+    });
+    if (!res.ok) throw new Error("잠금 설정 실패");
+    const data = await res.json();
+    lockedCategories = new Set(data.locked_categories || []);
+
+    initCategoryDropdown();
+    renderCategoryLockModalList();
+    if (currentDashboardTab === 'history') {
+      renderHistoryView();
+    }
+    return true;
+  } catch(e) {
+    alert("잠금 설정 중 오류 발생: " + e.message);
+    return false;
+  }
+}
+
+async function unlockSelectedCategory() {
+  const catSel = document.getElementById('categorySelect');
+  if (!catSel || !catSel.value) return;
+  await setCategoryLock(catSel.value, false);
+}
+
+function openCategoryLockModal() {
+  const modal = document.getElementById('categoryLockModal');
+  if (modal) {
+    renderCategoryLockModalList();
+    modal.style.display = 'flex';
+  }
+}
+
+function closeCategoryLockModal() {
+  const modal = document.getElementById('categoryLockModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function renderCategoryLockModalList() {
+  const listEl = document.getElementById('categoryLockModalList');
+  if (!listEl) return;
+  const allCategories = Array.from(new Set(examList.map(ex => ex.category || '기타'))).sort((a, b) => a.localeCompare(b, 'ko'));
+  if (allCategories.length === 0) {
+    listEl.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted);">등록된 시험 종목이 없습니다.</div>';
+    return;
+  }
+
+  let html = '';
+  allCategories.forEach(cat => {
+    const isLocked = lockedCategories.has(cat);
+    const examsCount = examList.filter(ex => (ex.category || '기타') === cat).length;
+    html += `
+      <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:8px; padding:10px 14px; gap:10px;">
+        <div>
+          <div style="font-weight:700; font-size:0.95rem; color:var(--text-main); display:flex; align-items:center; gap:6px;">
+            ${isLocked ? '🔒' : '📖'} ${escapeHtml(cat)}
+            ${isLocked ? '<span style="background:rgba(239, 68, 68, 0.15); color:var(--accent-danger); font-size:0.72rem; padding:2px 6px; border-radius:6px; font-weight:700;">잠김(숨김)</span>' : '<span style="background:var(--primary-light); color:var(--primary); font-size:0.72rem; padding:2px 6px; border-radius:6px; font-weight:700;">활성</span>'}
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin-top:2px;">총 ${examsCount}개 회차/과목 세트</div>
+        </div>
+        <div>
+          ${isLocked ? `
+            <button class="btn" style="background:#2563eb; color:#ffffff; font-size:0.82rem; font-weight:700; padding:6px 14px; border-radius:6px;" onclick="setCategoryLock('${escapeHtml(cat)}', false)">
+              🔓 잠금 해제
+            </button>
+          ` : `
+            <button class="btn" style="background:rgba(239, 68, 68, 0.1); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); font-size:0.82rem; font-weight:700; padding:6px 14px; border-radius:6px;" onclick="setCategoryLock('${escapeHtml(cat)}', true)">
+              🔒 시험 잠금
+            </button>
+          `}
+        </div>
+      </div>
+    `;
+  });
+  listEl.innerHTML = html;
+}
+
+function startExamFromHistory(examId, category) {
+  switchDashboardTab('exam');
+  const catSel = document.getElementById('categorySelect');
+  if (catSel && category) {
+    catSel.value = category;
+    if (typeof onCategoryChange === 'function') onCategoryChange();
+  }
+  const examSel = document.getElementById('examSelect');
+  if (examSel && examId) {
+    examSel.value = examId;
+    if (typeof updateRulesUI === 'function') updateRulesUI();
+  }
+  const btnStart = document.getElementById('btnStartExam');
+  if (btnStart) {
+    btnStart.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    btnStart.style.boxShadow = '0 0 0 4px var(--primary-light)';
+    setTimeout(() => { btnStart.style.boxShadow = ''; }, 1500);
   }
 }
 
@@ -3090,10 +3643,9 @@ async function clearAllHistory() {
 }
 
 function closeHistoryModal() {
-  document.getElementById('historyModal').style.display = 'none';
+  const modal = document.getElementById('historyModal');
+  if (modal) modal.style.display = 'none';
 }
-
-
 
 async function loadHistoryDetail(id) {
   try {
@@ -3740,30 +4292,30 @@ function closeScheduleModal() {
 
 function switchScheduleTab(tab) {
   currentScheduleTab = tab;
-  const tabCal = document.getElementById('tabBtnCalendar');
-  const tabList = document.getElementById('tabBtnList');
+  const tabCal = document.getElementById('tabBtnScheduleCal') || document.getElementById('tabBtnCalendar');
+  const tabList = document.getElementById('tabBtnScheduleList') || document.getElementById('tabBtnList');
   const viewCal = document.getElementById('scheduleCalendarView');
   const viewList = document.getElementById('scheduleListView');
 
   if (tab === 'calendar') {
-    tabCal.style.background = 'var(--primary)';
-    tabCal.style.color = '#ffffff';
-    tabCal.style.fontWeight = '700';
-    tabList.style.background = 'transparent';
-    tabList.style.color = 'var(--text-muted)';
-    tabList.style.fontWeight = '600';
-    viewCal.style.display = 'block';
-    viewList.style.display = 'none';
+    if (tabCal) {
+      tabCal.className = 'btn btn-primary';
+    }
+    if (tabList) {
+      tabList.className = 'btn btn-outline-dark';
+    }
+    if (viewCal) viewCal.style.display = 'block';
+    if (viewList) viewList.style.display = 'none';
     renderCalendar();
   } else {
-    tabList.style.background = 'var(--primary)';
-    tabList.style.color = '#ffffff';
-    tabList.style.fontWeight = '700';
-    tabCal.style.background = 'transparent';
-    tabCal.style.color = 'var(--text-muted)';
-    tabCal.style.fontWeight = '600';
-    viewCal.style.display = 'none';
-    viewList.style.display = 'block';
+    if (tabList) {
+      tabList.className = 'btn btn-primary';
+    }
+    if (tabCal) {
+      tabCal.className = 'btn btn-outline-dark';
+    }
+    if (viewCal) viewCal.style.display = 'none';
+    if (viewList) viewList.style.display = 'block';
     renderScheduleList();
   }
 }
@@ -4463,6 +5015,88 @@ function parseCramMarkdown(md) {
         <button type="submit" class="btn btn-primary" style="padding:8px 24px; font-weight:700; border-radius:8px;">💾 저장</button>
       </div>
     </form>
+  </div>
+</div>
+
+<!-- ⚙️ 자격시험 종목 잠금/해제 관리 모달 -->
+<div id="categoryLockModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.65); justify-content:center; align-items:center; backdrop-filter:blur(3px);" onclick="closeCategoryLockModal()">
+  <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:14px; width:92%; max-width:560px; padding:24px; box-shadow:var(--shadow-lg); box-sizing:border-box; max-height:85vh; display:flex; flex-direction:column;" onclick="event.stopPropagation()">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid var(--border-color); padding-bottom:12px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:1.2rem;">⚙️</span>
+        <h3 style="margin:0; font-size:1.15rem; font-weight:800; color:var(--text-main);">자격시험 종목 잠금(숨김) 관리</h3>
+      </div>
+      <button onclick="closeCategoryLockModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+    </div>
+    <div style="font-size:0.86rem; color:var(--text-muted); line-height:1.5; margin-bottom:16px;">
+      이미 최종 합격하셨거나 학습을 완료한 시험 종목을 잠그면, <b>시험 선택 화면</b>과 <b>응시 이력 화면</b>에서 깔끔하게 숨겨집니다.
+    </div>
+    <div id="categoryLockModalList" style="flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:8px; padding-right:4px;">
+      <!-- 종목 리스트 동적 렌더링 -->
+    </div>
+    <div style="margin-top:18px; display:flex; justify-content:flex-end;">
+      <button class="btn btn-primary" style="padding:8px 24px; font-weight:700;" onclick="closeCategoryLockModal()">완료</button>
+    </div>
+  </div>
+</div>
+
+<!-- 🌸 세련된 프리미엄 최종 답안 제출 확인 모달 -->
+<div id="submitConfirmModal" style="display:none; position:fixed; z-index:10005; left:0; top:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.75); justify-content:center; align-items:center; backdrop-filter:blur(6px); padding:16px; box-sizing:border-box;" onclick="closeSubmitConfirmModal()">
+  <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:20px; width:100%; max-width:540px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.4); box-sizing:border-box; overflow:hidden; display:flex; flex-direction:column; animation:modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);" onclick="event.stopPropagation()">
+    
+    <!-- 모달 상단 헤더 -->
+    <div style="padding:22px 24px 16px 24px; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:flex-start;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, rgba(37,99,235,0.15), rgba(59,130,246,0.25)); display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0;">
+          📝
+        </div>
+        <div>
+          <h3 style="margin:0; font-size:1.22rem; font-weight:800; color:var(--text-main); letter-spacing:-0.3px;">최종 답안 제출</h3>
+          <p style="margin:4px 0 0 0; font-size:0.85rem; color:var(--text-muted); line-height:1.4;">제출 즉시 시험이 종료되며 자동 채점 및 상세 해설 분석으로 이동합니다.</p>
+        </div>
+      </div>
+      <button onclick="closeSubmitConfirmModal()" style="background:none; border:none; font-size:1.6rem; line-height:1; cursor:pointer; color:var(--text-muted); padding:4px 6px; border-radius:6px;" title="닫기">&times;</button>
+    </div>
+
+    <!-- 모달 본문: 응시 현황 통계 카드 -->
+    <div style="padding:20px 24px; display:flex; flex-direction:column; gap:16px;">
+      
+      <!-- 3열 요약 메트릭 카드 -->
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+        <!-- 1. 남은 시간 -->
+        <div style="background:var(--bg-input); border:1px solid var(--border-color); border-radius:12px; padding:12px; text-align:center;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-weight:600; margin-bottom:4px;">⏱️ 남은 시간</div>
+          <div id="subModalTimeLeft" style="font-size:1.15rem; font-weight:800; color:var(--text-main); font-variant-numeric:tabular-nums;">--:--</div>
+        </div>
+        <!-- 2. 답변 완료 -->
+        <div style="background:var(--bg-input); border:1px solid var(--border-color); border-radius:12px; padding:12px; text-align:center;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-weight:600; margin-bottom:4px;">✅ 답변 완료</div>
+          <div id="subModalAnswered" style="font-size:1.15rem; font-weight:800; color:#10b981; font-variant-numeric:tabular-nums;">0 / 0</div>
+        </div>
+        <!-- 3. 미답변 -->
+        <div id="subModalUnansweredBox" style="background:var(--bg-input); border:1px solid var(--border-color); border-radius:12px; padding:12px; text-align:center;">
+          <div style="font-size:0.75rem; color:var(--text-muted); font-weight:600; margin-bottom:4px;">⚠️ 미답변 문항</div>
+          <div id="subModalUnanswered" style="font-size:1.15rem; font-weight:800; color:#f59e0b; font-variant-numeric:tabular-nums;">0개</div>
+        </div>
+      </div>
+
+      <!-- 진행률 게이지 바 -->
+      <div style="background:var(--bg-input); border-radius:999px; height:8px; overflow:hidden; border:1px solid var(--border-color);">
+        <div id="subModalProgressBar" style="background:linear-gradient(90deg, #3b82f6, #10b981); height:100%; width:0%; transition:width 0.3s ease;"></div>
+      </div>
+
+      <!-- 미답변 문항 리스트 안내 또는 완료 축하 배너 -->
+      <div id="subModalStatusAlert" style="border-radius:12px; padding:14px; font-size:0.86rem; line-height:1.5;">
+        <!-- JS로 동적 렌더링 -->
+      </div>
+      
+    </div>
+
+    <!-- 모달 하단 버튼 -->
+    <div style="padding:14px 24px 20px 24px; border-top:1px solid var(--border-color); display:flex; justify-content:flex-end; gap:10px; background:rgba(0,0,0,0.02);">
+      <button type="button" class="btn" style="padding:10px 18px; border-radius:10px; border:1px solid var(--border-color); background:var(--bg-card); color:var(--text-main); font-weight:600; font-size:0.92rem; cursor:pointer;" onclick="closeSubmitConfirmModal()">계속 풀기</button>
+      <button type="button" class="btn btn-primary" id="btnConfirmFinalSubmit" style="padding:10px 22px; border-radius:10px; font-weight:700; font-size:0.92rem; background:linear-gradient(135deg, #2563eb, #1d4ed8); border:none; box-shadow:0 4px 12px rgba(37,99,235,0.35); cursor:pointer;" onclick="executeFinalSubmit()">🚀 최종 제출 및 채점</button>
+    </div>
 
   </div>
 </div>

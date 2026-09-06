@@ -78,6 +78,15 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             return
 
 
+        # /api/category-locks - 자격시험 종목 잠금 목록 반환
+        if path_only == '/api/category-locks':
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            locked = DB.get_locked_categories()
+            self.wfile.write(json.dumps({"locked_categories": locked}, ensure_ascii=False).encode('utf-8'))
+            return
+
         # /api/cram-sheets - 시험 직전 핵심 요약본(파이널 치트시트) 목록 및 내용 조회
         if path_only == '/api/cram-sheets':
             self.send_response(200)
@@ -140,6 +149,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             self.send_header('Content-type', 'application/json; charset=utf-8')
             self.end_headers()
             
+            locked_cats = set(DB.get_locked_categories())
             exam_list = []
             if EXAMS_DIR.exists():
                 for json_file in EXAMS_DIR.glob('*.json'):
@@ -151,6 +161,7 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                             "filename": json_file.name,
                             "title": info.get('title', json_file.stem),
                             "category": cat,
+                            "is_category_locked": cat in locked_cats,
                             "time_limit_minutes": info.get('time_limit_minutes', 120),
                             "passing_rules": info.get('passing_rules', {}),
                             "subjects": data.get('subjects', []),
@@ -308,6 +319,28 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
             self.send_header('Content-type', 'application/json; charset=utf-8')
             self.end_headers()
             self.wfile.write(json.dumps({"status": "ok", "id": new_id}, ensure_ascii=False).encode('utf-8'))
+            return
+
+        # /api/category-locks - 자격시험 종목 잠금/해제 설정
+        if self.path == '/api/category-locks':
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            payload = json.loads(body.decode('utf-8'))
+
+            category = payload.get('category', '').strip()
+            is_locked = bool(payload.get('is_locked', True))
+            if category:
+                DB.set_category_lock(category, is_locked)
+
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "status": "ok",
+                "category": category,
+                "is_locked": is_locked,
+                "locked_categories": DB.get_locked_categories()
+            }, ensure_ascii=False).encode('utf-8'))
             return
 
 
