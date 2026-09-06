@@ -967,7 +967,8 @@
       border: 1.5px solid rgba(59, 130, 246, 0.35);
       border-radius: 10px;
       padding: 10px 14px;
-      margin-bottom: 12px;
+      margin-top: 14px;
+      margin-bottom: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1156,11 +1157,6 @@
     <div class="start-card">
       <h2>🌸 풀어봄 실전 모의고사</h2>
       <p>문제를 풀어보고 합격의 봄을 맞이하세요.<br>응시할 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
-      
-      <!-- 시험 일정 / 목표 시험 D-Day 안내 배너 -->
-      <div id="targetScheduleBanner" class="schedule-banner-box" style="display:none;" onclick="openScheduleModal()">
-        <!-- JS 동적 렌더링 -->
-      </div>
 
       <!-- 진행 중인 시험 이어서 풀기 배너 -->
       <div id="resumeBanner" style="display:none; background:#fffbeb; border:1.5px solid #f59e0b; padding:16px; border-radius:10px; margin-bottom:20px; text-align:left; box-shadow:0 2px 6px rgba(245,158,11,0.15);">
@@ -1223,6 +1219,11 @@
       <div style="display:flex; gap:8px; margin-top:8px;">
         <button class="btn btn-outline" style="flex:1; padding:10px; font-size:0.92rem; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:6px;" onclick="openCramSheetModal()">⚡ 10분 직전 요약본</button>
         <button class="btn btn-outline" style="flex:1; padding:10px; font-size:0.92rem; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:6px;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
+      </div>
+
+      <!-- 시험 일정 / 목표 시험 D-Day 안내 배너 -->
+      <div id="targetScheduleBanner" class="schedule-banner-box" style="display:none;" onclick="openScheduleModal()">
+        <!-- JS 동적 렌더링 -->
       </div>
     </div>
   </div>
@@ -4071,7 +4072,7 @@ function renderTargetScheduleBanner() {
     if (s.apply_status === 'ongoing') {
       return `<span style="color:#2563eb; font-weight:700;">📝 접수 중 (마감 D-${s.apply_days_left})</span>`;
     } else if (s.apply_status === 'upcoming') {
-      return `<span style="color:#059669; font-weight:600;">⏳ 접수 예정 (${s.apply_start_date} ~)</span>`;
+      return `<span style="color:#059669; font-weight:600;">⏳ 접수 (${s.apply_start_date} ~)</span>`;
     } else {
       return `<span style="color:var(--text-muted);">접수 마감</span>`;
     }
