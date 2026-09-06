@@ -1633,13 +1633,13 @@ function toggleTheme() {
   applyTheme(isDark ? 'light' : 'dark', true);
 }
 
-function handleGoHome() {
+async function handleGoHome() {
   const startScreen = document.getElementById('startScreen');
   const isExamRunning = startScreen && startScreen.style.display === 'none' && !isReviewMode;
   if (isExamRunning) {
-    if (!confirm("현재 시험이 진행 중입니다.\n홈 화면으로 나가시겠습니까? (작성 중인 답안 임시저장 내역은 보존됩니다)")) {
-      return;
-    }
+    try {
+      await saveDraftSession();
+    } catch (e) {}
   }
   location.reload();
 }
