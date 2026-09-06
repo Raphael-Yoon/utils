@@ -2390,9 +2390,13 @@ function renderQuestions() {
   pane.innerHTML = '';
 
   if (currentExamData && currentExamData.exam_info && currentExamData.exam_info.title) {
+    let headerTitle = currentExamData.exam_info.title;
+    if (/^\d+회$/.test(headerTitle.trim()) && currentExamData.exam_info.category) {
+      headerTitle = `${currentExamData.exam_info.category} 제${headerTitle.trim()} 기출문제`;
+    }
     const examHeader = document.createElement('div');
     examHeader.style.cssText = 'background: var(--header-bg); color: var(--header-text); padding: 14px 20px; border-radius: 8px; font-weight: 700; font-size: 1.2rem; margin-bottom: 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;';
-    examHeader.innerHTML = `<span>📋 ${escapeHtml(currentExamData.exam_info.title)} ${isReviewMode ? '<span style="background:#ef4444; color:#fff; margin-left:8px; padding:3px 8px; border-radius:4px; font-size:0.85rem;">[채점 및 정답 확인]</span>' : ''}</span> <span style="font-size:0.85rem; background:var(--primary); color:#fff; padding:4px 10px; border-radius:12px; font-weight:normal;">${isReviewMode ? '오답노트 모드' : '실전 모의고사'}</span>`;
+    examHeader.innerHTML = `<span>📋 ${escapeHtml(headerTitle)} ${isReviewMode ? '<span style="background:#ef4444; color:#fff; margin-left:8px; padding:3px 8px; border-radius:4px; font-size:0.85rem;">[채점 및 정답 확인]</span>' : ''}</span> <span style="font-size:0.85rem; background:var(--primary); color:#fff; padding:4px 10px; border-radius:12px; font-weight:normal;">${isReviewMode ? '오답노트 모드' : '실전 모의고사'}</span>`;
     pane.appendChild(examHeader);
   }
 
