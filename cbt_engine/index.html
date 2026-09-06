@@ -180,16 +180,69 @@
       text-align: center;
       overflow-y: auto;
     }
+    /* 🌸 메인 대시보드 4대 탭 네비게이션 스타일 */
+    .dashboard-tab-bar {
+      display: flex;
+      gap: 6px;
+      background: var(--bg-subtle);
+      padding: 5px;
+      border-radius: 10px;
+      margin-bottom: 22px;
+      border: 1px solid var(--border-color);
+    }
+    .dash-tab {
+      flex: 1;
+      padding: 10px 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .dash-tab:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .dash-tab.active {
+      background: var(--bg-card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border-color: var(--primary-border, var(--border-color));
+    }
     .start-card {
       background: var(--bg-card);
       padding: 24px 28px;
       border-radius: 14px;
       box-shadow: var(--shadow-md);
-      max-width: 620px;
+      max-width: 680px;
       width: 100%;
       border: 1px solid var(--border-color);
-      transition: background-color 0.2s ease, border-color 0.2s ease;
+      transition: background-color 0.2s ease, border-color 0.2s ease, max-width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       box-sizing: border-box;
+    }
+    .start-card.tab-wide {
+      max-width: 920px;
+    }
+    .dash-tab-pane {
+      animation: fadeIn 0.2s ease;
+    }
+    @media (max-width: 680px) {
+      .dashboard-tab-bar {
+        flex-wrap: wrap;
+      }
+      .dash-tab {
+        flex: 1 1 calc(50% - 6px);
+        font-size: 0.82rem;
+        padding: 8px 4px;
+      }
     }
     .start-card h2 { margin-bottom: 6px; font-size: 1.45rem; color: var(--text-main); }
     .start-card p { color: var(--text-muted); margin-bottom: 14px; font-size: 0.9rem; line-height: 1.5; }
@@ -1150,53 +1203,136 @@
 
 <div class="app-container">
 
-  <!-- 1. 시험 선택 홈 화면 -->
+  <!-- 1. 시험 선택 홈 대시보드 화면 -->
   <div class="start-screen" id="startScreen">
-    <div class="start-card">
-      <h2>🌸 풀어봄 실전 모의고사</h2>
-      <p>문제를 풀어보고 합격의 봄을 맞이하세요.<br>응시할 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
+    <div class="start-card" id="mainDashboardCard">
 
-      <!-- 진행 중인 시험 이어서 풀기 배너 -->
-      <div id="resumeBanner" style="display:none; background:#fffbeb; border:1.5px solid #f59e0b; padding:16px; border-radius:10px; margin-bottom:20px; text-align:left; box-shadow:0 2px 6px rgba(245,158,11,0.15);">
-        <div style="font-weight:bold; color:#b45309; font-size:1.05rem;">⚠️ 진행 중인 시험이 있습니다!</div>
-        <div style="font-size:0.88rem; color:#92400e; margin-top:8px; line-height:1.4;">
-          <div id="resumeTitle" style="font-weight:bold; color:#78350f;"></div>
-          <div id="resumeDetails" style="margin-top:4px;"></div>
+      <!-- 🌸 4대 핵심 기능 대시보드 탭 바 -->
+      <div class="dashboard-tab-bar">
+        <button class="dash-tab active" id="tabBtnExam" onclick="switchDashboardTab('exam')">
+          <span>📝 시험 선택</span>
+        </button>
+        <button class="dash-tab" id="tabBtnHistory" onclick="switchDashboardTab('history')">
+          <span>📜 응시 이력</span>
+        </button>
+        <button class="dash-tab" id="tabBtnCram" onclick="switchDashboardTab('cram')">
+          <span>⚡ 핵심 요약본</span>
+        </button>
+        <button class="dash-tab" id="tabBtnSchedule" onclick="switchDashboardTab('schedule')">
+          <span>📅 수험 캘린더</span>
+        </button>
+      </div>
+
+      <!-- 1. 시험 선택 탭 -->
+      <div class="dash-tab-pane" id="tabPaneExam">
+        <h2>🌸 풀어봄 실전 모의고사</h2>
+        <p>문제를 풀어보고 합격의 봄을 맞이하세요.<br>응시할 자격시험 회차를 선택한 후 [시험 시작] 버튼을 누르세요.</p>
+
+        <!-- 진행 중인 시험 이어서 풀기 배너 -->
+        <div id="resumeBanner" style="display:none; background:#fffbeb; border:1.5px solid #f59e0b; padding:16px; border-radius:10px; margin-bottom:20px; text-align:left; box-shadow:0 2px 6px rgba(245,158,11,0.15);">
+          <div style="font-weight:bold; color:#b45309; font-size:1.05rem;">⚠️ 진행 중인 시험이 있습니다!</div>
+          <div style="font-size:0.88rem; color:#92400e; margin-top:8px; line-height:1.4;">
+            <div id="resumeTitle" style="font-weight:bold; color:#78350f;"></div>
+            <div id="resumeDetails" style="margin-top:4px;"></div>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:12px;">
+            <button class="btn" style="flex:1; background:#f59e0b; color:#ffffff; font-weight:bold; padding:10px;" onclick="resumeDraftExam()">🚀 이어서 응시하기</button>
+            <button class="btn" style="background:#ffffff; border:1px solid #d97706; color:#b45309; font-weight:bold; padding:10px;" onclick="discardDraftExam()">🗑️ 삭제</button>
+          </div>
         </div>
-        <div style="display:flex; gap:10px; margin-top:12px;">
-          <button class="btn" style="flex:1; background:#f59e0b; color:#ffffff; font-weight:bold; padding:10px;" onclick="resumeDraftExam()">🚀 이어서 응시하기</button>
-          <button class="btn" style="background:#ffffff; border:1px solid #d97706; color:#b45309; font-weight:bold; padding:10px;" onclick="discardDraftExam()">🗑️ 삭제</button>
+
+        <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+          <select class="exam-select-box" id="categorySelect" style="flex: 2.2; margin-bottom: 0; font-size: 0.92rem; text-overflow: ellipsis;" onchange="onCategoryChange()">
+          </select>
+          <select class="exam-select-box" id="examSelect" style="flex: 1; margin-bottom: 0; font-size: 0.92rem;" onchange="updateRulesUI()">
+          </select>
+        </div>
+
+        <!-- 합격 판정 기준 롤업 (접기/펼치기) -->
+        <details id="rulesRollup" class="rules-rollup">
+          <summary>
+            <span id="rulesTitle">📌 합격 판정 기준 (클릭하여 펼치기)</span>
+            <span class="rollup-icon">▼</span>
+          </summary>
+          <div class="rules-rollup-content">
+            <ul style="font-size:0.83rem; color:var(--text-muted); padding-left:18px; line-height:1.5; margin:0;" id="rulesList">
+              <li>과목당 25점 만점 (문항당 1.25점)</li>
+              <li>과목별 과락 기준: <b>10점 미만</b> (8문항 미만) 시 불합격</li>
+              <li>총점 합격 기준: <b>60점 이상</b> (48문항 이상) 득점 시 합격</li>
+            </ul>
+          </div>
+        </details>
+
+        <button class="btn btn-primary" id="btnStartExam" style="width:100%; padding:13px; font-size:1.05rem; font-weight:700;" onclick="startExam()">🚀 응시 시작하기</button>
+      </div>
+
+      <!-- 2. 응시 이력 탭 -->
+      <div class="dash-tab-pane" id="tabPaneHistory" style="display:none; text-align:left;">
+        <div id="historyListContainer">로딩 중...</div>
+      </div>
+
+      <!-- 3. 핵심 요약본 탭 -->
+      <div class="dash-tab-pane" id="tabPaneCram" style="display:none; text-align:left;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid var(--border-color); padding-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:1.2rem;">⚡</span>
+            <h3 style="margin:0; font-size:1.1rem; font-weight:800; color:var(--text-main);">시험 직전 핵심 요약본 (파이널 치트시트)</h3>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <button class="btn btn-header-outline" style="padding:4px 10px; font-size:0.82rem; font-weight:700;" onclick="adjustCramFontSize(-1)" title="글자 축소">A-</button>
+            <button class="btn btn-header-outline" style="padding:4px 10px; font-size:0.82rem; font-weight:700;" onclick="adjustCramFontSize(1)" title="글자 확대">A+</button>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; padding:8px 0; border-bottom:1px solid var(--border-color); overflow-x:auto; gap:8px;" id="cramSheetTabBar"></div>
+        <div id="cramSheetContent" style="padding:16px 8px; overflow-y:auto; max-height:68vh; font-size:15px; line-height:1.75; color:var(--text-main);">
+          <div style="text-align:center; padding:40px; color:var(--text-muted);">요약본 데이터를 불러오는 중입니다...</div>
         </div>
       </div>
 
-      <div style="display: flex; gap: 10px; margin-bottom: 8px;">
-        <select class="exam-select-box" id="categorySelect" style="flex: 2.2; margin-bottom: 0; font-size: 0.92rem; text-overflow: ellipsis;" onchange="onCategoryChange()">
-        </select>
-        <select class="exam-select-box" id="examSelect" style="flex: 1; margin-bottom: 0; font-size: 0.92rem;" onchange="updateRulesUI()">
-        </select>
-      </div>
-
-
-
-      <!-- 합격 판정 기준 롤업 (접기/펼치기) -->
-      <details id="rulesRollup" class="rules-rollup">
-        <summary>
-          <span id="rulesTitle">📌 합격 판정 기준 (클릭하여 펼치기)</span>
-          <span class="rollup-icon">▼</span>
-        </summary>
-        <div class="rules-rollup-content">
-          <ul style="font-size:0.83rem; color:var(--text-muted); padding-left:18px; line-height:1.5; margin:0;" id="rulesList">
-            <li>과목당 25점 만점 (문항당 1.25점)</li>
-            <li>과목별 과락 기준: <b>10점 미만</b> (8문항 미만) 시 불합격</li>
-            <li>총점 합격 기준: <b>60점 이상</b> (48문항 이상) 득점 시 합격</li>
-          </ul>
+      <!-- 4. 수험 캘린더 탭 -->
+      <div class="dash-tab-pane" id="tabPaneSchedule" style="display:none; text-align:left;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid var(--border-color); padding-bottom:10px; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn btn-primary" id="tabBtnScheduleCal" style="padding:6px 14px; font-size:0.84rem; font-weight:700;" onclick="switchScheduleTab('calendar')">🗓️ 월간 캘린더</button>
+            <button class="btn btn-outline-dark" id="tabBtnScheduleList" style="padding:6px 14px; font-size:0.84rem; font-weight:600;" onclick="switchScheduleTab('list')">📋 일정 목록 (<span id="scheduleCountBadge">0</span>)</button>
+          </div>
+          <button class="btn btn-primary" style="padding:6px 14px; font-size:0.82rem; font-weight:700;" onclick="openScheduleForm()">➕ 새 일정 등록</button>
         </div>
-      </details>
 
-      <button class="btn btn-primary" id="btnStartExam" style="width:100%; padding:12px; font-size:1.05rem; font-weight:700;" onclick="startExam()">🚀 응시 시작하기</button>
-      <div style="margin-top:8px;">
-        <button class="btn btn-outline" style="width:100%; padding:10px; font-size:0.92rem; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:6px;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
+        <div id="scheduleCalendarView">
+          <div class="cal-header-bar" style="margin-bottom:12px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button class="btn btn-header-outline" style="padding:4px 10px; font-size:0.82rem; color:var(--text-main); border:1px solid var(--border-color);" onclick="changeCalMonth(-1)">◀ 이전달</button>
+              <span id="calCurrentMonthText" style="font-size:1.15rem; font-weight:800; min-width:130px; text-align:center; color:var(--text-main);">2026년 9월</span>
+              <button class="btn btn-header-outline" style="padding:4px 10px; font-size:0.82rem; color:var(--text-main); border:1px solid var(--border-color);" onclick="changeCalMonth(1)">다음달 ▶</button>
+              <button class="btn" style="padding:4px 10px; font-size:0.82rem; background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); font-weight:600; border-radius:6px;" onclick="goCalToday()">오늘</button>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:0.78rem; color:var(--text-muted);">
+              <span style="display:flex; align-items:center; gap:4px;"><span style="width:10px; height:10px; border-radius:50%; background:#ef4444; display:inline-block;"></span> 🔴 시험일</span>
+              <span style="display:flex; align-items:center; gap:4px;"><span style="width:10px; height:10px; border-radius:50%; background:#3b82f6; display:inline-block;"></span> 🔵 원서접수</span>
+            </div>
+          </div>
+
+          <div class="cal-grid">
+            <div class="cal-day-header sun">일</div>
+            <div class="cal-day-header">월</div>
+            <div class="cal-day-header">화</div>
+            <div class="cal-day-header">수</div>
+            <div class="cal-day-header">목</div>
+            <div class="cal-day-header">금</div>
+            <div class="cal-day-header sat">토</div>
+            <div id="calCellsContainer" style="display:contents;"></div>
+          </div>
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-top:10px; text-align:right;">
+            💡 캘린더의 원하는 날짜 셀을 클릭하면 해당 일자가 자동 입력된 신규 일정 등록 창이 열립니다.
+          </div>
+        </div>
+
+        <div id="scheduleListView" style="display:none;">
+          <div id="scheduleListCards" style="display:flex; flex-direction:column; gap:12px;"></div>
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -1295,7 +1431,6 @@
       </table>
 
       <div style="margin-top:32px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <button class="btn" id="btnCopyAiPrompt" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; padding: 12px 24px; font-size:1.05rem; font-weight:700; box-shadow:0 4px 12px rgba(99, 102, 241, 0.35); display:inline-flex; align-items:center; gap:8px;" onclick="copyAiAnalysisPrompt()">🤖 AI 맞춤 진단용 텍스트 복사</button>
         <button class="btn btn-success" style="padding: 12px 24px; font-size:1.05rem;" onclick="showReviewMode()">🔍 정답 및 오답 확인하기</button>
         <button class="btn btn-outline-dark" style="padding: 12px 24px; font-size:1.05rem;" onclick="showHistoryModal()">📜 과거 응시 이력</button>
         <button class="btn btn-primary" style="padding: 12px 24px; font-size:1.05rem;" onclick="location.reload()">🔄 다시 응시하기</button>
@@ -1306,6 +1441,50 @@
 </div>
 
 <script>
+let currentDashboardTab = 'exam';
+
+function switchDashboardTab(tab) {
+  currentDashboardTab = tab;
+  const tabs = ['exam', 'history', 'cram', 'schedule'];
+  const card = document.getElementById('mainDashboardCard');
+
+  tabs.forEach(t => {
+    const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
+    const pane = document.getElementById(`tabPane${t.charAt(0).toUpperCase() + t.slice(1)}`);
+    if (btn) btn.classList.toggle('active', t === tab);
+    if (pane) pane.style.display = (t === tab) ? 'block' : 'none';
+  });
+
+  if (card) {
+    if (tab === 'exam') {
+      card.classList.remove('tab-wide');
+    } else {
+      card.classList.add('tab-wide');
+    }
+  }
+
+  if (tab === 'history') {
+    showHistoryModal();
+  } else if (tab === 'cram') {
+    openCramSheetModal();
+  } else if (tab === 'schedule') {
+    renderCalendar();
+    renderScheduleList();
+  }
+}
+
+function closeHistoryModal() {
+  switchDashboardTab('exam');
+}
+
+function closeCramSheetModal() {
+  switchDashboardTab('exam');
+}
+
+function closeScheduleModal() {
+  switchDashboardTab('exam');
+}
+
 let currentExamData = null;
 let examList = [];
 let userAnswers = {};
@@ -2636,20 +2815,7 @@ function submitExam(skipConfirm = false) {
     user_answers: { ...userAnswers, _flagged: flaggedQuestions }
   };
 
-  // AI 분석용 요약 데이터 객체 저장
-  lastSubmissionSummary = {
-    examData: currentExamData,
-    userAnswers: { ...userAnswers },
-    flaggedQuestions: { ...flaggedQuestions },
-    subjectResults: subjectResults,
-    grandTotalScore: grandTotalScore,
-    maxScore: currentExamData.questions.length * ptsPerQ,
-    totalCorrect: totalCorrect,
-    totalQuestions: currentExamData.questions.length,
-    isFinalPass: isFinalPass,
-    timeTakenSeconds: (currentExamData.exam_info.time_limit_minutes || 120) * 60 - totalSeconds,
-    createdAt: new Date().toLocaleString()
-  };
+
 
   try {
     fetch('/api/results', {
@@ -2685,7 +2851,16 @@ let currentSelectedCategoryName = '';
 
 async function showHistoryModal(filterMode) {
   if (filterMode) currentHistoryFilterMode = filterMode;
-  document.getElementById('historyModal').style.display = 'flex';
+  const startScreen = document.getElementById('startScreen');
+  if (startScreen) startScreen.style.display = 'flex';
+  const examLayout = document.getElementById('examLayout');
+  if (examLayout) examLayout.style.display = 'none';
+  const resultScreen = document.getElementById('resultScreen');
+  if (resultScreen) resultScreen.style.display = 'none';
+
+  if (currentDashboardTab !== 'history') {
+    switchDashboardTab('history');
+  }
   const container = document.getElementById('historyListContainer');
   container.innerHTML = '<div style="text-align:center; padding:20px;">🔄 응시 이력을 불러오는 중...</div>';
 
@@ -2744,14 +2919,6 @@ async function showHistoryModal(filterMode) {
           </button>
         </div>
         <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-          ${displayList.length > 0 ? `
-            <button class="btn" style="background:linear-gradient(135deg, #2563eb, #3b82f6); color:#ffffff; font-size:0.82rem; font-weight:700; padding:6px 12px; box-shadow:0 2px 6px rgba(37,99,235,0.25); display:inline-flex; align-items:center; gap:5px;" onclick="downloadCategoryAiReport()" title="현재 선택된 자격증의 모든 응시 이력을 AI 분석용 마크다운(.md) 파일로 다운로드">
-              📥 ${escapeHtml(targetBadgeName)} AI 리포트 다운로드 (.md)
-            </button>
-            <button class="btn" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; font-size:0.82rem; font-weight:700; padding:6px 12px; box-shadow:0 2px 6px rgba(99,102,241,0.25); display:inline-flex; align-items:center; gap:5px;" onclick="copyCategoryAiPrompt()" title="현재 선택된 자격증의 모든 응시 이력을 AI 종합 프롬프트로 복사">
-              🤖 AI 종합 진단 복사
-            </button>
-          ` : ''}
           <button class="btn" style="background:var(--accent-danger); color:#ffffff; font-size:0.8rem; padding:6px 10px;" onclick="clearAllHistory()">🗑️ 전체 삭제</button>
         </div>
       </div>
@@ -2825,9 +2992,8 @@ async function showHistoryModal(filterMode) {
             </div>
             <div style="display:flex; gap:8px; align-items:center; flex-shrink:0;">
               <button class="btn btn-primary" style="padding:7px 14px; font-size:0.85rem; font-weight:600;" onclick="loadHistoryDetail(${latestItem.id})">🔍 최근 오답노트</button>
-              <button class="btn" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; padding:7px 12px; font-size:0.85rem; font-weight:600;" onclick="copyHistoryAiPrompt(${latestItem.id})" title="AI 맞춤 진단용 프롬프트 클립보드 복사">🤖 AI 진단</button>
               ${hasHistory ? `<button class="btn" id="btn_toggle_${safeKey}" style="background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); padding:7px 12px; font-size:0.85rem; font-weight:600;" onclick="toggleHistoryGroup('${safeKey}', ${grp.attempts.length - 1})">▼ 이전 기록 (${grp.attempts.length - 1})</button>` : ''}
-              <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:7px 10px; font-size:0.85rem;" onclick="deleteHistoryItem(${latestItem.id})" title="최근 응시 이력 삭제">🗑️</button>
+              <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:7px 10px; font-size:0.8rem;" onclick="deleteHistoryItem(${latestItem.id})" title="최근 응시 이력 삭제">🗑️</button>
             </div>
           </div>
 
@@ -2865,7 +3031,6 @@ async function showHistoryModal(filterMode) {
               </div>
               <div style="display:flex; gap:6px; flex-shrink:0;">
                 <button class="btn btn-primary" style="padding:5px 10px; font-size:0.8rem;" onclick="loadHistoryDetail(${item.id})">🔍 오답노트</button>
-                <button class="btn" style="background:linear-gradient(135deg, #4f46e5, #7c3aed); color:#ffffff; padding:5px 10px; font-size:0.8rem; font-weight:600;" onclick="copyHistoryAiPrompt(${item.id})" title="AI 맞춤 진단용 프롬프트 클립보드 복사">🤖 AI 진단</button>
                 <button class="btn" style="background:rgba(239, 68, 68, 0.15); border:1px solid rgba(239, 68, 68, 0.3); color:var(--accent-danger); padding:5px 8px; font-size:0.8rem;" onclick="deleteHistoryItem(${item.id})">🗑️ 삭제</button>
               </div>
             </div>
@@ -2955,405 +3120,6 @@ async function loadHistoryDetail(id) {
     showReviewMode();
   } catch(e) {
     alert("오답노트를 불러오지 못했습니다: " + e.message);
-  }
-}
-
-// AI 튜터 맞춤 분석용 프롬프트 생성 및 클립보드 복사 함수
-async function copyAiAnalysisPrompt(summary = lastSubmissionSummary) {
-  if (!summary || !summary.examData) {
-    alert("분석할 시험 응시 데이터가 없습니다.");
-    return;
-  }
-
-  const { examData, userAnswers: uAnsMap, subjectResults, grandTotalScore, maxScore, totalCorrect, totalQuestions, isFinalPass, timeTakenSeconds, createdAt } = summary;
-
-  const min = Math.floor(timeTakenSeconds / 60);
-  const sec = timeTakenSeconds % 60;
-  const timeStr = `${min}분 ${sec}초`;
-
-  // 과목별 점수 마크다운 표
-  let subTableMd = '| 과목명 | 맞힌 문항 | 득점 | 판정 |\n|---|---|---|---|\n';
-  if (subjectResults && subjectResults.length > 0) {
-    subjectResults.forEach(s => {
-      subTableMd += `| ${s.name} | ${s.correct}/${s.total} | ${s.score.toFixed(1)}점 | ${s.isCutoff ? '❌ 과락' : '⭕ 통과'} |\n`;
-    });
-  }
-
-  // 오답 문항 수집 및 분석 데이터 구성
-  const wrongList = [];
-  examData.questions.forEach(q => {
-    const uAns = uAnsMap[q.id] || uAnsMap[String(q.id)];
-    const isCorrect = isAnswerCorrect(uAns, q.answer);
-    if (!isCorrect) {
-      const selectedText = uAns ? (q.options[uAns - 1] || `${uAns}번`) : '미응답';
-      let correctText = '';
-      if (Array.isArray(q.answer)) {
-        correctText = q.answer.map(a => q.options[a - 1] || `${a}번`).join(' 또는 ');
-      } else if (q.answer === 5 || q.answer === 0 || q.answer === 'all') {
-        correctText = '공식 전체 정답';
-      } else {
-        correctText = q.options[q.answer - 1] || `${q.answer}번`;
-      }
-
-      wrongList.push({
-        id: q.id,
-        subject: q.subject || `${q.subject_id}과목`,
-        question: q.question,
-        userAns: selectedText,
-        correctAns: correctText,
-        explanation: (q.explanation || '').trim()
-      });
-    }
-  });
-
-  let wrongDetailsMd = '';
-  if (wrongList.length === 0) {
-    wrongDetailsMd = '🎉 축하합니다! 모든 문제를 맞혔습니다 (오답 문항 없음).\n';
-  } else {
-    wrongList.forEach(w => {
-      wrongDetailsMd += `### [${w.id}번 문항] (${w.subject})\n`;
-      wrongDetailsMd += `**문제**: ${w.question}\n`;
-      wrongDetailsMd += `- **내가 고른 답**: ${w.userAns}\n`;
-      wrongDetailsMd += `- **실제 정답**: ${w.correctAns}\n`;
-      if (w.explanation) {
-        // 핵심 해설 4줄 내외 요약 발췌
-        const expSnippet = w.explanation.split('\n').filter(l => l.trim().length > 0).slice(0, 5).join('\n');
-        wrongDetailsMd += `- **핵심 해설 요약**:\n> ${expSnippet.replace(/\n/g, '\n> ')}\n`;
-      }
-      wrongDetailsMd += '\n';
-    });
-  }
-
-  const promptText = `# 🌸 [풀어봄 CBT 모의고사 결과 분석 및 AI 튜터 맞춤 진단 요청]
-
-## 1. 응시 기본 정보
-- **시험명**: ${examData.exam_info.title}
-- **응시 일시**: ${createdAt}
-- **최종 결과**: **${grandTotalScore.toFixed(1)}점** / ${maxScore.toFixed(1)}점 (${isFinalPass ? '🎉 합격' : '❌ 불합격'})
-- **정답률**: ${totalCorrect} / ${totalQuestions} 문항 (${((totalCorrect / totalQuestions) * 100).toFixed(1)}%)
-- **총 소요 시간**: ${timeStr}
-
-## 2. 과목별 득점 및 과락 판정
-${subTableMd}
-## 3. 주요 오답 및 취약 문항 데이터 (총 ${wrongList.length}문항 오답)
-${wrongDetailsMd}
----
-## 🎯 [AI 튜터 진단 요청 사항]
-위 시험 결과를 바탕으로 저에게 최적화된 다음 3대 맞춤 진단을 제공해 주세요:
-1. **취약 개념 및 오답 패턴 심층 분석** (법령, 절차, 산출물, 수식 계산 등 어떤 영역에서 오개념이 발생하는지)
-2. **과목별/영역별 위험도 진단 및 과락 방지 전략**
-3. **다음 시험에서 점수를 끌어올리기 위한 맞춤 학습 로드맵 및 핵심 키워드 정리**
-`;
-
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(promptText);
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = promptText;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-    }
-
-    const btn = document.getElementById('btnCopyAiPrompt');
-    if (btn) {
-      const origHtml = btn.innerHTML;
-      btn.innerHTML = '✅ AI 분석 프롬프트 복사 완료! (채팅창에 붙여넣으세요)';
-      btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
-      setTimeout(() => {
-        btn.innerHTML = origHtml;
-        btn.style.background = 'linear-gradient(135deg, #4f46e5, #7c3aed)';
-      }, 3000);
-    } else {
-      alert("✅ AI 분석용 프롬프트가 클립보드에 복사되었습니다!\nAI 채팅창(ChatGPT/Claude/Antigravity 등)에 Ctrl+V로 붙여넣어 진단을 요청하세요.");
-    }
-  } catch (err) {
-    const ta = document.createElement('textarea');
-    ta.value = promptText;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    alert("✅ AI 분석용 프롬프트가 클립보드에 복사되었습니다!\nAI 채팅창에 Ctrl+V로 붙여넣어 진단을 요청하세요.");
-  }
-}
-
-// 과거 응시 이력 항목에서 AI 분석 프롬프트 복사
-async function copyHistoryAiPrompt(id) {
-  try {
-    const res = await fetch(`/api/results?id=${id}`);
-    if (!res.ok) throw new Error("Fetch failed");
-    const data = await res.json();
-    if (!data) return;
-
-    const examRes = await fetch(`/exams/${data.exam_id}`);
-    if (!examRes.ok) throw new Error("Exam file not found");
-    const examData = await examRes.json();
-    examData.filename = data.exam_id;
-    const uAns = JSON.parse(data.user_answers_json || '{}');
-    const subScores = JSON.parse(data.subject_scores_json || '[]');
-
-    let correctCount = 0;
-    examData.questions.forEach(q => {
-      if (isAnswerCorrect(uAns[q.id] || uAns[String(q.id)], q.answer)) {
-        correctCount++;
-      }
-    });
-
-    const isSingleSub = (data.exam_id && data.exam_id.includes('subject')) || (data.exam_title && data.exam_title.includes('과목') && data.exam_title.includes('25문항'));
-    const isPassVal = isSingleSub ? (data.total_score >= 40.0) : Boolean(data.is_pass);
-
-    const summary = {
-      examData: examData,
-      userAnswers: uAns,
-      subjectResults: subScores,
-      grandTotalScore: data.total_score,
-      maxScore: data.max_score || (examData.questions.length * 4),
-      totalCorrect: correctCount,
-      totalQuestions: examData.questions.length,
-      isFinalPass: isPassVal,
-      timeTakenSeconds: data.time_taken_seconds || 0,
-      createdAt: new Date(data.created_at).toLocaleString()
-    };
-
-    await copyAiAnalysisPrompt(summary);
-  } catch (e) {
-    alert("AI 프롬프트 생성 실패: " + e.message);
-  }
-}
-
-// 자격증 단위 다회차 누적 응시 데이터 종합 마크다운 리포트 생성 함수
-async function generateCategoryAggregatedReport(targetCategory, attempts) {
-  if (!attempts || attempts.length === 0) {
-    throw new Error("분석할 응시 이력이 없습니다.");
-  }
-
-  // 1. 필요한 모든 exam JSON 파일 병렬 로드 (캐시 적용)
-  const uniqueExamIds = Array.from(new Set(attempts.map(a => a.exam_id).filter(Boolean)));
-  const examDataCache = {};
-
-  await Promise.all(uniqueExamIds.map(async eid => {
-    try {
-      const res = await fetch(`/exams/${eid}`);
-      if (res.ok) {
-        examDataCache[eid] = await res.json();
-      }
-    } catch(e) {}
-  }));
-
-  // 2. 전체 다회차 통계 집계
-  const totalAttempts = attempts.length;
-  let passCount = 0;
-  let scoreSum = 0;
-  let maxScore = -Infinity;
-  let minScore = Infinity;
-  let totalSecondsSum = 0;
-
-  const subjectStats = {};
-  const allWrongQuestions = [];
-
-  // 시간순(오래된 순 -> 최신순) 정렬
-  const chronologicalAttempts = [...attempts].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
-
-  let timeSeriesRows = '';
-
-  chronologicalAttempts.forEach((item, idx) => {
-    const isSingleSub = (item.exam_id && item.exam_id.includes('subject')) || (item.exam_title && item.exam_title.includes('과목') && item.exam_title.includes('25문항'));
-    const isPass = isSingleSub ? (item.total_score >= 40.0) : Boolean(item.is_pass);
-    if (isPass) passCount++;
-
-    scoreSum += item.total_score;
-    if (item.total_score > maxScore) maxScore = item.total_score;
-    if (item.total_score < minScore) minScore = item.total_score;
-    totalSecondsSum += (item.time_taken_seconds || 0);
-
-    const min = Math.floor((item.time_taken_seconds || 0) / 60);
-    const sec = (item.time_taken_seconds || 0) % 60;
-    const timeStr = `${min}분 ${sec}초`;
-    const dateStr = new Date(item.created_at).toLocaleString();
-
-    timeSeriesRows += `| ${idx + 1}회차 | ${item.exam_title} | **${item.total_score.toFixed(1)}점** / ${item.max_score}점 | ${isPass ? '⭕ 합격' : '❌ 불합격'} | ${timeStr} | ${dateStr} |\n`;
-
-    // 과목별 점수 집계
-    let subScores = [];
-    try {
-      subScores = JSON.parse(item.subject_scores_json || '[]');
-    } catch(e) {}
-
-    if (Array.isArray(subScores)) {
-      subScores.forEach(sub => {
-        if (!subjectStats[sub.name]) {
-          subjectStats[sub.name] = { totalCorrect: 0, totalQuestions: 0, cutoffCount: 0, scoreSum: 0, attemptCount: 0 };
-        }
-        const s = subjectStats[sub.name];
-        s.totalCorrect += (sub.correct || 0);
-        s.totalQuestions += (sub.total || 0);
-        s.scoreSum += (sub.score || 0);
-        s.attemptCount += 1;
-        if (sub.isCutoff) s.cutoffCount += 1;
-      });
-    }
-
-    // 오답 문항 수집
-    const examData = examDataCache[item.exam_id];
-    let uAnswers = {};
-    try {
-      uAnswers = JSON.parse(item.user_answers_json || '{}');
-    } catch(e) {}
-
-    if (examData && Array.isArray(examData.questions)) {
-      examData.questions.forEach(q => {
-        const uAns = uAnswers[q.id] || uAnswers[String(q.id)];
-        const isCorrect = isAnswerCorrect(uAns, q.answer);
-        if (!isCorrect) {
-          const selectedText = uAns ? (q.options[uAns - 1] || `${uAns}번`) : '미응답';
-          let correctText = '';
-          if (Array.isArray(q.answer)) {
-            correctText = q.answer.map(a => q.options[a - 1] || `${a}번`).join(' 또는 ');
-          } else if (q.answer === 5 || q.answer === 0 || q.answer === 'all') {
-            correctText = '공식 전체 정답';
-          } else {
-            correctText = q.options[q.answer - 1] || `${q.answer}번`;
-          }
-
-          allWrongQuestions.push({
-            examTitle: item.exam_title,
-            qId: q.id,
-            subject: q.subject || `${q.subject_id}과목`,
-            question: q.question,
-            userAns: selectedText,
-            correctAns: correctText,
-            explanation: (q.explanation || '').trim(),
-            date: dateStr
-          });
-        }
-      });
-    }
-  });
-
-  const avgScore = totalAttempts > 0 ? (scoreSum / totalAttempts) : 0;
-  const passRate = totalAttempts > 0 ? ((passCount / totalAttempts) * 100).toFixed(1) : '0.0';
-  const avgSeconds = totalAttempts > 0 ? Math.round(totalSecondsSum / totalAttempts) : 0;
-  const avgMin = Math.floor(avgSeconds / 60);
-  const avgSec = avgSeconds % 60;
-
-  // 3. 과목별 누적 성적 테이블
-  let subjectTableMd = '| 과목명 | 누적 평균 득점 | 평균 정답률 | 과락 발생 횟수 | 취약 위험도 |\n|---|---|---|---|---|\n';
-  Object.keys(subjectStats).forEach(subName => {
-    const s = subjectStats[subName];
-    const avgSubScore = s.attemptCount > 0 ? (s.scoreSum / s.attemptCount).toFixed(1) : '0.0';
-    const accuracy = s.totalQuestions > 0 ? ((s.totalCorrect / s.totalQuestions) * 100).toFixed(1) : '0.0';
-    const riskLevel = s.cutoffCount > 0 || Number(accuracy) < 60 ? '🚨 고위험 (과락 주의)' : (Number(accuracy) < 75 ? '⚠️ 중위험 (보완 필요)' : '✅ 안정권');
-    subjectTableMd += `| ${subName} | ${avgSubScore}점 | ${s.totalCorrect}/${s.totalQuestions} (${accuracy}%) | ${s.cutoffCount}회 | ${riskLevel} |\n`;
-  });
-
-  // 4. 오답 문항 상세 리스트
-  let wrongListMd = '';
-  if (allWrongQuestions.length === 0) {
-    wrongListMd = '🎉 축하합니다! 모든 응시 회차에서 전 문항을 맞혔습니다 (오답 없음).\n';
-  } else {
-    allWrongQuestions.forEach((w, i) => {
-      wrongListMd += `### [오답 #${i + 1}] ${w.examTitle} - ${w.qId}번 (${w.subject})\n`;
-      wrongListMd += `**문제**: ${w.question}\n`;
-      wrongListMd += `- **내가 선택한 답안**: ${w.userAns}\n`;
-      wrongListMd += `- **실제 정답**: ${w.correctAns}\n`;
-      if (w.explanation) {
-        const expSnippet = w.explanation.split('\n').filter(l => l.trim().length > 0).slice(0, 5).join('\n');
-        wrongListMd += `- **핵심 해설 요약**:\n> ${expSnippet.replace(/\n/g, '\n> ')}\n`;
-      }
-      wrongListMd += '\n';
-    });
-  }
-
-  const markdownContent = `# 🌸 [풀어봄 CBT 모의고사 자격증 누적 응시 이력 종합 분석 및 AI 맞춤 합격 전략 진단]
-
-## 1. 자격증 종합 응시 개요
-- **대상 자격증 종목**: **${targetCategory || '전체 종목'}**
-- **총 응시 횟수**: 총 **${totalAttempts}회** 응시 기록
-- **전체 합격률**: **${passRate}%** (${passCount}회 합격 / ${totalAttempts}회 응시)
-- **성적 통계**: 평균 **${avgScore.toFixed(1)}점** (최고: ${maxScore.toFixed(1)}점 / 최저: ${minScore.toFixed(1)}점)
-- **회차당 평균 소요 시간**: ${avgMin}분 ${avgSec}초
-- **데이터 추출 일시**: ${new Date().toLocaleString()}
-
-## 2. 회차별 성적 변화 추이 (시간순)
-| 회차 | 시험명 | 취득 점수 | 합격 판정 | 소요 시간 | 응시 일시 |
-|---|---|---|---|---|---|
-${timeSeriesRows}
-## 3. 과목별/영역별 누적 취약도 종합 진단
-${subjectTableMd}
-## 4. 다회차 전체 오답 및 취약 문항 총람 (총 ${allWrongQuestions.length}건 오답 분석)
-${wrongListMd}
----
-## 🎯 [AI 튜터 종합 컨설팅 요청 사항]
-위 다회차 누적 시험 데이터를 바탕으로 수험생의 실력 향상과 최종 합격을 위한 **심층 종합 진단 및 맞춤 솔루션**을 작성해 주세요:
-1. **나의 실력 성장 추이 및 실전 합격 가능성 진단** (점수가 점진적으로 상승하고 있는지, 기복 요인은 무엇인지, 실제 본시험 합격 가능성 % 평가)
-2. **반복적으로 발목을 잡는 '고질적 취약 영역 및 오개념' 정밀 타겟팅** (과목별 과락 방지 및 킬러 문항 대처법)
-3. **남은 시험 준비 기간 동안 점수를 극대화하기 위한 '우선순위 맞춤 학습 로드맵 및 핵심 키워드 정리'**
-`;
-
-  return markdownContent;
-}
-
-// 자격증 단위 AI 리포트 마크다운 파일 다운로드
-async function downloadCategoryAiReport() {
-  try {
-    const catSel = document.getElementById('categorySelect');
-    const selectedCategory = (currentHistoryFilterMode === 'current' && catSel) ? (catSel.value || '자격증') : '전체_응시이력';
-    const targetList = currentFilteredHistoryList || [];
-
-    if (targetList.length === 0) {
-      alert("다운로드할 응시 이력이 없습니다.");
-      return;
-    }
-
-    const mdContent = await generateCategoryAggregatedReport(selectedCategory, targetList);
-    const dateStr = new Date().toISOString().slice(0, 10);
-    const filename = `${dateStr}_${selectedCategory.replace(/[^a-zA-Z0-9가-힣_]/g, '_')}_AI_종합진단리포트.md`;
-
-    const blob = new Blob([mdContent], { type: 'text/markdown;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  } catch(e) {
-    alert("리포트 다운로드 실패: " + e.message);
-  }
-}
-
-// 자격증 단위 AI 종합 진단 프롬프트 클립보드 복사
-async function copyCategoryAiPrompt() {
-  try {
-    const catSel = document.getElementById('categorySelect');
-    const selectedCategory = (currentHistoryFilterMode === 'current' && catSel) ? (catSel.value || '자격증') : '전체_응시이력';
-    const targetList = currentFilteredHistoryList || [];
-
-    if (targetList.length === 0) {
-      alert("복사할 응시 이력이 없습니다.");
-      return;
-    }
-
-    const mdContent = await generateCategoryAggregatedReport(selectedCategory, targetList);
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(mdContent);
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = mdContent;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-    }
-
-    alert(`✅ '${selectedCategory}'의 전체 누적 응시 데이터(총 ${targetList.length}건)가 AI 종합 분석 프롬프트로 클립보드에 복사되었습니다!\n\nAI 채팅창에 Ctrl+V로 붙여넣어 종합 진단을 요청하세요.`);
-  } catch(e) {
-    alert("AI 프롬프트 복사 실패: " + e.message);
   }
 }
 
@@ -3957,12 +3723,14 @@ function renderTargetScheduleBanner() {
 
 // 3. 모달 제어
 function openScheduleModal() {
-  const modal = document.getElementById('scheduleModal');
-  if (modal) {
-    modal.style.display = 'flex';
-    renderCalendar();
-    renderScheduleList();
-  }
+  const startScreen = document.getElementById('startScreen');
+  if (startScreen) startScreen.style.display = 'flex';
+  const examLayout = document.getElementById('examLayout');
+  if (examLayout) examLayout.style.display = 'none';
+  const resultScreen = document.getElementById('resultScreen');
+  if (resultScreen) resultScreen.style.display = 'none';
+
+  switchDashboardTab('schedule');
 }
 
 function closeScheduleModal() {
@@ -4326,9 +4094,16 @@ let currentCramSheet = null;
 let cramFontSize = 15;
 
 async function openCramSheetModal(targetKey) {
-  const modal = document.getElementById('cramSheetModal');
-  if (!modal) return;
-  modal.style.display = 'flex';
+  const startScreen = document.getElementById('startScreen');
+  if (startScreen) startScreen.style.display = 'flex';
+  const examLayout = document.getElementById('examLayout');
+  if (examLayout) examLayout.style.display = 'none';
+  const resultScreen = document.getElementById('resultScreen');
+  if (resultScreen) resultScreen.style.display = 'none';
+
+  if (currentDashboardTab !== 'cram') {
+    switchDashboardTab('cram');
+  }
 
   try {
     const res = await fetch('/api/cram-sheets');
@@ -4628,94 +4403,6 @@ function parseCramMarkdown(md) {
   </div>
 </div>
 
-<!-- 응시 이력 & 오답노트 모달 -->
-<div id="historyModal" style="display:none; position:fixed; z-index:9998; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; backdrop-filter:blur(2px);" onclick="closeHistoryModal()">
-  <div style="background:var(--bg-card); color:var(--text-main); border:1px solid var(--border-color); border-radius:12px; width:92%; max-width:820px; max-height:85vh; overflow-y:auto; padding:24px; box-shadow:var(--shadow-md); position:relative;" onclick="event.stopPropagation()">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:2px solid var(--border-color); padding-bottom:12px;">
-      <h3 style="margin:0; font-size:1.2rem; color:var(--text-main);">📜 응시 이력 & 오답노트</h3>
-      <button onclick="closeHistoryModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
-    </div>
-    <div id="historyListContainer">로딩 중...</div>
-  </div>
-</div>
-
-
-
-<!-- 시험 일정 관리 & 캘린더 모달 -->
-<div id="scheduleModal" style="display:none; position:fixed; z-index:9998; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.65); justify-content:center; align-items:center; backdrop-filter:blur(3px);" onclick="closeScheduleModal()">
-  <div style="background:var(--bg-card); color:var(--text-main); border:1px solid var(--border-color); border-radius:14px; width:94%; max-width:960px; max-height:88vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:var(--shadow-md); position:relative;" onclick="event.stopPropagation()">
-    
-    <!-- 모달 헤더 -->
-    <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 24px; border-bottom:1px solid var(--border-color); background:var(--bg-subtle);">
-      <div style="display:flex; align-items:center; gap:10px;">
-        <span style="font-size:1.4rem;">📅</span>
-        <div>
-          <h3 style="margin:0; font-size:1.18rem; font-weight:800; color:var(--text-main);">시험 일정 관리 & 수험 캘린더</h3>
-          <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;">목표 시험의 원서접수 기간과 시험일을 체계적으로 관리하세요.</div>
-        </div>
-      </div>
-      <button onclick="closeScheduleModal()" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text-muted); line-height:1;" title="닫기 (Esc)">&times;</button>
-    </div>
-
-    <!-- 서브 헤더 / 탭 및 액션 툴바 -->
-    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 24px; border-bottom:1px solid var(--border-color); background:var(--bg-card); flex-wrap:wrap; gap:10px;">
-      <div style="display:flex; gap:6px; background:var(--bg-subtle); padding:4px; border-radius:8px; border:1px solid var(--border-color);">
-        <button id="tabBtnCalendar" class="btn" style="padding:6px 14px; font-size:0.86rem; font-weight:700; background:var(--primary); color:#ffffff; border-radius:6px;" onclick="switchScheduleTab('calendar')">🗓️ 월간 캘린더</button>
-        <button id="tabBtnList" class="btn" style="padding:6px 14px; font-size:0.86rem; font-weight:600; background:transparent; color:var(--text-muted); border-radius:6px;" onclick="switchScheduleTab('list')">📋 일정 목록 (<span id="scheduleCountBadge">0</span>)</button>
-      </div>
-
-      <button class="btn btn-primary" style="padding:7px 16px; font-size:0.86rem; font-weight:700; display:inline-flex; align-items:center; gap:6px;" onclick="openScheduleForm()">
-        <span>➕</span> 새 시험 일정 등록
-      </button>
-    </div>
-
-    <!-- 모달 바디 스크롤 영역 -->
-    <div style="padding:20px 24px; overflow-y:auto; flex:1;">
-      
-      <!-- 1. 월간 캘린더 뷰 -->
-      <div id="scheduleCalendarView">
-        <div class="cal-header-bar" style="margin-bottom:12px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <button class="btn btn-header-outline" style="padding:4px 10px; font-size:0.82rem; color:var(--text-main); border:1px solid var(--border-color);" onclick="changeCalMonth(-1)">◀ 이전달</button>
-            <span id="calCurrentMonthText" style="font-size:1.15rem; font-weight:800; min-width:130px; text-align:center; color:var(--text-main);">2026년 9월</span>
-            <button class="btn btn-header-outline" style="padding:4px 10px; font-size:0.82rem; color:var(--text-main); border:1px solid var(--border-color);" onclick="changeCalMonth(1)">다음달 ▶</button>
-            <button class="btn" style="padding:4px 10px; font-size:0.82rem; background:var(--bg-subtle); border:1px solid var(--border-color); color:var(--text-main); font-weight:600; border-radius:6px;" onclick="goCalToday()">오늘</button>
-          </div>
-          <div style="display:flex; align-items:center; gap:12px; font-size:0.78rem; color:var(--text-muted);">
-            <span style="display:flex; align-items:center; gap:4px;"><span style="width:10px; height:10px; border-radius:50%; background:#ef4444; display:inline-block;"></span> 🔴 시험일</span>
-            <span style="display:flex; align-items:center; gap:4px;"><span style="width:10px; height:10px; border-radius:50%; background:#3b82f6; display:inline-block;"></span> 🔵 원서접수</span>
-          </div>
-        </div>
-
-        <!-- 캘린더 그리드 -->
-        <div class="cal-grid">
-          <div class="cal-day-header sun">일</div>
-          <div class="cal-day-header">월</div>
-          <div class="cal-day-header">화</div>
-          <div class="cal-day-header">수</div>
-          <div class="cal-day-header">목</div>
-          <div class="cal-day-header">금</div>
-          <div class="cal-day-header sat">토</div>
-          <div id="calCellsContainer" style="display:contents;">
-            <!-- JS 동적 셀 렌더링 -->
-          </div>
-        </div>
-        <div style="font-size:0.8rem; color:var(--text-muted); margin-top:10px; text-align:right;">
-          💡 캘린더의 원하는 날짜 셀을 클릭하면 해당 일자가 자동 입력된 신규 일정 등록 창이 열립니다.
-        </div>
-      </div>
-
-      <!-- 2. 일정 목록 (타임라인) 뷰 -->
-      <div id="scheduleListView" style="display:none;">
-        <div id="scheduleListCards" style="display:flex; flex-direction:column; gap:12px;">
-          <!-- JS 동적 카드 렌더링 -->
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 <!-- 시험 일정 등록 / 수정 모달 (핵심 4대 항목 전용 간소화) -->
 <div id="scheduleFormModal" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.65); justify-content:center; align-items:center; backdrop-filter:blur(3px);" onclick="closeScheduleForm()">
   <div style="background:var(--bg-card); color:var(--text-main); border:1px solid var(--border-color); border-radius:14px; width:90%; max-width:480px; max-height:85vh; overflow-y:auto; padding:22px; box-shadow:var(--shadow-md); position:relative;" onclick="event.stopPropagation()">
@@ -4780,41 +4467,5 @@ function parseCramMarkdown(md) {
   </div>
 </div>
 
-<!-- 🌸 시험 직전 10분 초압축 파이널 치트시트 모달 -->
-<div id="cramSheetModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; backdrop-filter:blur(4px);" onclick="closeCramSheetModal()">
-  <div style="background:var(--bg-card); color:var(--text-main); border:1px solid var(--border-color); border-radius:14px; width:96%; max-width:800px; height:94vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:var(--shadow-md); position:relative;" onclick="event.stopPropagation()">
-    
-    <!-- 모달 헤더 (모바일 최적화: 불필요한 복사/인쇄 버튼 및 설명문 제거) -->
-    <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 16px; border-bottom:1px solid var(--border-color); background:var(--bg-subtle);">
-      <div style="display:flex; align-items:center; gap:8px;">
-        <span style="font-size:1.2rem;">⚡</span>
-        <h3 style="margin:0; font-size:1.05rem; font-weight:800; color:var(--text-main);">
-          시험 직전 10분 핵심 요약본
-        </h3>
-      </div>
-      
-      <!-- 헤더 액션 버튼 (글자 크기 조절 및 닫기만 유지) -->
-      <div style="display:flex; align-items:center; gap:6px;">
-        <button class="btn btn-header-outline" style="padding:4px 9px; font-size:0.82rem; font-weight:700;" onclick="adjustCramFontSize(-1)" title="글자 축소">A-</button>
-        <button class="btn btn-header-outline" style="padding:4px 9px; font-size:0.82rem; font-weight:700;" onclick="adjustCramFontSize(1)" title="글자 확대">A+</button>
-        <button onclick="closeCramSheetModal()" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--text-muted); line-height:1; padding:0 4px; margin-left:4px;" title="닫기 (Esc)">&times;</button>
-      </div>
-    </div>
-
-    <!-- 시험 탭 바 -->
-    <div style="display:flex; align-items:center; padding:8px 18px; border-bottom:1px solid var(--border-color); background:var(--bg-card); overflow-x:auto; gap:8px;" id="cramSheetTabBar">
-      <!-- 동적 탭 렌더링 -->
-    </div>
-
-    <!-- 요약본 본문 뷰어 영역 (모바일 여백 최적화) -->
-    <div id="cramSheetContent" style="padding:14px 16px; overflow-y:auto; flex:1; font-size:15px; line-height:1.75; color:var(--text-main); font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-      <div style="text-align:center; padding:40px; color:var(--text-muted);">
-        <div style="font-size:1.6rem; margin-bottom:8px;">⏳</div>
-        <div>요약본 데이터를 불러오는 중입니다...</div>
-      </div>
-    </div>
-
-  </div>
-</div>
 </body>
 </html>
