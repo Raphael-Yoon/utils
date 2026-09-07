@@ -636,6 +636,10 @@
       font-weight: 700;
       color: var(--text-muted);
       margin: 12px 0 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
     }
     .omr-grid {
       display: grid;
@@ -930,6 +934,7 @@
         margin: 0;
         display: flex;
         align-items: center;
+        gap: 6px;
         font-size: 0.8rem;
       }
       .omr-grid {
@@ -2695,10 +2700,26 @@ function renderOMR() {
   const omrBody = document.getElementById('omrBody');
   omrBody.innerHTML = '';
 
-  currentExamData.subjects.forEach(sub => {
+  (currentExamData.subjects || []).forEach(sub => {
+    const subQuestions = currentExamData.questions.filter(q => q.subject_id === sub.id);
+
+    let scoreBadgeHtml = '';
+    if (isReviewMode && subQuestions.length > 0) {
+      let subCorrectCount = 0;
+      subQuestions.forEach(q => {
+        const uAns = userAnswers[q.id] || userAnswers[String(q.id)];
+        if (isAnswerCorrect(uAns, q.answer)) {
+          subCorrectCount++;
+        }
+      });
+      const isFailCutoff = subCorrectCount < Math.ceil(subQuestions.length * 0.4);
+      const scoreColor = isFailCutoff ? 'var(--accent-danger, #ef4444)' : 'var(--primary)';
+      scoreBadgeHtml = `<span class="omr-subject-score" style="font-size:0.82rem; font-weight:700; color:${scoreColor}; font-variant-numeric: tabular-nums;" title="${escapeHtml(sub.name)} 정답: ${subCorrectCount} / ${subQuestions.length} 문항${isFailCutoff ? ' (과락 기준 40% 미만)' : ''}">(${subCorrectCount}/${subQuestions.length})</span>`;
+    }
+
     const subTitle = document.createElement('div');
     subTitle.className = 'omr-subject-title';
-    subTitle.innerText = sub.name;
+    subTitle.innerHTML = `<span>${escapeHtml(sub.name)}</span>${scoreBadgeHtml}`;
     omrBody.appendChild(subTitle);
 
     const grid = document.createElement('div');
