@@ -2725,7 +2725,6 @@ function renderOMR() {
     const grid = document.createElement('div');
     grid.className = 'omr-grid';
 
-    const subQuestions = currentExamData.questions.filter(q => q.subject_id === sub.id);
     subQuestions.forEach(q => {
       const item = document.createElement('div');
       const uAns = userAnswers[q.id] || userAnswers[String(q.id)];
