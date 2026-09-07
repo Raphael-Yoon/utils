@@ -355,7 +355,7 @@
     {
       "id": 26,
       "subject_id": 3,
-      "question": "다음 요약 통계량에 대한 설명으로 옳지 않은 것은 ? 세 변수 (SALES, EDUCATION, ADVERTISING) 의 요약 통계량은 아래와 같다 . ( 이상치 판정 기준 : Q1-1.5 X IQR 미만 또는 Q3+1.5 X IQR 초과 )\n\n<img src=\"images/adsp_49_q26.png\" alt=\"요약 통계량 표\" style=\"max-width:100%; height:auto;\">",
+      "question": "다음 요약 통계량에 대한 설명으로 옳지 않은 것은 ? 세 변수 (SALES, EDUCATION, ADVERTISING) 의 요약 통계량은 아래와 같다 . ( 이상치 판정 기준 : Q1-1.5 X IQR 미만 또는 Q3+1.5 X IQR 초과 )",
       "options": [
         "EDUCATION 의 IQR 은 4 이다 .",
         "SALES 의 IQR 은 3.93 이다 .",
@@ -363,7 +363,8 @@
         "ADVERTISING 에는 이상치가 존재한다 ."
       ],
       "answer": 4,
-      "explanation": ""
+      "explanation": "",
+      "image": "/exams/images/adsp_49_q26.png"
     },
     {
       "id": 27,
@@ -550,7 +551,7 @@
     {
       "id": 41,
       "subject_id": 3,
-      "question": "다음 상자그림 요약에 대한 설명으로 옳지 않은 것은 ? 어떤 수면제를 복용한 20 명의 ' 수면시간 증가량 ( 시간 )' 을 측정하여 상자그림으로 요약한 결과는 다음과 같다 .\n\n<img src=\"images/adsp_49_q41.png\" alt=\"상자그림 요약표\" style=\"max-width:100%; height:auto;\">",
+      "question": "다음 상자그림 요약에 대한 설명으로 옳지 않은 것은 ? 어떤 수면제를 복용한 20 명의 ' 수면시간 증가량 ( 시간 )' 을 측정하여 상자그림으로 요약한 결과는 다음과 같다 .",
       "options": [
         "수면시간 증가량의 최댓값은 4.0 시간이다 .",
         "적어도 절반 (50%) 의 사람은 수면시간이 1.2 시간 이상 증가했다 .",
@@ -558,7 +559,8 @@
         "정확히 5 명의 수면시간이 감소하였다 . ADsP 49 회 -"
       ],
       "answer": 4,
-      "explanation": ""
+      "explanation": "",
+      "image": "/exams/images/adsp_49_q41.png"
     },
     {
       "id": 42,
@@ -589,7 +591,7 @@
     {
       "id": 44,
       "subject_id": 3,
-      "question": "다음 확률변수 X 의 확률분포에 대한 설명으로 옳지 않은 것은 ?\n\n<img src=\"images/adsp_49_q44.png\" alt=\"확률분포표\" style=\"max-width:100%; height:auto;\">",
+      "question": "다음 확률변수 X 의 확률분포에 대한 설명으로 옳지 않은 것은 ?",
       "options": [
         "모든 확률값의 합은 1 이다 .",
         "P(X=3) 이 가장 큰 확률을 갖는다 .",
@@ -597,7 +599,8 @@
         "X 의 기댓값 E(X) 는 13/6 이다 ."
       ],
       "answer": 4,
-      "explanation": ""
+      "explanation": "",
+      "image": "/exams/images/adsp_49_q44.png"
     },
     {
       "id": 45,
@@ -641,7 +644,7 @@
     {
       "id": 48,
       "subject_id": 3,
-      "question": "다음 이진 분류 결과의 혼동행렬 (Confusion Matrix) 에서 F1 점수 (F1-score) 는 ?\n\n<img src=\"images/adsp_49_q48.png\" alt=\"혼동행렬 표\" style=\"max-width:100%; height:auto;\">",
+      "question": "다음 이진 분류 결과의 혼동행렬 (Confusion Matrix) 에서 F1 점수 (F1-score) 는 ?",
       "options": [
         "6/19",
         "6/17",
@@ -649,12 +652,13 @@
         "3/11 →"
       ],
       "answer": 1,
-      "explanation": ""
+      "explanation": "",
+      "image": "/exams/images/adsp_49_q48.png"
     },
     {
       "id": 49,
       "subject_id": 3,
-      "question": "다음 거래 데이터에서 연관규칙 ' 기저귀 맥주 ' 에 대한 설명으로 옳지 않은 것은 ?\n\n<img src=\"images/adsp_49_q49.png\" alt=\"거래 데이터 표\" style=\"max-width:100%; height:auto;\">",
+      "question": "다음 거래 데이터에서 연관규칙 ' 기저귀 맥주 ' 에 대한 설명으로 옳지 않은 것은 ?",
       "options": [
         "지지도 (support) 는 0.4 이다 .",
         "향상도 (lift) 는 약 1.33 으로 1 보다 크다 .",
@@ -662,7 +666,8 @@
         "향상도가 1 보다 크므로 두 품목은 서로 함께 구매되는 경향 ( 양의 연관 ) 이 있다 . →"
       ],
       "answer": 3,
-      "explanation": ""
+      "explanation": "",
+      "image": "/exams/images/adsp_49_q49.png"
     },
     {
       "id": 50,

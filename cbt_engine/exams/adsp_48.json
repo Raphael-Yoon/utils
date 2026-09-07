@@ -394,7 +394,7 @@
     {
       "id": 29,
       "subject_id": 3,
-      "question": "회귀분석에 따른 잔차도가 아래 그림과 같을 때 , 해당 분석의 해석으로 옳은 것은 ?\n\n<img src=\"images/adsp_48_q29.png\" alt=\"잔차도 그래프\" style=\"max-width:100%; height:auto;\">",
+      "question": "회귀분석에 따른 잔차도가 아래 그림과 같을 때 , 해당 분석의 해석으로 옳은 것은 ?",
       "options": [
         ". 잔차가 0 을 중심으로 고르게 분포하므로 회귀모형이 적합하다",
         "릿지 , 라쏘 모델을 사용하여 해당 분석 결과의 과적합 문제를 해결해야 한다 .",
@@ -402,7 +402,8 @@
         "해당 잔차도 그래프는 변수에 이상치 (outlier) 가 많아서 발생한 패턴이다"
       ],
       "answer": 3,
-      "explanation": ""
+      "explanation": "",
+      "image": "/exams/images/adsp_48_q29.png"
     },
     {
       "id": 30,

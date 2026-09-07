@@ -2512,7 +2512,23 @@ function renderQuestions() {
     });
     const optionsContainerClass = isShortOptions ? 'options-list grid-2x2' : 'options-list';
 
-    const imgUrl = q.image_url || q.image;
+    let imgUrl = q.image_url || q.image;
+    let questionText = q.question || '';
+
+    // question 지문 내에 <img> 태그가 포함된 경우 자동 추출 및 지문 텍스트 정리
+    if (questionText.includes('<img')) {
+      const imgMatch = questionText.match(/<img\s+[^>]*src=["']([^"']+)["'][^>]*>/i);
+      if (!imgUrl && imgMatch) {
+        imgUrl = imgMatch[1];
+      }
+      questionText = questionText.replace(/<img\s+[^>]*src=["']([^"']+)["'][^>]*>/gi, '').trim();
+    }
+
+    // 상대 경로 images/ 로 시작할 경우 안전하게 루트 상대경로 /images/ 로 보정
+    if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('/') && !imgUrl.startsWith('./')) {
+      imgUrl = '/' + imgUrl;
+    }
+
     const imgHtml = imgUrl ? `
       <div class="q-image-container" style="margin: 16px 0; text-align: center; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 10px;">
         <div style="overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 120px;">
@@ -2546,7 +2562,7 @@ function renderQuestions() {
         <div class="question-subject-badge">📚 ${escapeHtml(subjectName)}</div>
         ${flagBtnHtml}
       </div>
-      <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(q.question)} ${statusTag} ${flagBadge}</div>
+      <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(questionText)} ${statusTag} ${flagBadge}</div>
       ${imgHtml}
       <div class="${optionsContainerClass}">${optionsHtml}</div>
       ${expHtml}
