@@ -1884,6 +1884,22 @@ function isCalculatorFocused() {
 
 // 키보드 단축키 (T: 다크모드 토글, Enter: 다음 문제, 1~4: 답안 선택, 방향키: 문제 이동, C: 계산기)
 window.addEventListener('keydown', (e) => {
+  // 🌸 최종 답안 제출 확인 모달 열려있을 때: Enter 키로 최종 제출, Esc로 계속 풀기(닫기)
+  const submitConfirmModal = document.getElementById('submitConfirmModal');
+  if (submitConfirmModal && submitConfirmModal.style.display === 'flex') {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      executeFinalSubmit();
+      return;
+    }
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeSubmitConfirmModal();
+      return;
+    }
+    return;
+  }
+
   const historyModal = document.getElementById('historyModal');
   const imgModal = document.getElementById('imgModal');
   if (imgModal && imgModal.style.display === 'flex') {
@@ -2960,6 +2976,8 @@ function openSubmitConfirmModal() {
   }
 
   modal.style.display = 'flex';
+  const submitBtn = document.getElementById('btnConfirmFinalSubmit');
+  if (submitBtn) setTimeout(() => submitBtn.focus(), 50);
 }
 
 function closeSubmitConfirmModal() {
@@ -5186,7 +5204,7 @@ function parseCramMarkdown(md) {
     <!-- 모달 하단 버튼 -->
     <div style="padding:14px 24px 20px 24px; border-top:1px solid var(--border-color); display:flex; justify-content:flex-end; gap:10px; background:rgba(0,0,0,0.02);">
       <button type="button" class="btn" style="padding:10px 18px; border-radius:10px; border:1px solid var(--border-color); background:var(--bg-card); color:var(--text-main); font-weight:600; font-size:0.92rem; cursor:pointer;" onclick="closeSubmitConfirmModal()">계속 풀기</button>
-      <button type="button" class="btn btn-primary" id="btnConfirmFinalSubmit" style="padding:10px 22px; border-radius:10px; font-weight:700; font-size:0.92rem; background:linear-gradient(135deg, #2563eb, #1d4ed8); border:none; box-shadow:0 4px 12px rgba(37,99,235,0.35); cursor:pointer;" onclick="executeFinalSubmit()">🚀 최종 제출 및 채점</button>
+      <button type="button" class="btn btn-primary" id="btnConfirmFinalSubmit" title="최종 제출 및 채점 (단축키: Enter)" style="padding:10px 22px; border-radius:10px; font-weight:700; font-size:0.92rem; background:linear-gradient(135deg, #2563eb, #1d4ed8); border:none; box-shadow:0 4px 12px rgba(37,99,235,0.35); cursor:pointer;" onclick="executeFinalSubmit()">🚀 최종 제출 및 채점</button>
     </div>
 
   </div>
