@@ -37,12 +37,15 @@ DEFAULT_CHAT_ID = "8587089093"  # Raphael's chat_id
 
 import subprocess
 
-# Target AP Servers configuration
+# Target AP Servers configuration (Dual Domain Verification: snowball.pe.kr & snowball1566.com)
 AP_TARGETS = [
     {
         "name": "snowball (K-Sox)",
         "local_url": "http://127.0.0.1:5001",
-        "external_url": "https://ksox.snowball.pe.kr",
+        "external_urls": [
+            "https://ksox.snowball.pe.kr",
+            "https://www.snowball1566.com"
+        ],
         "start_script": os.path.join(PROJECT_ROOT, "snowball", "snowball_start.sh"),
         "working_dir": os.path.join(PROJECT_ROOT, "snowball"),
         "tunnel_unit": "cloudflared-ksox",
@@ -51,7 +54,10 @@ AP_TARGETS = [
     {
         "name": "Jonathan's Coffee House (트레이딩 시스템)",
         "local_url": "http://127.0.0.1:5000",
-        "external_url": "https://trade.snowball.pe.kr",
+        "external_urls": [
+            "https://trade.snowball.pe.kr",
+            "https://trade.snowball1566.com"
+        ],
         "start_script": os.path.join(PROJECT_ROOT, "trade", "coffee_house_start.sh"),
         "working_dir": os.path.join(PROJECT_ROOT, "trade"),
         "tunnel_unit": "cloudflared-trade",
@@ -60,7 +66,10 @@ AP_TARGETS = [
     {
         "name": "infosd (정보보호공시)",
         "local_url": "http://127.0.0.1:5003",
-        "external_url": "https://infosd.snowball.pe.kr",
+        "external_urls": [
+            "https://infosd.snowball.pe.kr",
+            "https://infosd.snowball1566.com"
+        ],
         "start_script": os.path.join(PROJECT_ROOT, "infosd", "infosd_start.sh"),
         "working_dir": os.path.join(PROJECT_ROOT, "infosd"),
         "tunnel_unit": "cloudflared-infosd",
@@ -69,7 +78,10 @@ AP_TARGETS = [
     {
         "name": "풀어봄 (CBT 모의고사 시스템)",
         "local_url": "http://127.0.0.1:5004",
-        "external_url": "https://cbt.snowball.pe.kr",
+        "external_urls": [
+            "https://cbt.snowball.pe.kr",
+            "https://cbt.snowball1566.com"
+        ],
         "start_script": os.path.join(PROJECT_ROOT, "utils", "cbt_engine", "cbt_start.sh"),
         "working_dir": os.path.join(PROJECT_ROOT, "utils", "cbt_engine"),
         "tunnel_unit": "cloudflared-cbt",
@@ -120,25 +132,47 @@ def check_ap(ap):
             "error": str(e)
         }
 
-    # 2. External URL Check
-    try:
-        t0 = time.time()
-        resp = requests.get(ap["external_url"], timeout=5, allow_redirects=True)
-        t1 = time.time()
-        is_ok = 200 <= resp.status_code < 400
-        results["external"] = {
-            "status": "UP" if is_ok else "DOWN",
-            "code": resp.status_code,
-            "time_ms": int((t1 - t0) * 1000),
-            "error": None if is_ok else f"HTTP {resp.status_code}"
-        }
-    except Exception as e:
-        results["external"] = {
-            "status": "DOWN",
-            "code": "N/A",
-            "time_ms": 0,
-            "error": str(e)
-        }
+    # 2. External URLs Check (Dual check: snowball.pe.kr & snowball1566.com)
+    ext_urls = ap.get("external_urls") or ([ap["external_url"]] if "external_url" in ap else [])
+    results["externals"] = []
+    
+    for url in ext_urls:
+        domain_name = url.replace("https://", "").replace("http://", "").rstrip("/")
+        try:
+            t0 = time.time()
+            resp = requests.get(url, timeout=5, allow_redirects=True)
+            t1 = time.time()
+            is_ok = 200 <= resp.status_code < 400
+            results["externals"].append({
+                "url": url,
+                "domain": domain_name,
+                "status": "UP" if is_ok else "DOWN",
+                "code": resp.status_code,
+                "time_ms": int((t1 - t0) * 1000),
+                "error": None if is_ok else f"HTTP {resp.status_code}"
+            })
+        except Exception as e:
+            results["externals"].append({
+                "url": url,
+                "domain": domain_name,
+                "status": "DOWN",
+                "code": "N/A",
+                "time_ms": 0,
+                "error": str(e)
+            })
+
+    # Backward-compatible summary for results["external"]
+    all_up = all(e["status"] == "UP" for e in results["externals"]) if results["externals"] else False
+    down_items = [f"{e['domain']}({e['error'] or e['status']})" for e in results["externals"] if e["status"] != "UP"]
+    codes = [str(e["code"]) for e in results["externals"]]
+    max_ms = max((e["time_ms"] for e in results["externals"]), default=0)
+
+    results["external"] = {
+        "status": "UP" if all_up else "DOWN",
+        "code": " / ".join(codes) if codes else "N/A",
+        "time_ms": max_ms,
+        "error": ", ".join(down_items) if down_items else None
+    }
 
     return results
 
@@ -296,13 +330,19 @@ def build_html_report(ap_results, db_results, healing_history=None):
         local_status_color = "#28a745" if res["local"]["status"] == "UP" else "#dc3545"
         external_status_color = "#28a745" if res["external"]["status"] == "UP" else "#dc3545"
         
+        ext_details = []
+        for e in res.get("externals", []):
+            ext_col = "#28a745" if e["status"] == "UP" else "#dc3545"
+            ext_details.append(f"<span style='color:{ext_col}; font-weight:bold;'>{e['domain']}</span>: {e['status']} ({e['code']}, {e['time_ms']}ms)")
+        ext_summary_display = "<br>".join(ext_details) if ext_details else f"{res['external']['code']} ({res['external']['time_ms']}ms)"
+
         ap_rows += f"""
         <tr>
             <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">{ap['name']}</td>
             <td style="padding: 10px; border: 1px solid #ddd; text-align: center; color: {local_status_color}; font-weight: bold;">{res['local']['status']}</td>
             <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">{res['local']['code']} ({res['local']['time_ms']}ms)</td>
             <td style="padding: 10px; border: 1px solid #ddd; text-align: center; color: {external_status_color}; font-weight: bold;">{res['external']['status']}</td>
-            <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">{res['external']['code']} ({res['external']['time_ms']}ms)</td>
+            <td style="padding: 10px; border: 1px solid #ddd; font-size: 13px;">{ext_summary_display}</td>
             <td style="padding: 10px; border: 1px solid #ddd; font-size: 12px; color: #666;">{res['external']['error'] or '정상'}</td>
         </tr>
         """
@@ -350,7 +390,7 @@ def build_html_report(ap_results, db_results, healing_history=None):
                             <th>로컬 상태</th>
                             <th>로컬 응답</th>
                             <th>외부(터널) 상태</th>
-                            <th>외부 응답</th>
+                            <th>외부 응답 (도메인별)</th>
                             <th>상세 에러</th>
                         </tr>
                     </thead>
@@ -388,11 +428,21 @@ def build_html_report(ap_results, db_results, healing_history=None):
 def build_telegram_message(ap_results, db_results, healing_history=None):
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    # AP status summary
+    # AP status summary (Dual Domain: snowball.pe.kr & snowball1566.com)
     ap_summaries = []
     for ap, res in zip(AP_TARGETS, ap_results):
+        ext_list = res.get("externals", [])
+        if ext_list:
+            ext_parts = []
+            for e in ext_list:
+                short_d = "1566.com" if "1566.com" in e["domain"] else "pe.kr"
+                ext_parts.append(f"{short_d}:{e['status']}")
+            ext_desc = "/".join(ext_parts)
+        else:
+            ext_desc = res["external"]["status"]
+            
         icon = "✅" if (res["local"]["status"] == "UP" and res["external"]["status"] == "UP") else "⚠️"
-        ap_summaries.append(f"{icon} {ap['name']} (로컬:{res['local']['status']}/외부:{res['external']['status']})")
+        ap_summaries.append(f"{icon} {ap['name']} (로컬:{res['local']['status']}/외부:{ext_desc})")
         
     # DB status summary
     db_summaries = []
