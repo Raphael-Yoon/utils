@@ -431,24 +431,29 @@ def build_telegram_message(ap_results, db_results, healing_history=None):
     # AP status summary (Dual Domain: snowball.pe.kr & snowball1566.com)
     ap_summaries = []
     for ap, res in zip(AP_TARGETS, ap_results):
-        ext_list = res.get("externals", [])
-        if ext_list:
-            ext_parts = []
-            for e in ext_list:
-                short_d = "1566.com" if "1566.com" in e["domain"] else "pe.kr"
-                ext_parts.append(f"{short_d}:{e['status']}")
-            ext_desc = "/".join(ext_parts)
+        is_all_up = (res["local"]["status"] == "UP" and res.get("external", {}).get("status") == "UP")
+        if is_all_up:
+            ap_summaries.append(f"✅ {ap['name']}: 정상")
         else:
-            ext_desc = res["external"]["status"]
-            
-        icon = "✅" if (res["local"]["status"] == "UP" and res["external"]["status"] == "UP") else "⚠️"
-        ap_summaries.append(f"{icon} {ap['name']} (로컬:{res['local']['status']}/외부:{ext_desc})")
+            ext_list = res.get("externals", [])
+            if ext_list:
+                ext_parts = []
+                for e in ext_list:
+                    short_d = "1566.com" if "1566.com" in e["domain"] else "pe.kr"
+                    ext_parts.append(f"{short_d}:{e['status']}")
+                ext_desc = "/".join(ext_parts)
+            else:
+                ext_desc = res["external"]["status"]
+                
+            icon = "⚠️"
+            ap_summaries.append(f"{icon} {ap['name']} (로컬:{res['local']['status']}/외부:{ext_desc})")
         
     # DB status summary
     db_summaries = []
     for db, res in zip(DB_TARGETS, db_results):
         icon = "✅" if res["status"] == "UP" else "❌"
-        db_summaries.append(f"{icon} {db['name']}: {res['status']}")
+        status_str = "정상" if res["status"] == "UP" else res["status"]
+        db_summaries.append(f"{icon} {db['name']}: {status_str}")
 
     healing_text = ""
     title = "📡 [시스템 헬스체크 보고]"
