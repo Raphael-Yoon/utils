@@ -575,6 +575,17 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      cursor: pointer;
+      user-select: text;
+      transition: all 0.2s ease;
+    }
+    .calc-display:hover {
+      border-color: #38bdf8;
+    }
+    .calc-display.calc-copy-flash {
+      background: #1e293b !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 0 2px #38bdf8, 0 0 12px rgba(56, 189, 248, 0.5);
     }
     [data-theme="dark"] .calc-display {
       background: #090d16;
@@ -1428,24 +1439,24 @@
         <div class="memo-resize-handle-top" id="omrMemoResizeHandle" title="마우스로 위/아래로 드래그하여 메모장 높이를 조절하세요 (위로 당기면 확장)">
           <div class="memo-resize-bar"></div>
         </div>
-        <div class="calc-header" onclick="toggleMemoPad(event)" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; margin-bottom:4px;">
+        <div class="calc-header" onclick="toggleMemoPad(event)" title="연습용 메모장 열기/닫기 (단축키: Alt+M)" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; margin-bottom:4px;">
           <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">📝 연습용 메모장 <span id="memoArrow" style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">▴</span></span>
           <button type="button" class="btn" style="background:#fee2e2; border:1px solid #fca5a5; color:#dc2626; font-size:0.75rem; padding:2px 8px; border-radius:4px; font-weight:600;" onclick="clearOmrMemo(event)">🗑️ 메모 지우기</button>
         </div>
         <div class="calc-body hidden" id="memoBody">
-          <textarea id="omrMemoTextArea" style="width:100%; height:120px; min-height:60px; max-height:500px; border:1px solid var(--border-color); border-radius:6px; padding:8px; font-size:0.88rem; font-family:inherit; background:var(--bg-main); color:var(--text-main); outline:none; resize:none; box-sizing:border-box;" placeholder="시험 진행 중 필기 및 계산 메모를 작성하세요... (메모장을 접으면 내용이 모두 지워집니다)"></textarea>
+          <textarea id="omrMemoTextArea" style="width:100%; height:120px; min-height:60px; max-height:500px; border:1px solid var(--border-color); border-radius:6px; padding:8px; font-size:0.88rem; font-family:inherit; background:var(--bg-main); color:var(--text-main); outline:none; resize:none; box-sizing:border-box;" placeholder="시험 진행 중 필기 및 계산 메모를 작성하세요... (단축키: Alt+M | 메모장을 접으면 내용이 모두 지워집니다)"></textarea>
         </div>
       </div>
 
       <!-- 연습용 계산기 영역 -->
       <div class="omr-calculator" id="omrCalcContainer">
-        <div class="calc-header" onclick="toggleCalculator(event)" style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:4px; cursor:pointer; user-select:none;">
+        <div class="calc-header" onclick="toggleCalculator(event)" title="연습용 계산기 열기/닫기 (단축키: Alt+C)" style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:4px; cursor:pointer; user-select:none;">
           <span>🧮 연습용 계산기 <span id="calcArrow" style="font-size:0.75rem; color:var(--text-muted); margin-left:4px;">▴</span></span>
         </div>
         <div class="calc-body hidden" id="calcBody">
-          <div class="calc-display" id="calcDisplay" tabindex="0">0</div>
+          <div class="calc-display" id="calcDisplay" tabindex="0" onclick="copyCalculatorValue()" title="클릭 또는 Ctrl+C로 값 복사">0</div>
           <div class="calc-buttons">
-            <button class="calc-btn clear" onclick="clearCalculator()">C</button>
+            <button class="calc-btn clear" onclick="clearCalculator()" title="전체 지우기 (단축키: Esc / C / Delete)">C</button>
             <button class="calc-btn op" onclick="appendCalcOp('/')">÷</button>
             <button class="calc-btn op" onclick="appendCalcOp('*')">×</button>
             <button class="calc-btn op" onclick="deleteCalcChar()">⌫</button>
@@ -1463,10 +1474,11 @@
             <button class="calc-btn" onclick="appendCalcNum('1')">1</button>
             <button class="calc-btn" onclick="appendCalcNum('2')">2</button>
             <button class="calc-btn" onclick="appendCalcNum('3')">3</button>
-            <button class="calc-btn op" style="grid-row: span 2;" onclick="calculateResult()">=</button>
+            <button class="calc-btn op" title="역수 (1/x)" onclick="calcReciprocal()">1/x</button>
 
             <button class="calc-btn" style="grid-column: span 2;" onclick="appendCalcNum('0')">0</button>
             <button class="calc-btn" onclick="appendCalcNum('.')">.</button>
+            <button class="calc-btn op" onclick="calculateResult()">=</button>
           </div>
         </div>
       </div>
@@ -1683,6 +1695,17 @@ window.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
+  // 계산기 영역 클릭 시 디스플레이 포커스 유지 (버튼 외 영역 클릭 시에도 단축키 및 키패드 입력 보장)
+  const calcContainer = document.getElementById('omrCalcContainer');
+  if (calcContainer) {
+    calcContainer.addEventListener('mousedown', (e) => {
+      const disp = document.getElementById('calcDisplay');
+      if (disp && e.target !== disp && e.target.tagName !== 'BUTTON') {
+        setTimeout(() => disp.focus(), 0);
+      }
+    });
+  }
+
   try {
     const [resExams, resLocks] = await Promise.all([
       fetch('/api/exams'),
@@ -1882,7 +1905,7 @@ function isCalculatorFocused() {
   return !!(calcContainer && activeEl && calcContainer.contains(activeEl));
 }
 
-// 키보드 단축키 (T: 다크모드 토글, Enter: 다음 문제, 1~4: 답안 선택, 방향키: 문제 이동, C: 계산기)
+// 키보드 단축키 (T: 다크모드, O: OMR패널, Alt+C: 계산기, Alt+M: 메모장, Enter: 다음 문제, 1~4: 답안 선택)
 window.addEventListener('keydown', (e) => {
   // 🌸 최종 답안 제출 확인 모달 열려있을 때: Enter 키로 최종 제출, Esc로 계속 풀기(닫기)
   const submitConfirmModal = document.getElementById('submitConfirmModal');
@@ -1967,6 +1990,24 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
+  // [전역 조합 단축키: Alt+C(계산기), Alt+M(메모장)] - 텍스트 입력 상태(메모장 내부 등)에서도 신속한 토글 보장
+  if (e.altKey && !e.ctrlKey && !e.metaKey) {
+    if (e.key.toLowerCase() === 'c' || e.code === 'KeyC') {
+      if (isOmrVisible) {
+        e.preventDefault();
+        toggleCalculator();
+      }
+      return;
+    }
+    if (e.key.toLowerCase() === 'm' || e.code === 'KeyM') {
+      if (isOmrVisible) {
+        e.preventDefault();
+        toggleMemoPad();
+      }
+      return;
+    }
+  }
+
   // 메모장(textarea), 검색창 등 실제 텍스트 입력 폼에 커서가 위치해 있을 때만 단축키를 차단하고 폼 입력을 보장 (라디오/체크박스 클릭 후 엔터/단축키 정상 동작)
   const activeEl = document.activeElement;
   const isTextInputActive = activeEl && (
@@ -1991,7 +2032,6 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-
   const examLayout = document.getElementById('examLayout');
   if (!examLayout || examLayout.style.display === 'none' || !currentExamData) return;
 
@@ -1999,24 +2039,6 @@ window.addEventListener('keydown', (e) => {
   if (key.toLowerCase() === 'o' && !e.ctrlKey && !e.metaKey && !e.altKey) {
     e.preventDefault();
     toggleOmrPane();
-    return;
-  }
-
-  // 'c' 또는 'C' 키 입력 시 계산기 열기/닫기 토글 (단, OMR 패널이 노출되어 있을 때만 동작)
-  if (key.toLowerCase() === 'c' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-    if (isOmrVisible) {
-      e.preventDefault();
-      toggleCalculator();
-    }
-    return;
-  }
-
-  // 'm' 또는 'M' 키 입력 시 연습용 메모장 열기/닫기 토글 (단, OMR 패널이 노출되어 있을 때만 동작)
-  if (key.toLowerCase() === 'm' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-    if (isOmrVisible) {
-      e.preventDefault();
-      toggleMemoPad();
-    }
     return;
   }
 
@@ -2032,34 +2054,68 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // [계산기 전용 키보드 입력 라우팅]: 계산기가 열려있고, 실제 포커스가 계산기 영역 내부일 때만 계산기로 라우팅
-  if (isCalculatorFocused()) {
-    if (key === 'Escape') {
+  // [계산기 Ctrl+C 복사]: 계산기 포커스 상태이거나, 계산기가 열려있고 본문 텍스트 선택이 없는 상태에서 Ctrl+C 입력 시 계산기 데이터 복사
+  if ((e.ctrlKey || e.metaKey) && (key.toLowerCase() === 'c' || e.code === 'KeyC')) {
+    const hasSelection = !!(window.getSelection && window.getSelection().toString().trim());
+    if (isCalculatorFocused() || (isCalcOpen && isOmrVisible && !hasSelection)) {
       e.preventDefault();
-      toggleCalculator(); // Esc 누르면 계산기 닫기
+      copyCalculatorValue();
       return;
     }
-    if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'].includes(key)) {
+  }
+
+  // [계산기 전용 키보드 입력 라우팅]: 계산기가 열려있을 때 숫자키패드(Numpad) 입력 또는 계산기 영역 내부 포커스 상태일 때 라우팅
+  const isNumpad = !!(e.code && (e.code.startsWith('Numpad') || e.code === 'NumpadSubtract'));
+  const isCalcActive = isCalculatorFocused() || (isCalcOpen && isOmrVisible && isNumpad);
+
+  if (isCalcActive) {
+    // 키패드 및 다양한 브라우저/OS 환경(Linux X11, IME, 특수문자 등)에 따른 연산자/키 표준화
+    let normKey = key;
+    if (e.code === 'NumpadSubtract' || key === 'Subtract' || key === '-' || key === '−' || key === '–' || key === '—') {
+      normKey = '-';
+    } else if (e.code === 'NumpadAdd' || key === 'Add' || key === '+') {
+      normKey = '+';
+    } else if (e.code === 'NumpadMultiply' || key === 'Multiply' || key === '*') {
+      normKey = '*';
+    } else if (e.code === 'NumpadDivide' || key === 'Divide' || key === '/') {
+      normKey = '/';
+    } else if (e.code === 'NumpadDecimal' || key === 'Decimal' || key === '.') {
+      normKey = '.';
+    } else if (e.code && /^Numpad[0-9]$/.test(e.code)) {
+      normKey = e.code.replace('Numpad', '');
+    }
+
+    if (normKey === 'Escape') {
       e.preventDefault();
-      appendCalcNum(key);
+      clearCalculator(); // Esc 누르면 계산기 입력값 Clear(초기화)
       return;
     }
-    if (['+', '-', '*', '/'].includes(key)) {
+    if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'].includes(normKey)) {
       e.preventDefault();
-      appendCalcOp(key);
+      appendCalcNum(normKey);
       return;
     }
-    if (key === 'Backspace') {
+    if (['+', '-', '*', '/'].includes(normKey)) {
+      e.preventDefault();
+      appendCalcOp(normKey);
+      return;
+    }
+    if (normKey === 'Backspace') {
       e.preventDefault();
       deleteCalcChar();
       return;
     }
-    if (key === '=' || key === 'Enter') {
+    if (normKey === '=' || normKey === 'Enter' || e.code === 'NumpadEnter') {
       e.preventDefault();
       calculateResult();
       return;
     }
-    if (key.toLowerCase() === 'delete') {
+    if (normKey.toLowerCase() === 'r') {
+      e.preventDefault();
+      calcReciprocal();
+      return;
+    }
+    if (normKey.toLowerCase() === 'delete' || normKey.toLowerCase() === 'c') {
       e.preventDefault();
       clearCalculator();
       return;
@@ -4042,12 +4098,26 @@ function appendCalcNum(num) {
 }
 
 function appendCalcOp(op) {
-  if (!calcExpr) {
-    if (op === '-') calcExpr = '-';
+  if (!calcExpr || calcExpr === '0') {
+    if (op === '-') {
+      calcExpr = '-';
+      updateCalcDisplay();
+      return;
+    }
+    if (calcExpr === '0') {
+      calcExpr = '0' + op;
+      updateCalcDisplay();
+      return;
+    }
     return;
   }
   const lastChar = calcExpr.slice(-1);
   if (['+', '-', '*', '/'].includes(lastChar)) {
+    if (calcExpr === '-' && op !== '-') {
+      calcExpr = '';
+      updateCalcDisplay();
+      return;
+    }
     calcExpr = calcExpr.slice(0, -1) + op;
   } else {
     calcExpr += op;
@@ -4066,12 +4136,16 @@ function clearCalculator() {
 }
 
 function calculateResult() {
-  if (!calcExpr) return;
+  if (!calcExpr || calcExpr === '-') return;
   try {
-    // 안전한 간단 연산 (숫자, 사칙연산자만 허용)
-    const sanitized = calcExpr.replace(/[^0-9+\-*/.]/g, '');
+    // 안전한 간단 연산 (끝에 남은 연산자 정리 후 계산)
+    let sanitized = calcExpr.replace(/[^0-9+\-*/.]/g, '');
+    sanitized = sanitized.replace(/[+\-*/]+$/, '');
     if (!sanitized) return;
     const res = Function(`'use strict'; return (${sanitized})`)();
+    if (res === undefined || isNaN(res) || !isFinite(res)) {
+      throw new Error('Invalid calculation');
+    }
     calcExpr = String(Math.round(res * 1e8) / 1e8);
     updateCalcDisplay();
   } catch (e) {
@@ -4079,6 +4153,111 @@ function calculateResult() {
     if (disp) disp.innerText = 'Error';
     calcExpr = '';
   }
+}
+
+// 역수(1/x) 연산 함수
+function calcReciprocal() {
+  if (!calcExpr) return;
+
+  // 수식 전체가 음수 하나인 경우 (예: '-2', '-0.5')
+  if (/^-[0-9]*\.?[0-9]+$/.test(calcExpr)) {
+    const val = parseFloat(calcExpr);
+    if (isNaN(val) || val === 0) {
+      const disp = document.getElementById('calcDisplay');
+      if (disp) disp.innerText = 'Error';
+      calcExpr = '';
+      return;
+    }
+    const recip = Math.round((1 / val) * 1e8) / 1e8;
+    calcExpr = String(recip);
+    updateCalcDisplay();
+    return;
+  }
+
+  // 수식 끝부분의 숫자(정수 또는 소수) 추출
+  const match = calcExpr.match(/^(.*?)([0-9]*\.?[0-9]+)$/);
+  if (!match) return;
+
+  const prefix = match[1];
+  const numStr = match[2];
+  const val = parseFloat(numStr);
+
+  if (isNaN(val) || val === 0) {
+    const disp = document.getElementById('calcDisplay');
+    if (disp) disp.innerText = 'Error';
+    calcExpr = '';
+    return;
+  }
+
+  const recip = Math.round((1 / val) * 1e8) / 1e8;
+  const recipStr = String(recip);
+
+  calcExpr = prefix + recipStr;
+  updateCalcDisplay();
+}
+
+// 계산기 데이터 클립보드 복사 (Ctrl+C 및 디스플레이 클릭)
+function copyCalculatorValue() {
+  const disp = document.getElementById('calcDisplay');
+  if (!disp) return;
+
+  // 만약 미완료 연산자 수식이 있다면 먼저 계산 완료
+  if (calcExpr && /[+\-*/]/.test(calcExpr)) {
+    try {
+      calculateResult();
+    } catch(err) {}
+  }
+
+  const val = disp.innerText.trim();
+  if (!val || val === 'Error') {
+    showToast('⚠️ 복사할 계산기 데이터가 없습니다.', 1500);
+    return;
+  }
+
+  const textToCopy = val;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      showToast(`📋 계산기 값이 복사되었습니다: <b>${escapeHtml(textToCopy)}</b>`, 1800);
+      flashCalcDisplay();
+    }).catch(() => {
+      fallbackCopyText(textToCopy);
+    });
+  } else {
+    fallbackCopyText(textToCopy);
+  }
+}
+
+function fallbackCopyText(text) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.style.top = '-9999px';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    const success = document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (success) {
+      showToast(`📋 계산기 값이 복사되었습니다: <b>${escapeHtml(text)}</b>`, 1800);
+      flashCalcDisplay();
+    } else {
+      showToast('⚠️ 클립보드 복사에 실패했습니다.', 1500);
+    }
+  } catch (err) {
+    showToast('⚠️ 클립보드 복사에 실패했습니다.', 1500);
+  }
+}
+
+function flashCalcDisplay() {
+  const disp = document.getElementById('calcDisplay');
+  if (!disp) return;
+  disp.classList.remove('calc-copy-flash');
+  void disp.offsetWidth; // reflow
+  disp.classList.add('calc-copy-flash');
+  setTimeout(() => disp.classList.remove('calc-copy-flash'), 350);
 }
 
 /* 연습장 (메모장) 플로팅 위젯 관련 스크립트 */
