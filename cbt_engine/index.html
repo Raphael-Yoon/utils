@@ -2569,9 +2569,11 @@ function renderQuestions() {
       if (isAllCorrect) {
         statusTag = `<span class="q-result-tag correct">🎉 정답 (공식 전체 정답 처리 문항)</span>`;
       } else if (isCorrect) {
-        statusTag = `<span class="q-result-tag correct">⭕ 정답</span>`;
+        const multiNote = Array.isArray(q.answer) ? ' (복수정답 인정)' : '';
+        statusTag = `<span class="q-result-tag correct">⭕ 정답${multiNote}</span>`;
       } else {
-        statusTag = `<span class="q-result-tag wrong">❌ 오답 (내 선택: ${uAns ? uAns + '번' : '미응답'} / 정답: ${q.answer}번)</span>`;
+        const correctStr = Array.isArray(q.answer) ? `${q.answer.join(', ')}번 (복수정답)` : `${q.answer}번`;
+        statusTag = `<span class="q-result-tag wrong">❌ 오답 (내 선택: ${uAns ? uAns + '번' : '미응답'} / 정답: ${correctStr})</span>`;
       }
     }
 

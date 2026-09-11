@@ -49,7 +49,10 @@
         "③ (함수적 종속성) (A,B)→C, A→C / (분해) R1(A,C), R2(A,B)",
         "④ (함수적 종속성) (A,B)→C, C→D, C→A / (분해) R1(A,B), R2(A,C,D)"
       ],
-      "answer": 3,
+      "answer": [
+        3,
+        4
+      ],
       "explanation": "정답: ③ 또는 ④ (복수정답)\n\n[해설]\n무손실 조인분해(lossless-join decomposition)는 분해된 릴레이션들을 공통 속성으로 다시 조인했을 때 원래 정보가 손실되지 않아야 함을 의미합니다. R(A,B,C,D)을 R1, R2로 분해한 후 조인으로 복구 가능한지 폐포를 이용해 판별한 결과, ③번(R1(A,C), R2(A,B))과 ④번(R1(A,B), R2(A,C,D))이 모두 공통 속성만으로는 원래 릴레이션의 정보를 복원할 수 없는 손실 분해로 판별되어 복수 정답 처리되었습니다.",
       "subject": "데이터베이스",
       "origin_year": 2025,
@@ -81,7 +84,10 @@
         "③ 3",
         "④ 4"
       ],
-      "answer": 2,
+      "answer": [
+        2,
+        3
+      ],
       "explanation": "정답: ② 또는 ③ (복수정답)\n\n[해설]\n(EmpID, ProjID)를 후보키로 가정하고 2NF로 분해하면(EmpID→EmpName의 부분함수종속 제거) R1(EmpID,ProjID,DeptID,DeptName), R2(EmpID,EmpName)의 2개 릴레이션으로 분해됩니다. 다만 R1에 남아있는 DeptID→DeptName의 이행함수종속까지 추가로 분해(3NF)하면 R1(EmpID,ProjID,DeptID), R2(EmpID,EmpName), R3(DeptID,DeptName)의 3개가 됩니다. 문제의 '2NF를 만족하도록' 정규화 범위 해석에 따라 2개 또는 3개 모두 될 수 있어 복수 정답으로 처리되었습니다.",
       "subject": "데이터베이스",
       "origin_year": 2025,
