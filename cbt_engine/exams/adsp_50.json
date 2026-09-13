@@ -442,7 +442,8 @@
       ],
       "answer": 3,
       "explanation": "정답: ③\n\n[해설]\n• ACF(자기상관함수): 시차가 증가함에 따라 지수적으로 서서히 감소(점진적 감소, Tails off)하고 있으므로 **AR 모형**입니다.\n• PACF(부분자기상관함수): 시차(Lag) 1, 2, 3까지 유의성 점선을 넘고, 시차 4부터 점선 안쪽으로 뚝 끊겨 절단(Cut off after lag 3)됩니다.\n따라서 차수 p=3인 AR(3) 모형이며, ARMA(p, q) 표기로는 **ARMA(3, 0)**입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 박스-젠킨스 모형 식별 기준표:\n  - AR(p): ACF 점진적 감소, PACF 시차 p 이후 절단\n  - MA(q): ACF 시차 q 이후 절단, PACF 점진적 감소\n  - ARMA(p, q): ACF와 PACF 둘 다 점진적 감소.",
-      "image": "/exams/images/adsp_50_q32_acf_pacf.png"
+      "image": "/exams/images/adsp_50_q32_acf_pacf.png",
+      "image_url": "/exams/images/adsp_50_q32_acf_pacf.png"
     },
     {
       "id": 33,
@@ -625,7 +626,8 @@
       ],
       "answer": 4,
       "explanation": "정답: ④\n\n[해설]\n산점도와 상관계수(r = 0.8016)는 TV 광고비와 매출액이 서로 양의 선형적 관련성(경향)을 가진다는 **상관관계**만을 보여줍니다.\n\"TV 광고비를 늘리면 매출이 증가한다\"는 **원인과 결과(인과관계)**를 뜻하므로, 상관분석 결과만으로는 인과관계를 단정할 수 없습니다. (상관관계는 인과관계를 의미하지 않는다!)\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 아이스크림-익사 사고의 오류: 여름철 아이스크림 판매량과 익사 사고율은 r=0.8로 매우 높지만, 아이스크림이 익사 사고의 원인이 아닙니다.\n• 제3의 잠재변수(예: 회사 규모, 시장 크기 등)가 공통 원인일 수 있으므로 인과관계를 성급히 결론내리면 안 됩니다.",
-      "image": "/exams/images/adsp_50_q46_scatter.png"
+      "image": "/exams/images/adsp_50_q46_scatter.png",
+      "image_url": "/exams/images/adsp_50_q46_scatter.png"
     },
     {
       "id": 47,

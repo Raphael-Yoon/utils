@@ -377,7 +377,8 @@
       ],
       "answer": 2,
       "explanation": "",
-      "image": "/exams/images/adsp_47_q27.png"
+      "image": "/exams/images/adsp_47_q27.png",
+      "image_url": "/exams/images/adsp_47_q27.png"
     },
     {
       "id": 28,
@@ -404,7 +405,8 @@
       ],
       "answer": 1,
       "explanation": "",
-      "image": "/exams/images/adsp_47_q29.png"
+      "image": "/exams/images/adsp_47_q29.png",
+      "image_url": "/exams/images/adsp_47_q29.png"
     },
     {
       "id": 30,
@@ -626,7 +628,8 @@
       ],
       "answer": 2,
       "explanation": "",
-      "image": "/exams/images/adsp_47_q46.png"
+      "image": "/exams/images/adsp_47_q46.png",
+      "image_url": "/exams/images/adsp_47_q46.png"
     },
     {
       "id": 47,

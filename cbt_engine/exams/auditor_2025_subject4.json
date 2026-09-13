@@ -282,7 +282,7 @@
     {
       "id": 17,
       "subject_id": 1,
-      "question": "데이터 링크 계층에서 사용하는 오류 검출 방법으로 CRC(Cyclic Redundancy Check)를 사용할 수 있다. 다음 그림에서와 같은 CRC 하드웨어를 시프트(shift) 레지스터와 배타적 OR(Exclusive OR)를 사용하여 나타낼 때, 이 하드웨어 구성을 생성다항식으로 나타내었을 경우 가장 적절한 것은?\n\n(4개의 시프트 레지스터가 직렬 연결되어 있고, 2번째와 3번째 레지스터 사이에 XOR 게이트가 있으며, 마지막 레지스터 출력이 데이터 입력과 XOR되어 피드백되는 구조)",
+      "question": "데이터 링크 계층에서 사용하는 오류 검출 방법으로 CRC(Cyclic Redundancy Check)를 사용할 수 있다. 다음 그림에서와 같은 CRC 하드웨어를 시프트(shift) 레지스터와 배타적 OR(Exclusive OR)를 사용하여 나타낼 때, 이 하드웨어 구성을 생성다항식으로 나타내었을 경우 가장 적절한 것은?",
       "options": [
         "① x⁴ + x² + 1",
         "② x² + 1",
@@ -293,7 +293,9 @@
       "explanation": "정답: ①\n\n[해설]\nCRC 하드웨어는 시프트 레지스터의 각 단과 XOR 게이트의 위치를 생성다항식의 각 차수 항에 대응시켜 구성합니다. 그림의 4단 시프트 레지스터 구성에서 XOR이 위치한 지점을 다항식으로 표현하면 x⁴ + x² + 1이 되며, 정답은 ①번입니다.",
       "subject": "시스템구조",
       "origin_year": 2025,
-      "origin_id": 92
+      "origin_id": 92,
+      "image_url": "/exams/images/auditor_2025_q92.png",
+      "image": "/exams/images/auditor_2025_q92.png"
     },
     {
       "id": 18,

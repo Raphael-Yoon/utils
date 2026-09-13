@@ -403,7 +403,8 @@
       ],
       "answer": 3,
       "explanation": "정답: ③\n\n[해설]\n제공된 잔차 산점도는 적합값에 따라 잔차가 뚜렷한 U자형 포물선(2차 곡선) 패턴을 형성하고 있습니다.\n이는 선형성(Linearity) 가정이 위배되었음을 나타내며, 독립변수와 종속변수 간에 비선형 관계가 존재하므로 2차 다항회귀(Polynomial)나 비선형 모델(Non-linear Model)을 적용해야 합니다.\n• 0 주위 무작위 분포: 선형성, 등분산성, 독립성 충족 (이상적)\n• 곡선(U자) 패턴: 비선형성 (다항/비선형 모델 적용)\n• 부채꼴(깔때기) 패턴: 이분산성 (로그 변환/가중회귀 적용)",
-      "image": "/exams/images/adsp_48_q29.png"
+      "image": "/exams/images/adsp_48_q29.png",
+      "image_url": "/exams/images/adsp_48_q29.png"
     },
     {
       "id": 30,

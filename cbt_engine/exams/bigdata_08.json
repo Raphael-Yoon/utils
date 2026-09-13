@@ -355,7 +355,8 @@
         "④ 최빈값 < 평균값 < 중앙값"
       ],
       "answer": 3,
-      "explanation": "오른쪽 꼬리가 긴 분포(Positive Skew)에서는 데이터의 높은 값들이 평균에 더 큰 영향을 미치기 때문에, 평균이 중앙값보다 크고, 최빈값(가장 빈도가 높은 값)은 가장 작게 위치하는 경향이 있다.\n따라서, 최빈값 < 중앙값 < 평균값의 형태이다.\n\n(참고: Positive Skew에서는 Mode < Median < Mean, Symmetric Distribution에서는 Mean = Median = Mode, Negative Skew에서는 Mean < Median < Mode 순서로 나타난다.)"
+      "explanation": "오른쪽 꼬리가 긴 분포(Positive Skew)에서는 데이터의 높은 값들이 평균에 더 큰 영향을 미치기 때문에, 평균이 중앙값보다 크고, 최빈값(가장 빈도가 높은 값)은 가장 작게 위치하는 경향이 있다.\n따라서, 최빈값 < 중앙값 < 평균값의 형태이다.\n\n(참고: Positive Skew에서는 Mode < Median < Mean, Symmetric Distribution에서는 Mean = Median = Mode, Negative Skew에서는 Mean < Median < Mode 순서로 나타난다.)",
+      "image_url": "/exams/images/bigdata_8_q25.png"
     },
     {
       "id": 26,

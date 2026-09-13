@@ -1036,7 +1036,7 @@
     {
       "id": 78,
       "subject_id": 4,
-      "question": "다음 ROC 곡선에 대한 설명으로 적절하지 않은 것은?\n> [ROC Curve 그래프: X축 1-Specificity(FPR), Y축 Sensitivity(TPR)에 그려진 곡선(ROC Curve)과 대각선 형태의 baseline이 함께 표시되어 있으며, 곡선은 좌상단에 가깝게 볼록한 형태를 보인다.]",
+      "question": "다음 ROC 곡선에 대한 설명으로 적절하지 않은 것은?",
       "options": [
         "① 임계값 변화에 따른 민감도와 특이도를 기반으로 표현한 그래프이다.",
         "② AUC는 ROC 곡선의 아래 면적으로, 면적이 작을수록 분류 성능이 높다.",
@@ -1044,7 +1044,8 @@
         "④ ROC가 베이스라인 밑으로 그려지면 성능이 떨어지는 것으로 해석한다."
       ],
       "answer": 2,
-      "explanation": "AUC는 ROC 곡선의 아래 면적으로, 면적이 작을수록 분류 성능이 낮다."
+      "explanation": "AUC는 ROC 곡선의 아래 면적으로, 면적이 작을수록 분류 성능이 낮다.",
+      "image_url": "/exams/images/bigdata_3_q78.png"
     },
     {
       "id": 79,

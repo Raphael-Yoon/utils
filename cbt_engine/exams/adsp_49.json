@@ -364,7 +364,8 @@
       ],
       "answer": 4,
       "explanation": "정답: ④\n\n[해설]\nADVERTISING 변수의 이상치 여부를 사분위범위(IQR)로 검증하면 다음과 같습니다:\n• $Q_1 = 5.0$, $Q_3 = 15.0$ ➔ $\\text{IQR} = 15.0 - 5.0 = 10.0$\n• 이상치 상한 기준: $Q_3 + 1.5 \\times \\text{IQR} = 15.0 + (1.5 \\times 10.0) = \\mathbf{30.0}$\n• 표에서 ADVERTISING의 최댓값은 **29.0**으로, 상한선인 30.0을 넘지 않습니다.\n따라서 \"ADVERTISING 변수에 이상값이 존재한다\"고 단정한 ④번이 틀린 설명입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 이상치 판정 펜스(Fence) 공식:\n  - 하한 펜스: $Q_1 - 1.5 \\times \\text{IQR}$ 미만이면 이상치\n  - 상한 펜스: $Q_3 + 1.5 \\times \\text{IQR}$ 초과면 이상치\n• 표의 최댓값이 상한 펜스보다 작고 최솟값이 하한 펜스보다 크면 이상치는 없습니다.",
-      "image": "/exams/images/adsp_49_q26.png"
+      "image": "/exams/images/adsp_49_q26.png",
+      "image_url": "/exams/images/adsp_49_q26.png"
     },
     {
       "id": 27,
@@ -560,7 +561,8 @@
       ],
       "answer": 4,
       "explanation": "정답: ④\n\n[해설]\n제1사분위수($Q_1$)가 0.0이라는 것은 수면시간 증가량이 **'0.0시간 이하($\\le 0$)'**인 사람이 대략 하위 25%(20명 중 5명 수준)라는 의미입니다.\n여기서 수면시간 증가량이 딱 `0.0`인 사람은 수면시간이 감소한 것이 아니라 **'변화가 없는 사람'**입니다.\n또한 상자그림은 요약 통계량이므로 개별 원시 데이터의 구체적인 명수를 확정할 수 없어, **\"정확히 5명의 수면시간이 감소했다\"**고 단정하는 것은 통계적 오류입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 상자그림 해석 팁:\n  - 최솟값 -1.0 ➔ 감소자(음수) 존재 참.\n  - 중앙값 1.2 ➔ 상위 50%는 1.2시간 이상 증가 참.\n  - 상자그림 요약치만으로는 동점자(0.0)를 구분할 수 없어 정확한 인원수를 단정할 수 없음.",
-      "image": "/exams/images/adsp_49_q41.png"
+      "image": "/exams/images/adsp_49_q41.png",
+      "image_url": "/exams/images/adsp_49_q41.png"
     },
     {
       "id": 42,
@@ -600,7 +602,8 @@
       ],
       "answer": 4,
       "explanation": "정답: ④\n\n[해설]\n이산확률변수 $X$의 기댓값(평균)은 $E(X) = \\sum x \\cdot P(X=x)$로 계산합니다:\n$$E(X) = \\left(1 \\times \\frac{1}{6}\right) + \\left(2 \\times \\frac{2}{6}\right) + \\left(3 \\times \\frac{3}{6}\right) = \\frac{1}{6} + \\frac{4}{6} + \\frac{9}{6} = \\mathbf{\\frac{14}{6}} = \\frac{7}{3}$$\n보기 ④번에서는 기댓값을 **13/6**이라고 하였으므로 틀린 설명입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 보기 점검:\n  - ① 확률 총합: $1/6 + 2/6 + 3/6 = 6/6 = 1$ (참)\n  - ② 최대 확률: $P(X=3) = 3/6 = 0.5$ 로 최대 (참)\n  - ③ $P(X \\le 2) = 1/6 + 2/6 = 3/6 = 1/2$ (참)\n  - ④ 기댓값 $E(X) = 14/6 = 7/3 \\ne 13/6$ (거짓, 정답).",
-      "image": "/exams/images/adsp_49_q44.png"
+      "image": "/exams/images/adsp_49_q44.png",
+      "image_url": "/exams/images/adsp_49_q44.png"
     },
     {
       "id": 45,
@@ -653,7 +656,8 @@
       ],
       "answer": 1,
       "explanation": "정답: ①\n\n[해설]\n주어진 혼동행렬: $TP = 3$, $FN = 8$, $FP = 5$, $TN = 10$\n• 정밀도(Precision) = $\\frac{TP}{TP + FP} = \\frac{3}{3 + 5} = \\frac{3}{8}$\n• 재현율(Recall) = $\\frac{TP}{TP + FN} = \\frac{3}{3 + 8} = \\frac{3}{11}$\n• $F_1\\text{-score}$는 정밀도와 재현율의 조화평균입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 🚀 10초 컷 직접 대입 공식:\n  $$F_1 = \\frac{2 \\cdot TP}{2 \\cdot TP + FP + FN} = \\frac{2 \\times 3}{(2 \\times 3) + 5 + 8} = \\frac{6}{6 + 13} = \\mathbf{\\frac{6}{19}}$$\n• 보기 함정: ③번 3/8은 정밀도, ④번 3/11은 재현율.",
-      "image": "/exams/images/adsp_49_q48.png"
+      "image": "/exams/images/adsp_49_q48.png",
+      "image_url": "/exams/images/adsp_49_q48.png"
     },
     {
       "id": 49,
@@ -667,7 +671,8 @@
       ],
       "answer": 3,
       "explanation": "정답: ③\n\n[해설]\n전체 거래 10건, 기저귀 6건($A$), 맥주 5건($B$), 동시구매 4건($A \\cap B$)에서:\n• 지지도: $P(A \\cap B) = \\frac{4}{10} = \\mathbf{0.4}$\n• 신뢰도: $P(B \\mid A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{4}{6} = \\frac{2}{3} \\approx \\mathbf{0.67 \\ (66.7\\%)}$\n• 향상도: $\\frac{P(A \\cap B)}{P(A) \\cdot P(B)} = \\frac{0.4}{0.6 \\times 0.5} = \\frac{0.4}{0.3} = \\frac{4}{3} \\approx \\mathbf{1.33}$\n보기 ③번에서는 신뢰도를 **약 0.34**라고 하였으므로 틀린 설명입니다. (실제 신뢰도는 0.67)\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 향상도 정수 계산 팁: $\\frac{n_{AB} \\times N}{n_A \\times n_B} = \\frac{4 \\times 10}{6 \\times 5} = \\frac{40}{30} = \\frac{4}{3} \\approx 1.33$\n• $\\text{Lift} > 1$ 이므로 두 품목은 함께 구매되는 양의 상관관계를 가집니다.",
-      "image": "/exams/images/adsp_49_q49.png"
+      "image": "/exams/images/adsp_49_q49.png",
+      "image_url": "/exams/images/adsp_49_q49.png"
     },
     {
       "id": 50,
