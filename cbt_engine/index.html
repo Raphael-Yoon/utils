@@ -498,6 +498,15 @@
       color: var(--primary);
     }
     .option-item input { margin-right: 12px; accent-color: var(--primary); width: 18px; height: 18px; flex-shrink: 0; }
+    .option-item u, .q-title u, .q-explanation-box u {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 700;
+    }
+    .option-item i, .q-title i, .q-explanation-box i {
+      font-style: italic;
+      font-family: serif, 'Pretendard', sans-serif;
+    }
 
     .q-image-container img {
       transition: transform 0.2s ease, filter 0.2s ease;
@@ -2613,7 +2622,7 @@ function renderQuestions() {
       optionsHtml += `
         <label class="${optClass}" id="optLabel_${q.id}_${optNum}" onclick="selectOption(${q.id}, ${optNum})">
           <input type="radio" id="optRadio_${q.id}_${optNum}" name="q_${q.id}" value="${optNum}" ${uAns === optNum ? 'checked' : ''} ${isReviewMode ? 'disabled' : ''}>
-          ${escapeHtml(displayOpt)}
+          ${formatRichText(displayOpt)}
         </label>
       `;
     });
@@ -2621,7 +2630,7 @@ function renderQuestions() {
     // 보기 텍스트가 짧은 경우(4지선다 기준, 각 보기 길이 24자 이하 및 줄바꿈 부재) 2x2 그리드 레이아웃 적용
     const isShortOptions = q.options && q.options.length === 4 && q.options.every(opt => {
       if (typeof opt !== 'string') return false;
-      const cleanOpt = opt.trim();
+      const cleanOpt = opt.replace(/<[^>]+>/g, '').trim();
       return cleanOpt.length <= 24 && !cleanOpt.includes('\n') && !cleanOpt.includes('<br');
     });
     const optionsContainerClass = isShortOptions ? 'options-list grid-2x2' : 'options-list';
@@ -2667,7 +2676,7 @@ function renderQuestions() {
         <div class="q-explanation-title" style="font-weight: bold; margin-bottom: 6px; font-size: 0.98rem; display: flex; align-items: center; gap: 6px;">
           💡 <span>문제 상세 해설 및 핀포인트 분석</span>
         </div>
-        <div style="white-space: pre-wrap; word-break: break-word;">${escapeHtml(q.explanation)}</div>
+        <div style="white-space: pre-wrap; word-break: break-word;">${formatRichText(q.explanation)}</div>
       </div>
     ` : '';
 
@@ -2676,7 +2685,7 @@ function renderQuestions() {
         <div class="question-subject-badge">📚 ${escapeHtml(subjectName)}</div>
         ${flagBtnHtml}
       </div>
-      <div class="q-title"><span class="q-num">${q.id}.</span>${escapeHtml(questionText)} ${statusTag} ${flagBadge}</div>
+      <div class="q-title"><span class="q-num">${q.id}.</span>${formatRichText(questionText)} ${statusTag} ${flagBadge}</div>
       ${imgHtml}
       <div class="${optionsContainerClass}">${optionsHtml}</div>
       ${expHtml}
@@ -3878,6 +3887,17 @@ async function loadHistoryDetail(id) {
 
 function escapeHtml(text) {
   return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+function formatRichText(text) {
+  if (!text) return '';
+  let safe = escapeHtml(text);
+  return safe.replace(/&lt;(\/?)u&gt;/gi, '<$1u>')
+             .replace(/&lt;(\/?)i&gt;/gi, '<$1i>')
+             .replace(/&lt;(\/?)b&gt;/gi, '<$1b>')
+             .replace(/&lt;(\/?)em&gt;/gi, '<$1em>')
+             .replace(/&lt;(\/?)strong&gt;/gi, '<$1strong>')
+             .replace(/&lt;br\s*\/?&gt;/gi, '<br>');
 }
 
 // 이미지 모달 회전 및 확대 컨트롤
