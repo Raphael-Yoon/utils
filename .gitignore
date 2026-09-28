@@ -15,4 +15,8 @@ credentials.json
 google_tokens/
 tokens/
 *.sh
+!antigravity_control/*.sh
+workout_log/
+
+
 

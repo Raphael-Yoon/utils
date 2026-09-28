@@ -109,66 +109,67 @@ DB_TARGETS = [
 ]
 
 
+def check_url_with_retry(url, timeout=12, max_retries=2, retry_delay=1.5):
+    last_err = None
+    for attempt in range(max_retries):
+        try:
+            t0 = time.time()
+            resp = requests.get(url, timeout=timeout, allow_redirects=True)
+            t1 = time.time()
+            is_ok = 200 <= resp.status_code < 400
+            if is_ok:
+                return {
+                    "status": "UP",
+                    "code": resp.status_code,
+                    "time_ms": int((t1 - t0) * 1000),
+                    "error": None
+                }
+            else:
+                last_err = f"HTTP {resp.status_code}"
+        except Exception as e:
+            last_err = str(e)
+            
+        if attempt < max_retries - 1:
+            time.sleep(retry_delay)
+
+    return {
+        "status": "DOWN",
+        "code": "N/A",
+        "time_ms": 0,
+        "error": str(last_err)[:100]
+    }
+
+
 def check_ap(ap):
     results = {}
     
-    # 1. Local URL Check
-    try:
-        t0 = time.time()
-        resp = requests.get(ap["local_url"], timeout=5, allow_redirects=True)
-        t1 = time.time()
-        is_ok = 200 <= resp.status_code < 400
-        results["local"] = {
-            "status": "UP" if is_ok else "DOWN",
-            "code": resp.status_code,
-            "time_ms": int((t1 - t0) * 1000),
-            "error": None if is_ok else f"HTTP {resp.status_code}"
-        }
-    except Exception as e:
-        results["local"] = {
-            "status": "DOWN",
-            "code": "N/A",
-            "time_ms": 0,
-            "error": str(e)
-        }
+    # 1. Local URL Check (타임아웃 5초, 재시도 2회)
+    local_res = check_url_with_retry(ap["local_url"], timeout=5, max_retries=2, retry_delay=1.0)
+    results["local"] = local_res
 
-    # 2. External URLs Check (Dual check: snowball.pe.kr & snowball1566.com)
+    # 2. External URLs Check (Dual check: snowball.pe.kr & snowball1566.com, 타임아웃 12초, 재시도 2회)
     ext_urls = ap.get("external_urls") or ([ap["external_url"]] if "external_url" in ap else [])
     results["externals"] = []
     
     for url in ext_urls:
         domain_name = url.replace("https://", "").replace("http://", "").rstrip("/")
-        try:
-            t0 = time.time()
-            resp = requests.get(url, timeout=5, allow_redirects=True)
-            t1 = time.time()
-            is_ok = 200 <= resp.status_code < 400
-            results["externals"].append({
-                "url": url,
-                "domain": domain_name,
-                "status": "UP" if is_ok else "DOWN",
-                "code": resp.status_code,
-                "time_ms": int((t1 - t0) * 1000),
-                "error": None if is_ok else f"HTTP {resp.status_code}"
-            })
-        except Exception as e:
-            results["externals"].append({
-                "url": url,
-                "domain": domain_name,
-                "status": "DOWN",
-                "code": "N/A",
-                "time_ms": 0,
-                "error": str(e)
-            })
+        res = check_url_with_retry(url, timeout=12, max_retries=2, retry_delay=1.5)
+        res["url"] = url
+        res["domain"] = domain_name
+        results["externals"].append(res)
 
     # Backward-compatible summary for results["external"]
+    # any_up: 두 도메인 중 하나라도 정상 서비스 중이면 터널 생존으로 판단
+    any_up = any(e["status"] == "UP" for e in results["externals"]) if results["externals"] else False
     all_up = all(e["status"] == "UP" for e in results["externals"]) if results["externals"] else False
     down_items = [f"{e['domain']}({e['error'] or e['status']})" for e in results["externals"] if e["status"] != "UP"]
     codes = [str(e["code"]) for e in results["externals"]]
     max_ms = max((e["time_ms"] for e in results["externals"]), default=0)
 
+    # 최소 1개 도메인이 정상 접속 가능하면 서비스 가용 상태(UP)로 판정하여 불필요한 터널 재기동 방지
     results["external"] = {
-        "status": "UP" if all_up else "DOWN",
+        "status": "UP" if any_up else "DOWN",
+        "all_up": all_up,
         "code": " / ".join(codes) if codes else "N/A",
         "time_ms": max_ms,
         "error": ", ".join(down_items) if down_items else None
@@ -577,8 +578,8 @@ def main():
 
     # Re-check after healing
     if need_recheck:
-        print("⏱️ 자동 조치 완료 후 5초 대기 중 (포트 바인딩 안정화)...")
-        time.sleep(5)
+        print("⏱️ 자동 조치 완료 후 12초 대기 중 (Cloudflare 터널 바인딩 안정화)...")
+        time.sleep(12)
         print("2. 2차 (재점검) AP/DB 서버 점검 시작...")
         ap_results = [check_ap(ap) for ap in AP_TARGETS]
         db_results = [check_db(db) for db in DB_TARGETS]
@@ -604,12 +605,17 @@ def main():
         
     has_failure = any(res["local"]["status"] != "UP" or res["external"]["status"] != "UP" for res in ap_results) or \
                   any(res["status"] != "UP" for res in db_results)
+    has_failed_healing = any(h["result"] != "SUCCESS" for h in healing_history)
 
-    # 1. 장애가 발생했거나, 2. 자가 복구를 시도했거나, 3. 데일리 리포트(--email)이거나, 4. 강제 전송(--telegram)인 경우만 텔레그램 발송
-    if has_failure or healing_history or send_email_flag or send_telegram_force:
+    # 1. 장애가 현재 진행 중이거나 (has_failure),
+    # 2. 복구 시도 중 실패한 항목이 있거나 (has_failed_healing),
+    # 3. 아침 정기 리포트(--email),
+    # 4. 수동 강제 전송(--telegram)인 경우만 텔레그램 발송
+    # (※ 일시적 이슈로 자가복구가 성공한 경미한 건은 알림 피로를 없애기 위해 텔레그램을 생략하고 로그 및 이메일 리포트에만 기록)
+    if has_failure or has_failed_healing or send_email_flag or send_telegram_force:
         send_telegram(telegram_msg)
     else:
-        print("🔊 모든 시스템 정상: 텔레그램 알림 전송을 생략합니다 (Silent Mode).")
+        print("🔊 모든 시스템 정상 (또는 조용한 자동복구 완료): 텔레그램 알림 전송을 생략합니다 (Silent Mode).")
     
     print("5. 헬스체크 및 자동 복구 프로세스 종료.")
 

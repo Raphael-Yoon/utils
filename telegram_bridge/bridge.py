@@ -127,6 +127,39 @@ RAW_COMMANDS = [
         "cmd": "./cbt_stop.sh",
         "cwd": str(PROJECT_ROOT / "utils" / "cbt_engine"),
         "desc": "풀어봄 CBT AP 서버 종료"
+    },
+    # 5. Antigravity (개발 도구)
+    {
+        "system": "5. Antigravity (개발 도구)",
+        "num": "5-1",
+        "alias": "ag-start",
+        "cmd": "./antigravity_start.sh",
+        "cwd": str(PROJECT_ROOT / "utils" / "antigravity_control"),
+        "desc": "Antigravity 실행"
+    },
+    {
+        "system": "5. Antigravity (개발 도구)",
+        "num": "5-2",
+        "alias": "ag-reset",
+        "cmd": "./antigravity_reset.sh",
+        "cwd": str(PROJECT_ROOT / "utils" / "antigravity_control"),
+        "desc": "Antigravity 재설정 및 재기동"
+    },
+    {
+        "system": "5. Antigravity (개발 도구)",
+        "num": "5-3",
+        "alias": "ag-stop",
+        "cmd": "./antigravity_stop.sh",
+        "cwd": str(PROJECT_ROOT / "utils" / "antigravity_control"),
+        "desc": "Antigravity 종료"
+    },
+    {
+        "system": "5. Antigravity (개발 도구)",
+        "num": "5-4",
+        "alias": "ag-status",
+        "cmd": "./antigravity_status.sh",
+        "cwd": str(PROJECT_ROOT / "utils" / "antigravity_control"),
+        "desc": "Antigravity 상태 확인"
     }
 ]
 
@@ -135,8 +168,8 @@ for cmd_info in RAW_COMMANDS:
     COMMAND_MAPPING[cmd_info["num"]] = cmd_info
     COMMAND_MAPPING[cmd_info["alias"]] = cmd_info
 
-# 단일 숫자 명령어(1, 2, 3, 4)를 x-2 (Reset) 명령어에 추가 매핑
-SINGLE_DIGIT_MAP = {"1": "1-2", "2": "2-2", "3": "3-2", "4": "4-2"}
+# 단일 숫자 명령어(1, 2, 3, 4, 5)를 x-2 (Reset) 명령어에 추가 매핑
+SINGLE_DIGIT_MAP = {"1": "1-2", "2": "2-2", "3": "3-2", "4": "4-2", "5": "5-2"}
 for single, target_num in SINGLE_DIGIT_MAP.items():
     if target_num in COMMAND_MAPPING:
         COMMAND_MAPPING[single] = COMMAND_MAPPING[target_num]
