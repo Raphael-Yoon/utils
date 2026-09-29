@@ -34,7 +34,7 @@
         "④ SPN"
       ],
       "answer": 2,
-      "explanation": "가장 오랫동안 참조되지 않은 페이지를 교체하는 알고리즘은 LRU(Least Recently Used)입니다. FIFO는 가장 먼저 들어온 페이지 교체, LFU는 참조 횟수가 가장 적은 페이지 교체이며, Round-Robin과 SPN은 CPU 스케줄링 알고리즘입니다.",
+      "explanation": "가장 오랫동안 참조되지 않은 페이지를 교체하는 알고리즘은 LRU(Least Recently Used)입니다. FIFO는 가장 먼저 들어온 페이지 교체, LFU는 참조 횟수가 가장 적은 페이지 교체이며, Round-Robin과 SPN은 CPU 스케줄링 알고리즘입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 운영체제 자원 관리 대상에 따른 범주 분리:\n   - 가상메모리 페이지 교체: LRU(최근 시간 미사용), LFU(최소 빈도수), FIFO(적재 순서), NUR/Clock\n   - CPU 프로세스 스케줄러: Round-Robin, SPN(SJF), FCFS, SRT, HRN, MLQ\n2. Recently(시간) vs Frequently(빈도) 키워드 1초 판별법:\n   - LRU는 최근 사용 시간 기준(오랫동안 미사용), LFU는 누적 참조 횟수 기준입니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 76
@@ -50,7 +50,7 @@
         "④ ACK 번호(Acknowledgment number)"
       ],
       "answer": 1,
-      "explanation": "TCP 헤더와 UDP 헤더에 공통으로 존재하는 필드는 Source Port, Destination Port, Checksum, Data 필드입니다. Sequence Number, Acknowledgment Number, Urgent Pointer 등은 TCP 헤더에만 존재합니다.",
+      "explanation": "TCP 헤더와 UDP 헤더에 공통으로 존재하는 필드는 Source Port, Destination Port, Checksum, Data 필드입니다. Sequence Number, Acknowledgment Number, Urgent Pointer 등은 TCP 헤더에만 존재합니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 전송 계층(L4) TCP vs UDP 공통 헤더 필드 (총 8바이트 UDP 헤더 중 3개 공통):\n   - 공통 필드: Source Port (16비트), Destination Port (16비트), Checksum (16비트)\n   - UDP 고유 필드: Length (16비트)\n2. TCP 고유 필드 (신뢰성/흐름제어용):\n   - Sequence Number, Acknowledgment Number, Header Length(Data Offset), Flags, Window Size, Urgent Pointer 등은 TCP에만 존재합니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 77
@@ -66,7 +66,7 @@
         "④ 메타버스"
       ],
       "answer": 1,
-      "explanation": "NFT(Non-Fungible Token, 대체 불가능 토큰)는 블록체인 기술을 활용하여 디지털 자산에 고유한 인식 값을 부여하고 소유권 및 거래 이력 등을 투명하게 증명하는 디지털 인증서입니다.",
+      "explanation": "NFT(Non-Fungible Token, 대체 불가능 토큰)는 블록체인 기술을 활용하여 디지털 자산에 고유한 인식 값을 부여하고 소유권 및 거래 이력 등을 투명하게 증명하는 디지털 인증서입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. NFT (Non-Fungible Token, 대체 불가능 토큰):\n   - ERC-721 표준 기반으로 블록체인 상에 고유 식별자(Token ID), 창작자 서명, 소유권 이력을 기록하여 디지털 창작물의 유일무이한 원본성을 증명합니다.\n2. FT (Fungible Token, 대체 가능 토큰, ERC-20):\n   - 비트코인이나 이더리움처럼 개별 단위가 동일한 가치를 지녀 상호 1:1 교환이 가능한 암호화폐입니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 78
@@ -82,7 +82,7 @@
         "④ RAID 5"
       ],
       "answer": 4,
-      "explanation": "RAID 5는 패리티 블록을 하나의 전용 디스크에 저장하지 않고 모든 디스크에 분산하여 기록함으로써 RAID 4의 전용 패리티 디스크 병목 문제를 해결한 방식입니다.",
+      "explanation": "RAID 5는 패리티 블록을 하나의 전용 디스크에 저장하지 않고 모든 디스크에 분산하여 기록함으로써 RAID 4의 전용 패리티 디스크 병목 문제를 해결한 방식입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. RAID 아키텍처 4 vs 5 핵심 차이:\n   - RAID 4: 단일 전용 패리티 디스크 사용 -> 쓰기 시 전용 디스크에 I/O 병목(Bottleneck) 집중 발생\n   - RAID 5: 패리티 블록을 모든 멤버 디스크에 균등 분산 기록 -> 단일 디스크 쓰기 병목 해소\n2. 해밍코드와 오류 정정 체계:\n   - 해밍코드는 단일 비트 오류 정정 및 2비트 오류 검출(SEC-DED)이 가능하여 서버 ECC 메모리 및 RAID 2에 활용됩니다.\n   - 통신망에서는 재전송 기반 ARQ(지상망)와 전진 오류 정정 FEC(우주/위성)로 구분됩니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 79
@@ -98,7 +98,7 @@
         "④ HEAD"
       ],
       "answer": 2,
-      "explanation": "POST 메소드는 요청 데이터를 HTTP 메시지 Body에 담아 서버로 전송하며, 리소스 생성 및 등록에 주로 사용됩니다. GET은 URL 쿼리스트링으로 자원을 조회하고, DELETE는 삭제, HEAD는 헤더 정보만 조회합니다.",
+      "explanation": "POST 메소드는 요청 데이터를 HTTP 메시지 Body에 담아 서버로 전송하며, 리소스 생성 및 등록에 주로 사용됩니다. GET은 URL 쿼리스트링으로 자원을 조회하고, DELETE는 삭제, HEAD는 헤더 정보만 조회합니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. HTTP 메소드의 멱등성(Idempotent) 구분:\n   - 멱등(Idempotent): 동일 요청을 여러 번 보내도 서버 리소스 상태가 변하지 않음 (GET, HEAD, PUT, DELETE, OPTIONS)\n   - 비멱등(Non-idempotent): 동일 요청 반복 시 리소스가 계속 새로 생성되거나 상태가 변경됨 (POST)\n2. POST 메소드는 메시지 본문(Body)에 입력 데이터를 담아 신규 리소스를 등록할 때 사용합니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 80
@@ -114,7 +114,7 @@
         "④ 0번지:87, 1번지:65, 2번지:43, 3번지:21"
       ],
       "answer": 3,
-      "explanation": "리틀 엔디언(Little-Endian)은 최하위 바이트(LSB)부터 낮은 메모리 주소에 저장하는 방식입니다. 0x12345678에서 최하위 바이트는 78, 다음은 56, 34, 12 순이므로 0번지:78, 1번지:56, 2번지:34, 3번지:12 가 됩니다.",
+      "explanation": "리틀 엔디언(Little-Endian)은 최하위 바이트(LSB)부터 낮은 메모리 주소에 저장하는 방식입니다. 0x12345678에서 최하위 바이트는 78, 다음은 56, 34, 12 순이므로 0번지:78, 1번지:56, 2번지:34, 3번지:12 가 됩니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 리틀 엔디언(Little-Endian) 바이트 슬라이싱 공식:\n   - 32비트 = 4바이트 = 16진수 8글자 (0x12345678)\n   - 최하위 바이트(LSB)부터 낮은 메모리 주소에 저장하므로 뒤에서부터 2글자씩 분할:\n     0번지: 0x78, 1번지: 0x56, 2번지: 0x34, 3번지: 0x12\n2. 홀수 글자(예: 0x1234567) 처리:\n   - 맨 앞에 0을 패딩하여 짝수화(0x01234567)한 뒤 슬라이싱합니다 (67, 45, 23, 01).\n3. CPU 및 시스템 아키텍처:\n   - x86/ARM 인텔/스마트폰 CPU 연산 및 포렌식(NTFS/FAT)은 리틀 엔디언, 인터넷 통신(TCP/IP 네트워크 바이트 순서)은 빅 엔디언을 표준으로 사용합니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 81
@@ -130,7 +130,7 @@
         "④ 0x39"
       ],
       "answer": 4,
-      "explanation": "문자 '0'은 2진수로 0011 0000(16진수 0x30)입니다. 문자 '9'는 '0'에서 9를 더한 값이므로 0011 1001(16진수 0x39)가 됩니다.",
+      "explanation": "문자 '0'은 2진수로 0011 0000(16진수 0x30)입니다. 문자 '9'는 '0'에서 9를 더한 값이므로 0011 1001(16진수 0x39)가 됩니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. ASCII 코드 8-4-2-1 직결 연산 루틴:\n   - 문자 '0'은 0x30 = 0011 0000\n   - 문자 '9'는 0x39 = 0011 1001 (하위 4비트에 9 = 8+1 즉 1001 직결 매핑)\n2. 10진수 우회 없이 16진수와 2진수의 4비트 1:1 직결을 통해 1초 만에 산출할 수 있습니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 82
@@ -146,7 +146,7 @@
         "④ 나, 다, 라"
       ],
       "answer": 1,
-      "explanation": "라의 설명에서 inode는 파일 소유자의 이름(문자열)이 아니라 소유자의 식별자인 User ID(UID)와 Group ID(GID)를 저장하므로 옳지 않습니다. 가, 나, 다는 올바른 설명입니다.",
+      "explanation": "라의 설명에서 inode는 파일 소유자의 이름(문자열)이 아니라 소유자의 식별자인 User ID(UID)와 Group ID(GID)를 저장하므로 옳지 않습니다. 가, 나, 다는 올바른 설명입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 유닉스 inode(Index Node)에 없는 2대 핵심 요소:\n   - ① 파일 이름: 디렉터리 파일 내부의 (파일명 - inode 번호) 매핑 테이블에 보관\n   - ② 소유자 문자열 이름: inode에는 사용자 번호(UID)와 그룹 번호(GID) 숫자만 보관\n2. 유닉스 파일 시스템 디스크 4대 구역:\n   - 부트 블록 -> 슈퍼 블록 (메타데이터 총괄) -> inode 테이블 (파일 메타데이터) -> 데이터 블록 (실제 내용)",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 83
@@ -162,7 +162,7 @@
         "④ IGMP"
       ],
       "answer": 1,
-      "explanation": "ARP(Address Resolution Protocol)는 3계층 논리 주소(IP 주소)를 2계층 물리 주소(MAC 주소)로 변환하는 프로토콜입니다. RARP는 반대로 MAC 주소를 IP 주소로 변환합니다.",
+      "explanation": "ARP(Address Resolution Protocol)는 3계층 논리 주소(IP 주소)를 2계층 물리 주소(MAC 주소)로 변환하는 프로토콜입니다. RARP는 반대로 MAC 주소를 IP 주소로 변환합니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 3계층 보조 프로토콜 4형제 역할 매핑:\n   - ARP (Address Resolution Protocol): IP 주소(3계층) -> MAC 주소(2계층)\n   - RARP (Reverse ARP): MAC 주소(2계층) -> IP 주소(3계층)\n   - ICMP (Internet Control Message Protocol): IP 패킷 전송 오류 보고 및 망 진단 (ping)\n   - IGMP (Internet Group Management Protocol): 멀티캐스트 그룹 가입/탈퇴 멤버십 관리\n2. IP 주소는 전 세계 컴퓨터를 찾는 우편번호(Host-to-Host), MAC 주소는 바로 옆 장비 간 통신하는 주민번호(Node-to-Node)입니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 84
@@ -178,7 +178,7 @@
         "④ 0 1110 1111 1101 1110"
       ],
       "answer": 3,
-      "explanation": "다항식 x^16 + x^12 + x^5 + 1은 최고차항 16차(계수 1), 12차(1), 5차(1), 0차(1)이고 나머지는 0이므로, 17자리 비트열인 \"1 0001 0000 0010 0001\" (16차~0차)이 됩니다.",
+      "explanation": "다항식 x^16 + x^12 + x^5 + 1은 최고차항 16차(계수 1), 12차(1), 5차(1), 0차(1)이고 나머지는 0이므로, 17자리 비트열인 \"1 0001 0000 0010 0001\" (16차~0차)이 됩니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. CRC 생성다항식 최고차항 N과 생성 비트열 크기:\n   - 최고차항이 x^16인 다항식은 x^16부터 상수항(+1 = x^0)까지 총 17개의 항이 존재하므로 비트열의 길이는 N+1 = 17비트입니다.\n   - x^16 + x^12 + x^5 + 1 -> 1 0001 0000 0010 0001 (17비트)\n2. '16차식이니 16비트일 것'이라는 사후 편향 함정에 주의해야 합니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 85
@@ -194,7 +194,7 @@
         "④ 업무용도 보정은 적용 대상 시스템 유형에 따른 보정으로 WEB은 0.7을 그리고 WAS는 2를 적용한다."
       ],
       "answer": 4,
-      "explanation": "WEB/WAS 규모산정에서 업무용도 보정(S4)은 WEB 시스템 0.7, WAS 시스템 2.0을 적용합니다. 기본 OPS보정(S3)은 3, 인터페이스 부하보정(S5)은 1.1~1.2(일반값 1.1), 클러스터 보정(S7)은 2-NODE 시 1.4~1.5를 적용합니다.",
+      "explanation": "WEB/WAS 규모산정에서 업무용도 보정(S4)은 WEB 시스템 0.7, WAS 시스템 2.0을 적용합니다. 기본 OPS보정(S3)은 3, 인터페이스 부하보정(S5)은 1.1~1.2(일반값 1.1), 클러스터 보정(S7)은 2-NODE 시 1.4~1.5를 적용합니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. TTA 정보시스템 하드웨어 규모산정 WEB/WAS 지침 기준:\n   - 기본 OPS: 3.0\n   - 업무용도 보정: WEB 시스템 0.7, WAS 시스템 2.0\n   - 연계부하 보정: WEB 시스템 0%, WAS 단순조회 10%, WAS 복합/갱신 30%\n   - 클러스터 보정: 2-Node 기준 1.4 ~ 1.5\n2. 모든 보정치는 단순 덧셈이 아니라 연쇄 곱셈(복리 승산 구조)으로 누적 적용됩니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 86
@@ -210,7 +210,7 @@
         "④ 브로드캐스트(Broadcast) 주소"
       ],
       "answer": 2,
-      "explanation": "이더넷 MAC 주소 유형에는 유니캐스트(단일 호스트), 멀티캐스트(특정 그룹 호스트), 브로드캐스트(네트워크 내 전체 호스트)가 있습니다. 애니캐스트는 네트워크 계층(IPv6 등)에서 주로 지원하는 주소 전달 방식입니다.",
+      "explanation": "이더넷 MAC 주소 유형에는 유니캐스트(단일 호스트), 멀티캐스트(특정 그룹 호스트), 브로드캐스트(네트워크 내 전체 호스트)가 있습니다. 애니캐스트는 네트워크 계층(IPv6 등)에서 주로 지원하는 주소 전달 방식입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 전송 방식 3대 패밀리 계층별 매핑:\n   - L2 이더넷 MAC / L3 IPv4: 유니캐스트(1:1), 멀티캐스트(1:N), 브로드캐스트(1:All)\n   - L3 IPv6: 유니캐스트, 멀티캐스트, 애니캐스트(1:Nearest 가장 가까운 1개)\n2. IPv6에서는 네트워크 플러딩을 유발하는 브로드캐스트가 전면 폐지되었습니다.\n3. 2계층 MAC 하드웨어 주소 체계에는 애니캐스트가 존재하지 않습니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 87
@@ -226,7 +226,7 @@
         "④ sendto()"
       ],
       "answer": 3,
-      "explanation": "recv()는 TCP 등 연결형 소켓(SOCK_STREAM)에서 상대 프로세스가 전송한 데이터를 읽어들이는 함수입니다. sendto()는 UDP 등 비연결형 소켓에서 데이터를 송신할 때 사용됩니다.",
+      "explanation": "recv()는 TCP 등 연결형 소켓(SOCK_STREAM)에서 상대 프로세스가 전송한 데이터를 읽어들이는 함수입니다. sendto()는 UDP 등 비연결형 소켓에서 데이터를 송신할 때 사용됩니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 소켓 프로그래밍 API 전송 모드별 함수 매핑:\n   - TCP 연결형 (SOCK_STREAM): recv() / read(), send() / write()\n   - UDP 비연결형 (SOCK_DGRAM): recvfrom(), sendto() (수신자/발신자 주소 포함)\n2. 연결 수립 함수:\n   - connect(): 클라이언트가 서버로 3-Way Handshake 연결 요청\n   - listen(): 서버가 클라이언트의 연결 요청을 수신 대기 상태로 전환",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 88
@@ -242,7 +242,7 @@
         "④ eBGP(external BGP)는 서로 다른 AS 간에 사용되며, iBGP(internal BGP)는 동일 AS 안에서 사용된다."
       ],
       "answer": 1,
-      "explanation": "자신의 BGP 라우팅 정보를 전달하거나 철회할 때는 UPDATE 메시지를 사용합니다. NOTIFICATION 메시지는 에러가 발생하여 BGP 연결을 종료할 때 에러 유형을 알리기 위해 전송합니다.",
+      "explanation": "자신의 BGP 라우팅 정보를 전달하거나 철회할 때는 UPDATE 메시지를 사용합니다. NOTIFICATION 메시지는 에러가 발생하여 BGP 연결을 종료할 때 에러 유형을 알리기 위해 전송합니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. BGP4 (Border Gateway Protocol Version 4):\n   - 자치시스템(AS) 간 라우팅 프로토콜(EGP)로 TCP 179번 포트를 사용하여 신뢰성 있는 세션을 수립합니다.\n2. BGP4 4대 메시지:\n   - OPEN: BGP 이웃(Peer) 간 세션 연결 수립\n   - UPDATE: 새로운 경로 공지 및 도달 불가능 경로 철회\n   - KEEPALIVE: 연결 생존 여부 주기적 확인 (통상 60초)\n   - NOTIFICATION: 에러 발생 시 상대방에게 통보하고 즉시 BGP 세션 종료",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 89
@@ -258,7 +258,7 @@
         "④ DVMRP(Distance Vector Multicast Routing Protocol)"
       ],
       "answer": 3,
-      "explanation": "호스트와 로컬 라우터 간에 멀티캐스트 그룹 가입/유지/탈퇴 상태를 관리하고 질의/보고하는 프로토콜은 IGMP(Internet Group Management Protocol)입니다. PIM, DVMRP, CBT 등은 라우터 간 멀티캐스트 라우팅 프로토콜입니다.",
+      "explanation": "호스트와 로컬 라우터 간에 멀티캐스트 그룹 가입/유지/탈퇴 상태를 관리하고 질의/보고하는 프로토콜은 IGMP(Internet Group Management Protocol)입니다. PIM, DVMRP, CBT 등은 라우터 간 멀티캐스트 라우팅 프로토콜입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 멀티캐스트 2대 진영 완벽 분리:\n   - 호스트 - 로컬 라우터 간: IGMP (그룹 가입/탈퇴 멤버십 출석체크, 순수 제어 평면)\n   - 라우터 - 전국 라우터 간: 멀티캐스트 라우팅 프로토콜 (배달 지도/트리 구축)\n2. 멀티캐스트 라우팅 3총사:\n   - DVMRP: 최초의 거리벡터 기반, Flooding & Prune(무작정 뿌리고 안 받으면 취소)\n   - CBT: 코어 라우터 중심의 단일 양방향 공유 트리\n   - PIM: 유니캐스트 라우팅 프로토콜과 독립적으로 동작 (PIM-DM, PIM-SM)",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 90
@@ -274,7 +274,7 @@
         "④ CHAP(Challenge Handshake Authentication Protocol)은 인증을 위해 사용하는 프로토콜로서 클라이언트가 인증요청 패킷에서 사용자 이름과 비밀번호를 보낸다."
       ],
       "answer": 4,
-      "explanation": "CHAP은 인증 요청 시 평문 비밀번호를 전송하지 않고, 서버가 보낸 Challenge 메시지에 대해 비밀번호를 포함하여 계산한 해시(Hash) 값을 응답하여 인증하는 방식입니다. 평문 ID와 비밀번호를 전송하는 것은 PAP(Password Authentication Protocol)입니다.",
+      "explanation": "CHAP은 인증 요청 시 평문 비밀번호를 전송하지 않고, 서버가 보낸 Challenge 메시지에 대해 비밀번호를 포함하여 계산한 해시(Hash) 값을 응답하여 인증하는 방식입니다. 평문 ID와 비밀번호를 전송하는 것은 PAP(Password Authentication Protocol)입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. PPP(Point-to-Point Protocol) 사용자 인증 대결:\n   - PAP (Password Authentication Protocol): 2-Way 핸드셰이크, ID와 비밀번호를 평문(Plaintext)으로 선로에 전송하므로 스니핑에 극히 취약\n   - CHAP (Challenge-Handshake Authentication Protocol): 3-Way 핸드셰이크, 서버가 난수 Challenge를 전송하고 클라이언트는 비밀번호를 결합한 MD5 해시값만 회신하므로 비밀번호가 선로에 노출되지 않아 안전함",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 91
@@ -290,7 +290,7 @@
         "④ 206.17.38.38"
       ],
       "answer": 1,
-      "explanation": "슬래쉬 표기법 /28의 서브넷 마스크는 255.255.255.240(11110000)입니다. 마지막 옥텟 36(00100100)과 240(11110000)을 비트 AND 연산하면 00100000(32)가 되므로 네트워크 주소는 206.17.38.32가 됩니다.",
+      "explanation": "슬래쉬 표기법 /28의 서브넷 마스크는 255.255.255.240(11110000)입니다. 마지막 옥텟 36(00100100)과 240(11110000)을 비트 AND 연산하면 00100000(32)가 되므로 네트워크 주소는 206.17.38.32가 됩니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 서브넷팅 마스터 4단계 알고리즘:\n   - 1단계 (호스트 비트 산출): 32 - Prefix = H (32 - 28 = 4비트)\n   - 2단계 (블록 크기 산출): 2^H = 2^4 = 16\n   - 3단계 (블록 배수 나열): 0, 16, 32, 48, 64 ...\n   - 4단계 (구역 매핑 및 대표 주소 확정): 대상 IP의 마지막 옥텟(36)이 속한 구간은 32~47이므로, 해당 구역의 시작값인 32가 네트워크 대표 주소가 됨 (206.0.68.32)\n2. /24 마스크 적용 시 32-24=8비트, 블록 256, 네트워크 대표 주소는 .0이 됩니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 92
@@ -306,7 +306,7 @@
         "④ 학습 시 교사가 존재하지 않는 비지도학습에 속한다."
       ],
       "answer": 4,
-      "explanation": "k-NN(k-Nearest Neighbor) 알고리즘은 정답(레이블)이 존재하는 학습 데이터를 기반으로 새로운 데이터의 클래스를 분류(Classification)하는 지도 학습(Supervised Learning) 알고리즘입니다.",
+      "explanation": "k-NN(k-Nearest Neighbor) 알고리즘은 정답(레이블)이 존재하는 학습 데이터를 기반으로 새로운 데이터의 클래스를 분류(Classification)하는 지도 학습(Supervised Learning) 알고리즘입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 머신러닝 k-NN vs K-Means 핵심 비교:\n   - k-NN (k-Nearest Neighbor): 정답 레이블이 있는 지도학습(Supervised Learning) 기반 분류/회귀 알고리즘, 별도의 사전 학습 모델을 만들지 않고 질의 시점에 주변 k개 이웃의 다수결로 결정하는 게으른 학습자(Lazy Learner)\n   - K-Means: 정답 레이블이 없는 비지도학습(Unsupervised Learning) 기반 군집화(Clustering) 알고리즘",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 93
@@ -322,7 +322,7 @@
         "④ VAE(Variational Auto Encoder)"
       ],
       "answer": 1,
-      "explanation": "SVM(Support Vector Machine)은 두 카테고리 데이터 간의 최대 마진(여백)을 갖는 결정 경계(초평면)를 찾는 통계학습 이론 기반의 선형/비선형 분류 모델로 신경망 기반 알고리즘이 아닙니다. GAN, DBN, VAE는 모두 인공신경망 기반의 딥러닝 알고리즘입니다.",
+      "explanation": "SVM(Support Vector Machine)은 두 카테고리 데이터 간의 최대 마진(여백)을 갖는 결정 경계(초평면)를 찾는 통계학습 이론 기반의 선형/비선형 분류 모델로 신경망 기반 알고리즘이 아닙니다. GAN, DBN, VAE는 모두 인공신경망 기반의 딥러닝 알고리즘입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 인공지능 알고리즘 분류 (신경망 vs 비신경망):\n   - 인공신경망 딥러닝: GAN(생성적 적대 신경망), DBN(심층 신뢰 신경망), VAE(변이형 오토인코더), CNN, RNN\n   - 비신경망 통계/기하학 모델: SVM(Support Vector Machine, 최대 마진 초평면 분류기), 의사결정나무, 랜덤포레스트\n2. 2023년 94번 기출이 2024년 96번에 지문까지 100% 동일하게 복제 재출제된 핵심 킬러 쟁점입니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 94
@@ -338,7 +338,7 @@
         "④ 다, 라"
       ],
       "answer": 3,
-      "explanation": "가: 컨테이너 가상화는 하이퍼바이저를 사용하지 않고 OS 커널을 공유합니다(틀림).\n나: 컨테이너는 프로세스(애플리케이션) 격리 수준에서 가상화를 구현합니다(맞음).\n다: 게스트 OS가 불필요하여 가상머신 대비 오버헤드가 적고 자원 사용을 절감할 수 있습니다(맞음).\n라: 호스트 OS 커널을 공유하므로 VM 방식에 비해 격리성 및 보안성이 상대적으로 낮습니다(틀림).",
+      "explanation": "가: 컨테이너 가상화는 하이퍼바이저를 사용하지 않고 OS 커널을 공유합니다(틀림).\n나: 컨테이너는 프로세스(애플리케이션) 격리 수준에서 가상화를 구현합니다(맞음).\n다: 게스트 OS가 불필요하여 가상머신 대비 오버헤드가 적고 자원 사용을 절감할 수 있습니다(맞음).\n라: 호스트 OS 커널을 공유하므로 VM 방식에 비해 격리성 및 보안성이 상대적으로 낮습니다(틀림).\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 가상머신(VM) vs 컨테이너 가상화 완벽 비교:\n   - 가상머신: 하이퍼바이저 기반 구동, 게스트 OS 탑재, 완전한 격리 및 뛰어난 보안성, 높은 자원 오버헤드\n   - 컨테이너: 하이퍼바이저 없음, 호스트 OS 커널 공유, 프로세스 수준 격리, 초경량 및 빠른 시작 속도, 커널 공유로 인한 보안성/격리성 상대적 취약",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 95
@@ -354,7 +354,7 @@
         "④ 전가상화는 반가상화보다 성능이 우수하다."
       ],
       "answer": 3,
-      "explanation": "반가상화(Para-virtualization)는 하이퍼콜을 위해 게스트 OS의 커널 수정을 요구하는 단점이 있지만 전가상화보다 성능이 우수하며, 대표적인 예로 Xen 등이 있습니다. 전가상화는 커널 수정이 필요 없으나(하드웨어 완전 가상화) 하이퍼바이저 중재로 인해 반가상화 대비 성능이 다소 떨어집니다.",
+      "explanation": "반가상화(Para-virtualization)는 하이퍼콜을 위해 게스트 OS의 커널 수정을 요구하는 단점이 있지만 전가상화보다 성능이 우수하며, 대표적인 예로 Xen 등이 있습니다. 전가상화는 커널 수정이 필요 없으나(하드웨어 완전 가상화) 하이퍼바이저 중재로 인해 반가상화 대비 성능이 다소 떨어집니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 하이퍼바이저 2대 가상화 기법 (전가상화 vs 반가상화):\n   - 전가상화 (Full-Virtualization): 게스트 OS 커널 수정 없음 (완벽한 에뮬레이션/사기극), 하이퍼바이저가 특권 명령을 모두 가로채 번역(Trap & Emulate)하므로 성능 오버헤드 큼\n   - 반가상화 (Para-Virtualization): 게스트 OS 커널 소스코드 수정 필수 (솔직한 협력), 특권 명령 대신 하이퍼콜(Hypercall)로 하이퍼바이저와 직접 통신하여 높은 성능 달성 (대표: Xen 젠서버)",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 96
@@ -370,7 +370,7 @@
         "④ Adam(Adaptive Moment Estimation)"
       ],
       "answer": 2,
-      "explanation": "ReLU(Rectified Linear Unit)는 입력값이 0보다 작으면 0, 0보다 크면 입력값을 그대로 출력하는 대표적인 신경망 활성화 함수(Activation Function)입니다. RMSProp, SGD, Adam은 신경망 가중치 최적화(Optimizer) 알고리즘입니다.",
+      "explanation": "ReLU(Rectified Linear Unit)는 입력값이 0보다 작으면 0, 0보다 크면 입력값을 그대로 출력하는 대표적인 신경망 활성화 함수(Activation Function)입니다. RMSProp, SGD, Adam은 신경망 가중치 최적화(Optimizer) 알고리즘입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 딥러닝 2대 부품 (활성화 함수 vs 최적화 함수):\n   - 활성화 함수(Activation Function): 선형 연산 결과를 비선형으로 변환. ReLU(Rectified Linear Unit)는 f(x)=max(0, x)로 양수 구간에서 미분값이 1로 유지되어 시그모이드의 기울기 소실(Vanishing Gradient) 문제를 완벽히 해결함\n   - 최적화 함수(Optimizer): 가중치를 갱신하여 손실함수를 최소화하는 알고리즘 (SGD, RMSProp, Adam)",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 97
@@ -386,7 +386,7 @@
         "④ GPT    BERT"
       ],
       "answer": 4,
-      "explanation": "트랜스포머의 디코더(Decoder) 구조를 기반으로 단방향/순방향 언어 모델링(문장 생성 특화)을 수행하는 것은 GPT이며, 트랜스포머의 인코더(Encoder) 구조를 기반으로 양방향 문맥을 이해하는 마스크 언어 모델은 BERT입니다.",
+      "explanation": "트랜스포머의 디코더(Decoder) 구조를 기반으로 단방향/순방향 언어 모델링(문장 생성 특화)을 수행하는 것은 GPT이며, 트랜스포머의 인코더(Encoder) 구조를 기반으로 양방향 문맥을 이해하는 마스크 언어 모델은 BERT입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 트랜스포머 아키텍처 기반 초거대 언어모델 (GPT vs BERT):\n   - GPT (Generative Pre-trained Transformer): 트랜스포머의 디코더(Decoder) 전용 구조, 단방향(Causal Masking), 이전 단어로부터 다음 단어를 예측하는 생성형 문장 작성 특화\n   - BERT (Bidirectional Encoder Representations from Transformers): 트랜스포머의 인코더(Encoder) 전용 구조, 양방향(Masked LM), 문맥 이해, 분류, 질의응답 특화",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 98
@@ -402,7 +402,7 @@
         "④ 강화 학습"
       ],
       "answer": 2,
-      "explanation": "전이 학습(Transfer Learning)은 이미 대규모 데이터셋으로 사전 학습된(Pre-trained) 모델의 가중치와 지식을 기반으로 새로운 도메인이나 유사한 다른 과제(Task)의 모델을 효과적으로 학습시키는 기법입니다.",
+      "explanation": "전이 학습(Transfer Learning)은 이미 대규모 데이터셋으로 사전 학습된(Pre-trained) 모델의 가중치와 지식을 기반으로 새로운 도메인이나 유사한 다른 과제(Task)의 모델을 효과적으로 학습시키는 기법입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 전이 학습 (Transfer Learning):\n   - 대규모 원천 데이터셋(예: ImageNet, Wikipedia)으로 이미 사전 훈련(Pre-trained)된 모델의 가중치를 가져와 유사한 신규 타깃 태스크에 재사용하는 기법\n   - 데이터 부족 문제 해결, 학습 시간 및 컴퓨팅 비용의 획기적 절감 달성 (Fine-tuning 활용)",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 99
@@ -418,7 +418,7 @@
         "④ 소스 포트 번호는 클라이언트 프로그램에서 주로 사용하는 Well-known 포트 번호와 서버 프로그램에서 주로 사용하는 동적 포트 번호 등이 있다."
       ],
       "answer": 2,
-      "explanation": "포트 번호(16비트)는 호스트 내에서 특정 애플리케이션 프로세스를 식별하여 종단 간 프로세스 통신(process-to-process delivery)을 가능하게 합니다. ① 포트 번호는 16비트(0~65535)입니다. ③ TCP와 UDP는 별개의 프로토콜이므로 동일한 포트 번호를 각각 독립적으로 사용할 수 있습니다(중복 가능). ④ Well-known 포트는 서버 데몬용(0~1023), 동적/사설 포트는 클라이언트용(49152~65535)으로 주로 할당됩니다.",
+      "explanation": "포트 번호(16비트)는 호스트 내에서 특정 애플리케이션 프로세스를 식별하여 종단 간 프로세스 통신(process-to-process delivery)을 가능하게 합니다. ① 포트 번호는 16비트(0~65535)입니다. ③ TCP와 UDP는 별개의 프로토콜이므로 동일한 포트 번호를 각각 독립적으로 사용할 수 있습니다(중복 가능). ④ Well-known 포트는 서버 데몬용(0~1023), 동적/사설 포트는 클라이언트용(49152~65535)으로 주로 할당됩니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n1. 전송 계층 포트 번호 체계의 본질:\n   - 사명: 전 세계 컴퓨터를 찾는 IP(Host-to-Host)와 달리, 동일 IP(호스트) 내에서 실행 중인 특정 애플리케이션 프로세스(소켓)를 식별 (Process-to-Process Delivery)\n   - 크기: 16비트 (0 ~ 65,535). 32비트 왜곡 주의!\n2. 포트 번호 3대 대역과 주어 역전 함정:\n   - Well-known (0 ~ 1,023): 서버 데몬 표준 서비스 (HTTP:80, HTTPS:443, SSH:22, DNS:53). 클라이언트가 아니라 서버에 할당됨! root 권한 필요.\n   - Registered (1,024 ~ 49,151): 벤더/응용프로그램 등록용 (MySQL:3306 등)\n   - Dynamic / Private (49,152 ~ 65,535): 클라이언트가 임시로 사용하는 에페머럴 포트\n3. 실무 웹 포트(80 vs 5000/8000)의 비밀:\n   - 80번은 브라우저에서 생략 가능한 Default 포트일 뿐이며, 단일 서버에서 여러 웹 프로세스(cbt, k-sox, trade 등)를 띄울 때는 5000, 5001, 8000 등으로 포트를 분리하여 공존시킴.\n   - 단일 서버의 가장 중요한 메인 서비스 하나는 80번을 단독으로 차지할 수 있음 (리눅스 sudo 권한 필요).\n4. 프로토콜 간 공존성:\n   - OS 커널은 소켓을 {프로토콜, IP, 포트} 튜플로 식별하므로, TCP와 UDP는 동일한 포트 번호(예: DNS 53번)를 각각 독립적으로 중복 사용할 수 있습니다.",
       "subject": "시스템구조",
       "origin_year": 2023,
       "origin_id": 100
