@@ -1,0 +1,1341 @@
+{
+  "exam_info": {
+    "title": "정보보안기사 필기 기출문제 [제01회]",
+    "category": "정보보안기사",
+    "time_limit_minutes": 150,
+    "passing_rules": {
+      "total_pass_score": 60,
+      "subject_cutoff_score": 40,
+      "points_per_question": 1.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "제1과목: 시스템 보안",
+      "question_count": 20
+    },
+    {
+      "id": 2,
+      "name": "제2과목: 네트워크 보안",
+      "question_count": 20
+    },
+    {
+      "id": 3,
+      "name": "제3과목: 애플리케이션 보안",
+      "question_count": 20
+    },
+    {
+      "id": 4,
+      "name": "제4과목: 정보보안 일반",
+      "question_count": 20
+    },
+    {
+      "id": 5,
+      "name": "제5과목: 정보보안 관리 및 법규",
+      "question_count": 20
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "다음 중 Directory Traversal 공격에 대한 설명으로 옳은 것은?",
+      "options": [
+        "공격자가 OS의 조작 커맨드를 이용하는 애플리케이션에 대해서 OS의 디렉터리 작성 커맨드를 삽입하여 실행한다.",
+        "공격자가 입력 파라미터 등에 SQL문을 삽입하여 애플리케이션에 임의의 SQL문을 전달하여 실행한다.",
+        "공격자가 싱글 사이온을 제공하는 디렉터리 서비스에 대해 무단으로 얻은 자격 증명을 사용하여 로그인하고 여러 응용 프로그램을 무단으로 사용한다.",
+        "공격자는 파일 이름을 입력하는 응용 프로그램에 대해 상위 디렉터리를 의미하는 문자열을 사용하여 비공개 파일에 액세스한다."
+      ],
+      "answer": 4,
+      "explanation": "Directory Traversal 공격은 웹 브라우저에서 상위 경로로 접근(\"../..\")하여 시스템의 제한된 영역이나 비공개 파일(예: /etc/passwd 등)을 다운로드하거나 접근하는 공격 방법이다."
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "운영체제를 설치할 때 파티션을 분할하는 이유가 아닌 것은?",
+      "options": [
+        "각각 볼륨에서 발생된 문제가 다른 볼륨으로 전이되는 것을 방지할 수 있다.",
+        "시스템 영역과 사용자 영역이 분리되어 있으므로 백업이 용이하다.",
+        "SUID 공격에 대해 단일 파티션보다 안전하다.",
+        "파일 시스템 성능은 단일 파티션보다 낮아진다."
+      ],
+      "answer": 4,
+      "explanation": "운영체제를 파티셔닝하는 것은 시스템 영역과 사용자 영역을 분리하여 시스템 안정성을 높이고 백업을 용이하게 하기 위함이다. 파티션을 나눈다고 해서 파일 시스템의 성능이 낮아지는 것은 아니다."
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "다음 문장의 기능을 수행하기 위한 nmap의 명령 옵션은?\n\n해당 스캐닝 기법은 방화벽이 존재하더라도 해당 서버에 서비스가 오픈되어 있는지, 필터링이 되어 있는지 등을 파악하기 위해 사용되며, 다른 스캔 기법보다 더 비밀스럽고 타겟 호스트에 log가 남지 않는 방법이다.",
+      "options": [
+        "-sU",
+        "-sS",
+        "-sP",
+        "-sT"
+      ],
+      "answer": 2,
+      "explanation": "nmap 옵션 중에서 \"-sS\"는 TCP SYN 패킷만을 전송하여 완전한 TCP 연결을 맺지 않고 포트 개방 여부를 확인하는 SYN 스텔스 스캔(SYN Stealth Scan) 옵션이다."
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "무작위 대입 공격(Brute-Force Attack) 및 사전 공격(Dictionary Attack) 등 사용자의 패스워드 크래킹 취약점을 점검하기 위한 도구가 아닌 것은?",
+      "options": [
+        "John the Ripper",
+        "L0phtcrack",
+        "Pwddump",
+        "WinNuke"
+      ],
+      "answer": 4,
+      "explanation": "WinNuke는 윈도우 운영체제를 대상으로 OOB(Out of Band) 취약점을 이용해 블루스크린을 유발하는 서비스 거부(DoS) 공격 도구이며, 패스워드 크래킹 도구가 아니다."
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "접근 통제 모델 중 주체나 그들이 소속되어 있는 그룹들의 ID에 근거하여 객체에 대한 접근을 제한하는 접근 통제 방식은?",
+      "options": [
+        "임의적 접근 통제(Discretionary Access Control)",
+        "강제적 접근 통제(Mandatory Access Control)",
+        "직무 기반 접근 통제(Task-based Access Control)",
+        "역할 기반 접근 통제(Role-based Access Control)"
+      ],
+      "answer": 1,
+      "explanation": "임의적 접근 통제(DAC)는 객체의 소유자가 주체의 신분(ID)이나 소속 그룹에 근거하여 해당 객체에 대한 읽기, 쓰기, 실행 등의 권한을 자율적으로 부여하고 제한하는 방식이다."
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음 중 파일 디스크립터(File Descriptor)에 대한 설명으로 틀린 것은?",
+      "options": [
+        "사용자가 직접 관리하므로 사용자가 참조할 수 있다.",
+        "파일을 관리하기 위해 시스템이 필요로 하는 정보를 보관한다.",
+        "일반적으로 보조 기억 장치에 저장되어 있다가 파일을 오픈(Open)할 때 주기억 장치로 옮겨진다.",
+        "파일 제어 블록(File Control Block)이라고도 한다."
+      ],
+      "answer": 1,
+      "explanation": "파일 디스크립터(File Descriptor)는 운영체제 커널이 열린 파일들을 식별하고 관리하기 위해 부여하는 정수 값(0: stdin, 1: stdout, 2: stderr 등)이며, 사용자가 직접 관리하는 것이 아니라 시스템(커널)이 내부적으로 관리한다."
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "유닉스 시스템 계열에서 파일 무결성 검사 도구는?",
+      "options": [
+        "umask",
+        "mount",
+        "tripwire",
+        "TCP-Wrapper"
+      ],
+      "answer": 3,
+      "explanation": "Tripwire는 파일 시스템 내 주요 파일 및 디렉터리의 해시값, 크기, 권한 변경 등을 주기적으로 비교하여 변조 여부를 탐지하는 대표적인 호스트 기반 파일 무결성 검사 도구이다."
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음 문장에서 설명하는 것은?\n\n실시간 트래픽 분석과 IP 네트워크상에서 패킷 로깅이 가능한 가벼운(Lightweight) 네트워크 침입 탐지 시스템이다. 프로토콜 분석, 내용 검색/매칭을 수행할 수 있으며 오버플로우, Stealth 포트스캔, CGI 공격, SMB 탐색, OS 확인 시도 등의 다양한 공격과 스캔을 탐지할 수 있다.",
+      "options": [
+        "Tripwire",
+        "Wireshark",
+        "Snort",
+        "iptables"
+      ],
+      "answer": 3,
+      "explanation": "스노트(Snort)는 실시간 트래픽 분석과 패킷 로깅을 지원하며 규칙(Rule) 기반의 패턴 매칭을 통해 다양한 네트워크 침입을 탐지하는 대표적인 오픈소스 경량 네트워크 침입탐지시스템(NIDS)이다."
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "버퍼 오버플로우에 대한 대책이 아닌 것은?",
+      "options": [
+        "Non-Executable 스택 사용",
+        "rtl(return to libc) 사용",
+        "스택 가드(Stack Guard) 또는 스택 쉴드(Stack Shield) 사용",
+        "ASLR(Address Space Layout Randomization) 사용"
+      ],
+      "answer": 2,
+      "explanation": "RTL(Return to Libc)은 실행 권한이 없는 스택(Non-Executable Stack) 보안 기법을 우회하기 위해 공유 라이브러리(libc) 내 system() 함수 등의 주소로 리턴 주소를 변조하여 실행시키는 공격 기법이다."
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "다음 문장에서 설명하는 스토리지는?\n\n공격자가 시스템의 로그파일을 삭제하거나 변조한다면 공격자가 어떠한 행위를 하였는지 파악하는데 어려움이 존재한다. 이러한 이슈를 해결하고자 로그의 위변조 방지를 위해 사용한다.",
+      "options": [
+        "HOT 스토리지",
+        "WORM 스토리지",
+        "DISK 스토리지",
+        "NAS 스토리지"
+      ],
+      "answer": 2,
+      "explanation": "WORM(Write Once Read Many) 스토리지는 한 번 기록된 데이터는 수정하거나 삭제할 수 없고 오직 읽기만 가능한 저장 장치로, 감사 로그의 위변조 및 임의 삭제를 방지하기 위해 사용된다."
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "제로데이 공격의 특징은?",
+      "options": [
+        "보안 패치가 제공되기 전에 알려지지 않은 취약점을 이용하여 공격한다.",
+        "특정 웹 사이트에 대해 날짜와 시간을 결정하고 여러 대의 PC에서 동시에 공격한다.",
+        "특정 대상에게 피싱 메일을 보내 불법 사이트로 안내한다.",
+        "부정 중계가 가능한 메일 서버를 찾은 후 그것을 기반으로 체인 메일을 대량으로 송신한다."
+      ],
+      "answer": 1,
+      "explanation": "제로데이 공격(Zero-Day Attack)은 소프트웨어 개발사나 보안 커뮤니티에 취약점이 공식적으로 공표되거나 보안 패치가 배포되기 전에 해당 취약점을 이용하여 감행하는 공격이다."
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "ICMP 패킷에 응답하지 못하도록 실행하는 명령은?",
+      "options": [
+        "sysctl -w kernel.ipv4.icmp_echo_ignore_all=0",
+        "sysctl -w kernel.ipv4.icmp_echo_ignore_all=1",
+        "sysctl -w kernel.ipv4.icmp_echo_ignore_broadcasts=0",
+        "sysctl -w kernel.ipv4.icmp_echo_ignore_broadcasts=1"
+      ],
+      "answer": 2,
+      "explanation": "리눅스에서 모든 ICMP Echo Request에 대해 응답하지 않도록 차단하려면 net.ipv4.icmp_echo_ignore_all 값을 1로 설정한다."
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "윈도우 시스템에서 administrator 계정의 암호를 마지막으로 변경한 날짜를 확인하는 명령어는?",
+      "options": [
+        "passwd",
+        "net user administrator",
+        "net share",
+        "net date"
+      ],
+      "answer": 2,
+      "explanation": "윈도우 명령 프롬프트에서 'net user [계정명]' 명령어를 입력하면 해당 사용자의 계정 활성 상태, 암호 마지막 설정 일시, 암호 만료 기간 등의 상세 정보를 확인할 수 있다."
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "패스워드 복잡성 설정을 위한 OS별 해당 파일을 올바르게 짝지은 것은?",
+      "options": [
+        "SOLARIS, /etc/security/pwquality.conf",
+        "LINUX(RHEL5), /etc/pam.d/system-auth",
+        "AIX, /etc/default/passwd",
+        "LINUX(RHEL7), /etc/default/security"
+      ],
+      "answer": 2,
+      "explanation": "RHEL 5/6 계열 리눅스에서는 PAM 모듈 설정 파일인 /etc/pam.d/system-auth 파일에서 pam_cracklib.so 설정을 통해 패스워드 복잡도 및 최소 길이를 관리한다."
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "다음 지문은 웹 서버의 로그이다. 로그를 통해 알 수 있는 정보는?\n\n17.248.162.109 - - [04/Jun/2014:16:03:56 +0900] \"POST /Upload_Process.php HTTP/1.1\" 200 14105\n17.248.162.109 - - [04/Jun/2014:16:04:18 +0900] \"GET /bbs/up/KISA_ushell.php.kr/bbs/up/KA_ushell.php.kr HTTP/1.1\" 200 1434\n17.248.162.109 - - [04/Jun/2014:16:04:21 +0900] \"GET /bbs/up/KA_ushell.php.kr?acKA_ushell.php.kr?ac=shell HTTP/1.1\" 200 1443",
+      "options": [
+        "IIS(Internet Information Services) 웹 서버 로그이다.",
+        "클라이언트가 사용하는 웹 브라우저를 알 수 있다.",
+        "헤더를 포함한 데이터의 크기를 알 수 있다.",
+        "서버에서 전송한 데이터의 크기를 알 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "표준 NCSA/W3C 공통 로그 포맷(CLF)에서 마지막 필드(예: 14105, 1434)는 HTTP 응답 헤더를 제외하고 서버가 클라이언트에게 전송한 응답 본문 데이터의 바이트 크기를 나타낸다."
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "쿠키(Cookie)의 속성 중 Set-Cookie 응답 헤더에 설정하는 속성으로 클라이언트(웹 브라우저 등)에서 스크립트(자바스크립트 등)를 통해 해당 쿠키에 접속하는 것을 차단해 주는 속성은?",
+      "options": [
+        "path 속성",
+        "httpOnly 속성",
+        "domain 속성",
+        "secure 속성"
+      ],
+      "answer": 2,
+      "explanation": "httpOnly 플래그는 웹 브라우저가 document.cookie와 같은 클라이언트 측 스크립트를 통해 쿠키에 접근하는 것을 차단하여 XSS 공격에 의한 세션 쿠키 탈취를 방지한다."
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "리눅스(Linux) inode의 블록 관리(Block Management) 방법에 해당하지 않는 것은?",
+      "options": [
+        "Single Indirect Block",
+        "Double Indirect Block",
+        "Triple Indirect Block",
+        "Quadruple Indirect Block"
+      ],
+      "answer": 4,
+      "explanation": "전통적인 유닉스/리눅스 파일 시스템(Ext2/Ext3)의 inode 구조는 Direct Block(직접 블록), Single Indirect Block(단일 간접 블록), Double Indirect Block(이중 간접 블록), Triple Indirect Block(삼중 간접 블록)까지 지원하며 Quadruple Indirect Block은 존재하지 않는다."
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "악성코드 구동을 위하여 사용되는 윈도우 레지스트리는?",
+      "options": [
+        "HKEY_CLASSES_ROOT",
+        "HKEY_USERS",
+        "HKEY_CURRENT_USER",
+        "HKEY_CURRENT_CONFIG"
+      ],
+      "answer": 1,
+      "explanation": "HKEY_CLASSES_ROOT는 파일 확장자 매핑 및 프로그램 연결 정보(COM/OLE 객체)를 담고 있어 특정 파일 실행 시 악성코드가 가로채어 실행되도록 변조하는 데 악용될 수 있다."
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "유닉스 시스템에서 실행 중인 프로세스별 CPU 점유율, 메모리 점유율, 시스템 부하율 등 전반적인 모니터링이 가능한 명령어는?",
+      "options": [
+        "df",
+        "iostat",
+        "netstat",
+        "top"
+      ],
+      "answer": 4,
+      "explanation": "top 명령어는 시스템의 CPU 사용률, 메모리 점유율, 스왑 상태, Load Average 및 실행 중인 각 프로세스의 자원 점유 상태를 실시간으로 모니터링하고 갱신해 주는 유틸리티이다."
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "안드로이드 앱의 SSL 연결 시 CA 등록을 통한 중간자 공격을 방어하기 위해 도입된 기술은?",
+      "options": [
+        "App Signning",
+        "SSL Pinning",
+        "IDS",
+        "IPS"
+      ],
+      "answer": 2,
+      "explanation": "SSL 피닝(SSL Pinning)은 모바일 앱 내에 신뢰할 수 있는 특정 서버 인증서의 공개키나 해시값을 직접 고정(Pin)해 두고 연결 시 비교 검증함으로써 신뢰되지 않은 사설 CA를 악용한 중간자 공격(MITM)을 원천 차단하는 기술이다."
+    },
+    {
+      "id": 21,
+      "subject_id": 2,
+      "question": "해커의 위치를 실시간으로 추적하는 기술인 역추적(Traceback) 중 IP Traceback, StackPi 등은 어떤 모델인가?",
+      "options": [
+        "출발지 적용 가능 모델",
+        "중계지 적용 가능 모델",
+        "도착지 적용 가능 모델",
+        "근원지 적용 가능 모델"
+      ],
+      "answer": 2,
+      "explanation": "IP Traceback 및 StackPi는 패킷이 통과하는 네트워크 라우터(중계지)에서 패킷 헤더에 경로 정보를 마킹(PPM 등)하여 역추적하는 중계지 적용 가능 모델이다."
+    },
+    {
+      "id": 22,
+      "subject_id": 2,
+      "question": "다음 중 MDM(Mobile Device Management)의 기능과 관리 내용으로 틀린 것은?",
+      "options": [
+        "기능 : 보안 관리 및 도난 방지, 관리 내용 : 기기의 루팅 탐지 및 차단",
+        "기능 : 앱 관리, 관리 내용 : 원격 앱 설치 및 관리",
+        "기능 : 자산 관리, 관리 내용 : 기기 분실 관리",
+        "기능 : 설정 관리, 관리 내용 : 네트워크 설정"
+      ],
+      "answer": 3,
+      "explanation": "MDM에서 기기 분실 관리는 보안 관리 및 도난 방지 기능에 해당하며, 자산 관리는 하드웨어 및 소프트웨어 자산 현황, OS 업데이트, 배포 및 모니터링을 의미한다."
+    },
+    {
+      "id": 23,
+      "subject_id": 2,
+      "question": "네트워크 보안 솔루션에서 탐지되는 특정 패턴과 시계열(Time Series) 데이터의 조합에 의한 보안 상관 분석은?",
+      "options": [
+        "특정한 패턴에 대한 분석",
+        "임계치 값에 의한 분석",
+        "정책 기반 상관 분석",
+        "시나리오 기반 상관 분석"
+      ],
+      "answer": 3,
+      "explanation": "특정 보안 정책 규칙에 정의된 패턴과 시간 경과(시계열)에 따른 이벤트 순서를 조합하여 복합 위협을 탐지하는 기법은 정책 기반 상관 분석(Rule-based / Policy-based Correlation)이다."
+    },
+    {
+      "id": 24,
+      "subject_id": 2,
+      "question": "다음 문장에서 설명하는 공격은?\n\n이것은 인텔 CPU에서 사용하는 비순차적 명령 실행(Out of Order Execution)의 특권 명령(Privileged instruction) 검사 우회 버그를 악용하여 해킹 프로그램이 CPU의 캐시 메모리에 접근하고, 데이터를 유출하는 공격이다.",
+      "options": [
+        "캐시 포이즈닝",
+        "스펙터",
+        "멜트다운",
+        "미라이"
+      ],
+      "answer": 3,
+      "explanation": "멜트다운(Meltdown)은 인텔 CPU의 비순차적 명령어 실행 과정에서 발생하는 하드웨어 취약점으로, 사용자 권한의 프로세스가 커널 메모리의 기밀 데이터를 캐시 부채널 공격을 통해 직접 읽어낼 수 있는 취약점이다."
+    },
+    {
+      "id": 25,
+      "subject_id": 2,
+      "question": "다음과 같은 경우에 사용되는 네트워크 환경 설정 파일은?\n\n• DNS 서버가 작동하지 않을 때\n• 별도의 네트워크를 구성하여 임의로 사용하고자 할 때\n• 다른 IP 주소를 가진 여러 대의 서버가 같은 도메인으로 클러스터링(Clustering)되어 운영되는 상태에서 특정 서버에 접속하고자 할 때\n• 잘못된 환경 설정이 서버 접속 자체를 막으며 해킹 등에 오용될 수 있을 때",
+      "options": [
+        "inetd.conf 파일",
+        "hosts 파일",
+        "services 파일",
+        "named.conf 파일"
+      ],
+      "answer": 2,
+      "explanation": "hosts 파일(/etc/hosts 또는 C:\\Windows\\System32\\drivers\\etc\\hosts)은 DNS 질의 이전에 IP 주소와 호스트명을 로컬에서 직접 1:1로 매핑해 주는 정적 설정 파일이다."
+    },
+    {
+      "id": 26,
+      "subject_id": 2,
+      "question": "데이터 복구 기법 피하기(Data Sanitization) 방법으로 틀린 것은?",
+      "options": [
+        "데이터 치환",
+        "디가우징(Degaussing)",
+        "물리적으로 디스크 파괴",
+        "데이터 덮어쓰기"
+      ],
+      "answer": 1,
+      "explanation": "데이터 완전 삭제 및 복구 방지(Data Sanitization) 기술로는 덮어쓰기(Overwriting/Wiping), 자기장 소거(Degaussing), 물리적 파쇄(Crushing/Shredding) 등이 있으며, 데이터 치환은 단순 변환 기법으로 영구 삭제 수단이 아니다."
+    },
+    {
+      "id": 27,
+      "subject_id": 2,
+      "question": "무선통신 환경에서 사용되는 보안 프로토콜 중 다음 문장에서 설명하는 프로토콜은?\n\nIEEE 802.11i 규격을 완전히 수행하는 표준 프로토콜이다. 이전 WEP의 취약점을 보완한 대안 프로토콜로 AES-CCMP을 통한 암호화 기능을 향상, EAP 사용자 인증 강화 등이 포함된다.",
+      "options": [
+        "WPA",
+        "WPA2",
+        "SSID",
+        "TKIP"
+      ],
+      "answer": 2,
+      "explanation": "WPA2는 IEEE 802.11i 표준을 완전하게 구현한 무선 보안 프로토콜로 강력한 AES-CCMP 암호화 알고리즘과 802.1X/EAP 기반 엔터프라이즈 인증을 지원한다."
+    },
+    {
+      "id": 28,
+      "subject_id": 2,
+      "question": "IPsec의 터널 모드(Tunneling Mode)에서 AH(Authentication Header)를 추가한 IP Packet 구성순서로 옳은 것은?",
+      "options": [
+        "New IP Header - AH - Original IP Header - Original Payload",
+        "AH - New IP Header - Original IP Header - Original Payload",
+        "AH - New IP Header - AH - Original IP Header - Original Payload",
+        "New IP Header - Original IP Header - Original Payload - AH"
+      ],
+      "answer": 1,
+      "explanation": "IPsec 터널모드에서 AH 적용 시 패킷 구성 순서는 [New IP Header] - [AH] - [Original IP Header] - [Original Payload(TCP/UDP 및 데이터)] 순서이다."
+    },
+    {
+      "id": 29,
+      "subject_id": 2,
+      "question": "스푸핑 방법 중 주로 시스템 간 트러스트(신뢰) 관계를 이용하기 위해 사용되는 공격 방법은?",
+      "options": [
+        "IP 스푸핑",
+        "DNS 스푸핑",
+        "ARP 스푸핑",
+        "Host 스푸핑"
+      ],
+      "answer": 1,
+      "explanation": "IP 스푸핑은 송신자 IP 주소를 신뢰받는 호스트(Trust 호스트)의 IP로 위조하여 rlogin, rsh 등의 r-command 인증을 우회하고 시스템에 침투하는 공격 기법이다."
+    },
+    {
+      "id": 30,
+      "subject_id": 2,
+      "question": "Memcached DDoS 공격 기법에 대한 설명으로 틀린 것은?",
+      "options": [
+        "공용 네트워크상에 공개된 대량의 Memcached 서버(분산식 캐시 시스템)에 존재하는 인증과 설계의 취약점을 이용한다.",
+        "스니핑 기법을 이용해 더 많은 트래픽을 발생시킨다.",
+        "공격자는 일반적으로 UDP 11211 포트를 이용하여 공격한다.",
+        "Memcached DDoS 공격 기법을 Amplification Attack(증폭 공격)이라고도 한다."
+      ],
+      "answer": 2,
+      "explanation": "Memcached DDoS는 스니핑을 이용하는 공격이 아니라 취약한 Memcached 서버(UDP 11211)에 송신자 IP를 피해자 IP로 위조(스푸핑)하여 작은 요청을 보내 수만 배의 대용량 응답 트래픽을 유발하는 반사 증폭(DRDoS) 공격이다."
+    },
+    {
+      "id": 31,
+      "subject_id": 2,
+      "question": "다음 문장에서 설명하는 것은?\n\n인터넷이나 다른 네트워크의 메시지가 호스트에 도착했을 때 전달되어야 할 특정 프로세스를 인식하기 위한 방법으로 TCP와 UDP에서 단위 메시지에 추가되는 헤더 내에 넣어지는 16bit 정수의 형태를 갖는다. 이것을 사용하여 호스트에 전달된 데이터를 상위 응용 프로그램에서 넘겨준다. 웹 서비스나 파일 전송 서비스, 전자우편과 같은 서비스에 대하여 영구적으로 이것을 할당한다.",
+      "options": [
+        "Port Number",
+        "Protocol",
+        "Checksum",
+        "Routing"
+      ],
+      "answer": 1,
+      "explanation": "호스트 내에서 실행 중인 특정 응용 프로그램 프로세스를 식별하기 위해 전송 계층(TCP/UDP) 헤더에 포함되는 16비트 정수 식별자는 포트 번호(Port Number)이다."
+    },
+    {
+      "id": 32,
+      "subject_id": 2,
+      "question": "APT(Advanced Persistent Threat) 공격 과정에 대한 순서를 올바르게 나열한 것은?\n\nㄱ. 특정 표적을 대상으로 목표를 정한다.\nㄴ. 지속적으로 정보를 수집한다.\nㄷ. 특정 표적이 된 대상으로 침투하여 해를 끼친다.\nㄹ. 복합적이고 지능적인 수단(다양한 해킹기술)을 이용한다.",
+      "options": [
+        "ㄱ → ㄴ → ㄹ → ㄷ",
+        "ㄴ → ㄱ → ㄷ → ㄹ",
+        "ㄱ → ㄹ → ㄴ → ㄷ",
+        "ㄴ → ㄱ → ㄹ → ㄷ"
+      ],
+      "answer": 3,
+      "explanation": "APT 공격은 특정 표적을 선정(ㄱ)한 후, 지능적인 복합 해킹 수단을 동원(ㄹ)하여 지속적으로 은밀하게 정보를 수집(ㄴ)하고 최종 목표에 침투하여 파괴 및 유출 등 피해를 입히는(ㄷ) 절차로 진행된다."
+    },
+    {
+      "id": 33,
+      "subject_id": 2,
+      "question": "다음 문장에서 괄호 안에 들어갈 단어는?\n\n침입탐지시스템(IDS, Intrusion Detection System)은 대상 시스템의 보안 정책을 파괴할 수 있는 침입을 실시간으로 탐지하는 기능을 가진 보안 시스템이다. 탐지 영역을 중심으로 분류하면 시스템 내부에 설치되어 내부 사용자나 외부 사용자의 비인가적 행위나 해킹 시도를 탐지하는 ( ㄱ )와 네트워크 상의 패킷 정보를 분석해서 공격을 탐지하는 ( ㄴ )로 분류할 수 있다. 또한, 탐지 방법을 중심으로 분류하면 알려진 축적된 공격 정보를 이용해 ( ㄷ )를 탐지하는 ( ㄹ ), 정상 행위와 비정상 행위를 분류해 이를 기준으로 사용자의 행위가 정상 행위인지에 대한 여부를 조사함으로써 ( ㅁ )를 탐지하는 ( ㅂ )으로 분류할 수 있다.",
+      "options": [
+        "ㄱ : Network-based IDS, ㄴ : Host-based IDS, ㄷ : Behavior-base, ㄹ : Misused Detection, ㅁ : Knowledge-base, ㅂ : Anomaly Detection",
+        "ㄱ : Network-based IDS, ㄴ : Host-based IDS, ㄷ : Behavior-base, ㄹ : Anomaly Detection, ㅁ : Knowledge-base, ㅂ : Misused Detection",
+        "ㄱ : Host-based IDS, ㄴ : Network-based IDS, ㄷ : Knowledge-base, ㄹ : Misused Detection, ㅁ : Behavior-base, ㅂ : Anomaly Detection",
+        "ㄱ : Host-based IDS, ㄴ : Network-based IDS, ㄷ : Behavior-base, ㄹ : Misused Detection, ㅁ : Knowledge-base, ㅂ : Anomaly Detection"
+      ],
+      "answer": 3,
+      "explanation": "탐지 위치에 따라 시스템 내부는 HIDS(ㄱ), 네트워크 패킷은 NIDS(ㄴ)이며, 탐지 방법에 따라 알려진 공격 지식 기반은 오용 탐지(Misused Detection, ㄷ/ㄹ), 정상 행위 프로파일 기반은 이상 탐지(Anomaly Detection, ㅁ/ㅂ)이다."
+    },
+    {
+      "id": 34,
+      "subject_id": 2,
+      "question": "다음 문장에 대한 설명으로 옳은 것은?\n\nㄱ. OS에서 버그를 이용하여 루트 권한 획득 또는 특정 기능을 수행하기 위한 공격 코드 및 프로그램을 의미한다.\nㄴ. 악의적인 프로그램을 건전한 프로그램처럼 포장하여 일반 사용자들이 의심 없이 자신의 컴퓨터 안에서 이를 실행시키고 실행된 프로그램은 특정 포트를 열어 공격자의 침입을 돕고 추가적으로 정보를 자동 유출하며 자신의 존재를 숨기는 기능 등을 수행하는 공격 프로그램이다.",
+      "options": [
+        "ㄱ : exploit 코드를 설명한다.",
+        "ㄱ : Trojan 공격 프로그램을 설명한다.",
+        "ㄴ : Bomb 공격 프로그램을 설명한다.",
+        "ㄴ : Worm 코드를 설명한다."
+      ],
+      "answer": 1,
+      "explanation": "ㄱ은 시스템 버그를 악용하는 익스플로잇(Exploit) 코드에 대한 설명이며, ㄴ은 정상 프로그램으로 위장하여 침투하는 트로이 목마(Trojan Horse)에 대한 설명이다."
+    },
+    {
+      "id": 35,
+      "subject_id": 2,
+      "question": "네트워크 기반 공격인 Smurf 공격의 대응 방법을 모두 고른 것은?\n\nㄱ. 네트워크로 유입되는 패킷 중에 Source 주소가 내부 IP인 패킷을 차단한다.\nㄴ. 라우터에서 다른 네트워크로부터 자신의 네트워크로 들어오는 IP Broadcast 패킷을 막도록 설정한다.\nㄷ. IP Broadcast Address로 전송된 ICMP 패킷에 대해 응답하지 않도록 시스템을 설정할 수 있다.\nㄹ. 사용하지 않는 UDP 서비스를 중지한다.",
+      "options": [
+        "ㄱ, ㄴ",
+        "ㄴ, ㄷ",
+        "ㄷ, ㄹ",
+        "ㄱ, ㄹ"
+      ],
+      "answer": 2,
+      "explanation": "스머프(Smurf) 공격은 희생자 IP로 위조된 ICMP Echo Request를 브로드캐스트하여 다량의 증폭 응답을 유발하는 공격이므로, 라우터에서 Direct Broadcast를 차단(ㄴ)하거나 호스트에서 브로드캐스트 ICMP에 응답하지 않도록 설정(ㄷ)하는 것이 대응책이다."
+    },
+    {
+      "id": 36,
+      "subject_id": 2,
+      "question": "방화벽의 동적 패킷 필터링의 특징으로 옳은 것은?",
+      "options": [
+        "IP 주소 변환이 이루어지므로 방화벽 내부의 네트워크 구성을 외부에서 숨길 수 있다.",
+        "암호화된 패킷의 데이터 부분을 디코딩하여 허용된 통신인지 여부를 결정할 수 있다.",
+        "리턴 패킷에 관해서는 과거에 통과한 요구 패킷에 대응하는 패킷만 통과시킬 수 있다.",
+        "패킷의 데이터 부분을 확인하여 응용 프로그램 계층에서 무단 액세스를 방지할 수 있다."
+      ],
+      "answer": 3,
+      "explanation": "동적 패킷 필터링(Stateful Inspection) 방화벽은 세션 상태 테이블을 유지하여 내부에서 외부로 나간 요청 패킷의 연결 정보를 기억하고, 이에 대응하여 외부에서 들어오는 유효한 응답(리턴) 패킷만을 동적으로 통과시킨다."
+    },
+    {
+      "id": 37,
+      "subject_id": 2,
+      "question": "Dynamic NAT(Network Address Translation)에 대한 설명으로 틀린 것은?",
+      "options": [
+        "하나의 NAT 시스템에서 사용하는 공인 IP는 항상 고정된 값을 사용한다.",
+        "사설 IP 주소를 공인 IP 주소로 매칭하여 변환하는 프로토콜이다.",
+        "내부 네트워크에서는 사설 IP 주소만 사용한다.",
+        "NAT을 이용하면 사설 IP 주소 대역이 노출되지 않아 보안성이 높다."
+      ],
+      "answer": 1,
+      "explanation": "Static NAT은 사설 IP와 공인 IP가 1:1로 고정 매핑되지만, Dynamic NAT은 여러 개의 공인 IP 풀(Pool)에서 사용 가능한 공인 IP를 동적으로 할당받아 매핑하므로 공인 IP가 고정된 값을 사용한다는 설명은 틀렸다."
+    },
+    {
+      "id": 38,
+      "subject_id": 2,
+      "question": "OSPF 프로토콜이 최단 경로 탐색에 사용하는 기본 알고리즘은?",
+      "options": [
+        "Bellman-Ford 알고리즘",
+        "Dijkstra 알고리즘",
+        "거리 벡터 라우팅 알고리즘",
+        "Floyd-Warshall 알고리즘"
+      ],
+      "answer": 2,
+      "explanation": "OSPF(Open Shortest Path First)는 링크 상태(Link-State) 라우팅 프로토콜로, 다익스트라(Dijkstra)의 SPF(Shortest Path First) 최단 경로 알고리즘을 기반으로 최적 경로를 계산한다."
+    },
+    {
+      "id": 39,
+      "subject_id": 2,
+      "question": "리눅스 시스템에서 messages 파일을 보니 다음과 같은 내용을 확인할 수 있었다. 파일의 내용을 토대로 추정할 수 있는 공격은?\n\nNov 10 16:36:19 chakra kernel : device eth1 entered promiscuous mode",
+      "options": [
+        "Spoofing 공격",
+        "Sniffing 공격",
+        "ICMP Source Quench 공격",
+        "원격 접속 공격"
+      ],
+      "answer": 2,
+      "explanation": "네트워크 인터페이스(eth1)가 모든 패킷을 무차별 수신하는 'promiscuous mode'로 진입했다는 로그는 tcpdump나 sniffer 도구를 이용한 패킷 스니핑(Sniffing) 공격이 진행 중임을 나타낸다."
+    },
+    {
+      "id": 40,
+      "subject_id": 2,
+      "question": "라우터에서는 출발지 주소와 목적지 주소를 기반으로 하여 패킷의 출입을 통제하는 문장을 사용하는데 이를 이용하여 패킷의 전달 여부를 제어하고, 특정 프로토콜을 사용하는 패킷의 전달을 차단하는 것은?",
+      "options": [
+        "ACL",
+        "Frame-Relay",
+        "Port-Security",
+        "AAA"
+      ],
+      "answer": 1,
+      "explanation": "라우터에서 IP 패킷의 출발지/목적지 IP 주소, 프로토콜, 포트 번호 등을 검사하여 패킷의 전달 허용(Permit) 및 차단(Deny)을 제어하는 규칙 목록은 ACL(Access Control List)이다."
+    },
+    {
+      "id": 41,
+      "subject_id": 3,
+      "question": "와이어샤크(WireShark) 프로그램을 이용하여 POP3 트래픽을 점검할 때 어떤 포트를 검색해야 하는가?",
+      "options": [
+        "143",
+        "25",
+        "110",
+        "125"
+      ],
+      "answer": 3,
+      "explanation": "POP3(Post Office Protocol 3) 서비스는 기본 TCP 110번 포트를 사용한다. (SMTP는 25번, IMAP은 143번 포트를 사용)"
+    },
+    {
+      "id": 42,
+      "subject_id": 3,
+      "question": "C언어로 작성된 응용 프로그램에서 버퍼 오버플로 취약점의 발생을 방지하기 위해 사용이 권고되는 라이브러리 함수가 아닌 것은?",
+      "options": [
+        "strncat",
+        "sscanf",
+        "snprintf",
+        "strncpy"
+      ],
+      "answer": 2,
+      "explanation": "sscanf()는 포맷 문자열 지정 시 입력 버퍼 크기를 명시하지 않으면(%s 등) 버퍼 오버플로우가 발생할 수 있어 취약한 함수로 분류되며, strncat, snprintf, strncpy는 길이를 지정할 수 있어 안전한 함수로 권고된다."
+    },
+    {
+      "id": 43,
+      "subject_id": 3,
+      "question": "서버를 점검하던 중 다음과 같은 문장이 포함된 ASP 스크립트가 존재하는 것을 알게 되었다. 이때 의심되는 공격은?\n\n<% eval request('cmd') %>",
+      "options": [
+        "Buffer Overflow",
+        "CSRF",
+        "웹쉘(WebShell)",
+        "DoS/DDoS"
+      ],
+      "answer": 3,
+      "explanation": "클라이언트가 전송한 임의의 명령어('cmd')를 eval() 함수를 통해 동적으로 실행하도록 작성된 단순 원라이너 악성 코드는 웹쉘(WebShell)의 전형적인 형태이다."
+    },
+    {
+      "id": 44,
+      "subject_id": 3,
+      "question": "SET(Secure Electronic Transaction) 프로토콜의 단점이 아닌 것은?",
+      "options": [
+        "상인에게 지불 정보가 노출된다.",
+        "암호 프로토콜이 너무 복잡하다.",
+        "RSA 동작은 프로토콜의 속도를 저하시킨다.",
+        "지불 게이트웨이에 거래를 전자적으로 처리하기 위한 별도의 하드웨어와 소프트웨어를 요구한다."
+      ],
+      "answer": 1,
+      "explanation": "SET 프로토콜은 이중서명(Dual Signature) 기술을 적용하여 상인에게는 주문정보만 전달되고 신용카드 번호 등 민감한 지불 정보는 상인에게 전혀 노출되지 않도록 설계된 것이 가장 큰 장점이다."
+    },
+    {
+      "id": 45,
+      "subject_id": 3,
+      "question": "행정안전부가 통합 인증 게이트웨이 기술 규격에서 정의하는 SSO의 정의와 약어 풀이로 옳은 것은?",
+      "options": [
+        "Signature Sign On : 일회 인증만으로 추가 인증 없이 여러 시스템과 서비스를 이용할 수 있게 하는 인증 서비스",
+        "Single Sign On : 일회 인증만으로 추가 인증 없이 여러 시스템과 서비스를 이용할 수 있게 하는 인증 서비스",
+        "Signature Sign On : 다수의 서명으로 여러 시스템과 서비스를 이용할 수 있게 하는 인증 서비스",
+        "Single Sign On : 다수의 서명으로 여러 시스템과 서비스를 이용할 수 있게 하는 인증 서비스"
+      ],
+      "answer": 2,
+      "explanation": "SSO는 'Single Sign On'의 약어로, 사용자가 한 번의 로그인 인증(일회 인증)을 수행하면 추가적인 재인증 없이 권한이 부여된 여러 시스템과 서비스를 모두 이용할 수 있도록 지원하는 통합 인증 솔루션이다."
+    },
+    {
+      "id": 46,
+      "subject_id": 3,
+      "question": "데이터베이스 보안 유형에 해당하지 않는 것은?",
+      "options": [
+        "접근 제어(Access Control)",
+        "허가 규칙(Authorization Rules)",
+        "가상 테이블(Views)",
+        "정보집계(Aggregation)"
+      ],
+      "answer": 4,
+      "explanation": "정보집계(Aggregation)는 데이터베이스 보안 대책 유형이 아니라, 낮은 등급의 데이터들을 수집·결합하여 민감한 상위 기밀 정보를 유추해내는 보안 위협/공격 유형 중 하나이다."
+    },
+    {
+      "id": 47,
+      "subject_id": 3,
+      "question": "다음은 DRM(Digital Rights Management)의 구성요소 중 무엇에 대한 설명인가?\n\n지적재산권으로 보호되어야 할 정보의 단위로 일반적으로 패키저를 통해 패키징되기 이전의 원본을 의미한다.",
+      "options": [
+        "콘텐츠(Contents)",
+        "사용자(User)",
+        "식별(Identification)",
+        "권한(Permission)"
+      ],
+      "answer": 1,
+      "explanation": "DRM에서 보호 대상이 되는 지적재산권 저작물 원본(문서, 음원, 동영상 등) 자체를 콘텐츠(Contents)라고 정의한다."
+    },
+    {
+      "id": 48,
+      "subject_id": 3,
+      "question": "다음은 무엇에 대한 설명인가?\n\n웹은 URL 기반으로 요청을 처리하는 구조이다. 해당 요청이 특정 사용자의 정상적인 요청인지를 구분하기 위해 사용자가 작업 페이지를 요청할 때마다 hidden 값으로 클라이언트에게 토큰을 전달한 뒤 해당 클라이언트의 데이터 처리 요청 시 전달되는 값과 세션에 저장된 값을 비교하여 유효성을 검사한다.",
+      "options": [
+        "XSS 필터링",
+        "CAPTCHA",
+        "CSRF 토큰",
+        "COOKIE SECURE 옵션"
+      ],
+      "answer": 3,
+      "explanation": "사용자의 세션에 임의의 고유 토큰을 생성해 두고 양식 제출 시 hidden 필드로 전달받아 검증함으로써 위조된 외부 요청을 차단하는 기법은 CSRF 토큰(Cross-Site Request Forgery Token)이다."
+    },
+    {
+      "id": 49,
+      "subject_id": 3,
+      "question": "다음 문장에서 설명하는 보안 시스템은?\n\nUTM, DLP, SLL Inspection, SSL VPN, Anti APT 등 다양한 기능을 통합해 지원하며 Layer 7까지 제어하고 암호화 트래픽 제어 가능한 보안 시스템",
+      "options": [
+        "NGFW(Next Generation Firewall)",
+        "NAC(Network Access Control)",
+        "IPS(Intrusion Prevention System)",
+        "WIPS(Wireless Intrusion Prevention System)"
+      ],
+      "answer": 1,
+      "explanation": "전통적인 방화벽 기능에 더해 애플리케이션 레벨(L7) 심층 분석, SSL 암호화 트래픽 복호화 검사, 사용자 신원 기반 제어, APT 위협 차단 등을 단일 엔진으로 수행하는 시스템은 차세대 방화벽(NGFW)이다."
+    },
+    {
+      "id": 50,
+      "subject_id": 3,
+      "question": "디지털 콘텐츠의 무단 복제 및 사용을 막고 원작자의 권리와 이익을 보호해 주는 기술과 서비스를 통칭하는 용어는?",
+      "options": [
+        "DRM(Digital Rights Management)",
+        "ECRM(Electronic Customer & Relationship Management)",
+        "TPM(Total Productive Maintenance)",
+        "SSL(Secure Socket Layer)"
+      ],
+      "answer": 1,
+      "explanation": "디지털 저작물의 생성, 유통, 사용 전 과정에 걸쳐 불법 복제와 유출을 방지하고 사용 권한을 통제하는 기술 및 시스템을 DRM(Digital Rights Management, 디지털 저작권 관리)이라고 한다."
+    },
+    {
+      "id": 51,
+      "subject_id": 3,
+      "question": "HTTP 요청 메시지를 구성하는 순서로 옳은 것은?",
+      "options": [
+        "Request Line → Header → Blank Line → Body",
+        "Request Line → Blank line → Header → Body",
+        "Request Line → Header → Body → Blank Line",
+        "Request Line → Body → Blank Line → Header"
+      ],
+      "answer": 1,
+      "explanation": "HTTP 요청 메시지는 시작 줄(Request Line) ➔ 요청 헤더(Header) ➔ 공백 줄(Blank Line / 빈 줄) ➔ 요청 본문(Body) 순서로 구조화되어 있다."
+    },
+    {
+      "id": 52,
+      "subject_id": 3,
+      "question": "다음 문장은 어떤 FTP(File Transfer Protocol) 공격 유형을 설명하고 있는가?\n\n이 FTP 공격은 익명 FTP 서버를 이용해 그 FTP 서버를 경유해서 호스트를 스캔하며, FTP PORT 명령을 이용하고 FTP 서버를 통해 임의의 네트워크 접속을 릴레이하며, 네트워크를 포트 스캐닝하는 데 사용하는 공격이다.",
+      "options": [
+        "Brute Force 공격",
+        "FTP 서버 자체 취약점 공격",
+        "Anonymous FTP Attack",
+        "Bounce Attack"
+      ],
+      "answer": 4,
+      "explanation": "FTP 바운스 공격(FTP Bounce Attack)은 제3의 취약한 FTP 서버에 연결한 후 PORT 명령을 조작하여 공격자의 신원을 숨기고 목표 호스트의 임의 포트로 TCP 연결을 시도하게 하여 포트 스캔이나 방화벽을 우회하는 공격이다."
+    },
+    {
+      "id": 53,
+      "subject_id": 3,
+      "question": "소프트웨어 보안 취약점 중에서 입력 값 검증 및 표현과 관련이 없는 것은?",
+      "options": [
+        "SQL 인젝션",
+        "경로 조작 및 자원 삽입",
+        "위험한 형식의 파일 업로드",
+        "경쟁 조건"
+      ],
+      "answer": 4,
+      "explanation": "경쟁 조건(Race Condition)은 다중 프로세스/스레드 환경에서 자원의 동시 접근 순서 및 타이밍과 관련된 '시간 및 상태' 취약점이며, 입력 값 검증 및 표현 오류가 아니다."
+    },
+    {
+      "id": 54,
+      "subject_id": 3,
+      "question": "DNS 서비스를 위해 BIND 설치 시 관련이 없는 항목은?",
+      "options": [
+        "/etc/named.conf",
+        "/etc/named.iscdlv.key",
+        "/etc/named.rfc1912.zones",
+        "/etc/root.rndc.key"
+      ],
+      "answer": 4,
+      "explanation": "BIND 네임서버의 주요 설정 파일은 named.conf, named.rfc1912.zones, rndc 키 파일(/etc/rndc.key) 등이며, /etc/root.rndc.key는 표준 BIND 설치 경로가 아니다."
+    },
+    {
+      "id": 55,
+      "subject_id": 3,
+      "question": "XML 디지털 서명의 유형이 아닌 것은?",
+      "options": [
+        "Enveloping Signature",
+        "Enveloped Signature",
+        "Detached Signature",
+        "Keyinfo Signature"
+      ],
+      "answer": 4,
+      "explanation": "W3C의 XML 서명 표준 유형 3가지는 Enveloping Signature(서명 구조 내부에 원본 포함), Enveloped Signature(원본 데이터 내부에 서명 포함), Detached Signature(서명과 원본이 완전히 분리)이며 Keyinfo Signature는 유형이 아니다."
+    },
+    {
+      "id": 56,
+      "subject_id": 3,
+      "question": "전자투표 시스템이 가져야 할 암호 기법이 아닌 것은?",
+      "options": [
+        "공개키/개인키를 이용한 암호화 및 복호화",
+        "전자서명(Digital Signature)",
+        "은닉암호",
+        "포그 컴퓨팅(Fog Computing)"
+      ],
+      "answer": 4,
+      "explanation": "포그 컴퓨팅(Fog Computing)은 클라우드와 단말 사이의 분산 엣지 컴퓨팅 아키텍처이며, 암호 기법이 아니다."
+    },
+    {
+      "id": 57,
+      "subject_id": 3,
+      "question": "높은 수준의 권한을 가진 사용자들만이 접근할 수 있는 정보를 낮은 수준의 권한을 가진 사용자들이 접근할 수 있는 객체에 저장하였다. 이것은 DB 보안의 어떤 통제를 위반하는 것인가?",
+      "options": [
+        "접근 통제",
+        "추론 통제",
+        "무결성 통제",
+        "흐름 통제"
+      ],
+      "answer": 4,
+      "explanation": "보안 등급이 높은 객체(비밀)에서 보안 등급이 낮은 객체(공개)로 정보가 불법적으로 전파되거나 저장되는 것을 차단하는 정책은 흐름 통제(Information Flow Control)이다."
+    },
+    {
+      "id": 58,
+      "subject_id": 3,
+      "question": "웹 응용 프로그램에서 운영체제 명령어 삽입 취약점이 존재할 경우 사용할 수 있는 특수문자를 사용한 명령어 조합으로 틀린 것은?",
+      "options": [
+        "pwd;ls -al : pwd 명령과 ls 명령이 순차적으로 실행된다.",
+        "pwd || ls -al : pwd 명령이 실패해야 ls -al 명령이 실행된다.",
+        "ls -al | more : ls 명령의 결과값을 more 명령의 입력 값으로 사용한다.",
+        "ls && pwd : ls 명령이 실패해야 pwd 명령이 실행된다."
+      ],
+      "answer": 4,
+      "explanation": "쉘에서 '&&' 연산자는 앞의 명령이 '성공(반환코드 0)'해야만 뒤의 명령을 실행하는 논리 AND 연산자이다. 실패해야 실행된다는 설명은 틀렸다."
+    },
+    {
+      "id": 59,
+      "subject_id": 3,
+      "question": "SMTP 서버의 릴레이 기능 제한 여부 점검 시 틀린 것은?",
+      "options": [
+        "vi 편집기를 이용하여 sendmail.cf 설정 파일을 열어 아래와 같이 주석을 제거한다.\nRS $*error $@ 5.7.1 $ : \"550 Relaying denied\"",
+        "/etc/mail/access 파일을 삭제한다.",
+        "/etc/mail/access에 특정 IP, Domain, Email Address 및 네트워크에 대한 Sendmail 접근 제한을 확인한다.",
+        "수정했거나 생성했을 경우 makemap 명령으로 DB 파일을 생성한다."
+      ],
+      "answer": 2,
+      "explanation": "스팸 릴레이 방지를 위해 /etc/mail/access 파일에 인가된 호스트나 도메인(RELAY)과 거부할 주소(REJECT/DISCARD)를 명시하고 관리해야 하며, 이 파일을 삭제하는 것은 잘못된 조치이다."
+    },
+    {
+      "id": 60,
+      "subject_id": 3,
+      "question": "포렌식의 기본 원칙에 대한 설명으로 틀린 것은?",
+      "options": [
+        "정당성의 원칙 : 모든 증거는 적법한 절차를 거쳐서 획득한 것이어야 하며, 위법한 절차를 거쳐 획득한 증거는 증거 능력이 없다.",
+        "재현의 원칙 : 법정에 증거를 제출하려면 똑같은 환경에서 같은 결과가 나오도록 재현할 수 있어야 한다.",
+        "신속성의 원칙 : 컴퓨터 내부의 정보는 휘발성을 가진 것이 많아서 신속하게 이루어져야 한다.",
+        "무결성 원칙 : 수집된 정보는 연계 보관성을 만족시켜야 하고, 각 단계를 거치는 과정에 대한 추적이 불가능해야 한다."
+      ],
+      "answer": 4,
+      "explanation": "무결성의 원칙 및 연계 보관성(Chain of Custody)은 증거의 수집, 이송, 보관, 분석 전 과정에 걸쳐 위변조되지 않았음을 입증하기 위해 각 단계를 거치는 과정에 대한 투명한 추적이 '완벽히 가능'해야 한다."
+    },
+    {
+      "id": 61,
+      "subject_id": 4,
+      "question": "MAC(Message Authentication Code)에 대한 설명으로 틀린 것은?",
+      "options": [
+        "MAC은 데이터가 불법적으로 수정, 삭제, 삽입되었는지를 검증할 목적으로 데이터에 덧붙이는 코드이다.",
+        "공격자는 변조된 데이터에 대한 MAC을 생성 및 기존 MAC을 대체하여 데이터 수신자를 속일 수 있으므로 MAC의 생성 및 검증 과정에서는 반드시 송신자가 공유한 비밀키를 사용해야 한다.",
+        "수신자는 전송된 메시지에 대한 MAC을 계산한 다음 수신한 MAC과 비교하여 메시지의 위변조 여부를 검증한다.",
+        "MAC은 메시지의 위변조 검증만 수행하기 때문에 MAC 생성에 이용되는 해시함수의 안전성은 MAC의 안전성과는 무관하다."
+      ],
+      "answer": 4,
+      "explanation": "HMAC과 같은 MAC의 안전성은 기반이 되는 암호학적 일방향 해시 함수의 충돌 저항성 및 일방향성 안전성에 직접적으로 의존하므로 무관하다는 설명은 틀렸다."
+    },
+    {
+      "id": 62,
+      "subject_id": 4,
+      "question": "금융보안에서의 데이터 접근 통제에 대한 설명으로 틀린 것은?",
+      "options": [
+        "부정 거래 패턴(규칙) 및 이용자 정보 등 시스템 운영에 필요한 데이터 또는 패턴 생성, 변경, 삭제 등의 관리 기능",
+        "비인가 관리자 또는 역할이 서로 다른 관리자가 사전에 정한 패턴 및 데이터의 무단 생성, 변경, 삭제 등의 권한 기능",
+        "비인가 행위를 유발하는 송,수신 데이터의 통제 기능",
+        "접속 일시, 접속 성공 및 실패, 접근 IP, MAC, 계정 유형, 서비스 열람, 변경, 삭제 등의 행위 기록 기능"
+      ],
+      "answer": 4,
+      "explanation": "접속 일시, IP, MAC, 성공/실패, 열람/변경 등의 행위를 상세히 기록하고 보존하는 것은 '감사 및 로깅(Logging)' 영역에 해당하며, 접근 여부를 직접 제한하고 차단하는 '접근 통제(Access Control)' 기능 자체의 정의가 아니다."
+    },
+    {
+      "id": 63,
+      "subject_id": 4,
+      "question": "Kerberos 키 분배 프로토콜의 기반 기술에 해당하는 것은?",
+      "options": [
+        "Needham-Schroeder 프로토콜",
+        "Challenge-Response 프로토콜",
+        "Diffie-Hellman 프로토콜",
+        "RSA 이용 키 분배 프로토콜"
+      ],
+      "answer": 1,
+      "explanation": "MIT에서 개발한 분산 환경 인증 및 키 분배 프로토콜인 커버로스(Kerberos)는 니덤-슈뢰더(Needham-Schroeder) 대칭키 신뢰 기반 제3자 인증 프로토콜을 모태로 설계되었다."
+    },
+    {
+      "id": 64,
+      "subject_id": 4,
+      "question": "인증서의 생성, 발행, 폐기를 관리하는 기관은?",
+      "options": [
+        "CA",
+        "RA",
+        "VA",
+        "CRL"
+      ],
+      "answer": 1,
+      "explanation": "PKI(공개키 기반구조)에서 전자서명 인증서의 생성, 발급, 효력 정지 및 폐기, CRL 발행 등 전반적인 인증서 수명주기를 총괄 관리하는 주체는 인증기관(CA, Certificate Authority)이다."
+    },
+    {
+      "id": 65,
+      "subject_id": 4,
+      "question": "다음 문장에서 설명하는 프로토콜은?\n\n공개키 암호에 대한 시초가 되었으며 두 사용자가 안전하게 키를 교환하는 방식으로 이 프로토콜의 효율성은 이산대수 계산의 어려움에 의존한다.",
+      "options": [
+        "Needham-Schroeder 프로토콜",
+        "RSA 프로토콜",
+        "Diffie-Hellman 프로토콜",
+        "커버로스 프로토콜"
+      ],
+      "answer": 3,
+      "explanation": "디피-헬만(Diffie-Hellman) 키 교환 프로토콜은 1976년 최초로 제안된 공개키 암호 기술의 효시로, 유한체 상의 이산대수 문제(DLP)의 수학적 계산 난이도에 기반하여 안전하게 비밀키를 공유한다."
+    },
+    {
+      "id": 66,
+      "subject_id": 4,
+      "question": "대칭키 암호 알고리즘 중 국내에서 권고하고 있는 알고리즘이 아닌 것은?",
+      "options": [
+        "SEED",
+        "HIGHT",
+        "LEA-128/192/256",
+        "DES"
+      ],
+      "answer": 4,
+      "explanation": "DES(Data Encryption Standard)는 56비트의 짧은 키 길이로 인해 전수조사 공격에 취약하여 현재 사용이 금지/폐기된 구형 표준이며, 국내 국가용 암호 권고 규격에는 국산 알고리즘인 SEED, HIGHT, LEA, ARIA 등이 권고된다."
+    },
+    {
+      "id": 67,
+      "subject_id": 4,
+      "question": "다음 문장에서 설명하는 접근 통제 모델은?\n\n• 무결성 레벨에 따라서 정보 접근 제한\n• No Write up\n• No read down",
+      "options": [
+        "비바 모델",
+        "벨라파듈라 모델",
+        "RBAC 모델",
+        "인증 패스워드 모델"
+      ],
+      "answer": 1,
+      "explanation": "무결성(Integrity) 보장을 위해 고안된 비바(Biba) 모델은 상위 무결성 데이터 오염을 막기 위한 'No Write Up'(단순 무결성 속성)과 낮은 무결성 데이터 참조를 막기 위한 'No Read Down'(*-무결성 속성) 원칙을 적용한다."
+    },
+    {
+      "id": 68,
+      "subject_id": 4,
+      "question": "다음 중 'X.509 인증서 구조'의 내용이 아닌 것은?",
+      "options": [
+        "버전(Version)",
+        "일련번호(Serial Number)",
+        "비밀키 정보(Private Key Information)",
+        "유효기간(Period of Validity)"
+      ],
+      "answer": 3,
+      "explanation": "X.509 공개키 인증서에는 소유자의 '공개키 정보(Subject Public Key Info)'가 포함되며, 소유자 본인만이 극비로 관리해야 하는 '비밀키/개인키 정보'는 절대로 인증서 내에 포함되지 않는다."
+    },
+    {
+      "id": 69,
+      "subject_id": 4,
+      "question": "SHA-384(Secure Hash Algorithm)의 Block Size는?",
+      "options": [
+        "160",
+        "224",
+        "512",
+        "1024"
+      ],
+      "answer": 4,
+      "explanation": "SHA-2 계열 중 SHA-224와 SHA-256의 블록 크기는 512비트이며, 64비트 워드를 사용하는 SHA-384와 SHA-512의 입력 처리 블록 크기는 1,024비트이다."
+    },
+    {
+      "id": 70,
+      "subject_id": 4,
+      "question": "디지털 서명에 대한 공격을 예방하기 위해 공개키를 취급하는 소프트웨어는 공개키의 해시 값을 표시하는 수단을 준비해 놓고 있다. 이러한 해시 값을 무엇이라고 하는가?",
+      "options": [
+        "인증서",
+        "핑거프린트",
+        "키 블록",
+        "패딩"
+      ],
+      "answer": 2,
+      "explanation": "공개키 전체를 시각적으로 대조하기 어렵기 때문에 공개키를 해시하여 생성한 짧은 고유 식별 지문 값을 키 핑거프린트(Key Fingerprint)라고 한다."
+    },
+    {
+      "id": 71,
+      "subject_id": 4,
+      "question": "패스워드 입력 방식에 대한 단점을 개선한 인증 기술로 스마트폰과 같은 디바이스에서 사용하는 인증 수단을 온라인에 연동하여 사용자를 인증하는 기술은?",
+      "options": [
+        "HSM",
+        "mOTP",
+        "지문",
+        "FIDO"
+      ],
+      "answer": 4,
+      "explanation": "FIDO(Fast IDentity Online)는 스마트폰의 생체인증 장치(지문, 얼굴 등)로 로컬 인증을 수행하고, 온라인 서버와는 공개키 전자서명 방식으로 안전하게 연동 인증하는 차세대 표준이다."
+    },
+    {
+      "id": 72,
+      "subject_id": 4,
+      "question": "RSA 공개키 암호화 방식의 키 교환 사용에 대한 설명으로 틀린 것은?",
+      "options": [
+        "RSA는 공개키/개인키 쌍인 KUa = {e,n}, KRa = {d,n}를 사용한다.",
+        "A가 암호화되지 않은 평문으로 A의 공개키를 B에게 전송한다.",
+        "B는 공유 비밀키를 생성, A에게서 받은 A의 공개키로 암호화 전송한다.",
+        "암호화할 때의 키를 개인키(Private Key), 복호화할 때의 키를 공개키(Public Key)라고 한다."
+      ],
+      "answer": 4,
+      "explanation": "기밀성을 위한 공개키 암호 통신에서는 데이터를 암호화할 때 '수신자의 공개키(Public Key)'를 사용하고, 암호문을 복호화할 때 '수신자의 개인키(Private Key)'를 사용한다."
+    },
+    {
+      "id": 73,
+      "subject_id": 4,
+      "question": "공개키 기반 구조(PKI)에서 최상위 인증 기관(CA)을 무엇이라 하는가?",
+      "options": [
+        "Top CA",
+        "Super CA",
+        "Root CA",
+        "Ultra CA"
+      ],
+      "answer": 3,
+      "explanation": "계층형 PKI 구조에서 스스로 자신의 개인키로 서명한 자체 서명 인증서(Self-Signed Certificate)를 보유하며 신뢰의 기점(Trust Anchor)이 되는 최상위 인증기관을 루트 CA(Root CA)라고 부른다."
+    },
+    {
+      "id": 74,
+      "subject_id": 4,
+      "question": "생체인증 기술의 정확성을 나타내는 FRR(False Rejection Rate)과 FAR(False Acceptance Rate)에 대한 설명으로 틀린 것은?",
+      "options": [
+        "시스템에 접근하려 할 때, FAR이 높으면 사용자 편의성이 증대된다.",
+        "시스템에 접근하려 할 때, FRR이 낮으면 사용자 편의성이 증대된다.",
+        "시스템의 생체인증 보안성을 강화하게 되면 FRR이 높아진다.",
+        "시스템의 생체인증 보안성을 강화하게 되면 FAR이 높아진다."
+      ],
+      "answer": 4,
+      "explanation": "인증 임계치를 엄격하게 높여 보안성을 강화하면 본인이 거부당할 확률인 FRR(오거부율)은 높아지지만, 타인이 잘못 승인될 확률인 FAR(오인식률)은 반대로 낮아진다."
+    },
+    {
+      "id": 75,
+      "subject_id": 4,
+      "question": "다음 중 온라인 열쇠 분배 방법인 Kerberos 방식에 대한 설명으로 틀린 것은?",
+      "options": [
+        "분산 컴퓨팅 환경에서 대칭키를 이용하여 사용자 인증을 제공하는 중앙 집중형 인증 방식이다.",
+        "데이터의 기밀성은 보장되지만 무결성은 보장하지 못하는 치명적인 단점이 있다.",
+        "사용자의 비밀키가 사용자의 워크스테이션에 임시로 저장되므로 침입자에 의해 유출될 가능성이 있다.",
+        "패스워드 추측 공격에 취약하다."
+      ],
+      "answer": 2,
+      "explanation": "커버로스는 암호화뿐만 아니라 체크섬/해시를 통한 메시지 무결성 검증 기능을 제공하므로, 무결성을 보장하지 못한다는 설명은 틀렸다."
+    },
+    {
+      "id": 76,
+      "subject_id": 4,
+      "question": "CTR(CounteR) 모드에 대한 설명으로 틀린 것은?",
+      "options": [
+        "이전 암호문 블록과 독립적인 키 스트림을 생성하지 않는다.",
+        "키 스트림의 의사난수성은 카운터를 사용함으로써 성취될 수 있다.",
+        "암호화 시 피드백이 존재하지 않는다.",
+        "서로 독립적인 n비트 암호문 블록을 생성한다."
+      ],
+      "answer": 1,
+      "explanation": "CTR(카운터) 모드는 블록 암호화기를 이용하여 1씩 증가하는 카운터 값을 독립적으로 암호화하여 키 스트림을 생성하므로, 이전 암호문 블록의 결과에 종속되지 않고 완전히 독립적인 병렬 처리가 가능하다."
+    },
+    {
+      "id": 77,
+      "subject_id": 4,
+      "question": "메시지에 대한 충돌저항성을 갖는 해시함수를 설계할 경우 공격자가 초당 2^32개의 해시 값을 계산할 수 있는 능력이 있고 정보의 가치가 1,024초 이후에는 위조가 가능하다면 공격자가 충돌 쌍을 찾지 못하도록 하는 최소 해시 값의 비트수는?",
+      "options": [
+        "32",
+        "64",
+        "84",
+        "96"
+      ],
+      "answer": 3,
+      "explanation": "생일 역설(Birthday Attack)에 따른 n비트 해시의 충돌 쌍 탐색 복잡도는 2^(n/2)이다. 공격자가 1,024초(2^10초) 동안 계산 가능한 해시 수는 초당 2^32 × 2^10 = 2^42개이다. 따라서 2^(n/2) > 2^42 이어야 하므로 n/2 > 42 ➔ n > 84 이며, 최소 84비트 이상이어야 한다."
+    },
+    {
+      "id": 78,
+      "subject_id": 4,
+      "question": "일방향 해시함수에 대한 설명으로 틀린 것은?",
+      "options": [
+        "SHA-256의 해시 값은 32바이트이다.",
+        "일방향 해시함수를 사용해서 메시지 인증코드를 구성할 수 있다.",
+        "SHA-1에 대한 충돌 내성은 깨지지 않아 안전하게 사용할 수 있다.",
+        "일방향 해시함수를 통해 파일의 무결성을 보장할 수 있다."
+      ],
+      "answer": 3,
+      "explanation": "SHA-1은 2005년 이론적 충돌 공격이 발표된 이후 2017년 구글의 SHAttered 연구 등을 통해 실제 충돌 쌍이 발견되어 충돌 내성이 완전히 깨졌으므로 현재는 안전하지 않은 알고리즘으로 폐기되었다."
+    },
+    {
+      "id": 79,
+      "subject_id": 4,
+      "question": "사용자의 역할에 기반을 두고 접근을 통제하는 RBAC(역할 기반 접근 통제) 모델에 대한 설명으로 틀린 것은?",
+      "options": [
+        "주체의 인사이동이 잦은 조직에 적합한 접근 통제 방식이다.",
+        "자원 관리자 혹은 보안 관리자가 자원 접근 권한을 다른 사용자에게 부여한다.",
+        "임의적 접근 통제 방식과 강제적 접근 통제 방식의 단점을 보완한 접근 통제 기법이다.",
+        "최소 권한의 원칙과 직무 분리의 원칙을 지킨다."
+      ],
+      "answer": 2,
+      "explanation": "RBAC에서는 권한이 개별 사용자가 아닌 '역할(Role)'에 할당되고 사용자는 적절한 역할에 배정되는 중앙집중식 관리 모델이다. 개별 자원 관리자가 임의로 다른 사용자에게 직접 권한을 부여하는 것은 DAC(임의적 접근통제)의 특징이다."
+    },
+    {
+      "id": 80,
+      "subject_id": 4,
+      "question": "Diffie-Hellman 키 분배 프로토콜을 이용하여 송신자 \"A\"와 수신자 \"B\"간에 동일한 비밀키를 분배하고자 한다. 다음과 같은 조건이 주어졌을 때, 송신자 \"A\"와 수신자 \"B\"가 분배받는 비밀키 값은?\n\n• Diffie-Hellman 키 분배 프로토콜에서 사용하는 이산 대수 : g^x mod p\n• 송신자 A : g = 3, p = 7, a = 2\n• 수신자 B : g = 3, p = 7, b = 3",
+      "options": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "answer": 1,
+      "explanation": "공유 비밀키 K = (g^b mod p)^a mod p = g^(ab) mod p 이다. a=2, b=3이므로 ab=6이다. 따라서 K = 3^6 mod 7 = 729 mod 7 = 1 (729 = 7 × 104 + 1) 이다."
+    },
+    {
+      "id": 81,
+      "subject_id": 5,
+      "question": "계정도용 및 불법적인 인증 시도 통제방안으로써 \"불법 로그인 시도 경고\" 통제 방안 예시로 올바르지 않은 것은?",
+      "options": [
+        "해외 IP 주소 등 등록되지 않은 IP 주소에서의 접속 시 차단 및 통지",
+        "주말, 야간 접속 시 문자 알림",
+        "관리자 등 특수 권한 로그인 시 알림",
+        "동일 계정으로 동시 접속 시 접속 차단 조치 또는 알람 기능"
+      ],
+      "answer": 3,
+      "explanation": "해외 비인가 IP 차단/통지, 주말/야간 이상시간 접속 알림, 동일 계정 동시 접속 차단 등은 비인가자의 불법 로그인 시도를 탐지하고 경고하기 위한 통제 방안이나, 인가된 관리자의 일상적인 특수 권한 로그인 알림 자체는 불법 로그인 시도 경고의 직접적 예시로 가장 거리가 멀다."
+    },
+    {
+      "id": 82,
+      "subject_id": 5,
+      "question": "개인정보보호법에 따른 권리의 보유 및 행사 주체인 정보주체에 해당하지 않는 것은?",
+      "options": [
+        "처리되는 정보에 의하여 알아볼 수 있는 사람",
+        "개인정보를 처리하는 사람",
+        "처리되는 정보의 주체가 되는 사람",
+        "법인이나 단체가 아닌 살아있는 사람"
+      ],
+      "answer": 2,
+      "explanation": "개인정보보호법 제2조 제3호에 따라 '정보주체'란 처리되는 정보에 의하여 알아볼 수 있는 사람으로서 그 정보의 주체가 되는 자연인(살아있는 개인)을 말하며, '개인정보를 처리하는 사람'은 개인정보처리자 또는 개인정보취급자에 해당한다."
+    },
+    {
+      "id": 83,
+      "subject_id": 5,
+      "question": "개인정보보호법상 정보주체의 동의 없이 사용할 수 없는 사례는?",
+      "options": [
+        "통계 작성, 과학적 연구, 공익적 기록보존 등을 위해 가명 처리 후 사용하였다.",
+        "범죄의 수사와 공소의 제기 및 유지를 위해 정보주체의 민감정보를 수집하였다.",
+        "공공기관의 자체 감사를 하며, 해당 직원의 개인정보를 처리하였다.",
+        "인터넷 사이트를 운영하면서 SNS 회사로부터 이용자의 이름, 휴대폰번호, 이메일, 주소를 제공받아 사용하였다."
+      ],
+      "answer": 4,
+      "explanation": "외부 제3자(SNS 회사 등)로부터 이용자의 성명, 연락처, 주소 등 개인정보를 제공받아 제3자 제공을 받거나 마케팅 등에 활용하는 행위는 반드시 정보주체의 명시적 사전 동의를 받아야만 한다."
+    },
+    {
+      "id": 84,
+      "subject_id": 5,
+      "question": "지식정보보안 컨설팅 전문업체로 지정받을 수 있는 법인 임원의 결격사유가 아닌 것은?",
+      "options": [
+        "미성년자",
+        "파산선고를 받고 복권되지 아니한 사람",
+        "금고 이상의 형의 집행유예를 선고받고 그 유예기간 중에 있는 사람",
+        "벌금형을 받고 벌금을 미납한 사람"
+      ],
+      "answer": 4,
+      "explanation": "정보통신기반 보호법령상 결격사유는 미성년자/피성년후견인, 파산선고 후 미복권자, 금고 이상의 실형 선고 후 일정 기간 미경과자, 집행유예 기간 중인 자 등이며, 단순 벌금형 미납자는 법정 결격사유에 해당하지 않는다."
+    },
+    {
+      "id": 85,
+      "subject_id": 5,
+      "question": "개인정보처리에 관한 설명으로 틀린 것은?",
+      "options": [
+        "개인정보보호법은 인터넷 구간과 내부망의 중간지점에 고유식별정보를 저장하는 경우에는 이를 암호화하도록 요구하고 있다.",
+        "정보통신망 이용촉진 및 정보보호 등에 관한 법률은 개인정보처리시스템에 접속할 수 있는 사용자 계정을 발급하는 경우 개인정보취급자별로 한 개의 사용자 계정을 발급하도록 요구하고 있다.",
+        "영상정보처리기기 운영자는 영상정보처리기기의 설치 목적과 다른 목적으로 영상정보처리기기를 임의로 조작하거나 다른 곳을 비춰서는 아니되며, 녹음 기능은 사용할 수 없다.",
+        "학술연구 등의 목적을 위하여 필요한 경우로서 특정 개인을 알아볼 수 없는 형태로 개인정보를 제공하는 경우에는 정보주체의 동의 없이 개인정보를 이용, 제공할 수 있다."
+      ],
+      "answer": 2,
+      "explanation": "개인정보처리시스템에 접속할 수 있는 사용자 계정을 개인정보취급자별로 1인 1계정으로 발급하고 공유를 금지하는 기준은 정보통신망법이 아니라 개인정보보호법의 '개인정보의 안전성 확보조치 기준'(고시 제5조)에 명시된 규정이다."
+    },
+    {
+      "id": 86,
+      "subject_id": 5,
+      "question": "GDPR의 적용 대상으로 틀린 것은?",
+      "options": [
+        "EU 주민의 정보와 무관하지만 제공하는 물품과 서비스에 EU의 생산품이 포함된 기업",
+        "EU 지역에 사업장은 없지만 인터넷 홈페이지를 통해 EU에 거주하는 주민에게 물품 및 서비스를 제공하는 기업",
+        "EU에 거주하는 주민의 행동을 모니터링하는 기업",
+        "EU에 사업장을 운영하는 기업"
+      ],
+      "answer": 1,
+      "explanation": "EU GDPR(일반 데이터 보호 규정)은 EU 역내 사업장 보유 기업, 또는 EU 역외에 있더라도 EU 거주 정보주체에게 재화·서비스를 제공하거나 EU 내에서의 행동을 모니터링하는 경우에 적용되며, 단순 EU산 부품/생산품이 포함된 물품을 거래하는 것은 적용 대상이 아니다."
+    },
+    {
+      "id": 87,
+      "subject_id": 5,
+      "question": "외주 및 협력업체의 인력에 대한 보안을 강화하기 위한 보호 대책으로 틀린 것은?",
+      "options": [
+        "외부 위탁용역 및 협력업체 인력과의 계약 시에 보안 관련 사항을 포함시켜야 한다.",
+        "협력업체 직원 등의 외주 인력은 회사 업무 수행 시 내부 직원과 동일한 수준으로 정보보호 정책을 준수하여야 한다.",
+        "외주 인력에게 회사의 중요 정보에 접근을 허용하는 경우 한시적으로 제한하여 허용하고 주기적인 점검이 이루어져야 한다.",
+        "업무상 필요에 의해 협력업체 직원이 회사 정보시스템에 대한 접속 및 외부로의 접속이 요구되는 경우 협력업체 책임자의 승인을 받는다."
+      ],
+      "answer": 4,
+      "explanation": "협력업체 직원이 회사의 내부 정보시스템에 접속하거나 외부 네트워크 통신을 요청하는 경우, 협력업체의 책임자가 아니라 시스템을 소유·관리하는 '해당 기업(위탁사) 정보보호책임자/관리부서'의 공식적인 사전 승인을 받아야 한다."
+    },
+    {
+      "id": 88,
+      "subject_id": 5,
+      "question": "정보보호 정책을 구현하기 위한 요소에 대한 설명으로 틀린 것은?",
+      "options": [
+        "정책은 조직의 경영 목표를 반영하고 정보보호 관련 상위 정책과 일관성을 유지한다.",
+        "표준은 정보보호 정책의 상위 개념이며 정책 목적을 달성하기 위하여 세부적인 사항을 시규 또는 내규 등으로 정리한 내용이므로 조직 내에서 준수하도록 하는 강제성은 없다.",
+        "지침은 정보보호의 정책을 달성하기 위해 도움이 될 수 있는 구체적인 사항을 설명한 권고 사항으로 정보보호 활동에 필요하거나 도움이 되는 세부 정보를 설명하는 내용이다.",
+        "절차는 정책을 만족하기 위하여 수행하여야 하는 사항들을 순서에 따라 단계적으로 설명하며 구체적 적용을 위해 필요한 세부적인 방법을 기술한 내용이다."
+      ],
+      "answer": 2,
+      "explanation": "정보보호 문서 체계에서 표준(Standard)은 정책(Policy)의 '하위' 개념이며, 정보보호 정책을 실무적으로 일관되게 구현하기 위한 규칙 및 기술적 규격으로서 조직 내 구성원에게 준수해야 할 강제성을 지닌다."
+    },
+    {
+      "id": 89,
+      "subject_id": 5,
+      "question": "다음 중 일반직원 대상의 통상적인 정보보호 교육 및 훈련의 내용에 해당하지 않는 것은?",
+      "options": [
+        "정보보호 요구사항",
+        "정보보호 사고 발생 시 사용자의 법적인 책임",
+        "조직의 정보보호 관리 통제 방법",
+        "조직의 정보보호 시스템 구성도 및 운영 방법"
+      ],
+      "answer": 4,
+      "explanation": "조직의 내부 네트워크 망 구성도, 주요 정보보호 시스템(방화벽, IPS 등) 상세 구성도 및 세부 운영 방법은 대외비(기밀)에 해당하는 보안 관리자 전문 기술 정보이므로, 일반 직원을 대상으로 하는 교육 내용에 포함되어서는 안 된다."
+    },
+    {
+      "id": 90,
+      "subject_id": 5,
+      "question": "다음 중 업무 연속성 관리 단계가 아닌 것은?",
+      "options": [
+        "전략 수립 단계",
+        "구현 단계",
+        "운영 관리 단계",
+        "종료 단계"
+      ],
+      "answer": 4,
+      "explanation": "업무 연속성 관리(BCM) 생명주기는 시작/기획 단계 ➔ 전략 수립 단계(BIA, 위험평가) ➔ 구현 단계(BCP/DRP 구축) ➔ 운영 관리 단계(모니터링, 테스트, 훈련, 유지보수)의 지속적 개선 사이클로 순환하며, 프로젝트처럼 일회성으로 끝나는 '종료 단계'는 존재하지 않는다."
+    },
+    {
+      "id": 91,
+      "subject_id": 5,
+      "question": "사회공학 기법을 악용한 전화 금융사기, 전자금융사기 등 금융소비자 대상의 공격이 고도화, 지능화됨에 따라 각 금융회사는 금융소비자의 재산을 보호하기 위한 시스템으로 오후 9시에 종로의 편의점에서 결제된 신용카드가 동일 오후 9시 5분에 모스크바에서 결제 요청되는 등의 이상 금융거래를 탐지해주는 시스템은?",
+      "options": [
+        "FDS(Fraud Detection System)",
+        "DLP(Data Loss Prevention)",
+        "RMS(Risk Management System)",
+        "ESM(Enterprise Security Management)"
+      ],
+      "answer": 1,
+      "explanation": "전자금융거래 접속 정보, 결제 단말기 위치, 거래 패턴 등을 종합 분석하여 물리적으로 불가능한 이동 거리에서의 거래나 비정상적 금융 거래를 실시간으로 탐지하고 차단하는 시스템은 이상금융거래탐지시스템(FDS)이다."
+    },
+    {
+      "id": 92,
+      "subject_id": 5,
+      "question": "정보통신 서비스 제공자가 개인정보 유출 시 이용자에게 알려야 하는 법률적 의무사항으로 옳지 않은 것은?",
+      "options": [
+        "이용자가 상담 등을 접수할 수 있는 부서 및 연락처",
+        "유출 등이 발생한 원인",
+        "정보통신서비스 제공자 등의 대응 조치",
+        "이용자가 취할 수 있는 조치"
+      ],
+      "answer": 2,
+      "explanation": "개인정보 유출 통지 시 필수 통지 항목은 유출된 개인정보 항목, 유출 시점과 경위, 이용자의 피해 최소화 조치, 대응 조치 및 피해구제 절차, 담당부서 및 연락처 등이며, 사고 원인은 조사가 진행 중인 경우가 많아 필수 법정 통지 항목이 아니다."
+    },
+    {
+      "id": 93,
+      "subject_id": 5,
+      "question": "클라우드 컴퓨팅 발전 및 이용자 보호에 관한 법률에서 정의하는 용어에 대한 설명으로 틀린 것은?",
+      "options": [
+        "클라우드 컴퓨팅이란 정보통신자원을 이용자의 요구나 수요 변화에 따라 정보통신망을 통하여 신축적으로 이용할 수 있도록 하는 정보처리체계를 말한다.",
+        "클라우드 컴퓨팅 기술이란 클라우드 컴퓨팅의 구축 및 이용에 관한 정보통신기술로서 가상화 기술, 분산 처리 기술 등을 말한다.",
+        "클라우드 컴퓨팅 서비스란 클라우드 컴퓨팅을 활용하여 상용으로 타인에게 정보통신자원을 제공하는 서비스를 말한다.",
+        "이용자 정보란 클라우드 컴퓨팅 서비스 이용자가 클라우드 컴퓨팅 서비스에 등록하는 계정 정보를 말한다."
+      ],
+      "answer": 4,
+      "explanation": "클라우드컴퓨팅법 제2조 제4호에서 '이용자 정보'란 이용자가 클라우드컴퓨팅서비스를 이용하여 클라우드컴퓨팅서비스 제공자의 정보통신자원에 저장하는 정보(콘텐츠, 데이터 파일 등)를 의미하며, 단순 계정 정보만을 의미하는 것이 아니다."
+    },
+    {
+      "id": 94,
+      "subject_id": 5,
+      "question": "다음 중 디지털 저작권에 대한 설명으로 틀린 것은?",
+      "options": [
+        "본인이 촬영하고 편집한 동영상은 저작물에 따로 등록하지 않아도 저작권이 적용될 수 있다.",
+        "온라인 비대면 수업과 회의 참가자의 사진을 허락 없이 촬영하여 업로드한 경우 초상권 침해가 될 수 있다.",
+        "공공 데이터 포털에서 공개하고 있는 데이터의 경우 저작권자는 공개한 공공기관이므로 공공 데이터는 별도의 저작권자의 이용 허락 없이 활용할 수 있다.",
+        "비영리적 목적으로 사용하도록 승인한 공개 소프트웨어는 개인, 기업 모두 자유롭게 사용할 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "비영리적 목적(Non-Commercial)으로만 무료 사용이 허가된 오픈소스/공개 소프트웨어의 경우 기업체나 영리 조직이 상업적 업무 환경에서 무단 사용할 경우 저작권 침해 및 라이선스 위반에 해당한다."
+    },
+    {
+      "id": 95,
+      "subject_id": 5,
+      "question": "다음 중 위험분석 접근 방법에 대한 설명으로 옳은 것은?",
+      "options": [
+        "기준선 접근법은 모든 시스템에 대하여 표준화된 보호 대책의 세트를 흐름도의 형태로 제공하며, 계량화가 가능한 장점이 있다.",
+        "비형식적 접근법은 경험자의 지식에 기반하지 않고 구조적인 방법론을 사용하여 위험분석을 시행하는 방식이다.",
+        "상세 위험분석 접근법은 자산분석, 위협분석, 취약점 분석의 각 단계를 수행하여 위험을 평가하는 방법이다.",
+        "복합 접근법은 고위험 영역을 식별하여 베이스라인 접근법을 사용하고, 다른 영역은 비정형 접근법을 사용하여 효율적으로 소규모의 조직 위험평가를 실시할 때 유용한 방법이다."
+      ],
+      "answer": 3,
+      "explanation": "상세 위험분석(Detailed Risk Analysis)은 조직 내 자산 식별 및 가치 평가, 위협 식별 및 발생 가능성, 시스템 취약점 분석, 기존 보안통제 평가 등 각 단계별 정밀 분석을 수행하여 체계적으로 위험을 도출하는 기법이다."
+    },
+    {
+      "id": 96,
+      "subject_id": 5,
+      "question": "다음 문장에서 괄호 안에 들어갈 내용은?\n\n위험이란 비정상적인 일이 발생할 수 있는 ( ㄱ )을 말하며, ( ㄴ )분석은 ( ㄴ )을 분석하고 해석하는 과정으로 조직 자산의 ( ㄷ )을 식별하고, ( ㄹ )분석을 통해 발생 가능한 위험의 내용과 정도를 결정하는 과정이다.",
+      "options": [
+        "ㄱ : 가능성, ㄴ : 취약성, ㄷ : 위험, ㄹ : 위험",
+        "ㄱ : 취약성, ㄴ : 위험, ㄷ : 가능성, ㄹ : 위험",
+        "ㄱ : 확률, ㄴ : 위험, ㄷ : 취약성, ㄹ : 위험",
+        "ㄱ : 가능성, ㄴ : 위험, ㄷ : 취약성, ㄹ : 위험"
+      ],
+      "answer": 4,
+      "explanation": "위험이란 자산에 손실을 초래할 수 있는 비정상적인 사건의 발생 '가능성(ㄱ)'이며, '위험(ㄴ)'분석은 자산의 '취약성(ㄷ)'을 식별하고 '위험(ㄹ)'분석을 통해 위험의 크기를 결정하는 과정이다."
+    },
+    {
+      "id": 97,
+      "subject_id": 5,
+      "question": "거버넌스 체계에 있어서 정보보호에 대한 경영진의 관심 및 참여가 정보보호 목표 달성에 있어서 제일 중요한 요소이다. 정보보호 운영 활동 전반에 경영진의 참여가 이루어질 수 있도록 보고하고 경영진이 정보보호 관련 의사결정에 참여할 수 있도록 운영해야 한다. 다음 중 경영진 참여에 대한 사항으로 가장 부적절한 것은?",
+      "options": [
+        "경영진 참여가 이루어질 수 있도록 보고, 의사결정 등의 책임과 역할을 문서화하지 않았지만 정기적으로 보고하고 있다.",
+        "경영진이 직접 정보보호 활동에 참여도 가능하지만 정보보호 위원회를 구성하여 정교한 의사결정 등을 결정할 수 있다.",
+        "조직의 규모 및 특성에 맞게 보고 및 의사결정 절차, 대상, 주기 등을 결정할 수 있다.",
+        "경영진 참여가 원칙이나 내부 위임전결 등의 규정이 있는 경우에는 정보보호를 담당하고 있는 책임자가 경영진의 의사결정을 대행할 수 있다."
+      ],
+      "answer": 1,
+      "explanation": "정보보호 거버넌스 및 관리체계 인증(ISMS-P) 기준에 따라 경영진의 책임과 역할, 보고 체계 및 의사결정 절차는 반드시 내부 규정이나 지침서로 명문화(문서화)되어야 하며, 문서화하지 않은 채 임의로 보고하는 것은 결함 사항이다."
+    },
+    {
+      "id": 98,
+      "subject_id": 5,
+      "question": "정보보안관리 및 보안 제어에 대한 프라이버시의 연장선에 있는 국제경영시스템으로 조직이 개인정보를 관리하는 방법을 포함하여 프라이버시 보호에 대한 지침을 제공하고 전 세계의 프라이버시 규정 준수를 입증하는 표준은?",
+      "options": [
+        "ISMS-P",
+        "ISO 27001",
+        "ISMS",
+        "ISO 27701"
+      ],
+      "answer": 4,
+      "explanation": "ISO/IEC 27701은 ISO/IEC 27001 정보보안 경영시스템을 기반으로 개인 식별 정보(PII) 처리자의 프라이버시 정보 관리체계(PIMS)에 대한 요구사항 및 지침을 확장 정의한 국제 표준이다."
+    },
+    {
+      "id": 99,
+      "subject_id": 5,
+      "question": "조직의 위험평가를 수립하고 운영에 대한 사항으로 적절하지 않은 것은?",
+      "options": [
+        "위험관리를 위한 위험평가 방법 선정은 베이스라인 접근법, 상세위험분석법, 복합 접근법, 위험 및 시나리오 기반 등의 다양한 방법론 중에서 해당 조직에 맞는 방법론을 선정하고 유지하여야 한다.",
+        "위험관리를 위한 수행인력, 기간, 대상, 예산 등의 방법 및 절차를 구체화한 위험관리계획을 수립하여야 하며, 위험평가 참여자는 외부위험관리전문가로 구성된다.",
+        "위험관리 계획에 따라 위험평가를 연 1회 이상 정기적으로 또는 필요한 시점에 수행하여야 한다. 매년 위험평가 대상에 변동이 없어도 위험평가는 수행되어야 한다.",
+        "조직에서 수용 가능한 목표 위험수준을 정하고 그 수준을 초과하는 위험을 식별하여야 한다. 수용 가능한 목표 위험수준(DoA, Degree of Assurance)을 정보보호 최고책임자 등 경영진 의사결정에 의하여 결정하여야 한다."
+      ],
+      "answer": 2,
+      "explanation": "위험평가는 해당 조직의 업무 특성, 시스템 환경, 자산 중요도를 가장 잘 이해하고 있는 내부 정보보호 담당자, 시스템 관리자, 서비스 운영자 등 내부 인력이 주도적으로 참여해야 하며 외부 전문가만으로 구성한다는 설명은 틀렸다."
+    },
+    {
+      "id": 100,
+      "subject_id": 5,
+      "question": "유럽의 국가들이 자국의 정보보호시스템을 평가하기 위해 각각의 기준을 제정하여 시행하는 것은?",
+      "options": [
+        "TCSEC",
+        "ITSEC",
+        "TNI",
+        "TDI"
+      ],
+      "answer": 2,
+      "explanation": "ITSEC(Information Technology Security Evaluation Criteria)은 유럽 4개국(영국, 독일, 프랑스, 네덜란드)이 미국의 TCSEC(오렌지북)에 대응하여 개발한 유럽의 정보기술 보안 평가 기준이다."
+    }
+  ]
+}

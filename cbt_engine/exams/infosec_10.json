@@ -1,0 +1,1351 @@
+{
+  "exam_info": {
+    "title": "정보보안기사 필기 기출문제 [제10회]",
+    "category": "정보보안기사",
+    "time_limit_minutes": 150,
+    "passing_rules": {
+      "total_pass_score": 60,
+      "subject_cutoff_score": 40,
+      "points_per_question": 1.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "제1과목: 시스템 보안",
+      "question_count": 20
+    },
+    {
+      "id": 2,
+      "name": "제2과목: 네트워크 보안",
+      "question_count": 20
+    },
+    {
+      "id": 3,
+      "name": "제3과목: 애플리케이션 보안",
+      "question_count": 20
+    },
+    {
+      "id": 4,
+      "name": "제4과목: 정보보안 일반",
+      "question_count": 20
+    },
+    {
+      "id": 5,
+      "name": "제5과목: 정보보안 관리 및 법규",
+      "question_count": 20
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "다음 중 웹서비스에서 비즈니스 정보, 제품 및 서비스 설명, 위치정보 등을 제공하는 것은?",
+      "options": [
+        "WSDL",
+        "SOAP",
+        "UDDI",
+        "HTTP"
+      ],
+      "answer": 3,
+      "explanation": "• UDDI(Universal Description, Discovery and Integration) : 기업이 제공하는 웹서비스 정보를 제공하는 레지스트리\n• WSDL(Web Service Description Language) : 실제 웹서비스를 호출하기 위한 정보를 URL, 파라미터 등을 이용하여 제공\n• SOAP(Simple Object Access Protocol) : XML을 사용하는 실제 웹서비스를 호출하기 위한 메시지이며, 통신은 HTTP/HTTPS를 사용"
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음 중에서 WORM(Write Once Read Many) 스토리지가 사용하는 저장매체로 올바르지 않은 것은?",
+      "options": [
+        "CD-ROM",
+        "HDD",
+        "DVD",
+        "Blue-lay"
+      ],
+      "answer": 2,
+      "explanation": "WORM 스토리지는 한 번만 읽고 쓰기가 가능한 것으로 접속 로그 등을 안전하게 보관하기 위해서 사용된다. HDD, SSD는 여러 번 쓰기가 가능하기 때문에 WORM 스토리지가 사용하는 저장매체로 적절하지 않다."
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "리눅스에서 'Linux is busy'가 발생했을 때 프로세스가 접근한 디렉터리 및 파일 등을 확인할 때 사용하는 명령어는?",
+      "options": [
+        "lsof",
+        "kill",
+        "iostat",
+        "mount"
+      ],
+      "answer": 1,
+      "explanation": "lsof 명령어는 실행 프로세스가 점유한 자원(파일, PORT, 소켓 등)을 확인할 때 사용하는 명령어이다."
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "안드로이드에서 앱 정보 등을 저장, 관리하기 위한 데이터베이스는 무엇인가?",
+      "options": [
+        "Oracle",
+        "Hadoop",
+        "sqlite",
+        "MySql"
+      ],
+      "answer": 3,
+      "explanation": "안드로이드 내에 정보를 저장하기 위한 데이터베이스는 sqlite이다."
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "리눅스에서 /etc/services 파일에 대한 권한을 잘못 설정하면 발생할 수 있는 문제점이 아닌 것은?",
+      "options": [
+        "비인가자가 서비스를 제어하거나 시스템 보안을 침해할 수 있다.",
+        "서비스 연결 시에 IP주소가 노출되거나 변경될 수 있다.",
+        "시스템의 불안정성 및 서비스 장애가 발생할 수 있다.",
+        "특정 통신을 차단하거나 잘못된 포트로 연결될 수 있다."
+      ],
+      "answer": 2,
+      "explanation": "/etc/services 파일은 프로그램명과 사용하는 포트 정보, 프로토콜(TCP, UDP)을 저장하고 있는 파일이다. 권한이 잘못 설정되면 보안 취약점 발생 서비스 통신 차단, 서비스 장애가 발생할 수 있다."
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음 중 리눅스 서버의 umask 기본값으로 올바른 것은?",
+      "options": [
+        "0022",
+        "0666",
+        "0777",
+        "0011"
+      ],
+      "answer": 1,
+      "explanation": "umask는 파일을 처음 생성할 때 부여되는 리눅스 디폴트 권한으로 파일은 666에서 빼고 디렉터리는 777에서 뺀다."
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "안드로이드 시스템의 apk형식으로 설치된 파일 위치가 아닌 것은?",
+      "options": [
+        "system/app",
+        "system/priv-app",
+        "data/app",
+        "data/priv-app"
+      ],
+      "answer": 4,
+      "explanation": "• data/app : 사용자 앱 파일이 저장됨\n• system/priv-app : 시스템 내에 중요 앱이 저장됨\n• system/app : 시스템 기본 앱이 저장됨"
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음 괄호 안에 들어갈 용어로 올바른 것은?\n\n미라이(Mirai)는 리눅스를 실행하는 네트워크 장치이다. 미라이는 장치를 원격 제어 봇으로 변환하여, 대규모 네트워크 공격에서 (   )의 일부로 사용한다. 주요 대상은 IP카메라, 홈 라우터 등의 IoT 기기이다.",
+      "options": [
+        "C&C 서버",
+        "봇넷",
+        "IoT",
+        "DDoS"
+      ],
+      "answer": 2,
+      "explanation": "미라이는 IoT 장비를 감염시켜 대규모 봇넷을 구축하고, 이를 원격에서 제어해 DDoS 공격 등에 활용하는 원격 제어 봇이다."
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "다음 중 버퍼 오버플로우 공격에 대한 대응방법이 아닌 것은?",
+      "options": [
+        "Stack Guard",
+        "Stack Shield",
+        "ASLR",
+        "NX비트 0지정"
+      ],
+      "answer": 4,
+      "explanation": "NX비트는 Stack과 Heap에서 코드를 실행할 수 없게 막는 것으로, 1로 지정해야 한다.\n• Stack Guard : Canary 값을 입력하고 종료 시 Canary 값이 변경되면 프로그램을 종료\n• Stack Shield : Global RET라는 특수 스택에 값을 저장해 두었다가, 함수 반환 시 스택의 값을 비교\n• ASLR : 스택 공간의 주소를 동적으로 할당"
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "다음 중 윈도우 레지스트리 Root key에서 파일의 확장자에 대한 정보와 프로그램 간의 연결 정보를 가지고 있는 것은?",
+      "options": [
+        "HKEY_CLASSES_ROOT",
+        "HKEY_LOCAL_MACHINE",
+        "HKEY_USERS",
+        "HKEY_CURRENT_CONFIG"
+      ],
+      "answer": 1,
+      "explanation": "• HKEY_CLASSES_ROOT : 확장자와 프로그램 연결 정보\n• HKEY_LOCAL_MACHINE : 하드웨어, 소프트웨어 드라이버\n• HKEY_USERS : 사용자 정보\n• HKEY_CURRENT_CONFIG : 디스플레이 및 프린터 설정"
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "다음 중 윈도우 운영체제 프로세스 중에서 사용자들의 로그인 검사, 비밀번호 변경, 엑세스 토큰을 생성하는 시스템 보안 정책을 수행하는 것은?",
+      "options": [
+        "wininit.exe",
+        "lsm.exe",
+        "svchost.exe",
+        "lsass.exe"
+      ],
+      "answer": 4,
+      "explanation": "• lsass.exe : Local Security Authority Subsystem Service로 사용자들의 로그인 검사, 비밀번호 변경, 엑세스 토큰을 생성하는 시스템 보안 정책을 수행\n• lsm.exe : Local Session Manager로 사용자 세션 관리(원격연결 RDP)를 수행\n• wininit.exe : 윈도우 초기화 프로세스를 시작하는 역할을 수행\n• svchost.exe : 백그라운드에서 윈도우 서비스의 호스팅 역할을 수행"
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "다음 윈도우 레지스트 파일 중에서 파일 형태로 존재하는 것이 아닌 것은?",
+      "options": [
+        "Software",
+        "SAM",
+        "Security",
+        "ntuser.dat"
+      ],
+      "answer": 1,
+      "explanation": "Software는 실제 파일이 아니라 하이브 파일의 여러 키를 통해 구성된 계층구조이다.\n[파일 형태로 존재하는 레지스트리 파일]\n• SAM(Security Accounts Manager) : 사용자 계정정보를 저장\n• Security : 보안 관련 정보를 저장\n• ntuser.dat : 사용자 계정의 프로필 정보를 저장"
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음 중 윈도우 시스템 복구에 필요한 파일이 아닌 것은?",
+      "options": [
+        "system.dat",
+        "user.dat",
+        "system.ini",
+        "ntuser.dat"
+      ],
+      "answer": 3,
+      "explanation": "System.ini 파일은 예전 윈도우 버전에서 시스템 초기화 설정에 필요한 파일이며, 시스템을 복구하는 데 필수적인 파일은 아니다."
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "다음 중 윈도우 운영체제 로그 폴더의 위치로 올바른 것은?",
+      "options": [
+        "C:\\Windows\\System32\\winevt\\Logs",
+        "C:\\Windows\\Logs",
+        "C:\\Windows\\System32\\Logs",
+        "C:\\System32\\Logs"
+      ],
+      "answer": 1,
+      "explanation": "윈도우 운영체제의 로그 폴더는 C:\\Windows\\System32\\winevt\\Logs이며, 이벤트 로그와 설치 로그 등이 저장된다."
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "다음 내용은 사이버 킬체인 공격 순서이다. (ㄱ)과 (ㄴ)에 들어갈 내용으로 알맞은 것은?\n\n(ㄱ)\n  ↓\n무기화(Weaponization)\n  ↓\n전달(Delivery)\n  ↓\n(ㄴ)\n  ↓\n설치(Installation)\n  ↓\n명령 및 제어(Command and Control, C2)\n  ↓\n목표 수행(Actions on Objectives)",
+      "options": [
+        "(ㄱ) : 악용(Exploitation), (ㄴ) : 정찰(Reconnaissance)",
+        "(ㄱ) : 악용(Exploitation), (ㄴ) : 배포(Deployment)",
+        "(ㄱ) : 정찰(Reconnaissance), (ㄴ) : 악용(Exploitation)",
+        "(ㄱ) : 정찰(Reconnaissance), (ㄴ) : 배포(Deployment)"
+      ],
+      "answer": 3,
+      "explanation": "사이버 킬체인 공격은 '정찰 - 무기화 - 전달 - 악용 - 설치 - 명령 및 제어 - 목표 수행' 순으로 이뤄진다."
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "다음 중 MS-SQL 데이터베이스에서 취약점이 발견된 함수는?",
+      "options": [
+        "xp_cmdshell",
+        "shellexecute",
+        "Log4j",
+        "xp_shell"
+      ],
+      "answer": 1,
+      "explanation": "MS-SQL 데이터베이스에서 대표적인 취약 함수로는 xp_cmdshell이 있다."
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "다음 중 리눅스 로그파일에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "wtmp는 로그인, 로그아웃, 콘솔 로그인, 재부팅 정보를 저장하고 last 명령어로 확인한다.",
+        "utmp는 현재 로그인된 사용자 정보를 저장하고 who 혹은 w 명령어로 확인한다.",
+        "btmp는 패스워드 실패 정보를 저장하고 lastb 명령어로 확인한다.",
+        "secure는 파일 암호화 여부를 저장하고 secure 명령어로 확인한다."
+      ],
+      "answer": 4,
+      "explanation": "secure는 telnet, ssh, ftp 등 원격접속 로그를 저장하는 텍스트 파일이다."
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "리눅스 배너 파일 중에서 telnet으로 로그인하기 전에 출력되는 것은?",
+      "options": [
+        "issuse",
+        "issuse.net",
+        "banner",
+        "motd"
+      ],
+      "answer": 2,
+      "explanation": "issue와 issue.net은 모두 로그인 전에 출력되는 메시지이고 motd는 로그인 후 출력되는 메시지이다. 이 중 telnet 로그인 전에 출력되는 것은 issue.net이다."
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "다음 중 부트섹터 바이러스에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "MBR을 감염시켜서 컴퓨터 부팅 과정에서 악성코드를 삽입한다.",
+        "부트섹터 바이러스는 BIOS ROM에 위치한다.",
+        "감염된 드라이브를 다른 컴퓨터에 연결할 때 확산된다.",
+        "컴퓨터가 부팅될 때마다 악성코드가 먼저 실행된다."
+      ],
+      "answer": 2,
+      "explanation": "부트섹터 바이러스는 디스크 Sector번호 1번에 위치하기 때문에 부팅될 때마다 자동 실행된다."
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "다음에서 설명하는 공격방법은?\n\n• HTTP Response의 응답 시간을 활용하는 공격이다.\n• SQL 실행 결과가 참인지 거짓인지에 따라서 응답 시간이 다르다.\n• sleep()함수를 사용한다.\n예 'or 1=1 and sleep(1);#",
+      "options": [
+        "SQL Injection",
+        "Blind SQL Injection",
+        "Time-based SQL Injection",
+        "Boolean-based Blind SQL Injection"
+      ],
+      "answer": 3,
+      "explanation": "Time-based SQL Injection은 참과 거짓에 따라 응답 시간을 다르게 해서 공격한다."
+    },
+    {
+      "id": 21,
+      "subject_id": 2,
+      "question": "포트 스캐닝 도구인 nmap를 사용해서 FTP 바운스 공격을 수행할 때의 옵션은?",
+      "options": [
+        "-sT",
+        "-sO",
+        "-b",
+        "-sA"
+      ],
+      "answer": 3,
+      "explanation": "FTP 바운스 공격은 포트 스캐닝을 목적으로 하는 공격으로, nmap -b <IP주소>로 수행할 수 있다."
+    },
+    {
+      "id": 22,
+      "subject_id": 2,
+      "question": "네트워크 토폴로지 구성 방식 중에서 근거리 통신망에 사용하는 구성은?",
+      "options": [
+        "Mesh형",
+        "Star형",
+        "Bus형",
+        "Tree형"
+      ],
+      "answer": 3,
+      "explanation": "버스(Bus)형은 중앙 통신회선 하나에 여러 대의 노드를 연결하는 방식으로 근거리 통신망에서 사용된다."
+    },
+    {
+      "id": 23,
+      "subject_id": 2,
+      "question": "다음 중 무선랜 IEEE 802.1x 기반 인증 수단은 무엇인가?",
+      "options": [
+        "AAA",
+        "RADIUS",
+        "EAP",
+        "Key인증"
+      ],
+      "answer": 3,
+      "explanation": "EAP(Extensible Authentication Protocol)인증 : 다양한 네트워크 엑세스를 위한 기술로 IEEE 802.1x와 통합되었다.\n[IEEE 802.1x 표준]\n• 포트 기반 네트워크 접근제어에 대한 IEEE 표준이다.\n• 근거리 통신망과 무선랜을 연결하기 위한 인증 방법(EAP)을 제공한다.\n• Wi-Fi 및 VPN 보안 인증을 제공한다."
+    },
+    {
+      "id": 24,
+      "subject_id": 2,
+      "question": "다음 중 공격기법과 형태, 목표가 올바르게 짝지어진 것은?",
+      "options": [
+        "UDP Flood - 수동적 - 기밀성",
+        "Packet Sniffing - 수동적 - 기밀성",
+        "세션 하이재킹 - 공격적 - 무결성",
+        "CSRF - 수동적 - 가용성"
+      ],
+      "answer": 2,
+      "explanation": "패킷 스니핑(Packet Sniffing)은 정보만 획득하는 스니핑 공격으로 공격을 통해 기밀정보를 획득할 수 있다. 단, 암호화를 수행하면 정보를 확인할 수 없다."
+    },
+    {
+      "id": 25,
+      "subject_id": 2,
+      "question": "CISCO 라우터에서 외부에서 내부 네트워크로 유입되는 연결(TCP)에 대해서 일정 기간 연결을 유지하는 방법은?",
+      "options": [
+        "service tcp-keepalives-in",
+        "service tcp-keepalives-out",
+        "service keepalives-in",
+        "service keepalives-out"
+      ],
+      "answer": 1,
+      "explanation": "[CISCO 라우터 TCP KeepAlive 설정]\nRouter# show running-config\nStep 1 : 네트워크 장비로 들어오는 TCP 연결에 TCP Keepalive 서비스를 설정\nRouter# config terminal\nRouter(config) service tcp-keepalives-in\nStep 2 : 네트워크 장비에서 나가는 TCP 연결에 TCP Keepalive 서비스를 설정\nRouter# config terminal\nRouter(config) service tcp-keepalives-out"
+    },
+    {
+      "id": 26,
+      "subject_id": 2,
+      "question": "다음 프로토콜의 포트 번호를 연결한 것으로 올바르지 않은 것은?",
+      "options": [
+        "SMTP - 25번",
+        "POP3 - 110번",
+        "POP3s - 995번",
+        "IMAP 보안연결 - 990번"
+      ],
+      "answer": 4,
+      "explanation": "[각 프로토콜의 포트 번호]\n• SMTP : 25번\n• POP3 : 110번\n• POP3 보안연결(SSL/TLS) : 995번\n• IMAP : 143번\n• IMAP 보안연결(SSL/TLS) : 993번"
+    },
+    {
+      "id": 27,
+      "subject_id": 2,
+      "question": "다음 중 무선랜 보안기술인 WEP에서 암호키의 길이는?",
+      "options": [
+        "RC4 - 24비트",
+        "RC4 - 40비트",
+        "TKIP - 40비트",
+        "TKIP - 24비트"
+      ],
+      "answer": 2,
+      "explanation": "WEP는 RC4 스트림 암호화를 사용하며, 고정된 암호화 키 40비트와 초기화 벡터(IV) 24비트를 사용한다."
+    },
+    {
+      "id": 28,
+      "subject_id": 2,
+      "question": "다음은 TCP 프로토콜의 연결과정이다. 괄호 안에 들어갈 용어로 올바른 것은?",
+      "image": "/exams/images/infosec_10_q28.png",
+      "image_url": "/exams/images/infosec_10_q28.png",
+      "options": [
+        "SYN",
+        "ACK",
+        "RST",
+        "RST+ACK"
+      ],
+      "answer": 2,
+      "explanation": "TCP 연결과정인 3-Way handshaking은 SYN, SYN+ACK, ACK 과정으로 연결을 확립한다."
+    },
+    {
+      "id": 29,
+      "subject_id": 2,
+      "question": "다음 중 OSI 7계층 중 4계층에서 동작하는 프로토콜은?",
+      "options": [
+        "UDP",
+        "IP",
+        "ICMP",
+        "ARP"
+      ],
+      "answer": 1,
+      "explanation": "• 3계층(Network 계층)에서 동작하는 프로토콜 : IP, ICMP, ARP, RARP 등\n• 4계층(Transport 계층)에서 동작하는 프로토콜 : TCP, UDP"
+    },
+    {
+      "id": 30,
+      "subject_id": 2,
+      "question": "다음 중 LAN의 IEEE 802.3 표준은?",
+      "options": [
+        "CSMA/CD",
+        "토큰 버스",
+        "CSMA/CA",
+        "토큰 링"
+      ],
+      "answer": 1,
+      "explanation": "유선 LAN은 IEEE 802.3 표준으로 CSMA/CD를 의미한다."
+    },
+    {
+      "id": 31,
+      "subject_id": 2,
+      "question": "다음 중 라우터에서 관리자(root) IP만 SSH 연결 가능하도록 하는 방법은?\n\n<보기>\n관리자 단말 IP : 192.168.159.131",
+      "options": [
+        "access-list 5 permit host 192.168.159.131",
+        "access-list 150 deny ip host 192.168.159.131 100.100.100.0 0.0.0.255",
+        "access-list 5 permit host 192.168.159.131\naccess-list 5 deny any",
+        "access-list 150 deny tcp 192.168.1.0 0.0.0.255 host 100.100.100.1 eq 80"
+      ],
+      "answer": 3,
+      "explanation": "• access-list 5 permit host 192.168.159.131 : 특정 IP의 경우 host로 명시한다.\n• access-list 5 deny any : 모든 출발지를 차단한다.\n• access-list 150 deny ip host 192.168.159.131 100.100.100.0 0.0.0.255 : 출발지가 192.168.159.131이고 목적지가 100.100.100.0/24인 대역을 차단한다.\n• access-list 150 deny tcp 192.168.1.0 0.0.0.255 host 100.100.100.1 eq 80 : 출발지가 192.168.1.0이고 목적지가 100.100.100.1이고 80번 포트 tcp 패킷을 모두 차단한다."
+    },
+    {
+      "id": 32,
+      "subject_id": 2,
+      "question": "다음 중 netstat 명령어에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "-r 옵션 : 네트워크 라우팅 테이블을 확인한다.",
+        "-i 옵션 : 네트워크 인터페이스를 확인한다.",
+        "-l 옵션 : LISTEN 상태를 확인한다.",
+        "-e 옵션 : 네트워크 통제정보를 확인한다."
+      ],
+      "answer": 4,
+      "explanation": "netstat의 -s옵션은 TCP, UDP, ICMP 통계정보를 확인한다."
+    },
+    {
+      "id": 33,
+      "subject_id": 2,
+      "question": "다음 중 패킷의 흐름을 바꿀 수 있는 것이 아닌 것은?",
+      "options": [
+        "IP 스푸핑",
+        "ARP 스푸핑",
+        "ICMP 스머핑",
+        "DNS 스푸핑"
+      ],
+      "answer": 3,
+      "explanation": "ICMP 스머핑은 DDoS 공격으로 패킷의 흐름을 변경하지 않는다. IP Spoofing, ARP Spoofing, DNS Spoofing 모두 공격자가 네트워크상에서 패킷의 경로를 조작하거나 위변조하여 트래픽을 가로채거나 악성코드를 유포할 수 있다."
+    },
+    {
+      "id": 34,
+      "subject_id": 2,
+      "question": "다음 중 라우터 Telnet 접속을 허용하는 것은?",
+      "options": [
+        "Router# config terminal\nRouter(config)line vty 0 4\nRouter(config)login local\nRouter(config)transport input telnet",
+        "Router# config terminal\nRouter(config)# line con 0\nRouter(config-line)# exec-timeout 5 0",
+        "Router# config terminal\nRouter(config)# enable secret <패스워드>",
+        "router# configure terminal\nrouter(config)# access-list <ACL 번호> permit ip 0.0.0.0 255.255.255.255 any"
+      ],
+      "answer": 1,
+      "explanation": "• line vty 0 4 : telnet과 같은 가상 터미널의 수를 설정\n• login local : login만 입력하면 패스워드만 질문하고 local까지 입력하면 ID, 패스워드 모두 질문\n• transport input telnet : 텔넷을 사용\n[오답 피하기]\n② 콘솔에 세션 타임아웃을 설정\n③ 패스워드를 설정"
+    },
+    {
+      "id": 35,
+      "subject_id": 2,
+      "question": "다음 중 포트 미러닝을 수행하는 것은?",
+      "options": [
+        "스위치 재밍",
+        "SPAN",
+        "ICMP Redirect",
+        "ARP Redirect"
+      ],
+      "answer": 2,
+      "explanation": "SPAN은 스위치 포트 미러닝을 통해서 스니핑을 할 수 있다."
+    },
+    {
+      "id": 36,
+      "subject_id": 2,
+      "question": "다음 Spoofing 방법 중에서 실제 웹사이트와 유사한 허위 웹사이트를 만들어서 로그인 정보를 가로채는 공격기법은?",
+      "options": [
+        "DNS Spoofing",
+        "IP Spoofing",
+        "URL Spoofing",
+        "ARP Spoofing"
+      ],
+      "answer": 3,
+      "explanation": "URL Spoofing(= 웹사이트 스푸핑) : 실제 웹사이트와 유사한 허위 웹사이트를 만들어서 로그인 정보를 탈취하는 공격기법"
+    },
+    {
+      "id": 37,
+      "subject_id": 2,
+      "question": "다음 중 OSI 계층을 연결한 것으로 올바르지 않은 것은?",
+      "options": [
+        "SSL - Transport 계층",
+        "OTP - Data link 계층",
+        "IPSEC - Network 계층",
+        "ARP - Network 계층"
+      ],
+      "answer": 2,
+      "explanation": "SSL은 Transport 계층과 Application 계층 사이에서 동작하고, OTP는 Application 계층에서 동작한다."
+    },
+    {
+      "id": 38,
+      "subject_id": 2,
+      "question": "다음의 설명 중 올바르지 않은 것은?",
+      "options": [
+        "A 클래스의 첫 번째 비트는 0이고, 범위는 0.0.0.0~127.255.255.255까지이다.",
+        "B 클래스의 비트는 10이고, 범위는 191.0.0.0~191.255.255.255까지이다.",
+        "C 클래스의 비트는 110이고, 범위는 192.0.0.0~223.255.255.255까지이다.",
+        "D 클래스는 멀티캐스트 용도로 1110이다."
+      ],
+      "answer": 2,
+      "explanation": "[클래스의 종류 및 범위]\n• A 클래스 : 0.0.0.0 ~ 127.255.255.255\n• B 클래스 : 128.0.0.0 ~ 191.255.255.255\n• C 클래스 : 192.0.0.0 ~ 223.255.255.255\n• D 클래스 : 224.0.0.0 ~ 239.255.255.255(멀티캐스트용)\n• E 클래스 : 240.0.0.0 ~ 255.255.255.255(연구/개발용)"
+    },
+    {
+      "id": 39,
+      "subject_id": 2,
+      "question": "다음 <보기>에서 설명하는 방화벽(Firewall)의 종류는?\n\n<보기>\n• 대외 방화벽 : 대외 접점에 IP와 포트 번호를 사용해서 접근통제를 수행한다.\n• 망분리 : 2개의 네트워크 카드로 외부망과 내부망을 분리한다.",
+      "options": [
+        "Screening Router",
+        "Dual Homed",
+        "Screening Host",
+        "Screening Subnet"
+      ],
+      "answer": 3,
+      "explanation": "• Screening Router : IP와 포트 번호를 사용해서 접근통제를 수행\n• Dual Homed : 2개의 네트워크 카드로 외부망과 내부망을 분리\n• Screening Host : Screening Router + Dual Homed\n• Screening Subnet : Screening Router + Dual Homed + Screening Router"
+    },
+    {
+      "id": 40,
+      "subject_id": 2,
+      "question": "다음 중 DNS를 이용하는 프로토콜이 아닌 것은?",
+      "options": [
+        "nslookup",
+        "dig",
+        "ipconfig",
+        "hosts"
+      ],
+      "answer": 3,
+      "explanation": "ipconfig는 윈도우에서 네트워크 설정 정보를 확인하는 명령어이다."
+    },
+    {
+      "id": 41,
+      "subject_id": 3,
+      "question": "난독화 기법 중에 코드의 실행경로와 제어흐름을 복잡하게 변형하는 것은?",
+      "options": [
+        "Layout 난독화",
+        "Data 난독화",
+        "Control 난독화",
+        "Source 난독화"
+      ],
+      "answer": 3,
+      "explanation": "• Control 난독화 : 코드의 실행경로와 제어흐름을 복잡하게 변형\n• Layout 난독화 : 식별자를 난독화\n• Data 난독화 : 민감한 정보를 무단으로 접근하지 못하게 데이터를 변형하거나 보호"
+    },
+    {
+      "id": 42,
+      "subject_id": 3,
+      "question": "다음 SQL Injection 기법 중 여러 개의 SELECT문을 조합해서 입력 값을 만들고 공격하는 기법으로 올바른 것은?",
+      "options": [
+        "Mass SQL Injection",
+        "Union SQL Injection",
+        "Time base SQL Injection",
+        "Blind SQL Injection"
+      ],
+      "answer": 2,
+      "explanation": "Union SQL Injection은 SQL의 Union구문을 사용해서 여러 개의 SELECT문이 실행되게 하는 공격이다."
+    },
+    {
+      "id": 43,
+      "subject_id": 3,
+      "question": "다음에서 설명하는 악성코드는 무엇인가?\n\nMac OS기반의 정보 탈취형 악성코드로 브라우저, 시스템 키체인, 지갑, 시스템 정보를 탈취하며, 주로 pkg 등과 같은 설치파일을 통해서 유포된다.",
+      "options": [
+        "BPFdoor",
+        "Atomic Stealer",
+        "BPF",
+        "Fog-Ransomware"
+      ],
+      "answer": 2,
+      "explanation": "• BPF : 운영체제 수준에서 네트워크 패킷을 필터링하고 공격\n• BPFDoor : 리눅스 커널의 BPF기능을 악용하여 시스템을 감시하고 통신을 스니핑하는 악성코드\n• Atomic Stealer : Mac OS 기반의 정보 탈취형 악성코드"
+    },
+    {
+      "id": 44,
+      "subject_id": 3,
+      "question": "다음 중에서 DRM 시스템의 구성요소가 아닌 것은?",
+      "options": [
+        "콘텐츠",
+        "콘텐츠 제공자, 콘텐츠 소비자, 콘텐츠 분배자",
+        "클리어링 하우스, DRM 컨트롤러",
+        "패키저, 보안 컨테이너"
+      ],
+      "answer": 1,
+      "explanation": "콘텐츠는 DRM 시스템의 구성요소가 아니라 보호 대상이다."
+    },
+    {
+      "id": 45,
+      "subject_id": 3,
+      "question": "다음 중 SET에서 중요하게 다루어지는 보안기술은 무엇인가?",
+      "options": [
+        "협상정보, 이중서명",
+        "암호화, 전자서명",
+        "이중서명, 전자봉투",
+        "전자서명, 무결성 검사"
+      ],
+      "answer": 3,
+      "explanation": "SET의 핵심기술은 이중서명과 전자봉투이다.\n• 카드 소유자, 가맹점, Payment Gateway 검증 정보\n  - 암호화된 구매정보 : 상점의 공개키로 암호화\n  - 암호화된 결제정보 : 대칭키로 암호화\n  - 검증 해시 : 구매정보 해시, 결제정보 해시\n  - 전자서명 : 고객의 개인키로 암호화\n  - 전자봉투 : 암호화된 결제정보, 암호화된 대칭키를 Payment Gateway의 공개키로 암호화\n• 가맹점(상점)\n  - 상점은 개인키로 암호화된 구매정보를 복호화\n  - 상점은 구매정보를 해시함수에 입력하고 검증 해시값과 일치하는지 확인\n  - 고객의 공개키로 전자서명을 확인\n  - 전자서명에서 추출한 검증 해시값이 같은지 확인\n• Payment Gateway\n  - 전자봉투를 자신의 개인키로 복호화\n  - 대칭키를 획득하고 결제정보를 복호화\n  - 결제정보를 해시함수에 입력하고 검증 해시값과 일치하는지 확인\n  - 고객의 공개키로 전자서명을 풀고 검증 해시값이 일치하는지 확인"
+    },
+    {
+      "id": 46,
+      "subject_id": 3,
+      "question": "이메일 보안기술 중에서 X.509 인증서를 사용하는 것은?",
+      "options": [
+        "PGP",
+        "PEM",
+        "S/MIME",
+        "MIME"
+      ],
+      "answer": 3,
+      "explanation": "• MIME(Multipurpose Internet Mail Extensions) : 인터넷에서 이미지, 비디오, 오디오 등 다양한 데이터를 이메일로 주고받기 위한 표준\n• S/MIME : X.509 인증서를 사용해서 이메일 암호화, 전자서명을 수행하는 이메일 보안기술"
+    },
+    {
+      "id": 47,
+      "subject_id": 3,
+      "question": "PGP 이메일 보안 기능에 해당하지 않는 것은?",
+      "options": [
+        "전자서명",
+        "압축",
+        "단편화와 재조립",
+        "수신자 부인방지"
+      ],
+      "answer": 4,
+      "explanation": "PGP는 수신자 부인방지 기능을 제공하지 않는다."
+    },
+    {
+      "id": 48,
+      "subject_id": 3,
+      "question": "nslookup 명령어에서 SERVER 8.8.8.8을 입력하면 실행되는 결과는?",
+      "image": "/exams/images/infosec_10_q48.png",
+      "image_url": "/exams/images/infosec_10_q48.png",
+      "options": [
+        "DSN 실행",
+        "DNS 변경",
+        "DNS 사용중지",
+        "DNS 테스트"
+      ],
+      "answer": 2,
+      "explanation": "IP주소 8.8.8.8은 구글 DNS서버의 IP주소이고 SERVER명령어로 DNS서버를 변경한다."
+    },
+    {
+      "id": 49,
+      "subject_id": 3,
+      "question": "다음에서 설명하는 것은 무엇인가?\n\n안전한 소프트웨어 개발을 위해서 소스 코드에 존재할 수 있는 잠재적인 취약점을 사전에 제거하고 보안을 고려하여 기능을 설계 및 구현하는 일련의 보안 활동이다.",
+      "options": [
+        "시큐어코딩",
+        "SDLC",
+        "화이트박스 테스트",
+        "블랙박스 테스트"
+      ],
+      "answer": 1,
+      "explanation": "시큐어코딩 : 소프트웨어를 개발할 때 보안 취약점이 발생하지 않도록 안전한 코딩 규칙을 지켜 작성하는 방법\n[오답 피하기]\n② SDLC : 소프트웨어 개발 생명주기\n③ 화이트박스 테스트 : 소스 코드의 구조를 파악하고 테스트하는 것\n④ 블랙박스 테스트 : 입출력 중심으로 테스트하는 것으로 소스 코드의 구조를 파악하지 않고 입력과 출력으로만 테스트하는 것"
+    },
+    {
+      "id": 50,
+      "subject_id": 3,
+      "question": "다음에서 설명하는 것은 무엇인가?\n\n개발 초기 단계부터 보안을 강화하기 위해서 설계된 활동 중심, 역할기반의 프로세스로 24가지 보안 관련 활동을 중심으로 팀원의 역할을 명확히 정의한다.",
+      "options": [
+        "SDLC",
+        "CLASP",
+        "MS-SDL",
+        "7-Touch Point"
+      ],
+      "answer": 2,
+      "explanation": "CLASP(Comprehensive, Lightweight Application Security Process) : 개념, 역할, 활동 중심의 개발 보안 방법론\n• MS-SDL(Secure Develop Lifecycle) : 마이크로소프트사의 DevOps 프로세스에 보안을 통합하는 접근방식으로 DevSecOps 접근이라고도 함(위협 모델링)\n• 7-Touch Point : 7개의 보안 활동, 코드검사, 아키텍처 위험분석, 침투 테스트, 위험기반 보안 테스트, 악용사례, 보안요구, 보안운영(위험관리 프레임워크)"
+    },
+    {
+      "id": 51,
+      "subject_id": 3,
+      "question": "다음 중 SSL의 구성요소가 아닌 것은?",
+      "options": [
+        "Record protocol",
+        "Alert protocol",
+        "Change cipher spec protocol",
+        "Inter Key Exchange"
+      ],
+      "answer": 4,
+      "explanation": "IKE(Internet Key Exchange)는 IPSEC에서 암호키 교환 과정이다.\n[SSL 구성요소]\n• SSL Handshaking protocol : 웹브라우저와 웹서버 간에 연결, 협상하는 과정\n• Record protocol : 실제 암호화를 수행하는 프로토콜\n• Alert protocol : 경고를 알리는 프로토콜\n• Change cipher spec protocol : 협상된 암호화 방법을 통지하는 프로토콜"
+    },
+    {
+      "id": 52,
+      "subject_id": 3,
+      "question": "다음 중 End to End(종단 간) 전송에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "메시지 내용을 작성자는 수정할 수 없다.",
+        "KT 등 회선 사업자만 할 수 있다.",
+        "공개키를 사용한다.",
+        "최종 목적지까지 데이터를 전송한다."
+      ],
+      "answer": 2,
+      "explanation": "End to End 전송 혹은 End to End Encryption은 단말에서 단말까지의 전송을 의미하며, 전송구간의 암호화를 수행한다. 또한 KT는 네트워크 회선 사업자로 회선 구간만 관리한다."
+    },
+    {
+      "id": 53,
+      "subject_id": 3,
+      "question": "다음은 DNSSEC에서 BIND DNS 네임서버의 도메인 존에 대한 적용절차를 5개 단계로 도식화한 것이다. 괄호 안에 들어갈 용어로 올바른 것은?",
+      "image": "/exams/images/infosec_10_q53.png",
+      "image_url": "/exams/images/infosec_10_q53.png",
+      "options": [
+        "존서명",
+        "존배포",
+        "Keygen",
+        "존등록"
+      ],
+      "answer": 1,
+      "explanation": "DNSSEC는 도메인 존파일 작성, 존의 키생성, Public Key 존반영, 존서명, 네임서버에 존반영 순서로 진행된다."
+    },
+    {
+      "id": 54,
+      "subject_id": 3,
+      "question": "이메일 서버인 sendmail에서 메일 수신차단을 등록할 때 괄호 안에 들어갈 용어로 올바른 것은?\n\nmakemap hash /etc/mail/access < /etc/mail/(     )",
+      "options": [
+        "access",
+        "maillist",
+        "mbox",
+        "detection"
+      ],
+      "answer": 1,
+      "explanation": "makemap hash /etc/mail/access < /etc/mail/access 명령어로 access DB를 생성한다."
+    },
+    {
+      "id": 55,
+      "subject_id": 3,
+      "question": "S/MIME와 OpenPGP에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "S/MIME는 기존 MIME 프로토콜에 보안기능을 추가하여 이메일의 기밀성, 무결성, 인증을 제공한다.",
+        "S/MIME는 인증기관에서 발행한 X.509 인증서를 사용하여 공개키를 인증한다.",
+        "OpenPGP는 사용자가 공개키와 개인키를 생성하고 다른 사용자들의 키를 검증하여 Web of Trust를 구축한다.",
+        "OpenPGP는 CA(인증기관)를 통해서 인증서를 받고 서명한다."
+      ],
+      "answer": 4,
+      "explanation": "• S/MIME는 인증기관(CA)을 통해서 인증서를 받는다.\n• OpenPGP는 1991년 Phil Zimmermann에 의해서 독자적으로 개발되었으며, 사용자 간의 직접적인 서명을 통해서 신뢰를 얻는다(Web of Trust)."
+    },
+    {
+      "id": 56,
+      "subject_id": 3,
+      "question": "다음 <보기>를 통해 알 수 있는 보안약점은 무엇인가?\n\n<보기>\nvoid main(int argc, char *argv[]){\n    char hostname[64];\n    strcpy(hostname, argv[1]);\n}",
+      "options": [
+        "Null point 역참조",
+        "Stack overflow",
+        "Heap overflow",
+        "Formatting String"
+      ],
+      "answer": 2,
+      "explanation": "<보기>의 프로그램 예제는 지역변수 hostname에 오버플로우가 발생하기 때문에 Stack overflow이다. Heap overflow는 malloc과 같은 동적할당을 사용할 때 발생한다."
+    },
+    {
+      "id": 57,
+      "subject_id": 3,
+      "question": "다음 <보기>를 통해 알 수 있는 보안약점은 무엇인가?\n\n<보기>\nString command = request.getParameter(\"command\");\nDate date = new Date();\nString fullCommand = command + date;\nProcess process = Runtime.getRuntime().exec(fullCommand);",
+      "options": [
+        "경로조작 및 자원삽입",
+        "위험한 형식의 파일 업로드",
+        "운영체제 명령어",
+        "코드삽입"
+      ],
+      "answer": 3,
+      "explanation": "입력값 command 변수를 Runtime.getRuntime().exec()를 통해 호출하여 운영체제 명령어를 실행한다."
+    },
+    {
+      "id": 58,
+      "subject_id": 3,
+      "question": "다음에서 설명하는 것은?\n\n무선환경에서 디지털 콘텐츠가 활발히 유동됨에 따라서 저작권 보호와 콘텐츠 관리가 요구된다. 또한 콘텐츠의 불법복제를 방지하고 안전한 유동을 지원하는 기술과 고객에게 새로운 형태의 전자거래 환경을 제공하는 기술이다.",
+      "options": [
+        "ebXML",
+        "모바일 DRM",
+        "모바일 OTP",
+        "WPKI"
+      ],
+      "answer": 2,
+      "explanation": "모바일 DRM : 스마트폰이나 태블릿 같은 모바일 기기에서 디지털 콘텐츠의 불법 복제, 무단 배포 및 사용을 제한하기 위한 기술"
+    },
+    {
+      "id": 59,
+      "subject_id": 3,
+      "question": "다수의 봇넷을 사용해서 DNS서버에 과도한 양의 DNS Query를 전송하여 DNS 서버의 자원을 고갈 시키는 DDoS 공격기법은?",
+      "options": [
+        "DNS Spoofing",
+        "DNS Query Flood",
+        "DNS ShinkHole",
+        "DNS Amplification"
+      ],
+      "answer": 2,
+      "explanation": "DNS Query Flood : DNS 서버에 다수의 Query를 발생시키는 DDoS 공격기법"
+    },
+    {
+      "id": 60,
+      "subject_id": 3,
+      "question": "웹서버에서 서비스될 웹페이지 파일을 저장하고 웹브라우저 요청 시 해당 파일을 찾아서 제공하는 기본 디렉터리는?",
+      "options": [
+        "Document Index",
+        "Document Root",
+        "ServerRoot",
+        "Listen"
+      ],
+      "answer": 2,
+      "explanation": "Document Root\n• ServerRoot : 아파치 웹서버의 설치 디렉터리를 지정하는 최상위 경로\n• Document Index : Document Root에 있는 웹페이지 중에서 먼저 읽어야 할 웹페이지를 지정 (예: index.html index.php)\n• Listen : 웹서버에서 통신 포트 번호를 지정"
+    },
+    {
+      "id": 61,
+      "subject_id": 4,
+      "question": "다음 암호화 공격기법 중에서 공격자가 평문을 선택하면 해당 평문의 암호문을 얻을 수 있을 때 사용하는 공격방법은?",
+      "options": [
+        "암호문 단독 공격(COA)",
+        "선택 암호문 공격(CCA)",
+        "알려진 평문 공격(KPA)",
+        "선택 평문 공격(CPA)"
+      ],
+      "answer": 4,
+      "explanation": "평문은 Plaintext, 암호문은 Ciphertext, 알려진은 Known, 단독은 Only, 선택은 Chosen이므로 선택 평문 공격은 Chosen Plaintext Attack(CPA)이다."
+    },
+    {
+      "id": 62,
+      "subject_id": 4,
+      "question": "다음 그림의 블록 암호화 운영모드로 올바른 것은?",
+      "image": "/exams/images/infosec_10_q62.png",
+      "image_url": "/exams/images/infosec_10_q62.png",
+      "options": [
+        "ECB",
+        "CBC",
+        "CFB",
+        "CTR"
+      ],
+      "answer": 2,
+      "explanation": "주어진 그림에서 초기화 벡터(IV)를 생성하고 암호화를 수행한다. 그리고 이전 블록의 암호화가 다음 블록의 초기화 벡터로 입력되어서 XOR하고 있다. 즉, CBC 블록 암호화를 수행하고 있다는 것을 알 수 있다."
+    },
+    {
+      "id": 63,
+      "subject_id": 4,
+      "question": "정보를 전송하는 과정에서 송신자와 수신자가 해당 자원에 대한 사용이 정당한지를 확인하기 위한 절차를 무엇이라고 하는가?",
+      "options": [
+        "인증(Authentication)",
+        "인가(Authorization)",
+        "감사(Auditing)",
+        "관리(Management)"
+      ],
+      "answer": 2,
+      "explanation": "사용이 정당한지를 확인한다는 것은 권한인 ACL(Access Control List)를 확인하는 것이다.\n• 인증 : 정당한 사용자인지를 확인하는 것\n• 인가 : 권한을 부여하는 것"
+    },
+    {
+      "id": 64,
+      "subject_id": 4,
+      "question": "다음 중 소유기반 인증에 해당하지 않는 것은?",
+      "options": [
+        "Key",
+        "OTP",
+        "인증서",
+        "i-Pin"
+      ],
+      "answer": 4,
+      "explanation": "i-Pin은 지식기반(Password, PIN번호 등과 함께) 인증에 속한다."
+    },
+    {
+      "id": 65,
+      "subject_id": 4,
+      "question": "다음 중 ElGamal 암호화에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "디피-헬만의 키 교환의 원리를 발전시켜 키 교환, 암호화 등을 제공한다.",
+        "동일한 평문에 대해서 임의의 k값을 사용하기 때문에 매번 다른 암호문이 생성된다.",
+        "키의 크기가 짧은 특징이 있다.",
+        "RSA보다 안전성이 높고 디지털 서명 알고리즘의 기반이 된다"
+      ],
+      "answer": 3,
+      "explanation": "ElGamal 암호화(최초의 전자서명)\n• 디피-헬만의 키 교환의 원리를 발전시켜 키 교환, 암호화 등을 제공한다.\n• 동일한 평문에 대해서 임의의 k값을 사용하기 때문에 매번 다른 암호문이 생성된다.\n• RSA보다 안전성이 높고 디지털 서명 알고리즘의 기반이 된다.\n• GPG 및 PGP와 같은 소프트웨어에 사용된다.\n• 이산대수 문제를 기반으로 한다.\n• 키의 길이가 크다는 단점이 있다."
+    },
+    {
+      "id": 66,
+      "subject_id": 4,
+      "question": "해시함수 중에서 유럽에서 고안된 160비트 해시함수로 올바른 것은?",
+      "options": [
+        "SHA",
+        "SHA-1",
+        "MD5",
+        "RIPEMD-160"
+      ],
+      "answer": 4,
+      "explanation": "RIPEMD-160은 유럽에서 고안된 160비트 해시함수이다."
+    },
+    {
+      "id": 67,
+      "subject_id": 4,
+      "question": "다음 해시함수 중에서 라운드의 수가 다른 하나는?",
+      "options": [
+        "SHA-0",
+        "SHA-1",
+        "SHA-256/224",
+        "SHA-512/384"
+      ],
+      "answer": 3,
+      "explanation": "SHA-256/384는 64라운드이고 나머지는 모두 80라운드이다. 그리고 SHA-512/384는 입력 블록의 크기가 1024비트이며 나머지 보기는 모두 512비트이다."
+    },
+    {
+      "id": 68,
+      "subject_id": 4,
+      "question": "1980년대 후반 유럽에서 개발한 보안성 평가 기준으로 기밀성, 무결성, 가용성을 다루는 것은?",
+      "options": [
+        "CC인증",
+        "ITSEC",
+        "TCSEC",
+        "CASP"
+      ],
+      "answer": 2,
+      "explanation": "유럽에서 개발한 정보보호 제품 인증 표준은 ITSEC이다. ITSEC은 기밀성, 무결성, 가용성을 다루며 기능성과 보증을 분리해서 평가한다."
+    },
+    {
+      "id": 69,
+      "subject_id": 4,
+      "question": "다음 중에서 암호화 알고리즘이 다른 하나는?",
+      "options": [
+        "RSA",
+        "Rabin",
+        "Goldwasser",
+        "ECC"
+      ],
+      "answer": 4,
+      "explanation": "• 타원곡선 암호화 알고리즘 : ECC, ECDSA\n• 소인수분해 알고리즘 : RSA, Rabin, Goldwasser\n• 이산대수 알고리즘 : DH, DSA, ElGamal"
+    },
+    {
+      "id": 70,
+      "subject_id": 4,
+      "question": "다음 중 2-Factor인증을 위한 인증방식 매핑으로 올바른 것은?",
+      "options": [
+        "패스워드 - 생체기반 인증",
+        "지문 - 소유기반 인증",
+        "PIN - 지식기반 인증",
+        "토큰 - 지식기반 인증"
+      ],
+      "answer": 3,
+      "explanation": "• 지식기반 인증 : 패스워드, PIN, i-Pin\n• 소유기반 인증 : OTP, 스마트 카드, 열쇠(Key), 토큰\n• 생체기반 인증 : 지문, 홍채, 안면 등"
+    },
+    {
+      "id": 71,
+      "subject_id": 4,
+      "question": "다음 중 MD5 암호화 알고리즘에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "입력 데이터를 512블록으로 나누기 위해서 패딩을 추가한다.",
+        "패딩 시에 입력 데이터 길이에 448비트가 되도록 맞추고 나머지 64비트에 원래 입력 데이터 비트 길이를 저장한다.",
+        "총 4개의 32비트 레지스터를 사용한다.",
+        "512비트 블록을 80라운드를 수행해서 128비트의 해시값을 출력한다."
+      ],
+      "answer": 4,
+      "explanation": "MD5의 라운드 수는 64번이다.\n• 라운드 64번 : MD5, SHA-256\n• 라운드 80번 : SHA, SHA-1, SHA-512, SHA-384 등"
+    },
+    {
+      "id": 72,
+      "subject_id": 4,
+      "question": "다음 중 전자서명에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "전자서명이란 정보처리시스템에 의하여 전자적 형태로 작성 변환되거나 송수신 또는 저장된 정보이다.",
+        "전자서명은 전자문서로 첨부되거나 논리적으로 결합된 전자적 형태의 정보이다.",
+        "전자서명은 합법적인 서명자만이 전자문서에 대한 전자서명을 생성할 수 있어야 한다.",
+        "전자서명은 공개키 암호화 방식을 사용하고 서명자는 개인키로 문서의 해시값을 암호화하는 방식으로 구현된다."
+      ],
+      "answer": 1,
+      "explanation": "• 전자문서 : 정보처리시스템에 의하여 전자적 형태로 작성 변환되거나 송수신 또는 저장된 정보\n• 전자서명 : 서명자의 신원과 서명 사실을 확인하기 위하여 전자문서에 첨부되거나 결합된 전자적 형태의 정보"
+    },
+    {
+      "id": 73,
+      "subject_id": 4,
+      "question": "다음 PKI 구성요소에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "CA : 공개키 인증서를 발생, 취소, 폐기, 상호 인증서를 발행한다.",
+        "RA : 공개키 등록, 사용자 신원 확인을 대행, 인증기관에 인증서 발행을 요청한다.",
+        "PAA : PKI 내에 수행되는 정책을 설정하고 PCA에 대해서 인증서를 발급한다.",
+        "PCA : 등록기관을 인증하고 관리한다."
+      ],
+      "answer": 4,
+      "explanation": "PCA(Policy Certification Authority) : 승인된 정책을 확정하거나 세부 정책을 생성한다. 인증기관을 인증하고 하위 인증기관에 대한 인증서를 생성, 관리한다."
+    },
+    {
+      "id": 74,
+      "subject_id": 4,
+      "question": "다음은 커버로스 인증과정이다. 괄호 안에 들어갈 설명으로 올바른 것은?",
+      "image": "/exams/images/infosec_10_q74.png",
+      "image_url": "/exams/images/infosec_10_q74.png",
+      "options": [
+        "(1) 사용자ID(평문)를 AS에 요청\n(2) TGS 세션키와 TGT로 티켓 요청\n(3) TGS 세션키 응답\n(4) SS 세션키 접속\n(5) SS 세션키 응답",
+        "(1) 사용자ID(평문)를 AS에 요청\n(2) TGS 세션키 응답\n(3) SS 세션키 접속\n(4) SS 세션키 응답\n(5) TGS 세션키와 TGT로 티켓 요청",
+        "(1) 사용자ID(평문)를 AS에 요청\n(2) TGS 세션키 응답\n(3) TGS 세션키와 TGT로 티켓 요청\n(4) SS 세션키 응답\n(5) SS 세션키 접속",
+        "(1) 사용자ID(평문)를 AS에 요청\n(2) SS 세션키 접속\n(3) TGS 세션키 응답\n(4) TGS 세션키와 TGT로 티켓 요청\n(5) SS 세션키 응답"
+      ],
+      "answer": 3,
+      "explanation": "[커버로스 인증 5단계]\n(1) 사용자ID(평문)를 AS에 요청\n(2) TGS 세션키 응답\n(3) TGS 세션키와 TGT로 티켓 요청\n(4) SS 세션키 응답\n(5) SS 세션키 접속"
+    },
+    {
+      "id": 75,
+      "subject_id": 4,
+      "question": "다음 중 암호화 종류가 올바르지 않게 연결된 것은?",
+      "options": [
+        "RSA - 공개키 암호화 알고리즘",
+        "ECC - 공개키 암호화 알고리즘",
+        "HIGHT - 공개키 암호화 알고리즘",
+        "DSA - 공개키 암호화 알고리즘"
+      ],
+      "answer": 3,
+      "explanation": "HIGHT는 국내에서 개발한 암호화 알고리즘으로 대칭키 암호화 알고리즘이다."
+    },
+    {
+      "id": 76,
+      "subject_id": 4,
+      "question": "전자서명 시에 전자서명 결과확인에 사용되는 키는?",
+      "options": [
+        "수신자의 개인키",
+        "수신자의 공개키",
+        "송신자의 개인키",
+        "송신자의 공개키"
+      ],
+      "answer": 4,
+      "explanation": "전자서명은 송신자의 개인키로 하고 전자서명 확인은 송신자의 공개키로 한다."
+    },
+    {
+      "id": 77,
+      "subject_id": 4,
+      "question": "다음 중 디피-헬먼에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "공개된 통신망을 사용해서 암호키를 안전하게 교환하는 최초의 방법이다.",
+        "인증 서버를 통해서 효율적으로 키를 분배한다.",
+        "알고리즘의 안전성은 이산대수를 기반으로 하고 큰 소수와 모듈러 거듭제곱 연산을 사용해 역연산을 수행한다.",
+        "중간자 공격에 취약한 문제가 있다."
+      ],
+      "answer": 2,
+      "explanation": "디피-헬먼의 키 교환 알고리즘은 중앙 기관이 불필요하다. 즉, 중간자나 인증 서버 없이 두 당사자 간에 직접 비밀키를 공유한다. 따라서 인증이 부재하고 중간자 공격에 취약하다."
+    },
+    {
+      "id": 78,
+      "subject_id": 4,
+      "question": "다음 중 PAM 인증과정으로 올바른 것은?\n\nㄱ. 접근 요청\nㄴ. 설정 파일 확인\nㄷ. 모듈 호출\nㄹ. 모듈별 결과 반환\nㅁ. 결과 종합 및 최종 판단",
+      "options": [
+        "ㄱ, ㄷ, ㄹ, ㄴ, ㅁ",
+        "ㄷ, ㄹ, ㄱ, ㄴ, ㅁ",
+        "ㄱ, ㄴ, ㄷ, ㄹ, ㅁ",
+        "ㄷ, ㄴ, ㄹ, ㄱ, ㅁ"
+      ],
+      "answer": 3,
+      "explanation": "[PAM(Pluggable Authentication Modules) 인증과정]\n접근 요청 → 설정 파일 확인 → 모듈 호출 → 모듈별 결과 반환 → 결과 종합 및 최종판단"
+    },
+    {
+      "id": 79,
+      "subject_id": 4,
+      "question": "윈도우 Null session을 이용한 공격으로 얻을 수 있는 정보가 아닌 것은?",
+      "options": [
+        "패스워드 정보",
+        "그룹 정보",
+        "서비스 정보",
+        "메모리 정보"
+      ],
+      "answer": 4,
+      "explanation": "윈도우 Null Session은 NetBIOS 프로토콜을 사용해서 승인받지 않은 자가 시스템에 접근할 수 있게 한다. 즉, IPC$, C$, ADMIN$를 이용할 수 있고 Null Session은 TCP/UDP 135~139 포트를 사용한다.\n• Null Session을 이용한 원격 로그인(인증 없이 접근)\n  net use \\\\10.10.10.10\\IPC$ * /u:administrator\n• 레지스트리에서 Null Session 제거\n  - AutoShareServer에 0을 입력하면 기본 공유가 제거된다.\n  - net share C$ /delete로 삭제 후 리부팅한다."
+    },
+    {
+      "id": 80,
+      "subject_id": 4,
+      "question": "다음 중 커버로스 4.0과 5.0에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "커버로스 4.0은 DES 암호화로 제한되지만 5.0은 모든 대칭키 암호화 알고리즘을 사용할 수 있다.",
+        "커버로스 5.0은 티켓의 유효기간 제한이 없다.",
+        "커버로스 4.0은 IP 프로토콜만 가능하지만, 5.0은 다른 네트워크(ATM 등)와 호환할 수 있다.",
+        "커버로스 5.0은 분산인증 방식을 사용한다."
+      ],
+      "answer": 4,
+      "explanation": "커버로스 5.0도 중앙집중적인 인증을 사용하고, 모든 대칭키 암호화 알고리즘을 사용할 수 있다. 또한 티켓의 유효기간을 설정할 수 있고 네트워크 호환성을 준수한다."
+    },
+    {
+      "id": 81,
+      "subject_id": 5,
+      "question": "다음은 정보통신기반 보호법의 제3조(정보통신기반보호위원회)에 대한 설명으로 그 내용이 올바르지 않은 것은?",
+      "options": [
+        "정보통신기반보호위원회는 총 25인 이내의 위원으로 구성된다.",
+        "정보통신기반보호위원회는 국무총리 소속하에 둔다.",
+        "정보통신기반보호위원회는 정보통신서비스 제공자에 대한 보안대책의 적정성을 심의한다.",
+        "정보통신기반보호위원회의 위원장은 국무조정실장이 되고 위원은 대통령령으로 정하는 중앙행정기관의 차관급 공무원과 위원장이 위촉한 사람으로 한다."
+      ],
+      "answer": 3,
+      "explanation": "정보통신기반보호위원회는 정보통신기반 보호법 제8조에 따라 주요정보통신기반시설의 보호에 관한 사항을 심의한다."
+    },
+    {
+      "id": 82,
+      "subject_id": 5,
+      "question": "정보통신서비스 제공자가 이용자에 대한 정보를 이용하려고 개인정보를 수집할 경우 이용자에게 알리고 동의를 받아야 할 사항이 아닌 것은?",
+      "options": [
+        "개인정보의 수집·이용 목적",
+        "동의를 거부할 권리가 있다는 사실 및 동의 거부에 따른 불이익이 있는 경우 그 불이익의 내용",
+        "수집하려는 개인정보의 항목",
+        "개인정보의 보유 및 이용기간"
+      ],
+      "answer": 2,
+      "explanation": "'이용자'라는 표현은 정보통신망법을 적용하는 것이며, '정보주체'라는 표현은 개인정보보호법을 적용한다는 의미이다. 정보통신망법은 개인정보의 수집·이용 목적, 수집하는 개인정보의 항목, 개인정보의 보유 및 이용 기간을 다룬다. 하지만 이 문제는 개인정보보호법으로 학습해야 하며, 개인정보보호법 제15조 2항에 따라 '동의 거부 권리 및 불이익'에 대해서 고지해야 한다."
+    },
+    {
+      "id": 83,
+      "subject_id": 5,
+      "question": "다음 중 불법 촬영물 유통방지 책임자가 매년 이수해야 할 교육 시간과 교육 주관 기관은?",
+      "options": [
+        "15시간, 과학기술정보통신부",
+        "2시간, 과학기술정보통신부",
+        "2시간, 방송통신위원회",
+        "15시간, 방송통신위원회"
+      ],
+      "answer": 3,
+      "explanation": "불법 촬영물 유통방지 책임자는 방송통신위원회에서 주관하는 연 2시간 교육을 이수해야 한다."
+    },
+    {
+      "id": 84,
+      "subject_id": 5,
+      "question": "다음 중 정보보호 최고책임자(CISO)가 관리하지 않아도 되는 것은?",
+      "options": [
+        "정보보호 예산에 관한 사항",
+        "개인정보보호파일",
+        "법규 준수 및 컴플라이언스",
+        "위험대응 및 사고관리"
+      ],
+      "answer": 2,
+      "explanation": "개인정보보호파일은 개인정보 책임자가 관리해야 한다."
+    },
+    {
+      "id": 85,
+      "subject_id": 5,
+      "question": "다음 중 개인정보 유출신고에 대한 설명으로 올바르지 않은 것은?",
+      "options": [
+        "외부해킹을 통해서 개인정보가 1건이라도 유출되는 경우 신고해야 한다.",
+        "1천 건 이상의 개인정보가 유출되면 신고해야 한다.",
+        "개인정보 유출 신고는 과학기술정보통신부장관 혹은 과학기술정보통신부장관이 지정한 한국인터넷진흥원에 신고해야 한다.",
+        "개인정보 유출 신고는 개인정보 유출이 발생한 시점에서 72시간 내에 신고해야 한다."
+      ],
+      "answer": 4,
+      "explanation": "개인정보 유출 신고는 개인정보 유출을 인지한 시점으로부터 72시간 내에 신고해야 한다."
+    },
+    {
+      "id": 86,
+      "subject_id": 5,
+      "question": "다음 (ㄱ)~(ㄷ)에 들어갈 위험분석 기법을 연결한 것으로 적절한 것은?\n\n(ㄱ) : 다수의 전문가가 익명으로 의견을 전달하고 반복적으로 의견을 수렴한다.\n(ㄴ) : 위험의 상호비교를 통해서 가장 중요한 것을 순위화한다.\n(ㄷ) : 특정 상황이나 사건을 가정하고 위험을 분석한다.",
+      "options": [
+        "(ㄱ) 전문가 감정, (ㄴ) 우선순위법, (ㄷ) 기준선법",
+        "(ㄱ) 전문가 감정, (ㄴ) 과거자료법, (ㄷ) 시나리오법",
+        "(ㄱ) 델파이, (ㄴ) 과거자료법, (ㄷ) 시나리오법",
+        "(ㄱ) 델파이, (ㄴ) 우선순위법, (ㄷ) 시나리오법"
+      ],
+      "answer": 4,
+      "explanation": "(ㄱ)~(ㄷ)은 순서대로 델파이, 우선순위법, 시나리오법에 대한 내용이다."
+    },
+    {
+      "id": 87,
+      "subject_id": 5,
+      "question": "다음 중 ISMS-P에서 ISMS 의무인증 대상자로 올바르지 않은 것은?",
+      "options": [
+        "연간 매출액이 1,500억 원 이상인 상급종합병원",
+        "정보통신서비스 제공자 중에서 연간 매출액이 100억 원 이상이고 전년도 이용자 수가 100만 명 이상인 사업자",
+        "정보통신망 서비스 제공자로 서울, 모든 광역시에서 정보통신망 서비스를 제공하는 자",
+        "정보통신망법에 따른 집적정보통신시설 사업자"
+      ],
+      "answer": 2,
+      "explanation": "정보통신서비스 제공자는 연간 매출액 100억 원 이상 또는 전년도 이용자 수가 100만 명 이상인 사업자이다."
+    },
+    {
+      "id": 88,
+      "subject_id": 5,
+      "question": "위험 대응 전략에서 목표 위험 수준이 위험도보다 낮을 때의 대응 전략으로 올바른 것은?",
+      "options": [
+        "위험수용",
+        "위험감소",
+        "위험전가",
+        "위험회피"
+      ],
+      "answer": 1,
+      "explanation": "위험 대응 전략에서 목표 위험 수준이 위험도보다 낮을 때는 위험을 수용한다."
+    },
+    {
+      "id": 89,
+      "subject_id": 5,
+      "question": "다음 중 CC인증의 유효기간은?",
+      "options": [
+        "신청일로부터 3년",
+        "신청일로부터 5년",
+        "발급일로부터 3년",
+        "발급일로부터 5년"
+      ],
+      "answer": 4,
+      "explanation": "CC인증의 유효기간은 발급일로부터 5년이다."
+    },
+    {
+      "id": 90,
+      "subject_id": 5,
+      "question": "다음 중 개인정보의 안전성 확보조치의 물리적 보안조치에 해당되지 않는 것은?",
+      "options": [
+        "잠금장치 설치",
+        "출입통제",
+        "반입반출 관리",
+        "정보시스템 접근통제"
+      ],
+      "answer": 4,
+      "explanation": "정보시스템 접근통제는 접근통제(기술적 보안조치)에 해당한다."
+    },
+    {
+      "id": 91,
+      "subject_id": 5,
+      "question": "개인정보영향평가 시 고려사항이 아닌 것은?",
+      "options": [
+        "처리하는 개인정보의 수",
+        "개인정보의 제3자 제공 여부",
+        "개인정보 보유 기간",
+        "개인정보 항목"
+      ],
+      "answer": 4,
+      "explanation": "[개인정보영향평가 시 고려 사항]\n1. 처리하는 개인정보의 수\n2. 개인정보의 제3자 제공 여부\n3. 정보주체의 권리를 해할 가능성 및 그 위험 정도\n4. 그 밖에 대통령령으로 정한 사항(민감정보 및 고유식별자 처리 여부, 개인정보 보유 기간)"
+    },
+    {
+      "id": 92,
+      "subject_id": 5,
+      "question": "다음 괄호 안에 들어갈 용어로 올바른 것은?\n\n(    )이란 「전기통신사업법」 제2조 제2호에 따른 전기통신설비를 이용하거나 전기통신설비와 컴퓨터 및 컴퓨터의 이용기술을 활용하여 정보를 수집·가공·저장·검색·송신 또는 수신하는 정보통신체제를 말한다.",
+      "options": [
+        "주요정보통신기반시설",
+        "정보통신기반시설",
+        "정보통신망",
+        "전기통신사업망"
+      ],
+      "answer": 3,
+      "explanation": "정보통신망이란 「전기통신사업법」 제2조 제2호에 따른 전기통신설비를 이용하거나 전기통신설비와 컴퓨터 및 컴퓨터의 이용기술을 활용하여 정보를 수집·가공·저장·검색·송신 또는 수신하는 정보통신체제이다."
+    },
+    {
+      "id": 93,
+      "subject_id": 5,
+      "question": "다음 괄호 안에 들어갈 용어로 올바른 것은?\n\n[정보통신망법의 목적]\n정보통신망법(정보통신망 이용촉진 및 정보보호 등에 관한 법률)의 목적은 정보통신망의 이용을 촉진하고, 정보통신서비스 이용자의 (    )를 보호하며, 정보통신망을 건전하고 안전하게 이용할 수 있는 환경을 조성하여 국민의 생활 향상과 공공복리 증진에 이바지하는 것이다.",
+      "options": [
+        "정보",
+        "개인정보",
+        "재산 및 이익",
+        "안전성"
+      ],
+      "answer": 2,
+      "explanation": "정보통신망법의 목적은 정보통신망의 이용을 촉진하고, 정보통신서비스 이용자의 개인정보를 보호하며, 정보통신망을 건전하고 안전하게 이용할 수 있는 환경을 조성하여 국민 생활 향상과 공공복리 증진에 이바지하는 것이다."
+    },
+    {
+      "id": 94,
+      "subject_id": 5,
+      "question": "다음 중 가명처리에 관한 내용으로 올바르지 않은 것은?",
+      "options": [
+        "개인정보보호법으로 통계작성, 과학적 연구, 공익적 기록보존 등을 위하여 정보주체의 동의 없이 가명처리할 수 있다.",
+        "가명처리된 결과는 정보주체의 동의 없이 제3자에게 제공할 수 있다.",
+        "가명처리 이력에 대한 보존은 가명처리를 수행한 시점부터 3년간 보관해야 한다.",
+        "개인정보파기 방법 중에서 익명화를 통한 파기가 가능하다."
+      ],
+      "answer": 3,
+      "explanation": "가명처리 이력 보관은 가명처리 결과를 파기한 날로부터 3년간 보관해야 한다."
+    },
+    {
+      "id": 95,
+      "subject_id": 5,
+      "question": "다음 중 ISMS-P 심사원 시험 자격조건이 아닌 것은?",
+      "options": [
+        "심사원 자격시험의 경력은 최근 10년 이내 경력만 인정된다.",
+        "필수로 정보보호 경력 1년 이상, 개인정보보호 1년 이상의 경력이 필요하다.",
+        "필수 경력을 만족한 대학 졸업자는 총 6년의 경력이 필요하다.",
+        "심사원보가 심사원이 되기 위해서는 ISMS-P 심사를 4번 이상 총 20일 이상 심사를 해야 한다."
+      ],
+      "answer": 4,
+      "explanation": "심사원보가 심사원이 되기 위해서는 ISMS 혹은 ISMS-P 심사를 4번 이상 총 20일 이상 심사를 해야 한다. 선임 심사원이 되기 위해서 3번 이상 ISMS-P 심사를 해야 하고, 15일 이상 심사에 참여해야 한다."
+    },
+    {
+      "id": 96,
+      "subject_id": 5,
+      "question": "다음 괄호 안에 들어갈 용어로 올바른 것은?\n\n이 법은 정보통신망의 이용을 촉진하고 정보통신서비스를 이용하는 자를 ( ㄱ )함과 아울러 정보통신망을 건전하고 ( ㄴ )하게 이용할 수 있는 환경을 조성하여 국민 생활의 향상과 공공복리의 증진에 이바지함을 목적으로 한다.",
+      "options": [
+        "ㄱ : 안전, ㄴ : 보호",
+        "ㄱ : 보호, ㄴ : 안전",
+        "ㄱ : 보안, ㄴ : 편리",
+        "ㄱ : 안전, ㄴ : 편리"
+      ],
+      "answer": 2,
+      "explanation": "정보통신망 이용촉진 및 정보보호 등에 관한 법률(정보통신망법) 제1조(목적)\n이 법은 정보통신망의 이용을 촉진하고 정보통신서비스를 이용하는 자를 (보호)함과 아울러 정보통신망을 건전하고 (안전)하게 이용할 수 있는 환경을 조성하여 국민 생활의 향상과 공공복리의 증진에 이바지함을 목적으로 한다.\n• 정보보호 부서의 장 근무경력은 1년 이상이어야 한다."
+    },
+    {
+      "id": 97,
+      "subject_id": 5,
+      "question": "개인정보접속기록을 2년 이상 보관하지 않아도 되는 경우는?",
+      "options": [
+        "기간정보통신사업자인 경우",
+        "기간정보통신사업자 중에서 보유한 개인정보가 1,000건 이하인 경우",
+        "정보주체 수가 5만 건 이상인 경우",
+        "이용자의 회원 정보가 1,000건 이하인 경우"
+      ],
+      "answer": 4,
+      "explanation": "[개인정보 접속기록을 2년 이상 보관해야 하는 경우]\n• 기간정보통신사업자인 경우\n• 기간정보통신사업자 중에서 보유한 개인정보가 1,000건 이하인 경우\n• 정보주체 수가 5만 건 이상인 경우\n• 민감 및 고유식별자인 경우"
+    },
+    {
+      "id": 98,
+      "subject_id": 5,
+      "question": "다음 중 별도의 동의를 받지 않아도 되는 것은?",
+      "options": [
+        "개인정보의 제3자 제공",
+        "개인정보의 국외이전",
+        "개인정보 처리위탁",
+        "민감정보 수집"
+      ],
+      "answer": 3,
+      "explanation": "개인정보 처리위탁은 별도의 동의가 필요 없지만 정보주체에게 통지해야 한다."
+    },
+    {
+      "id": 99,
+      "subject_id": 5,
+      "question": "다음 중 기준선법(Baseline)의 단점으로 올바르지 않은 것은?",
+      "options": [
+        "고위험 영역에 분석한계가 존재한다.",
+        "소규모 조직에 적합하다.",
+        "조직특성을 고려할 수 없다.",
+        "보안 통제가 과도하게 적용되거나 부족할 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "[기준선법의 장점]\n• 비용 및 시간이 절약된다.\n• 기본 보호조치 선택이 용이하다.\n• 소규모 조직에 적합하다."
+    },
+    {
+      "id": 100,
+      "subject_id": 5,
+      "question": "다음 중 정보보호 최고책임자 CISO의 자격 기준으로 올바르지 않은 것은?",
+      "options": [
+        "석사 학위 이상",
+        "학사 학위와 정보보호 혹은 정보기술 경력 3년 이상",
+        "정보보호 및 정보기술 업무경력 10년 이상",
+        "정보보호 부서장으로 인사발령을 받은 경우"
+      ],
+      "answer": 4,
+      "explanation": "정보보호 부서의 장 근무경력은 1년 이상이어야 한다."
+    }
+  ]
+}
