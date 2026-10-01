@@ -6,7 +6,7 @@
     "passing_rules": {
       "total_pass_score": 60,
       "subject_cutoff_score": 40,
-      "points_per_question": 1.0
+      "points_per_question": 5.0
     }
   },
   "subjects": [

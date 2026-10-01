@@ -2352,16 +2352,32 @@ function updateRulesUI() {
       <li><b>목표 합격선 (상대평가 기준)</b>: <b>총점 ${passScore}점 이상</b> (선발예정인원 약 40명 기준 합격권 목표 점수: 80점)</li>
       <li><b>현재 모의고사 제한시간</b>: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length}개 과목, ${totalQs}문항)</li>
     `;
-  } else if (isUniformSubject) {
-    const subMaxScore = firstSubCount * ptsPerQ;
-    const cutoffQs = Math.ceil(cutoffScore / ptsPerQ);
-    const totalPassQs = Math.ceil(passScore / ptsPerQ);
-    const totalMaxScore = totalQs * ptsPerQ;
+  } else if (ex.category === '정보보안기사' || (ex.title && ex.title.includes('정보보안기사'))) {
     document.getElementById('rulesList').innerHTML = `
-      <li>과목당 <b>${subMaxScore}점 만점</b> (문항당 ${ptsPerQ}점)</li>
-      <li>과목별 과락 기준: <b>${cutoffScore}점 미만</b> (${cutoffQs}문항 미만) 시 불합격</li>
-      <li>총점 합격 기준: <b>${passScore}점 이상</b> (${totalPassQs}문항 이상 / ${totalMaxScore}점 만점) 득점 시 합격</li>
-      <li>시험 시간: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length}개 과목, ${totalQs}문항)</li>
+      <li><b>전체 시험 구성 (총 5과목 100문항, 객관식 4지선다형)</b>:<br>
+          &nbsp;&nbsp;• <b>1과목</b>: 시스템 보안 (20문항 / 과목당 100점 환산 문항당 5.0점)<br>
+          &nbsp;&nbsp;• <b>2과목</b>: 네트워크 보안 (20문항 / 과목당 100점 환산 문항당 5.0점)<br>
+          &nbsp;&nbsp;• <b>3과목</b>: 애플리케이션 보안 (20문항 / 과목당 100점 환산 문항당 5.0점)<br>
+          &nbsp;&nbsp;• <b>4과목</b>: 정보보안 일반 (20문항 / 과목당 100점 환산 문항당 5.0점)<br>
+          &nbsp;&nbsp;• <b>5과목</b>: 정보보안 관리 및 법규 (20문항 / 과목당 100점 환산 문항당 5.0점)
+      </li>
+      <li><b>과목별 과락 기준</b>: 각 과목 <b>40점 미만</b> (8문항 미만 정답) 시 <b>과락 불합격</b></li>
+      <li><b>총점 합격 기준</b>: <b>전 과목 평균 60점 이상</b> (총 100문항 중 <b>60문항 이상</b> 정답) 득점 시 <b>최종 합격</b></li>
+      <li><b>시험 제한시간</b>: <b>${ex.time_limit_minutes || 150}분</b> (과목당 30분, 총 5개 과목 100문항)</li>
+    `;
+  } else if (isUniformSubject) {
+    const subQCount = firstSubCount;
+    const ptsPerQInSub = 100.0 / subQCount;
+    const normalizedCutoff = (cutoffScore >= 30) ? cutoffScore : 40;
+    const minPassQs = Math.ceil(subQCount * (normalizedCutoff / 100.0));
+    const totalPassQs = Math.ceil(totalQs * (passScore / 100.0));
+    const subListText = subjects.map((s, idx) => `&nbsp;&nbsp;• <b>${s.name}</b> (${s.question_count}문항)`).join('<br>');
+    document.getElementById('rulesList').innerHTML = `
+      <li><b>과목별 문항 구성 (총 ${subjects.length}개 과목, ${totalQs}문항)</b>:<br>${subListText}</li>
+      <li><b>과목당 배점</b>: <b>100점 만점 환산</b> (과목당 ${subQCount}문항, 문항당 ${ptsPerQInSub % 1 === 0 ? ptsPerQInSub.toFixed(0) : ptsPerQInSub.toFixed(1)}점)</li>
+      <li><b>과목별 과락 기준</b>: 각 과목 <b>${normalizedCutoff}점 미만</b> (${minPassQs}문항 미만 정답) 시 <b>과락 불합격</b></li>
+      <li><b>총점 합격 기준</b>: <b>전 과목 평균 ${passScore}점 이상</b> (총 ${totalQs}문항 중 <b>${totalPassQs}문항 이상</b> 정답) 득점 시 <b>최종 합격</b></li>
+      <li><b>시험 제한시간</b>: <b>${ex.time_limit_minutes || 120}분</b> (총 ${subjects.length}개 과목, ${totalQs}문항)</li>
     `;
   } else {
     // 디지털포렌식 등 과목별 문항 수가 다를 때
@@ -3110,9 +3126,10 @@ function submitExam(skipConfirm = false) {
 
   clearInterval(timerInterval);
   cachedServerDraft = null;
-  const rules = currentExamData.exam_info.passing_rules;
+  const rules = currentExamData.exam_info.passing_rules || {};
   const ptsPerQ = rules.points_per_question || 1.25;
-  const cutoffScore = rules.subject_cutoff_score || 10;
+  const rawCutoffScore = (rules.subject_cutoff_score !== undefined) ? rules.subject_cutoff_score : 40;
+  const cutoffScore = (rawCutoffScore >= 30) ? rawCutoffScore : 40;
   const passScore = rules.total_pass_score || 60;
 
   let totalCorrect = 0;
