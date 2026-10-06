@@ -160,6 +160,39 @@ RAW_COMMANDS = [
         "cmd": "./antigravity_status.sh",
         "cwd": str(PROJECT_ROOT / "utils" / "antigravity_control"),
         "desc": "Antigravity 상태 확인"
+    },
+    # 6. 바람길 (정밀 헬스케어)
+    {
+        "system": "6. 바람길 (정밀 헬스케어)",
+        "num": "6-1",
+        "alias": "hg-start",
+        "cmd": "./healthy_start.sh",
+        "cwd": str(PROJECT_ROOT / "cowork" / "healthy"),
+        "desc": "바람길 헬스케어 관제 서버 시작"
+    },
+    {
+        "system": "6. 바람길 (정밀 헬스케어)",
+        "num": "6-2",
+        "alias": "hg-reset",
+        "cmd": "./healthy_reset.sh",
+        "cwd": str(PROJECT_ROOT / "cowork" / "healthy"),
+        "desc": "바람길 DB 리셋 및 재기동"
+    },
+    {
+        "system": "6. 바람길 (정밀 헬스케어)",
+        "num": "6-3",
+        "alias": "hg-stop",
+        "cmd": "./healthy_stop.sh",
+        "cwd": str(PROJECT_ROOT / "cowork" / "healthy"),
+        "desc": "바람길 헬스케어 관제 서버 종료"
+    },
+    {
+        "system": "6. 바람길 (정밀 헬스케어)",
+        "num": "6-4",
+        "alias": "hg-status",
+        "cmd": "./healthy_status.sh",
+        "cwd": str(PROJECT_ROOT / "cowork" / "healthy"),
+        "desc": "바람길 실시간 관제 상태 브리핑"
     }
 ]
 
@@ -168,8 +201,8 @@ for cmd_info in RAW_COMMANDS:
     COMMAND_MAPPING[cmd_info["num"]] = cmd_info
     COMMAND_MAPPING[cmd_info["alias"]] = cmd_info
 
-# 단일 숫자 명령어(1, 2, 3, 4, 5)를 x-2 (Reset) 명령어에 추가 매핑
-SINGLE_DIGIT_MAP = {"1": "1-2", "2": "2-2", "3": "3-2", "4": "4-2", "5": "5-2"}
+# 단일 숫자 명령어 매핑 (6은 실시간 브리핑 6-4에 매핑)
+SINGLE_DIGIT_MAP = {"1": "1-2", "2": "2-2", "3": "3-2", "4": "4-2", "5": "5-2", "6": "6-4"}
 for single, target_num in SINGLE_DIGIT_MAP.items():
     if target_num in COMMAND_MAPPING:
         COMMAND_MAPPING[single] = COMMAND_MAPPING[target_num]

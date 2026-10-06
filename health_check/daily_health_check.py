@@ -86,6 +86,17 @@ AP_TARGETS = [
         "working_dir": os.path.join(PROJECT_ROOT, "utils", "cbt_engine"),
         "tunnel_unit": "cloudflared-cbt",
         "tunnel_cmd": f"cloudflared tunnel run --url http://127.0.0.1:5004 f8af40cf-0088-45f0-82bc-3befe3bb6dbd > '{os.path.join(PROJECT_ROOT, 'utils', 'cbt_engine', 'cloudflared_cbt.log')}' 2>&1"
+    },
+    {
+        "name": "바람길 (헬스케어 관제 시스템)",
+        "local_url": "http://127.0.0.1:5005",
+        "external_urls": [
+            "https://health.snowball.pe.kr"
+        ],
+        "start_script": os.path.join(PROJECT_ROOT, "cowork", "healthy", "healthy_start.sh"),
+        "working_dir": os.path.join(PROJECT_ROOT, "cowork", "healthy"),
+        "tunnel_unit": "cloudflared-healthy",
+        "tunnel_cmd": f"cloudflared tunnel run --url http://127.0.0.1:5005 ac4ba3ff-cc5e-4af6-b1d3-451b0dae29b7 > '{os.path.join(PROJECT_ROOT, 'cowork', 'healthy', 'cloudflared_healthy.log')}' 2>&1"
     }
 ]
 

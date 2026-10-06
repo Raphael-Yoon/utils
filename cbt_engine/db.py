@@ -71,14 +71,24 @@ def init_db():
     """데이터베이스 및 테이블 초기화"""
     if DB_TYPE == "mysql":
         import pymysql
+        import time
 
         config = _parse_mysql_url(DATABASE_URL)
         db_name = config["database"]
 
-        # 1) cbt 데이터베이스 생성
+        # 1) cbt 데이터베이스 생성 (MySQL 기동 대기 재시도 루프)
         server_config = config.copy()
         server_config.pop("database", None)
-        conn = pymysql.connect(**server_config, autocommit=True)
+        conn = None
+        for attempt in range(5):
+            try:
+                conn = pymysql.connect(**server_config, autocommit=True)
+                break
+            except Exception as e:
+                if attempt == 4:
+                    raise
+                time.sleep(1.5)
+
         with conn.cursor() as cur:
             cur.execute(
                 f"CREATE DATABASE IF NOT EXISTS `{db_name}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
