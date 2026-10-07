@@ -1,5 +1,5 @@
 """
-[개발4팀 바람길] 헬스케어 관제 대시보드 코어 서버 (app.py)
+[개발4팀 바람길] 헬스케어 관제 대시보드 코어 서버 (healthy.py)
 - 포트: 5005 (전사 5호 공식 서비스)
 - 프레임워크: Flask + Jinja2 + Chart.js
 - 데이터베이스: 전사 표준 db_config.py 연동 (MySQL 'healthy' 및 SQLite 'healthy.db' 완벽 호환)
@@ -556,7 +556,11 @@ def api_clinical_items():
         })
 
 
-if __name__ == "__main__":
+def main():
     port = int(os.getenv("HEALTHY_PORT", 5005))
     print(f"[*] Starting Baramgil Health Dashboard on http://0.0.0.0:{port} (Active DB: {DB_TYPE})")
     app.run(host="0.0.0.0", port=port, debug=True)
+
+
+if __name__ == "__main__":
+    main()

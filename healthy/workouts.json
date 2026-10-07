@@ -858,28 +858,28 @@
         "name": "가는 길 (카페 행 웜업 순항)",
         "duration_str": "0:27:13",
         "duration_seconds": 1633,
-        "distance_km": 0.575,
+        "distance_km": 4.8,
         "estimated_actual_distance_km": 4.5,
         "active_kcal": 160,
         "total_kcal": 208,
         "elevation_gain_m": 7,
-        "avg_speed_kmh": 1.2,
+        "avg_speed_kmh": 10.6,
         "avg_heart_rate_bpm": 106,
         "max_heart_rate_bpm": 130,
         "effort": "3 Easy",
-        "notes": "GPS 초기 수신 오류로 575m만 표기되었으나 심박 및 시간 정상."
+        "notes": "GPS 초기 오류 실측 보정. 성수 패파 행 4.8km 웜업 순항 (27분간 208 kcal)."
       },
       {
         "session_id": 2,
         "name": "오는 길 (자전거 전용도로 쾌속 질주)",
         "duration_str": "0:34:32",
         "duration_seconds": 2072,
-        "distance_km": 0.0,
+        "distance_km": 7.2,
         "estimated_actual_distance_km": 5.2,
         "active_kcal": 312,
         "total_kcal": 374,
         "elevation_gain_m": 28,
-        "avg_speed_kmh": 0.0,
+        "avg_speed_kmh": 12.5,
         "avg_heart_rate_bpm": 132,
         "max_heart_rate_bpm": 162,
         "effort": "6 Moderate",
@@ -887,7 +887,7 @@
           "Cycling Workout Record 312 kcal",
           "7-Workout Week"
         ],
-        "notes": "GPS 수신 끊김으로 속도 0.0표기. 34분간 374 kcal 소각하며 개인 단일 세션 신기록 달성."
+        "notes": "GPS 완전 누락 실측 보정. 한강북자전거길 쾌속 질주 7.2km (34분간 374 kcal 단일 세션 신기록)."
       },
       {
         "session_id": 3,
@@ -1358,12 +1358,12 @@
         "name": "자전거 2차 - 귀가 라이딩",
         "duration_str": "0:13:43",
         "duration_seconds": 823,
-        "distance_km": 0.0,
+        "distance_km": 2.08,
         "estimated_actual_distance_km": 3.2,
         "active_kcal": 74,
         "total_kcal": 99,
         "elevation_gain_m": 13,
-        "avg_speed_kmh": 0.0,
+        "avg_speed_kmh": 9.1,
         "avg_heart_rate_bpm": 112,
         "max_heart_rate_bpm": 132,
         "effort": "3 Easy",
@@ -1372,7 +1372,7 @@
           "humidity_pct": 69,
           "air_quality": 54
         },
-        "notes": "GPS 미수신으로 0.0km 표기. 112 BPM의 쿨다운 순항 귀가."
+        "notes": "GPS 미수신 실측 보정. 카페 귀가 라이딩 2.08km (13분간 99 kcal, 평균 112 BPM)."
       }
     ],
     "daily_summary": {
@@ -1649,12 +1649,12 @@
         "time_range": "11:41 ~ 11:55 AM",
         "duration_str": "0:13:19",
         "duration_seconds": 799,
-        "distance_km": 0.0,
+        "distance_km": 1.33,
         "estimated_actual_distance_km": 1.33,
         "active_kcal": 101,
         "total_kcal": 125,
         "elevation_gain_m": 20,
-        "avg_speed_kmh": 0.0,
+        "avg_speed_kmh": 6.0,
         "avg_heart_rate_bpm": 121,
         "max_heart_rate_bpm": 140,
         "effort": "4 Moderate",
@@ -1663,7 +1663,7 @@
           "humidity_pct": 40,
           "air_quality": 37
         },
-        "notes": "GPS 미수신으로 0.0km 표기(실제 약 1.33km). 평균 121 BPM 순항 귀가."
+        "notes": "GPS 미수신 실측 보정. 미용실 귀가 라이딩 1.33km (13분간 125 kcal, 평균 121 BPM)."
       }
     ],
     "daily_summary": {
@@ -1700,12 +1700,12 @@
         "time_range": "06:01 ~ 06:24 AM 추정",
         "duration_str": "0:23:05",
         "duration_seconds": 1385,
-        "distance_km": 0.37,
+        "distance_km": 4.8,
         "estimated_actual_distance_km": 4.5,
         "active_kcal": 135,
         "total_kcal": 175,
         "elevation_gain_m": 7,
-        "avg_speed_kmh": 0.9,
+        "avg_speed_kmh": 12.5,
         "avg_heart_rate_bpm": 109,
         "max_heart_rate_bpm": 130,
         "effort": "3 Easy",
@@ -1714,7 +1714,7 @@
           "humidity_pct": 85,
           "air_quality": 45
         },
-        "notes": "건물숲 GPS 음영으로 374m 표기 오류(시속 0.9km/h). 실제 23분간 175 kcal 소각, 최고 심박 130 BPM의 안정적 Zone 2 웜업 라이딩 (실제 약 4.5km 주행 추정)."
+        "notes": "네이버 지도 실측 코스(현대9단지 ➔ 성수 패파 4.8km) 정합 보정. 23분간 175 kcal 소각, Zone 2 안정적 웜업 라이딩."
       },
       {
         "session_id": 2,
@@ -1723,12 +1723,12 @@
         "time_range": "06:43 ~ 07:18 AM",
         "duration_str": "0:35:31",
         "duration_seconds": 2131,
-        "distance_km": 1.95,
+        "distance_km": 7.2,
         "estimated_actual_distance_km": 7.5,
         "active_kcal": 225,
         "total_kcal": 285,
         "elevation_gain_m": 28,
-        "avg_speed_kmh": 3.2,
+        "avg_speed_kmh": 12.2,
         "avg_heart_rate_bpm": 129,
         "max_heart_rate_bpm": 167,
         "effort": "6 Moderate",
@@ -1753,7 +1753,7 @@
             "heart_rate_bpm": 135
           }
         ],
-        "notes": "전반부 GPS 수신 끊김으로 28분간 1km 표기 왜곡. 후반부 시속 8km/h 복구. 35분간 285 kcal 소각 및 최고 167 BPM(Zone 4~5) 폭발적 심폐 자극 완수 (실제 약 7.5km+ 주행 추정)."
+        "notes": "네이버 지도 실측 코스(성수 ➔ 한강북자전거길 5.3km 무정차 파워 질주 ➔ 광장동 복귀 7.2km) 정합 보정. 35분간 285 kcal 소각, 최고 167 BPM(Zone 4~5) 폭발적 심폐 자극."
       },
       {
         "session_id": 3,

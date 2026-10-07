@@ -147,62 +147,92 @@
     <!-- 3. Time-Series Analytics Charts -->
     <section class="charts-grid" aria-label="시계열 분석 차트">
       
-      <!-- Chart 1: Body Composition (체중 vs 골격근량) -->
+      <!-- Chart 1: Body Composition (체중 vs 골격근량 vs 체지방량) -->
       <div class="glass-panel chart-card col-span-6" id="panel-body-comp-chart">
         <div class="chart-header">
           <div class="chart-titles">
             <h3>⚖️ 체중 · 골격근량 · 체지방량 트렌드</h3>
             <p>샤워 직후 체중(kg), 실질 골격근량(kg) 및 체지방량(kg) 3대 체성분 시계열</p>
           </div>
-          <span class="chart-badge">3대 체성분 복합 축</span>
+          <div class="chart-header-actions">
+            <div class="toggle-pills" id="bodycomp-toggle-group">
+              <button type="button" class="pill-btn active" data-bodycomp-view="all">전체 복합</button>
+              <button type="button" class="pill-btn" data-bodycomp-view="muscle">골격근량</button>
+              <button type="button" class="pill-btn" data-bodycomp-view="fat">체지방량</button>
+              <button type="button" class="pill-btn" data-bodycomp-view="weight">체중</button>
+            </div>
+            <span class="chart-badge" id="bodyCompChartBadge">3대 복합 축</span>
+          </div>
+        </div>
+        <!-- 체성분 전용 한줄평 브리핑 배너 -->
+        <div class="chart-summary-banner" id="bodycomp-summary-banner">
+          <span class="summary-badge summary-badge-bodycomp">⚖️ 체성분 브리핑</span>
+          <p class="summary-text" id="bodycompSummaryText">골격근량 35.0kg 사수선을 견고하게 방어하며 안정적인 체성분 밸런스를 유지하고 있습니다.</p>
         </div>
         <div class="chart-canvas-container">
           <canvas id="bodyCompChartCanvas"></canvas>
         </div>
         <div class="target-legends">
-          <div class="target-legend-item">
+          <div class="target-legend-item clickable" data-legend-for="muscle" title="골격근량 단독 보기">
             <span class="legend-bullet" style="background:#10B981;"></span>
             <span>골격근량 (사수선 35.0kg 유지)</span>
           </div>
-          <div class="target-legend-item">
+          <div class="target-legend-item clickable" data-legend-for="fat" title="체지방량 단독 보기">
             <span class="legend-bullet" style="background:#F43F5E;"></span>
             <span>체지방량 (유산소 감량 타깃)</span>
           </div>
-          <div class="target-legend-item">
+          <div class="target-legend-item clickable" data-legend-for="weight" title="체중 단독 보기">
             <span class="legend-bullet" style="background:#38BDF8;"></span>
             <span>체중 (77~78kg 초안정 유지)</span>
           </div>
-          <div class="target-legend-item">
+          <div class="target-legend-item clickable" data-legend-for="muscle" title="골격근 사수선 단독 보기">
             <span class="legend-bullet" style="background:#F59E0B; border: 1px dashed #FFF;"></span>
             <span>35.0kg 마지노선 (근손실 방어)</span>
           </div>
         </div>
       </div>
 
-      <!-- Chart 2: Workout Load & Heart Rate (칼로리 & 심박수) -->
+      <!-- Chart 2: Workout Load & Heart Rate (칼로리 & 심박수 & 거리) -->
       <div class="glass-panel chart-card col-span-6" id="panel-workout-chart">
         <div class="chart-header">
           <div class="chart-titles">
             <h3>🔥 유산소 운동부하 & Zone 2 심박수</h3>
             <p>일자별 소모 칼로리(kcal), 이동 거리(km) 및 평균 심박수(BPM)</p>
           </div>
-          <span class="chart-badge">부하 복합 분석</span>
+          <div class="chart-header-actions">
+            <div class="toggle-pills" id="workout-toggle-group">
+              <button type="button" class="pill-btn active" data-workout-view="all">전체 복합</button>
+              <button type="button" class="pill-btn" data-workout-view="kcal">소모 칼로리</button>
+              <button type="button" class="pill-btn" data-workout-view="hr">평균 심박수</button>
+              <button type="button" class="pill-btn" data-workout-view="dist">이동 거리</button>
+            </div>
+            <span class="chart-badge" id="workoutChartBadge">부하 복합 분석</span>
+          </div>
+        </div>
+        <!-- 운동부하 전용 한줄평 브리핑 배너 -->
+        <div class="chart-summary-banner" id="workout-summary-banner">
+          <span class="summary-badge summary-badge-workout">🔥 운동부하 브리핑</span>
+          <p class="summary-text" id="workoutSummaryText">Zone 2 유산소 심박수 및 소모 칼로리 목표를 달성하며 지방 연소 효율을 극대화하고 있습니다.</p>
         </div>
         <div class="chart-canvas-container">
           <canvas id="workoutChartCanvas"></canvas>
         </div>
         <div class="target-legends">
-          <div class="target-legend-item">
+          <div class="target-legend-item clickable" data-legend-for="kcal" title="적정 칼로리 보기">
             <span class="legend-bullet" style="background:#10B981;"></span>
             <span>적정 소모 칼로리 (&le;600 kcal)</span>
           </div>
-          <div class="target-legend-item">
+          <div class="target-legend-item clickable" data-legend-for="kcal" title="과다 제동 경계 보기">
             <span class="legend-bullet" style="background:#EF4444;"></span>
             <span>과다 제동 경계 (&gt;600 kcal)</span>
           </div>
-          <div class="target-legend-item">
+          <div class="target-legend-item clickable" data-legend-for="hr" title="평균 심박수 단독 보기">
             <span class="legend-bullet" style="background:#F43F5E;"></span>
             <span>평균 심박수 (Zone 2: 105~125 BPM)</span>
+          </div>
+          <div class="target-legend-item clickable" data-legend-for="dist" title="이동 거리 단독 보기">
+            <span class="legend-bullet" style="background:#06B6D4;"></span>
+            <span>이동 거리 (km)</span>
           </div>
         </div>
       </div>
