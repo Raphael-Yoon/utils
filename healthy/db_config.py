@@ -29,18 +29,22 @@ try:
 except Exception:
     pass
 
-# 환경 판별: HEALTHY_DB_TYPE -> IS_PROD 환경변수 기준
-# 운영서버 기본 원칙: MySQL 'healthy' DB를 우선 사용합니다.
-# IS_PROD=false 또는 HEALTHY_DB_TYPE=sqlite로 명시된 경우에만 로컬 개발용 SQLite를 사용합니다.
+# 환경 판별: IS_PROD 환경변수 기준 (전사 표준: snowball/trade/cbt/infosd 일치)
+# IS_PROD=true  -> 운영서버 (MySQL 'healthy' DB 전용)
+# IS_PROD=false -> 개발환경 (SQLite 'healthy.db' 전용)
+# HEALTHY_DB_TYPE 환경변수로 명시적 제어 가능 ('mysql' 또는 'sqlite')
 _is_prod_env = os.getenv("IS_PROD", "").strip().lower()
 _db_type_env = os.getenv("HEALTHY_DB_TYPE") or os.getenv("DB_TYPE", "")
 
 if _db_type_env.lower() in ("mysql", "sqlite"):
     DB_TYPE = _db_type_env.lower()
+elif _is_prod_env in ("true", "1", "yes"):
+    DB_TYPE = "mysql"
 elif _is_prod_env in ("false", "0", "no"):
     DB_TYPE = "sqlite"
 else:
-    DB_TYPE = "mysql"
+    # 기본 개발 환경(IS_PROD 미설정 시): SQLite 자동 사용 (Zero-Config)
+    DB_TYPE = "sqlite"
 
 # SQLite 설정
 SQLITE_DATABASE = os.getenv('HEALTHY_DB_PATH', DEFAULT_SQLITE_PATH)
