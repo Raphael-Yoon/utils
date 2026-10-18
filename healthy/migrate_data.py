@@ -390,7 +390,20 @@ def run_migration():
         migrate_workouts(sqlite_db)
         migrate_blood_lab(sqlite_db)
         verify_migration(sqlite_db)
-    print("✅ 개발서버용 SQLite 'healthy.db' 마이그레이션 완료!\n")
+    print("✅ 개발서버용 SQLite 'healthy.db' 마이그레이션 완료!")
+
+    # 3. utils/healthy 디렉토리 무손실 자동 동기화
+    print("\n--- [3/3] utils/healthy 디렉토리 자동 동기화 ---")
+    import shutil
+    workspace_dir = _BASE_DIR.parent.parent
+    utils_healthy_dir = workspace_dir / "utils" / "healthy"
+    if utils_healthy_dir.exists() and utils_healthy_dir != _BASE_DIR:
+        for sync_file in ["workouts.json", "운동기록.md", "healthy.db", "혈액수치.xlsx"]:
+            src_path = _BASE_DIR / sync_file
+            dst_path = utils_healthy_dir / sync_file
+            if src_path.exists():
+                shutil.copy2(src_path, dst_path)
+        print("✅ utils/healthy 디렉토리 100% 자동 동기화 완료!\n")
 
 
 if __name__ == "__main__":

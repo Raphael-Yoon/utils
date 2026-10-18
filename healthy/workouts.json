@@ -1791,5 +1791,1004 @@
       "evaluation": "🟢 적정 상한선 (완벽 제어)",
       "notes": "수요일 모닝 자전거 2세션 + 걷기 1세션 (총 71분, 542 kcal). 상한선(600 kcal) 이내에서 절제된 운동량 완수. 체중 77.2kg로 급감했으나 3일간 누적 1,926 kcal 유산소에 따른 1L 수분 손실이므로 즉각 미온수 보충 및 오늘 추가 운동 STOP 필수."
     }
+  },
+  {
+    "date": "2026-10-08",
+    "day_of_week": "Thu",
+    "time_of_day": "아침",
+    "workout_type": "야외 걷기 (Walking) + 야외 자전거 (Cycling)",
+    "routine": "목요일 4단 복합 유산소 (오전 힐클라임 81분 620 kcal + 저녁 산책 72분 434 kcal / 총 1,054 kcal)",
+    "post_workout_body_comp": {
+      "weight_kg": 77.7,
+      "body_fat_pct": 20.3,
+      "skeletal_muscle_mass_kg": 35.0,
+      "bmi": 23.59,
+      "notes": "체중 77.7kg (+0.5kg), 골격근량 35.0kg (+0.9kg 수직 반등!), 체지방률 20.3% (-1.8%p 급락). 어제 임선우 코치의 탈수 BIA 왜곡 진단 100% 입증. 수분/글리코겐 리차징으로 35.0kg 완벽 복귀 및 실제 체지방률 20.3% 진입 확인."
+    },
+    "sessions": [
+      {
+        "session_id": 1,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "아침 힐클라임 파워워킹 (고도 95m)",
+        "time_range": "06:30 ~ 07:16 AM 추정",
+        "duration_str": "0:45:50",
+        "duration_seconds": 2750,
+        "distance_km": 3.67,
+        "active_kcal": 246,
+        "total_kcal": 327,
+        "elevation_gain_m": 95,
+        "avg_speed_kmh": 4.81,
+        "avg_pace": "12'29\"",
+        "avg_heart_rate_bpm": 114,
+        "max_heart_rate_bpm": 135,
+        "effort": "4 Moderate",
+        "weather": {
+          "temp_c": 10,
+          "humidity_pct": 87,
+          "air_quality": 47
+        },
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "11:53",
+            "avg_pace": "11'53\"",
+            "heart_rate_bpm": 112
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "12:37",
+            "avg_pace": "12'37\"",
+            "heart_rate_bpm": 120
+          },
+          {
+            "split": 3,
+            "distance_km": 1.0,
+            "time": "11:31",
+            "avg_pace": "11'31\"",
+            "heart_rate_bpm": 115
+          },
+          {
+            "split": 4,
+            "distance_km": 0.67,
+            "time": "09:28",
+            "avg_pace": "14'03\"",
+            "heart_rate_bpm": 107
+          }
+        ],
+        "notes": "평소와 다른 언덕 코스(상승 고도 95m) 도전. 가파른 경사에도 12분대 초반 쾌속 보행 및 평균 심박 114 BPM 완벽 통제."
+      },
+      {
+        "session_id": 2,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "자전거 1차 - 업힐 포함 라이딩",
+        "time_range": "06:44 ~ 07:06 AM",
+        "duration_str": "0:22:02",
+        "duration_seconds": 1322,
+        "distance_km": 2.54,
+        "active_kcal": 129,
+        "total_kcal": 167,
+        "elevation_gain_m": 38,
+        "avg_speed_kmh": 6.9,
+        "avg_heart_rate_bpm": 131,
+        "max_heart_rate_bpm": 157,
+        "effort": "5 Moderate",
+        "weather": {
+          "temp_c": 10,
+          "humidity_pct": 87,
+          "air_quality": 47
+        },
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "13:55",
+            "avg_speed_kmh": 4.3,
+            "heart_rate_bpm": 132
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "04:37",
+            "avg_speed_kmh": 12.9,
+            "heart_rate_bpm": 124
+          },
+          {
+            "split": 3,
+            "distance_km": 0.54,
+            "time": "02:54",
+            "avg_speed_kmh": 11.3,
+            "heart_rate_bpm": 138
+          }
+        ],
+        "notes": "고도 38m 포함 업힐 라이딩. 평균 131 BPM / 최고 157 BPM의 강력한 심폐 및 대퇴사두근 자극."
+      },
+      {
+        "session_id": 3,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "자전거 2차 - 귀가 라이딩",
+        "time_range": "07:21 ~ 07:34 AM",
+        "duration_str": "0:12:50",
+        "duration_seconds": 770,
+        "distance_km": 0.04,
+        "estimated_actual_distance_km": 1.8,
+        "active_kcal": 103,
+        "total_kcal": 126,
+        "elevation_gain_m": 15,
+        "avg_speed_kmh": 0.1,
+        "avg_heart_rate_bpm": 126,
+        "max_heart_rate_bpm": 143,
+        "effort": "4 Moderate",
+        "weather": {
+          "temp_c": 10,
+          "humidity_pct": 87,
+          "air_quality": 47
+        },
+        "notes": "GPS 미수신으로 37m 표기 오류. 12분 50초간 126 kcal 소모 및 평균 126 BPM 안정적 순항 귀가 (실제 약 1.8km 추정)."
+      },
+      {
+        "session_id": 4,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "저녁 식후 유산소 산책",
+        "time_range": "18:05 ~ 19:18 PM 추정",
+        "duration_str": "1:12:23",
+        "duration_seconds": 4343,
+        "distance_km": 4.51,
+        "active_kcal": 305,
+        "total_kcal": 434,
+        "elevation_gain_m": 60,
+        "avg_speed_kmh": 3.74,
+        "avg_pace": "16'02\"",
+        "avg_heart_rate_bpm": 111,
+        "max_heart_rate_bpm": 144,
+        "effort": "3 Easy",
+        "weather": {
+          "temp_c": 20,
+          "humidity_pct": 55,
+          "air_quality": 85
+        },
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "14:49",
+            "avg_pace": "14'49\"",
+            "heart_rate_bpm": 114
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "22:03",
+            "avg_pace": "22'03\"",
+            "heart_rate_bpm": 109
+          },
+          {
+            "split": 3,
+            "distance_km": 1.0,
+            "time": "17:08",
+            "avg_pace": "17'08\"",
+            "heart_rate_bpm": 109
+          },
+          {
+            "split": 4,
+            "distance_km": 1.0,
+            "time": "11:55",
+            "avg_pace": "11'55\"",
+            "heart_rate_bpm": 118
+          },
+          {
+            "split": 5,
+            "distance_km": 0.51,
+            "time": "06:21",
+            "avg_pace": "12'18\"",
+            "heart_rate_bpm": 107
+          }
+        ],
+        "notes": "저녁 4.51km 여유로운 쿨다운 산책. 평균 111 BPM(Zone 2) 유지하며 식후 잉여 혈당 완전 소각."
+      }
+    ],
+    "daily_summary": {
+      "total_duration_str": "2:33:05",
+      "total_duration_seconds": 9185,
+      "total_distance_km": 10.76,
+      "estimated_total_distance_km": 12.52,
+      "total_active_kcal": 783,
+      "total_kcal": 1054,
+      "total_elevation_gain_m": 208,
+      "avg_heart_rate_bpm": 116,
+      "evaluation": "🔴 초과다 경계 (1,054 kcal 돌파 / 긴급 STOP)",
+      "notes": "목요일 4단 복합 유산소 (오전 힐클라임 81분 620 kcal + 저녁 산책 72분 434 kcal). 하루 총 153분간 1,054 kcal 대소각 및 수직 고도 208m 주파. 주간 4일 누적 2,980 kcal 돌파. 신장 사구체 및 연골 스펀지 보호를 위해 취침 전 미온수 500ml 필수 및 내일 강제 휴식 권고."
+    }
+  },
+  {
+    "date": "2026-10-09",
+    "day_of_week": "Fri",
+    "time_of_day": "아침",
+    "workout_type": "야외 걷기 (Outdoor Walk)",
+    "routine": "금요일 리커버리 저녁 산책 (5.03km, 475 kcal, 평균 102 BPM)",
+    "morning_fasting_blood_sugar_mgdl": 118,
+    "sessions": [
+      {
+        "session_id": 1,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "금요일 저녁 릴랙스 리커버리 산책",
+        "time_range": "17:44 ~ 19:06 PM 추정",
+        "duration_str": "1:22:15",
+        "duration_seconds": 4935,
+        "distance_km": 5.03,
+        "active_kcal": 328,
+        "total_kcal": 475,
+        "elevation_gain_m": 65,
+        "avg_speed_kmh": 3.67,
+        "avg_pace": "16'21\"",
+        "avg_heart_rate_bpm": 102,
+        "max_heart_rate_bpm": 137,
+        "effort": "3 Easy",
+        "weather": {
+          "temp_c": 22,
+          "humidity_pct": 54,
+          "air_quality": 91
+        },
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "12:25",
+            "avg_pace": "12'25\"",
+            "heart_rate_bpm": 112
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "14:26",
+            "avg_pace": "14'26\"",
+            "heart_rate_bpm": 105
+          },
+          {
+            "split": 3,
+            "distance_km": 1.0,
+            "time": "14:58",
+            "avg_pace": "14'58\"",
+            "heart_rate_bpm": 100
+          },
+          {
+            "split": 4,
+            "distance_km": 1.0,
+            "time": "13:29",
+            "avg_pace": "13'29\"",
+            "heart_rate_bpm": 105
+          },
+          {
+            "split": 5,
+            "distance_km": 1.03,
+            "time": "21:43",
+            "avg_pace": "21'43\"",
+            "heart_rate_bpm": 100
+          }
+        ],
+        "notes": "오전 휴식 후 저녁 5.03km 여유로운 릴랙스 보행. 평균 심박 102 BPM(스플릿 3·5 100 BPM)의 경이로운 초저심박 액티브 리커버리. 식후 잉여 혈당 완전 소각."
+      }
+    ],
+    "daily_summary": {
+      "total_duration_str": "1:22:15",
+      "total_duration_seconds": 4935,
+      "total_distance_km": 5.03,
+      "total_active_kcal": 328,
+      "total_kcal": 475,
+      "total_elevation_gain_m": 65,
+      "avg_heart_rate_bpm": 102,
+      "evaluation": "🟢 적정 리커버리 (완벽 제어)",
+      "notes": "금요일 저녁 리커버리 산책 5.03km (82분, 475 kcal). 평균 102 BPM의 완벽한 Zone 1~2 저심박 액티브 리커버리. 주간 5일 누적 3,455 kcal 소각 달성. 주말 연골 및 신장 회복 모드 돌입."
+    },
+    "post_workout_body_comp": {
+      "weight_kg": 77.6,
+      "body_fat_pct": 21.7,
+      "skeletal_muscle_mass_kg": 34.1,
+      "bmi": 23.56,
+      "notes": "체중 77.6kg (-0.1kg), 골격근량 34.1kg, 체지방률 21.7%. 어제 하루 1,054 kcal 대소각(오전 620 + 저녁 434)에 따른 근육 내 글리코겐 및 결합 수분 고갈 BIA 왜곡. 공복혈당 118과 정확히 일치하는 대사 탈수 신호. 오늘 완전 휴식과 수분/라떼 리커버리 시 35kg대 즉각 복귀."
+    }
+  },
+  {
+    "date": "2026-10-11",
+    "day_of_week": "Sun",
+    "time_of_day": "아침",
+    "workout_type": "야외 걷기 (Walking) + 야외 자전거 (Cycling)",
+    "routine": "일요일 힐클라임 듀얼 유산소 (걷기 6.30km 128m + 쿨다운 자전거 / 총 597 kcal)",
+    "sessions": [
+      {
+        "session_id": 1,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "아침 힐클라임 파워워킹 (고도 128m)",
+        "time_range": "06:12 ~ 07:38 AM 추정",
+        "duration_str": "1:25:57",
+        "duration_seconds": 5157,
+        "distance_km": 6.3,
+        "active_kcal": 382,
+        "total_kcal": 535,
+        "elevation_gain_m": 128,
+        "avg_speed_kmh": 4.4,
+        "avg_pace": "13'38\"",
+        "avg_heart_rate_bpm": 105,
+        "max_heart_rate_bpm": 136,
+        "effort": "4 Moderate",
+        "weather": {
+          "temp_c": 13,
+          "humidity_pct": 80,
+          "air_quality": 55
+        },
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "12:07",
+            "avg_pace": "12'07\"",
+            "heart_rate_bpm": 102
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "11:58",
+            "avg_pace": "11'58\"",
+            "heart_rate_bpm": 119
+          },
+          {
+            "split": 3,
+            "distance_km": 1.0,
+            "time": "11:52",
+            "avg_pace": "11'52\"",
+            "heart_rate_bpm": 106
+          },
+          {
+            "split": 4,
+            "distance_km": 1.0,
+            "time": "12:36",
+            "avg_pace": "12'36\"",
+            "heart_rate_bpm": 103
+          },
+          {
+            "split": 5,
+            "distance_km": 1.0,
+            "time": "12:32",
+            "avg_pace": "12'32\"",
+            "heart_rate_bpm": 106
+          },
+          {
+            "split": 6,
+            "distance_km": 1.3,
+            "time": "24:52",
+            "avg_pace": "19'07\"",
+            "heart_rate_bpm": 98
+          }
+        ],
+        "notes": "가파른 수직 고도 128m 힐클라임 코스 주파. 11분대 쾌속 질주에도 평균 심박수 105 BPM의 경이로운 초저심박 Zone 2 달성."
+      },
+      {
+        "session_id": 2,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "쿨다운 귀가 라이딩",
+        "time_range": "07:38 ~ 07:49 AM",
+        "duration_str": "0:10:59",
+        "duration_seconds": 659,
+        "distance_km": 0.0,
+        "estimated_actual_distance_km": 1.3,
+        "active_kcal": 43,
+        "total_kcal": 62,
+        "elevation_gain_m": 8,
+        "avg_speed_kmh": 0.0,
+        "avg_heart_rate_bpm": 105,
+        "max_heart_rate_bpm": 126,
+        "effort": "4 Moderate",
+        "weather": {
+          "temp_c": 16,
+          "humidity_pct": 74,
+          "air_quality": 64
+        },
+        "notes": "GPS 미수신으로 0.0km 표기(실제 약 1.3km). 11분간 평균 105 BPM으로 힐클라임 후 하체 젖산 부드럽게 털어낸 쿨다운."
+      }
+    ],
+    "daily_summary": {
+      "total_duration_str": "1:36:56",
+      "total_duration_seconds": 5816,
+      "total_distance_km": 6.3,
+      "estimated_total_distance_km": 7.6,
+      "total_active_kcal": 425,
+      "total_kcal": 597,
+      "total_elevation_gain_m": 136,
+      "avg_heart_rate_bpm": 105,
+      "evaluation": "🟢 적정 상한선 (완벽 제어)",
+      "notes": "일요일 힐클라임 듀얼 유산소 97분간 597 kcal 소각. 수직 고도 136m를 극복하면서도 전 세션 평균 심박수 105 BPM의 환상적인 심폐 효율 기록. 상한선(600 kcal) 이내에서 절제된 완벽한 마감."
+    },
+    "post_workout_body_comp": {
+      "weight_kg": 77.5,
+      "body_fat_pct": 20.8,
+      "skeletal_muscle_mass_kg": 34.7,
+      "bmi": 23.53,
+      "notes": "체중 77.5kg (목표 77.0kg에 500g 근접), 골격근량 34.7kg (+0.6kg 회복), 체지방률 20.8% (-0.9%p 감량). 수분 및 글리코겐 재충전으로 35kg선 복귀 및 진성 체지방 20% 초반 안착. 136m 힐클라임(597 kcal, 평균 105 BPM) 속 완벽한 린매스 유지."
+    }
+  },
+  {
+    "date": "2026-10-12",
+    "day_of_week": "Mon",
+    "time_of_day": "저녁",
+    "workout_type": "야외 걷기 (Outdoor Walk)",
+    "routine": "월요일 저녁 리커버리 산책 (오전 대체, 4.36km, 378 kcal)",
+    "sessions": [
+      {
+        "session_id": 1,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "월요일 저녁 리커버리 산책 (오전 대체)",
+        "time_range": "19:25 ~ 20:26 PM 추정",
+        "duration_str": "1:01:01",
+        "duration_seconds": 3661,
+        "distance_km": 4.36,
+        "active_kcal": 269,
+        "total_kcal": 378,
+        "elevation_gain_m": 8,
+        "avg_speed_kmh": 4.29,
+        "avg_pace": "14'00\"",
+        "avg_heart_rate_bpm": 109,
+        "max_heart_rate_bpm": 135,
+        "effort": "3 Easy",
+        "weather": {
+          "temp_c": 19,
+          "humidity_pct": 65,
+          "air_quality": 45
+        },
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "13:44",
+            "avg_pace": "13'44\"",
+            "heart_rate_bpm": 111
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "13:45",
+            "avg_pace": "13'45\"",
+            "heart_rate_bpm": 114
+          },
+          {
+            "split": 3,
+            "distance_km": 1.0,
+            "time": "12:26",
+            "avg_pace": "12'26\"",
+            "heart_rate_bpm": 106
+          },
+          {
+            "split": 4,
+            "distance_km": 1.0,
+            "time": "15:23",
+            "avg_pace": "15'23\"",
+            "heart_rate_bpm": 107
+          },
+          {
+            "split": 5,
+            "distance_km": 0.36,
+            "time": "05:38",
+            "avg_pace": "15'36\"",
+            "heart_rate_bpm": 104
+          }
+        ],
+        "notes": "오전 운동 생략 후 저녁 1시간 1분간 4.36km 평지 보행. 평균 심박 109 BPM(Effort 3 Easy)의 깔끔한 저심박 Zone 2 산책으로 식후 잉여 혈당 완전 연소."
+      }
+    ],
+    "daily_summary": {
+      "total_duration_str": "1:01:01",
+      "total_duration_seconds": 3661,
+      "total_distance_km": 4.36,
+      "total_active_kcal": 269,
+      "total_kcal": 378,
+      "total_elevation_gain_m": 8,
+      "avg_heart_rate_bpm": 109,
+      "evaluation": "🟢 적정 리커버리 (완벽 제어)",
+      "notes": "월요일 저녁 리커버리 산책 4.36km (61분, 378 kcal). 오전 운동 생략 후 저녁 109 BPM 저심박으로 식후 혈당 소각 및 수면 준비 완벽 마감."
+    },
+    "post_workout_body_comp": {
+      "weight_kg": 77.5,
+      "body_fat_pct": 21.6,
+      "skeletal_muscle_mass_kg": 34.4,
+      "bmi": 23.53,
+      "notes": "체중 77.5kg (전일 대비 변동 없음 / 목표 77.0kg에 500g 근접), 골격근량 34.4kg (-0.3kg), 체지방률 21.6% (+0.8%p). 체중 77.5kg 플랫 유지 및 수분 변동 범위 내 안정적 린매스 관리."
+    }
+  },
+  {
+    "date": "2026-10-13",
+    "day_of_week": "Tue",
+    "time_of_day": "아침",
+    "workout_type": "체성분 측정 (측정 데이)",
+    "routine": "화요일 걷기 루틴 / 정기 측정",
+    "sessions": [],
+    "daily_summary": {
+      "total_duration_str": "0:00:00",
+      "total_duration_seconds": 0,
+      "total_distance_km": 0.0,
+      "total_active_kcal": 0,
+      "total_kcal": 0,
+      "total_elevation_gain_m": 0,
+      "avg_heart_rate_bpm": null,
+      "evaluation": "체성분 측정 완료",
+      "notes": "화요일 아침 체성분 측정 완료. 체중 77.3kg(역대 최저치 경신, 목표 77.0kg에 단 300g 남음!), 골격근량 34.1kg, 체지방률 22.0%."
+    },
+    "post_workout_body_comp": {
+      "weight_kg": 77.3,
+      "body_fat_pct": 22.0,
+      "skeletal_muscle_mass_kg": 34.1,
+      "bmi": 23.47,
+      "notes": "체중 77.3kg (-0.2kg, 역대 최저치 경신 / 목표 77.0kg에 단 300g 근접!), 골격근량 34.1kg (-0.3kg), 체지방률 22.0% (+0.4%p). 어제 저녁 산책(378 kcal) 후 야간 수분 배출 및 글리코겐 소진에 따른 일시적 BIA 수분 변동. 수분 및 모닝 라떼 리차징 시 즉각 회복."
+    }
+  },
+  {
+    "date": "2026-10-14",
+    "day_of_week": "Wed",
+    "time_of_day": "아침",
+    "workout_type": "야외 자전거 (Outdoor Cycling)",
+    "routine": "수요일 자전거 집중 루틴 (1차 19분 40m + 2차 45분 28m / 총 484 kcal)",
+    "sessions": [
+      {
+        "session_id": 1,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "수요일 1차 자전거 업힐 파워 유산소",
+        "time_range": "08:50 ~ 09:10 AM",
+        "duration_str": "0:19:22",
+        "duration_seconds": 1162,
+        "distance_km": 0.0,
+        "estimated_actual_distance_km": 3.0,
+        "active_kcal": 125,
+        "total_kcal": 160,
+        "elevation_gain_m": 40,
+        "avg_speed_kmh": 0.0,
+        "avg_heart_rate_bpm": 120,
+        "max_heart_rate_bpm": 152,
+        "effort": "5 Moderate",
+        "weather": {
+          "temp_c": 11,
+          "humidity_pct": 55,
+          "air_quality": 71
+        },
+        "notes": "아침 8:50~9:10 19분간 자전거 업힐(상승 고도 40m). 평균 심박수 120 BPM(Effort 5 Moderate, 최고 152 BPM)으로 하체 대근육을 강하게 펌핑한 1차 세션."
+      },
+      {
+        "session_id": 2,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "수요일 2차 자전거 라이딩 유산소",
+        "time_range": "09:24 ~ 10:09 AM 추정",
+        "duration_str": "0:45:20",
+        "duration_seconds": 2720,
+        "distance_km": 1.01,
+        "estimated_actual_distance_km": 6.5,
+        "active_kcal": 247,
+        "total_kcal": 324,
+        "elevation_gain_m": 28,
+        "avg_speed_kmh": 1.3,
+        "avg_heart_rate_bpm": 112,
+        "max_heart_rate_bpm": 136,
+        "effort": "4 Moderate",
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "28:53",
+            "avg_speed_kmh": 2.0,
+            "heart_rate_bpm": 112
+          },
+          {
+            "split": 2,
+            "distance_km": 0.01,
+            "time": "01:37",
+            "avg_speed_kmh": 0.4,
+            "heart_rate_bpm": 101
+          }
+        ],
+        "notes": "14분 휴식 후 45분간 연계 자전거 라이딩. 상승 고도 28m, 평균 심박 112 BPM(Effort 4 Moderate)의 안정된 Zone 2 관절 무부하 페달링 세션."
+      }
+    ],
+    "daily_summary": {
+      "total_duration_str": "1:04:42",
+      "total_duration_seconds": 3882,
+      "total_distance_km": 1.01,
+      "estimated_total_distance_km": 9.5,
+      "total_active_kcal": 372,
+      "total_kcal": 484,
+      "total_elevation_gain_m": 68,
+      "avg_heart_rate_bpm": 114,
+      "evaluation": "🟢 적정 상한선 (완벽 제어)",
+      "notes": "수요일 아침 자전거 집중 유산소 (1차 업힐 19분 160 kcal + 2차 라이딩 45분 324 kcal / 총 484 kcal). 관절 충격 0%의 페달링으로 총 고도 68m를 극복하며 가중 평균 114 BPM의 완벽한 Zone 2 순항. 상한선(600 kcal) 이내에서 절제 마감."
+    }
+  },
+  {
+    "date": "2026-10-15",
+    "day_of_week": "Thu",
+    "time_of_day": "아침",
+    "workout_type": "야외 자전거 (Cycling) + 야외 걷기 (Walking)",
+    "routine": "목요일 등록 코스 듀얼 루틴 (자전거 65분 547 kcal + 쿨다운 걷기 12분 64 kcal / 총 611 kcal)",
+    "sessions": [
+      {
+        "session_id": 1,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "1차 등록 자전거 코스 라이딩",
+        "time_range": "06:22 ~ 06:51 AM",
+        "duration_str": "0:28:58",
+        "duration_seconds": 1738,
+        "distance_km": 0.0,
+        "estimated_actual_distance_km": 4.5,
+        "active_kcal": 176,
+        "total_kcal": 227,
+        "elevation_gain_m": 8,
+        "avg_speed_kmh": 0.0,
+        "avg_heart_rate_bpm": 105,
+        "max_heart_rate_bpm": 129,
+        "effort": "4 Moderate",
+        "weather": {
+          "temp_c": 11,
+          "humidity_pct": 87,
+          "air_quality": 36
+        },
+        "notes": "아침 6:22~6:51 29분간 미리 등록해 둔 자전거 코스 주파. 평균 심박 105 BPM(Effort 4 Moderate)의 초저심박 Zone 2 관절 무부하 웜업 라이딩."
+      },
+      {
+        "session_id": 2,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "2차 등록 자전거 코스 파워 라이딩",
+        "time_range": "07:03 ~ 07:39 AM 추정",
+        "duration_str": "0:36:28",
+        "duration_seconds": 2188,
+        "distance_km": 0.27,
+        "estimated_actual_distance_km": 6.5,
+        "active_kcal": 256,
+        "total_kcal": 320,
+        "elevation_gain_m": 18,
+        "avg_speed_kmh": 0.4,
+        "avg_heart_rate_bpm": 125,
+        "max_heart_rate_bpm": 159,
+        "effort": "6 Moderate",
+        "notes": "자전거 코스 2차 라이딩(거리 미수신 오차). 36분간 평균 심박 125 BPM(최고 159 BPM, Effort 6 Moderate)으로 강력한 하체 파워 인터벌 및 순수 체지방 연소."
+      },
+      {
+        "session_id": 3,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "3차 귀가 쿨다운 걷기",
+        "time_range": "07:40 ~ 07:52 AM",
+        "duration_str": "0:11:53",
+        "duration_seconds": 713,
+        "distance_km": 0.93,
+        "active_kcal": 43,
+        "total_kcal": 64,
+        "elevation_gain_m": 0,
+        "avg_pace": "12'45\"",
+        "avg_speed_kmh": 4.71,
+        "avg_heart_rate_bpm": 114,
+        "max_heart_rate_bpm": 120,
+        "effort": "3 Easy",
+        "weather": {
+          "temp_c": 12,
+          "humidity_pct": 85,
+          "air_quality": 35
+        },
+        "notes": "12분간 932m 귀가 쿨다운 보행. 12'45\" 페이스, 평균 114 BPM(Effort 3 Easy)으로 심박 안정화 및 하체 젖산 완벽 제거."
+      },
+      {
+        "session_id": 4,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "4차 점심 식후 혈당 방어 산책 (비빔면+달걀2개)",
+        "time_range": "12:41 ~ 13:28 PM 추정",
+        "duration_str": "0:47:35",
+        "duration_seconds": 2855,
+        "distance_km": 2.57,
+        "active_kcal": 157,
+        "total_kcal": 242,
+        "elevation_gain_m": 55,
+        "avg_pace": "18'28\"",
+        "avg_speed_kmh": 3.24,
+        "avg_heart_rate_bpm": 103,
+        "max_heart_rate_bpm": 120,
+        "effort": "3 Easy",
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "14:15",
+            "avg_pace": "14'15\"",
+            "heart_rate_bpm": 106
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "20:08",
+            "avg_pace": "20'08\"",
+            "heart_rate_bpm": 102
+          },
+          {
+            "split": 3,
+            "distance_km": 0.57,
+            "time": "11:43",
+            "avg_pace": "20'19\"",
+            "heart_rate_bpm": 104
+          }
+        ],
+        "notes": "점심 식사(비빔면+달걀2개) 후 47분간 103 BPM 초저심박 보행(고도 55m). 정제 탄수화물 혈당 스파이크 완벽 분쇄."
+      }
+    ],
+    "daily_summary": {
+      "total_duration_str": "2:04:54",
+      "total_duration_seconds": 7494,
+      "total_distance_km": 3.77,
+      "estimated_total_distance_km": 14.5,
+      "total_active_kcal": 632,
+      "total_kcal": 853,
+      "total_elevation_gain_m": 81,
+      "avg_heart_rate_bpm": 111,
+      "evaluation": "🟡 주의 권고 (853 kcal 과다 소각 / 저녁 절대 휴식 & 미온수 1L)",
+      "notes": "목요일 4단 복합 루틴 (오전 자전거 65분 547 kcal + 쿨다운 12분 64 kcal + 점심 식후 산책 47분 242 kcal / 총 853 kcal). 비빔면 혈당 스파이크 완벽 차단. 총 853 kcal 소각 및 고도 81m 주파로 신장 사구체 보호를 위해 저녁 운동 절대 금지 및 미온수 1L 필수."
+    },
+    "post_workout_body_comp": {
+      "weight_kg": 77.7,
+      "body_fat_pct": 20.9,
+      "skeletal_muscle_mass_kg": 34.6,
+      "bmi": 23.59,
+      "notes": "체중 77.7kg (+0.4kg), 골격근량 34.6kg (+0.5kg 반등), 체지방률 20.9% (-1.1%p 급락). 우유 200ml 리차징 및 611 kcal 하체 펌핑으로 글리코겐과 세포내액 완벽 회복. 순수 체지방량 약 770g 감소(17.0kg➔16.2kg)하며 진성 체지방률 20% 극초반 안착."
+    }
+  },
+  {
+    "date": "2026-10-16",
+    "day_of_week": "Fri",
+    "time_of_day": "아침 / 오후",
+    "workout_type": "야외 걷기 (Walking) + 야외 자전거 (Cycling)",
+    "routine": "금요일 4단 복합 루틴 (오전 걷기 76분 509 kcal + 오후 자전거·걷기·자전거 63분 387 kcal / 총 2시간 19분 896 kcal & 평균 109 BPM)",
+    "sessions": [
+      {
+        "session_id": 1,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "1차 오전 단독 유산소 걷기",
+        "time_range": "06:27 ~ 07:43 AM",
+        "duration_str": "1:16:03",
+        "duration_seconds": 4563,
+        "distance_km": 6.26,
+        "active_kcal": 373,
+        "total_kcal": 509,
+        "elevation_gain_m": 8,
+        "avg_speed_kmh": 4.94,
+        "avg_pace": "12'09\"",
+        "avg_heart_rate_bpm": 107,
+        "max_heart_rate_bpm": 131,
+        "effort": "4 Moderate",
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "11:37",
+            "avg_pace": "11'37\"",
+            "heart_rate_bpm": 114
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "11:03",
+            "avg_pace": "11'03\"",
+            "heart_rate_bpm": 114
+          },
+          {
+            "split": 3,
+            "distance_km": 1.0,
+            "time": "11:34",
+            "avg_pace": "11'34\"",
+            "heart_rate_bpm": 108
+          },
+          {
+            "split": 4,
+            "distance_km": 1.0,
+            "time": "12:28",
+            "avg_pace": "12'28\"",
+            "heart_rate_bpm": 100
+          },
+          {
+            "split": 5,
+            "distance_km": 1.0,
+            "time": "11:59",
+            "avg_pace": "11'59\"",
+            "heart_rate_bpm": 103
+          },
+          {
+            "split": 6,
+            "distance_km": 1.26,
+            "time": "17:22",
+            "avg_pace": "13'47\"",
+            "heart_rate_bpm": 104
+          }
+        ],
+        "notes": "금요일 아침 1시간 16분간 6.26km 주파. 평균 심박 107 BPM(최고 131 BPM, Effort 4 Moderate), 총 509 kcal 소각. 전형적인 최적 Zone 2 심폐 지구력 및 체지방 연소 보행."
+      },
+      {
+        "session_id": 2,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "2차 점심 자전거 업힐 라이딩",
+        "time_range": "12:45 ~ 13:05 PM 추정",
+        "duration_str": "0:19:41",
+        "duration_seconds": 1181,
+        "distance_km": 2.32,
+        "active_kcal": 89,
+        "total_kcal": 123,
+        "elevation_gain_m": 40,
+        "avg_speed_kmh": 7.0,
+        "avg_heart_rate_bpm": 114,
+        "max_heart_rate_bpm": 151,
+        "effort": "4 Moderate",
+        "weather": {
+          "temp_c": 21,
+          "humidity_pct": 61,
+          "air_quality": 47
+        },
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "11:51",
+            "avg_speed_kmh": 5.0,
+            "heart_rate_bpm": 117
+          },
+          {
+            "split": 2,
+            "distance_km": 1.0,
+            "time": "05:45",
+            "avg_speed_kmh": 10.4,
+            "heart_rate_bpm": 109
+          },
+          {
+            "split": 3,
+            "distance_km": 0.32,
+            "time": "02:05",
+            "avg_speed_kmh": 9.2,
+            "heart_rate_bpm": 108
+          }
+        ],
+        "notes": "점심 1차 자전거 코스 2.32km. 40m 고도 업힐을 평균 114 BPM(최고 151 BPM, Effort 4 Moderate)으로 정복하며 대퇴사두근 파워 펌핑 및 식후 혈당 즉각 연소."
+      },
+      {
+        "session_id": 3,
+        "workout_type": "야외 걷기 (Outdoor Walk)",
+        "name": "3차 점심 연계 산책",
+        "time_range": "13:06 ~ 13:35 PM",
+        "duration_str": "0:29:07",
+        "duration_seconds": 1747,
+        "distance_km": 1.82,
+        "active_kcal": 114,
+        "total_kcal": 165,
+        "elevation_gain_m": 7,
+        "avg_speed_kmh": 3.75,
+        "avg_pace": "16'00\"",
+        "avg_heart_rate_bpm": 108,
+        "max_heart_rate_bpm": 137,
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "13:35",
+            "avg_pace": "13'35\"",
+            "heart_rate_bpm": 107
+          },
+          {
+            "split": 2,
+            "distance_km": 0.82,
+            "time": "15:23",
+            "avg_pace": "18'45\"",
+            "heart_rate_bpm": 109
+          }
+        ],
+        "notes": "점심 2차 연계 걷기 코스 1.82km. 29분간 108 BPM(최고 137 BPM) 초저심박 보행으로 하체 젖산 분산 및 평온한 Zone 2 혈류 순환."
+      },
+      {
+        "session_id": 4,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "4차 점심 복귀 자전거 라이딩",
+        "time_range": "13:35 ~ 13:49 PM",
+        "duration_str": "0:14:13",
+        "duration_seconds": 853,
+        "distance_km": 1.60,
+        "active_kcal": 74,
+        "total_kcal": 99,
+        "elevation_gain_m": 10,
+        "avg_speed_kmh": 6.7,
+        "avg_heart_rate_bpm": 114,
+        "max_heart_rate_bpm": 136,
+        "effort": "4 Moderate",
+        "splits": [
+          {
+            "split": 1,
+            "distance_km": 1.0,
+            "time": "10:43",
+            "avg_speed_kmh": 5.5,
+            "heart_rate_bpm": 114
+          },
+          {
+            "split": 2,
+            "distance_km": 0.60,
+            "time": "03:30",
+            "avg_speed_kmh": 10.3,
+            "heart_rate_bpm": 114
+          }
+        ],
+        "notes": "점심 3차 복귀 자전거 코스 1.60km. 14분간 평균 114 BPM(최고 136 BPM, Effort 4 Moderate)으로 10m 고도를 가볍게 페달링하며 오후 루틴 마무리."
+      }
+    ],
+    "daily_summary": {
+      "total_duration_str": "2:19:04",
+      "total_duration_seconds": 8344,
+      "total_distance_km": 12.00,
+      "total_active_kcal": 650,
+      "total_kcal": 896,
+      "total_elevation_gain_m": 65,
+      "avg_heart_rate_bpm": 109,
+      "evaluation": "🟡 주의 권고 (이틀 연속 850+ kcal 소각 / 오늘 저녁 추가 운동 절대 금지 & 미온수 1.2L+ 필수)",
+      "notes": "금요일 4단 복합 루틴 (오전 걷기 76분 509 kcal + 점심 자전거 20분 123 kcal + 걷기 29분 165 kcal + 자전거 14분 99 kcal / 총 896 kcal). 총 12.00km 완보 및 고도 65m 주파. 평균 109 BPM의 완벽한 Zone 2 유지. 이틀 연속 850+ kcal 대량 소각으로 신장 사구체 보호와 요산 농축 방지를 위해 오늘 저녁 추가 운동 절대 금지 및 미온수 1.2L 필수 음용."
+    }
+  },
+  {
+    "date": "2026-10-17",
+    "day_of_week": "Sat",
+    "time_of_day": "점심",
+    "workout_type": "야외 자전거 (Cycling)",
+    "routine": "토요일 점심 식후 자전거 듀얼 루틴 (1차 업힐 24분 179 kcal + 2차 복귀 13분 119 kcal / 총 37분 298 kcal & 평균 118 BPM)",
+    "sessions": [
+      {
+        "session_id": 1,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "1차 점심 식후 자전거 업힐 라이딩",
+        "time_range": "12:08 ~ 12:32 PM",
+        "duration_str": "0:24:18",
+        "duration_seconds": 1458,
+        "distance_km": 0.62,
+        "estimated_actual_distance_km": 3.5,
+        "active_kcal": 137,
+        "total_kcal": 179,
+        "elevation_gain_m": 42,
+        "avg_speed_kmh": 1.5,
+        "avg_heart_rate_bpm": 116,
+        "max_heart_rate_bpm": 154,
+        "effort": "5 Moderate",
+        "weather": {
+          "temp_c": 23,
+          "humidity_pct": 48,
+          "air_quality": 54
+        },
+        "notes": "점심 식사 후 24분간 자전거 라이딩. 42m 가파른 업힐을 평균 심박 116 BPM(최고 154 BPM, Effort 5 Moderate)으로 주파하며 대퇴사두근 파워 펌핑 및 식후 혈당 스파이크 원천 분쇄."
+      },
+      {
+        "session_id": 2,
+        "workout_type": "야외 자전거 (Outdoor Cycling)",
+        "name": "2차 점심 복귀 자전거 라이딩",
+        "time_range": "13:04 ~ 13:17 PM",
+        "duration_str": "0:12:36",
+        "duration_seconds": 756,
+        "distance_km": 0.0,
+        "estimated_actual_distance_km": 2.0,
+        "active_kcal": 97,
+        "total_kcal": 119,
+        "elevation_gain_m": 13,
+        "avg_speed_kmh": 0.0,
+        "avg_heart_rate_bpm": 122,
+        "max_heart_rate_bpm": 140,
+        "effort": "4 Moderate",
+        "weather": {
+          "temp_c": 24,
+          "humidity_pct": 44,
+          "air_quality": 56
+        },
+        "notes": "32분 휴식 후 13분간 복귀 라이딩(GPS 미수신). 평균 122 BPM(최고 140 BPM, Effort 4 Moderate)으로 13m 고도를 페달링하며 잔류 식후 혈당 100% 완전 소각."
+      }
+    ],
+    "daily_summary": {
+      "total_duration_str": "0:36:54",
+      "total_duration_seconds": 2214,
+      "total_distance_km": 0.62,
+      "estimated_total_distance_km": 5.5,
+      "total_active_kcal": 234,
+      "total_kcal": 298,
+      "total_elevation_gain_m": 55,
+      "avg_heart_rate_bpm": 118,
+      "evaluation": "🟢 주말 리커버리 적정 (식후 혈당 완벽 소각 & 298 kcal 절제)",
+      "notes": "토요일 점심 식후 자전거 듀얼 루틴 (1차 업힐 24분 179 kcal + 2차 복귀 13분 119 kcal / 총 298 kcal). 목·금 이틀간 1,749 kcal 대소각 후 토요일 점심 식후 혈당 스파이크만 깔끔하게 차단하고 총 298 kcal에서 완벽하게 절제 제어."
+    }
   }
 ]

@@ -396,7 +396,7 @@ def api_workouts():
                 w.workout_type, w.routine_name, w.morning_fasting_blood_sugar,
                 w.evaluation, w.notes
             FROM workouts w
-            JOIN workout_sessions s ON w.id = s.workout_id
+            LEFT JOIN workout_sessions s ON w.id = s.workout_id
             WHERE 1=1 {date_filter} {sport_filter}
             ORDER BY w.workout_date DESC
             """,
