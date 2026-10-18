@@ -556,6 +556,138 @@ def api_clinical_items():
         })
 
 
+# 주간 운동 계획 (HEALTH_GUIDE 2026-10-18 개정 주간 배분 기준) — 요일(0=월) → 계획 항목
+# kind: cycling(자전거) / walking(걷기) / strength(하체 근력) / any(종목 무관) / rest(휴식)
+WEEKLY_PLAN = {
+    0: {"title": "자전거 성수 루프", "items": [("cycling", 40, "자전거 50~60분", False)]},
+    1: {"title": "평지 걷기 + 하체 근력", "items": [("walking", 45, "평지 걷기 60분", False), ("strength", 1, "하체 근력 20~30분", False)]},
+    2: {"title": "자전거", "items": [("cycling", 40, "자전거 50~60분", False)]},
+    3: {"title": "언덕 걷기 (1회차)", "items": [("walking", 45, "언덕 걷기 70분 이내", False)]},
+    4: {"title": "자전거 + 하체 근력", "items": [("cycling", 40, "자전거 50~60분", False), ("strength", 1, "하체 근력 20~30분", False)]},
+    5: {"title": "산책/스트레칭 (선택)", "items": [("any", 15, "가벼운 산책·스트레칭", True)]},
+    6: {"title": "완전 휴식 (또는 언덕 걷기 2회차)", "items": [("rest", 0, "완전 휴식", True)]},
+}
+WEEKLY_LIMITS = {"strength_min": 2, "hill_max": 2, "long_max": 1, "rest_min": 2}
+PLAN_START = date(2026, 10, 19)  # 개정 주간 배분 시행일(월). 이전 주는 소급 평가하지 않음
+HILL_ELEVATION_M = 100
+LONG_DAY_MIN = 120
+
+
+def _sport_kind(sport_type: str) -> str:
+    s = (sport_type or "").lower()
+    if "근력" in s or "strength" in s:
+        return "strength"
+    if "자전거" in s or "cycling" in s:
+        return "cycling"
+    if "걷기" in s or "walking" in s or "walk" in s:
+        return "walking"
+    return "other"
+
+
+@app.route("/api/weekly-plan")
+def api_weekly_plan():
+    """이번 주(월~일) 진행 현황과 남은 계획, 주간 가이드라인 준수 현황"""
+    today = date.today()
+    monday = today - timedelta(days=today.weekday())
+    sunday = monday + timedelta(days=6)
+
+    with get_db() as db:
+        cur = db.execute(
+            """
+            SELECT w.workout_date, s.sport_type, s.duration_seconds, s.elevation_gain_m, s.total_kcal
+            FROM workouts w
+            JOIN workout_sessions s ON w.id = s.workout_id
+            WHERE w.workout_date >= ? AND w.workout_date <= ?
+            """,
+            (monday.strftime("%Y-%m-%d"), sunday.strftime("%Y-%m-%d")),
+        )
+        rows = cur.fetchall()
+
+    agg = {}
+    for r in rows:
+        d = str(r[0])[:10]
+        a = agg.setdefault(d, {"cycling": 0, "walking": 0, "other": 0, "strength": 0,
+                               "walk_elev": 0, "minutes": 0, "kcal": 0})
+        kind = _sport_kind(r[1])
+        mins = (r[2] or 0) / 60
+        a[kind] += 1 if kind == "strength" else mins
+        a["minutes"] += mins
+        a["kcal"] += r[4] or 0
+        if kind == "walking":
+            a["walk_elev"] += r[3] or 0
+
+    pre_plan = monday < PLAN_START
+    days, hill_days, long_days, rest_days = [], 0, 0, 0
+    total_min = total_kcal = strength_done = 0
+    next_up = None
+    for i in range(7):
+        d = monday + timedelta(days=i)
+        ds = d.strftime("%Y-%m-%d")
+        a = agg.get(ds)
+        plan = WEEKLY_PLAN[i]
+        is_past, is_today = d < today, d == today
+        items = []
+        for kind, need, label, optional in plan["items"]:
+            if kind == "rest":
+                done = a is None
+            elif kind == "any":
+                done = bool(a) and a["minutes"] >= need
+            else:
+                done = bool(a) and a[kind] >= need
+            if kind == "rest":
+                status = "rest" if (is_past or is_today and a is None) else "pending"
+            elif done:
+                status = "done"
+            elif is_past:
+                status = "legacy" if pre_plan else ("skipped" if optional else "missed")
+            else:
+                status = "today" if is_today else "pending"
+            items.append({"kind": kind, "label": label, "optional": optional, "status": status})
+            if status in ("pending", "today") and kind != "rest" and not optional and next_up is None:
+                next_up = {"date": ds, "label": f"{'오늘' if is_today else ds[5:]} {label}"}
+        if a:
+            total_min += a["minutes"]
+            total_kcal += a["kcal"]
+            strength_done += a["strength"]
+            if a["walk_elev"] >= HILL_ELEVATION_M:
+                hill_days += 1
+            if a["minutes"] > LONG_DAY_MIN:
+                long_days += 1
+        elif is_past:
+            rest_days += 1
+        days.append({
+            "date": ds, "dow": ["월", "화", "수", "목", "금", "토", "일"][i],
+            "is_today": is_today, "is_past": is_past, "title": plan["title"],
+            "items": items,
+            "actual": None if not a else {
+                "minutes": round(a["minutes"]), "kcal": round(a["kcal"]),
+                "elevation_m": round(a["walk_elev"]), "strength": a["strength"],
+            },
+        })
+
+    L = WEEKLY_LIMITS
+    guards = [
+        {"key": "strength", "label": "하체 근력", "value": strength_done, "target": f"주 {L['strength_min']}회 이상",
+         "ok": strength_done >= L["strength_min"]},
+        {"key": "hill", "label": "언덕 걷기(고도 100m↑)", "value": hill_days, "target": f"주 {L['hill_max']}회 이하",
+         "ok": hill_days <= L["hill_max"]},
+        {"key": "long", "label": "120분 초과일", "value": long_days, "target": f"주 {L['long_max']}회 이하",
+         "ok": long_days <= L["long_max"]},
+        {"key": "rest", "label": "휴식일(지난 날 기준)", "value": rest_days, "target": f"주 {L['rest_min']}일 확보",
+         "ok": rest_days >= L["rest_min"] or today < sunday},
+    ]
+    return jsonify({
+        "status": "success",
+        "week_start": monday.strftime("%Y-%m-%d"), "week_end": sunday.strftime("%Y-%m-%d"),
+        "days": days, "guards": guards, "next_up": next_up,
+        "pre_plan": pre_plan, "plan_start": PLAN_START.strftime("%Y-%m-%d"),
+        "next_week": [{"dow": ["월", "화", "수", "목", "금", "토", "일"][i], "title": WEEKLY_PLAN[i]["title"]}
+                      for i in range(7)] if pre_plan else None,
+        "total_minutes": round(total_min), "total_kcal": round(total_kcal),
+    })
+
+
+
 def main():
     port = int(os.getenv("HEALTHY_PORT", 5005))
     print(f"[*] Starting Baramgil Health Dashboard on http://0.0.0.0:{port} (Active DB: {DB_TYPE})")

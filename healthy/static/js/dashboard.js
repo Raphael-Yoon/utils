@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFilterControls();
   initTabNavigation();
   loadSummaryKPIs();
+  loadWeeklyPlan();
   renderBodyCompChart();
   renderWorkoutChart();
   renderClinicalChart();
@@ -999,5 +1000,49 @@ async function loadClinicalItemsTable() {
 
   } catch (err) {
     console.error('Error loading clinical items table:', err);
+  }
+}
+
+
+/* ==========================================================================
+   Weekly Plan Tracker (이번 주 진행/예정 운동)
+   ========================================================================== */
+const WEEKLY_STATUS_ICON = { done: '✅', missed: '❌', today: '👉', pending: '⏳', rest: '🌿', skipped: '▫️', legacy: '▫️' };
+
+async function loadWeeklyPlan() {
+  const daysEl = document.getElementById('weekly-days');
+  if (!daysEl) return;
+  try {
+    const res = await fetch('/api/weekly-plan');
+    const d = await res.json();
+    if (d.status !== 'success') return;
+
+    document.getElementById('weekly-range').textContent =
+      `${d.week_start} ~ ${d.week_end} · 누적 ${d.total_minutes}분 / ${d.total_kcal.toLocaleString()} kcal`;
+    document.getElementById('weekly-next').textContent =
+      d.pre_plan ? `개정 루틴 시행 ${d.plan_start}(월)` : (d.next_up ? `다음: ${d.next_up.label}` : '이번 주 계획 완료');
+
+    daysEl.innerHTML = d.days.map(day => {
+      const items = day.items.map(it =>
+        `<div class="witem ${it.status}">${WEEKLY_STATUS_ICON[it.status] || ''} ${it.label}${it.optional ? ' (선택)' : ''}</div>`).join('');
+      const act = day.actual
+        ? `<div class="wday-actual">실적 ${day.actual.minutes}분 · ${day.actual.kcal}kcal${day.actual.strength ? ` · 근력 ${day.actual.strength}회` : ''}</div>`
+        : (day.is_past ? '<div class="wday-actual">기록 없음</div>' : '');
+      return `<div class="wday${day.is_today ? ' is-today' : ''}">
+        <div class="wday-top"><span>${day.dow}</span><small>${day.date.slice(5)}</small></div>
+        <div class="wday-title">${day.title}</div>${items}${act}</div>`;
+    }).join('');
+
+    document.getElementById('weekly-guards').innerHTML = d.guards.map(g =>
+      `<div class="wguard ${g.ok ? 'ok' : 'warn'}"><span>${g.label}</span><strong>${g.value}</strong><span>${g.target}</span></div>`).join('');
+
+    const note = document.getElementById('weekly-note');
+    if (note) {
+      note.textContent = d.pre_plan
+        ? '※ 이번 주는 개정 루틴 시행 전이라 미이행 항목을 소급 평가하지 않습니다. 하체 근력은 종목명에 "근력"을 넣어 기록하면 집계됩니다.'
+        : '※ 하체 근력은 종목명에 "근력"을 넣어 기록하면 집계됩니다. 기준: HEALTH_GUIDE 개정 주간 배분.';
+    }
+  } catch (e) {
+    console.error('weekly plan load failed', e);
   }
 }

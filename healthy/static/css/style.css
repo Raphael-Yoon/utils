@@ -825,3 +825,33 @@ body {
     justify-content: space-between;
   }
 }
+
+
+/* ==========================================================================
+   Weekly Plan Tracker
+   ========================================================================== */
+.weekly-plan { padding: 1.2rem 1.4rem; margin-bottom: 1.5rem; }
+.weekly-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.weekly-head h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+.weekly-head p { font-size: 0.78rem; color: var(--text-muted); }
+.weekly-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.6rem; }
+.wday { background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.7rem 0.6rem; display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
+.wday.is-today { border-color: var(--primary); box-shadow: 0 0 12px var(--primary-glow); }
+.wday-top { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8rem; font-weight: 700; }
+.wday-top small { color: var(--text-dim); font-weight: 500; }
+.wday-title { font-size: 0.72rem; color: var(--text-muted); line-height: 1.3; }
+.witem { font-size: 0.72rem; padding: 0.2rem 0.4rem; border-radius: 6px; line-height: 1.3; word-break: keep-all; }
+.witem.done { background: rgba(16,185,129,0.15); color: #6EE7B7; }
+.witem.missed { background: rgba(244,63,94,0.15); color: #FDA4AF; }
+.witem.today { background: rgba(6,182,212,0.18); color: #67E8F9; }
+.witem.pending, .witem.rest, .witem.skipped, .witem.legacy { background: rgba(255,255,255,0.05); color: var(--text-muted); }
+.wday-actual { font-size: 0.68rem; color: var(--text-dim); margin-top: auto; }
+.weekly-guards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-top: 1rem; }
+.wguard { background: var(--bg-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.6rem 0.7rem; font-size: 0.75rem; }
+.wguard strong { display: block; font-size: 1.15rem; margin: 0.15rem 0; }
+.wguard.ok strong { color: #6EE7B7; }
+.wguard.warn strong { color: #FCD34D; }
+.wguard span { color: var(--text-dim); }
+.weekly-note { margin-top: 0.8rem; font-size: 0.74rem; color: var(--text-muted); }
+@media (max-width: 1024px) { .weekly-days { grid-template-columns: repeat(4, 1fr); } .weekly-guards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .weekly-days { grid-template-columns: repeat(2, 1fr); } }
