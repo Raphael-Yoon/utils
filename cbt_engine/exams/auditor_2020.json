@@ -1,0 +1,1638 @@
+{
+  "exam_info": {
+    "id": "auditor_2020",
+    "title": "2020년 정보시스템감리사 기출문제",
+    "category": "정보시스템감리사",
+    "year": 2020,
+    "time_limit_minutes": 120,
+    "passing_rules": {
+      "total_pass_score": 80,
+      "subject_cutoff_score": 40,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "1과목 : 감리 및 사업관리",
+      "start_q": 1,
+      "end_q": 25,
+      "weight_per_q": 4.0,
+      "question_count": 25
+    },
+    {
+      "id": 2,
+      "name": "2과목 : 소프트웨어공학",
+      "start_q": 26,
+      "end_q": 50,
+      "weight_per_q": 4.0,
+      "question_count": 25
+    },
+    {
+      "id": 3,
+      "name": "3과목 : 데이터베이스",
+      "start_q": 51,
+      "end_q": 75,
+      "weight_per_q": 4.0,
+      "question_count": 25
+    },
+    {
+      "id": 4,
+      "name": "4과목 : 시스템구조",
+      "start_q": 76,
+      "end_q": 100,
+      "weight_per_q": 4.0,
+      "question_count": 25
+    },
+    {
+      "id": 5,
+      "name": "5과목 : 보안",
+      "start_q": 101,
+      "end_q": 120,
+      "weight_per_q": 4.0,
+      "question_count": 20
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "'전자정부법(제58조,제59조,제61조)' 에 따라 행정안전부장관은 감리법인이 위법한 행위를 한 경우 업무정지를 하거나 등록을 취소할 수 있다. 다음 중 반드시 등록을 취소하여야 하는 경우는?",
+      "options": [
+        "① 전자정부법에 따른 등록기준에 미달하게 된 경우",
+        "② 전자정부법에 따른 변경사항을 신고하지 아니 하거나 거짓으로 신고한 경우",
+        "③ 전자정부법을 위반하여 다른 자에게 자기의 명칭을 사용하여 정보시스템 감리를 하게 한 경우",
+        "④ 임원이 전자정부법에 따른 결격사유에 해당 되고, 결격사유에 해당되는 날부터 6개월 이내에 해당 임원을 바꾸어 임명하지 않은 경우"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "'정보시스템 감리원 윤리가이드(한국정보화진흥원, 2014)' 에서 제시하고 있는 감리원 윤리성 관리 점검항목의 감리원 자가점검 항목에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 직무윤리 – 결정권과 권한을 적정하게 사용하는지 점검",
+        "② 이해상충 금지 – 감리수행중 다른 개인적인 업무 수행 등을 점검",
+        "③ 조직문화 – 잘못된 일처리에 대한 시정 등을 점검",
+        "④ 성희롱 – 감리원 상호간 무시나 폭언을 하는 행위 등을 점검"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "'정보시스템 하드웨어 규모산정 지침(정보통신단체 표준, TTAK.KO-10.0292/R1, 2017)' 에서는 규모산정 분야를 CPU, 메모리, 디스크, 스토리지 등 4가지 분야로 정의하고 있다. 이중 OLTP와 WEB/WAS로 구분된 시스템 유형에 따라 별도로 산정하여야 하는 규모산정 분야로 적합하게 묶여진 것은?",
+      "options": [
+        "① CPU, 메모리, 디스크",
+        "② CPU, 메모리",
+        "③ 디스크, 스토리지",
+        "④ CPU, 스토리지 2"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음과 같이 계약기간을 경과하여 검사요청서를 제출한 경우 '용역계약 일반조건(기획재정부계약 예규, 2019)' 에 따라 용역수행기한 지체일수를 가장 적정하게 산정한 것은?",
+      "options": [
+        "① (a) + (c)",
+        "② (a) + (b) + (c)",
+        "③ (a) + (c) + (d)",
+        "④ (a) + (b) + (c) + (d)"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2020_q4.png",
+      "image": "/exams/images/auditor_2020_q4.png"
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "다음 중 국가와 지방자치단체가 담당해야할 국가 정보화 추진의 기본원칙과 가장 거리가 먼 것은?",
+      "options": [
+        "① 국가정보화 추진 과정에서 민간과의 협력 체계를 마련하는 등 사회 각 계층의 다양한 의견을 수렴 하도록 노력하여야 한다.",
+        "② 국가정보화 추진 과정에서 정보화의 역기능을 방지하기 위한 정보보호, 개인정보 보호 등의 대책을 마련하여야 한다.",
+        "③ 국가정보화를 추진하는 경우에는 민간을 포함하는 총괄적 역할에 충실하여야 하며 민간의 자유와 창의를 존중하고 지원하여야 한다.",
+        "④ 시책 추진에 필요한 재원을 마련하기 위하여 노력하여야 한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "'행정기관 및 공공기관 정보시스템 구축‧운영 지침 (2019)' 에서 요구하는 것으로서 정보화 사업 발 주, 관리, 운영 등에 참여하는 사업자가 준수하여 야 하는 주요 보안대책과 가장 거리가 먼 것은?",
+      "options": [
+        "① 개발시스템과 운영시스템의 가상화 수준 분리",
+        "② 외부 용역업체의 노트북 등에 대해 반입•반출을 제한",
+        "③ 외부 용역업체의 인터넷 사용 및 인가되지 않은 USB 등 휴대용 저장매체 사용을 제한",
+        "④ 운영시스템 접근에 필요한 작업용 PC를 별도로 마 련하여 외부 용역업체의 운영시스템 접근을 제한 2"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "공공기관 데이터베이스의 메타데이터를 관리하기 위해 업무담당자가 수행하는 업무와 가장 거리가 먼 것은?",
+      "options": [
+        "① 소관 공공데이터베이스 메타데이터의 표준 준수 여부 점검 및 개선 조치",
+        "② 기관메타시스템 보급 확대 추진을 위한 공통 기관메타시스템의 개발 보급",
+        "③ 소관 공공데이터베이스의 메타데이터 변경사항 발생 시 최신 정보로 현행화",
+        "④ 기관메타시스템 내 소관 공공데이터베이스의 메타데이터 표준 관리 항목 정보 등록"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음 상주감리에 대한 설명 중 옳지 않은 것은?",
+      "options": [
+        "① 감리 업무 수행 결과를 정기적으로 발주자에게 보고하여야 한다.",
+        "② 상주감리원은 필요한 경우 단계별 감리의 감리원 으로 참여할 수 있다.",
+        "③ 정기 감리 이외의 추가 감리로서 발주자를 지원 하는 형태로 수행된다.",
+        "④ 현장에 상주하거나 주기적으로 투입되어 감리 업무를 수행한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "다음 중 '정보시스템감리 발주관리가이드(2016)' 에서 제시하는 의무감리 대상이 아닌 것은?",
+      "options": [
+        "① 사립대학에서 6억원 규모의 학사정보시스템을 개발 하고 있다.",
+        "② BPR 2억원 그리고 관련 SW개발 4억원 등 총 6억 원 규모의 사업을 통합발주하여 진행하고 있다.",
+        "③ 공공기관에서 발주한 10억원 규모 SW개발사업을 국외 현지 업체가 수행하고 있다.",
+        "④ 공공기관 내부용으로 SW개발 없는 8억원 규모의 DB구축사업을 진행하고 있다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "'전자정부법' 에 따라 중앙행정기관등의 장이 해 당 기관의 정보시스템에 장애가 발생하였을 때 취해야하는 조치와 가장 거리가 먼 것은?",
+      "options": [
+        "① 관계기관에 장애사실의 즉시 통보",
+        "② 장애원인 책임자 징계 및 재발방지",
+        "③ 해당 정보시스템의 신속한 복구 또는 대체",
+        "④ 인터넷 등을 통한 장애사실 및 그 복구사실 공표 3"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "정보시스템 운영단계에서 요구사항정의서는 고객의 변경 요구사항 관리에 사용되는 주요 산출물이다. 다음 중 '정보시스템 운영 및 유지보수 감리 점 검가이드' 에 제시된 요구사항정의서의 필수항 목인 상세 요구사항 내용에 속하지 않는 것은 ?",
+      "options": [
+        "① 현재 기능",
+        "② 변경 사항",
+        "③ 해결 방안",
+        "④ 담당 인력"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "'정보시스템 감리기준' 에 관련된 설명으로 다음 중 맞는 것을 모두 고르면?\n\n가. 사업비가 25억원이지만 사업 기간이 5개월인 사업 은 2단계감리를 하게 할 수 있다.\n나. 대기업인 소프트웨어사업자의 참여가 제한되는 경우에는 상주감리를 추가할 수 있다.\n다. 기본감리비를 산정할 때 감리대상사업비는 감리 대상사업의 계약금액을 말한다.",
+      "options": [
+        "① 가, 나",
+        "② 가, 다",
+        "③ 나, 다",
+        "④ 가, 나, 다"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음은 특정 시점에서 세 개의 프로젝트의 획득 가치 분석을 적용한 결과이다. 지금까지 성과에 대해 일정은 계획보다 빨리 진행되고 있지만, 비용은 계획보다 더 많이 지출되고 있는 프로젝트를 모두 고른 것은?\n\n· 프로젝트 A: 획득가치(EV) = 200, 계획가치(PV) = 150, 실제원가(AC) = 210 · 프로젝트 B: 일정차이(SV) = 20, 비용차이(CV) = 30 · 프로젝트 C: 일정성과지수(SPI) = 0.9, 비용성과 지수(CPI) = 1.1",
+      "options": [
+        "① 프로젝트 A",
+        "② 프로젝트 B",
+        "③ 프로젝트 C",
+        "④ 프로젝트 A, 프로젝트 B, 프로젝트 C 3"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "다음 중 조직화 및 직무 설계에 관한 설명 중 맞는 것을 모두 고른 것은?\n\n가. 통제 범위의 원칙 – 한 사람이 적정 숫자의 부하 (subordinate)를 관리하도록 한다.\n나. 직무 충실화(job enrichment) - 직무의 폭과 깊이를 동시에 넓고 깊게 해준다.\n다. 강한 매트릭스 조직 – 프로젝트 관리자는 관리자 라기보다는 조정자 또는 촉진자의 역할을 한다.\n라. 가상 조직 – 각 개인의 전문성에 따라 전문가 풀(pool)을 구성하고 인터넷 및 IT를 적극적으로 활용하는 각 기능 간에 인적, 기술적 학습 조직이다.",
+      "options": [
+        "① 가, 나",
+        "② 가, 라",
+        "③ 나, 다",
+        "④ 나, 라"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "다음 리스크에 대한 전략 중 리스크의 확률이나 영향을 증가시키기 위해 리스크의 핵심 요인을 확인하고 최대화하는 전략은?",
+      "options": [
+        "① 완화(mitigate)",
+        "② 향상(enhance)",
+        "③ 공유(share)",
+        "④ 전이(transfer)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "프로젝트 관리자가 프로젝트에서 발생하는 품질 비용을 분석하고 있다. 다음 중 비적합성 비용으로 분류할 수 없는 비용은?",
+      "options": [
+        "① 파괴테스트 손실 비용",
+        "② 보증(warranty)작업 비용",
+        "③ 비즈니스 손실 비용",
+        "④ 재작업 비용"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "PMI PMBOKⓇ에서 프로젝트 범위관리를 설명한 다 음 내용 중 가장 적절하지 않은 것은?",
+      "options": [
+        "① 작업분류체계(WBS)는 작업패키지의 통제단위를 설정하고 통제단위의 고유한 식별코드를 지정하 여 완성한다.",
+        "② 프로젝트에서 사용되는 제품범위는 제품, 서비스 또는 결과의 특성과 기능을 의미한다.",
+        "③ 범위확인은 완료된 프로젝트 인도물의 인수를 공식화하는 프로세스이다.",
+        "④ 승인된 버전인 범위기준선은 범위요구사항, 프로젝트 범위기술서, 작업분류체계를 가리 킨다. 4"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "다음 품질관리 도구와 기법 중 작업분류체계(WBS), 리스크분류체계(RBS), 조직분류체계(OBS) 등의 분류체계를 표시하는데 사용할 수 있는 기법으로 가장 적합한 것은?",
+      "options": [
+        "① 프로세스결정 프로그램 차트(PDPC)",
+        "② 연관관계도",
+        "③ 계통도",
+        "④ 활동네트워크도"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "완료시점 산정치(EAC: Estimate at Complete)를 나타낸 식으로 가장 적절하지 않은 것은?\n\nBAC : Budgeted at Complete CPI : Cost Performance Index SPI : Schedule Performance Index EV : Earned Value AC : Actual Cost ETC : Estimate to Complete",
+      "options": [
+        "① EAC = BAC / CPI",
+        "② EAC = AC + BAC - EV",
+        "③ EAC = AC + Bottom-up ETC",
+        "④ EAC = AC + [(BAC - EV) / (CPI + SPI)]"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "사원 A의 프로젝트 팀은 조달관리 계획서 작성에 관한 작업을 완료하려고 한다. 마지막으로 팀장이 A에게 조달관리 계획서 안에 있는 모든 내용들이 적절하게 입력되었는지 확인하라고 했다면, 다음 중 프로젝트에 대한 조달관리를 계획하기 위한 투입물로 가장 거리가 먼 것은?",
+      "options": [
+        "① 요구사항 문서",
+        "② 요구사항 추적 매트릭스",
+        "③ 이해관계자 관리대장",
+        "④ 공급자 선정기준"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "다음 직무 만족과 불만족 결정요인을 설명하는 Herzberg의 동기-위생 모델에서 직무 불만족에 영향을 미치는 위생요인으로 적절하지 않은 것은?",
+      "options": [
+        "① 조직의 규칙과 정책",
+        "② 승진",
+        "③ 임금",
+        "④ 안정성 4"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "PMI 애자일과 적응형 방식에 대한 고려 사항을 설명한 것으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 적응형 방식은 작업을 수행하고 결과를 검토하고 필요에 따라 적응하는데 짧은 주기를 사용한다.",
+        "② 일반적으로 반복적, 주문형 및 끌기식 일정계획 으로 나타난다.",
+        "③ 프로젝트 관리를 위해 예측개발 생애주기 적용, 혹은 적응형 환경 여부에 따라 프로젝트 관리자의 역할은 변경되어져야 한다.",
+        "④ 적응형 방식으로 성공하려면 프로젝트 관리 자가 사용하는 도구와 방법에 효과적으로 적용할 수 있어야 한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "다음의 프로젝트에 대한 재무적 타당성 분석 방법 중에서 현가법(present value)을 사용하지 않는 것은?",
+      "options": [
+        "① 자본회수기간법(payback period)",
+        "② 현금흐름할인법(discounted cash flow)",
+        "③ 수익성지수법(profitability index)",
+        "④ 내부수익률법(internal rate of return)"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "다음 PERT/CPM 기법의 AOA(Activity on Arrow)방식의 네트워크 다이어그램에서 더미활동(dummy activity)의 특징이 아닌 것은?",
+      "options": [
+        "① 자원(resource)이 소요되지 않는다.",
+        "② 기간(duration)을 갖지 않는다.",
+        "③ 활동의 선후관계를 나타낸다.",
+        "④ 주공정 경로(critical path)에 포함되지 않는다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "다음의 프로젝트 계획단계에서 사용되는 도구 중 에서 트리 다이어그램(tree diagram)의 형태를 주로 사용하는 것은?",
+      "options": [
+        "① 고진토 차트(Gozinto chart)",
+        "② 간트 차트(Gantt chart)",
+        "③ PERT(program evaluation and review technique)",
+        "④ 주 프로젝트 일정(master project schedule) 5"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 26,
+      "subject_id": 2,
+      "question": "요구사항 검증 과정 동안, 요구사항 문서에 작성 된 요구사항들에 대해서 다양한 유형의 점검을 수행해야 한다. 다음 중 요구사항 점검 유형과 그 설명이 가장 적절하게 짝지어진 것은?",
+      "options": [
+        "① 완전성 점검 : 문서상의 요구사항은 서로 상충 되지 않아야 한다.",
+        "② 일관성 점검 : 요구사항 문서는 시스템 사용자가 의도한 모든 기능과 제약을 정의하는 요구사항을 포함해야 한다.",
+        "③ 유효성 점검 : 요구사항이 시스템 사용자의 실제 요구를 반영하는지를 점검한다.",
+        "④ 실현성 점검 : 고객과 계약자 사이의 분쟁 가능성을 줄이기 위해, 시스템 요구사항은 문서로 작성해서 구현이 가능한지를 점검해야 한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 27,
+      "subject_id": 2,
+      "question": "다음은 웹 기반 시스템에서 상호 작용 관리를 위 해 MVC 패턴이 사용될 때 런타임 시스템 아키텍 처를 그림으로 나타내고 있다. (가) ~ (다)에 가 장 적절한 구성요소는?",
+      "options": [
+        "① (가) 뷰, (나) 제어기, (다) 모델",
+        "② (가) 모델, (나) 제어기, (다) 뷰",
+        "③ (가) 제어기, (나) 모델, (다) 뷰",
+        "④ (가) 제어기, (나) 뷰, (다) 모델 6"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2020_q27.png",
+      "image": "/exams/images/auditor_2020_q27.png"
+    },
+    {
+      "id": 28,
+      "subject_id": 2,
+      "question": "다음 설명에 가장 적절한 디자인 패턴은?\n\n이 패턴의 특징은 ‘기능의 클래스 계층’과 ‘구현 의 클래스 계층’을 분리하는 것이다. 이 두 개의 클래스 계층을 분리해 두면 각각의 클래스 계층을 독립적으로 확장할 수 있다. 기능을 추가하고 싶으 면 기능의 클래스 계층에 클래스를 추가한다. 이때 구현의 클래스 계층은 전혀 수정할 필요가 없다.",
+      "options": [
+        "① memento 패턴",
+        "② flyweight 패턴",
+        "③ adapter 패턴",
+        "④ bridge 패턴"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 29,
+      "subject_id": 2,
+      "question": "다음 표는 3개의 입력 인자가 가질 수 있는 값을 나타내고 있다. 입력 인자 A B C A1 B1 C1 값(또는 클래스) A2 B2 C2 이 때 페어와이즈 테스트(pairwise test) 조합으 로 생성된 테스트 케이스는 다음 표와 같다. (가) ~ (라)에 가장 적절한 값은?\n\n입력 인자 A B C 테스트 케이스 1 A2 B2 (가) 2 A2 B1 (나) 3 A1 B2 (다) 4 A1 B1 (라)",
+      "options": [
+        "① (가) C1, (나) C1, (다) C2, (라) C2",
+        "② (가) C1, (나) C2, (다) C2, (라) C1",
+        "③ (가) C1, (나) C1, (다) C1, (라) C1",
+        "④ (가) C2, (나) C2, (다) C2, (라) C2"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2020_q29.png",
+      "image": "/exams/images/auditor_2020_q29.png"
+    },
+    {
+      "id": 30,
+      "subject_id": 2,
+      "question": "애자일 프로젝트에서 다음과 같이 시간의 경과에 따라 완료된 작업량을 그래프로 표시하기 위해 가장 적절한 것은?\n\n스프린트 1차 2차 3차 4차 5차 6차 완료 25 40 30 25 스토리포인트 40 45 55 60 42 누적 25 65 95 120 스토리포인트 전체 300 300 300 320 스토리포인트",
+      "options": [
+        "① 번다운 차트",
+        "② 번업 차트",
+        "③ PERT/CPM 차트",
+        "④ 백로그 진척률 차트 6"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2020_q30.png",
+      "image": "/exams/images/auditor_2020_q30.png"
+    },
+    {
+      "id": 31,
+      "subject_id": 2,
+      "question": "다음 설명에 해당하는 것으로 가장 적절한 것은?\n\nŸ 통제된 프로젝트 환경에서 점증적 프로토타이핑을 통해 빠듯한 시간 제약조건 내에 시스템을 개발 하고 유지보수하기 위한 프레임워크를 제공하는 애자일 소프트웨어 개발 방식이다.\nŸ 각각의 반복 단계가 파레토 법칙(80% 규칙)을 따 르는 반복적인 소프트웨어 프로세스이다.\nŸ 생명주기는 기본적인 비즈니스 요구사항과 제약 조건을 설정하는 타당성 조사로부터 시작해서, 기능성 그리고 정보 요구사항을 도출하는 비즈니스 연구를 수행한다. 이후 기능적 모델 반복, 설계와 구축 반복, 시행이라는 세 가지 다른 반복주기가 정의된다.",
+      "options": [
+        "① 스크럼(scrum)",
+        "② 애자일 모델링(agile modeling)",
+        "③ 동적 시스템 개발 방법(DSDM)",
+        "④ 애자일 통합 프로세스(AUP)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 32,
+      "subject_id": 2,
+      "question": "다음 코드에 대한 순환복잡도(cyclomatic complexity) 로 가장 적절한 것은?(단, 코드 실행상의 문제가 없다고 가정함)\n\nvoid Scoreboard::drawscore(int n) {\nif (n > 0) { score[numdigits]->erase();\n}\nnumdigits = 0; if (n == 0) { delete score[numdigits]; score[numdigits] = new Displayable(digits[0]); score[numdigits]->move(Point((700-numdigits*18),40)); score[numdigits]->draw(); numdigits++;\n}\nwhile (n) {\nint rem = n % 10;\ndelete score[numdigits]; score[numdigits] = new Displayable(digits[rem]); score[numdigits]->move(Point((700-numdigits*18),40)); score[numdigits]->draw(); n /= 10; numdigits++;\n}\n}",
+      "options": [
+        "① 2",
+        "② 3",
+        "③ 4",
+        "④ 5 7"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 33,
+      "subject_id": 2,
+      "question": "다음과 같은 소스 코드가 주어졌다. 이 코드를 경로 (path) 커버리지를 100% 만족하도록 테스트하고자 한다. 이때 경로 커버리지를 측정하고자 코드의 실행 경로 상의 특정 지점에 탐침(probe)을 삽입 하려 한다. 각 경로의 실행 여부를 판단하기 위해 필요한 최소 탐침 개수로 가장 적절한 것은?\n\n줄번호 소스 코드 1 int main(void) { 2 int x, y, z; 3 scanf(“%d %d”, &x, &y); 4 if (x < 0) { 5 if (y < 0) { 6 z = x - y; 7 } else { 8 z = x + y; 9 } 10 z = 5 * z; 11 } else { 12 z = 2 * x * -y; 13 } 14 if (z >= 0) { 15 printf(“%d is positive\\n”, z); 16 } else { 17 printf(“%d is negative\\n”, z); 18 } 19 return 1; 20 }",
+      "options": [
+        "① 4",
+        "② 5",
+        "③ 6",
+        "④ 8"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 34,
+      "subject_id": 2,
+      "question": "소프트웨어 품질 속성 중 테스트 가능성(testability)은 테스트를 통해 소프트웨어 결함을 쉽게 발견할 수 있도록 소프트웨어를 개발하는 것을 말한다. 다음은 여러 종류의 소프트웨어 설계 방법들을 나열한 것이다. 이 중에서 소프트웨어의 테스트 가능성을 높이기 위한 설계 방법만을 가장 적절 하게 묶은 것은?\n\n가. executable assertions 라. restrict dependencies\n나. introduce concurrency 마. limit nondeterminism\n다. limit structural complexity 바. maintain task model",
+      "options": [
+        "① 가, 나, 다",
+        "② 가, 다, 마",
+        "③ 나, 라, 바",
+        "④ 라, 마, 바 7"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 35,
+      "subject_id": 2,
+      "question": "다음 클린 아키텍처에 대한 설명 중 가장 적절하 지 않은 것은?",
+      "options": [
+        "① 엔티티 계층은 전사적인 핵심업무규칙을 캡슐화 한다. 엔티티는 메소드를 가지는 객체이거나 일 련의 데이터 구조와 함수의 집합일 수 있다.",
+        "② 외부인터페이스 계층은 프레임워크나 도구로 구 성된다. 다른 계층과 통신하기 위한 집합 코드 외에는 특별히 작성해야 할 코드가 그다지 많지 않다.",
+        "③ 인터페이스 어댑터 계층은 일련의 어댑터들로 구성된다. GUI의 MVC(model, view, controller) 는 모두 인터페이스 어댑터 계층에 속한다.",
+        "④ 유스케이스는 업무계층에 특화된 업무 규칙을 포함한다. 유스케이스 계층은 데이터베이스, UI 등 과 원활하게 연계되어 있어 이들의 변경에 영향을 받는 것이 일반적이다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 36,
+      "subject_id": 2,
+      "question": "스크럼(scrum) 방법론을 따라 소프트웨어를 개발 하고자 한다. 다음 표와 같은 사용자 스토리가 있고, 그림과 같은 릴리스 계획을 갖고 있다고 가정하자(릴리스 계획 내의 모든 스토리는 완료 됨을 가정). 전체 스토리 포인트가 180일 경우, 해당 릴리스를 완성하기 위한 프로젝트 일정으로 가장 적절한 것은? (단, 한 스프린트는 2주이고, 한 달은 4주라 가정한다) 스토리 스토리 점수 스토리 A 7 스토리 B 5 스토리 C 6 스토리 D 4 스토리 E 8 스토리 F 6 스토리 G 10 스토리 H 5 스토리 I 3 ... ...",
+      "options": [
+        "① 3개월",
+        "② 4개월",
+        "③ 5개월",
+        "④ 6개월 8"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 37,
+      "subject_id": 2,
+      "question": "다음은 오픈 소스 라이선스에 관한 설명이다. (가), (나), (다)에 해당하는 오픈 소스 라이선 스를 나열한 것으로 가장 적절한 것은?\n\n(가) 이 라이선스 아래에 있는 오픈 소스 소프트웨 어를 이용한다면 그 소프트웨어를 오픈 소스로 해야 한다는 상호(reciprocal) 라이선스이다. (나) 컴포넌트의 소스를 공개할 필요 없이 오픈 소 스 코드와 연결된 컴포넌트를 작성할 수 있다. 그러 나 라이선스된 컴포넌트를 변경할 경우 그것을 오픈 소스로 공개하여야 한다. (다) 이것은 비상호(nonreciprocal) 라이선스로서 오픈 소스에 가한 어떤 변경이나 수정을 재공개할 의무가 없다는 것을 의미한다. 오픈 소스 코드를 판 매되는 사유(proprietary) 시스템에 포함할 수 있\n다. 오픈 소스 컴포넌트를 사용한다면 그 코드의 원 작자를 알려야 한다.",
+      "options": [
+        "① (가) GNU General Public License(GPL) (나) GNU Lesser General Public License(LGPL) (다) Berkely Standard Distribution(BSD) License",
+        "② (가) GNU Lesser General Public License(LGPL) (나) GNU General Public License(GPL) (다) Berkely Standard Distribution(BSD) License",
+        "③ (가) Berkely Standard Distribution(BSD) License (나) GNU Lesser General Public License(LGPL) (다) GNU General Public License(GPL)",
+        "④ (가) Berkely Standard Distribution(BSD) License (나) GNU General Public License(GPL) (다) GNU Lesser General Public License(LGPL)"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 38,
+      "subject_id": 2,
+      "question": "ITIL v4 에서 ITIL management practices 는 general management practices, service management practices, technical management practices 로 분류된다. 다음 중 나머지 3개와 다른 분류에 해당되는 것은?",
+      "options": [
+        "① service financial management",
+        "② change control",
+        "③ business analysis",
+        "④ service continuity management 8"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "image_url": "/exams/images/auditor_2020_q38.png",
+      "image": "/exams/images/auditor_2020_q38.png"
+    },
+    {
+      "id": 39,
+      "subject_id": 2,
+      "question": "다음 코드의 출력결과로 가장 적절한 것은?\n\npublic class SingletonExam\n{\nprivate static int counter = 0; private static class Singleton\n{\nprivate static SingletonExam INSTANCE = new SingletonExam();\n}\npublic static SingletonExam getInstance()\n{\ncounter++; return Singleton.INSTANCE;\n}\nprivate SingletonExam()\n{\ncounter++;\n}\npublic void increaseCounter()\n{\ncounter++;\n}\npublic int getCounter()\n{\nreturn counter;\n}\n}\npublic class ExamThreeMain\n{\npublic static void main(String[] args)\n{\nSingletonExam se = SingletonExam.getInstance(); se.increaseCounter(); se.increaseCounter(); SingletonExam.getInstance().increaseCounter(); SingletonExam.getInstance().increaseCounter(); System.out.println (SingletonExam.getInstance().getCounter());\n}\n}",
+      "options": [
+        "① 8",
+        "② 9",
+        "③ 10",
+        "④ 11"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 40,
+      "subject_id": 2,
+      "question": "지속적 통합(continuous integration)은 통합이 빈번 하게 이루어지고 통합 결과를 바로 알 수 있기 때문에 소프트웨어의 품질을 높이고 통합의 위험을 줄이는 대 표적인 애자일 방법으로 요즘 널리 사용되고 있다. 이러한 지속적 통합을 효과적으로 지원하기 위해 다양 한 오픈 소스 소프트웨어가 활용된다. 다음 중 지속 적 통합에 밀접하게 사용될 수 있는 오픈 소스 소프트웨어로 가장 적절하지 않은 것은?",
+      "options": [
+        "① Git",
+        "② JUnit",
+        "③ Jenkins",
+        "④ ProcessMaker 9"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 41,
+      "subject_id": 2,
+      "question": "다음 그림은 왼쪽 리스트 박스에서 고객 타입을 지 정하면 오른쪽의 입력 폼의 형태가 바뀐다. 그림 에서 보듯이 왼쪽 리스트 박스와 오른쪽 입력 폼은 서로 의존적이다. 이와 같이 직접적인 의존 관계가 있는 요소들의 의존 관계를 완화하여 객체들이 다른 객체의 존재를 모르는 상태에서도 협력할 수 있도록 소프트웨어 설계를 개선하고자 할 경우에 어떤 설계 패턴을 도입하는 것이 가장 적절한가?",
+      "options": [
+        "① 상태 패턴 (state pattern)",
+        "② 위임 패턴 (delegation pattern)",
+        "③ 중재자 패턴 (mediator pattern)",
+        "④ 커맨드 패턴 (command pattern)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2020_q41.png",
+      "image": "/exams/images/auditor_2020_q41.png"
+    },
+    {
+      "id": 42,
+      "subject_id": 2,
+      "question": "전자정부 표준프레임워크는 공공사업에 적용되는 개발 프레임워크의 정립된 표준으로 응용 소프트웨어 표준화, 품질 및 재사용성 향상을 목표로 한다. 다음 중 전자정부 표준프레임워크의 ‘공통기술 서비스’ 그룹에 포함되지 않는 구성 요소로만 묶은 것으로 가장 적절한 것은? (2020 년도 버전(표준프레임워크 v3.9) 기준)\n\n가. 협업 라. 서비스 요청관리\n나. 표준 관리 마. 디지털 자산관리\n다. 변경 관리 바. 사용자 디렉토리/통합인증",
+      "options": [
+        "① 가, 다, 마",
+        "② 나, 다, 라",
+        "③ 라, 마, 바",
+        "④ 가, 마, 바"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 43,
+      "subject_id": 2,
+      "question": "다음은 AOP(Aspect Oriented Programming)관련 용어에 대한 설명이다. (가), (나)에 적합한 용 어를 순서대로 가장 적절하게 나열한 것은?\n\n(가)는 관심(concern)을 구현한 코드이며, (나)는 포인 트컷(pointcut)과 (가)로 구성되어 있다.",
+      "options": [
+        "① (가) 어드바이스(advice) (나) 애스팩트(aspect)",
+        "② (가) 애스팩트(aspect) (나) 어드바이스(advice)",
+        "③ (가) 애스팩트(aspect) (나) 조인 포인트(join point)",
+        "④ (가) 조인 포인트(join point) (나) 애스팩트(aspect) 9"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 44,
+      "subject_id": 2,
+      "question": "다음 표는 어느 회사에서 개발한 소프트웨어 제품 군을 유지보수하는 과정에서 소요되는 노력을 유 지보수 유형에 따라 정리한 것이다. 이런 상황을 고려할 때 이 회사가 같은 종류의 소프트웨어 제 품을 개발할 경우 비중을 두어야 할 ISO 25010 소프트웨어 품질 속성으로 가장 적절하지 않은 것은?\n\n유지보수 유형 소요 노력 적응(adaptive) 유지보수 65% 완전(perfective) 유지보수 20% 수정(corrective) 유지보수 10% 예방(preventive) 유지보수 5%",
+      "options": [
+        "① Integrity",
+        "② Portability",
+        "③ Reusability",
+        "④ Interoperability"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 45,
+      "subject_id": 2,
+      "question": "다음 그림은 MDA(Model Driven Architecture)에서의 계산 독립 모델인 CIM(Computation Independent Model)으로부터 실행 코드까지의 변환 과정을 나타낸 것이다. (가)는 구현을 참조하지 않고 시스템의 동작을 나타낸 모델이며, (나)는 플랫폼에 특화된 세부 사항을 추가한 모델이라면 (가), (나)에 해당하는 모델로 가장 적절한 것은?",
+      "options": [
+        "① (가) DSM(Dynamic System Model) (나) PDM(Platform Description Model)",
+        "② (가) PIM(Platform Independent Model) (나) PSM(Platform Specific Model)",
+        "③ (가) SAM(System Activity Model) (나) PDM(Platform Description Model)",
+        "④ (가) SAM(System Activity Model) (나) PSM(Platform Specific Model)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2020_q45.png",
+      "image": "/exams/images/auditor_2020_q45.png"
+    },
+    {
+      "id": 46,
+      "subject_id": 2,
+      "question": "다음은 http 또는 https를 사용하는 RESTful 서비스에서의 기본적인 네 가지 메소드에 대한 설명이다. (가)~(라)에 가장 적절한 메소드는?\n\n(가) 자원 값을 갱신하는 데 쓰인다. (나) 자원을 삭제하는 데 쓰인다. (다) 자원을 생성하는 데 사용된다. (라) 자원 값을 읽어오는 데 사용된다.",
+      "options": [
+        "① (가) PUT (나) DELETE (다) POST (라) GET",
+        "② (가) SET (나) REMOVE (다) CREATE (라) PULL",
+        "③ (가) POST (나) REMOVE (다) NEW (라) READ",
+        "④ (가) POST (나) DELETE (다) NEW (라) PULL 1"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 47,
+      "subject_id": 2,
+      "question": "다음 왼쪽에 주어진 코드를 테스트하기 위하여 경로 (path) 커버리지 기반의 테스트 데이터를 오른쪽과 같 이 개발하였다. 주어진 4개의 테스트 데이터를 이용하 여 왼쪽 코드를 테스트한다고 할 때, 테스트 되지 않는 경로는? (단, 코드 실행상의 문제가 없다고 가정함) L01 f (int x, int y) { L02 if (x * x * x > 0) { L03 if (x > 0 && y == 10) { L04 fail(); L05 } T1: x=70, y=50 L06 } else { T2: x=-70, y=50 L07 if ( x > 0 && y == 20) { T3: x=70, y=10 L08 fail(); T4: x=-70, y=20 L09 } L10 } L11 complete(); L12 }",
+      "options": [
+        "① L01 -> L02 -> L03 -> L04",
+        "② L01 -> L02 -> L07 -> L08",
+        "③ L01 -> L02 -> L03 -> L11",
+        "④ L01 -> L02 -> L07 -> L11"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 48,
+      "subject_id": 2,
+      "question": "다음과 같은 학생정보 관리 시스템에 대한 요구 사항이 있다. 이 정보를 바탕으로 내부논리파일 (internal logical file : ILF)의 기능점수를 산 출하기 위한 데이터요소유형(data element type : DET)과 레코드요소유형(record element type :\n\nRET)의 개수로 가장 적절한 것은? 1. 다음을 포함하는 학생정보를 입력한다.\n- 학번\n- 학생 이름\n- 학생 학과\n- 학생 등록일자 2. 정의한 학생정보를 언제든지 재사용하여 필요한 경우 학생정보를 변경한다. 3. 학생정보를 조회하고 출력한다. 4. 학생 이름 또는 학생 등록일자별로 학생 목록을 조회한다.",
+      "options": [
+        "① DET : 4, RET : 0",
+        "② DET : 4, RET : 1",
+        "③ DET : 0, RET : 4",
+        "④ DET : 1, RET : 4 0"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 49,
+      "subject_id": 2,
+      "question": "소프트웨어 유지보수 및 진화에 대한 Lehman의 법칙에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 엔트로피 또는 복잡도 증가의 법칙 : 진화하는 시스템의 유지보수 프로세스는 시스템이 소멸될 때까지 일정한 평균 작업량을 보인다.",
+        "② 친근성 유지의 법칙 : 시스템의 평균 성장률은 소멸될 때까지 일정하다. 즉 개발 전 단계에 걸쳐 각 버전의 변화는 거의 일정하다.",
+        "③ 품질 저하의 법칙 : 진화하는 시스템의 품질은 운영 환경의 변화에 완전히 적응하지 못하는 한 지속적으로 저하한다.",
+        "④ 지속적 변경의 법칙 : 시스템이 릴리즈 된 후에도 변경은 그 시스템이 다른 시스템으로 대체될 때 까지 지속된다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 50,
+      "subject_id": 2,
+      "question": "다음은 형상감사 활동에 대한 설명이다. 설명이 의미하는 것으로 가장 적절한 것은?\n\n소프트웨어 제품이 릴리즈되기 전에, 변경사항이 모 든 산출물에 반영되었는지, 변경이 반영된 형상 품 목들이 통합되었는지, 변경에 대한 형상 정보가 잘 관리되었는지 등을 객관성이 보장된 형상관리 책임 자에 의해 수행되는 감사 활동",
+      "options": [
+        "① 물리 형상 감사(physical configuration audit)",
+        "② 기능 형상 감사(functional configuration audit)",
+        "③ 베이스라인 형상 감사(baseline configuration audit)",
+        "④ 부정합성 기록 및 보고(nonconformity recording and reporting) 1"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 51,
+      "subject_id": 3,
+      "question": "릴레이션 R의 차수(degree)가 rd이고 릴레이션 S의 차수는 sd라고 가정했을 때, 다음의 관계 대수 연 산에 대한 설명 중 가장 적절하지 않은 것은?",
+      "options": [
+        "① rd = sd인 경우, R과 S는 합병 가능(union -compatible)하다.",
+        "② R에 실렉션(selection) 연산을 적용한 결과 릴 레이션의 차수는 rd이다.",
+        "③ R과 S를 세타 조인(theta-join)한 결과 릴레이션 의 차수는 rd + sd이다.",
+        "④ R을 구성하고 있는 속성 집합 X가 S를 구성하고 있는 속성 집합 Y를 포함하고 X - Y = D라면 R ÷ S 연산을 적용한 결과 릴레이션의 차수는 D에 포함된 속성의 개수이다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 52,
+      "subject_id": 3,
+      "question": "다음 공간 질의(spatial query) 사례 중에서 공간 조인(spatial join)에 해당하는 질의의 예로 가장 적절한 것은?",
+      "options": [
+        "① 서울시 경계 안에 존재하는 모든 병원을 검색",
+        "② 주어진 사건 현장에서 가장 가까운 거리에 있는 경찰차를 검색",
+        "③ 2Km 이내의 거리에 호수가 존재하는 모든 주택을 검색",
+        "④ 특정 사건 현장에서 5Km 반경 이내의 거리에 있는 모든 응급차를 검색"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 53,
+      "subject_id": 3,
+      "question": "데이터베이스의 트랜잭션 관리에 대한 설명 중 가장 적절하지 않은 것은?",
+      "options": [
+        "① 트랜잭션은 데이터베이스를 접근하는 일의 단위 로서 원자성(atomicity)을 유지하기 위해서 commit 하거나 rollback 할 수 있다.",
+        "② 여러 트랜잭션이 동시에 실행되는 경우 충돌 트랜잭션들의 일관성을 보장하기 위해서는 반드시 직렬 스케쥴(serial schedule)을 생성해야 한다.",
+        "③ 회복기법으로 그림자 페이지(shadow paging)기법을 사 용하면 단일 사용자 환경에서 로그 레코드 출력이 필요없어 트랜잭션의 UNDO가 간단하고 REDO가 필요 없기 때문에 고장으로부터의 회복이 신속하다.",
+        "④ 로깅(logging) 회복기법에서는 데이터 레코드보다 로 그 레코드를 먼저 안전 저장장치에 기록하도록 한다. 1"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 54,
+      "subject_id": 3,
+      "question": "연관규칙 마이닝에서 6-항목집합 {Apple, Banana, Cherry, Grape, Melon, Tomato}가 빈발(frequent)로 판명되었을 때, 이 6-항목집합에 대해 고려할 수 있는 연관규칙은 모두 몇 개인가?",
+      "options": [
+        "① 6개",
+        "② 15개",
+        "③ 32개",
+        "④ 62개"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 55,
+      "subject_id": 3,
+      "question": "다음의 데이터베이스에서 Students 릴레이션의 sid가 53666인 튜플이 삭제되면 Enrolled 릴레이션의 sid가 53666인 튜플도 같이 삭제되도록 하는 방법 으로 가장 적절한 것은? (단, Students, Enrolled 릴레이션 각각의 기본 키는 밑줄 친 속성이다.) Students Enrolled sid cid grade sid name age 53666 Carnatic101 C 53666 Jones 18 53666 Reggae203 B 53688 Smith 18 53650 Topology112 A 53650 Smith 19 53666 History105 B",
+      "options": [
+        "① Students 릴레이션을 생성할 때 FOREIGN KEY(sid) REFERENCES Enrolled(sid) ON DELETE SET DEFAULT 명령어를 추가한다.",
+        "② Enrolled 릴레이션을 생성할 때 FOREIGN KEY(sid) REFERENCES Students(sid) ON DELETE SET DEFAULT 명령어를 추가한다.",
+        "③ Students 릴레이션을 생성할 때 FOREIGN KEY(sid) REFERENCES Enrolled(sid) ON DELETE CASCADE 명령어를 추가한다.",
+        "④ Enrolled 릴레이션을 생성할 때 FOREIGN KEY(sid) REFERENCES Students(sid) ON DELETE CASCADE 명령어를 추가한다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 56,
+      "subject_id": 3,
+      "question": "두 릴레이션 R(Z), S(X)에 대해 X⊆Z이고 Y=Z-X 라고 할 때 다음의 연산들을 순서대로 적용한 결 과가 의미하는 연산으로 적절한 것은?\n\nT1 ← πY(R) T2 ← πY((S × T1) - R) T ← T1 - T2",
+      "options": [
+        "① 조인",
+        "② 디비전",
+        "③ 교집합",
+        "④ 카티션 프로덕트 2"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 57,
+      "subject_id": 3,
+      "question": "다음 SQL 문장에 대한 설명으로 가장 적절한 것은?\n\nDROP SCHEMA STUDENT RESTRICT",
+      "options": [
+        "① 데이터베이스 스키마 STUDENT와 해당 스키마의 모 든 테이블 및 관련 요소도 함께 제거한다.",
+        "② 데이터베이스 스키마 STUDENT 내에 어떤 요소도 없을 때만 해당 스키마를 제거한다.",
+        "③ 테이블 스키마 STUDENT와 해당 스키마의 모든 투플(tuple) 및 관련 요소도 함께 제거한다.",
+        "④ 테이블 스키마 STUDENT 내에 어떤 요소도 없을 때 만 해당 스키마를 제거한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 58,
+      "subject_id": 3,
+      "question": "릴레이션 스키마 R=(A, B, C, D, E)에서 다음과 같은 함수 종속성(functional dependency)이 존재 할 때, 릴레이션 R의 후보 키로서 적절하지 않은 것은?\n\nA → BC, CD → E, B → D, E → A",
+      "options": [
+        "① E",
+        "② BC",
+        "③ BD",
+        "④ CD"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 59,
+      "subject_id": 3,
+      "question": "ANSI/ISO SQL 표준(SQL92)에서 정의한 트랜잭션의 고립성 단계(isolation level)에 따라 발생 가능한 비일관성(inconsistency)의 현상을 아래 표와 같이 정리하였다. 빈칸 Ⓐ, Ⓑ, Ⓒ에 차례로 들어갈 내용으로 맞게 구성된 것은?\n\nDirty Non-repeatable Phantom 레벨 read read read Read 발생 가능 발생 가능 발생 가능 uncommitted Read Ⓐ 발생 가능 발생 가능 committed Repeatable 발생 불가능 Ⓑ 발생 가능 read Serializable 발생 불가능 발생 불가능 Ⓒ read",
+      "options": [
+        "① 발생 가능, 발생 가능, 발생 가능",
+        "② 발생 가능, 발생 가능, 발생 불가능",
+        "③ 발생 가능, 발생 불가능, 발생 불가능",
+        "④ 발생 불가능, 발생 불가능, 발생 불가능 1"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 60,
+      "subject_id": 3,
+      "question": "릴레이션 R의 투플 수를 |R|로 표기하고, 조인 조건을 c라고 할 때, 조인 선택도(join selectivity) js=|(R⋈CS)|/|(R×S)|이다. c가 없으면 js=1이 되고, c를 만족하는 투플이 없으 면 js=0이 된다. 조인 조건 c가 R.A=S.B 형태이 고, |R|=8, |S|=3이라고 하자. 다음 설명을 만 족하는 값들 중 가장 작은 값은?",
+      "options": [
+        "① B가 S의 기본키일 때 js의 최대값",
+        "② A가 R의 기본키일 때 js의 최대값",
+        "③ R.A의 유일한 값의 수가 2, S.B의 유일한 값의 수가 3일 경우 js의 값",
+        "④ B가 S의 기본키일 때 조인 결과 테이블의 카디 널리티"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 61,
+      "subject_id": 3,
+      "question": "다음의 두 릴레이션 ‘사원’과 ‘부서’에 대한 관계 대수식의 결과에 관한 설명으로 가장 적절하지 않은 것은?(단, 밑줄 친 속성은 기본 키이다.)\n\n<사원> 사번 사원이름 부서번호 2020-001 홍길동 2 2019-001 장영실 5 2020-002 강감찬 4 2020-003 류관순 NULL 2019-002 김좌진 2 2019-003 이몽령 4 2019-004 이산 1 2020-004 이순신 NULL\n<부서> 부서번호 부서이름 위치 5 연구부 연구동-1 4 영업부 사무동-1 1 기획부 사무동-2 2 생산부 생산동-1",
+      "options": [
+        "① 카디션 프로덕트 (사원 × 부서) 대수식의 차수 는 6, 카디널리티는 32이다.",
+        "② 자연조인 (사원 * 부서) 대수식의 차수는 5, 카 디널리티는 6이다.",
+        "③ 좌측 외부조인 (사원 ⟕사원.부서번호=부서.부서번호 부 서) 대수식의 차수는 6, 카디널리티는 6이다.",
+        "④ 동등조인 (사원 ⋈사원.부서번호=부서.부서번호 부서) 대 수식의 차수는 6, 카디널리티는 6이다. 3"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 62,
+      "subject_id": 3,
+      "question": "아래의 ‘사원’ 릴레이션에 대한 SQL 질의와 실 행 결과로 적절하지 않은 것은?\n\n사원 사번 사원이름 성별 급여 부서번호 2020-001 홍길동 남 3000 2 2019-001 장영실 남 5000 5 2020-002 강감찬 남 2000 4 2020-003 류관순 여 3000 NULL 2019-002 김좌진 남 4000 2 2019-003 이몽령 남 4000 4 2019-004 이산 남 5000 1 2020-004 이순신 남 3000 NULL\nSELECT 부서번호, AVG(급여)\nFROM 사원\nGROUP BY 부서번호; 부서번호 AVG(급여)",
+      "options": [
+        "① NULL 3000 1 5000 2 3500 4 3000 5 5000 SELECT 사원이름, 급여 FROM 사원 WHERE 부서번호 IN (SELECT 부서번호 FROM 사원 GROUP BY 부서번호 HAVING COUNT(*)>=2);",
+        "② 사원이름 급여 홍길동 3000 강감찬 2000 김좌진 4000 이몽령 4000 SELECT 사원이름 FROM 사원 E WHERE 급여 > (SELECT AVG(급여) FROM 사원",
+        "③ WHERE 부서번호 = E.부서번호); 사원이름 김좌진 이순신 SELECT 사원이름, 급여 FROM 사원 WHERE 급여 = (SELECT MAX(급여) FROM 사원);",
+        "④ 사원이름 급여 장영실 5000 이산 5000 1"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2020_q62.png",
+      "image": "/exams/images/auditor_2020_q62.png"
+    },
+    {
+      "id": 63,
+      "subject_id": 3,
+      "question": "다음의 릴레이션 Sailors에 대해 어떤 질의를 한 결과 릴레이션 Results가 나오도록 하는 SQL 질의 로 가장 적절한 것은?\n\n<Sailors> sid sname rating age 22 Dustin 7 45.0 29 Brutus 1 33.0 31 Lubber 8 55.5 32 Andy 8 25.5 58 Rusty 10 35.0 64 Horatio 7 35.0 71 Zorba 10 16.0 74 Horatio 9 35.0 85 Art 3 25.5 95 Bob 3 63.5\n<Results> rating average 3 44.5 7 40.0 8 40.5 10 35.0",
+      "options": [
+        "① SELECT S.rating, AVG(S.age) AS average FROM Sailors S GROUP BY S.rating HAVING COUNT(*) > 1;",
+        "② SELECT S.rating, AVG(S.age) AS average FROM Sailors S WHERE S.age >= 18 GROUP BY S.rating HAVING 1 < (SELECT COUNT(*) FROM Sailors S2 WHERE S.rating=S2.rating);",
+        "③ SELECT S.rating, AVG(S.age) AS average FROM Sailors S WHERE S.age >= 18 GROUP BY S.rating HAVING 1 < (SELECT COUNT(*) FROM Sailors S2 WHERE S.rating=S2.rating AND S2.age >= 18);",
+        "④ SELECT S.rating, AVG(S.age) AS average FROM Sailors S GROUP BY S.rating HAVING 1 < (SELECT COUNT(*) FROM Sailors S2 WHERE S.rating=S2.rating); 4"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 64,
+      "subject_id": 3,
+      "question": "CAP 정리는 세 가지 조건을 모두 만족하는 분산 컴퓨터 시스템이 존재하지 않음을 증명한 정리이\n\n다. 이 세 가지 조건으로 옳은 것은?",
+      "options": [
+        "① 일관성(consistency), 원자성(atomicity), 지속성(persistency)",
+        "② 연속성(continuity), 가용성(availability), 지속성(persistency)",
+        "③ 일관성(consistency), 가용성(availability), 분할 내성(partition tolerance)",
+        "④ 연속성(continuity), 원자성(atomicity), 분할 내성(partition tolerance)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 65,
+      "subject_id": 3,
+      "question": "릴레이션 R에는 6개의 속성 A, B, C, D, E, F를 가지며, 현재 R은 제1정규형을 만족한다. 이때 R 에 대한 다음 함수적 종속성 FD 중에서 BCNF(Boyce-Codd Normal Form)를 만족하는 것은?",
+      "options": [
+        "① FD ＝ {A → BCD, B → EF}",
+        "② FD ＝ {A → BCD, B → AEF}",
+        "③ FD ＝ {AB → C, A → DEF}",
+        "④ FD ＝ {AB → CDEF, C → A}"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 66,
+      "subject_id": 3,
+      "question": "다음은 마트에서 고객들의 구매 상품 리스트를 나타낸다. 데이터 마이닝에서 연관 규칙 A → B 는 A를 구매하면 B도 구매한다는 것을 나타낸다 고 할 때, 맥주 → 과자에 대한 지지도(support) 와 신뢰도(confidence)로 옳은 것은?\n\nID 판매 상품 1 주스, 맥주, 빵 2 주스, 빵, 라면, 사과 3 맥주, 콜라, 과자 4 맥주, 과자, 빵 5 생수, 맥주, 과자 6 과자, 빵, 라면, 맥주 7 콜라, 맥주, 빵, 아이스크림 8 라면, 맥주, 과자, 콜라 9 아이스크림, 라면, 빵, 사과 10 콜라, 빵, 과자, 맥주",
+      "options": [
+        "① 지지도 60%, 신뢰도 75%",
+        "② 지지도 67%, 신뢰도 50%",
+        "③ 지지도 67%, 신뢰도 75%",
+        "④ 지지도 75%, 신뢰도 50% 1"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 67,
+      "subject_id": 3,
+      "question": "보기의 내용은 어떤 NoSQL 시스템을 설명한 것 이다. 보기의 내용에 해당하는 NoSQL의 범주로 가장 적절한 것은?\n\n<보기>\n- 개별 데이터는 복합 객체(complex object)와 흡사하다.\n- 스키마를 명세할 필요가 없다.\n- 데이터를 JSON과 같이 잘 알려진 포맷으로 저장한다.",
+      "options": [
+        "① 문서-기반의 시스템",
+        "② 키-밸류 스토어",
+        "③ 컬럼-기반 또는 와이드 칼럼 시스템",
+        "④ 그래프 기반 시스템"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 68,
+      "subject_id": 3,
+      "question": "다음은 규칙 → 의 분할표(contingency  table)를 표현한 것이다. 이 표를 이용해 구한 다음의 값들 중 가장 큰 값은?\n\n   15 5 20    75 5 80 90 10 100",
+      "options": [
+        "①  → 의 지지도(support)",
+        "②  → 의 신뢰도(confidence)",
+        "③  → 의 상승(lift)",
+        "④ →  의 신뢰도 "
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 69,
+      "subject_id": 3,
+      "question": "검색 엔진에서 주어진 검색 키워드에 관련된 전 체 문서의 수가 10개라고 하자. 다음 각 경우에 대한 설명이 옳지 않은 것은?",
+      "options": [
+        "① 검색 결과 문서 수가 5개, 이 중 관련된 문서가 3개라면 정확도(precision)는 60%이다.",
+        "② 검색 결과 문서 수가 8개, 이 중 관련된 문서가 5개라면 재현도(recall)는 50%이다.",
+        "③ 검색 결과 문서 수가 5개, 이 중 관련된 문서가 3개라면 F-스코어(F-score)는 30%이다.",
+        "④ 검색 문서의 순위(rank) 순서대로 정확도와 재현도를 구하면 정확도는 변동(증감)하고 재현도는 단조적으로 증가한다. 5"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 70,
+      "subject_id": 3,
+      "question": "다음은 실제로 2개의 클래스 a, b(즉, ~a)를 갖 는 테스트 데이터에 대해서 분류기(classifier) 로 클래스 a로 분류한 경우(a)와 a가 아니라고 분류한 경우(~a)로 분류한 결과표이다. 분류기의 성능을 분석한 것 중 가장 적절하지 않은 것은?\n\n예측 클래스 a ~a 합계 a 40 10 50 실제 클래스 ~a 15 35 50 합계 55 45 100",
+      "options": [
+        "① 오류율(error rate) = 25%",
+        "② 특이도(specificity) = 70%",
+        "③ 재현율(recall) = 80%",
+        "④ F 측정값(F-measure) = 30%"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2020_q70.png",
+      "image": "/exams/images/auditor_2020_q70.png"
+    },
+    {
+      "id": 71,
+      "subject_id": 3,
+      "question": "사용자 JOHN에게 부여된 STUDENT 릴레이션에 대한\n\nSELECT 권한을 회수하고자 할 때, 이를 SQL 언어\n로 가장 올바르게 표현한 것은?",
+      "options": [
+        "① REMOVE SELECT ON STUDENT FROM JOHN",
+        "② REVOKE SELECT ON STUDENT FROM JOHN",
+        "③ REMOVE SELECT ON JOHN FROM STUDENT",
+        "④ REVOKE SELECT ON JOHN FROM STUDENT"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 72,
+      "subject_id": 3,
+      "question": "확장성 직접 화일에서 동적 해싱(dynamic hashing) 기법에 관한 설명 중 가장 적절하지 않은 것은?",
+      "options": [
+        "① 버킷 분할이 일어날 때, 기존 버킷에 저장할지 새로 할당된 버킷에 저장할지 결정하는 방법은 버킷에 있는 다른 레코드들에 의존해야 한다.",
+        "② 각 버킷은 메인 메모리에 거주하는 인덱스로 지 시되기 때문에 물리적 버킷 주소는 실제로 그리 중요하지 않다.",
+        "③ 버킷 분할이 계속해서 일어나면 인덱스는 N개의 이진 트리 집합으로 된 포리스트(forest)로 된다.",
+        "④ 트리 경로를 따라가는 과정에 가상 메모리 기법 에서 일어나는 페이지 부재(page fault) 현상이 발생할 수 있다. 1"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 73,
+      "subject_id": 3,
+      "question": "다음 E-R 모델을 관계 모델로 매핑하여 데이터베이스를 구축할 경우 DEPARTMENT, EMPLOYEE 테 이블의 생성문에 반영할 내용에 대한 설명 중 가장 적절하지 않은 것은? (단, 개체와 관계 사 이의 이중선은 전체 참여, 단일선은 부분 참여, 밑줄 친 속성은 해당 개체에서 고유함을 의미한\n\n다.)",
+      "options": [
+        "① 1:N 관계를 반영하기 위하여 EMPLOYEE 테이블 에 외래키 DNO를 추가한다.",
+        "② 1:N 관계를 반영한 EMPLOYEE 테이블의 외래키 DNO에 대해서는 NULL값을 허용할 수 있다.",
+        "③ 1:1 MANAGES 관계 반영의 경우 DEPARTMENT 테이 블에 외래키 ENO를 추가하는 것이 EMPLOYEE 테 이블에 외래키 DNO를 추가하는 것보다 더 좋다.",
+        "④ EMPLOYEE 테이블에서 ENO를 기본키로 설정할 경우, Email은 대체키로 UNIQUE 제약을 설정한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2020_q73.png",
+      "image": "/exams/images/auditor_2020_q73.png"
+    },
+    {
+      "id": 74,
+      "subject_id": 3,
+      "question": "GIS 시스템 구성 요소 중에서 래스터(raster)에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 지리 데이터를 일컫는 용어로, 2차원 셀 혹은 3 차원 복셀(voxel)들의 연속된 격자이다.",
+        "② GIS 관련 인력을 일컫는 용어로, 지도 제작자, 지리 조사관, GIS 사용자를 통칭한다.",
+        "③ 플로터, 스캐너, 3차원 프린터 등 GIS 시스템을 구성하는 하드웨어 장치를 일컫는다.",
+        "④ GIS 객체를 표현하기 위한 점, 선, 폴리곤 등의 이산 객체와 이들을 포함하는 MBR(minimum bounding rectangle)을 일컫는다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 75,
+      "subject_id": 3,
+      "question": "분산 데이터베이스에서 릴레이션 R의 단편(fragment)은 πL(σC(R))로 명세될 수 있다. 다음 중 수직 단편을 표현한 경우로 옳은 것은? (단, ATTRS(R)은 R의 애트 리뷰트의 집합, L은 애트리뷰트 리스트, C는 R의 모든 투플이 선택되는 조건식을 의미한다.)",
+      "options": [
+        "① C = TRUE and L = ATTRS(R)",
+        "② C = TRUE and L ≠ ATTRS(R)",
+        "③ C ≠ TRUE and L = ATTRS(R)",
+        "④ C ≠ TRUE and L ≠ ATTRS(R) 6"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 76,
+      "subject_id": 4,
+      "question": "현재 상태에서 보상을 최대화하는 방향으로 행동을 선택하도록 학습이 진행되는 머신러닝 방법으로 가장 적절한 것은?",
+      "options": [
+        "① 지도학습(supervised learning)",
+        "② 강화학습(reinforcement learning)",
+        "③ 분류학습(classification learning)",
+        "④ 비지도학습(unsupervised learning)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 77,
+      "subject_id": 4,
+      "question": "다음 중 무손실 압축기법과 가장 거리가 먼 것은?",
+      "options": [
+        "① 반복길이(run-length) 부호화",
+        "② LZW 부호화",
+        "③ 산술 부호화",
+        "④ 예측 부호화"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 78,
+      "subject_id": 4,
+      "question": "OSI 7 계층에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 데이터 링크 계층(data link layer)은 MAC 주소를 사용한다.",
+        "② 네트워크 계층(network layer)은 TCP를 사용하여 최종 목적지까지 경로를 설정한다.",
+        "③ 전송 계층(transport layer)에서는 프로세스 간 전송을 지원한다.",
+        "④ 세션 계층(session layer)에서는 세션의 생성, 설정, 그리고 조율 등을 지원한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 79,
+      "subject_id": 4,
+      "question": "TCP와 UDP에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① TCP는 연결지향(connection-oriented) 프로토콜 이고 UDP는 비연결지향(connectionless-oriented) 프로토콜이다.",
+        "② UDP는 오류 정정(error correction) 기능을 지원 한다.",
+        "③ TCP는 흐름 제어(flow control)와 혼잡 제어 (congestion control)를 지원한다.",
+        "④ UDP는 체크섬(checksum) 기능을 지원한다. 1"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 80,
+      "subject_id": 4,
+      "question": "다음에 설명하는 라우팅 프로토콜로 가장 적절한 것은?\n\n가. 홉수 기반 거리벡터 라우팅 알고리즘이다.\n나. 원래는 벨먼-포드 알고리즘을 사용하였고 최 근에는 가변길이 서브넷도 지원한다.\n다. 소규모 네트워크에 적합하다.",
+      "options": [
+        "① RIP",
+        "② OSPF",
+        "③ BGP",
+        "④ MOSPF"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 81,
+      "subject_id": 4,
+      "question": "네트워크의 노드들을 연결하는 토폴로지 방법으로는 성형(star), 버스형(bus), 그물형(mesh) 등이 있다. 그물형 토폴로지일 때, 노드의 수가 6이라면 연결이 필요한 총 회선수로 가장 적절한 것은?",
+      "options": [
+        "① 12",
+        "② 14",
+        "③ 15",
+        "④ 19"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 82,
+      "subject_id": 4,
+      "question": "'클라우드컴퓨팅서비스 품질·성능 안내서(정보통 신산업진흥원, 2019.8)' 에서 클라우드서비스의 신뢰성을 측정하는 품질·성능 세부기준으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 응답 시간",
+        "② 백업 준수율",
+        "③ 서비스 회복시간",
+        "④ 백업 데이터 보관 기간"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 83,
+      "subject_id": 4,
+      "question": "다음 중 디지털 데이터를 아날로그 신호로 변환 하는 방법이 아닌 것은?",
+      "options": [
+        "① DM(Delta Modulation)",
+        "② FSK(Frequency Shift Keying)",
+        "③ PSK(Phase Shift Keying)",
+        "④ QAM(Quadrature Amplitude Modulation)"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 84,
+      "subject_id": 4,
+      "question": "아날로그 데이터를 디지털 신호로 변환하는 기법 중에서 PCM(Pulse Code Modulation) 과정을 순서대로 나열한 것으로 가장 적절한 것은?",
+      "options": [
+        "① 아날로그 신호-양자화-표본화-부호화-디지털 신호",
+        "② 아날로그 신호-양자화-부호화-표본화-디지털 신호",
+        "③ 아날로그 신호-표본화-부호화-양자화-디지털 신호",
+        "④ 아날로그 신호-표본화-양자화-부호화-디지털 신호 7"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 85,
+      "subject_id": 4,
+      "question": "RAID에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① RAID-1은 디스크 미러링(disk mirroring)이라고 한다.",
+        "② RAID-2는 디스크 배열에서 각 디스크에 데이터를 비트 단위로 인터리빙(interleaving)하는 방식 으로서 RAID-1보다 많은 수의 디스크가 필요하다.",
+        "③ RAID-3은 많은 수의 패리티 디스크를 사용하는 RAID-2의 단점을 보완한 방식으로 한 개의 패리티 디스크만 추가한 방식이다.",
+        "④ RAID-5는 RAID-4에서 발생하는 패리티 디스크의 병목 현상을 완화시킬 수 있다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 86,
+      "subject_id": 4,
+      "question": "C 클래스 네트워크에서 서브넷마다 5개의 호스트가 연결될 수 있는 서브넷을 최대한 많이 만들고자 한다. 이를 위한 서브넷 마스크로 가장 적절한 것은?",
+      "options": [
+        "① 255.255.255.192",
+        "② 255.255.255.224",
+        "③ 255.255.255.240",
+        "④ 255.255.255.248"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 87,
+      "subject_id": 4,
+      "question": "다음 매체 접근 제어 방식에 대한 설명으로 가 장 적절하지 않은 것은?",
+      "options": [
+        "① CSMA방식은 반송파 감지(carrier sense) 메커 니즘을 사용하여 다른 지국이 회선을 사용하는 지 알 수 있다.",
+        "② CSMA/CD 방식에서 충돌이 발생하면 고정된 시간을 대기하였다가 다시 접근을 시도한다.",
+        "③ CSMA/CA 방식은 무선 LAN에서 주로 사용한다.",
+        "④ CSMA/CD 방식은 유선 LAN에서 주로 사용한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 88,
+      "subject_id": 4,
+      "question": "텐서플로우에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 구글에서 공개한 오픈소스 소프트웨어이다.",
+        "② 머신러닝과 딥러닝에 특화된 소프트웨어 개발 플랫폼이다.",
+        "③ 아파치 2.0 라이선스에 의해서 비상업적 용도 로만 자유롭게 사용 가능하다.",
+        "④ 파이썬을 위한 텐서플로우 라이브러리가 제공된다. 1"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 89,
+      "subject_id": 4,
+      "question": "신경망에서 과대적합(overfitting)에 관한 설명 으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 드롭아웃은 학습 과정 중에 일부 노드들을 무 작위로 제외함으로써 과대적합을 완화하는 기 법이다.",
+        "② 과대적합을 피하기 위한 방법으로 더 다양한 데이터를 확보하여 부족한 학습 데이터를 채우는 방법이 있다.",
+        "③ 학습 데이터의 정확도를 증가시키기 위해 학습 반복 횟수를 늘림으로써 과대적합 문제를 회피 할 수 있다.",
+        "④ 검증 데이터로 모델 정확도를 측정하여 검증 정확도가 지속적으로 하강하는 시점에서 학습을 중단함으로써 과대적합을 완화할 수 있다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 90,
+      "subject_id": 4,
+      "question": "다음 중 사물인터넷에서 부각되고 있는 LoRa 통신과 LoRa WAN 네트워크에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① LoRa는 대표적인 저전력 통신방식으로 LoRa 얼라이언스를 중심으로 개발되고 있다.",
+        "② ISM 비면허 대역 공간에 기반을 두고 있다.",
+        "③ LoRa는 매우 넓은 커버리지를 갖는 장거리 통신 방식이다.",
+        "④ LoRa WAN에는 LTE에서 사용되는 공통 기술은 모두 포함되어 있다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 91,
+      "subject_id": 4,
+      "question": "다음에 설명하는 라우팅 기법으로 가장 적절한 것은?\n\n가. 패킷을 전송하는 호스트가 목적지 호스트까지 전달경로를 스스로 결정하는 방식이다.\n나. 이러한 방식을 지원하려면 송신 호스트의 라우팅 테이블에서 패킷을 수신 호스트까지 전달하기 위한 정보경로를 관리하여야 하며, 경로 정보를 패킷에 기록해야 한다.",
+      "options": [
+        "① 소스라우팅(source routing)",
+        "② 분산라우팅(distributed routing)",
+        "③ 중앙라우팅(centralized routing)",
+        "④ 계층라우팅(hierarchical routing) 8"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 92,
+      "subject_id": 4,
+      "question": "다음 중 전자우편 서비스를 위해서 사용되는 프로토콜로 가장 적절하지 않은 것은?",
+      "options": [
+        "① SMTP",
+        "② DNS",
+        "③ POP3",
+        "④ IMAP"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 93,
+      "subject_id": 4,
+      "question": "64비트 CPU를 위한 주기억장치 모듈(용량:8KB)을 1K×8비트 조직의 램(RAM)을 이용하여 구성하고자 할 때, 가장 적절한 방법은?",
+      "options": [
+        "① 8개 RAM을 직렬 연결",
+        "② 8개 RAM을 병렬 연결",
+        "③ 16개 RAM을 직렬 연결",
+        "④ 16개 RAM을 병렬 연결"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 94,
+      "subject_id": 4,
+      "question": "'사이버-물리 시스템(CPS: Cyber-Physical Systems)의 안전·신뢰성 확보 지침 제1부 : CPS 사고분석모델 (정보통신단체표준, TTAK.KO-11.0268-Part1)' 에서 C PS의 안전·신뢰성을 확보하기 위해 고려할 특징으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① CPS는 가상세계와 물리세계가 서로 다른 메커 니즘으로 동작하기 때문에 예측하지 못한 다양한 변수가 있다.",
+        "② CPS는 다양한 장치 및 서브시스템이 긴밀하게 연결되어 있어, 다양한 요인의 복합적 작용에 의해 CPS 사고가 발생한다.",
+        "③ 다양한 이해관계자들의 서브시스템이 융합되면서 부정확한 요구사항의 반영 혹은 같은 작업에 대해 서로 대비되는 요구사항의 설정으로 시스템 오작동이 발생한다.",
+        "④ 인공지능은 학습을 통해 획득한 결론에 대해 그 원인과 과정을 알 수 있기에, 인공지능의 활용은 불확실성을 감소시켜 시스템의 안전성, 신뢰성 측면의 분석을 용이하게 만든다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 95,
+      "subject_id": 4,
+      "question": "버스의 성능을 나타내는 척도는 버스 대역폭(bus bandwidth)으로 일반적으로 버스 클록 주기와 버스 폭에 의해서 결정된다. 만약 버스 클록률이 50Mhz 이고 버스 폭이 32비트라면 이때의 버스 대역폭으로 가장 적절한 것은?",
+      "options": [
+        "① 80M 바이트/초",
+        "② 100M 바이트/초",
+        "③ 200M 바이트/초",
+        "④ 400M 바이트/초 1"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 96,
+      "subject_id": 4,
+      "question": "다음에 설명하는 TCP에서 네트워크 효율을 높이기 위한 알고리즘으로 가장 적절한 것은?\n\n가. 소량의 데이터가 들어오는 경우 바로 네트워크에 전송하지 않고 버퍼에 넣어 두고 이전에 송신한 데이터에 대한 ACK가 수신 되면 버퍼에 쌓여 있는 데이터를 한 번에 송신한다.\n나. 네트워크 상에서 오가는 패킷수를 줄임으로써 효율성을 높일 수 있다는 장점은 있으나 송신 호스트가 ACK를 받을 때까지 기다렸다 송신해야 하므로 성능저하 가능성이 존재한다.",
+      "options": [
+        "① 네이글(Nagle’s) 알고리즘",
+        "② 데이크스트라(Dijkstra’s) 알고리즘",
+        "③ 슬라이딩 윈도우 알고리즘",
+        "④ 전송보장 알고리즘"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 97,
+      "subject_id": 4,
+      "question": "=10000 일 때 이를 [] 단위로 변환한 값으로 가장   적절한 것은? (단, 여기서 는 신호 전력, 은 잡음 전력을 나타낸다.)",
+      "options": [
+        "① 10",
+        "② 20",
+        "③ 30",
+        "④ 40"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 98,
+      "subject_id": 4,
+      "question": "다음은 컨테이너(container) 및 도커(docker)에 관한 설명이다. (ㄱ)~(ㄹ)에 들어갈 것으로 가장 적절한 것은?\n\n가. ㈀는/은 오픈소스 프로젝트로서 애플리케이션을 경량 ㈁로 패키징하고 배포하는 기능을 제공한다.\n나. ㈂는/은 가상머신과 비슷하나 호스트 머신의 커널을 공유하면서 유저 스페이스 격리기능을 제공한다는 점이 다르다.\n다. ㈃는/은 하나의 서비스를 패키지로 만들어 구동 한다.",
+      "options": [
+        "① ㈀ 도커 ㈁ 컨테이너 ㈂ OS 컨테이너 ㈃ 애플리케이션 컨테이너",
+        "② ㈀ 도커 ㈁ 컨테이너 ㈂ 애플리케이션 컨테이너 ㈃ OS 컨테이너",
+        "③ ㈀ 컨테이너 ㈁ 도커 ㈂ OS 컨테이너 ㈃ 애플리케이션 컨테이너",
+        "④ ㈀ 컨테이너 ㈁ 도커 ㈂ 애플리케이션 컨테이너 ㈃ OS 컨테이너 9"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 99,
+      "subject_id": 4,
+      "question": "'네트워크 구축을 위한 장비 규모산정지침(TTAK.KO-0 1.0103/R1, 2017.6.28.)'에서 접속형 L2/L3 스위치 (라우터 포함)를 위한 규모산정 항목으로 가장 적절 하지 않은 것은?",
+      "options": [
+        "① 이론적 패킷처리상수",
+        "② 업링크 포트 이중화",
+        "③ 양방향 상수",
+        "④ 시스템 확장 고려상수"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 100,
+      "subject_id": 4,
+      "question": "다중 프로세서 시스템 구조에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 공유 기억장치(shared memory) 시스템 구조는 별도의 프로세서 간 통신 메커니즘 없이도 프로세서 간 통신이 가능한 구조이다.",
+        "② 공유 기억장치(shared memory) 시스템 구조는 프로 세서들과 기억장치들 간의 통로 상에 통신량이 많아져 경합으로 인한 지연시간이 발생할 수 있다.",
+        "③ 분산 기억장치(distributed memory) 시스템 구조는 프로세서 간 통신을 위해 메시지 패싱 방식을 사용 하므로 통신 시간이 감소한다.",
+        "④ 크로스바 스위치(crossbar switch) 구조에서 두 개 혹은 그 이상의 프로세서가 동일한 기억장치 모듈을 동시에 접근하고자 할 때에는 충돌이 발생하고 이런 경우에는 중재를 받아서 순서대로 접근해야 한다. 2"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 101,
+      "subject_id": 5,
+      "question": "다음 설명에 해당하는 SSL 프로토콜으로 가장 적 절한 것은?\n\n상위 계층으로부터 오는 메시지를 전달하며, 메시 지는 단편화되거나 선택적으로 압축된다. MAC은 협의된 해시 알고리즘을 사용하여 압축된 메시지 를 추가한다. 압축된 단편화와 MAC은 협의된 암호 화 알고리즘을 사용하여 암호화된다.",
+      "options": [
+        "① Record 프로토콜",
+        "② Alert 프로토콜",
+        "③ ChangeCipherSpec 프로토콜",
+        "④ Handshake 프로토콜"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 102,
+      "subject_id": 5,
+      "question": "다음에서 설명하는 보호대책을 통해 방어하고자 하는 공격 유형으로 가장 적절한 것은?\n\n방어 기법 1. 주소공간 배치에 대한 난수화 설정 으로 공격자가 메모리 내 특정 정보의 위치를 추 정하지 못하게 한다. 방어 기법 2. 프로그램 내 스택에서의 명령어 실행 기능을 제한해야 한다. 방어 기법 3. 스택가드(stack guard) 기능을 활성화 하여 스택을 보호하는 것이 필요하다.",
+      "options": [
+        "① 버퍼 오버플로우(buffer overflow) 공격",
+        "② 레이스 컨디션(race condition) 악용",
+        "③ SQL 인젝션(injection)",
+        "④ 환경변수 취약점 공격"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 103,
+      "subject_id": 5,
+      "question": "위험 평가 방법 중 정량적 분석법에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 많은 데이터의 입력이 필요하며 복잡한 계산을 필요로 한다.",
+        "② 금액으로 산정하기 어려운 정보의 평가에 용이하게 사용된다.",
+        "③ 정보보호 대책의 비용을 정당화하고 위험 분석의 결과를 이해하기 쉽다.",
+        "④ 과거자료 접근법, 수학공식 접근법, 확률분포 추정법 등이 이에 포함된다. 2"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 104,
+      "subject_id": 5,
+      "question": "보안시스템의 개발 원칙에 대한 설명 중 가장 적절 하지 않은 것은?",
+      "options": [
+        "① Complete mediation : 모든 접근 시도는 접근 통 제 메카니즘에 의해 점검되어야 한다.",
+        "② Fail-safe default : 시스템의 보안성 유지가 안 된다면, 시스템 운영을 중단하는 것이 좋다.",
+        "③ Least privilege : 시스템을 사용하는 모든 이용 자는 업무(task)를 수행하는데 필요한 최소의 권 한만이 주어져야 하고 주어진 권한도 시간에 따라 달라진다.",
+        "④ Open design : 보안 메카니즘은 비밀로 유지하지 않고 공개하는 것이 좋다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 105,
+      "subject_id": 5,
+      "question": "다음에서 설명하는 웹 서비스의 주요 구성 요소로 가장 적절한 것은?\n\n(가) 웹 서버에서 생성된 난수 값을 클라이언트 컴퓨터에 저장하여 다음 접속 시 해당 클라 이언트 컴퓨터를 식별한다. (나) 다수 개의 웹 클라이언트들이 동일한 정보를 요청하는 것에 대비하여 로컬 네트워크 서 버에 첫 번째 요청된 웹페이지의 내용을 저 장한다.",
+      "options": [
+        "① (가) 웹 방화벽 (나) 웹 로그",
+        "② (가) 웹 로그 (나) 웹 캐시",
+        "③ (가) 쿠키 (나) 웹 방화벽",
+        "④ (가) 쿠키 (나) 웹 캐시"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 106,
+      "subject_id": 5,
+      "question": "포맷 스트링(format string) 취약점에 대한 설명 으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① printf 함수가 가지고 있는 선택적 매개변수(opt ional argument)의 특성은 취약점이 될 수 있다.",
+        "② 소프트웨어의 사용자가 포맷 스트링을 지정할 수 있는 것을 불허하여 취약점 이용에 대처할 수 있다.",
+        "③ 포맷 스트링 %n을 이용하여 메모리의 특정 위치(주 소)에 값을 지정할 수 있다.",
+        "④ 포맷 스트링 취약점을 이용하여 악성코드를 실행 하는 것은 불가능하다. 1"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 107,
+      "subject_id": 5,
+      "question": "클라우드 책임공유 모델(cloud shared responsibility model)에 따라, SaaS(Software as a Service)를 사용하는 고객의 보안 책임으로 가장 적절한 것은?",
+      "options": [
+        "① 물리 기반 환경에 대한 보안(physical infrastru -cture security)",
+        "② 가상화 기반 환경에 대한 보안(virtualized infr -astructure security)",
+        "③ 운영체제 시스템에 대한 보안(operating system security)",
+        "④ 데이터 접근에 대한 보안(data access security)"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 108,
+      "subject_id": 5,
+      "question": "개인 식별이 가능한 데이터를 직접적으로 식별할 수 없는 다른 값으로 대체하는 가명처리(pseudon\n\n-ymization) 방법으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 암호화(encryption)",
+        "② 라운딩(rounding)",
+        "③ 교환 방법(swapping)",
+        "④ 휴리스틱 가명화(heuristic pseudonymization)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 109,
+      "subject_id": 5,
+      "question": "포렌식 과정에서 수집된 디지털 증거가 법적 효력을 가지고 증거 능력을 인정받기 위한 원칙 중 다음에서 설명하는 것으로 가장 적절한 것은?\n\n증거 획득 후 이송/분석/보관/법정 제출 등 일련의 과정이 명확해야 하며, 이러한 과정에 대한 추적이 가능해야 한다.",
+      "options": [
+        "① 재현의 원칙",
+        "② 무결성의 원칙",
+        "③ 정당성의 원칙",
+        "④ 연계 보관성의 원칙"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 110,
+      "subject_id": 5,
+      "question": "다음 중 TCP 고유의 취약점을 이용한 TCP 세션 하이재킹(session hijacking) 공격에 대한 보안 대책으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① ACK storm 탐지",
+        "② 비동기화 상태 탐지",
+        "③ 다이렉트 브로드캐스트 방지",
+        "④ 패킷의 유실과 재전송 증가 탐지 2"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    },
+    {
+      "id": 111,
+      "subject_id": 5,
+      "question": "다음 중 공개키 기반 구조(PKI: Public Key Infrastru\n\n-cture)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 공개키 인증서를 위해 X.509 표준 인증서 형식을 사용한다.",
+        "② PKI는 인증, 기밀성, 부인방지와 메시지의 무결성을 제공한다.",
+        "③ PKI 전반에 사용되는 정책과 절차를 생성하는 기관은 PAA(Policy Approving Authority)다.",
+        "④ 공개키 기반 구조에서 공개키 인증서는 CA(Certi -ficate Authority)의 공개키를 이용하여 전자 서명을 생성한다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 112,
+      "subject_id": 5,
+      "question": "다음 중 IPSec(Internet Protocol Security)에 대한 설명 중 가장 적절하지 않은 것은?",
+      "options": [
+        "① AH와 ESP 모두 메시지 무결성을 제공한다.",
+        "② AH는 메시지에 대한 기밀성을 제공하지만, ESP는 기밀성을 제공하지 않는다.",
+        "③ IPSec을 이용하여 재전송 공격 방지 기능을 제공 할 수 있다.",
+        "④ IPSec 운영 모드는 터널모드와 전송모드로 나뉜다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 113,
+      "subject_id": 5,
+      "question": "다음 설명에 해당하는 것으로 가장 적절한 것은?\n\n도메인을 탈취하거나 DNS(Domain Name System) 등의 주 소를 변조하여 사용자들로 하여금 진짜 사이트로 오인 접속하도록 유도한 뒤에 개인 정보를 탈취하는 행 위이다.",
+      "options": [
+        "① 스미싱(smishing)",
+        "② 파밍(pharming)",
+        "③ 큐싱(qshing)",
+        "④ 스니핑(sniffing)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 114,
+      "subject_id": 5,
+      "question": "리눅스 환경에서 traceroute 명령이 활용하는 IP 헤더 필드 및 ICMP 메시지의 종류로 가장 적절 하게 짝지어진 것은?",
+      "options": [
+        "① TTL – ICMP time exceeded",
+        "② SYN flag – ICMP echo request",
+        "③ Fragment offset – ICMP redirect",
+        "④ Header checksum – ICMP destination unreachable 2"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다."
+    },
+    {
+      "id": 115,
+      "subject_id": 5,
+      "question": "리눅스 시스템의 계정과 권한 체계에 대한 설명 으로 가장 적절한 것은?",
+      "options": [
+        "① 일반 사용자는 UID(UserID)를 0번부터 부여 받는다.",
+        "② 사용자의 패스워드를 암호화하여 /etc/passwd 파일에 저장하고 있다.",
+        "③ 파일 실행 시 RUID(Real UID)와 EUID(Effective UID)는 항상 동일하다.",
+        "④ 파일의 접근권한이 4755인 경우 이 파일을 실행하는 동안에 파일 소유자 권한을 획득할 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 116,
+      "subject_id": 5,
+      "question": "다음 중 해시 함수에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 임의의 길이의 원본 메시지에 대해 가변 길이의 해시 값을 생성한다.",
+        "② 동일한 원본 메시지에 대해서는 같은 해시 값을 생성한다.",
+        "③ 해시 함수의 역함수를 만들어 해시 값으로부터 원본 메시지를 복원할 수 있다.",
+        "④ 원본 메시지의 한 비트가 변경되면 그에 대응하여 거의 같은 해시 값을 출력하도록 설계한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 117,
+      "subject_id": 5,
+      "question": "블록 암호 시스템의 운영 모드에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① CFB 모드는 각 블록을 이전 암호문과 XOR 연산 후에 암호화를 수행한다.",
+        "② CBC 모드는 각 블록이 독립적으로 동작하므로 한 블록에서 에러가 발생하더라도 다른 블록에 영향을 주지 않는다.",
+        "③ ECB 모드는 한 블록에서 발생한 에러가 다음 블록들에 영향을 주며, 블록 암호화 과정에서 병렬처리가 불가능하다는 단점이 있다.",
+        "④ CTR 모드는 블록을 암호화할 때마다 1씩 증가하는 카운터를 암호화한 후에 XOR 연산으로 암호문을 생성한다. 2"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다."
+    },
+    {
+      "id": 118,
+      "subject_id": 5,
+      "question": "다음 설명에 해당하는 것으로 가장 적절한 것은?\n\n데이터의 불법복제를 방지하고 소유자의 저작권과 소유권을 보호하기 위해 디지털 콘텐츠에 사용자만이 알 수 있는 아이디(ID) 또는 정보 등의 부호를 삽입하거나, 영상·음성 등의 신호에 특정한 코드나 유형 등을 삽입하는 기술이다. 사용자가 소프트웨어를 사용하거나 이미지를 보는데 전혀 지장을 주지 않으면서도 원본의 출처나 복제 경로를 찾아내는데 효과적이다.",
+      "options": [
+        "① Digital envelope",
+        "② Digital watermark",
+        "③ Digital forensic",
+        "④ Digital wallet"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 119,
+      "subject_id": 5,
+      "question": "전자서명(digital signature)이란 서명한 사람의 신분을 증명하는 방식으로, 특정 사용자를 인증 하기 위해 사용한다. 다음 중 전자서명에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 전자서명은 부인방지 기능을 제공하지 않는다.",
+        "② 비대칭키 암호 시스템을 사용하여 전자서명 서비스를 제공할 수 있다.",
+        "③ 서명용 공개키를 이용하여 누구든지 서명문을 생성 할 수 있으므로 위조가 가능하다.",
+        "④ DSA(Digital Signature Algorithm)는 AES(Advanced Encryption Standard) 알고리즘을 기반으로 전자 서명을 생성한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다."
+    },
+    {
+      "id": 120,
+      "subject_id": 5,
+      "question": "대칭키 암호방식과 공개키 암호방식의 장점을 조합한 하이브리드 암호 시스템에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 암호화 과정에서는 공개키 암호방식보다 상대적 으로 빠른 대칭키 암호방식을 이용하여 메시지를 암호화 한다.",
+        "② 복호화 과정에서는 세션키를 먼저 복호화한 후 메시지를 복호화한다.",
+        "③ 메시지 암호화에 사용한 세션키는 송신자의 공개키를 이용하여 암호화한다.",
+        "④ 생성된 암호문은 세션키에 대한 암호 부분과 메시 지에 대한 암호 부분으로 구성된다. 3"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다."
+    }
+  ]
+}

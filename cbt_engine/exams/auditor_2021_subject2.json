@@ -1,0 +1,445 @@
+{
+  "exam_info": {
+    "id": "auditor_2021_sub2",
+    "title": "[2021년] 2과목 : 소프트웨어공학 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2021,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2021년 2과목 : 소프트웨어공학 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "다음 설명에 가장 적절한 설계 원칙은?\n\n단위 테스트를 수행할 때 테스트 대상 클래스를 변경 하지 않고도 대상 클래스의 환경을 테스트가 용이 하도록 통제 가능한 환경으로 변경할 수 있는 설계가 되어야 한다.",
+      "options": [
+        "① SRP(Single Responsibility Principle)",
+        "② OCP(Open Closed Principle)",
+        "③ DIP(Dependency Inversion Principle)",
+        "④ LSP(Liskov Substitution Principle)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 26
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음 상황에 적용하기에 가장 적절한 디자인 패턴은?\n\nŸ 장기 게임을 하는 프로그램에서 사용자의 선택에 맞추어서 특정 루틴의 레벨을 간단하게 교체할 수도 있다.\nŸ 메모리가 적은 환경에서는 속도는 느리지만 메모리를 절약하는 알고리즘을 사용하고, 메모리가 많은 환경에서는 속도는 빠르지만 메모리를 많이 사용하는 알고리즘을 사용한다.\nŸ 스프레드시트 소프트웨어의 디버그 판에서 복잡한 계산을 실행할 때, ‘버그가 있을지도 모르는 고속의 알고리즘’과 ‘저속이지만 확실한 계산을 실행하는 알고리즘’을 준비해서 전자의 검산을 후자로 실행시킨다.",
+      "options": [
+        "① strategy 패턴",
+        "② observer 패턴",
+        "③ command 패턴",
+        "④ decorator 패턴"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 27
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "애자일 개발의 품질 관리에 관한 설명 중 가장 적절한 것은?",
+      "options": [
+        "① 문서 기반의 정형적인 방식을 따른다.",
+        "② ISO 9001에 포함된 표준 기반 접근법을 적극적으 로 준수한다.",
+        "③ 공식적인 인스펙션 또는 리뷰 프로세스들을 정기적 으로 사용한다.",
+        "④ 코드에서 문제를 발견하면 원래의 개발자가 아니라도 문제를 직접 수정할 수 있다. 7"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 28
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음 테스트 커버리지(test coverage)에 대한 설명 중에서 올바른 것만으로 묶인 것은?\n\n가. 결정 커버리지(decision coverage)를 100% 만 족하면 문장 커버리지(statement coverage)를 100% 만족한다.\n나. 결정/조건 커버리지(decision/condition coverage) 를 100% 만족하면 결정 커버리지(decision coverage)를 100% 만족한다.\n다. 조건 커버리지(condition coverage)를 100% 만족 하면 결정 커버리지(decision coverage)를 100% 만족한다.\n라. 결정/조건 커버리지(decision/condition coverage) 를 100% 만족하면 조건 커버리지(condition coverage)를 100% 만족한다.",
+      "options": [
+        "① 가, 다",
+        "② 가, 나, 다",
+        "③ 가, 나, 라",
+        "④ 가, 나, 다, 라"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 29
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "휴대폰에 설치되어 있는 전화번호 관리 애플리 케이션에 대해 ISO 9126의 품질 특성 분류 기준에 따라 리스크들을 식별한 결과가 가장 적절한 것은?",
+      "options": [
+        "① 효율성(efficiency) - 전화번호 등록 중에 전원이 꺼졌을 때 데이터가 손실된다.",
+        "② 신뢰성(reliability) - 적합한 그룹에 전화번호가 등록되지 않는다.",
+        "③ 사용성(usability) - 사용자가 전화번호 애플리 케이션의 초기 화면으로 돌아오는 단축 메뉴가 없다.",
+        "④ 기능성(functionality) - 등록된 전화번호가 임계값에 가까울 때 전화번호 탐색 시간이 현저하게 떨어진다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 30
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음 클래스 다이어그램이 나타내는 디자인 패턴 으로 가장 적절한 것은?",
+      "options": [
+        "① bridge 패턴",
+        "② decorator 패턴",
+        "③ flyweight 패턴",
+        "④ proxy 패턴 7"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2021_q31.png",
+      "image": "/exams/images/auditor_2021_q31.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 31
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "다음은 Java 프로그램의 코드 일부분을 보여준다. 이 프로그램을 컴파일할 때 (가) ~ (라) 라인 중 에서 컴파일 오류가 발생하지 않는 부분(라인)들만 으로 가장 적절하게 묶인 것은?\n\npublic class Test\n{\nprivate int a = 0; private static count = 0;\npublic int getA() { return a; }\npublic static int getCount() { return count;\n}\npublic static void test() {\nint sum = 0;\nsum = a; // (가) sum += count; // (나) System.out.println(getA()); // (다) System.out.println(getCount()); // (라)\n}\n}",
+      "options": [
+        "① 가, 다",
+        "② 나, 라",
+        "③ 가, 나, 다",
+        "④ 가, 나, 다, 라"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 32
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "SOAP 기반 웹 서비스와 RESTful 웹 서비스를 비교한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① SOAP 기반 웹 서비스는 RESTful 웹 서비스에 비해 구현하기 쉽고 확장성이 우수하다.",
+        "② SOAP 기반 웹 서비스에서 요청 및 응답은 모두 XML 형식으로 수행하는 반면, RESTful 웹 서비스에서는 JSON, XML, 일반 텍스트 등을 사용한다.",
+        "③ SOAP 기반 웹 서비스는 서비스 품질이나 신뢰성 관리를 위해 자신의 기반구조를 구현해야 하지만, RESTful 웹 서비스는 WS-Reliability나 WS-Transaction과 같은 기반구조의 지원 표준이 있다.",
+        "④ SOAP 기반 웹 서비스는 리소스 지향적인데 반해, RESTful 웹 서비스는 RPC 메커니즘의 서비스 지향적이다. 8"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 33
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "다음은 스프링 프레임워크가 제공하는 어드바이스의 유형을 그림으로 나타내고 있다. (가) ~ (다)에 가장 적절한 어드바이스는?",
+      "options": [
+        "① (가) AfterReturning 어드바이스 (나) Around 어드바이스 (다) AfterThrowing 어드바이스",
+        "② (가) AfterReturning 어드바이스 (나) After Throwing 어드바이스 (다) Around 어드바이스",
+        "③ (가) AfterThrowing 어드바이스 (나) Around 어드바이스 (다) AfterReturning 어드바이스",
+        "④ (가) Around 어드바이스 (나) AfterReturning 어드바이스 (다) AfterThrowing 어드바이스 8"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "image_url": "/exams/images/auditor_2021_q34.png",
+      "image": "/exams/images/auditor_2021_q34.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 34
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "다음의 소스 코드 변경을 잘 설명하고 있는 리팩 토링(refactoring) 방법으로 가장 적절한 것은?\n\n(변경전)\nint getRating() {\nreturn (moreThanFiveLateDeliveries()) ? 2 : 1;\n}\nboolean moreThanFiveLateDeliveries() { return _numberOfLateDeliveries > 5;\n}\n(변경후)\nint getRating() {\nreturn (_numberOfLateDeliveries > 5) ? 2 : 1;\n}",
+      "options": [
+        "① inline method",
+        "② extract method",
+        "③ move method",
+        "④ substitute algorithm"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 35
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "다음은 특정 함수의 응집도(cohesion)들을 설명 하고 있다. 좋은 응집도에서 나쁜 응집도 순으로 순차적으로 배치한 것 중에서 가장 적절한 것은?\n\n가. 서로 연관성이 없는 기능들을 묶어 놓았다.\n나. 두 개의 기능을 구현한 함수로 동일한 속성 (attribute)을 사용하는 기능을 묶어 놓았다\n다. 초기화 함수와 같이 시간적으로 연관이 있는 기능들을 묶어 놓았다.\n라. 두 개의 기능을 구현한 함수로 하나의 기능의 결과가 다른 기능의 입력으로 사용된다.\n마. 하나의 문제를 수행하는 기능을 구현한 함수이다.",
+      "options": [
+        "① 마 – 라 – 나 – 다 - 가",
+        "② 마 - 나 - 라 - 다 - 가",
+        "③ 마 - 라 - 다 - 나 - 가",
+        "④ 마 - 나 - 다 - 라 - 가 9"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 36
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "다음에서 설명하는 요구사항 도출 기법으로 가장 적절한 것은?\n\n사용자들의 동작 프로세스를 이해하고 이를 지원하는 소프트웨어의 요구사항을 얻기 위해 사용하는 관찰 기법이다. 분석가는 사용자의 일상 업무를 관찰하고 사용자들의 실제 작업을 기록한다. 사람들이 실제 일하는 방식을 반영하는 기법으로 잘 드러나지 않는 요구사항을 발견하는데 도움을 준다.",
+      "options": [
+        "① 인터뷰(interview)",
+        "② 사용자 스토리(user story)",
+        "③ 문화기술적 연구(ethnography)",
+        "④ 스프린트 백로그(sprint backlog)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 37
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음 익스트림 프로그래밍(eXtreme programming)의 실무에 대한 설명 중 가장 적절하지 않은 것은?",
+      "options": [
+        "① 단순한 설계(simple design)는 설계를 간결하게 유지하여 미래의 잠재적 변경에 대비하는 것이다.",
+        "② 공동 소유권(collective ownership)은 개발자들이 코드에 대한 공동 책임을 지며, 모든 개발자가 어떤 코드라도 변경할 수 있다는 것이다.",
+        "③ 연속적 통합(continuous integration)은 특정 작업이 끝나면 바로 전체 시스템에 통합되며, 통합 후에는 모든 테스트를 통과해야 한다는 것이다.",
+        "④ 리팩토링(refactoring)은 코드 개선 사항이 발견 되면 코드를 지속적으로 개선하는 것이며, 이를 통하여 코드가 단순하고 유지보수하기 쉽게 된다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 38
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "다음에서 설명하는 UML 상태머신 다이어그램의 (가) 위치에 나타낼 표기법으로 가장 적절한 것은?\n\ntrigger 이벤트가 발생 하였을 때 guard 조건이 만족하면 전이가 일어나 는데 전이하면서 effect를 수행한다.",
+      "options": [
+        "① trigger [guard] effect",
+        "② trigger [guard] / effect",
+        "③ trigger / [guard] effect",
+        "④ trigger / [guard] / effect 9"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2021_q39.png",
+      "image": "/exams/images/auditor_2021_q39.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 39
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "소프트웨어 버전 관리에 대한 다음 설명 중 가장 적절하지 않은 것은?",
+      "options": [
+        "① Git과 Subversion 모두 commit 명령으로 새로운 버전을 생성할 수 있다.",
+        "② 분산 버전 관리 시스템인 Git은 버전 저장소에서 컴포넌트 버전 간 차이인 델타를 이용하여 공간을 절약한다.",
+        "③ Subversion은 하나의 마스터 저장소에 모든 컴포 넌트의 버전을 유지하는 중앙집중 버전 관리 시스템 이다.",
+        "④ 베이스라인은 시스템을 구성하는 컴포넌트 버전들의 집합을 의미한다. 소프트웨어 개발 과정 중 특정 시점이나 목적을 위하여 만들어진 산출물의 집합 이다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 40
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "문제를 일으킬 가능성 때문에 리팩토링(refactoring)이 필요한 코드는 ‘악취(bad smell)’가 있다고 표현 한다. 다음 설명에 가장 적절한 코드 악취(bad smell)는?\n\nŸ 변경을 할 때마다 많은 클래스를 조금씩 수정해야 한다.\nŸ 변경해야 할 것이 여러 군데 널려 있기 때문에 찾기도 어렵고 변경해야 할 중요한 사항을 놓치 기도 쉽다.",
+      "options": [
+        "① 기능에 대한 욕심(feature envy)",
+        "② 데이터 덩어리(data clump)",
+        "③ 산탄총 수술(shotgun surgery)",
+        "④ 확산적 변경(divergent change) 1"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 41
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "다음은 UML로 작성한 클래스 다이어그램과 이에 해당하는 Java 코드의 일부를 나타낸 것이다. 가장 적절하지 않은 것은?\n\npublic class Car {\nprivate Tire 가 myTires[4];\n}\ninterface Drive {\n...\n}\npublic class\n나 N e x t G e n D r i v e extends Drive {\n...\n}\npublic abstract\nclass Door {\nprivate int status; 다 public abstract\nvoid lock();\npublic abstract\nvoid unlock();\n}\npublic class Car {\npublic class\nEngine { 라\n...\n}\n}",
+      "options": [
+        "① 가",
+        "② 나",
+        "③ 다",
+        "④ 라 0"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2021_q42.png",
+      "image": "/exams/images/auditor_2021_q42.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 42
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "다음의 소스 코드와 관련성이 가장 깊은 feature diagram은?\n\nvoid f(int x) {\nprintf(“%d\\n”, x);\n#if defined(Feature1)\ng1(x);\n#if defined(Feature2)\ng2(x);\n#else\ng3(x);\n#endif\n#endif\n}",
+      "options": [
+        "①",
+        "②",
+        "③",
+        "④"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2021_q43.png",
+      "image": "/exams/images/auditor_2021_q43.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 43
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "ISO/IEC/IEEE 29119에서는 combinatorial test techniques으로서 all combination testing, pair-wise testing, each choice testing, base choice testing이 제시되고 있다. 다음의 문제에 대하여 가장 많은 수의 테스트케이스를 생성하는 기법과 가장 작은 수의 테스트케이스를 생성하는 기법으로 가장 적절하게 묶인 것은?\n\nŸ 여행 목적지: 서울, 부산, 강릉\nŸ 여행 방법: 자가용, 기차, 택시\nŸ 숙박 유형: 고급호텔, 보통호텔",
+      "options": [
+        "① all combination testing, each choice testing",
+        "② all combination testing, base choice testing",
+        "③ pair-wise testing, each choice testing",
+        "④ pair-wise testing, base choice testing 1"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 44
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "다음의 Java 소스 코드에 대하여 가장 적절한 클래스 다이어그램은?\n\npublic class Rectangle {\nprivate int width, height; private int area; private static int count;\npublic Rectangle(int w, int h) {\nsetWidth(w); setHeight(h); count++;\n}\npublic void setWidth(int w) {\nthis.width = w; area = width * height;\n}\npublic void setHeight(int h) {\nthis.height = h; area = width * height;\n}\n}",
+      "options": [
+        "①",
+        "②",
+        "③",
+        "④ 1"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2021_q45.png",
+      "image": "/exams/images/auditor_2021_q45.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 45
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "SP(software process) 인증 제도는 SW 개발 조직의 SP 품질 역량 수준을 심사하여 등급을 판정한다. 2등급에 대한 평가 항목으로서 가장 적절하지 않은 것은?",
+      "options": [
+        "① 협력업체를 선정하고, 계약을 체결하고, 계약 사항의 이행 여부를 확인한다.",
+        "② 측정 및 분석 계획을 수립하고, 수집된 측정 결과를 분석한다.",
+        "③ 구성원에 대한 교육 계획을 수립하고, 실시한 교육 에 대한 효과를 평가한다.",
+        "④ 프로젝트 진척사항을 검토하고, 식별된 문제를 분석하고, 시정조치 활동을 수행한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 46
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "다음은 ‘온라인쇼핑시스템’에 대한 요구사항들을 나열한 것이다. 이들 요구사항에 제시된 품질 속성 또는 세부 품질 속성으로 가장 적절한 것은?\n\n가. 동시에 최대 10만명의 사용자 접속을 수용해야 한다.\n나. 온라인 쇼핑에 필요한 모든 기능을 제공해야 한다.\n다. 계획된 정비 시간을 제외하면 1주일에 10분 이상 down되지 않아야 한다.\n라. 비정상적으로 접속이 종료된 후에, 로그인을 하면 기존 상품 조회 화면을 보여 준다.\n마. 온라인쇼핑시스템에 대한 테스트 기준 수립이 용이하고 테스트 수행이 용이해야 한다.",
+      "options": [
+        "① capacity, functional suitability, availability, maintainability",
+        "② performance efficiency, functional suitability, availability, testability",
+        "③ capacity, functional suitability, reliability, maintainability",
+        "④ performance efficiency, functional suitability, availability, testability, adaptability 1"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 47
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "(가)의 클래스 다이어그램은 (나)의 클래스 다이어그램으로 개선이 되었다. 이 개선 과정에서 적용된 설계 원칙으로서 가장 적절한 것은?\n\n(가) (나)",
+      "options": [
+        "① SRP(Single Responsibility Principle), DIP(Dependency Inversion Principle)",
+        "② SRP(Single Responsibility Principle), OCP(Open Closed Principle)",
+        "③ LSP(Liskov Substitution Principle), ISP(Interface Segregation Principle)",
+        "④ DIP(Dependency Inversion Principle), ISP(Interface Segregation Principle) 2"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2021_q48.png",
+      "image": "/exams/images/auditor_2021_q48.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 48
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "다음 시퀀스 다이어그램은 아키텍처 패턴의 개략적인 동작을 보여 준다. 이 패턴에 대한 설명으로서 가장 적절한 것은?",
+      "options": [
+        "① 분산 애플리케이션을 개발할 때의 복잡도를 증가 시킨다.",
+        "② 동일한 환경에서의 서비스 실행을 지원한다.",
+        "③ 여러 서비스를 하나의 동일한 언어로 개발하는 것이 일반적이다.",
+        "④ modifiability, availability, performance 측면 에서 바람직하다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2021_q49.png",
+      "image": "/exams/images/auditor_2021_q49.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 49
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "(가)의 클래스 다이어그램이 (나)의 클래스 다이어그램으로 개선이 되었다. 이때 적용된 리팩토링 (refactoring)으로서 가장 적절한 것은?\n\n(가) (나)",
+      "options": [
+        "① hide delegate",
+        "② remove middle man",
+        "③ rename method",
+        "④ encapsulate downcast 1"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "image_url": "/exams/images/auditor_2021_q50.png",
+      "image": "/exams/images/auditor_2021_q50.png",
+      "subject": "소프트웨어공학",
+      "origin_year": 2021,
+      "origin_id": 50
+    }
+  ]
+}

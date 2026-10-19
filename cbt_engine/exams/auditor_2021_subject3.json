@@ -1,0 +1,437 @@
+{
+  "exam_info": {
+    "id": "auditor_2021_sub3",
+    "title": "[2021년] 3과목 : 데이터베이스 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2021,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2021년 3과목 : 데이터베이스 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "국제 데이터 품질 표준인 ISO 8000에서 데이터의 품질 기준을 크게 유효성과 활용성으로 구분하고 있다. 다음 중 활용성에 해당하는 것은?",
+      "options": [
+        "① 사실성",
+        "② 필수성",
+        "③ 정합성",
+        "④ 충분성"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 51
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음 ER 모델에서 1:1 관계 타입 MANAGES의 속성 StartDate에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① StartDate를 EMPLOYEE 엔티티 타입의 속성으로 이동시킬 수 있다.",
+        "② StartDate를 DEPARTMENT 엔티티 타입의 속성으 로 이동시킬 수 있다.",
+        "③ StartDate를 MANAGES 관계 타입의 속성으로 그대 로 유지하여도 된다.",
+        "④ StartDate를 EMPLYOEE와 DEPARTMENT 양쪽 모두에 유지해야 한다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2021_q52.png",
+      "image": "/exams/images/auditor_2021_q52.png",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 52
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "릴레이션 스키마 S=(A, B, C, D, E, F, G)에서 다음과 같은 함수적 종속성(functional dependency) 이 존재한다고 가정하자. 릴레이션 S에서 후보 키로서 옳지 않은 것은?\n\nA → ABCDEFG, BD → E, CE → A",
+      "options": [
+        "① A",
+        "② BD",
+        "③ CE",
+        "④ BCD 1"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 53
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "SQL에서 사용되는 COUNT 함수에 대한 다음 설명 중 옳은 것으로 묶인 것은?\n\n가. 중복되는 값이 있는 속성의 경우, COUNT(속성명)의 결과와 COUNT(DISTINCT 속성명)의 결과는 동일하다.\n나. 중복되는 값이 없는 속성의 경우, COUNT(*)의 결과와 COUNT(속성명)의 결과는 상이하다.\n다. COUNT(*)의 처리 대상은 투플의 집합이고, 그 결과는 투플의 수이다.\n라. COUNT(*)의 결과에 중복되는 투플은 포함된다.",
+      "options": [
+        "① 가, 나",
+        "② 가, 다",
+        "③ 나, 다",
+        "④ 다, 라"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 54
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "SQL 뷰(view)에 대한 설명 중 옳은 것으로만 짝 지어진 것은?\n\n가. 뷰에 대한 투플의 삽입은 시스템에 의해 거부될 수 있다.\n나. 원본과의 불일치 문제로 인해 뷰 생성 시 GROUP BY절을 사용할 수 없다.\n다. 집계(aggregation)함수에 의해 생성된 뷰의 경우 일반적으로 갱신을 허용하지 않는다.\n라. 실체화된 뷰(materialized view)를 생성할 경우에는 CREATE VIEW 구문을 사용하고, 그렇지 않은 뷰를 생성할 경우에는 CREATE TABLE 구문을 사용한다.",
+      "options": [
+        "① 가, 나",
+        "② 가, 다",
+        "③ 나, 라",
+        "④ 다, 라"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 55
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "조인 연산은 질의 처리에서 가장 많은 비용이 소요되는 연산 중 하나이다. 다음 중 조인 연산을 구현하는 방법과 가장 거리가 먼 것은?",
+      "options": [
+        "① k-최근접 이웃 조인(k-nearest neighbor join)",
+        "② 중첩 루프 조인(nested loop join)",
+        "③ 정렬-합병 조인(sort-merge join)",
+        "④ 분할-해시 조인(partition-hash join) 4"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 56
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "객체 데이터 모델(object data model)에서 사용하는 OID(Object IDentifier)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① OID는 객체마다 유일한 값을 가지고 있으므로 하나의 시스템 내에서 OID가 동일한 객체는 있을 수 없다.",
+        "② OID는 객체가 생성될 때 시스템에 의해 생성되고 일단 생성된 뒤에는 어떠한 경우에도 변경되지 않는다.",
+        "③ OID는 관계 데이터 모델에서 사용하는 기본 키와 본질적으로 동일한 성질을 가지고 있다.",
+        "④ OID는 객체가 제거될 때만 삭제되며 이렇게 삭 제된 OID는 다시 재사용할 수 없다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 57
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음과 같은 5-원(way) B-트리가 있다고 할 때, 새로운 키 값 30을 삽입했을 때의 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 삽입의 결과로 트리의 높이가 증가한다.",
+        "② 삽입의 결과로 루트의 공간 사용율이 1/2 미만이 된다.",
+        "③ 삽입 과정에서 노드의 분할이 발생한다.",
+        "④ 삽입 과정에서 노드의 병합이 발생한다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2021_q58.png",
+      "image": "/exams/images/auditor_2021_q58.png",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 58
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "세 개의 릴레이션 학생(학번, 이름, 학년, 학과), 과목(과목번호, 과목이름, 학점, 학과), 등록(학번, 과목번호, 성적)에서 “모든 과목에 수강하고 있는 학생의 학번과 이름을 검색하라”는 질의를 효율적인 관계 대수 명령어로 작성할 때 사용되는 연산으로 가장 적절하지 않은 것은? (단, 밑줄 속성은 릴레이션의 기본키를 표시한다.)",
+      "options": [
+        "① 조인",
+        "② 차집합",
+        "③ 디비전",
+        "④ 프로젝션 1"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 59
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "학생(학번, 이름, 학과) 릴레이션에 수학과 학생 이 60명, 화학과 학생이 40명, 물리과 학생이 30명, 학과가 정해지지 않은(NULL) 학생이 10명 으로 구성되어 있을 때, 각각의 실행결과 투플 수로 옳은 것은? (단, 밑줄 속성은 기본키를 표시한다.)\n\n가. SELECT 학과 FROM 학생;\n나. SELECT DISTINCT 학과 FROM 학생;\n다. SELECT COUNT(*) FROM 학생 GROUP BY 학과;",
+      "options": [
+        "① 가 130, 나 3, 다 3",
+        "② 가 130, 나 4, 다 4",
+        "③ 가 140, 나 3, 다 3",
+        "④ 가 140, 나 4, 다 4"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 60
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "다음 릴레이션 R과 S에 대해 결과 릴레이션 RS가 얻어지도록 하는 관계 대수 연산으로 옳은 것은?\n\nR S RS A B C B C D A B C a1 b1 c1 b1 c1 d1 a1 b1 c1 a2 b1 c1 b1 c1 d2 a2 b1 c1 a3 b1 c2 b2 c3 d3 a4 b2 c3 a4 b2 c3",
+      "options": [
+        "① R⋈NS (natural join)",
+        "② R⟖c=cS (right outer join)",
+        "③ R⋉S (semi join)",
+        "④ R⋃+S (outer union)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 61
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "다음과 같은 특징을 가지는 NoSQL 데이터베이스 유형으로 가장 적절한 것은?\n\nŸ 관계 데이터 모델과 비슷하게 데이터는 물론 데이터 간의 관계를 표현하는데 적합하다.\nŸ 다른 NoSQL 모델과 달리 트랜잭션을 통해 ACID를 지원하며 클러스터 환경에는 적합하지 않다.\nŸ 연관 데이터를 추천해주거나 소셜 네트워크에 서 친구 찾기 질의를 효율적으로 수행하는데 적합하다.",
+      "options": [
+        "① 그래프 기반(graph-based) 데이터베이스",
+        "② 컬럼 기반(column-based) 데이터베이스",
+        "③ 문서 기반(document-based) 데이터베이스",
+        "④ 키-값(key-value) 데이터베이스 5"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 62
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음과 같은 EMPLOYEE 릴레이션이 있다고 하자. EMPLOYEE ENO ENAME MANAGER 1001 KIM 1003 1002 PARK 1006 1003 LEE 1006 1004 CHO 1002 1005 CHOI 1006 1006 YOO ∧ EMPLOYEE 릴레이션에 대해 다음과 같은 질의문을 사용하여 자체 조인(self join)을 실행했을 때, 실행결과로 나타나지 않는 것은?\n\nSELECT E.ENAME, M.ENAME\nFROM EMPLOYEE E, EMPLOYEE M\nWHERE E.MANAGER = M.ENO;\nE.ENAME M.ENAME",
+      "options": [
+        "① KIM LEE",
+        "② PARK KIM",
+        "③ CHO PARK",
+        "④ CHOI YOO"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 63
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "동시성 제어를 하지 않고 다수의 트랜잭션을 동시에 수행하면 문제가 발생할 수 있다. 다음과 같이 트랜잭션 T1이 홍길동의 잔액을 100,000원 증가시킨 후에 트랜잭션 T2는 모든 계좌의 잔액 에 대한 평균값을 검색하였다. 그 이후 어떤 이 유로 T1이 철회되는 경우 발생하게 되는 문제점 으로 가장 적절한 것은?\n\nT1 T2 UPDATE account SET balance = balance + 100000\nWHERE name = ‘홍길동’;\nSELECT AVG(balance)\nFROM account;\nROLLBACK; COMMIT;",
+      "options": [
+        "① 오손 데이터 읽기(dirty read)",
+        "② 갱신 손실(lost update)",
+        "③ 반복할 수 없는 읽기(unrepeatable read)",
+        "④ 모순성(inconsistency) 1"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 64
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "다음의 두 릴레이션 직원(EMP), 부서(DEPT)의 CREATE TABLE 문에 포함될 참조무결성 조치에 대한 설명으로 옳지 않은 것은? (단, Super_ENO는 상사 직원번호, E_DNO는 소속부서, Mgr_ENO는 부서 관리자의 직원번호를 나타내고, 밑줄은 기본키를 표시한다.) EMP(ENO, Name, Super_ENO, E_DNO) 참조무결성제약 및 조치:\n\nFOREIGN KEY (Super_ENO) REFERENCES EMP(ENO) ON DELETE SET NULL ON UPDATE CASCADE FOREIGN KEY (E_DNO) REFERENCES DEPT(DNO) ON DELETE SET DEFAULT ON UPDATE CASCADE DEPT(DNO, Dname, Mgr_ENO) 참조무결성제약 및 조치: FOREIGN KEY (Mgr_ENO) REFERENCES EMP(ENO) ON DELETE SET DEFAULT ON UPDATE CASCADE",
+      "options": [
+        "① 직원의 소속 부서가 삭제되면 해당 직원은 디폴 트 부서로 배치된다.",
+        "② 상사 직원이 삭제되면 해당 직원은 디폴트 상사 에게 배치된다.",
+        "③ 부서번호(DNO)가 변경되면 해당 부서 소속 직원 의 소속 부서번호도 동일하게 갱신된다.",
+        "④ 관리자 직원이 삭제되면 삭제된 직원이 관리했 던 부서의 관리자는 디폴트 관리자로 배치된다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 65
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "다음은 확장 가능 해싱(extendible hashing) 기법이 가지는 디렉토리와 버켓 구조를 나타낸다. 그림에 서 전역 깊이(global depth)인 (가)와 지역 깊이 (local depth)인 (나)에 들어가는 숫자로 올바르 게 짝지어진 것은?",
+      "options": [
+        "① (가) 3, (나) 2",
+        "② (가) 4, (나) 2",
+        "③ (가) 3, (나) 1",
+        "④ (가) 4, (나) 1 6"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2021_q66.png",
+      "image": "/exams/images/auditor_2021_q66.png",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 66
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "사원 정보를 저장하는 릴레이션 EMPLOYEE와 부양 가족 정보를 저장하는 릴레이션 DEPENDENT가 다음 과 같이 정의되었다고 할 때, “부양가족이 없는 사원의 이름을 검색하라”라는 SQL 질의의 ㉮, ㉯, ㉰에 들어갈 내용으로 가장 적절한 것은?\n\nCREATE TABLE EMPLOYEE\n(NAME VARCHAR(30) NOT NULL, SSN CHAR(9) NOT NULL, ADDR VARCHAR(30), PHONE CAHR(10), PRIMARY KEY (SSN));\nCREATE TABLE DEPENDENT\n(ESSN CHAR(9) NOT NULL, DEPNAME VARCHAR(30) NOT NULL, AGE INT, PRIMARY KEY (ESSN, DEPNAME), FOREIGN KEY (ESSN) REFERENCES EMPLOYEE (SSN));\nSELECT NAME\nFROM EMPLOYEE\nWHERE ㉮ (SELECT ㉯ FROM DEPENDENT WHERE ㉰) ;\n㉮ ㉯ ㉰",
+      "options": [
+        "① NOT EXISTS * SSN=ESSN",
+        "② NOT IN * NAME=DEPNAME",
+        "③ NOT IN ESSN SSN=ESSN",
+        "④ NOT EXISTS ESSN NAME=DEPNAME"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 67
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "다음 릴레이션 R과 S에 대해 <보기>의 4개 관계 연산을 수행했을 때 4개 결과 릴레이션의 카디널리티(cardinality)의 합으로 옳은 것은?\n\nR S A B C C D 10 a 1 1 x 20 b 2 2 y 30 c 3 4 z 40 d 2 50 e 5\n<보기> R⋈c<cS (theta join) R⋈N S (natural join) R⟕c=cS (left outer join) R⟖c=cS (right outer join)",
+      "options": [
+        "① 15",
+        "② 17",
+        "③ 19",
+        "④ 21 1"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2021_q68.png",
+      "image": "/exams/images/auditor_2021_q68.png",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 68
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "대출을 위한 신용 등급 판단을 위해 다음 데이 터에 대해 나이브 베이지안 분류기를 적용할 경우 가장 작은 값은?\n\nTID 집소유 결혼 연봉 신용\n1 예 미혼 125K 우수 2 아니오 기혼 100K 우수 3 아니오 미혼 70K 우수 4 예 기혼 120K 우수 5 아니오 이혼 95K 불량 6 아니오 기혼 60K 우수 7 예 이혼 220K 우수 8 아니오 미혼 85K 불량 9 아니오 기혼 75K 우수 10 아니오 미혼 90K 불량",
+      "options": [
+        "① P(집소유=아니오| 우수)",
+        "② P(집소유=예| 우수)",
+        "③ P(결혼=미혼| 우수)",
+        "④ P(결혼=미혼| 불량)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 69
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "모바일 데이터베이스에서 모바일 데이터의 갱신에 대한 설명 중 옳은 것으로 묶인 것은?\n\n가. 모바일 호스트가 다른 컴퓨터에 의해 갱신될 수 있는 데이터를 판독 전용 사본으로 캐시 하고 있다면, 이렇게 캐시된 데이터는 일관성을 유지하고 있다.\n나. 모바일 호스트가 연결되어 있으면 무효로 된 캐시 항목들을 알려주는 무효 보고서 (invalidation report)를 전송받을 수 있다.\n다. 모바일 호스트가 단절되어 있어서 무효 보고 서를 받지 못하는 경우 재연결시 전체 캐시 를 무효로 할 수 있는데, 이 경우 소요되는 비용은 무시할 정도로 적다.\n라. 유선 분산 시스템에서는 분할이 장애 모드로 간주되지만 모바일 컴퓨팅에서는 단절로 인 한 분할이 정상 작동 모드의 일부가 되므로 일관성이 손상될 위험이 있더라도 분할 상태 에서 데이터 접근을 허용할 필요가 있다.",
+      "options": [
+        "① 가, 나",
+        "② 가, 다",
+        "③ 나, 라",
+        "④ 다, 라 7"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 70
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "트랜잭션 관리에서 다음과 같이 3개의 트랜잭션에 대해 검사시점(checkpoint) 회복 기법이 사용될 때, 시스템이 장애가 발생한 후 트랜잭션들의 REDO 연산과 UNDO 연산을 수행하는 설명으로 옳지 않은 것은?\n\nŸ 검사시점 C1이 정상적으로 수행되었고 검사시점 C2가 수행될 때 장애가 발생했다. 트랜잭션 T1은 C1 이전에 시작해서 C1 이전에\nŸ 완료되었다.\nŸ 트랜잭션 T2는 C1 이전에 시작해서 C2 이전에 완료되었다.\nŸ 트랜잭션 T3는 C1 이전에 시작해서 C2일 때 수행 중이었다.",
+      "options": [
+        "① T1은 회복 작업에 관련될 필요가 없다.",
+        "② T2는 처음부터 끝까지 REDO를 수행한다.",
+        "③ T3는 처음부터 끝까지 UNDO를 수행한다.",
+        "④ 회복 작업이 완료될 때까지 시스템은 새로운 트 랜잭션을 받아들일 수 없다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 71
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "릴레이션의 키에 대한 설명 중 맞는 것을 모두 고른 것으로 가장 적절한 것은?\n\n가. 모든 릴레이션에는 최소한 하나의 수퍼키와 후보키가 존재한다.\n나. 릴레이션에서 외래키는 널(NULL) 값을 갖지 않을 수도 있다.\n다. 하나의 릴레이션에서 후보키의 개수는 수퍼 키 개수보다 많을 수 없다.\n라. 하나의 릴레이션에서 외래키는 여러 개가 존재할 수 있다.\n마. 데이터베이스 시스템은 참조된 속성 (referenced attribute)이 기본키인 경우 에만 참조무결성 제약조건을 지원한다고 할 수 있다.",
+      "options": [
+        "① 가, 나, 다, 라",
+        "② 나, 다, 라",
+        "③ 나, 다, 라, 마",
+        "④ 가, 나, 다, 라, 마 1"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 72
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "다음은 두 문서의 용어 벡터(term vector)이다. 이 두 벡터 간 코사인 유사도(cosine similarity)의 계산 결과로 올바른 것은?\n\nDocID 사과 감 체리포도키위망고딸기 배\nDoc1 3 1 0 3 1 2 1 0 Doc2 1 1 2 1 0 2 4 3 ",
+      "options": [
+        "① 15",
+        "② 0.5",
+        "③ ",
+        "④ 13"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2021_q73.png",
+      "image": "/exams/images/auditor_2021_q73.png",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 73
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "릴레이션 R을 릴레이션 R1과 R2로 분해할 때 바람직한 분해(decomposition)에 대한 설명으로 가장 적절하지 않은 것은? (단, R1∩R2는 R1과 R2의 공통 속성을 의미한다.)",
+      "options": [
+        "① 손실없는 분해(lossless decomposition)가 되어야 한다.",
+        "② 함수적 종속성(functional dependency) R1∩R2 → R1 과 R1∩R2 → R2 를 모두 만족하여야 한다.",
+        "③ R1∩R2 가 R1 의 수퍼키가 된다.",
+        "④ R의 함수 종속성은 분해 후에도 가급적 보존되 어야 한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 74
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "연관 규칙 생성을 위한 Apriori 알고리즘을 사용하여 {A,B,C,D}(간략히 ABCD라고 함)가 빈발 항목집합(frequent itemset)임을 알았다. 그런데, ABCD에서 만든 규칙 BCD→A가 최소신뢰도 조건을 만족하지 않아 연관규칙이 될 수 없다면, 이 사실로부터 더 이상 고려할 필요가 없는 규칙들로 만 짝지어진 것은?",
+      "options": [
+        "① BD→AC, AB→CD",
+        "② AB→CD, A→BCD",
+        "③ BD→AC, D→ABC",
+        "④ A→BCD, D→ABC 8"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2021,
+      "origin_id": 75
+    }
+  ]
+}

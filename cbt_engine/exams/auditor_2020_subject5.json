@@ -1,0 +1,347 @@
+{
+  "exam_info": {
+    "id": "auditor_2020_sub5",
+    "title": "[2020년] 5과목 : 보안 (20문항)",
+    "category": "정보시스템감리사",
+    "year": 2020,
+    "time_limit_minutes": 20,
+    "passing_rules": {
+      "total_questions": 20,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2020년 5과목 : 보안 (20문항)",
+      "start_q": 1,
+      "end_q": 20,
+      "question_count": 20,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "다음 설명에 해당하는 SSL 프로토콜으로 가장 적 절한 것은?\n\n상위 계층으로부터 오는 메시지를 전달하며, 메시 지는 단편화되거나 선택적으로 압축된다. MAC은 협의된 해시 알고리즘을 사용하여 압축된 메시지 를 추가한다. 압축된 단편화와 MAC은 협의된 암호 화 알고리즘을 사용하여 암호화된다.",
+      "options": [
+        "① Record 프로토콜",
+        "② Alert 프로토콜",
+        "③ ChangeCipherSpec 프로토콜",
+        "④ Handshake 프로토콜"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 101
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음에서 설명하는 보호대책을 통해 방어하고자 하는 공격 유형으로 가장 적절한 것은?\n\n방어 기법 1. 주소공간 배치에 대한 난수화 설정 으로 공격자가 메모리 내 특정 정보의 위치를 추 정하지 못하게 한다. 방어 기법 2. 프로그램 내 스택에서의 명령어 실행 기능을 제한해야 한다. 방어 기법 3. 스택가드(stack guard) 기능을 활성화 하여 스택을 보호하는 것이 필요하다.",
+      "options": [
+        "① 버퍼 오버플로우(buffer overflow) 공격",
+        "② 레이스 컨디션(race condition) 악용",
+        "③ SQL 인젝션(injection)",
+        "④ 환경변수 취약점 공격"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 102
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "위험 평가 방법 중 정량적 분석법에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 많은 데이터의 입력이 필요하며 복잡한 계산을 필요로 한다.",
+        "② 금액으로 산정하기 어려운 정보의 평가에 용이하게 사용된다.",
+        "③ 정보보호 대책의 비용을 정당화하고 위험 분석의 결과를 이해하기 쉽다.",
+        "④ 과거자료 접근법, 수학공식 접근법, 확률분포 추정법 등이 이에 포함된다. 2"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 103
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "보안시스템의 개발 원칙에 대한 설명 중 가장 적절 하지 않은 것은?",
+      "options": [
+        "① Complete mediation : 모든 접근 시도는 접근 통 제 메카니즘에 의해 점검되어야 한다.",
+        "② Fail-safe default : 시스템의 보안성 유지가 안 된다면, 시스템 운영을 중단하는 것이 좋다.",
+        "③ Least privilege : 시스템을 사용하는 모든 이용 자는 업무(task)를 수행하는데 필요한 최소의 권 한만이 주어져야 하고 주어진 권한도 시간에 따라 달라진다.",
+        "④ Open design : 보안 메카니즘은 비밀로 유지하지 않고 공개하는 것이 좋다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 104
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "다음에서 설명하는 웹 서비스의 주요 구성 요소로 가장 적절한 것은?\n\n(가) 웹 서버에서 생성된 난수 값을 클라이언트 컴퓨터에 저장하여 다음 접속 시 해당 클라 이언트 컴퓨터를 식별한다. (나) 다수 개의 웹 클라이언트들이 동일한 정보를 요청하는 것에 대비하여 로컬 네트워크 서 버에 첫 번째 요청된 웹페이지의 내용을 저 장한다.",
+      "options": [
+        "① (가) 웹 방화벽 (나) 웹 로그",
+        "② (가) 웹 로그 (나) 웹 캐시",
+        "③ (가) 쿠키 (나) 웹 방화벽",
+        "④ (가) 쿠키 (나) 웹 캐시"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 105
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "포맷 스트링(format string) 취약점에 대한 설명 으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① printf 함수가 가지고 있는 선택적 매개변수(opt ional argument)의 특성은 취약점이 될 수 있다.",
+        "② 소프트웨어의 사용자가 포맷 스트링을 지정할 수 있는 것을 불허하여 취약점 이용에 대처할 수 있다.",
+        "③ 포맷 스트링 %n을 이용하여 메모리의 특정 위치(주 소)에 값을 지정할 수 있다.",
+        "④ 포맷 스트링 취약점을 이용하여 악성코드를 실행 하는 것은 불가능하다. 1"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 106
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "클라우드 책임공유 모델(cloud shared responsibility model)에 따라, SaaS(Software as a Service)를 사용하는 고객의 보안 책임으로 가장 적절한 것은?",
+      "options": [
+        "① 물리 기반 환경에 대한 보안(physical infrastru -cture security)",
+        "② 가상화 기반 환경에 대한 보안(virtualized infr -astructure security)",
+        "③ 운영체제 시스템에 대한 보안(operating system security)",
+        "④ 데이터 접근에 대한 보안(data access security)"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 107
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "개인 식별이 가능한 데이터를 직접적으로 식별할 수 없는 다른 값으로 대체하는 가명처리(pseudon\n\n-ymization) 방법으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 암호화(encryption)",
+        "② 라운딩(rounding)",
+        "③ 교환 방법(swapping)",
+        "④ 휴리스틱 가명화(heuristic pseudonymization)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 108
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "포렌식 과정에서 수집된 디지털 증거가 법적 효력을 가지고 증거 능력을 인정받기 위한 원칙 중 다음에서 설명하는 것으로 가장 적절한 것은?\n\n증거 획득 후 이송/분석/보관/법정 제출 등 일련의 과정이 명확해야 하며, 이러한 과정에 대한 추적이 가능해야 한다.",
+      "options": [
+        "① 재현의 원칙",
+        "② 무결성의 원칙",
+        "③ 정당성의 원칙",
+        "④ 연계 보관성의 원칙"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 109
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "다음 중 TCP 고유의 취약점을 이용한 TCP 세션 하이재킹(session hijacking) 공격에 대한 보안 대책으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① ACK storm 탐지",
+        "② 비동기화 상태 탐지",
+        "③ 다이렉트 브로드캐스트 방지",
+        "④ 패킷의 유실과 재전송 증가 탐지 2"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 110
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "다음 중 공개키 기반 구조(PKI: Public Key Infrastru\n\n-cture)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 공개키 인증서를 위해 X.509 표준 인증서 형식을 사용한다.",
+        "② PKI는 인증, 기밀성, 부인방지와 메시지의 무결성을 제공한다.",
+        "③ PKI 전반에 사용되는 정책과 절차를 생성하는 기관은 PAA(Policy Approving Authority)다.",
+        "④ 공개키 기반 구조에서 공개키 인증서는 CA(Certi -ficate Authority)의 공개키를 이용하여 전자 서명을 생성한다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 111
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "다음 중 IPSec(Internet Protocol Security)에 대한 설명 중 가장 적절하지 않은 것은?",
+      "options": [
+        "① AH와 ESP 모두 메시지 무결성을 제공한다.",
+        "② AH는 메시지에 대한 기밀성을 제공하지만, ESP는 기밀성을 제공하지 않는다.",
+        "③ IPSec을 이용하여 재전송 공격 방지 기능을 제공 할 수 있다.",
+        "④ IPSec 운영 모드는 터널모드와 전송모드로 나뉜다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 112
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음 설명에 해당하는 것으로 가장 적절한 것은?\n\n도메인을 탈취하거나 DNS(Domain Name System) 등의 주 소를 변조하여 사용자들로 하여금 진짜 사이트로 오인 접속하도록 유도한 뒤에 개인 정보를 탈취하는 행 위이다.",
+      "options": [
+        "① 스미싱(smishing)",
+        "② 파밍(pharming)",
+        "③ 큐싱(qshing)",
+        "④ 스니핑(sniffing)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 113
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "리눅스 환경에서 traceroute 명령이 활용하는 IP 헤더 필드 및 ICMP 메시지의 종류로 가장 적절 하게 짝지어진 것은?",
+      "options": [
+        "① TTL – ICMP time exceeded",
+        "② SYN flag – ICMP echo request",
+        "③ Fragment offset – ICMP redirect",
+        "④ Header checksum – ICMP destination unreachable 2"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 114
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "리눅스 시스템의 계정과 권한 체계에 대한 설명 으로 가장 적절한 것은?",
+      "options": [
+        "① 일반 사용자는 UID(UserID)를 0번부터 부여 받는다.",
+        "② 사용자의 패스워드를 암호화하여 /etc/passwd 파일에 저장하고 있다.",
+        "③ 파일 실행 시 RUID(Real UID)와 EUID(Effective UID)는 항상 동일하다.",
+        "④ 파일의 접근권한이 4755인 경우 이 파일을 실행하는 동안에 파일 소유자 권한을 획득할 수 있다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 115
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "다음 중 해시 함수에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 임의의 길이의 원본 메시지에 대해 가변 길이의 해시 값을 생성한다.",
+        "② 동일한 원본 메시지에 대해서는 같은 해시 값을 생성한다.",
+        "③ 해시 함수의 역함수를 만들어 해시 값으로부터 원본 메시지를 복원할 수 있다.",
+        "④ 원본 메시지의 한 비트가 변경되면 그에 대응하여 거의 같은 해시 값을 출력하도록 설계한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 116
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "블록 암호 시스템의 운영 모드에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① CFB 모드는 각 블록을 이전 암호문과 XOR 연산 후에 암호화를 수행한다.",
+        "② CBC 모드는 각 블록이 독립적으로 동작하므로 한 블록에서 에러가 발생하더라도 다른 블록에 영향을 주지 않는다.",
+        "③ ECB 모드는 한 블록에서 발생한 에러가 다음 블록들에 영향을 주며, 블록 암호화 과정에서 병렬처리가 불가능하다는 단점이 있다.",
+        "④ CTR 모드는 블록을 암호화할 때마다 1씩 증가하는 카운터를 암호화한 후에 XOR 연산으로 암호문을 생성한다. 2"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 117
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "다음 설명에 해당하는 것으로 가장 적절한 것은?\n\n데이터의 불법복제를 방지하고 소유자의 저작권과 소유권을 보호하기 위해 디지털 콘텐츠에 사용자만이 알 수 있는 아이디(ID) 또는 정보 등의 부호를 삽입하거나, 영상·음성 등의 신호에 특정한 코드나 유형 등을 삽입하는 기술이다. 사용자가 소프트웨어를 사용하거나 이미지를 보는데 전혀 지장을 주지 않으면서도 원본의 출처나 복제 경로를 찾아내는데 효과적이다.",
+      "options": [
+        "① Digital envelope",
+        "② Digital watermark",
+        "③ Digital forensic",
+        "④ Digital wallet"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 118
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "전자서명(digital signature)이란 서명한 사람의 신분을 증명하는 방식으로, 특정 사용자를 인증 하기 위해 사용한다. 다음 중 전자서명에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 전자서명은 부인방지 기능을 제공하지 않는다.",
+        "② 비대칭키 암호 시스템을 사용하여 전자서명 서비스를 제공할 수 있다.",
+        "③ 서명용 공개키를 이용하여 누구든지 서명문을 생성 할 수 있으므로 위조가 가능하다.",
+        "④ DSA(Digital Signature Algorithm)는 AES(Advanced Encryption Standard) 알고리즘을 기반으로 전자 서명을 생성한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 119
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "대칭키 암호방식과 공개키 암호방식의 장점을 조합한 하이브리드 암호 시스템에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 암호화 과정에서는 공개키 암호방식보다 상대적 으로 빠른 대칭키 암호방식을 이용하여 메시지를 암호화 한다.",
+        "② 복호화 과정에서는 세션키를 먼저 복호화한 후 메시지를 복호화한다.",
+        "③ 메시지 암호화에 사용한 세션키는 송신자의 공개키를 이용하여 암호화한다.",
+        "④ 생성된 암호문은 세션키에 대한 암호 부분과 메시 지에 대한 암호 부분으로 구성된다. 3"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2020년 제21회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2020,
+      "origin_id": 120
+    }
+  ]
+}

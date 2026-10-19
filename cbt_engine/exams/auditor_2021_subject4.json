@@ -1,0 +1,427 @@
+{
+  "exam_info": {
+    "id": "auditor_2021_sub4",
+    "title": "[2021년] 4과목 : 시스템구조 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2021,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2021년 4과목 : 시스템구조 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "하드 드라이브, RAID 배열, 비디오-캡쳐 박스 및 네트워크 인터페이스와 같은 주변장치들을 위하여 데이터, 비디오, 오디오 및 전력을 하나의 고속 연결선으로 통합한 초고속 주변 장치 접속 기술로 가장 적절한 것은?",
+      "options": [
+        "① 아이비브리지(IvyBridge)",
+        "② QPI(Quick Path Interconnect)",
+        "③ 샌디브리지(SandyBridge)",
+        "④ 선더볼트(Thunderbolt)"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 76
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "도커 컨테이너에 관한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 가상화된 공간을 프로세스 단위의 격리 환경으로 만들어 준다.",
+        "② 호스트 커널을 공유하고 컨테이너 안에는 애플리 케이션을 구동하는데 필요한 라이브러리와 실행 파일만 존재한다.",
+        "③ 컨테이너를 이미지로 만들어 배포하는 시간은 빠 르나 이미지 공간이 기존의 하이퍼바이저를 이용 한 가상머신 방식보다 더 많이 필요하다.",
+        "④ 게스트 운영체제와 하이퍼바이저가 존재하지 않기 때문에 일반 호스트에 비해 성능 손실이 적다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 77
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "5G 기반 스마트시티(smart city) 영상 정보 수집 시스템(정보통신단체표준, TTAK.KO-10.1266-Part1, 2020-12-10 제정)에 대한 요구사항으로 가장 옳은 것은?",
+      "options": [
+        "① 이벤트 메타데이터 기반 즉시 대응 처리 기능을 제공해야 한다.",
+        "② 추출된 이벤트 객체를 기반으로 프레임 메타데이터 및 이벤트 메타데이터를 생성해야 한다.",
+        "③ 영상에서 시티(city) 객체를 추출해야 한다.",
+        "④ 프레임 메타데이터 생성 주기는 입력없이 시스템 에서 설정되도록 해야 한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 78
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음 중 머신러닝 모델 성능을 평가하는 지표로 가장 올바르게 정의된 것은?\n\n(T:True, P:Positive, F:False, N:Negative)",
+      "options": [
+        "① 정확도(Accuracy) = (TP+FP)/(TP+TN+FP+FN)",
+        "② 정밀도(Precision) = TN/(TN+FN)",
+        "③ F1-점수(F1-score) = 2FP/(2FP+FN+TP)",
+        "④ 재현율(Recall) = TP/(TP+FN) 1"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 79
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "다음 중 IP 터널링에 대한 설명으로 가장 올바르지 않은 것은?",
+      "options": [
+        "① 홈 에이전트로 라우팅 된 패킷을 이동 호스트에 전달하려면 터널을 통해 전달해야 한다.",
+        "② 이동 호스트에는 고유 IP주소인 홈 주소(home address) 가 할당되고, 이 주소는 호스트의 위치가 바뀌면 새로 할당되어야 한다.",
+        "③ COA(Care of Address)는 이동 호스트가 위치를 변경할 때 새로 이동한 지역에서 일시적으로 할 당된 IP주소를 의미한다.",
+        "④ 터널이 있으면 송신 호스트와 수신 호스트 사이에 동작하는 IP 프로토콜과는 별도로 추가적인 IP 프 로토콜을 사용하여 패킷을 중개해야 한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 80
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음 중 직접 사상(direct mapped) 캐시와 완전 연관(fully associative) 캐시에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 직접 사상 캐시를 사용하면 메모리의 블록이 캐 시의 어느 블록에나 배치될 수 있다.",
+        "② 직접 사상 캐시를 사용할 때, 일반적으로 LRU (Least Recently Used) 교체 정책의 캐시 적중 률이 임의(random) 교체 정책보다 우수하다.",
+        "③ 완전 연관 캐시를 사용하면 전체 캐시가 n개의 집합으로 분리되며 사상되는 메모리 블록은 이 중 특정 집합 내로 배치된다.",
+        "④ 완전 연관 캐시에서 특정 메모리 블록을 찾기 위 해 순차적 검색을 사용하면, 검색 소요 시간이 직접 사상 캐시보다 길다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 81
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "월요일부터 금요일까지 매일 24시간 동안 운영하는 시스템에서 다음과 같이 장애가 발생했을 때 MTTR (Mean Time To Repair)로 가장 적절한 것은?\n\nŸ 월요일: 13:00부터 14:00까지 장애 발생\nŸ 화요일: 장애 없음 수요일: 장애 없음\nŸ\nŸ 목요일: 16:00부터 19:00까지 장애 발생\nŸ 금요일: 장애 없음",
+      "options": [
+        "① 1시간",
+        "② 2시간",
+        "③ 3시간",
+        "④ 4시간 9"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 82
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "스토리지 용량이 1TB로 동일한 하드디스크들을 RAID (Redundant Array of Inexpensive Disk)로 구성하여 3TB의 스토리지 시스템을 구현할 때 가장 많은 하드 디스크가 필요한 RAID 레벨로 가장 적절한 것은?",
+      "options": [
+        "① RAID 0",
+        "② RAID 0 + 1",
+        "③ RAID 4",
+        "④ RAID 6"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 83
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "다음 중 패킷교환(packet switching)과 회선교환 (circuit switching)에 대한 설명으로 가장 적절 한 것은?",
+      "options": [
+        "① 패킷교환에서는 종단간 연결(end-to-end connection)을 위해 링크와 같은 자원을 예약한다.",
+        "② 패킷교환은 일반적으로 회선교환 대비 링크 자원의 활용률(utilization)이 낮다.",
+        "③ 회선교환에서는 종단간의 전송률을 보장할 수 있다.",
+        "④ 회선교환에서는 링크 자원의 공유가 허용되지 않 는다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 84
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "컨볼루션 신경망에서 원본 이미지가 5×5 크기의 행렬로 주어지고 3×3 크기의 필터 행렬이 합성곱 연산에 적용되는 경우, 이때 생성되는 특징 맵 행렬 의 크기로 옳은 것은? (단, 스트라이드(stride)는 1이고 패딩연산은 적용하지 않는다.)",
+      "options": [
+        "① 2×2",
+        "② 3×3",
+        "③ 4×4",
+        "④ 5×5"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 85
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "다음 중 SDN(Software Defined Networking) 오버레이(overlay)의 수행 방법(혹은 기술)으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① VXLAN(Virtual eXtensible LAN)",
+        "② NVGRE(Network Virtualization with GRE)",
+        "③ NVO3(Network Virtualization Overlays)",
+        "④ CDPI(Control to Data-Plane Interface)"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 86
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "빅데이터 아키텍처는 역할별로 수집, 적재, 처리 및 탐색, 분석 및 응용이라는 6개의 레이어로 나눌 수 있다. 다음 중 수집 레이어 기술로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 머하웃(mahout)",
+        "② 스톰(storm)",
+        "③ 카프카(kafka)",
+        "④ 플럼(flume) 2"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 87
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "백업 방식에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 증분(incremental) 백업은 전체 백업 이후에 변경 된 모든 데이터를 백업하는 방식이다.",
+        "② 차등(differential) 백업은 최종 전체 백업 또는 최종 증분 백업 이후에 변경된 파일만을 백업하는 방식이다.",
+        "③ 합성(synthetic) 백업은 기본 백업과 후속 차등 백업으로부터 전체 백업을 구성하거나 통합하는 방식이다.",
+        "④ 중복제거(deduplication) 백업은 여러 개의 파일 에서 동일한 부분은 하나만 저장하고 나머지 파일 구조는 메타데이터로 저장하는 방식이다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 88
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "RIP(Routing Information Protocol) 사용시 발생 가능한 문제점들을 해결하기 위한 방안 중에서 라우터가 회선이 고장 난 것을 감지하면 즉시 해당 경로의 홉을 16으로 지정하여 전체 네트워크에 전송 함으로써 도달 불가능을 신속하게 알리는 방식 으로 가장 적절한 것은?",
+      "options": [
+        "① Hold Down",
+        "② Poisoning",
+        "③ Split Horizon",
+        "④ Triggered Update"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 89
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "오픈스택(openstack)의 코어 서비스에서 가상 머신의 라이프사이클(생성과 폐기관리, 스케줄링 등)을 관리하는 프로젝트명으로 가장 적절한 것은?",
+      "options": [
+        "① Cinder",
+        "② Keystone",
+        "③ Neutron",
+        "④ Nova"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 90
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "SDN(Software Defined Networking)의 가장 중요한 기술로서 평가받는 OpenFlow는 SDN에서 컨트롤러와 네트워크 장비간의 인터페이스를 위한 규격으로 사용되는 기술이다. OpenFlow의 기술 또는 구성요소로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 플로우 테이블(flow table)",
+        "② 그룹 테이블(group table)",
+        "③ 네트워크 기능 가상화(network function virtualization)",
+        "④ 파이프라인 처리(pipelining) 0"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 91
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "일반적인 응답시간(response time)은 요청(request) 한 후 응답(response)을 받을 때까지 소요되는 시간 으로, 측정하는 위치에 따라 여러 가지 유형으로 나뉜다. 아래의 설명에 해당하는 응답시간 유형으로 가장 적절한 것은?\n\nŸ 사용자 요청이 클라이언트 네트워크에서 전송된 후부터 클라이언트 네트워크에 도달하기까지의 경과된 시간을 의미한다.\nŸ HTTP나 TP 모니터 테스트시에 측정된 로드 러너 (Load Runner) 응답시간이다.\nŸ 응답시간을 세분화하면 DNS Look-up 시간과 서비스 업로드/다운로드에 소요된 시간 그리고 서버 응답시간을 포함한다.",
+      "options": [
+        "① 클라이언트 응답시간",
+        "② 네트워크 응답시간",
+        "③ 서버 응답시간",
+        "④ 연계 응답시간"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 92
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "OSI 7계층에서 주요 계층별 대표 프로토콜을 짝지은 것으로 가장 올바른 것은?",
+      "options": [
+        "① 2계층(데이터 링크) : FDDI, PPP, SLIP, ATM",
+        "② 3계층(네트워크) : IP, ICMP, OSPF, DDP",
+        "③ 4계층(전송) : TCP, UDP, ARP, MTP",
+        "④ 5계층(세션) : Socket session, Named pipe, SPX, Net-Bios"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 93
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "다음 중 스위치(switch)에 대한 설명으로 가장 올바른 것은?",
+      "options": [
+        "① L2 스위치는 MAC이 수집 가능한 로컬 네트워크 구간에서 스위칭이 가능하고 특정 IP주소에 대해 내부 네트워크 혹은 라우터 중 어디로 보낼지를 판단할 수 있다.",
+        "② L3 스위치는 3계층인 네트워크에서 사용하는 목적지 주소인 IP에 대한 스위칭이 가능하다. 이는 라우터 와 유사한 기능이나 라우터가 훨씬 더 다양한 기능 을 수행한다.",
+        "③ L4 스위치는 IP 주소를 기반으로 스위칭 할 수 있으며, 특정 IP의 포트 번호로 들어온 프레임을 여러 서버의 특정 포트 번호로 재분배하는 것이 가능해서 부하분산에 많이 사용된다.",
+        "④ L7 스위치는 애플리케이션 계층을 인식할 수 있 으며, HTTP의 URL이나 FTP의 파일명, UDP의 주소 등을 인식할 수 있어 다양한 방식으로 스위칭 할 수 있으나 부하분산 기능은 없다. 2"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 94
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "마이크로서비스 아키텍처(micro service architecture) 에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 하나의 거대한 코드베이스에 모든 개발자가 함께 작업하는 방식에서 벗어나 작은 코드 베이스를 여러 개 만들어 소규모 팀이 기민하게 대응하는 방 식이다.",
+        "② 비즈니스 기능과 우선순위를 중심으로 설계하며 다양한 컴포넌트 서비스로 구성되는데 분산 제어 구조를 해치지 않으면서 독립적인 자동화 배치가 가능하다.",
+        "③ 모놀리틱(monolitic) 아키텍처가 구현하기 어려 운 모듈화를 추구하여 개별서비스를 빠르게 구현 할 수 있으며 이해 및 관리가 쉽다.",
+        "④ 마이크로서비스에서는 개별서비스를 지속적으로 배치할 수 있으며, 모놀리틱 아키텍처에 비해 마이크로서비스 애플리케이션은 테스트가 쉽다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 95
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "하이퍼바이저에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 반가상화 방식은 가상화를 위해 하이퍼바이저가 특권모드를 차지한다.",
+        "② Type1 기법은 하이퍼바이저가 직접 하드웨어를 제어하는 방식이다.",
+        "③ Type1 기법은 Type2 기법보다 동작과정에 오버헤 드가 있지만 하이퍼바이저가 가볍다는 장점이 있다.",
+        "④ Type2 기법에는 VirtualBox, Virtual PC 등이 있다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 96
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "컴퓨터 네트워크 보안에 관한 설명으로 옳지 않은 것은?",
+      "options": [
+        "① 대칭 키 암호화는 암호화와 복호화에 동일한 키를 사용하는 방식이다.",
+        "② 서비스 거부(denial of service)는 가용성을 위 협하는 공격이다.",
+        "③ 스테가노그래피(steganography)는 비밀기록(secret -writing)을 의미하는 암호와는 대조적으로 감 춰진 기록(covered writing)을 의미한다.",
+        "④ 무결성(integrity)은 변경이 인가된 자에 의해 인가된 메커니즘을 통해서 이루어져야 한다는 것으로 무결성 침해는 악의적인 행동의 결과로만 발생한다. 1"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 97
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "다음 중 여러 분류기를 하나의 메타 분류기로 연결 하여 개별 분류기보다 더 좋은 성능을 달성하는 머신러닝 기법으로 가장 적절한 것은?",
+      "options": [
+        "① 다변량 선형회귀(multivariate linear regression)",
+        "② 앙상블 학습(ensemble learning)",
+        "③ K-평균(K-means) 알고리즘",
+        "④ LSTM(Long Short-Term Memory)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 98
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "다음은 오픈소스 기반의 서버리스 프레임워크 도입 (TTAK.KO-10.1271)에 관한 설명이다. ㉮~㉱에 들어갈 내용으로 가장 올바른 것은?\n\n가. 서버리스 서비스 함수 내용이 컨테이너 단위로 빌드되어 산출된 결과물을 위한 저장소인 (㉮) 를(을) 구축\n나. 컨테이너 단위로 배포된 서버리스 함수를 운영, 관리하기 위해서는 (㉯)라 불리우는 자동화 운영 도구를 설치\n다. (㉯) 설치 후, 컨테이너 운영환경을 관리하는 (㉰)와 컨테이너 기능 수행을 위한 (㉱)가 포함된 클러스터를 구성",
+      "options": [
+        "① ㉮ 컨테이너 레지스트리 ㉯ 컨테이너 오케스트레이터 ㉰ 마스터 노드 ㉱ 워커 노드",
+        "② ㉮ 컨테이너 레지스트리 ㉯ 컨테이너 오케스트레이터 ㉰ 워커 노드 ㉱ 마스터 노드",
+        "③ ㉮ 컨테이너 오케스트레이터 ㉯ 컨테이너 레지스트리 ㉰ 마스터 노드 ㉱ 워커 노드",
+        "④ ㉮ 컨테이너 오케스트레이터 ㉯ 컨테이너 레지스트리 ㉰ 워커 노드 ㉱ 마스터 노드 2"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 99
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "IPv6에 관한 설명으로 가장 올바르지 않은 것은?",
+      "options": [
+        "① 128비트 주소 체계로 구성되어 있다.",
+        "② 실시간으로 멀티미디어 데이터를 처리할 수 있다.",
+        "③ 고속망과 저속망에서 효율적으로 동작하도록 설계 되었다.",
+        "④ 이중 스택(dual stack)은 IPv6 패킷을 IPv4 패킷 안에 넣어서 IPv4 네트워크를 통하여 상대방의 IPv6 네트워크나 IPv6 장비로 패킷을 전송하는 것이다. 2"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2021년 제22회 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2021,
+      "origin_id": 100
+    }
+  ]
+}
