@@ -2329,15 +2329,16 @@ function updateRulesUI() {
       <li><b>과락 불합격 기준</b>: 과목 득점 <b>${subCutoffScore}점 미만</b> (${minPassQs}문항 미만 득점 시 <b>과락 불합격</b>)</li>
       <li><b>시험 제한시간</b>: <b>${ex.time_limit_minutes || 25}분</b></li>
     `;
-  } else if ((ex.title && ex.title.includes('[5개년]')) || fn.includes('5years') || (ex.category && ex.category.includes('과목별'))) {
+  } else if ((ex.title && (ex.title.includes('개년') || ex.title.includes('전개년'))) || fn.includes('5years') || (ex.category && ex.category.includes('과목별'))) {
     const minPassQs = Math.ceil(totalQs * 0.6);
+    const isAllYears = totalQs >= 240;
     document.getElementById('rulesList').innerHTML = `
-      <li><b>학습 유형</b>: <b>5개년 (2022년 ~ 2026년) 특정 과목 집중 마스터</b></li>
+      <li><b>학습 유형</b>: <b>${isAllYears ? '12개년 전수 (2015년 ~ 2026년)' : '5개년'} 특정 과목 집중 마스터</b></li>
       <li><b>연도별 구성 (${totalQs}문항)</b>:<br>
-          &nbsp;&nbsp;• <b>2026년 기출</b> → <b>2025년 기출</b> → <b>2024년 기출</b> → <b>2023년 기출</b> → <b>2022년 기출</b> 순차 수록
+          &nbsp;&nbsp;• <b>2026년 기출</b>부터 <b>${isAllYears ? '2015년' : '2022년'} 기출</b>까지 최신순 역순 순차 수록
       </li>
       <li><b>권장 합격 목표선</b>: 정답률 <b>60% 이상</b> (총 ${totalQs}문항 중 <b>${minPassQs}문항 이상</b> 정답 목표)</li>
-      <li><b>모의고사 제한시간</b>: <b>${ex.time_limit_minutes || 120}분</b> (문항당 1분 페이스 권장)</li>
+      <li><b>모의고사 제한시간</b>: <b>${ex.time_limit_minutes || totalQs}분</b> (문항당 1분 페이스 권장)</li>
     `;
   } else if (ex.category === '정보시스템감리사' || (ex.title && ex.title.includes('정보시스템감리사'))) {
     document.getElementById('rulesList').innerHTML = `

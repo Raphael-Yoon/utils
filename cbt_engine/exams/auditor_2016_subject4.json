@@ -1,0 +1,434 @@
+{
+  "exam_info": {
+    "id": "auditor_2016_sub4",
+    "title": "[2016년] 4과목 : 시스템구조 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2016,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2016년 4과목 : 시스템구조 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "군집분석(Cluster Analytics)은 전체 데이터를 군집을 통해 구분하는 것으로 다양한 특징을 가진 관찰 대상으로부터 동일집단을 분류하는데 사용 한다. 이러한 군집분석은 크게 계층적 군집분석과 비계층적 군집분석으로 분류할 수 있다. 다음 중 계층적 군집분석으로 가장 거리가 먼 것은?",
+      "options": [
+        "① Ward법",
+        "② 단일연결방식(Single Linkage Method)",
+        "③ 평균연결방식(Average Linkage Method)",
+        "④ K-평균(Means)법"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 76
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "트랜잭션 성능을 예측하는 TPC(Transaction Proc- essing Performance Council) 벤치마크(Bechmark)인 TPC-C 트랜잭션 유형이 아닌 것은?",
+      "options": [
+        "① 신규주문(new-order)",
+        "② 주문상태(order-status)",
+        "③ 매매결과(trade-result)",
+        "④ 배송(delivery)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 77
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "지역적으로 분산된 IT자원의 할당과 사용을 향상 시키기 위한 클러스터 방식 중 고가용성(high- availability) 클러스터에 대한 설명으로 가장 적절한 것은? (2개 선택)",
+      "options": [
+        "① IT자원의 중앙관리를 유지하면서 IT자원량을 증가 시키기 위하여 작업부하를 분산시키는 방식이다.",
+        "② 다중 노드의 실패 이벤트에 대해 시스템 가용성을 유지하고 클러스터된 IT자원의 전부 혹은 일부를 중복 구현한다.",
+        "③ 클러스터 관리 플랫폼 내에 내장 혹은 분리된 IT 자원을 설정하는 특정 메커니즘을 구현한다.",
+        "④ 실패조건을 모니터링하고 실패된 노드로부터 작 업부하를 자동으로 변경하는 대체 작동시스템 메커니즘을 구현한다. - 19"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 78
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "메시지 큐(Message Queue)를 이용한 비동기 패턴에 대한 설명으로 가장 적절한 것은?\n\n메시지 큐를 사용하는 패턴 중에서 가장 일반적인 비동기 호출 패턴으로, 클라이언트가 호출한 후 큐 에 메시지가 제대로 들어갔으면 메시지의 처리 결과 에 관계없이 응답을 기다리지 않고 바로 반환한다.",
+      "options": [
+        "① Fire & Forget 패턴",
+        "② Publish & Subscribe 패턴",
+        "③ Routing 패턴",
+        "④ Call Back 패턴"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 79
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "클라우드 가상자원 성능 측정 항목 및 지침(정보 통신단체표준, TTAK.KO-10.0798)은 클라우드 가 상자원의 성능 측정항목, 지표단위 및 측정방법을 정의하고 있다. 다음 중 가상자원의 성능 측정 지표의 측정방법에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① CPU : CPU가 수행한 연산수를 측정하는 것으로 TPS(Transaction Per Second)를 단위로 사용한다.",
+        "② 웹 요청 처리율 : 웹 페이지 요청 후 응답 성공 여부를 측정하는 것으로 %를 단위로 사용한다.",
+        "③ TCP 대역폭 : 60초간 TCP 패킷 전송 평균 속도를 측정하는 것으로 Kbps를 단위로 사용한다.",
+        "④ DB 트랜잭션 시간 : DB 트랜잭션(개) 처리 속도를 측정하는 것으로 Second를 단위로 사용한다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 80
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "NFC(Near Field Communication)에 대한 설명으로 적절하지 않은 것은?",
+      "options": [
+        "① 다양한 모바일 기기에 포함되어 10cm 이내의 가까운 거리에서 비접촉 통신이 가능하다.",
+        "② 13.56GHz 주파수 대역을 이용하는 RFID(Radio Frequency IDentification)의 일종으로 최대 424Kbps의 속도로 통신이 가능하다.",
+        "③ Card Emulation Mode, Peer-to-Peer Mode, Reader /Writer Mode 등 3가지 동작모드를 갖는다.",
+        "④ 능동통신모드(Active Communication Mode)와 수동 통신모드(Passive Communication Mode)를 지원 한다. 9 -"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 81
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "동시사용자(Concurrent User)가 400명이고 평균 응답시간(Average Response Time)이 2초이며, 사용자요청간의 대기시간(Think Time)이 10초인 시스템의 활성사용자(Active User)수는? (계산 결과는 소수점이하 첫번째 자리에서 반올림)",
+      "options": [
+        "① 50",
+        "② 67",
+        "③ 80",
+        "④ 95"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 82
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "자바 애플리케이션은 JVM(Java Virtual Machine) 상에서 작동한다. JVM이 동작하는데 있어서 메모리 구조와 GC(Garbage Collection : 쓰레기수집)는 애플리케이션의 응답시간과 성능에 밀접한 관련을 갖는다. JVM에서의 GC에 대한 설명으로 ( )안에 가장 적절한 것은?\n\nJDK 1.4부터 지원하는 ( )는 Minor GC를 동시에 다수의 스레드(thread)를 이용해서 GC를 수행하는 방식으로 하나의 스레드를 이용하는 것보다 훨씬 빨리 GC을 수행할 수 있다. ( )는 크게 2가지 옵션을 가지고 있는데 Low-pause 방식과 Throughput방식이 있다.",
+      "options": [
+        "① Default GC",
+        "② Incremental GC",
+        "③ Concurrent GC",
+        "④ Parallel GC"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 83
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "공급사슬관리(SCM: Supply Chain Management)에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 공급사슬은 원재료를 획득하고, 이 원재료를 중간재나 최종재로 변환하여, 최종제품을 고객 에게 유통시키기 위한 조직 및 비즈니스 프로 세스들의 네트워크이다.",
+        "② 공급사슬은 제품 및 서비스가 근원지로부터 소비에 이르는 단계에 공급될 수 있도록 공급업체, 제조 업체, 유통업체, 고객들을 연결하는 것으로 공급사슬상의 정보는 양방향으로 흐른다. - 20",
+        "③ 공급사슬상의 제조업체를 중심으로 공급사슬의 상류(Upstream)지역에는 최종 고객에게 제품을 전달하는 조직과 프로세스들로 구성되며, 주문, 반환요청, 지불 등의 정보가 유통된다.",
+        "④ 공급사슬관리에서 나타나는 문제 중 하나는 채찍 효과(bullwhip effect)로 이것은 제품에 대한 수요정보가 공급사슬을 구성하고 있는 상류방향 으로 거쳐 나갈 때마다 점점 왜곡되는 현상을 말한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 84
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "SDN(Software Defined Networking) 기술을 주도 하고 있는 그룹 중 하나인 ONF(Open Networking Foundation)에서는 SDN 아키텍처를 애플리케이션 계층(Application Layer), 컨트롤 계층(Control Layer), 인프라스트럭처 계층(Infrastructure Layer) 으로 구분했다. 이와 관련된 기술에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① SDN에서 컨트롤 계층은 소프트웨어 기반의 컨트 롤러에 의해 동작한다.",
+        "② ODL(OpenDaylight) 컨트롤러는 대표적인 SDN 컨 트롤러 중 하나이다.",
+        "③오픈플로우(OpenFlow)는 대표적인 노스바운드 인터페이스 프로토콜 중 하나이다.",
+        "④ 애플리케이션 계층과 컨트롤 계층 간의 통신을 위해 노스바운드(NorthBound) 인터페이스를 사용한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 85
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "3GPP Release 10을 기반으로 완성된 WCDMA 계열의 4세대 이동통신 규격인 LTE-A(Long Term Evolution\n\n-Advanced)에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 무선접속 기술로 다운링크는 OFDMA(Orthogonal Frequency Division Multiple Access)를, 업링크는 SC(Single Carrier)-FDMA를 사용한다.",
+        "② LTE-A의 핵심기술로는 CA, eICIC, MIMO(Multiple -Input Multiple-Output antenna), CoMP(Coord- inated Multi-Point) 등이 있다.",
+        "③ eICIC(Enhanced Inter-Cell Interference Coord- ination)는 펨토셀 간의 간섭현상을 완화시키기 위한 기술이다.",
+        "④ CA(Carrier Aggregation)는 서로 다른 주파수 대역을 하나의 주파수 대역처럼 묶어 광대역 효과를 만들어주는 기술이다. 0 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 86
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "IPv6의 확장 헤더(extension header)에 대한 설명으로 가장 거리가 먼 것은 ?",
+      "options": [
+        "① Destination 옵션은 발신지가 특정한 목적지에 정보를 전달하고자 할 때 사용된다.",
+        "② Timestamp 옵션은 왕복시간(round trip time)을 측정하는데 사용할 수 있다.",
+        "③ ESP(Encrypted Security Payload) 옵션은 도청에 대한 방지책을 제공할 수 있다.",
+        "④ Authentication 옵션은 송신자를 확인하고 데이 터의 무결성을 증명하는데 사용된다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 87
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "MPLS(Multi-Protocol Label Switching)에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① MPLS를 사용하여 VPN(Virtual Private Network) 을 구성할 수 있다.",
+        "② MPLS는 자체적인 암호화 기능을 제공한다.",
+        "③MPLS를 사용하여 TE(Traffic Engineering)이 가능하다.",
+        "④하나의 MPLS 패킷에 여러 개의 라벨(label)을 사용할 수 있다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 88
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "라우팅 프로토콜이 최적 경로를 선택하는 기준을 메트릭(metric)이라고 한다. 다음 중 라우팅 프로 토콜과 그 프로토콜이 사용하는 메트릭 값이 가장 적절하게 연결된 것은?",
+      "options": [
+        "① EIGRP: 정책(policy)만을 메트릭으로 이용",
+        "② OSPF: 신뢰도(reliability)만을 메트릭으로 이용",
+        "③ BGP: 지연(delay)만을 메트릭으로 이용",
+        "④ RIP: 홉 수(hop count)만을 메트릭으로 이용"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 89
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "아날로그 정보를 디지털 신호로 바꿔주는 부호화 방법으로 가장 적절한 것은?",
+      "options": [
+        "① PCM(Pulse Code Modulation)",
+        "② FSK(Frequency Shift Keying)",
+        "③ PM(Phase Modulation)",
+        "④ NRZ(Non Return to Zero) - 2"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 90
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "IEEE 802.11 무선랜(Wireless LAN)에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 포인트 조정함수(Point Coordination Function, PCF)는 매체 접근 방법으로 CSMA/CA(Carrier Sense Multiple Access/Collision Avoidance)를 사용한다.",
+        "② 분산 조정함수(Distributed Coordination Function, DCF)는 중앙집중적이고 충돌 없는 폴링 접근 방법이다.",
+        "③ IEEE 802.11n에서는 다중입출력안테나(Multiple -Input Multiple-Output antenna, MIMO)기술 을 사용해 잡음 문제를 해결하였다.",
+        "④ 지국이 분산 조정함수(DCF)를 사용하고 AP(Access Point)가 포인트 조정함수(PCF)를 사용하는 경우 지국이 우선권을 갖는다."
+      ],
+      "answer": [
+        1,
+        4
+      ],
+      "explanation": "정답: ①, ④ (복수 정답)\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n해당 문항의 정답은 ①, ④입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 91
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "블루투스(Bluetooth)는 짧은 거리에서 전화기, 노트북, 카메라 등 서로 다른 기능을 가진 장치를 연결하기 위해 설계된 무선 LAN 기술이다. 다음 중 블루투스에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 블루투스 네트워크의 하나인 피코넷(piconet)은 하나의 주국(primary)과 최대 7개의 종국(secondary)을 가질 수 있다.",
+        "② ACL 링크에서 데이터를 교환하기 위해 L2CAP(Logical Link Control and Adaption Protocol)을 사용한다.",
+        "③ ACL(Asynchronous Connectionless) 링크는 실시간 오디오 전송과 같이 지연을 피하는 것이 무결성 보다 중요할 때 사용한다.",
+        "④ 간섭을 피하기 위해 물리층에서 FHSS(Frequency -Hopping Spread Spectrum) 방식을 사용한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 92
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "객체 식별자(Object Identifier) 기반 사물인터넷 디바이스 식별체계(TTAK.KO-06.0365/R1)는 객체 식별자 기반 사물인터넷 디바이스 식별체계를 정의 하고 있다. 다음 중 식별체계에 속하지 않는 것은?",
+      "options": [
+        "① 제조국가 식별 노드",
+        "② 제조사 식별 노드",
+        "③ 모델 식별 노드",
+        "④ 일련번호 식별 노드 1 -"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "image_url": "/exams/images/auditor_2016_q93.png",
+      "image": "/exams/images/auditor_2016_q93.png",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 93
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "서버 가상화시 물리적 또는 논리적 파티셔닝(par- titioning)을 사용하여 서버를 분할하는 방식이 있다. 다음 중 파티셔닝 방식으로 가장 적절한 것은 ?\n\n가. 물리 파티셔닝 방식은 하드웨어 자원에 장애가 발생하거나, 다른 파티션에 과부하가 걸렸을 경우 해당 파티션은 영향을 받을 수 있다.\n나. 논리 파티셔닝 방식은 서버구성을 유연하게 할 수 있다.\n다. 물리 파티셔닝 방식은 하드웨어 자원이 물리적 으로 분할되기 때문에 가상화에 따른 오버 헤드가 없다.\n라. 논리 파티셔닝 방식은 파티션별 높은 독립성과 신뢰성을 확보할 수 있다.",
+      "options": [
+        "① 가, 다",
+        "② 가, 라",
+        "③ 나, 다",
+        "④ 나, 라"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 94
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "국토교통부의 지능형교통체계 표준 노드·링크 구축기준(국토교통부고시 제2015-756호)에 의한 노드·링크 구축방법에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 평면교차로는 분기시에 교차로의 시종점 접속부에 노드를 설정함을 원칙으로 한다.",
+        "② 톨게이트(요금소), 검문소 등 차량운행이 물리 적으로 통제되며, 통제지점의 명칭이 부여되어 있는 경우에 노드를 설정한다.",
+        "③ 시/도 경계, 시/군 경계로 구분되는 지점에 노드를 설정한다.",
+        "④ 일반적인 도로구간의 링크는 보도, 차도를 포함한 도로의 중심선을 기준으로 방향별로 이격하여 생성하는 것을 원칙으로 한다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 95
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "행정·공공기관 웹사이트 구축‧운영 가이드 (2016년 1월, 행정자치부)가 권고하는 웹사이트 기획에 대한 기본원칙에 해당하지 않는 것은?",
+      "options": [
+        "① 목적의 명확성: 웹사이트에서 제공하고자 하는 서비스의 목적과 대상을 명확히 하고 세분화된 서비스 및 콘텐츠 정의를 통하여 목적 지향적인 서비스를 제공해야 함 - 22",
+        "② 확장성: 웹사이트를 통한 서비스 콘텐츠 확대 및 서비스 분야의 확장을 고려하여, 서비스의 구성 및 정보구조 등에 대한 유연성을 확보하여야 함",
+        "③ 접근성 및 사용자지향: 이용자가 전문적인 능력 없이도 웹사이트에서 제공하는 모든 정보를 동 등하게 접근 및 이용할 수 있도록 웹사이트의 접근 환경 및 수준을 사용자 관점에서 이해하고 구현, 관리하여야 함",
+        "④ 성능 확보성: 웹사이트 이용자가 웹사이트를 이 용함에 있어서 불편함이 없는 정도의 웹사이트의 각종 성능 지표를 미리 마련하고 이러한 성능 지표를 만족시킬 수 있어야 함"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 96
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "임의의 호스트 A에 할당된 IPv4 주소가 200.45. 34.56이고 그 호스트 A가 위치한 네트워크에서의 서브넷 마스크(subnet mask)가 255.255.240.0일 때, 호스트 A가 위치한 네트워크의 서브넷 주소 (Subnet Address)는?",
+      "options": [
+        "① 200.45.16.0/21",
+        "② 200.45.32.0/20",
+        "③ 200.45.64.0/19",
+        "④ 200.45.128.0/18"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 97
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "다음과 같은 네트워크 구성에서 충돌 도메인(Col- lision Domain)과 브로드캐스트 도메인(Broadcast Domain)의 수로 가장 적절한 것은? (단, 라우터나 스위치는 고유의 기능만 제공)",
+      "options": [
+        "① Collision Domain : 4개, Broadcast Domain : 3개",
+        "② Collision Domain : 7개, Broadcast Domain : 4개",
+        "③ Collision Domain : 9개, Broadcast Domain : 5개",
+        "④ Collision Domain : 10개, Broadcast Domain : 7개 2 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2016_q98.png",
+      "image": "/exams/images/auditor_2016_q98.png",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 98
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "다음에서 설명하는 프레임워크 기술로 가장 적합 한 것은?\n\n- 자바 엔터프라이즈 애플리케이션(Java Enterprise Application)개발에 사용되는 프레임워크다.\n- 자바 객체가 생성되고 동작하는 방식에 대한 틀을 제공하고 애플리케이션 코드를 어떻게 작성하는 지에 대한 설계 원칙과 기준도 제시한다.\n- IoC(Inversion of Control)/DI(Dependency Injection) 로 불리는 객체의 생명주기와 의존 관계에 대한 프 로그래밍 모델을 지원한다.\n- 대한민국 전자정부 표준 프레임워크로 선정되어 활용 하고 있다.",
+      "options": [
+        "① 닷넷(.NET)",
+        "② 스프링(Spring)",
+        "③ EJB(Enterprise Javabeans)",
+        "④ 스트럿츠(Struts)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 99
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "가정 내에 설치된 전력선을 이용한 통신기술로 가장 거리가 먼 것은?",
+      "options": [
+        "① HomePlug",
+        "② CEBus",
+        "③ LonWorks",
+        "④ IEEE 1394 - 23 3 - 보 안"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2016,
+      "origin_id": 100
+    }
+  ]
+}

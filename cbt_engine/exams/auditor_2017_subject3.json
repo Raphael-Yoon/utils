@@ -1,0 +1,444 @@
+{
+  "exam_info": {
+    "id": "auditor_2017_sub3",
+    "title": "[2017년] 3과목 : 데이터베이스 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2017,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2017년 3과목 : 데이터베이스 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "뷰의 장점을 설명하는 것 중 가장 거리가 먼 것은?",
+      "options": [
+        "① 테이블 구조가 변경되어도 뷰를 사용하는 응용 프로그램은 변경하지 않아도 된다.",
+        "② 뷰를 생성함으로써 복잡한 질의를 단순하게 작성할 수 있다.",
+        "③ 직원의 급여 정보 같은 숨기고 싶은 정보가 존재한다면 해당 칼럼을 빼고 뷰를 생성하여 사용한다.",
+        "④ 서버에 저장되는 컴포넌트로 독립적으로 실행되거나 다른 프로그램으로부터 실행된다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 51
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음은 어느 회사의 데이터베이스 구축을 위한 ER 다이어그램 설계 내용이다. ER 다이어그램을 데이터베이스 테이 블로 변환할 때 생성되는 테이블의 가장 적절한 개수는?",
+      "options": [
+        "① 3-4개",
+        "② 5-6개",
+        "③ 7-8개",
+        "④ 9-10개"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2017_q52.png",
+      "image": "/exams/images/auditor_2017_q52.png",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 52
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "다음과 같은 함수적 종속성 집합에 대한 설명 중 틀린 것은?",
+      "options": [
+        "① 함수적 종속성 집합 { A → { B, C, D, E }, E → { F, G } }로부터 A → { F, G }를 추론할 수 있다.",
+        "② 함수적 종속성 집합 { A → B, C → { D, E }, { A, C } → F } 로부터 폐포집합 { A }+ = { A, B }를 구할 수 있다.",
+        "③ 다음 두 함수적 종속성 집합 F = { A → C, AC → D, E → AD, E → H }와 G = { A → CD, E → AH }는 동등하다.",
+        "④ 함수적 종속성 집합 { B → A, D → A, AB → D }에 대한 최소 커버는 { B → A, D → A }이다. - 12"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 53
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음과 같이 선언된 테이블 MYTABLE에서 슈퍼키의 개수는?\n\n(SQL 문)\nCREATE TABLE MYTABLE (\nX INTEGER, Y INTEGER, Z INTEGER NOT NULL, PRIMARY KEY (X, Y), UNIQUE (Z) );",
+      "options": [
+        "① 2",
+        "② 3",
+        "③ 4",
+        "④ 5"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 54
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "다음은 릴레이션 R1, R2와 SQL 질의문이다. SQL 문에 대한 관계대수 연산으로 가장 적합한 것은? (⋈은 자연조인, ⟕은 왼쪽 외부조인 기호) (릴레이션) R1(r1name, a, b, c) R2(r2name, a, b, c) (SQL 문)\n\nSELECT r1name FROM R1\nWHERE EXISTS (SELECT * FROM R2\nWHERE (r1name = r2name))",
+      "options": [
+        "① πr1name (R1 ⟕ r1name = r2name (R2))",
+        "② πr1name (R2 - R1)",
+        "③ πr1name (R1 ⋈ (R2)) r1name = r2name",
+        "④ πr1name (R1 - R2)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 55
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "SQL Injection을 줄이기 위한 방법 중 가장 거리가 먼 것은?",
+      "options": [
+        "① 저장 프로시저 사용을 가능한 줄이도록 한다.",
+        "② 입력 데이터가 허용되는 타입에 한하여 허용한다.",
+        "③ 인용부호에 대한 체크를 통하여 인젝션 가능성을 제거한다.",
+        "④ 웹접근 코드가 접근하는 데이터베이스의 경우 꼭 필요한 접근권한 만을 부여한다. 2 -"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 56
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "수강신청 데이터를 저장한 릴레이션 ENROLL에서 강좌번호 (COURSEID) 100과 101번 강좌를 모두 수강 신청한 학생의 학번을 찾는 SQL 질의로 틀린 것은?\n\nENROLL(COURSEID, STUDENTID, TIME)",
+      "options": [
+        "① SELECT STUDENTID FROM ENROLL E1, ENROLL E2 WHERE E1.STUDENTID=E2.STUDENTID AND E1.COURSEID=100 AND E2.COURSEID=101",
+        "② SELECT STUDENTID FROM ENROLL E WHERE E.COURSEID=100 INTERSECT SELECT STUDENTID FROM ENROLL E WHERE E.COURSEID=101",
+        "③ SELECT STUDENTID FROM ENROLL E WHERE E.COURSEID =100 AND STUDENTID IN (SELECT STUDENTID FROM ENROLL WHERE COURSEID=101)",
+        "④ SELECT STUDENTID FROM ENROLL E WHERE E.COURSEID=100 AND E.COURSEID=101"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 57
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음 SQL 문과 질의에 대한 결과 값으로 맞는 것은?\n\n(SQL CREATE, INSERT 문)\nCREATE TABLE TEST(A INTEGER, B VARCHAR(10));\nINSERT INTO TEST VALUES (1, 'kim'); INSERT INTO TEST VALUES (2, ' '); INSERT INTO TEST VALUES (3, NULL); INSERT INTO TEST VALUES (4, 'park'); INSERT INTO TEST VALUES (5, NULL); INSERT INTO TEST VALUES (6, 'lee'); (Oracle DBMS의 SQL 문)\nSELECT X, X-Y, Z\nFROM (SELECT COUNT(*) AS X, COUNT(B) AS Y,\nCOUNT(CASE WHEN B IS NOT NULL AND LTRIM(B) IS NULL THEN '1' END) AS Z\nFROM TEST) T;\n(SQL Server DBMS의 SQL 문)\nSELECT X, X-Y, Z\nFROM (SELECT COUNT(*) AS X, COUNT(B) AS Y,\nCOUNT(CASE WHEN B IS NOT NULL AND LEN(LTRIM(B)) = 0 THEN '1' END) AS Z\nFROM TEST) T;\n- 13",
+      "options": [
+        "① 6, 2, 1",
+        "② 6, 3, 0",
+        "③ 6, 2, 0",
+        "④ 6, 3, 1"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 58
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "다음의 데이터베이스에서“3명 이상의 사원이 근무하는 각 부서에서 부서 번호, 부서 이름, 그리고 그 부서에서 연봉이 4만불 이상인 사원의 수를 검색하라”는 질의를 SQL로 올바르게 표시한 것은?\n\nEMPLOYEE(Name, Ssn, Salary, Sex, Dno) DEPARMENT(Dname, Dnumber, Mgr_ssn)",
+      "options": [
+        "① SELECT Dnumber, Dname, COUNT(*) FROM DEPARTMENT, EMPLOYEE WHERE Dnumber = Dno AND Salary >= 40000 AND Dno IN (SELECT Dno FROM EMPLOYEE GROUP BY Dno HAVING COUNT(*) > 2) GROUP BY Dnumber;",
+        "② SELECT Dnumber, Dname, COUNT(*) FROM DEPARTMENT, EMPLOYEE WHERE Dnumber = Dno AND Salary >= 40000 AND COUNT(*) > 2 GROUP BY Dnumber, Dname;",
+        "③ SELECT Dnumber, Dname, COUNT(*) FROM DEPARTMENT, EMPLOYEE WHERE Dnumber = Dno AND Salary >= 40000 AND Dno IN (SELECT Dno FROM EMPLOYEE GROUP BY Dno HAVING COUNT(*) > 2) GROUP BY Dnumber, Dname;",
+        "④ SELECT Dnumber, Dname, COUNT(*) FROM DEPARTMENT, EMPLOYEE WHERE Dnumber = Dno AND Dno IN (SELECT Dno FROM EMPLOYEE WHERE Salary >= 40000 GROUP BY Dno HAVING COUNT(*) > 2) GROUP BY Dnumber, Dname; 3 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2017_q59.png",
+      "image": "/exams/images/auditor_2017_q59.png",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 59
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "EMPLOYEE(Eno, Name, DeptName, Salary) 테이블에 대해 “평균 봉급이 가장 높은 부서명(DeptName)을 검색” 하는 질의를 다음과 같이 작성한다고 할 때, 밑줄 친 부분에 들어갈 내용으로 맞는 것은?\n\nSELECT DeptName\nFROM EMPLOYEE\nGROUP BY DeptName ㉠ >= ㉡ (SELECT AVG(Salary)\nFROM EMPLOYEE\n㉢ DeptName); ㉠ ㉡ ㉢",
+      "options": [
+        "① WHERE Salary all ORDER BY",
+        "② WHERE AVG(Salary) some GROUP BY",
+        "③ HAVING Salary some ORDER BY",
+        "④ HAVING AVG(Salary) all GROUP BY"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 60
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "인덱스의 생성 여부를 결정하기 위해 고려할 사항에 대한 설명이 잘못된 것은? (2개 선택)",
+      "options": [
+        "① 유일한 키 속성에 대해서는 인덱스를 생성한다.",
+        "② 실렉션 조건이나 조인 조건에서 사용되는 속성에 대해서는 인덱스를 생성한다.",
+        "③ 인덱스 탐색만을 통해 답변이 가능한 질의에 대해서는 클러스터 인덱스를 고려한다.",
+        "④ 동등 조건과 범위 질의에 사용되는 속성에 대해서는 해 시 인덱스가 유리하다."
+      ],
+      "answer": [
+        3,
+        4
+      ],
+      "explanation": "정답: ③, ④ (복수 정답)\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n해당 문항의 정답은 ③, ④입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 61
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "EMPLOYEE(Eno, Name, Salary, CommissionPercent) 테이블에 대한 다음과 같은 질의가 있다.\n\nSELECT Name\nFROM EMPLOYEE\nWHERE ((Salary * CommissionPercent) + Salary) > 15000;\n이러한 유형의 질의의 경우 실행 빈도가 높을 가능성이 많지만 Salary 열에 대한 인덱스가 존재한다고 하더라도 제대로 이용 하지 못할 것이다. 이러한 경우에 활용할 수 있는 가장 적절한 인덱싱 기법은?",
+      "options": [
+        "① Bitmap indexing",
+        "② Function-based indexing",
+        "③ Hash indexing",
+        "④ R-tree indexing - 14"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 62
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "트랜잭션 T1, T2가 수행되는 다음 그림에서, T1의 연산 결과(x + 100)가 T2의 연산 결과(x * 2)로 인해 바르게 저장되지 않는 현상이 발생할 수 있다. 이 같은 현상을 무엇이라고 하는가?",
+      "options": [
+        "① 갱신 손실(lost update)",
+        "② 오손 읽기(dirty read)",
+        "③ 지연 갱신(deferred update)",
+        "④ 갱신 충돌(update conflict)"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "image_url": "/exams/images/auditor_2017_q63.png",
+      "image": "/exams/images/auditor_2017_q63.png",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 63
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "트랜잭션 T1은 x와 y에 100을 더하고, 트랜잭션 T2는 y와 x에 2를 곱하는 트랜잭션이다. 두 트랜잭션이 다음과 같은 순서로 실행이 되었을 때 발생한 상황은?\n\n시간1: T1 lock(x); read(x); 시간2: T2 lock(y); read(y); 시간3: T1 x = x + 100 시간4: T2 y = y * 2 시간5: T1 write(x) 시간6: T2 write(y) 시간7: T1 lock(y) 시간8: T2 lock(x)",
+      "options": [
+        "① 갱신 손실(lost update)",
+        "② 교착 상태(deadlock)",
+        "③ 오손 읽기(dirty read)",
+        "④ 철회(rollback)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 64
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "데이터 마이닝 분석기법과 관련된 이론을 가장 적절하게 연결한 것은?",
+      "options": [
+        "① 지지도(support) - 인공신경망",
+        "② 시그모이드(sigmoid) 함수 - 의사결정트리",
+        "③ 맨하튼 거리(manhattan distance) - 군집분석",
+        "④ 엔트로피(entropy) - 연관분석 4 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2017_q65.png",
+      "image": "/exams/images/auditor_2017_q65.png",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 65
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "다음 두 릴레이션 R과 S에 대해 조인 연산을 수행했다 고 할 때, 이 연산의 조인 선택률(join selectivity)은?\n\nR ⋈ S D1 < D4",
+      "options": [
+        "① 1",
+        "② 4/9",
+        "③ 5/9",
+        "④ 5"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2017_q66.png",
+      "image": "/exams/images/auditor_2017_q66.png",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 66
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "물리적 데이터베이스 설계 단계에서 색인 구조를 결정하 는데 도움이 되는 지침으로 틀린 것은?",
+      "options": [
+        "① 한 애트리뷰트에 들어 있는 상이한 값들의 개수가 전체 레코드의 수와 비슷하고 검색에서 해당 애트리뷰트에 대한 동등 조건이 사용된다면 비 클러스터링(non-clustering) 색인을 생성하는 것이 좋다.",
+        "② 갱신이 빈번하게 이루어지는 릴레이션에 대해서 색인을 많이 생성하여 갱신의 효율성을 증진할 수 있다.",
+        "③ 가능하면 정수형 애트리뷰트에 색인을 만드는 것이 좋고 반대로 VARCHAR 데이터 타입을 갖는 애트리뷰트에는 색 인을 만드는 것을 피해야 한다.",
+        "④ 대량의 데이터를 삽입할 때는 모든 색인들을 제거하고 데이터 삽입이 끝난 후에 색인들을 다시 생성하는 것이 효율적이다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 67
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "질의 최적화 기법에 대한 설명으로 틀린 것은?",
+      "options": [
+        "① 주기억장치보다 더 큰 용량의 데이터에 대하여 SQL의 order by 절을 수행하기 위해서는 정렬-합병 전략의 외부 정렬을 수행해야 한다.",
+        "② 관계대수의 실렉트 연산을 수행하기 위해서는 데이터베 이스 전체를 읽어들이는 파일 스캔 탐색이나 인덱스를 활용한 인덱스 스캔 탐색을 수행한다.",
+        "③ 두 릴레이션 R과 S에 대하여 조인 연산을 수행할 때, R과 S의 레코드들이 조인 애트리뷰트 A와 B값에 물리적으로 정렬되어 있으면 분할-해시 조인이 가장 효율적으로 구현될 수 있다.",
+        "④ 외부 조인은 중첩 루프 조인이나 단일 루프 조인 알고리즘 중 하나를 수정하여 구현할 수 있다. - 15"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 68
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "사용자 U1이 생성한 EMPLOYEE(Eno, Name, Salary) 테이블에 대해 다음의 SQL 명령을 순서대로 실행할 때, 권한 부여 에러가 발생하는 위치를 모두 모아놓은 것은?\n\n1 U1: GRANT INSERT, DELETE ON EMPLOYEE TO U2; U1: GRANT SELECT ON EMPLOYEE TO U3 WITH 2 GRANT OPTION; 3 U2: GRANT INSERT ON EMPLOYEE TO U4; 4 U3: GRANT SELECT ON EMPLOYEE TO U5; 5 U5: GRANT SELECT ON EMPLOYEE TO U6; 6 U1: GRANT SELECT ON EMPLOYEE TO U6; 7 U1: REVOKE SELECT ON EMPLOYEE FROM U3; 8 U6: SELECT * FROM EMPLOYEE; 9 U5: SELECT * FROM EMPLOYEE; 10 U6: UPDATE EMPLOYEE SET Salary = Salary * 1.1;",
+      "options": [
+        "① 2, 3, 5",
+        "② 3, 5, 10",
+        "③ 3, 5, 9, 10",
+        "④ 3, 5, 8, 9, 10"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 69
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "트랜잭션 T1, T2, T3에 대하여 스케줄 s1, s2 중에서 충돌 직렬 가능한(conflict serializable) 것은?\n\nT1: r1(x); r1(z); w1(x); T2: r2(z); r2(y); w2(z); T3: r3(x); r3(y); w3(y); s1: r1(x); r2(z); r1(z); r3(x); r3(y); w1(x); w3(y); r2(y); w2(z); s2: r1(x); r2(z); r3(x); r1(z); r2(y); r3(y); w1(x); w2(z); w3(y);",
+      "options": [
+        "① s1",
+        "② s2",
+        "③ s1, s2",
+        "④ 없음"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 70
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "다음 그림은 의사결정 트리(decision tree)를 구축하는데 있어서, 분리되기 전 노드(P)와 분리된 후 노드(C1, C2) 의 상태를 나타낸다. 그림에서 N()은 노드에 속한 엔트리 개수, E()는 해당 노드의 엔트로피(entropy)를 나타낸다 고 할 때, 노드 분리에 따른 정보 이득(information gain)은?",
+      "options": [
+        "① 0.54",
+        "② 0.40",
+        "③ 0.30",
+        "④ 0.16 5 -"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2017_q71.png",
+      "image": "/exams/images/auditor_2017_q71.png",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 71
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "대용량의 데이터 처리의 필요성이 커짐에 따라 NoSQL 기술에 대한 수요도 증가하고 있다. 관계형 데이터베 이스와 비교했을 때, NoSQL의 특징에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 각 데이터가 독립적으로 설계되어 있어 데이터를 여러 서버에 분산하여 작업하며 다양한 조인 연산도 지원한다.",
+        "② NoSQL 데이터베이스는 키-값형 스토어, 문서형 데이터베 이스, 컬럼형 데이터베이스, 그래프 데이터베이스 등으로 구분할 수 있다.",
+        "③ MongoDB는 문서형 데이터베이스로서, 문서(document)는 관계형 데이터베이스의 테이블을 구성하는 열들의 집합에 해당한다.",
+        "④ 대부분의 NoSQL에서는 비정형 대용량의 데이터를 다루므로, 관계형 데이터베이스에서 활용되던 인덱스 구조를 사용 하지 않는다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 72
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "분산 데이터베이스 설계에서 분할(fragmentation)에 관한 설명 중 가장 거리가 먼 것은?",
+      "options": [
+        "① 응용에 필요한 데이터들을 모아서 필요한 곳에 가까이 저장하기 위해 분할이 필요하다.",
+        "② 분할의 방법에는 수직 분할, 수평 분할, 혼합 분할 방법이 있다.",
+        "③ 분할 이전의 전역 릴레이션에 포함된 튜플은 분할 후 반 드시 한 개의 분할 단편에 포함되어야 한다.",
+        "④ 모든 분할 방법에 대해 조인 연산을 이용하여 분할 이전과 동등한 결과를 얻을 수 있어야 한다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 73
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "데이터마이닝 분류 분석을 위한 다음 오분류표의 평가 지표에 대한 설명으로 가장 거리가 먼 것은?\n\n예측값(검색결과 포함) 예측값(검색결과에 미포함) 실제값 참(P) TP(True Positive) FN(False Negative) 실제값 거짓(N) FP(False Positive) TN(True Negative)",
+      "options": [
+        "① 민감도(sensitivity) – TP / P",
+        "② 특이도(specificity) – TN / N",
+        "③ 정확도(precision) – TP / (TP + FP)",
+        "④ 재현률(recall) – TP / (TP + TN) - 16"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 74
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "Google의 PageRank 알고리즘과 관련하여 3개의 웹사이트가 다음 그림과 같이 연결되어 있다고 하자. 이 웹에 대한 전이 행렬(transition matrix) M의 i번째 행, j번째 열의 원소 mij는 다음과 같이 정의된다. 전이 행렬 M에서 그 값이 1/2인 원소의 개수와 1인 원소의 개수를 올바르게 나열한 것은?\n\n- 페이지 j가 페이지 i에 대한 링크를 가지고 있고 j가 링크한 전체 페이지 수가 r(≥1) 페이지일 때 mij = 1/r\n- 그렇지 않으면 mij = 0",
+      "options": [
+        "① 2, 1",
+        "② 3, 2",
+        "③ 4, 1",
+        "④ 5, 0 6 - 시스템 구조"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2017_q75.png",
+      "image": "/exams/images/auditor_2017_q75.png",
+      "subject": "데이터베이스",
+      "origin_year": 2017,
+      "origin_id": 75
+    }
+  ]
+}

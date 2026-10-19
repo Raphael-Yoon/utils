@@ -1,0 +1,439 @@
+{
+  "exam_info": {
+    "id": "auditor_2016_sub3",
+    "title": "[2016년] 3과목 : 데이터베이스 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2016,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2016년 3과목 : 데이터베이스 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "현재 가장 널리 사용되는 빅데이터의 속성을 3V라고 정의할 때, 3V의 세 가지 속성이 바르게 짝지어진 것은?",
+      "options": [
+        "① 규모(Volume), 다양성(Variety), 속도(Velocity)",
+        "② 규모(Volume), 다변성(Verbosity), 가시성(Visibility)",
+        "③ 가시성(Visibility), 다변성(Verbosity), 변동성(Var- iability)",
+        "④ 변동성(Variability), 다양성(Variety), 속도 (Velocity)"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 51
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "다음과 같은 상품 구매 트랜잭션에 대해 연관규칙 탐사를 수행했다고 하자. 이 때 계산된 지지도(support) 와 신뢰도(confidence)로 옳지 않은 것은?\n\nT1 = {milk, coke, beer} T2 = {milk, pepsi, juice} T3 = {milk, beer} T4 = {coke, juice} T5 = {milk, pepsi, beer}",
+      "options": [
+        "① 항목집합 {beer, milk}의 지지도는 3/5이다.",
+        "② {milk} → beer의 지지도는 4/5이다.",
+        "③ {milk} → beer의 신뢰도는 3/4이다.",
+        "④ {juice} → milk의 신뢰도는 1/2이다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 52
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "데이터 객체에 대한 제어 기법 중 필수 접근 제어 (mandatory access control)에 대한 설명으로 옳지 않은 것은?",
+      "options": [
+        "① 데이터 객체에 대해서는 일정한 비밀 등급이, 사 용자에 대해서는 일정한 허가 등급이 지정된다.",
+        "② 사용자의 허가 등급이 데이터의 비밀 등급보다 크거나 같은 경우에 판독이 가능하다.",
+        "③ 사용자의 허가 등급이 데이터의 비밀 등급보다 커야 갱신이 가능하다.",
+        "④ 보안 등급은 극비(top secret) > 비밀(secret) > 대외비(confidential) > 일반(unclassified)의 순서이다. - 12"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 53
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "2단계 로킹 규약(2 phase locking protocol)의 로크 전환(혹은 로크 변환)에 대한 다음 설명 중 옳은 것은?",
+      "options": [
+        "① 항목 X에 read_lock(X)를 수행하여 공유 로크를 획득한 후 나중에 write_lock(X)를 수행하여 배 타적 로크로 로크를 상승(upgrade)시킬 수 있다.",
+        "②항목 X에 write_lock(X)를 수행하여 배타적 로크를 획득한 후 나중에 read_lock(X)를 수행 하여 공유 로크로 로크를 상승시킬 수 있다.",
+        "③ 항목 X에 read_lock(X)를 수행하여 공유 로크를 획득한 후 나중에 write_lock(X)를 수행하여 배타적 로크로 로크를 하강(downgrade)시킬 수 있다.",
+        "④ 항목 X에 read_lock(X)를 수행하여 배타적 로크를 획득한 후 나중에 write_lock(X)를 수행하여 공유 로크로 로크를 하강시킬 수 있다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 54
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "다음 스케줄에 대해 타임스탬프 순서 기법을 적용 하였을때 설명이 올바른 것은? (TS(Ti)는 트랜잭션 Ti의 타임스탬프이고, read_TS(x)는 read(x) 연산을 성공적으로 수행한 트랜잭션들의 타임스탬프 중 가장 큰 것이고, write_TS(x)는 write(x) 연산을 성공적 으로 수행한 트랜잭션들의 타임스탬프 중 가장 큰 것이다. read_TS(x)와 write_TS(x)의 초기값은 모두 1이라고 가정한다.) 2시: T1 read(x) 3시: T2 write(x) 4시: T1 write(x)",
+      "options": [
+        "① T1은 read(x)를 실행하고 read_TS(x)를 그대로 둔다.",
+        "② T2의 write(x)는 TS(T2) ≥ write_TS(x)이므로 거부된다.",
+        "③ 타임스탬프 순서 기법을 적용하면, 위에 주어진 스케줄은 직렬 가능하다.",
+        "④ 토마스(Thomas)의 기록 규칙을 적용하면, T1의 write(x)는 무시된다. 2 -"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2016_q55.png",
+      "image": "/exams/images/auditor_2016_q55.png",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 55
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음은 두 릴레이션 R, S에 대해 어떤 관계 대수 연산을 적용한 결과 릴레이션을 보이고 있다. R 과 S에 대해 적용된 관계 대수 연산은?\n\nR S A B B C a 1 1 x b 2 2 y c 1 3 z 결과 테이블 A B B C a 1 2 y a 1 3 z b 2 3 z c 1 2 y c 1 3 z",
+      "options": [
+        "① R⋈NS",
+        "② R⋈B=BS",
+        "③ R⋈B<BS",
+        "④ R×S"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 56
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "릴레이션 E, W가 아래와 같을 때, 완전외부조인 (full outer join) E W의 실행결과 중 옳은 것은?\n\nE Member City Country Kim Seoul Korea Susan London England Smith Austin USA Nakamura Tokyo Japan W Member Gender Age Kim Female 39 Susan Female 32 Gates Male 53 Nakamura Male 39",
+      "options": [
+        "① Member City Country Gender Age Kim Seoul Korea Female 39 Susan London England Female 32 Nakamura Tokyo Japan Male 39 - 13",
+        "② Member City Country Gender Age Kim Seoul Korea Female 39 Susan London England Female 32 Nakamura Tokyo Japan Male 39 Smith Austin USA null null",
+        "③ Member City Country Gender Age Kim Seoul Korea Female 39 Susan London England Female 32 Nakamura Tokyo Japan Male 39 Gates null null Male 53",
+        "④ Member City Country Gender Age Kim Seoul Korea Female 39 Susan London England Female 32 Nakamura Tokyo Japan Male 39 Smith Austin USA null null Gates null null Male 53"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "image_url": "/exams/images/auditor_2016_q57.png",
+      "image": "/exams/images/auditor_2016_q57.png",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 57
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "내장 SQL(Embedded SQL)은 C, Java, JSP 등 프로 그래밍 언어(호스트 언어)에 SQL을 직접 끼워넣어 사용하며 SQL 전처리 컴파일러(precompiler)가 번역을 한다. 내장 SQL에 대한 다음 설명 중 옳지 않은 것은?",
+      "options": [
+        "① SQL 문 결과를 행단위로 처리하기 위하여 호스트 언어에 추가적인 명령문이 사용된다.",
+        "② SQL 문에서는 호스트 언어에 의하여 선언된 변수를 참조할 수 없다.",
+        "③ 호스트 언어에 의하여 선언된 변수를 이용하여 SQL 문의 실행결과를 저장할 수 있다.",
+        "④ 데이터베이스에 NULL 값을 삽입할 수 있으며, NULL 값을 읽어낼 수 있다. 3 -"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "image_url": "/exams/images/auditor_2016_q58.png",
+      "image": "/exams/images/auditor_2016_q58.png",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 58
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "릴레이션 STUDENT가 다음과 같을 때, 관계 대수 와 동일한 결과를 얻는 SQL 문장을 바르게 나타낸 것은?\n\nSTUDENT Fname Lname StudID Sex GPA DeptNo Chulsoo Kim 20160395 M A 5 Gilok Hong 20152932 F B 4 Yoosin Kim 20160244 M C 5 Soonhee Lee 20140294 F A 5 Chansoo Shim 20151285 M A 5 Soonsin Lee 20140893 M B 4 Dasol Park 20150203 F B 4 Kyunghee Jung 20162011 F A 5",
+      "options": [
+        "① SELECT ALL Sex, GPA FROM STUDENT;",
+        "② ALL SELECT Sex, GPA FROM STUDENT;",
+        "③ DISTINCT SELECT Sex, GPA FROM STUDENT;",
+        "④ SELECT DISTINCT Sex, GPA FROM STUDENT; ※ 다음 릴레이션을 읽고 60번~61번에 대하여 답하시오. 직원 정보를 저장하는 릴레이션 EMPLOYEE CREATE TABLE EMPLOYEE (NAME VARCHAR(30) NOT NULL, SSN CHAR(9) NOT NULL, ADDR VARCHAR(30), PHONE CHAR(10), PRIMARY KEY (SSN)); 부양가족 정보를 저장하는 릴레이션 DEPENDENT CREATE TABLE DEPENDENT (ESSN CHAR(9) NOT NULL, DEPNAME VARCHAR(30) NOT NULL, AGE INT, PRIMARY KEY (ESSN, DEPNAME), FOREIGN KEY (ESSN) REFERENCES EMPLOYEE (SSN));"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 59
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "“부양가족이 없는 직원의 이름을 검색하라”라는 SQL 질의를 다음과 같이 작성했다고 할 때, ㉮, ㉯, ㉰에 들어갈 내용으로 바르게 구성된 것은?\n\nSELECT NAME\nFROM EMPLOYEE\nWHERE ㉮ (SELECT ㉯ FROM DEPENDENT WHERE ㉰) ;\n- 14 번호 ㉮ ㉯ ㉰",
+      "options": [
+        "① NOT IN * NAME=DEPNAME",
+        "② NOT EXISTS * SSN=ESSN",
+        "③ NOT IN ESSN SSN=ESSN",
+        "④ NOT EXISTS ESSN NAME=DEPNAME"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 60
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "두 릴레이션 EMPLOYEE, DEPENDENT로부터 다음과 같이 EMPDEPEND라는 뷰(view)를 생성하고자 할 때, ㉱와 ㉲에 들어갈 내용이 바르게 짝지어진 것은? (단, EMPDEPEND에서 EMPSSN과 EMPNAME은 직원의 SSN과 이름을 각각 나타내고, NO_DEPS와 M_AGE는 해당 직원의 부양가족 수와 부양가족의 나이 평균을 각각 나타낸다.) EMPDEPEND EMPSSN EMPNAME NO_DEPS M_AGE CREATE VIEW EMPDEPEND(EMPSSN, EMPNAME, NO_DEPS, M_AGE) AS\n\nSELECT SSN, NAME, ㉱, ㉲\nFROM EMPLOYEE, DEPENDENT\nWHERE SSN=ESSN\nGROUP BY SSN; ㉱ ㉲",
+      "options": [
+        "① UNIQUE(*) MEDIAN(AGE)",
+        "② COUNT(*) MEDIAN(AGE)",
+        "③ COUNT(*) AVG(AGE)",
+        "④ UNIQUE(*) AVG(AGE) 4 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 61
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "SQL 문으로 테이블 DEPT와 EMP를 생성하고 뷰 EMPDEPT를 생성하였다. 뷰 생성과 투플 삽입 후 아래 문장을 실행했을 때 오류가 발생하지 않는 것은?\n\n(SQL 문)\nCREATE TABLE DEPT(\nDEPTNO INTEGER PRIMARY KEY, DNAME VARCHAR(14) NOT NULL, LOC VARCHAR(13) ); INSERT INTO DEPT VALUES(10, 'sales', 'seoul');\nCREATE TABLE EMP (\nEMPNO INTEGER PRIMARY KEY, ENAME VARCHAR(10), JOB VARCHAR(9), DEPTNO INTEGER REFERENCES DEPT(DEPTNO) ); INSERT INTO EMP VALUES(1, 'park', 'managing', 10);\nCREATE VIEW EMPDEPT AS\nSELECT ENAME, DNAME, JOB, DEPT.DEPTNO\nFROM EMP, DEPT\nWHERE EMP.DEPTNO=DEPT.DEPTNO;",
+      "options": [
+        "① INSERT INTO EMPDEPT VALUES ('kim', 'sales', 'managing', 10);",
+        "② CREATE VIEW EMPDNAME AS SELECT ENAME, DNAME FROM EMPDEPT;",
+        "③ CREATE INDEX E_01 ON EMPDEPT(ENAME);",
+        "④ UPDATE EMPDEPT SET DEPTNO=20 WHERE JOB LIKE 'managing';"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 62
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "권한(authorization)을 부여하는 ㉮와 회수하는 ㉯를 SQL로 바르게 표현한 것은?\n\n㉮ 테이블 EMPLOYEE에 대한 SELECT 권한을 계정 Mary와 John에게 부여한다. ㉯ 테이블 EMPLOYEE에 대한 SELECT 권한을 계정 John으로부터 회수한다.\n- 15",
+      "options": [
+        "① ㉮ = GRANT SELECT ON EMPLOYEE TO Mary, John; ㉯ = REVOKE SELECT ON EMPLOYEE FROM John;",
+        "② ㉮ = AUTHORIZE SELECT ON EMPLOYEE TO Mary, John; ㉯ = CANCEL SELECT ON EMPLOYEE FROM John;",
+        "③ ㉮ = GRANT EMPLOYEE TO Mary, John ON SELECT; ㉯ = REVOKE EMPLOYEE FROM John ON SELECT;",
+        "④ ㉮ = AUTHORIZE EMPLOYEE TO Mary, John ON SELECT; ㉯ = CANCEL EMPLOYEE FROM John ON SELECT;"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 63
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "데이터베이스 시스템의 데이터 독립성에 대한 설명 중 옳지 않은 것은?",
+      "options": [
+        "① ANSI 3단계 스키마 아키텍쳐는 내부단계(내부스 키마), 개념단계(개념스키마), 외부단계(외부스 키마)로 나눈다. 3단계 스키마의 목적은 물리적 데이터베이스로부터 사용자의 응용을 분리시키는 것이다.",
+        "② 외부스키마는 데이터베이스의 물리적 저장구조를, 개념스키마는 특정 사용자 그룹이 관심을 갖는 데이터베이스 부분을, 내부스키마는 모든 사용 자를 위한 전체 데이터베이스 구조를 기술한다.",
+        "③ 물리적 데이터 독립성은 개념스키마를 변경하지 않으면서 내부스키마를 변경할 수 있음을 말한다. 내부스키마의 접근 구조 변경이나, 파일 재구성이 개념스키마에 가능한 한 영향을 주지 않도록 한다.",
+        "④ 논리적 데이터 독립성은 외부스키마를 변경하지 않으면서 개념스키마를 변경하는 것을 말한다. 개념스키마의 데이터베이스 확장, 제약조건 갱신 등 변경이 외부스키마에 가능한 한 영향을 주지 않도록 한다. 5 -"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 64
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "데이터 품질에 관한 다음 설명 중 옳지 않은 것은?",
+      "options": [
+        "① 데이터 품질은 조직의 목적 달성을 위하여 관리 되는 데이터가 이용자의 만족을 충족시킬 수 있는 수준을 말한다.",
+        "② 데이터 품질 관리는 조직이 운영하는 정보시스템을 활용하는 이용자의 기대를 만족시키기 위 하여 수행하는 데이터 관리 활동이다.",
+        "③ 데이터 품질 진단의 종류 중 데이터 구조 진단은 데이터 관리 프로세스를 분석하여 문제점을 도 출하고, 이를 개선할 수 있는 핵심 업무 프로 세스를 최적화한다.",
+        "④ 데이터 품질 진단을 위한 데이터 프로파일링은 데이터의 중요 정보와 통계 값을 수집하는 정보 분석 기법이다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 65
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "상품(상품번호, 상품명, 담당부서, 구매자) 릴레이션 에서 상품번호와 상품명은 각각 후보키이고 구매자는 하나의 부서(담당부서)에 속한다고 하자. 이 릴레이션의 정규형과 관련된 설명 중 옳은 것을 모두 고르시오. (2개 선택)",
+      "options": [
+        "① 이 릴레이션이 속한 최고차 정규형은 1NF이다.",
+        "②이 릴레이션은 현재 담당부서→구매자의 함수 종속이 성립한다.",
+        "③ 이 릴레이션은 현재 상품명→(상품번호, 담당부서, 구매자)의 함수 종속이 성립한다.",
+        "④R1(구매자, 담당부서), R2(상품번호, 상품명, 구매자)로 분해하면 두 릴레이션은 BCNF에 속하게 된다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 66
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "다음의 릴레이션과 함수 종속을 고려해 보자. 이 릴레이션의 현재 속한 정규형과 BCNF로 분해 후 릴레이션의 수를 올바르게 나타낸 것은?\n\nR(A,B,C,D,E) 후보키: (A,C) 함수종속: A→B, C→D, (A,C)→E",
+      "options": [
+        "① 1NF, 3",
+        "② 2NF, 2",
+        "③ 2NF, 3",
+        "④ 3NF, 2 - 16"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 67
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "뷰에 대한 갱신은 기본 릴레이션에 대한 갱신으로 변환되는데, 이 때 대부분의 관계 DBMS에서 갱신이 가능한 뷰로 가장 적절한 것은?",
+      "options": [
+        "① 기본키가 포함된 한 릴레이션 위에 정의된 뷰",
+        "② 두 개 이상의 릴레이션 위에 조인으로 정의된 뷰",
+        "③ 집단 함수가 포함된 뷰",
+        "④기본 릴레이션의 애트리뷰트들 중에서 뷰에 포함되지 않은 애트리뷰트에 대해 NOT NULL이 지정되어 있을 때의 뷰"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 68
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "다음의 스케줄대로 트랜잭션을 실행했을 때 발생하는 문제는? (트랜잭션 연산 앞의 표기는 시간을 시:\n\n분:초로 표시한 것임) 00:00:00 T1 read(x) 00:00:01 T1 x = x - N 00:00:02 T1 write(x) 00:00:03 T2 read(x) 00:00:04 T2 x = x + M 00:00:05 T2 write(x) 00:00:06 T1 read(y) 00:00:07 T1 fail",
+      "options": [
+        "① 갱신 손실(lost update) 문제",
+        "② 부정확한 요약(incorrect summary) 문제",
+        "③ 반복할 수 없는 읽기(unrepeatable read) 문제",
+        "④ 오손 읽기(dirty read) 문제"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 69
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "공공데이터에 대한 다음 설명 중 가장 거리가 먼 것은?",
+      "options": [
+        "① Open API를 활용하려면 정보제공자에게 활용신청 을 해야하며, 승인을 받은 후 인증키를 받아 사 용한다.",
+        "② 공공데이터 또는 Open API로 제공되는 데이터는 특별한 사유가 존재하지 않는 한 상업적으로 이용이 가능하다.",
+        "③ 공공데이터는 공공기관 등에서 데이터의 공개 여부를 판단하여 제공하며, 미제공 데이터에 대해 일반 사용자가 공개를 신청하는 것은 허용 되지 않는다.",
+        "④ 공공데이터 서비스 유형은 SOAP, REST, RSS, LINK 등이 있다. 6 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 70
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "테이블 BOOK(bookid, bookname, price)에 대해 2 개의 트랜잭션 T1과 T2가 동시에 실행된다고 하자. 사용자가 입력한 명령을 시간별로 다음과 같이 실 행했을 경우, ㉮와 ㉯에 출력되는 결과 값으로 옳은 것은? (단, BOOK 테이블을 읽거나 쓰는 트랜잭션은 T1과 T2만 있으며, BOOK 테이블에 bookid 가 1인 투플이 존재한다고 가정한다.) 트랜잭션 T1 트랜잭션 T2 BEGIN TRANSACTION SET TRANSACTION ISOLATION LEVEL READ COMMITTED; select sum(price) as 총액 from book; (결과 값) 10000 BEGIN TRANSACTION SET TRANSACTION ISOLATION LEVEL REPEATABLE READ; select sum(price) as 총액 from book; (결과 값) 10000 update book set price=price+100 where bookid=1; /* 여기서 대기상태 */ select sum(price) as 총액 from book; (결과 값) ㉮ COMMIT; select sum(price) as 총액 from book; (결과 값) ㉯ COMMIT; ㉮ ㉯",
+      "options": [
+        "① 10000 10000",
+        "② 10000 10100",
+        "③ 10100 10000",
+        "④ 10100 10100"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 71
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "다음 표는 문서들에 대한 검색을 수행한 결과, 검색된(retrieved) 문서와 적합한(relevant) 문서의 수를 각각 나타낸다. 재현율(recall)과 정확률(precision)을 각각 바르게 계산한 것은?\n\n- 17 적합한(관련된) 문서 수 (Number of relevant documents) 구 분 Yes No 검색된 문서 수 Yes 75 50 (Number of retrieved No 45 30 documents) 재현율 정확률",
+      "options": [
+        "① 0.375 0.150",
+        "② 0.375 0.400",
+        "③ 0.525 0.475",
+        "④ 0.625 0.600"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 72
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "다음 문장에서 빈칸 ㉮와 ㉯에 들어갈 용어로 적절한 것은?\n\n예측 모델링(Predictive Modeling)은 목표 변수를 설명 변수의 함수 모델로 생성하는 작업을 말한다. 예측 모델링은 이산형 목표 변수에 사용되는 ( ㉮ ) 과(와) 연속형 목표 변수에 사용하는 ( ㉯ )의 두 가지 유형이 있다. ㉮ ㉯",
+      "options": [
+        "① 군집(clustering) 서술(descriptive)",
+        "② 군집(clustering) 분류(classification)",
+        "③ 분류(classification) 회귀(regression)",
+        "④ 회귀(regression) 서술(descriptive) 7 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2016_q73.png",
+      "image": "/exams/images/auditor_2016_q73.png",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 73
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "다음은 회사 데이터베이스를 표현한 E-R 다이어그램의 일부를 보이고 있다. 속성 이름에 밑줄 친 것은 키 속성을 의미한다. 이 E-R 다이어그램과 관련된 설명으로 적절한 것을 모두 고르시오. (2개 선택) (단, 이 E-R 다이어그램은 DEPARTMENT와 EMPLOYEE 릴레이션으로만 변환된다고 가정한다.)",
+      "options": [
+        "① 특정 부서에 배치되지 않은 직원이 존재 할 수 있다.",
+        "② 직원이 없는 부서가 존재할 수 있다.",
+        "③DEPARTMENT 개체를 릴레이션으로 변환하면 DEPARTMENT(DNO, DName)이 된다.",
+        "④ EMPLOYEE 개체를 릴레이션으로 변환하면 EMPLOYEE (ENO, Name)이 된다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2016_q74.png",
+      "image": "/exams/images/auditor_2016_q74.png",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 74
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "다음은 대학 데이터베이스의 일부를 E-R 다이어그램으로 표현한 것이다. 이 다이어그램에 대한 설명으로 옳지 않은 것은? (단, 수퍼타입과 서브 타입을 연결하는 중간 원안의 표시 ‘d’는 dis- joint를, PERSON 개체 쪽의 단일선은 partial을 표현한다고 하자.)",
+      "options": [
+        "① 이 E-R 다이어그램은 세분화(specialization) 관계를 표현한 것이다.",
+        "② PERSON이 수퍼클래스에 해당하는 개체이다.",
+        "③ FACULTY나 STUDENT가 아닌 PERSON 개체는 없다.",
+        "④ FACULTY 개체이면서 동시에 STUDENT 개체일 수는 없다. - 18 8 - 시스템 구조"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2016년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2016_q75.png",
+      "image": "/exams/images/auditor_2016_q75.png",
+      "subject": "데이터베이스",
+      "origin_year": 2016,
+      "origin_id": 75
+    }
+  ]
+}

@@ -1,0 +1,434 @@
+{
+  "exam_info": {
+    "id": "auditor_2015_sub4",
+    "title": "[2015년] 4과목 : 시스템구조 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2015,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2015년 4과목 : 시스템구조 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "다음 그림은 인터넷에서 수집한 IP 패킷의 헤더 (header)를 16진수로 나타낸 것으로 검사합(checksum) 부분을 제거하고 ‘checksum’으로 나타냈다. 검 사합의 값으로 맞는 것은? (비트의 나열 순서는 좌에서 우, 위에서 아랫방향이다.) 4 5 0 0 0 0 2 8 3 e c 9 0 0 0 0 2 5 0 6 checksum a d c 2 4 8 5 e 0 a 5 a 1 5 b 9",
+      "options": [
+        "① 25c2",
+        "② 40d4",
+        "③ 25c9",
+        "④ 40d5"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 76
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "SCTP(Stream Control Transport Protocol)에 관한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① SCTP 연결(Association)은 다중 스트림을 지원한다.",
+        "② SCTP 연결(Association)은 각 단말의 다중 IP 주소들을 허용한다.",
+        "③ SCTP에서 개별 스트림을 구분하기 위해 SSN(Stream Sequence Number)을 이용한다.",
+        "④ SCTP에서 제어 정보와 데이터 정보는 각각 다른 청크(chunk)에 실려 전달된다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 77
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "다음 중 ( ㉮ )에 들어갈 용어로 가장 적절한 것은?\n\nIPv6는 호스트가 직접 IP주소를 설정할 수 있는 자동설정(autoconfiguration)기능을 가지고 있다. 이를 위해 호스트는 먼저 링크 로컬 주소를 생성하고 생성된 링크 로컬 주소가 서브넷 내에서 유일함을 확인하기 위해 ( ㉮ )를 전송한다.",
+      "options": [
+        "① neighbor solicitation message(이웃간청메시지)",
+        "② neighbor advertisement message(이웃광고메시지)",
+        "③ router solicitation message(라우터간청메시지)",
+        "④ router advertisement message(라우터광고메시지) 1"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 78
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음 중 ICMPv6에서 사용하고 있는 오류 메시지 (error message)로 가장 거리가 먼 것은?",
+      "options": [
+        "① 목적지 도달 불가(destination unreachable)",
+        "② 너무 큰 패킷(packet too big)",
+        "③ 발신지 억제(source-quench)",
+        "④ 매개변수 문제(parameter problem)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 79
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "LTE(Long Term Evolution)보다 향상된 성능을 제공 하기 위해 LTE-A(LTE-Advanced)가 채택하고 있는 기술과 가장 거리가 먼 것은?",
+      "options": [
+        "① carrier aggregation",
+        "② 8x8 MIMO(Multi-Input Multi-Output)",
+        "③ CoMP(Coordinated Multipoint)",
+        "④ HR-DSSS(High Rate Direct Sequence Spread Spectrum)"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 80
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "클라우드 전달 모델은 크게 IaaS(Infrastructure\n\n-as-a-Service), PaaS(Platform-as-a-Service), SaaS(Software-as-a-Service)로 구분할 수 있다. 다음 중 IaaS에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 클라우드 서비스 기반 인터페이스와 툴을 이용 하여 접근하고 관리하는, 인프라 중심의 IT 자원 으로 구성된 필요 시설을 서비스 해주는 IT 환경을 말한다.",
+        "② 전통적인 호스팅이나 아웃소싱 환경과 달리 IT 자원을 가상화하고 패키지화하여, 번들로 제공 해서 런타임 선행 확장과 인프라를 원하는 대로 만드는 것을 간단하게 할 수 있다.",
+        "③ IaaS 환경을 바탕으로 이용 가능한 IT 자원은 대부분 초기화된 가상 인스턴스 형태로 제공되며, 전형적인 IaaS 환경의 중심에 있는 IT 자원은 바로 가상 서버이다.",
+        "④ 클라우드 공급자에게 클라우드를 설정하고 활용 하는 높은 수준의 책임과 제어를 제공하는 것으로, IaaS가 제공하는 IT 자원에 대한 직접 관리의 책임은 클라우드 공급자에게 있다. 9"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 81
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "SONET(Synchronous Optical Network)에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① STS-1의 데이터 전송률은 103.68Mbps이다.",
+        "② STS 다중화기(MUX)는 여러 개의 전기적인 신호를 광신호로 다중화 한다.",
+        "③ STS-3의 전송률은 STS-1의 3배이다.",
+        "④ SONET 계층은 Photonic Layer, Section Layer, Line Layer, Path Layer로 이루어져있다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 82
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "다음은 네트워크 인프라에 소프트웨어의 장점을 적용하는 기술에 대한 설명이다. ( ㉮ )와 ( ㉯ )에 들어갈 용어로 가장 적절한 것은?\n\n( ㉮ )는(은) 네트워크의 제어부와 전달부를 분리하고 제어부의 소프트웨어와 전달부 하드 웨어 사이에 개방형 인터페이스를 정의하여, 운영자는 제어부를 프로그래밍하여 원하는 방식으로 제어하는 기술이며, ( ㉯ )는(은) 방화벽(Firewall), 네트워크 주소 변환(NAT), 부하분산기(load balancer) 등의 전용 하드 웨어 장비를 소프트웨어화하여 범용 하드웨어 장비에 설치하는 기술이다.\n※ SDN(Software-Defined Networking) NFV(Network Function Virtualization) CDN(Content Delivery Network) ㉮ ㉯",
+      "options": [
+        "① SDN NFV",
+        "② OpenFlow SDN",
+        "③ CDN NFV",
+        "④ OpenFlow CDN"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 83
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "블루투스의 L2CAP(Logical Link Control and Adaption Protocol)의 기능으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 다중화",
+        "② 분할 및 재조립",
+        "③ 변조",
+        "④ 서비스 품질 2"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 84
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "기가비트 이더넷(gigabit ethernet)의 반이중 모드 (half-duplex)에서 전통적인 이더넷과 같이 512 비트의 최소 프레임 길이를 사용하면 네트워크의 최대 길이가 제한된다. 이를 해결하기 위한 방법 으로 적절한 것은? (2개 선택)",
+      "options": [
+        "① carrier extension",
+        "② frame bursting",
+        "③ 4D-PAM",
+        "④ CSMA/CD"
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "explanation": "정답: ①, ② (복수 정답)\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n해당 문항의 정답은 ①, ②입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 85
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "“서비스 수준 협약(service level agreement, SLA)에 관한 표준(SLA를 강화한 정보시스템 운영계약 참조 모델, TTAS.KO-10.0254)”을 제정하였다. 이 표준에 따른 서비스 수준 협약에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 서비스 제공자와 서비스 사용자가 제공될 서비스 및 그와 연관된 여러 조건들에 대한 서로의 책임과 의무사항을 기술해 놓은 협약서이다",
+        "② 계약서에는 계약 사항에 대한 설명과, 계약 대상자와 계약 대상자의 서명, 계약의 시작과 종료 일시, 합의 범위, 계약 대상자의 역할과 책임, 계약 내용 등이 명시되어야 한다.",
+        "③ 서비스의 범위 및 항목의 정의는 운영자 중심으로 서버, 네트워크, 어플리케이션으로 정리하여 관리한다.",
+        "④ 서비스 수준과 측정항목, 측정기준, 측정치들이 정의되면 각 항목들을 평가할 수 있는 방안이 마련되어야 한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 86
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "정보통신기술협회(TTA)는 2013년 12월 “사물 인터넷(internet of things, IoT)에 관한 표준 (사물인터넷 정의 및 참조모델, TTAK.KO-06.0346)”을 제정하였다. 이 표준에 따른 사물인터넷 참조 모델의 계층(layer)들과 가장 거리가 먼 것은?",
+      "options": [
+        "① 응용계층",
+        "② 서비스 지원 및 응용 지원 계층",
+        "③ 전송계층",
+        "④ 네트워크계층 0"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 87
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "라우팅의 경우 동일한 AS(Autonomous System) 내부 에서 사용되는 intra-AS 라우팅 알고리즘 기반의 프로토콜과 AS와 AS간에 사용되는 inter-AS 라우팅 알고리즘 기반의 프로토콜이 있는데 다음 중 inter\n\n-AS 라우팅 알고리즘 기반의 프로토콜로 가장 적 절한 것은?",
+      "options": [
+        "① RIP(Routing Information Protocol)",
+        "② IGRP(Interior Gateway Routing Protocol)",
+        "③ OSPF(Open Shortest Pass First)",
+        "④ BGP(Border Gateway Protocol)"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 88
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "“모바일 전자정부 서비스 사용자 인터페이스 설계 가이드라인(2014)”에 나오는 모바일 서비스 UX 디자인 기본원칙에서 ‘앱(App)개발 시 예외 항목’에 해당하지 않는 것은? (2개 선택)",
+      "options": [
+        "① 정보소외계층의 접근성을 고려한다.",
+        "② 웹표준을 준수하여 개발한다.",
+        "③ 서비스의 호환성과 확장성을 고려한다.",
+        "④ 일관성을 유지한다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 89
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "실시간시스템에서 우선순위 역전에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 우선순위 역전은 우선순위를 기반으로 하는 선점 모드로 동작하는 스케줄링 방식에서 발생한다.",
+        "② 우선순위 역전에 대한 해결 방안으로는 우선순위 상속(priority inheritance) 방식과 우선순위 올림(priority ceiling) 방식이 있다.",
+        "③ 우선순위 상속 프로토콜은 자원을 대기하는 태스크의 우선순위를 해당 자원을 점유한 태스크의 우선순위로 상속하는 기법이다.",
+        "④ 우선순위 올림 기법은 자원에도 우선순위를 동적으로 할당하여 자원의 우선순위를 자원을 이용하는 태스크가 할당받는 기법이다. 2"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 90
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "HDFS(Hadoop Distributed File System) 설계 측면 에서 HDFS의 응용 분야로 가장 적절한 것은?",
+      "options": [
+        "① 데이터 액세스를 스트리밍 방식으로 요구하는 응용 분야",
+        "② 빠른 응답시간의 데이터 액세스를 요구하는 응용 분야",
+        "③ 많은 수의 작은 파일을 지원해야 하는 응용 분야",
+        "④ 다중 쓰기 작업과 임의의 위치에 파일의 수정이 이루어지는 응용 분야"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 91
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "24시간 온라인 정보서비스를 제공하는 기업의 시스템관리자는 연간시스템의 가용목표를 99.9%로 정했다. 이러한 목표를 달성하려면 1년간 허용할 수 있는 최대 서비스 중지기간(손상된 애플리 케이션과 데이터베이스를 수리해 시스템을 유지 하고 재가동하는데 사용되는 시간)은 얼마인가?\n\n(단, 1년은 365일=8,760시간으로 본다)",
+      "options": [
+        "① 4.38시간",
+        "② 43.8시간",
+        "③ 8.76시간",
+        "④ 87.6시간"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 92
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "데이터센터 에너지 효율 측정 지표 중 대표적인 지표로 사용되고 있는 전력사용효율지수 (PUE, Power Usage Effectiveness)에 대한 설명이다. 가장 거리가 먼 것은?",
+      "options": [
+        "① IT 장비가 사용한 전력 대비 데이터센터 시설의 전체 사용 전력 비율로 정의된다.",
+        "② 숫자가 낮을수록 데이터센터의 본질적 기능이 강화되고 전력 사용이 효율적이 된다는 것을 의미한다.",
+        "③ 건축, 전기, 공조, 공조, 방재, 보안, 운영 등 기반 설비의 에너지 효율을 IT 장비 전력 사용에 대비하여 평가하는 지표로 사용될 수 있다.",
+        "④ IT 장비가 사용하는 에너지값을 이용하여 데이터 센터의 에너지 효율을 산출하므로 IT 장비 자체의 효율을 측정할 수 있다는 장점을 갖는다. 1"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 93
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "다음은 SPEC(Standard Performance Evaluation Corporation)의 성능 벤치마크(benchmark)에 대한 특징을 설명한 것이다. 가장 적절한 것은?\n\n가. 스토리지 솔루션을 제공 할 수 있는 최대 지속 가능한 처리량을 측정하는 데 사용되는 벤치마크로서 프로토콜에 독립적임.\n나. 벤치마크는 응용 계층에 파일을 제공하는 저장 솔루션의 성능을 측정하고 워크스 테이션 그룹상에서 동작함.",
+      "options": [
+        "① SPECjms2007",
+        "② SPECjEnterprise2010",
+        "③ SPEC OMP2012",
+        "④ SPEC SFS2014"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 94
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "시스템의 성능은 일반적으로 초당 처리할 수 있는 트랜잭션(TPS : Transaction Per Second)으로 정 의하며, 용량산정을 위해서 피크(peak)타임의 동 시사용자(concurrent user)와 목표 평균 응답시간 (average response time)을 사용한다. 만약 현재 시스템의 동시 사용자가 400명이고, 목표 평균 응답시간이 3초이며, 평균 대기시간(average think time)이 12초라면 이때의 목표 성능은?(계산 결과는 소수점 이하 2자리에서 반올림)",
+      "options": [
+        "① 15.6tps",
+        "② 18.2tps",
+        "③ 22.4tps",
+        "④ 26.7tps 2"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 95
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "트랜잭션은 원자성(atomicity), 일관성(consistency), 고립성(isolation), 영속성(durability) 등 네 가지 주요한 특성을 갖는다. 다음 중 ( ㉮ )에 들어갈 용어로 가장 적절한 것은?\n\nA계정에서 B계정으로 백만원을 이체하는 트랜잭션을 실행한다고 가정해보자. 이 트랜잭션 프로그램은 A계정에서 백만원을 출금하여 B 계정으로 백만원을 입금시킨다. 이를 트랜잭션 으로 실행할 때, 그 트랜잭션은 ( ㉮ )이 있어야 한다. 즉, 모두 실행하거나 어느 쪽도 실행하지 말아야 한다. 둘 중 하나만 갱신 되어서는 안 된다.",
+      "options": [
+        "① 원자성",
+        "② 일관성",
+        "③ 고립성",
+        "④ 영속성"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 96
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "독립적인 TP(Transaction Processing) 애플리 케이션의 통합은 일반적으로 통신 프로토콜, 애플리 케이션 기능, 메시지 포맷이 이질적이기 때문에 어렵다. 이들의 조정을 위한 아키텍처로 브로커 기반 아키텍처(broker-based architecture)와 버스 기반 아키텍처(bus-based architecture) 두 가지를 들 수 있다. 이들에 대한 설명 중 가장 거리가 먼 것은?",
+      "options": [
+        "① 브로커기반 아키텍처에서 메시지서버는 이질적인 애플리케이션 사이의 교량역할을 수행한다.",
+        "② 브로커기반 아키텍처에서는 클라이언트와 애플리 케이션이 직접 통신하지 않고 브로커와 통신한다.",
+        "③ 버스기반 아키텍처에서 TP시스템은 파라메타와 메시지를 위한 포맷간의 변환을 해야만 한다.",
+        "④ 버스기반 아키텍처에서 클라이언트 애플리케이션 으로 묶여질 수 있는 변환기능은 공유라이브러리를 이용하여 수행된다. 2"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2015_q97.png",
+      "image": "/exams/images/auditor_2015_q97.png",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 97
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "서버의 가용성을 극대화하기 위한 주백업 모델 (primary-backup model)에 대한 설명이다. ㉮ 와 ㉯ 에 들어갈 용어로 가장 적절한 것은?\n\n백업서버의 준비정도는 ( ㉮ ) 결정에 가장 주요한 요소로 ( ㉮ )을 감소시켜야 서버의 가용성을 향상시킬 수 있다. 주서버에 장애가 있을 시 사실상의 지연시간 없이 항상 이어받을 준비를 갖추도록 하기 위하여 백업서버를 최신 상태로 유지하는 경우에 이것을 ( ㉯ )이라 한다. ㉮ ㉯",
+      "options": [
+        "① 평균가동시간(MTBF) 핫 백업(hot-backup)",
+        "② 평균고장시간(MTTR) 핫 백업(hot-backup)",
+        "③ 평균가동시간(MTBF) 웜 백업(warm-backup)",
+        "④ 평균고장시간(MTTR) 웜 백업(warm-backup)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 98
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "개방형 플랫폼 서비스(open platform service)하 에서의 멀티테넌트(multi-tenant) 실행 환경을 위한 소프트웨어 공유 구조를 설명한 것으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 공유 OS-분리 VM 구조(shared OS–separate VM architecture)에서 테넌트들은 가상 머신(VM) 수준에서 분리되어 소프트웨어 서비스가 제공된다.",
+        "② 공유 응용코드-분리 응용 인스턴스 구조(shared application code–separate application instance architecture)에서는 테넌트들 간에 공용 프로 그램 코드까지 공유되며, 응용 인스턴스만 분리 되는 형태로 소프트웨어 서비스가 제공된다.",
+        "③ 공유 VM-분리 응용 코드 구조(shared VM–separate application code architecture)는 VM에서 제공 하는 기능에 의해 보안이 이루어지므로, 대부분 가상머신의 사용자 수준에서 보안이 이루어진다.",
+        "④ 공유 응용 인스턴스 구조(shared application instance architecture)는 보안이 취약할 가능성이 가장 낮으며, 테넌트마다 인스턴스를 만들지 않으므로 비용 소모가 가장 적다. 2"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 99
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "그림과 같이 모바일 호스트(mobile host)가 홈 네트워크(home network)에서 외부 네트워크(for- eign network)로 이동한 상황에서 모바일 IP에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 이동한 모바일 호스트는 홈 주소(home address)와 의탁주소(care-of address)라는 두 개의 주소를 가진다.",
+        "② 이동한 모바일 호스트는 외부 에이전트(Foreign agent)에게 의탁주소(care-of address)를 받기 위해 ICMP의 router solicitation 메시지를 이용한다.",
+        "③ 이동한 모바일 호스트가 외부 에이전트(foreign agent)에 등록하기 위해서 TCP 포트를 이용하여 등록 요청(registration request)을 보낸다.",
+        "④ 이동한 모바일 호스트가 원격지 호스트(remote host)와 패킷을 주고받을 때 더블 크로싱(double crossing)이 발생할 수 있다. 3 보 안"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2015년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "image_url": "/exams/images/auditor_2015_q100.png",
+      "image": "/exams/images/auditor_2015_q100.png",
+      "subject": "시스템구조",
+      "origin_year": 2015,
+      "origin_id": 100
+    }
+  ]
+}

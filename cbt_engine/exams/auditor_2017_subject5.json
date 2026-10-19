@@ -1,0 +1,347 @@
+{
+  "exam_info": {
+    "id": "auditor_2017_sub5",
+    "title": "[2017년] 5과목 : 보안 (20문항)",
+    "category": "정보시스템감리사",
+    "year": 2017,
+    "time_limit_minutes": 20,
+    "passing_rules": {
+      "total_questions": 20,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2017년 5과목 : 보안 (20문항)",
+      "start_q": 1,
+      "end_q": 20,
+      "question_count": 20,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "일회용 비밀번호(OTP: One-Time Password)에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① 벨 연구소(Bell Lab.)에서 개발한 S/KEY 방식은 유닉스 계열 운영체제의 인증에 사용된다.",
+        "② 생성되어 한번 사용된 인증 값이 노출되는 경우 재사용이 가능하다.",
+        "③ 이벤트 동기화 방식은 OTP를 생성하기 위해 입력 값으로 시각을 사용하는 방식이다.",
+        "④ 도전-응답(challenge-response) 방식은 OTP를 생성 하기 위해 카운트 값을 동일하게 증가시켜 입력 하는 방식이다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 101
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "VPN을 구축하기 위해 사용하는 터널링 프로토콜에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① IPSec은 IP 망에서 안전하게 정보를 전송하는 표 준화된 3계층 프로토콜로 전송모드와 터널모드가 있다.",
+        "② Layer2 터널링은 링크 계층에서 구현된 프로토콜로 비용면에서는 효율적이지만, 터널 종단에서만 인 증을 제공하므로 다른 계층의 프로토콜과 함께 사용되는 것이 일반적이다.",
+        "③ PPTP(Point to Point Tunneling Protocol)는 Mic- rosoft사가 제안한 방식으로 이동 중인 사용자가 기업의 home server에 다이얼 업 접속을 하고자 할 때 사용하는 방식이다.",
+        "④ SSL은 원격 다이얼 업 사용자가 터널링을 통해 공중망으로 사설망에 연결될 수 있는 기능을 제공한다."
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 102
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "DRM 시스템을 위한 핵심 요소 기술과 가장 거리가 먼 것은?",
+      "options": [
+        "① DOI(Digital Object Identifier)",
+        "② XrML",
+        "③ MPEG",
+        "④ Finger Print Watermarking - 2"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 103
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "다음의 개인정보 비식별 조치 방법(’개인정보 비식별 조치 가이드라인’)은 어떤 것에 해당 하는가?\n\n홍길동, 35세, 서울 거주, 한국대학 재학 → 홍OO, 35세, 서울 거주, OO대학 재학",
+      "options": [
+        "① 가명처리(pseudonymization)",
+        "② 데이터 마스킹(data masking)",
+        "③ 데이터 범주화(data suppression)",
+        "④ 총계처리(aggregation)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 104
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "SSL이 제공하는 보안 기능에 대한 설명으로 적절 하지 않은 것은?",
+      "options": [
+        "① 서버와 클라이언트 사이에 전송되는 메시지에 대한 기밀성 기능을 제공한다.",
+        "② 클라이언트는 신뢰된 인증기관(certificate authority) 에서 발행된 서버의 인증서를 이용하여 서버를 인증할 수 있다.",
+        "③ 서버와 클라이언트의 인증서를 이용하여 송/수신 한 메시지에 대한 부인방지 기능을 제공한다.",
+        "④ 해시 함수(hash function)를 이용하여 서버와 클 라이언트 사이에 전송되는 메시지에 대한 무결성 기능을 제공한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 105
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음 설명에 가장 적절한 것은?\n\n디지털 포렌식 과정에서 구동되고 있는 시스템의 휘 발성 정보를 수집하는 행위를 의미하며, 수집 가능한 모든 정보의 수집/분석과 함께 이를 바탕으로 한 사고의 처리까지를 포함한다.",
+      "options": [
+        "① 연계 보관성(chain of custody)",
+        "② 법 집행(law enforcement)",
+        "③ 라이브 리스판스(live response)",
+        "④ 디스크 스패닝(disk spanning) 1 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 106
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "전자서명(digital signature) 메커니즘이 제공하는 기능으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 전자서명 메시지에 대한 부인방지(non-repudiation)",
+        "② 전자서명 검증 과정을 통한 메시지의 무결성(integrity)",
+        "③ 메시지 송신자에 대한 인증(authentication)",
+        "④ 송수신 메시지에 대한 비밀성(confidentiality)"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 107
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "소프트웨어 개발시 다음과 같은 HTML 코드에서 발생 가능한 보안 취약점으로 가장 적절한 것은?\n\n1: ...... 2: <form name=“MyForm” method=“get” action=“customer.do”> 3: <input type=text name=“txt1”> 4: <input type=submit value=“보내기”> 5: </form> 6: ......",
+      "options": [
+        "① 크로스사이트 요청 위조(CSRF)",
+        "② HTTP 응답 분할",
+        "③ XPath 삽입",
+        "④ LDAP 삽입"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 108
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "평문 11001010을 키 01101100을 이용하여 스트림 암호 시스템으로 암호화하였을 때 생성된 암호문 으로 적절한 것은?",
+      "options": [
+        "① 10100111",
+        "② 10110111",
+        "③ 10110110",
+        "④ 10100110"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 109
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "‘전자정부 SW 개발·운영자를 위한 소프트웨어 개발 보안 가이드(행정자치부)‘에서 제시된 소프트웨어 개발시 업로드 및 다운로드 파일에 대한 검증 과정과 가장 거리가 먼 것은?",
+      "options": [
+        "① 업로드되어 저장되는 파일의 타입, 크기, 개수, 실행 권한을 제한해야 한다.",
+        "② 업로드되어 저장되는 파일은 외부에서 식별되지 않아야 한다.",
+        "③ 다운로드되어 저장되는 파일의 중요 기능과 리소 스에 대해 부인방지 기능을 적용해야 한다.",
+        "④ 파일 다운로드 요청시에 요청 파일명에 대한 검증 작업을 수행해야 한다. - 22"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 110
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "무선 랜(LAN)의 보안 설정으로 가장 거리가 먼 것은?",
+      "options": [
+        "① WPA(Wi-Fi Protected Access)-PSK(Pre-Shared Key)를 이용하여 암호화를 설정한다.",
+        "② AP(Access Point) 보안을 위해 SSID(Service Set Identifier) 브로드캐스팅을 허용한다.",
+        "③ 무선 랜의 암호화 통신을 위하여 WEP(Wired Equi- valent Privacy) 키를 설정한다.",
+        "④ IEEE 802.1x 솔루션을 도입하여 EAP(Extensible Authentication Protocol)와 함께 무선 랜 인증을 수행한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 111
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "정보보호 관리체계로 알려져 있는 ISMS(Information Security Management System)의 업무 수행 절차를 적절한 순서로 배열한 것은?",
+      "options": [
+        "① ISMS 수립 → ISMS 구현과 운영 → ISMS 관리와 개선 → ISMS 모니터링과 검토",
+        "② ISMS 수립 → ISMS 모니터링과 검토 → ISMS 구현과 운영 → ISMS 관리와 개선",
+        "③ ISMS 수립 → ISMS 구현과 운영 → ISMS 모니터 링과 검토 → ISMS 관리와 개선",
+        "④ ISMS 수립 → ISMS 관리와 개선 → ISMS 구현과 운영 → ISMS 모니터링과 검토"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 112
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "다음 설명에 가장 적절한 것은?\n\n블루투스의 취약점을 이용하여 장비의 임의 파일에 접근하는 공격이다. 공격자는 블루투스 장치끼리 인증 없이 정보를 간편하게 교환하기 위해 개발된 OPP(Object Push Profile) 기능을 사용하여 블루투스 장치로부터 주소록 또는 달력 등의 내용을 요청해 이를 열람하 거나 취약한 장치의 파일에 접근할 수 있다.",
+      "options": [
+        "① 블루스나프(BlueSnarf)",
+        "② 블루프린팅(BluePrinting)",
+        "③ 블루버그(BlueBug)",
+        "④ 워 드라이빙(War Driving) 2 -"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 113
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "다음은 정보보호의 3대 요소 중 무엇에 관한 설명인가?\n\n적절한 권한을 가진 사용자에 의해 인가된 방법 으로만 정보를 변경할 수 있도록 보장하는 것을 의미한다.",
+      "options": [
+        "① 기밀성(Confidentiality)",
+        "② 완전성(Completeness)",
+        "③ 무결성(Integrity)",
+        "④ 가용성(Availability)"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 114
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "스니퍼(sniffer)는 LAN 카드의 promiscuous mode 에서 동작하는데, 이 모드를 사용하는 이유로 가장 적절한 것은?",
+      "options": [
+        "① 모든 유입 트래픽 차단",
+        "② 자신의 네트워크에 접근하는 모든 패킷 읽기",
+        "③ 해당 호스트가 다른 호스트와 통신을 원활하게 할 수 있도록 구성",
+        "④ 해당 NIC(Network Interface Card)로 들어오는 모든 패킷들을 해당 네트워크 세그먼트로 재전송"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 115
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "‘정보시스템 개발·운영자를 위한 홈페이지 취약점 가이드(KISA)‘에서 진단·제거 제시된 웹 애플리케이 션의 취약점으로 인해 발생하는 공격의 피해 형 태가 나머지 셋과 다른 것은?",
+      "options": [
+        "① URL/파라미터 변조 취약점",
+        "② 불충분한 세션 관리 취약점",
+        "③ 디렉터리 인덱싱 취약점",
+        "④ 크로스 사이트 요청 위조(CSRF) 취약점"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 116
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "‘개인정보보호 관리체계(PIMS)의 개인정보보호 관리 고시)‘ 과정(개인정보보호관리체계 인증 등에 관한 중 “검토 및 모니터링” 과정에 포함되어야 하는 가장 적절한 세부 관리과정을 고르시오.(2개 선택)",
+      "options": [
+        "① 내부감사",
+        "② 개인정보보호 개선 활동",
+        "③ 법적 요구사항 준수검토",
+        "④ 내부 공유 및 교육 - 23"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 117
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "다음 설명에 가장 적절한 보안 위협은?\n\n신뢰할 수 없는 데이터가 명령어나 쿼리문의 일부분 으로서 인터프리터로 보내질 때 발생되는 보안 위협",
+      "options": [
+        "① 인젝션",
+        "② 보안 설정 오류",
+        "③ 알려진 취약점 있는 컴포넌트 사용",
+        "④ 인증 및 세션 관리 취약점"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 118
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "클라우드에서 개인정보 보호에 초점을 맞춘 국제 표준은?",
+      "options": [
+        "① ISO/IEC 27001",
+        "② ISO/IEC 27014",
+        "③ ISO/IEC 27017",
+        "④ ISO/IEC 27018"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 119
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "TCP/IP 프로토콜에서 각 계층별 보안 프로토콜이 잘못 연결된 것은 어느 것인가?",
+      "options": [
+        "① 네트워크 접근계층(network access layer) – PGP",
+        "② 인터넷 계층(internet layer) – IPsec",
+        "③ 전송 계층(transport layer) - SSL",
+        "④ 응용 계층(application layer) – S/MIME 3 -"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "보안",
+      "origin_year": 2017,
+      "origin_id": 120
+    }
+  ]
+}

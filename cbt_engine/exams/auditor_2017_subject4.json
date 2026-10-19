@@ -1,0 +1,427 @@
+{
+  "exam_info": {
+    "id": "auditor_2017_sub4",
+    "title": "[2017년] 4과목 : 시스템구조 (25문항)",
+    "category": "정보시스템감리사",
+    "year": 2017,
+    "time_limit_minutes": 25,
+    "passing_rules": {
+      "total_questions": 25,
+      "cutline_score": 60.0,
+      "fail_score_per_subject": 40.0,
+      "points_per_question": 4.0
+    }
+  },
+  "subjects": [
+    {
+      "id": 1,
+      "name": "2017년 4과목 : 시스템구조 (25문항)",
+      "start_q": 1,
+      "end_q": 25,
+      "question_count": 25,
+      "weight_per_q": 4.0
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "subject_id": 1,
+      "question": "스마트 웨어러블 상호운용성 참조모델 - 제2부 :\n\n네트워크/미들웨어 요구사항(정보통신단체표준, TTAK.KO-06.0445-part2, 2016.12.27)은 네트워크와 미들웨어 계층에서 고려할 요구사항을 제시한다. 다음 중 이 두 계층에서 고려해야 할 요구사항으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 네트워크 계층은 공통적으로 IP 계층을 구현한다. (IPv6 권장)",
+        "② 네트워크 계층은 타 기기에 대한 탐색(discovery)이 가능해야 한다.",
+        "③ 미들웨어 계층은 인증, 허가, 접근제어, 데이터 암호화 등과 같은 보안기능을 지원해야 한다.",
+        "④ 미들웨어 계층은 제한적 성능을 가지는 기기 (constrained devices)에 적합한 메시지 전송 프로토콜을 지원해야 한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 76
+    },
+    {
+      "id": 2,
+      "subject_id": 1,
+      "question": "무선 통신 기술에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① Bluetooth 통신 네트워크는 Master-Slave 방식을 지원하며 데이터 전송을 위해 주파수 호핑(freq- uency hopping) 등을 사용한다.",
+        "② ZigBee는 주파수 충돌을 피하기 위하여 CSMA/CD (Carrier Sense Multiple Access/Collision Detection) 방법을 사용한다.",
+        "③ NFC는 무선태그(RFID) 기술 중 하나로 13.56MHz의 주파수 대역을 사용하는 비접촉식 통신 기술이다. 통신거리가 짧기 때문에 상대적으로 보안이 우수한 근거리 통신 기술이다.",
+        "④ Wi-Fi 통신은 AP(Access Point)와 단말 간의 통신 이며 QAM(Quadrature Amplitude Modulation) 등의 변복조 기술을 사용한다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 77
+    },
+    {
+      "id": 3,
+      "subject_id": 1,
+      "question": "실시간 스트리밍 데이터 분석 프레임워크로 가장 적절한 것은?",
+      "options": [
+        "① Apache Storm",
+        "② Facebook Scribe",
+        "③ Cloudera Flume",
+        "④ Linkedin Kafka - 17"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 78
+    },
+    {
+      "id": 4,
+      "subject_id": 1,
+      "question": "‘3D 프린터 선정 지침(정보통신단체표준, TTAK.KO\n\n-10.0789-Part15, 2015.12.16.)’에 따르면 3D 프 린터는 재료 및 출력 방식이 다양하다. 다음의 설명에 해당하는 3D 프린터의 종류는 무엇인가? 액상수지(Liquid Photopolymer)를 재료로 사용하며, 자외선 성분의 빛을 받으면 굳어지는 특수한 액체 성분의 레진을 이용하는 방식으로, 조금씩 굳어지는 부분을 쌓아가면서 3D 물체를 출력",
+      "options": [
+        "① FDM(Fused Deposition Modeling)",
+        "② SLA(Stereolithography Apparatus)",
+        "③ SLS(Selective Laser Sintering)",
+        "④ LOM(Laminated Object Manufacturing)"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 79
+    },
+    {
+      "id": 5,
+      "subject_id": 1,
+      "question": "정보시스템 하드웨어 규모산정 지침(정보통신단 체표준, TTAK.KO-10.0292, 2008.12.19)에서 OLTP 서버의 CPU 산정을 위한 보정치로 적절하지 않은 것은?",
+      "options": [
+        "① 데이터베이스 크기보정",
+        "② 애플리케이션 부하보정",
+        "③ 인터페이스 부하보정",
+        "④ 클러스터 보정"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 80
+    },
+    {
+      "id": 6,
+      "subject_id": 1,
+      "question": "다음에서 설명하는 센서(sensor)로 가장 적절한 것은?\n\n- 한축 또는 여러축의 회전 움직임의 각 변화량, 즉 각속도를 측정한다.\n- 움직이는 물체의 기본축에 대한 회전과 방향을 정확하게 측정할 수 있다.\n- 중력이나 자기장과 같은 외부의 힘에 영향을 받지 않고 독자적으로 동작한다.",
+      "options": [
+        "① 자이로 센서(Gyroscope)",
+        "② 방향 센서(Orientation Sensor)",
+        "③ 가속도 센서(Accelerometer Sensor)",
+        "④ 이미지 센서(Image Sensor) 7 -"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 81
+    },
+    {
+      "id": 7,
+      "subject_id": 1,
+      "question": "‘사물인터넷 참조모델(정보통신단체표준, TTAK.KO\n\n-06.0346, 2013.12.18)‘에 대한 설명으로 적절하지 않은 것은?",
+      "options": [
+        "① 사물인터넷 참조모델은 응용계층, 서비스 지원 및 응용 지원 계층, 네트워크 계층, 디바이스 계층 등 4개의 계층과 각 계층에 적용되는 관리 기능과 보안기능으로 구성된다.",
+        "② 응용계층은 다양한 사물인터넷 응용들에게 공통 으로 필요한 기능을 제공하는 계층으로 정보처리 및 정보저장기능 등을 포함한다.",
+        "③ 네트워크 계층은 제어, 이동성관리, AAA(Authen tication, Authorization and Accounting)등 네트워크 연결을 위한 제어기능을 수행한다.",
+        "④ 디바이스 계층은 네트워크와의 직접 통신 등을 수행하는 디바이스 기능과 다양한 인터페이스를 지원하는 게이트웨이 기능으로 구성된다."
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 82
+    },
+    {
+      "id": 8,
+      "subject_id": 1,
+      "question": "RFID(Radio Frequency IDentification)시스템에 대한 설명으로 가장 적절하지 않은 것은?",
+      "options": [
+        "① 공급사슬 전반에 걸쳐 재화의 움직임을 추적할 수 있는 강력한 기술적 수단이다.",
+        "② RFID 태그는 바코드와는 달리 판독을 위해서 라인 오브 사이트(Line of Sight) 방식을 요구하지 않는다.",
+        "③ 액티브(active) RFID는 내장전지에서 전력을 얻으며 일반적으로 패시브(passive) RFID보다 데이터 전송거리가 짧다.",
+        "④ 패시브 RFID는 자체적인 전력원을 가지고 있지 않으며, 운영전력으로 RFID 판독기가 방출하는 전력을 사용한다."
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 83
+    },
+    {
+      "id": 9,
+      "subject_id": 1,
+      "question": "MQTT(Message Queue Telemetry Transport)에 대한 설명으로 적절하지 않은 것은?",
+      "options": [
+        "① MQTT는 게시(publish)/구독(subscribe) 패턴을 기반으로 동작한다.",
+        "② MQTT는 일반적으로 TCP 프로토콜을 사용한다.",
+        "③ MQTT는 메시지를 게시할 때 QoS 수준을 지정할 수 있다.",
+        "④ MQTT는 중개자(broker) 없이 게시자와 구독자 사이의 직접적인 통신으로 메시지가 전달된다. - 18"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 84
+    },
+    {
+      "id": 10,
+      "subject_id": 1,
+      "question": "빅데이터 플랫폼의 요소기술을 처리과정별로 수집, 저장 및 관리, 처리, 분석 등의 기술로 나눌 때 수집과 관련된 기술과 가장 거리가 먼 것은?",
+      "options": [
+        "① ZooKeeper",
+        "② Chukwa",
+        "③ Scribe",
+        "④ Flume"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 85
+    },
+    {
+      "id": 11,
+      "subject_id": 1,
+      "question": "CPU의 k-단계 명령어 파이프라이닝(instruction pipelining)에 대한 설명으로 가장 적절한 것은?",
+      "options": [
+        "① k-단계 명령어 파이프라인을 사용하면 k배를 초과하는 속도 향상을 얻을 수 있다.",
+        "② 파이프라인 클록은 처리시간이 가장 짧은 단계를 기준으로 정해진다.",
+        "③ 수퍼파이프라이닝(superpipelining) 기술은 단계들을 더욱 작게 분할하는 기술이다.",
+        "④ 구조 해저드(structural hazard) 문제를 해결하기 위해 지연 분기(delayed branch) 또는 루프 버퍼 기법을 사용한다. ‘정보시스템"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 86
+    },
+    {
+      "id": 12,
+      "subject_id": 1,
+      "question": "백업 지침(정보통신단체표준, TTAS. KO-10.0253, 2007.12.26)‘에는 전체백업(full backup), 차별증분(differential incremental) 백업, 적증분(cumulative incremental) 백업 등이 설명되어 있다. 각 백업 방식을 사용하여 복구를 수행하는 경우 복구 시간이 짧은 방식부터 순서대로 나열한 것으로 가장 적절한 것은?",
+      "options": [
+        "① 전체 백업 – 적증분 백업 – 차별증분 백업",
+        "② 전체 백업 – 차별증분 백업 – 적증분 백업",
+        "③ 적증분 백업 – 차별증분 백업 – 전체 백업",
+        "④ 차별증분 백업 – 적증분 백업 – 전체 백업 ‘행정공공기관"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 87
+    },
+    {
+      "id": 13,
+      "subject_id": 1,
+      "question": "영상회의시스템 상호연계 기술 표준 규격(행정업무용 표준, 2015.6.)‘은 영상회의시 스템 간 연동을 위해 영상회의 단말과 호처리 서버에서 갖춰야 할 필수 기능을 제시한다. 다음 중 영상회의 단말에서만 필수 기능인 것은?",
+      "options": [
+        "① 호출 기능",
+        "② 화면 공유 기능",
+        "③ 암호화 기능",
+        "④ 응답 기능 8 -"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 88
+    },
+    {
+      "id": 14,
+      "subject_id": 1,
+      "question": "3분짜리 음악을 8KHz로 샘플링하고 16 Bit로 양자 화하여 A/D변환 했다면 데이터 크기는 얼마인가?",
+      "options": [
+        "① 3,800,000 byte",
+        "② 3,880,000 byte",
+        "③ 2,800,000 byte",
+        "④ 2,880,000 byte"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 89
+    },
+    {
+      "id": 15,
+      "subject_id": 1,
+      "question": "다음 괄호 안에 들어갈 용어로 가장 적절한 것은?\n\n( )는 웹서버를 대신하여 HTTP 요구를 충족 시키는 네트워크 개체로서 요청된 객체의 사본 이 지역적으로 저장되어 있는지 확인하여 만일 저장되어 있다면 클라이언트 브라우저로 HTTP 응답 메시지와 함께 해당 객체를 전송한다.",
+      "options": [
+        "① 프록시 서버",
+        "② 스토리지 캐시",
+        "③ DNS(Domain Name System) 서버",
+        "④ 버퍼"
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 90
+    },
+    {
+      "id": 16,
+      "subject_id": 1,
+      "question": "다음의 (가), (나)에 들어갈 표현으로 적절한 것은?\n\nIPv4 Class형 주소체계에서 C클래스의 경우, 클래스와 네트워크 ID는 주소의 앞쪽 (가)로 식별하고 호스트 ID는 뒤쪽 (나)로 식별한다.",
+      "options": [
+        "① (가) 8비트 (나) 16비트",
+        "② (가) 16비트 (나) 8비트",
+        "③ (가) 24비트 (나) 8비트",
+        "④ (가) 16비트 (나) 16비트"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 91
+    },
+    {
+      "id": 17,
+      "subject_id": 1,
+      "question": "다음의 단일 정정(single error correction) 해밍 코드 워드에서 한 비트가 오류일 때 이를 올바르게 교정한 결과는?\n\n행 1 2 3 4 5 6 7 C1 C2 8 C4 4 2 1 0 0 0 0 1 0 1\n- C1 : 행 1, 3, 5, 7에 대해 짝수 패리티 체크\n- C2 : 행 2, 3, 6, 7에 대해 짝수 패리티 체크\n- C4 : 행 4, 5, 6, 7에 대해 짝수 패리티 체크",
+      "options": [
+        "① 1000101",
+        "② 0100101",
+        "③ 0010101",
+        "④ 0001101 - 19"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 92
+    },
+    {
+      "id": 18,
+      "subject_id": 1,
+      "question": "TCP/IP 계층모델에서 전송계층의 프로토콜이 아닌 것은?",
+      "options": [
+        "① TCP(Transmission Control Protocol)",
+        "② UDP(User Datagram Protocol)",
+        "③ SCTP(Stream Control Transmission Protocol)",
+        "④ 정답없음"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 93
+    },
+    {
+      "id": 19,
+      "subject_id": 1,
+      "question": "정보시스템 운영 성과관리 지침(행정자치부 고시 제2015-44호, 2015.12.14)에서 성과 측정은 비용 측면과 업무 측면으로 구분하여 시행한다. 비용 측면의 운영 성과에 대한 측정 항목으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 비용의 효율성",
+        "② 사용상의 편의성",
+        "③ 운영의 적정성",
+        "④ 유지의 용의성"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 94
+    },
+    {
+      "id": 20,
+      "subject_id": 1,
+      "question": "데이터 “1 0 1 0 0 1”에 대한 여러 가지 부호화 방 식을 그림으로 표현하였다. 아래 그림 중에서 맨 체스터 코딩 방식을 표현한 것은?\n\n1 0 1 0 0 1",
+      "options": [
+        "①",
+        "②",
+        "③",
+        "④"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 95
+    },
+    {
+      "id": 21,
+      "subject_id": 1,
+      "question": "30개의 노드로 구성된 통신망에서 각 노드가 모든 다른 노드와 point-to-point 방식으로 연결될 때 필요한 에지(edge) 수는?",
+      "options": [
+        "① 30",
+        "② 29",
+        "③ 135",
+        "④ 435"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 96
+    },
+    {
+      "id": 22,
+      "subject_id": 1,
+      "question": "데이터워드가 “111111“인 경우에 CRC(Cyclic Redund- ancy Check) 기반의 코드워드를 구하려고 한다. 제수 “1010“이고 “110011“, (divisor)가 몫(quotient)이 나머지(remainder)가 “110“이라면 코드워드는 무엇인가?",
+      "options": [
+        "① 1111111010",
+        "② 111111110011",
+        "③ 111111110",
+        "④ 110011110 9 -"
+      ],
+      "answer": 3,
+      "explanation": "정답: ③\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ③번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 97
+    },
+    {
+      "id": 23,
+      "subject_id": 1,
+      "question": "RIP(Routing Information Protocol)에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 거리벡터에 근거한 간단하고 견고한 알고리즘을 사용하므로 중소규모 네트워크보다 대규모 네트워크에서 더 효율적이다.",
+        "② 홉 계수가 무한히 증가하는 라우팅 순환(routing loop)을 막기 위하여 홉 계수 제한(hop count limit)을 한다.",
+        "③ 라우팅 정보를 수신한 인터페이스로 동일한 라우팅 정보를 전송하지 않는 스플릿 호라이즌 (split horizon) 방식을 사용한다.",
+        "④ RIP는 경로 설정 정보를 교환할 때 브로드캐스팅 방식을 사용한다."
+      ],
+      "answer": 1,
+      "explanation": "정답: ①\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ①번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 98
+    },
+    {
+      "id": 24,
+      "subject_id": 1,
+      "question": "‘정보기술아키텍처 도입·운영 지침(행정자치부고시 제2014-4호, 2014.12.23)‘에 제시된 범정부 정보 기술아키텍처 참조모형의 종류에 대한 설명으로 가장 거리가 먼 것은?",
+      "options": [
+        "① 성과참조모형은 정보화 성과 제고 및 품질향상을 위한 성과요소들을 분류하고 정의한 체계이다.",
+        "② 업무참조모형은 정보시스템에서 업무를 지원하는 응용기능을 구현하기 위하여 필요한 정보기술 및 표준들을 분류하고 정의한 체계이다.",
+        "③ 데이터참조모형은 데이터표준화 및 재사용과 데이터관리를 지원하기 위하여 데이터를 분류하고 표준 데이터구조를 정의한 체계이다.",
+        "④ 서비스참조모형은 응용서비스의 재활용과 효율적 관리를 위하여 업무 및 조직에 독립적인 응용컴포 넌트를 기반으로 응용서비스를 분류하고 정의한 체계이다. - 20"
+      ],
+      "answer": 2,
+      "explanation": "정답: ②\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ②번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 99
+    },
+    {
+      "id": 25,
+      "subject_id": 1,
+      "question": "하나의 벤치마크 프로그램의 실행 시간이 100초 인데 이 중 80초가 CPU 시간이고 나머지가 입출력 시간이다. CPU 시간은 CPU의 개수에 정비례하여 감소하고 (예: CPU 2개를 사용하면 CPU 시간은 1/2 로 감소) 입출력 시간은 CPU 개수에 상관없이 동일 하다. 개별 CPU의 속도는 동일하고 CPU의 개수가 2년마다 두 배씩 증가한다고 가정할 때, 6년 후에 이 프로그램의 실행 시간과 그 중 입출력 시간이 차지하는 비율을 설명한 것 중 가장 적절한 것은?",
+      "options": [
+        "① 실행 시간: 50초, 입출력 시간: 50%",
+        "② 실행 시간: 50초, 입출력 시간: 66.6%",
+        "③ 실행 시간: 30초, 입출력 시간: 50%",
+        "④ 실행 시간: 30초, 입출력 시간: 66.6% 0 - 보 안"
+      ],
+      "answer": 4,
+      "explanation": "정답: ④\n\n[출처]\n2017년 정보시스템감리사 필기시험\n\n[기본 해설]\n정답은 ④번입니다.",
+      "subject": "시스템구조",
+      "origin_year": 2017,
+      "origin_id": 100
+    }
+  ]
+}

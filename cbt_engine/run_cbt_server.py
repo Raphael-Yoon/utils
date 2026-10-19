@@ -177,8 +177,8 @@ class CBTRequestHandler(SimpleHTTPRequestHandler):
                 title = item.get('title', '')
                 filename = item.get('filename', '')
 
-                # 1) 과목별 집중학습(연도 통합) 세트: [5개년] 1과목 ~ 5과목
-                m_5yr = re.search(r'\[5개년\]\s*(\d+)과목', title)
+                # 1) 과목별 집중학습(연도 통합) 세트: [12개년 전수], [5개년] 1과목 ~ 5과목
+                m_5yr = re.search(r'\[(?:5개년|12개년|전개년|\d+개년(?:\s*전수)?)\]\s*(\d+)과목', title)
                 if m_5yr:
                     sub_no = int(m_5yr.group(1))
                     return (cat, 2, sub_no, 0)
