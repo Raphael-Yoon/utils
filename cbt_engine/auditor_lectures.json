@@ -1,0 +1,3608 @@
+[
+  {
+    "round": 1,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 01.개요, 목차, 법제도, 기출분석, 법령기준일, 마인드맵",
+    "lecture_title": "01.개요, 목차, 법제도, 기출분석, 법령기준일, 마인드맵",
+    "display_badge": "1차시 [감리] 01.개요, 목차, 법제도, 기출분석, 법령기준일, 마인드맵",
+    "keywords": [
+      "법제도",
+      "법령기준일",
+      "마인드맵"
+    ]
+  },
+  {
+    "round": 2,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 02.감리법규(감리대상), 국가법령정보센터 이용방법",
+    "lecture_title": "02.감리법규(감리대상), 국가법령정보센터 이용방법",
+    "display_badge": "2차시 [감리] 02.감리법규(감리대상), 국가법령정보센터 이용방법",
+    "keywords": [
+      "감리법규",
+      "감리대상",
+      "국가법령정보센터",
+      "이용방법"
+    ]
+  },
+  {
+    "round": 3,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 03.감리법규(감리업무, 감리법인, 감리원, 교육)",
+    "lecture_title": "03.감리법규(감리업무, 감리법인, 감리원, 교육)",
+    "display_badge": "3차시 [감리] 03.감리법규(감리업무, 감리법인, 감리원, 교육)",
+    "keywords": [
+      "감리법규",
+      "감리업무",
+      "감리법인",
+      "감리원",
+      "교육"
+    ]
+  },
+  {
+    "round": 4,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 04.감리법규(감리 인력배치, 감리대가, 기출문제)",
+    "lecture_title": "04.감리법규(감리 인력배치, 감리대가, 기출문제)",
+    "display_badge": "4차시 [감리] 04.감리법규(감리 인력배치, 감리대가, 기출문제)",
+    "keywords": [
+      "감리법규",
+      "감리",
+      "인력배치",
+      "감리대가"
+    ]
+  },
+  {
+    "round": 5,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 05.감리절차(정보시스템 감리기준)",
+    "lecture_title": "05.감리절차(정보시스템 감리기준)",
+    "display_badge": "5차시 [감리] 05.감리절차(정보시스템 감리기준)",
+    "keywords": [
+      "감리절차",
+      "정보시스템",
+      "감리기준"
+    ]
+  },
+  {
+    "round": 6,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 06.감리절차(감리수행가이드-감리절차 개요, 예비조사)",
+    "lecture_title": "06.감리절차(감리수행가이드-감리절차 개요, 예비조사)",
+    "display_badge": "6차시 [감리] 06.감리절차(감리수행가이드-감리절차 개요, 예비조사)",
+    "keywords": [
+      "감리절차",
+      "감리수행가이드",
+      "예비조사"
+    ]
+  },
+  {
+    "round": 7,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 07.감리절차(감리수행가이드-현장감리, 시정조치확인)",
+    "lecture_title": "07.감리절차(감리수행가이드-현장감리, 시정조치확인)",
+    "display_badge": "7차시 [감리] 07.감리절차(감리수행가이드-현장감리, 시정조치확인)",
+    "keywords": [
+      "감리절차",
+      "감리수행가이드",
+      "현장감리",
+      "시정조치확인"
+    ]
+  },
+  {
+    "round": 8,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 08.감리절차(감리수행가이드-상주감리, 감리서식)",
+    "lecture_title": "08.감리절차(감리수행가이드-상주감리, 감리서식)",
+    "display_badge": "8차시 [감리] 08.감리절차(감리수행가이드-상주감리, 감리서식)",
+    "keywords": [
+      "감리절차",
+      "감리수행가이드",
+      "상주감리",
+      "감리서식"
+    ]
+  },
+  {
+    "round": 9,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 09.감리절차(기출문제)",
+    "lecture_title": "09.감리절차(기출문제)",
+    "display_badge": "9차시 [감리] 09.감리절차(기출문제)",
+    "keywords": [
+      "감리절차"
+    ]
+  },
+  {
+    "round": 10,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 10.정보화사업 유형별 표준 점검항목1 (p.68-73)",
+    "lecture_title": "10.정보화사업 유형별 표준 점검항목1 (p.68-73)",
+    "display_badge": "10차시 [감리] 10.정보화사업 유형별 표준 점검항목1 (p.68-73)",
+    "keywords": [
+      "정보화사업",
+      "유형별",
+      "표준",
+      "점검항목1"
+    ]
+  },
+  {
+    "round": 11,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 11.정보화사업 유형별 표준 점검항목2 (p.74-81)",
+    "lecture_title": "11.정보화사업 유형별 표준 점검항목2 (p.74-81)",
+    "display_badge": "11차시 [감리] 11.정보화사업 유형별 표준 점검항목2 (p.74-81)",
+    "keywords": [
+      "정보화사업",
+      "유형별",
+      "표준",
+      "점검항목2"
+    ]
+  },
+  {
+    "round": 12,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 12.감리원 윤리가이드",
+    "lecture_title": "12.감리원 윤리가이드",
+    "display_badge": "12차시 [감리] 12.감리원 윤리가이드",
+    "keywords": [
+      "감리원",
+      "윤리가이드"
+    ]
+  },
+  {
+    "round": 13,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 13.감리 발주관리가이드",
+    "lecture_title": "13.감리 발주관리가이드",
+    "display_badge": "13차시 [감리] 13.감리 발주관리가이드",
+    "keywords": [
+      "감리",
+      "발주관리가이드"
+    ]
+  },
+  {
+    "round": 14,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 14.정보시스템 운영유지보수 감리점검가이드",
+    "lecture_title": "14.정보시스템 운영유지보수 감리점검가이드",
+    "display_badge": "14차시 [감리] 14.정보시스템 운영유지보수 감리점검가이드",
+    "keywords": [
+      "정보시스템",
+      "운영유지보수",
+      "감리점검가이드"
+    ]
+  },
+  {
+    "round": 15,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 15.정보시스템 구축운영지침1 (p.105~110)",
+    "lecture_title": "15.정보시스템 구축운영지침1 (p.105~110)",
+    "display_badge": "15차시 [감리] 15.정보시스템 구축운영지침1 (p.105~110)",
+    "keywords": [
+      "정보시스템",
+      "구축운영지침1"
+    ]
+  },
+  {
+    "round": 16,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 16.정보시스템 구축운영지침2 (p.111~116)",
+    "lecture_title": "16.정보시스템 구축운영지침2 (p.111~116)",
+    "display_badge": "16차시 [감리] 16.정보시스템 구축운영지침2 (p.111~116)",
+    "keywords": [
+      "정보시스템",
+      "구축운영지침2"
+    ]
+  },
+  {
+    "round": 17,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 17.정보시스템 구축운영지침3 (p.116~124)",
+    "lecture_title": "17.정보시스템 구축운영지침3 (p.116~124)",
+    "display_badge": "17차시 [감리] 17.정보시스템 구축운영지침3 (p.116~124)",
+    "keywords": [
+      "정보시스템",
+      "구축운영지침3"
+    ]
+  },
+  {
+    "round": 18,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 18.SW사업 계약 및 관리감독에 관한 지침1 (p.125~130)",
+    "lecture_title": "18.SW사업 계약 및 관리감독에 관한 지침1 (p.125~130)",
+    "display_badge": "18차시 [감리] 18.SW사업 계약 및 관리감독에 관한 지침1 (p.125~130)",
+    "keywords": [
+      "SW사업",
+      "계약",
+      "관리감독에",
+      "관한",
+      "지침1"
+    ]
+  },
+  {
+    "round": 19,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 19.SW사업 계약 및 관리감독에 관한 지침2 (p.131~143)",
+    "lecture_title": "19.SW사업 계약 및 관리감독에 관한 지침2 (p.131~143)",
+    "display_badge": "19차시 [감리] 19.SW사업 계약 및 관리감독에 관한 지침2 (p.131~143)",
+    "keywords": [
+      "SW사업",
+      "계약",
+      "관리감독에",
+      "관한",
+      "지침2"
+    ]
+  },
+  {
+    "round": 20,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 20.데이터베이스 표준화지침",
+    "lecture_title": "20.데이터베이스 표준화지침",
+    "display_badge": "20차시 [감리] 20.데이터베이스 표준화지침",
+    "keywords": [
+      "데이터베이스",
+      "표준화지침"
+    ]
+  },
+  {
+    "round": 21,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 21.공공데이터 관리지침, 제공관리 매뉴얼",
+    "lecture_title": "21.공공데이터 관리지침, 제공관리 매뉴얼",
+    "display_badge": "21차시 [감리] 21.공공데이터 관리지침, 제공관리 매뉴얼",
+    "keywords": [
+      "공공데이터",
+      "관리지침",
+      "제공관리",
+      "매뉴얼"
+    ]
+  },
+  {
+    "round": 22,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 22.전자정부 성과관리 지침",
+    "lecture_title": "22.전자정부 성과관리 지침",
+    "display_badge": "22차시 [감리] 22.전자정부 성과관리 지침",
+    "keywords": [
+      "전자정부",
+      "성과관리",
+      "지침"
+    ]
+  },
+  {
+    "round": 23,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 23.용역계약일반조건",
+    "lecture_title": "23.용역계약일반조건",
+    "display_badge": "23차시 [감리] 23.용역계약일반조건",
+    "keywords": [
+      "용역계약일반조건"
+    ]
+  },
+  {
+    "round": 24,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 24.협상에 의한 계약체결기준",
+    "lecture_title": "24.협상에 의한 계약체결기준",
+    "display_badge": "24차시 [감리] 24.협상에 의한 계약체결기준",
+    "keywords": [
+      "협상에",
+      "의한",
+      "계약체결기준"
+    ]
+  },
+  {
+    "round": 25,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 25.전자정부 웹사이트 품질 관리지침",
+    "lecture_title": "25.전자정부 웹사이트 품질 관리지침",
+    "display_badge": "25차시 [감리] 25.전자정부 웹사이트 품질 관리지침",
+    "keywords": [
+      "전자정부",
+      "웹사이트",
+      "품질",
+      "관리지침"
+    ]
+  },
+  {
+    "round": 26,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 26.모바일 전자정부 서비스 관리지침",
+    "lecture_title": "26.모바일 전자정부 서비스 관리지침",
+    "display_badge": "26차시 [감리] 26.모바일 전자정부 서비스 관리지침",
+    "keywords": [
+      "모바일",
+      "전자정부",
+      "서비스",
+      "관리지침"
+    ]
+  },
+  {
+    "round": 27,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 27.접근성 지침, CBD 표준산출물, 소프트웨어 진흥법",
+    "lecture_title": "27.접근성 지침, CBD 표준산출물, 소프트웨어 진흥법",
+    "display_badge": "27차시 [감리] 27.접근성 지침, CBD 표준산출물, 소프트웨어 진흥법",
+    "keywords": [
+      "접근성",
+      "지침",
+      "CBD",
+      "표준산출물",
+      "소프트웨어",
+      "진흥법"
+    ]
+  },
+  {
+    "round": 28,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 28.인공지능 기본법",
+    "lecture_title": "28.인공지능 기본법",
+    "display_badge": "28차시 [감리] 28.인공지능 기본법",
+    "keywords": [
+      "인공지능",
+      "기본법"
+    ]
+  },
+  {
+    "round": 29,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 29.정보시스템 안정성 고시",
+    "lecture_title": "29.정보시스템 안정성 고시",
+    "display_badge": "29차시 [감리] 29.정보시스템 안정성 고시",
+    "keywords": [
+      "정보시스템",
+      "안정성",
+      "고시"
+    ]
+  },
+  {
+    "round": 30,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 30.SW사업 대가산정가이드1 (p.257~268)",
+    "lecture_title": "30.SW사업 대가산정가이드1 (p.257~268)",
+    "display_badge": "30차시 [감리] 30.SW사업 대가산정가이드1 (p.257~268)",
+    "keywords": [
+      "SW사업",
+      "대가산정가이드1"
+    ]
+  },
+  {
+    "round": 31,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 31.SW사업 대가산정가이드2 (p.269~278)",
+    "lecture_title": "31.SW사업 대가산정가이드2 (p.269~278)",
+    "display_badge": "31차시 [감리] 31.SW사업 대가산정가이드2 (p.269~278)",
+    "keywords": [
+      "SW사업",
+      "대가산정가이드2"
+    ]
+  },
+  {
+    "round": 32,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 32.SW사업 대가산정가이드3 (p.279~292)",
+    "lecture_title": "32.SW사업 대가산정가이드3 (p.279~292)",
+    "display_badge": "32차시 [감리] 32.SW사업 대가산정가이드3 (p.279~292)",
+    "keywords": [
+      "SW사업",
+      "대가산정가이드3"
+    ]
+  },
+  {
+    "round": 33,
+    "category_tag": "감리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "감리 영역",
+    "full_title": "[감리] 33.SW사업 대가산정가이드4 (p.293~303)",
+    "lecture_title": "33.SW사업 대가산정가이드4 (p.293~303)",
+    "display_badge": "33차시 [감리] 33.SW사업 대가산정가이드4 (p.293~303)",
+    "keywords": [
+      "SW사업",
+      "대가산정가이드4"
+    ]
+  },
+  {
+    "round": 34,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 01.정보보호개론.암호학1 (대칭키암호)",
+    "lecture_title": "01.정보보호개론.암호학1 (대칭키암호)",
+    "display_badge": "34차시 [보안] 01.정보보호개론.암호학1 (대칭키암호)",
+    "keywords": [
+      "정보보호개론",
+      "암호학1",
+      "대칭키암호"
+    ]
+  },
+  {
+    "round": 35,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 02.암호학2 (대칭키암호, 블록암호모드)",
+    "lecture_title": "02.암호학2 (대칭키암호, 블록암호모드)",
+    "display_badge": "35차시 [보안] 02.암호학2 (대칭키암호, 블록암호모드)",
+    "keywords": [
+      "암호학2",
+      "대칭키암호",
+      "블록암호모드"
+    ]
+  },
+  {
+    "round": 36,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 03.암호학3 (블록암호, 키교환, 공개키암호)",
+    "lecture_title": "03.암호학3 (블록암호, 키교환, 공개키암호)",
+    "display_badge": "36차시 [보안] 03.암호학3 (블록암호, 키교환, 공개키암호)",
+    "keywords": [
+      "암호학3",
+      "블록암호",
+      "키교환",
+      "공개키암호"
+    ]
+  },
+  {
+    "round": 37,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 04.암호학4 (해시암호, 전자서명)",
+    "lecture_title": "04.암호학4 (해시암호, 전자서명)",
+    "display_badge": "37차시 [보안] 04.암호학4 (해시암호, 전자서명)",
+    "keywords": [
+      "암호학4",
+      "해시암호",
+      "전자서명"
+    ]
+  },
+  {
+    "round": 38,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 05.암호학5 (PKI, 기출문제)",
+    "lecture_title": "05.암호학5 (PKI, 기출문제)",
+    "display_badge": "38차시 [보안] 05.암호학5 (PKI, 기출문제)",
+    "keywords": [
+      "암호학5",
+      "PKI"
+    ]
+  },
+  {
+    "round": 39,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 06.네트워크1 (OSI7계층, SSL, SET, IPSec)",
+    "lecture_title": "06.네트워크1 (OSI7계층, SSL, SET, IPSec)",
+    "display_badge": "39차시 [보안] 06.네트워크1 (OSI7계층, SSL, SET, IPSec)",
+    "keywords": [
+      "네트워크1",
+      "OSI7계층",
+      "SSL",
+      "SET",
+      "IPSec"
+    ]
+  },
+  {
+    "round": 40,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 07.네트워크2 (SSO,전자우편, VPN, 무선랜)",
+    "lecture_title": "07.네트워크2 (SSO,전자우편, VPN, 무선랜)",
+    "display_badge": "40차시 [보안] 07.네트워크2 (SSO,전자우편, VPN, 무선랜)",
+    "keywords": [
+      "네트워크2",
+      "SSO",
+      "전자우편",
+      "VPN",
+      "무선랜"
+    ]
+  },
+  {
+    "round": 41,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 08.네트워크3 (방화벽, IDS, IPS)",
+    "lecture_title": "08.네트워크3 (방화벽, IDS, IPS)",
+    "display_badge": "41차시 [보안] 08.네트워크3 (방화벽, IDS, IPS)",
+    "keywords": [
+      "네트워크3",
+      "방화벽",
+      "IDS",
+      "IPS"
+    ]
+  },
+  {
+    "round": 42,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 09.네트워크4 (ESM, UTM, NAC, 블록체인, 기출문제)",
+    "lecture_title": "09.네트워크4 (ESM, UTM, NAC, 블록체인, 기출문제)",
+    "display_badge": "42차시 [보안] 09.네트워크4 (ESM, UTM, NAC, 블록체인, 기출문제)",
+    "keywords": [
+      "네트워크4",
+      "ESM",
+      "UTM",
+      "NAC",
+      "블록체인"
+    ]
+  },
+  {
+    "round": 43,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 10.사이버공격1 (공격기법, 악성코드, 포렌식)",
+    "lecture_title": "10.사이버공격1 (공격기법, 악성코드, 포렌식)",
+    "display_badge": "43차시 [보안] 10.사이버공격1 (공격기법, 악성코드, 포렌식)",
+    "keywords": [
+      "사이버공격1",
+      "공격기법",
+      "악성코드",
+      "포렌식"
+    ]
+  },
+  {
+    "round": 44,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 11.사이버공격2 (웹해킹, SW개발보안)",
+    "lecture_title": "11.사이버공격2 (웹해킹, SW개발보안)",
+    "display_badge": "44차시 [보안] 11.사이버공격2 (웹해킹, SW개발보안)",
+    "keywords": [
+      "사이버공격2",
+      "웹해킹",
+      "SW개발보안"
+    ]
+  },
+  {
+    "round": 45,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 12.사이버공격3 (OWASP, 모바일보안, OS)",
+    "lecture_title": "12.사이버공격3 (OWASP, 모바일보안, OS)",
+    "display_badge": "45차시 [보안] 12.사이버공격3 (OWASP, 모바일보안, OS)",
+    "keywords": [
+      "사이버공격3",
+      "OWASP",
+      "모바일보안",
+      "OS"
+    ]
+  },
+  {
+    "round": 46,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 13.사이버공격3 (클라우드, 기출문제)",
+    "lecture_title": "13.사이버공격3 (클라우드, 기출문제)",
+    "display_badge": "46차시 [보안] 13.사이버공격3 (클라우드, 기출문제)",
+    "keywords": [
+      "사이버공격3",
+      "클라우드"
+    ]
+  },
+  {
+    "round": 47,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 14.위험관리,접근통제,인증1 (위험관리, 접근통제)",
+    "lecture_title": "14.위험관리,접근통제,인증1 (위험관리, 접근통제)",
+    "display_badge": "47차시 [보안] 14.위험관리,접근통제,인증1 (위험관리, 접근통제)",
+    "keywords": [
+      "위험관리",
+      "접근통제",
+      "인증1"
+    ]
+  },
+  {
+    "round": 48,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 15.위험관리,접근통제,인증2 (인증)",
+    "lecture_title": "15.위험관리,접근통제,인증2 (인증)",
+    "display_badge": "48차시 [보안] 15.위험관리,접근통제,인증2 (인증)",
+    "keywords": [
+      "위험관리",
+      "접근통제",
+      "인증2",
+      "인증"
+    ]
+  },
+  {
+    "round": 49,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 16.위험관리,접근통제,인증3 (데이터보안, 기출문제)",
+    "lecture_title": "16.위험관리,접근통제,인증3 (데이터보안, 기출문제)",
+    "display_badge": "49차시 [보안] 16.위험관리,접근통제,인증3 (데이터보안, 기출문제)",
+    "keywords": [
+      "위험관리",
+      "접근통제",
+      "인증3",
+      "데이터보안"
+    ]
+  },
+  {
+    "round": 50,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 17.관리체계및제도1 (ISMS, ISO27001, CC)",
+    "lecture_title": "17.관리체계및제도1 (ISMS, ISO27001, CC)",
+    "display_badge": "50차시 [보안] 17.관리체계및제도1 (ISMS, ISO27001, CC)",
+    "keywords": [
+      "관리체계및제도1",
+      "ISMS",
+      "ISO27001",
+      "CC"
+    ]
+  },
+  {
+    "round": 51,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 18.관리체계및제도2 (개인정보보호법1)",
+    "lecture_title": "18.관리체계및제도2 (개인정보보호법1)",
+    "display_badge": "51차시 [보안] 18.관리체계및제도2 (개인정보보호법1)",
+    "keywords": [
+      "관리체계및제도2",
+      "개인정보보호법1"
+    ]
+  },
+  {
+    "round": 52,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 19.관리체계및제도3 (개인정보보호법2)",
+    "lecture_title": "19.관리체계및제도3 (개인정보보호법2)",
+    "display_badge": "52차시 [보안] 19.관리체계및제도3 (개인정보보호법2)",
+    "keywords": [
+      "관리체계및제도3",
+      "개인정보보호법2"
+    ]
+  },
+  {
+    "round": 53,
+    "category_tag": "보안",
+    "official_subject_code": "제5과목",
+    "official_subject_name": "시스템보안",
+    "sub_area": "암호/네트워크/공격/접근통제/법제도",
+    "full_title": "[보안] 20.관리체계및제도4 (정보통신망법, 비식별조치)",
+    "lecture_title": "20.관리체계및제도4 (정보통신망법, 비식별조치)",
+    "display_badge": "53차시 [보안] 20.관리체계및제도4 (정보통신망법, 비식별조치)",
+    "keywords": [
+      "관리체계및제도4",
+      "정보통신망법",
+      "비식별조치"
+    ]
+  },
+  {
+    "round": 54,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 01. 과목개요 / 분류체계 / 출제빈도 / 목차",
+    "lecture_title": "01. 과목개요 / 분류체계 / 출제빈도 / 목차",
+    "display_badge": "54차시 [시스템구조 1] 01. 과목개요 / 분류체계 / 출제빈도 / 목차",
+    "keywords": [
+      "분류체계"
+    ]
+  },
+  {
+    "round": 55,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 02. 데이터통신과 네트워크 개요 - 데이터통신 개요 / 네트워크 개요",
+    "lecture_title": "02. 데이터통신과 네트워크 개요 - 데이터통신 개요 / 네트워크 개요",
+    "display_badge": "55차시 [시스템구조 1] 02. 데이터통신과 네트워크 개요 - 데이터통신 개요 / 네트워크 개요",
+    "keywords": [
+      "데이터통신과",
+      "네트워크",
+      "데이터통신"
+    ]
+  },
+  {
+    "round": 56,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 03. 데이터통신과 네트워크 개요 - OSI 네트워크 모델 (1)",
+    "lecture_title": "03. 데이터통신과 네트워크 개요 - OSI 네트워크 모델 (1)",
+    "display_badge": "56차시 [시스템구조 1] 03. 데이터통신과 네트워크 개요 - OSI 네트워크 모델 (1)",
+    "keywords": [
+      "데이터통신과",
+      "네트워크",
+      "OSI",
+      "모델"
+    ]
+  },
+  {
+    "round": 57,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 04. 데이터통신과 네트워크 개요 - OSI 네트워크 모델 (2) / 기출문제",
+    "lecture_title": "04. 데이터통신과 네트워크 개요 - OSI 네트워크 모델 (2) / 기출문제",
+    "display_badge": "57차시 [시스템구조 1] 04. 데이터통신과 네트워크 개요 - OSI 네트워크 모델 (2) / 기출문제",
+    "keywords": [
+      "데이터통신과",
+      "네트워크",
+      "OSI",
+      "모델"
+    ]
+  },
+  {
+    "round": 58,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 05. 물리 계층 - 신호",
+    "lecture_title": "05. 물리 계층 - 신호",
+    "display_badge": "58차시 [시스템구조 1] 05. 물리 계층 - 신호",
+    "keywords": [
+      "물리",
+      "계층",
+      "신호"
+    ]
+  },
+  {
+    "round": 59,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 06. 물리 계층 - 디지털 전송",
+    "lecture_title": "06. 물리 계층 - 디지털 전송",
+    "display_badge": "59차시 [시스템구조 1] 06. 물리 계층 - 디지털 전송",
+    "keywords": [
+      "물리",
+      "계층",
+      "디지털",
+      "전송"
+    ]
+  },
+  {
+    "round": 60,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 07. 물리 계층 - 아날로그 전송 / 매체 활용",
+    "lecture_title": "07. 물리 계층 - 아날로그 전송 / 매체 활용",
+    "display_badge": "60차시 [시스템구조 1] 07. 물리 계층 - 아날로그 전송 / 매체 활용",
+    "keywords": [
+      "물리",
+      "계층",
+      "아날로그",
+      "전송",
+      "매체",
+      "활용"
+    ]
+  },
+  {
+    "round": 61,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 08. 물리 계층 - 전송 매체 / 무선 관련 기술들",
+    "lecture_title": "08. 물리 계층 - 전송 매체 / 무선 관련 기술들",
+    "display_badge": "61차시 [시스템구조 1] 08. 물리 계층 - 전송 매체 / 무선 관련 기술들",
+    "keywords": [
+      "물리",
+      "계층",
+      "전송",
+      "매체",
+      "무선",
+      "관련",
+      "기술들"
+    ]
+  },
+  {
+    "round": 62,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 09. 물리 계층 - 네트워크 분류 / 데이터 전송 방식 / 기출문제",
+    "lecture_title": "09. 물리 계층 - 네트워크 분류 / 데이터 전송 방식 / 기출문제",
+    "display_badge": "62차시 [시스템구조 1] 09. 물리 계층 - 네트워크 분류 / 데이터 전송 방식 / 기출문제",
+    "keywords": [
+      "물리",
+      "계층",
+      "네트워크",
+      "분류",
+      "데이터",
+      "전송",
+      "방식"
+    ]
+  },
+  {
+    "round": 63,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 10. 데이터링크 계층 - 오류 검출과 정정 기법 / 흐름 및 오류제어 / 기출문제",
+    "lecture_title": "10. 데이터링크 계층 - 오류 검출과 정정 기법 / 흐름 및 오류제어 / 기출문제",
+    "display_badge": "63차시 [시스템구조 1] 10. 데이터링크 계층 - 오류 검출과 정정 기법 / 흐름 및 오류제어 / 기출문제",
+    "keywords": [
+      "데이터링크",
+      "계층",
+      "오류",
+      "검출과",
+      "정정",
+      "기법",
+      "흐름",
+      "오류제어"
+    ]
+  },
+  {
+    "round": 64,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 11. 데이터링크 계층 - 다중접속 / 이더넷",
+    "lecture_title": "11. 데이터링크 계층 - 다중접속 / 이더넷",
+    "display_badge": "64차시 [시스템구조 1] 11. 데이터링크 계층 - 다중접속 / 이더넷",
+    "keywords": [
+      "데이터링크",
+      "계층",
+      "다중접속",
+      "이더넷"
+    ]
+  },
+  {
+    "round": 65,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 12. 데이터링크 계층 - 무선랜 / 기출문제",
+    "lecture_title": "12. 데이터링크 계층 - 무선랜 / 기출문제",
+    "display_badge": "65차시 [시스템구조 1] 12. 데이터링크 계층 - 무선랜 / 기출문제",
+    "keywords": [
+      "데이터링크",
+      "계층",
+      "무선랜"
+    ]
+  },
+  {
+    "round": 66,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 13. 데이터링크 계층 - 가상랜 / VPN",
+    "lecture_title": "13. 데이터링크 계층 - 가상랜 / VPN",
+    "display_badge": "66차시 [시스템구조 1] 13. 데이터링크 계층 - 가상랜 / VPN",
+    "keywords": [
+      "데이터링크",
+      "계층",
+      "가상랜",
+      "VPN"
+    ]
+  },
+  {
+    "round": 67,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 14. 데이터링크 계층 - 기타 2계층 기술들 / 기출문제",
+    "lecture_title": "14. 데이터링크 계층 - 기타 2계층 기술들 / 기출문제",
+    "display_badge": "67차시 [시스템구조 1] 14. 데이터링크 계층 - 기타 2계층 기술들 / 기출문제",
+    "keywords": [
+      "데이터링크",
+      "계층",
+      "기타",
+      "2계층",
+      "기술들"
+    ]
+  },
+  {
+    "round": 68,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 15. 네크워크 계층 - IP 주소 (1)",
+    "lecture_title": "15. 네크워크 계층 - IP 주소 (1)",
+    "display_badge": "68차시 [시스템구조 1] 15. 네크워크 계층 - IP 주소 (1)",
+    "keywords": [
+      "네크워크",
+      "계층",
+      "IP",
+      "주소"
+    ]
+  },
+  {
+    "round": 69,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 16. 네크워크 계층 - IP 주소 (2) / IP 프로토콜",
+    "lecture_title": "16. 네크워크 계층 - IP 주소 (2) / IP 프로토콜",
+    "display_badge": "69차시 [시스템구조 1] 16. 네크워크 계층 - IP 주소 (2) / IP 프로토콜",
+    "keywords": [
+      "네크워크",
+      "계층",
+      "IP",
+      "주소",
+      "프로토콜"
+    ]
+  },
+  {
+    "round": 70,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 17. 네크워크 계층 - IP 지원 프로토콜들 / IPv6 (1)",
+    "lecture_title": "17. 네크워크 계층 - IP 지원 프로토콜들 / IPv6 (1)",
+    "display_badge": "70차시 [시스템구조 1] 17. 네크워크 계층 - IP 지원 프로토콜들 / IPv6 (1)",
+    "keywords": [
+      "네크워크",
+      "계층",
+      "IP",
+      "지원",
+      "프로토콜들",
+      "IPv6"
+    ]
+  },
+  {
+    "round": 71,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 18. 네크워크 계층 - IPv6 (2)",
+    "lecture_title": "18. 네크워크 계층 - IPv6 (2)",
+    "display_badge": "71차시 [시스템구조 1] 18. 네크워크 계층 - IPv6 (2)",
+    "keywords": [
+      "네크워크",
+      "계층",
+      "IPv6"
+    ]
+  },
+  {
+    "round": 72,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 19. 네크워크 계층 - 기출문제",
+    "lecture_title": "19. 네크워크 계층 - 기출문제",
+    "display_badge": "72차시 [시스템구조 1] 19. 네크워크 계층 - 기출문제",
+    "keywords": [
+      "네크워크",
+      "계층"
+    ]
+  },
+  {
+    "round": 73,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 20. 네크워크 계층 - 모바일IP",
+    "lecture_title": "20. 네크워크 계층 - 모바일IP",
+    "display_badge": "73차시 [시스템구조 1] 20. 네크워크 계층 - 모바일IP",
+    "keywords": [
+      "네크워크",
+      "계층",
+      "모바일IP"
+    ]
+  },
+  {
+    "round": 74,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 21. 네크워크 계층 - 라우팅 / 라우팅 프로토콜 (1)",
+    "lecture_title": "21. 네크워크 계층 - 라우팅 / 라우팅 프로토콜 (1)",
+    "display_badge": "74차시 [시스템구조 1] 21. 네크워크 계층 - 라우팅 / 라우팅 프로토콜 (1)",
+    "keywords": [
+      "네크워크",
+      "계층",
+      "라우팅",
+      "프로토콜"
+    ]
+  },
+  {
+    "round": 75,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 22. 네크워크 계층 - 라우팅 프로토콜 (2) / 기출문제",
+    "lecture_title": "22. 네크워크 계층 - 라우팅 프로토콜 (2) / 기출문제",
+    "display_badge": "75차시 [시스템구조 1] 22. 네크워크 계층 - 라우팅 프로토콜 (2) / 기출문제",
+    "keywords": [
+      "네크워크",
+      "계층",
+      "라우팅",
+      "프로토콜"
+    ]
+  },
+  {
+    "round": 76,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 23. 전송 계층 - TCP (1)",
+    "lecture_title": "23. 전송 계층 - TCP (1)",
+    "display_badge": "76차시 [시스템구조 1] 23. 전송 계층 - TCP (1)",
+    "keywords": [
+      "전송",
+      "계층",
+      "TCP"
+    ]
+  },
+  {
+    "round": 77,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 24. 전송 계층 - TCP (2) / UDP / 소켓",
+    "lecture_title": "24. 전송 계층 - TCP (2) / UDP / 소켓",
+    "display_badge": "77차시 [시스템구조 1] 24. 전송 계층 - TCP (2) / UDP / 소켓",
+    "keywords": [
+      "전송",
+      "계층",
+      "TCP",
+      "UDP",
+      "소켓"
+    ]
+  },
+  {
+    "round": 78,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 25. 전송 계층 - QoS / 포트 / 기출문제 / 표현층 - 압축 / 기출문제",
+    "lecture_title": "25. 전송 계층 - QoS / 포트 / 기출문제 / 표현층 - 압축 / 기출문제",
+    "display_badge": "78차시 [시스템구조 1] 25. 전송 계층 - QoS / 포트 / 기출문제 / 표현층 - 압축 / 기출문제",
+    "keywords": [
+      "전송",
+      "계층",
+      "QoS",
+      "포트",
+      "표현층",
+      "압축"
+    ]
+  },
+  {
+    "round": 79,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 26. 응용 계층 관련 기술들 (1)",
+    "lecture_title": "26. 응용 계층 관련 기술들 (1)",
+    "display_badge": "79차시 [시스템구조 1] 26. 응용 계층 관련 기술들 (1)",
+    "keywords": [
+      "응용",
+      "계층",
+      "관련",
+      "기술들"
+    ]
+  },
+  {
+    "round": 80,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 27. 응용 계층 관련 기술들 (2) / 기출문제",
+    "lecture_title": "27. 응용 계층 관련 기술들 (2) / 기출문제",
+    "display_badge": "80차시 [시스템구조 1] 27. 응용 계층 관련 기술들 (2) / 기출문제",
+    "keywords": [
+      "응용",
+      "계층",
+      "관련",
+      "기술들"
+    ]
+  },
+  {
+    "round": 81,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 28. WPAN 기술들 / 기출문제",
+    "lecture_title": "28. WPAN 기술들 / 기출문제",
+    "display_badge": "81차시 [시스템구조 1] 28. WPAN 기술들 / 기출문제",
+    "keywords": [
+      "WPAN",
+      "기술들"
+    ]
+  },
+  {
+    "round": 82,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 29. 이동통신 기술들 / 기출문제",
+    "lecture_title": "29. 이동통신 기술들 / 기출문제",
+    "display_badge": "82차시 [시스템구조 1] 29. 이동통신 기술들 / 기출문제",
+    "keywords": [
+      "이동통신",
+      "기술들"
+    ]
+  },
+  {
+    "round": 83,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 30. 네트워크 응용 서비스 (1)",
+    "lecture_title": "30. 네트워크 응용 서비스 (1)",
+    "display_badge": "83차시 [시스템구조 1] 30. 네트워크 응용 서비스 (1)",
+    "keywords": [
+      "네트워크",
+      "응용",
+      "서비스"
+    ]
+  },
+  {
+    "round": 84,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 31. 네트워크 응용 서비스 (2) / 기출문제",
+    "lecture_title": "31. 네트워크 응용 서비스 (2) / 기출문제",
+    "display_badge": "84차시 [시스템구조 1] 31. 네트워크 응용 서비스 (2) / 기출문제",
+    "keywords": [
+      "네트워크",
+      "응용",
+      "서비스"
+    ]
+  },
+  {
+    "round": 85,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 32. 네트워크 응용 서비스 (3) / 기출문제",
+    "lecture_title": "32. 네트워크 응용 서비스 (3) / 기출문제",
+    "display_badge": "85차시 [시스템구조 1] 32. 네트워크 응용 서비스 (3) / 기출문제",
+    "keywords": [
+      "네트워크",
+      "응용",
+      "서비스"
+    ]
+  },
+  {
+    "round": 86,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 33. 네트워크 장비 (1)",
+    "lecture_title": "33. 네트워크 장비 (1)",
+    "display_badge": "86차시 [시스템구조 1] 33. 네트워크 장비 (1)",
+    "keywords": [
+      "네트워크",
+      "장비"
+    ]
+  },
+  {
+    "round": 87,
+    "category_tag": "시스템구조 1",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "데이터통신 및 네트워크",
+    "full_title": "[시스템구조 1] 34. 네트워크 장비 (2) / 네트워크 명령어 / 기출문제",
+    "lecture_title": "34. 네트워크 장비 (2) / 네트워크 명령어 / 기출문제",
+    "display_badge": "87차시 [시스템구조 1] 34. 네트워크 장비 (2) / 네트워크 명령어 / 기출문제",
+    "keywords": [
+      "네트워크",
+      "장비",
+      "명령어"
+    ]
+  },
+  {
+    "round": 88,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 01. 데이터베이스기본-DB이론(1)",
+    "lecture_title": "01. 데이터베이스기본-DB이론(1)",
+    "display_badge": "88차시 [데이터베이스] 01. 데이터베이스기본-DB이론(1)",
+    "keywords": [
+      "데이터베이스기본",
+      "DB이론"
+    ]
+  },
+  {
+    "round": 89,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 02. 데이터베이스기본-DB이론(2)",
+    "lecture_title": "02. 데이터베이스기본-DB이론(2)",
+    "display_badge": "89차시 [데이터베이스] 02. 데이터베이스기본-DB이론(2)",
+    "keywords": [
+      "데이터베이스기본",
+      "DB이론"
+    ]
+  },
+  {
+    "round": 90,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 03. 데이터베이스기본-데이터저장(1)",
+    "lecture_title": "03. 데이터베이스기본-데이터저장(1)",
+    "display_badge": "90차시 [데이터베이스] 03. 데이터베이스기본-데이터저장(1)",
+    "keywords": [
+      "데이터베이스기본",
+      "데이터저장"
+    ]
+  },
+  {
+    "round": 91,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 04. 데이터베이스기본-데이터저장(2)",
+    "lecture_title": "04. 데이터베이스기본-데이터저장(2)",
+    "display_badge": "91차시 [데이터베이스] 04. 데이터베이스기본-데이터저장(2)",
+    "keywords": [
+      "데이터베이스기본",
+      "데이터저장"
+    ]
+  },
+  {
+    "round": 92,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 05. 데이터베이스설계-데이터모델(1)",
+    "lecture_title": "05. 데이터베이스설계-데이터모델(1)",
+    "display_badge": "92차시 [데이터베이스] 05. 데이터베이스설계-데이터모델(1)",
+    "keywords": [
+      "데이터베이스설계",
+      "데이터모델"
+    ]
+  },
+  {
+    "round": 93,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 06. 데이터베이스설계-데이터모델(2)",
+    "lecture_title": "06. 데이터베이스설계-데이터모델(2)",
+    "display_badge": "93차시 [데이터베이스] 06. 데이터베이스설계-데이터모델(2)",
+    "keywords": [
+      "데이터베이스설계",
+      "데이터모델"
+    ]
+  },
+  {
+    "round": 94,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 07. 데이터베이스설계-데이터종속성",
+    "lecture_title": "07. 데이터베이스설계-데이터종속성",
+    "display_badge": "94차시 [데이터베이스] 07. 데이터베이스설계-데이터종속성",
+    "keywords": [
+      "데이터베이스설계",
+      "데이터종속성"
+    ]
+  },
+  {
+    "round": 95,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 08. 데이터베이스설계-정규화",
+    "lecture_title": "08. 데이터베이스설계-정규화",
+    "display_badge": "95차시 [데이터베이스] 08. 데이터베이스설계-정규화",
+    "keywords": [
+      "데이터베이스설계",
+      "정규화"
+    ]
+  },
+  {
+    "round": 96,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 09. 데이터베이스설계-데이터모델링",
+    "lecture_title": "09. 데이터베이스설계-데이터모델링",
+    "display_badge": "96차시 [데이터베이스] 09. 데이터베이스설계-데이터모델링",
+    "keywords": [
+      "데이터베이스설계",
+      "데이터모델링"
+    ]
+  },
+  {
+    "round": 97,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 10. 데이터베이스설계-데이터베이스 설계",
+    "lecture_title": "10. 데이터베이스설계-데이터베이스 설계",
+    "display_badge": "97차시 [데이터베이스] 10. 데이터베이스설계-데이터베이스 설계",
+    "keywords": [
+      "데이터베이스설계",
+      "데이터베이스",
+      "설계"
+    ]
+  },
+  {
+    "round": 98,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 11. 데이터베이스언어-관계연산(1)",
+    "lecture_title": "11. 데이터베이스언어-관계연산(1)",
+    "display_badge": "98차시 [데이터베이스] 11. 데이터베이스언어-관계연산(1)",
+    "keywords": [
+      "데이터베이스언어",
+      "관계연산"
+    ]
+  },
+  {
+    "round": 99,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 12. 데이터베이스언어-관계연산(2)",
+    "lecture_title": "12. 데이터베이스언어-관계연산(2)",
+    "display_badge": "99차시 [데이터베이스] 12. 데이터베이스언어-관계연산(2)",
+    "keywords": [
+      "데이터베이스언어",
+      "관계연산"
+    ]
+  },
+  {
+    "round": 100,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 13. SQL특강-SQL기본(1)",
+    "lecture_title": "13. SQL특강-SQL기본(1)",
+    "display_badge": "100차시 [데이터베이스] 13. SQL특강-SQL기본(1)",
+    "keywords": [
+      "SQL특강",
+      "SQL기본"
+    ]
+  },
+  {
+    "round": 101,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 14. SQL특강-SQL기본(2)",
+    "lecture_title": "14. SQL특강-SQL기본(2)",
+    "display_badge": "101차시 [데이터베이스] 14. SQL특강-SQL기본(2)",
+    "keywords": [
+      "SQL특강",
+      "SQL기본"
+    ]
+  },
+  {
+    "round": 102,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 15. SQL특강-SQL활용(1)",
+    "lecture_title": "15. SQL특강-SQL활용(1)",
+    "display_badge": "102차시 [데이터베이스] 15. SQL특강-SQL활용(1)",
+    "keywords": [
+      "SQL특강",
+      "SQL활용"
+    ]
+  },
+  {
+    "round": 103,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 16. SQL특강-SQL활용(2)",
+    "lecture_title": "16. SQL특강-SQL활용(2)",
+    "display_badge": "103차시 [데이터베이스] 16. SQL특강-SQL활용(2)",
+    "keywords": [
+      "SQL특강",
+      "SQL활용"
+    ]
+  },
+  {
+    "round": 104,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 17. 데이터베이스언어-SQL",
+    "lecture_title": "17. 데이터베이스언어-SQL",
+    "display_badge": "104차시 [데이터베이스] 17. 데이터베이스언어-SQL",
+    "keywords": [
+      "데이터베이스언어",
+      "SQL"
+    ]
+  },
+  {
+    "round": 105,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 18. 데이터베이스관리-회복",
+    "lecture_title": "18. 데이터베이스관리-회복",
+    "display_badge": "105차시 [데이터베이스] 18. 데이터베이스관리-회복",
+    "keywords": [
+      "데이터베이스관리",
+      "회복"
+    ]
+  },
+  {
+    "round": 106,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 19. 데이터베이스관리-병행제어(1)",
+    "lecture_title": "19. 데이터베이스관리-병행제어(1)",
+    "display_badge": "106차시 [데이터베이스] 19. 데이터베이스관리-병행제어(1)",
+    "keywords": [
+      "데이터베이스관리",
+      "병행제어"
+    ]
+  },
+  {
+    "round": 107,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 20. 데이터베이스관리-병행제어(2)",
+    "lecture_title": "20. 데이터베이스관리-병행제어(2)",
+    "display_badge": "107차시 [데이터베이스] 20. 데이터베이스관리-병행제어(2)",
+    "keywords": [
+      "데이터베이스관리",
+      "병행제어"
+    ]
+  },
+  {
+    "round": 108,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 21. 데이터베이스관리-병행제어(3)",
+    "lecture_title": "21. 데이터베이스관리-병행제어(3)",
+    "display_badge": "108차시 [데이터베이스] 21. 데이터베이스관리-병행제어(3)",
+    "keywords": [
+      "데이터베이스관리",
+      "병행제어"
+    ]
+  },
+  {
+    "round": 109,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 22. 데이터베이스관리-성능(1)",
+    "lecture_title": "22. 데이터베이스관리-성능(1)",
+    "display_badge": "109차시 [데이터베이스] 22. 데이터베이스관리-성능(1)",
+    "keywords": [
+      "데이터베이스관리",
+      "성능"
+    ]
+  },
+  {
+    "round": 110,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 23. 데이터베이스관리-성능(2),보안",
+    "lecture_title": "23. 데이터베이스관리-성능(2),보안",
+    "display_badge": "110차시 [데이터베이스] 23. 데이터베이스관리-성능(2),보안",
+    "keywords": [
+      "데이터베이스관리",
+      "성능",
+      "보안"
+    ]
+  },
+  {
+    "round": 111,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 24. 데이터베이스응용-DW, OLAP",
+    "lecture_title": "24. 데이터베이스응용-DW, OLAP",
+    "display_badge": "111차시 [데이터베이스] 24. 데이터베이스응용-DW, OLAP",
+    "keywords": [
+      "데이터베이스응용",
+      "DW",
+      "OLAP"
+    ]
+  },
+  {
+    "round": 112,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 25. 데이터베이스응용-데이터마이닝(1)",
+    "lecture_title": "25. 데이터베이스응용-데이터마이닝(1)",
+    "display_badge": "112차시 [데이터베이스] 25. 데이터베이스응용-데이터마이닝(1)",
+    "keywords": [
+      "데이터베이스응용",
+      "데이터마이닝"
+    ]
+  },
+  {
+    "round": 113,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 26. 데이터베이스응용-데이터마이닝(2)",
+    "lecture_title": "26. 데이터베이스응용-데이터마이닝(2)",
+    "display_badge": "113차시 [데이터베이스] 26. 데이터베이스응용-데이터마이닝(2)",
+    "keywords": [
+      "데이터베이스응용",
+      "데이터마이닝"
+    ]
+  },
+  {
+    "round": 114,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 27. 데이터베이스응용-데이터마이닝(3)",
+    "lecture_title": "27. 데이터베이스응용-데이터마이닝(3)",
+    "display_badge": "114차시 [데이터베이스] 27. 데이터베이스응용-데이터마이닝(3)",
+    "keywords": [
+      "데이터베이스응용",
+      "데이터마이닝"
+    ]
+  },
+  {
+    "round": 115,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 28. 데이터베이스응용-데이터베이스종류(1)",
+    "lecture_title": "28. 데이터베이스응용-데이터베이스종류(1)",
+    "display_badge": "115차시 [데이터베이스] 28. 데이터베이스응용-데이터베이스종류(1)",
+    "keywords": [
+      "데이터베이스응용",
+      "데이터베이스종류"
+    ]
+  },
+  {
+    "round": 116,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 29. 데이터베이스응용-데이터베이스종류(2)",
+    "lecture_title": "29. 데이터베이스응용-데이터베이스종류(2)",
+    "display_badge": "116차시 [데이터베이스] 29. 데이터베이스응용-데이터베이스종류(2)",
+    "keywords": [
+      "데이터베이스응용",
+      "데이터베이스종류"
+    ]
+  },
+  {
+    "round": 117,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 30. 데이터베이스응용-데이터베이스종류(3)",
+    "lecture_title": "30. 데이터베이스응용-데이터베이스종류(3)",
+    "display_badge": "117차시 [데이터베이스] 30. 데이터베이스응용-데이터베이스종류(3)",
+    "keywords": [
+      "데이터베이스응용",
+      "데이터베이스종류"
+    ]
+  },
+  {
+    "round": 118,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 31. 데이터베이스응용-DB응용기술(1)",
+    "lecture_title": "31. 데이터베이스응용-DB응용기술(1)",
+    "display_badge": "118차시 [데이터베이스] 31. 데이터베이스응용-DB응용기술(1)",
+    "keywords": [
+      "데이터베이스응용",
+      "DB응용기술"
+    ]
+  },
+  {
+    "round": 119,
+    "category_tag": "데이터베이스",
+    "official_subject_code": "제3과목",
+    "official_subject_name": "데이터베이스",
+    "sub_area": "DB이론/설계/SQL/관리/응용",
+    "full_title": "[데이터베이스] 32. 데이터베이스응용-DB응용기술(2)",
+    "lecture_title": "32. 데이터베이스응용-DB응용기술(2)",
+    "display_badge": "119차시 [데이터베이스] 32. 데이터베이스응용-DB응용기술(2)",
+    "keywords": [
+      "데이터베이스응용",
+      "DB응용기술"
+    ]
+  },
+  {
+    "round": 120,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 01. 프로젝트관리개요 (1)",
+    "lecture_title": "01. 프로젝트관리개요 (1)",
+    "display_badge": "120차시 [사업관리] 01. 프로젝트관리개요 (1)",
+    "keywords": [
+      "프로젝트관리개요"
+    ]
+  },
+  {
+    "round": 121,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 02. 프로젝트관리개요 (2)",
+    "lecture_title": "02. 프로젝트관리개요 (2)",
+    "display_badge": "121차시 [사업관리] 02. 프로젝트관리개요 (2)",
+    "keywords": [
+      "프로젝트관리개요"
+    ]
+  },
+  {
+    "round": 122,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 03. 프로젝트관리프로세스,통합관리",
+    "lecture_title": "03. 프로젝트관리프로세스,통합관리",
+    "display_badge": "122차시 [사업관리] 03. 프로젝트관리프로세스,통합관리",
+    "keywords": [
+      "프로젝트관리프로세스",
+      "통합관리"
+    ]
+  },
+  {
+    "round": 123,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 04. 이해관계자관리,범위관리",
+    "lecture_title": "04. 이해관계자관리,범위관리",
+    "display_badge": "123차시 [사업관리] 04. 이해관계자관리,범위관리",
+    "keywords": [
+      "이해관계자관리",
+      "범위관리"
+    ]
+  },
+  {
+    "round": 124,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 05. 자원관리 (1)",
+    "lecture_title": "05. 자원관리 (1)",
+    "display_badge": "124차시 [사업관리] 05. 자원관리 (1)",
+    "keywords": [
+      "자원관리"
+    ]
+  },
+  {
+    "round": 125,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 06. 자원관리 (2), 시간관리 (1)",
+    "lecture_title": "06. 자원관리 (2), 시간관리 (1)",
+    "display_badge": "125차시 [사업관리] 06. 자원관리 (2), 시간관리 (1)",
+    "keywords": [
+      "자원관리",
+      "시간관리"
+    ]
+  },
+  {
+    "round": 126,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 07. 시간관리 (2)",
+    "lecture_title": "07. 시간관리 (2)",
+    "display_badge": "126차시 [사업관리] 07. 시간관리 (2)",
+    "keywords": [
+      "시간관리"
+    ]
+  },
+  {
+    "round": 127,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 08. 시간관리 (3)",
+    "lecture_title": "08. 시간관리 (3)",
+    "display_badge": "127차시 [사업관리] 08. 시간관리 (3)",
+    "keywords": [
+      "시간관리"
+    ]
+  },
+  {
+    "round": 128,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 09. 원가관리 (1)",
+    "lecture_title": "09. 원가관리 (1)",
+    "display_badge": "128차시 [사업관리] 09. 원가관리 (1)",
+    "keywords": [
+      "원가관리"
+    ]
+  },
+  {
+    "round": 129,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 10. 원가관리 (2)",
+    "lecture_title": "10. 원가관리 (2)",
+    "display_badge": "129차시 [사업관리] 10. 원가관리 (2)",
+    "keywords": [
+      "원가관리"
+    ]
+  },
+  {
+    "round": 130,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 11. 리스크관리",
+    "lecture_title": "11. 리스크관리",
+    "display_badge": "130차시 [사업관리] 11. 리스크관리",
+    "keywords": [
+      "리스크관리"
+    ]
+  },
+  {
+    "round": 131,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 12. 품질관리, 조달관리, 의사소통관리",
+    "lecture_title": "12. 품질관리, 조달관리, 의사소통관리",
+    "display_badge": "131차시 [사업관리] 12. 품질관리, 조달관리, 의사소통관리",
+    "keywords": [
+      "품질관리",
+      "조달관리",
+      "의사소통관리"
+    ]
+  },
+  {
+    "round": 132,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 13. PMBOK7th, 관리원칙",
+    "lecture_title": "13. PMBOK7th, 관리원칙",
+    "display_badge": "132차시 [사업관리] 13. PMBOK7th, 관리원칙",
+    "keywords": [
+      "PMBOK7th",
+      "관리원칙"
+    ]
+  },
+  {
+    "round": 133,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 14. 프로젝트성과영역 (1)",
+    "lecture_title": "14. 프로젝트성과영역 (1)",
+    "display_badge": "133차시 [사업관리] 14. 프로젝트성과영역 (1)",
+    "keywords": [
+      "프로젝트성과영역"
+    ]
+  },
+  {
+    "round": 134,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 15. 프로젝트성과영역 (2)",
+    "lecture_title": "15. 프로젝트성과영역 (2)",
+    "display_badge": "134차시 [사업관리] 15. 프로젝트성과영역 (2)",
+    "keywords": [
+      "프로젝트성과영역"
+    ]
+  },
+  {
+    "round": 135,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 16. 조정,모델.방법.가공품 (1)",
+    "lecture_title": "16. 조정,모델.방법.가공품 (1)",
+    "display_badge": "135차시 [사업관리] 16. 조정,모델.방법.가공품 (1)",
+    "keywords": [
+      "조정",
+      "모델",
+      "방법",
+      "가공품"
+    ]
+  },
+  {
+    "round": 136,
+    "category_tag": "사업관리",
+    "official_subject_code": "제1과목",
+    "official_subject_name": "감리 및 사업관리",
+    "sub_area": "사업관리 영역",
+    "full_title": "[사업관리] 17. 조정,모델.방법.가공품 (2)",
+    "lecture_title": "17. 조정,모델.방법.가공품 (2)",
+    "display_badge": "136차시 [사업관리] 17. 조정,모델.방법.가공품 (2)",
+    "keywords": [
+      "조정",
+      "모델",
+      "방법",
+      "가공품"
+    ]
+  },
+  {
+    "round": 137,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 01. 기출분석 / 목차",
+    "lecture_title": "01. 기출분석 / 목차",
+    "display_badge": "137차시 [시스템구조 2] 01. 기출분석 / 목차",
+    "keywords": []
+  },
+  {
+    "round": 138,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 02. 프로그래밍 언어 - 자바언어 / 안드로이드",
+    "lecture_title": "02. 프로그래밍 언어 - 자바언어 / 안드로이드",
+    "display_badge": "138차시 [시스템구조 2] 02. 프로그래밍 언어 - 자바언어 / 안드로이드",
+    "keywords": [
+      "프로그래밍",
+      "언어",
+      "자바언어",
+      "안드로이드"
+    ]
+  },
+  {
+    "round": 139,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 03. 프로그래밍 언어 - 서블릿 / JSP / 자바스크립트 / 기출문제",
+    "lecture_title": "03. 프로그래밍 언어 - 서블릿 / JSP / 자바스크립트 / 기출문제",
+    "display_badge": "139차시 [시스템구조 2] 03. 프로그래밍 언어 - 서블릿 / JSP / 자바스크립트 / 기출문제",
+    "keywords": [
+      "프로그래밍",
+      "언어",
+      "서블릿",
+      "JSP",
+      "자바스크립트"
+    ]
+  },
+  {
+    "round": 140,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 04. 가상화 기술들 (1)",
+    "lecture_title": "04. 가상화 기술들 (1)",
+    "display_badge": "140차시 [시스템구조 2] 04. 가상화 기술들 (1)",
+    "keywords": [
+      "가상화",
+      "기술들"
+    ]
+  },
+  {
+    "round": 141,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 05. 가상화 기술들 (2)",
+    "lecture_title": "05. 가상화 기술들 (2)",
+    "display_badge": "141차시 [시스템구조 2] 05. 가상화 기술들 (2)",
+    "keywords": [
+      "가상화",
+      "기술들"
+    ]
+  },
+  {
+    "round": 142,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 06. 가상화 기술들 (3) / 기출문제",
+    "lecture_title": "06. 가상화 기술들 (3) / 기출문제",
+    "display_badge": "142차시 [시스템구조 2] 06. 가상화 기술들 (3) / 기출문제",
+    "keywords": [
+      "가상화",
+      "기술들"
+    ]
+  },
+  {
+    "round": 143,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 07. SDN / NFV / 기출문제",
+    "lecture_title": "07. SDN / NFV / 기출문제",
+    "display_badge": "143차시 [시스템구조 2] 07. SDN / NFV / 기출문제",
+    "keywords": [
+      "SDN",
+      "NFV"
+    ]
+  },
+  {
+    "round": 144,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 08. 클라우드 컴퓨팅",
+    "lecture_title": "08. 클라우드 컴퓨팅",
+    "display_badge": "144차시 [시스템구조 2] 08. 클라우드 컴퓨팅",
+    "keywords": [
+      "클라우드",
+      "컴퓨팅"
+    ]
+  },
+  {
+    "round": 145,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 09. 서버리스 컴퓨팅",
+    "lecture_title": "09. 서버리스 컴퓨팅",
+    "display_badge": "145차시 [시스템구조 2] 09. 서버리스 컴퓨팅",
+    "keywords": [
+      "서버리스",
+      "컴퓨팅"
+    ]
+  },
+  {
+    "round": 146,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 10. MSA / 기출문제",
+    "lecture_title": "10. MSA / 기출문제",
+    "display_badge": "146차시 [시스템구조 2] 10. MSA / 기출문제",
+    "keywords": [
+      "MSA"
+    ]
+  },
+  {
+    "round": 147,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 11. 빅데이터 기술들 (1)",
+    "lecture_title": "11. 빅데이터 기술들 (1)",
+    "display_badge": "147차시 [시스템구조 2] 11. 빅데이터 기술들 (1)",
+    "keywords": [
+      "빅데이터",
+      "기술들"
+    ]
+  },
+  {
+    "round": 148,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 12. 빅데이터 기술들 (2)",
+    "lecture_title": "12. 빅데이터 기술들 (2)",
+    "display_badge": "148차시 [시스템구조 2] 12. 빅데이터 기술들 (2)",
+    "keywords": [
+      "빅데이터",
+      "기술들"
+    ]
+  },
+  {
+    "round": 149,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 13. 빅데이터 기술들 (3) / 기출문제",
+    "lecture_title": "13. 빅데이터 기술들 (3) / 기출문제",
+    "display_badge": "149차시 [시스템구조 2] 13. 빅데이터 기술들 (3) / 기출문제",
+    "keywords": [
+      "빅데이터",
+      "기술들"
+    ]
+  },
+  {
+    "round": 150,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 14. 사물인터넷 기술들",
+    "lecture_title": "14. 사물인터넷 기술들",
+    "display_badge": "150차시 [시스템구조 2] 14. 사물인터넷 기술들",
+    "keywords": [
+      "사물인터넷",
+      "기술들"
+    ]
+  },
+  {
+    "round": 151,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 15. 헬스케어 / 웨어러블 / 자율주행 / 기출문제",
+    "lecture_title": "15. 헬스케어 / 웨어러블 / 자율주행 / 기출문제",
+    "display_badge": "151차시 [시스템구조 2] 15. 헬스케어 / 웨어러블 / 자율주행 / 기출문제",
+    "keywords": [
+      "헬스케어",
+      "웨어러블",
+      "자율주행"
+    ]
+  },
+  {
+    "round": 152,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 16. 가용성 / 용량산정 / 성능",
+    "lecture_title": "16. 가용성 / 용량산정 / 성능",
+    "display_badge": "152차시 [시스템구조 2] 16. 가용성 / 용량산정 / 성능",
+    "keywords": [
+      "가용성",
+      "용량산정",
+      "성능"
+    ]
+  },
+  {
+    "round": 153,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 17. 스토리지 / 백업 (1)",
+    "lecture_title": "17. 스토리지 / 백업 (1)",
+    "display_badge": "153차시 [시스템구조 2] 17. 스토리지 / 백업 (1)",
+    "keywords": [
+      "스토리지",
+      "백업"
+    ]
+  },
+  {
+    "round": 154,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 18. 백업 (2) / 재해복구 시스템 / 기출문제",
+    "lecture_title": "18. 백업 (2) / 재해복구 시스템 / 기출문제",
+    "display_badge": "154차시 [시스템구조 2] 18. 백업 (2) / 재해복구 시스템 / 기출문제",
+    "keywords": [
+      "백업",
+      "재해복구",
+      "시스템"
+    ]
+  },
+  {
+    "round": 155,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 19. EA",
+    "lecture_title": "19. EA",
+    "display_badge": "155차시 [시스템구조 2] 19. EA",
+    "keywords": [
+      "EA"
+    ]
+  },
+  {
+    "round": 156,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 20. ITSM, ITIL / SLA, SLM / 기출문제",
+    "lecture_title": "20. ITSM, ITIL / SLA, SLM / 기출문제",
+    "display_badge": "156차시 [시스템구조 2] 20. ITSM, ITIL / SLA, SLM / 기출문제",
+    "keywords": [
+      "ITSM",
+      "ITIL",
+      "SLA",
+      "SLM"
+    ]
+  },
+  {
+    "round": 157,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 21. 오픈소스 / 데이터센터 / 기출문제",
+    "lecture_title": "21. 오픈소스 / 데이터센터 / 기출문제",
+    "display_badge": "157차시 [시스템구조 2] 21. 오픈소스 / 데이터센터 / 기출문제",
+    "keywords": [
+      "오픈소스",
+      "데이터센터"
+    ]
+  },
+  {
+    "round": 158,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 22. 기타 토픽들 (1) / 기출문제",
+    "lecture_title": "22. 기타 토픽들 (1) / 기출문제",
+    "display_badge": "158차시 [시스템구조 2] 22. 기타 토픽들 (1) / 기출문제",
+    "keywords": [
+      "기타",
+      "토픽들"
+    ]
+  },
+  {
+    "round": 159,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 23. 기타 토픽들 (2)",
+    "lecture_title": "23. 기타 토픽들 (2)",
+    "display_badge": "159차시 [시스템구조 2] 23. 기타 토픽들 (2)",
+    "keywords": [
+      "기타",
+      "토픽들"
+    ]
+  },
+  {
+    "round": 160,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 24. 기타 토픽들 (3) / 기출문제",
+    "lecture_title": "24. 기타 토픽들 (3) / 기출문제",
+    "display_badge": "160차시 [시스템구조 2] 24. 기타 토픽들 (3) / 기출문제",
+    "keywords": [
+      "기타",
+      "토픽들"
+    ]
+  },
+  {
+    "round": 161,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 25. 기타 토픽들 (4)",
+    "lecture_title": "25. 기타 토픽들 (4)",
+    "display_badge": "161차시 [시스템구조 2] 25. 기타 토픽들 (4)",
+    "keywords": [
+      "기타",
+      "토픽들"
+    ]
+  },
+  {
+    "round": 162,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 26. 머신러닝 / 딥러닝 (1)",
+    "lecture_title": "26. 머신러닝 / 딥러닝 (1)",
+    "display_badge": "162차시 [시스템구조 2] 26. 머신러닝 / 딥러닝 (1)",
+    "keywords": [
+      "머신러닝",
+      "딥러닝"
+    ]
+  },
+  {
+    "round": 163,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 27. 머신러닝 / 딥러닝 (2)",
+    "lecture_title": "27. 머신러닝 / 딥러닝 (2)",
+    "display_badge": "163차시 [시스템구조 2] 27. 머신러닝 / 딥러닝 (2)",
+    "keywords": [
+      "머신러닝",
+      "딥러닝"
+    ]
+  },
+  {
+    "round": 164,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 28. 머신러닝 / 딥러닝 (3)",
+    "lecture_title": "28. 머신러닝 / 딥러닝 (3)",
+    "display_badge": "164차시 [시스템구조 2] 28. 머신러닝 / 딥러닝 (3)",
+    "keywords": [
+      "머신러닝",
+      "딥러닝"
+    ]
+  },
+  {
+    "round": 165,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 29. 머신러닝 / 딥러닝 (4)",
+    "lecture_title": "29. 머신러닝 / 딥러닝 (4)",
+    "display_badge": "165차시 [시스템구조 2] 29. 머신러닝 / 딥러닝 (4)",
+    "keywords": [
+      "머신러닝",
+      "딥러닝"
+    ]
+  },
+  {
+    "round": 166,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 30. 머신러닝 / 딥러닝 (5)",
+    "lecture_title": "30. 머신러닝 / 딥러닝 (5)",
+    "display_badge": "166차시 [시스템구조 2] 30. 머신러닝 / 딥러닝 (5)",
+    "keywords": [
+      "머신러닝",
+      "딥러닝"
+    ]
+  },
+  {
+    "round": 167,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 31. 머신러닝 / 딥러닝 (6) / 기출문제",
+    "lecture_title": "31. 머신러닝 / 딥러닝 (6) / 기출문제",
+    "display_badge": "167차시 [시스템구조 2] 31. 머신러닝 / 딥러닝 (6) / 기출문제",
+    "keywords": [
+      "머신러닝",
+      "딥러닝"
+    ]
+  },
+  {
+    "round": 168,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 32. 컴퓨터 구조론 (1)",
+    "lecture_title": "32. 컴퓨터 구조론 (1)",
+    "display_badge": "168차시 [시스템구조 2] 32. 컴퓨터 구조론 (1)",
+    "keywords": [
+      "컴퓨터",
+      "구조론"
+    ]
+  },
+  {
+    "round": 169,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 33. 컴퓨터 구조론 (2) / 기출문제",
+    "lecture_title": "33. 컴퓨터 구조론 (2) / 기출문제",
+    "display_badge": "169차시 [시스템구조 2] 33. 컴퓨터 구조론 (2) / 기출문제",
+    "keywords": [
+      "컴퓨터",
+      "구조론"
+    ]
+  },
+  {
+    "round": 170,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 34. 컴퓨터 구조론 (3)",
+    "lecture_title": "34. 컴퓨터 구조론 (3)",
+    "display_badge": "170차시 [시스템구조 2] 34. 컴퓨터 구조론 (3)",
+    "keywords": [
+      "컴퓨터",
+      "구조론"
+    ]
+  },
+  {
+    "round": 171,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 35. 컴퓨터 구조론 (4) / 기출문제",
+    "lecture_title": "35. 컴퓨터 구조론 (4) / 기출문제",
+    "display_badge": "171차시 [시스템구조 2] 35. 컴퓨터 구조론 (4) / 기출문제",
+    "keywords": [
+      "컴퓨터",
+      "구조론"
+    ]
+  },
+  {
+    "round": 172,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 36. 컴퓨터 구조론 (5) / 기출문제",
+    "lecture_title": "36. 컴퓨터 구조론 (5) / 기출문제",
+    "display_badge": "172차시 [시스템구조 2] 36. 컴퓨터 구조론 (5) / 기출문제",
+    "keywords": [
+      "컴퓨터",
+      "구조론"
+    ]
+  },
+  {
+    "round": 173,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 37. 컴퓨터 구조론 (6) / 기출문제",
+    "lecture_title": "37. 컴퓨터 구조론 (6) / 기출문제",
+    "display_badge": "173차시 [시스템구조 2] 37. 컴퓨터 구조론 (6) / 기출문제",
+    "keywords": [
+      "컴퓨터",
+      "구조론"
+    ]
+  },
+  {
+    "round": 174,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 38. 컴퓨터 구조론 (7)",
+    "lecture_title": "38. 컴퓨터 구조론 (7)",
+    "display_badge": "174차시 [시스템구조 2] 38. 컴퓨터 구조론 (7)",
+    "keywords": [
+      "컴퓨터",
+      "구조론"
+    ]
+  },
+  {
+    "round": 175,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 39. 컴퓨터 구조론 (8) / 기출문제",
+    "lecture_title": "39. 컴퓨터 구조론 (8) / 기출문제",
+    "display_badge": "175차시 [시스템구조 2] 39. 컴퓨터 구조론 (8) / 기출문제",
+    "keywords": [
+      "컴퓨터",
+      "구조론"
+    ]
+  },
+  {
+    "round": 176,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 40. 운영체제론 (1)",
+    "lecture_title": "40. 운영체제론 (1)",
+    "display_badge": "176차시 [시스템구조 2] 40. 운영체제론 (1)",
+    "keywords": [
+      "운영체제론"
+    ]
+  },
+  {
+    "round": 177,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 41. 운영체제론 (2)",
+    "lecture_title": "41. 운영체제론 (2)",
+    "display_badge": "177차시 [시스템구조 2] 41. 운영체제론 (2)",
+    "keywords": [
+      "운영체제론"
+    ]
+  },
+  {
+    "round": 178,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 42. 운영체제론 (3)",
+    "lecture_title": "42. 운영체제론 (3)",
+    "display_badge": "178차시 [시스템구조 2] 42. 운영체제론 (3)",
+    "keywords": [
+      "운영체제론"
+    ]
+  },
+  {
+    "round": 179,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 43. 운영체제론 (4)",
+    "lecture_title": "43. 운영체제론 (4)",
+    "display_badge": "179차시 [시스템구조 2] 43. 운영체제론 (4)",
+    "keywords": [
+      "운영체제론"
+    ]
+  },
+  {
+    "round": 180,
+    "category_tag": "시스템구조 2",
+    "official_subject_code": "제4과목",
+    "official_subject_name": "시스템구조",
+    "sub_area": "신기술/컴구/OS/AI/빅데이터",
+    "full_title": "[시스템구조 2] 44. 운영체제론 (5) / 기출문제",
+    "lecture_title": "44. 운영체제론 (5) / 기출문제",
+    "display_badge": "180차시 [시스템구조 2] 44. 운영체제론 (5) / 기출문제",
+    "keywords": [
+      "운영체제론"
+    ]
+  },
+  {
+    "round": 181,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 01.개요, 마인드맵 및 기출분석(공통, 계획 분야)",
+    "lecture_title": "01.개요, 마인드맵 및 기출분석(공통, 계획 분야)",
+    "display_badge": "181차시 [소공2] 01.개요, 마인드맵 및 기출분석(공통, 계획 분야)",
+    "keywords": [
+      "마인드맵",
+      "공통",
+      "계획"
+    ]
+  },
+  {
+    "round": 182,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 02.마인드맵 및 기출분석(테스트, 유지관리 분야)",
+    "lecture_title": "02.마인드맵 및 기출분석(테스트, 유지관리 분야)",
+    "display_badge": "182차시 [소공2] 02.마인드맵 및 기출분석(테스트, 유지관리 분야)",
+    "keywords": [
+      "마인드맵",
+      "테스트",
+      "유지관리"
+    ]
+  },
+  {
+    "round": 183,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 03.소프트웨어 품질 개요",
+    "lecture_title": "03.소프트웨어 품질 개요",
+    "display_badge": "183차시 [소공2] 03.소프트웨어 품질 개요",
+    "keywords": [
+      "소프트웨어",
+      "품질"
+    ]
+  },
+  {
+    "round": 184,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 04.제품 품질표준(ISO 9126, 14598, 12119)",
+    "lecture_title": "04.제품 품질표준(ISO 9126, 14598, 12119)",
+    "display_badge": "184차시 [소공2] 04.제품 품질표준(ISO 9126, 14598, 12119)",
+    "keywords": [
+      "제품",
+      "품질표준",
+      "ISO"
+    ]
+  },
+  {
+    "round": 185,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 05.제품 품질표준(ISO 25000, 25010)",
+    "lecture_title": "05.제품 품질표준(ISO 25000, 25010)",
+    "display_badge": "185차시 [소공2] 05.제품 품질표준(ISO 25000, 25010)",
+    "keywords": [
+      "제품",
+      "품질표준",
+      "ISO"
+    ]
+  },
+  {
+    "round": 186,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 06.제품 품질표준(GS인증, ISO 5055)",
+    "lecture_title": "06.제품 품질표준(GS인증, ISO 5055)",
+    "display_badge": "186차시 [소공2] 06.제품 품질표준(GS인증, ISO 5055)",
+    "keywords": [
+      "제품",
+      "품질표준",
+      "GS인증",
+      "ISO"
+    ]
+  },
+  {
+    "round": 187,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 07.프로세스 품질표준(ISO 12207, CMM, CMMI v1.3)",
+    "lecture_title": "07.프로세스 품질표준(ISO 12207, CMM, CMMI v1.3)",
+    "display_badge": "187차시 [소공2] 07.프로세스 품질표준(ISO 12207, CMM, CMMI v1.3)",
+    "keywords": [
+      "프로세스",
+      "품질표준",
+      "ISO",
+      "CMM",
+      "CMMI",
+      "v1"
+    ]
+  },
+  {
+    "round": 188,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 08.프로세스 품질표준(CMMI v2.0, v3.0)",
+    "lecture_title": "08.프로세스 품질표준(CMMI v2.0, v3.0)",
+    "display_badge": "188차시 [소공2] 08.프로세스 품질표준(CMMI v2.0, v3.0)",
+    "keywords": [
+      "프로세스",
+      "품질표준",
+      "CMMI",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "round": 189,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 09.프로세스 품질표준(SPICE, SP인증)",
+    "lecture_title": "09.프로세스 품질표준(SPICE, SP인증)",
+    "display_badge": "189차시 [소공2] 09.프로세스 품질표준(SPICE, SP인증)",
+    "keywords": [
+      "프로세스",
+      "품질표준",
+      "SPICE",
+      "SP인증"
+    ]
+  },
+  {
+    "round": 190,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 10.검증과확인(테스트 개요)",
+    "lecture_title": "10.검증과확인(테스트 개요)",
+    "display_badge": "190차시 [소공2] 10.검증과확인(테스트 개요)",
+    "keywords": [
+      "검증과확인",
+      "테스트"
+    ]
+  },
+  {
+    "round": 191,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 11.검증과확인(테스트 분류, 단계별 테스트)",
+    "lecture_title": "11.검증과확인(테스트 분류, 단계별 테스트)",
+    "display_badge": "191차시 [소공2] 11.검증과확인(테스트 분류, 단계별 테스트)",
+    "keywords": [
+      "검증과확인",
+      "테스트",
+      "분류",
+      "단계별"
+    ]
+  },
+  {
+    "round": 192,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 12.검증과확인(비기능 테스트, 자동화 등)",
+    "lecture_title": "12.검증과확인(비기능 테스트, 자동화 등)",
+    "display_badge": "192차시 [소공2] 12.검증과확인(비기능 테스트, 자동화 등)",
+    "keywords": [
+      "검증과확인",
+      "비기능",
+      "테스트",
+      "자동화"
+    ]
+  },
+  {
+    "round": 193,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 13.검증과확인(정적테스트)",
+    "lecture_title": "13.검증과확인(정적테스트)",
+    "display_badge": "193차시 [소공2] 13.검증과확인(정적테스트)",
+    "keywords": [
+      "검증과확인",
+      "정적테스트"
+    ]
+  },
+  {
+    "round": 194,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 14.검증과확인(동적테스트-구조기반1, p.134-144)",
+    "lecture_title": "14.검증과확인(동적테스트-구조기반1, p.134-144)",
+    "display_badge": "194차시 [소공2] 14.검증과확인(동적테스트-구조기반1, p.134-144)",
+    "keywords": [
+      "검증과확인",
+      "동적테스트",
+      "구조기반1"
+    ]
+  },
+  {
+    "round": 195,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 15.검증과확인(동적테스트-구조기반2, p.145-157)",
+    "lecture_title": "15.검증과확인(동적테스트-구조기반2, p.145-157)",
+    "display_badge": "195차시 [소공2] 15.검증과확인(동적테스트-구조기반2, p.145-157)",
+    "keywords": [
+      "검증과확인",
+      "동적테스트",
+      "구조기반2"
+    ]
+  },
+  {
+    "round": 196,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 16.검증과확인(동적테스트-명세기반1, p.158-163)",
+    "lecture_title": "16.검증과확인(동적테스트-명세기반1, p.158-163)",
+    "display_badge": "196차시 [소공2] 16.검증과확인(동적테스트-명세기반1, p.158-163)",
+    "keywords": [
+      "검증과확인",
+      "동적테스트",
+      "명세기반1"
+    ]
+  },
+  {
+    "round": 197,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 17.검증과확인(동적테스트-명세기반2, p.164-170)",
+    "lecture_title": "17.검증과확인(동적테스트-명세기반2, p.164-170)",
+    "display_badge": "197차시 [소공2] 17.검증과확인(동적테스트-명세기반2, p.164-170)",
+    "keywords": [
+      "검증과확인",
+      "동적테스트",
+      "명세기반2"
+    ]
+  },
+  {
+    "round": 198,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 18.검증과확인(동적테스트-명세기반3, p.171-182)",
+    "lecture_title": "18.검증과확인(동적테스트-명세기반3, p.171-182)",
+    "display_badge": "198차시 [소공2] 18.검증과확인(동적테스트-명세기반3, p.171-182)",
+    "keywords": [
+      "검증과확인",
+      "동적테스트",
+      "명세기반3"
+    ]
+  },
+  {
+    "round": 199,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 19.검증과확인(테스트 프로세스, 테스트 표준)",
+    "lecture_title": "19.검증과확인(테스트 프로세스, 테스트 표준)",
+    "display_badge": "199차시 [소공2] 19.검증과확인(테스트 프로세스, 테스트 표준)",
+    "keywords": [
+      "검증과확인",
+      "테스트",
+      "프로세스",
+      "표준"
+    ]
+  },
+  {
+    "round": 200,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 20.프로젝트 비용산정(델파이기법, LOC, COCOMO)",
+    "lecture_title": "20.프로젝트 비용산정(델파이기법, LOC, COCOMO)",
+    "display_badge": "200차시 [소공2] 20.프로젝트 비용산정(델파이기법, LOC, COCOMO)",
+    "keywords": [
+      "프로젝트",
+      "비용산정",
+      "델파이기법",
+      "LOC",
+      "COCOMO"
+    ]
+  },
+  {
+    "round": 201,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 21.프로젝트 비용산정(기능점수1, p.201-206)",
+    "lecture_title": "21.프로젝트 비용산정(기능점수1, p.201-206)",
+    "display_badge": "201차시 [소공2] 21.프로젝트 비용산정(기능점수1, p.201-206)",
+    "keywords": [
+      "프로젝트",
+      "비용산정",
+      "기능점수1"
+    ]
+  },
+  {
+    "round": 202,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 22.프로젝트 비용산정(기능점수2, p.207-215)",
+    "lecture_title": "22.프로젝트 비용산정(기능점수2, p.207-215)",
+    "display_badge": "202차시 [소공2] 22.프로젝트 비용산정(기능점수2, p.207-215)",
+    "keywords": [
+      "프로젝트",
+      "비용산정",
+      "기능점수2"
+    ]
+  },
+  {
+    "round": 203,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 23.형상관리",
+    "lecture_title": "23.형상관리",
+    "display_badge": "203차시 [소공2] 23.형상관리",
+    "keywords": [
+      "형상관리"
+    ]
+  },
+  {
+    "round": 204,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 24.버전관리",
+    "lecture_title": "24.버전관리",
+    "display_badge": "204차시 [소공2] 24.버전관리",
+    "keywords": [
+      "버전관리"
+    ]
+  },
+  {
+    "round": 205,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 25.형상버전관리(기출문제)",
+    "lecture_title": "25.형상버전관리(기출문제)",
+    "display_badge": "205차시 [소공2] 25.형상버전관리(기출문제)",
+    "keywords": [
+      "형상버전관리"
+    ]
+  },
+  {
+    "round": 206,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 26.유지관리",
+    "lecture_title": "26.유지관리",
+    "display_badge": "206차시 [소공2] 26.유지관리",
+    "keywords": [
+      "유지관리"
+    ]
+  },
+  {
+    "round": 207,
+    "category_tag": "소공2",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "품질/테스트/형상/유지관리",
+    "full_title": "[소공2] 27.MISRA-C",
+    "lecture_title": "27.MISRA-C",
+    "display_badge": "207차시 [소공2] 27.MISRA-C",
+    "keywords": [
+      "MISRA",
+      "C"
+    ]
+  },
+  {
+    "round": 208,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 01. 과목개요 / 출제빈도 / 출제경향 / 목차",
+    "lecture_title": "01. 과목개요 / 출제빈도 / 출제경향 / 목차",
+    "display_badge": "208차시 [소공1] 01. 과목개요 / 출제빈도 / 출제경향 / 목차",
+    "keywords": [
+      "출제경향"
+    ]
+  },
+  {
+    "round": 209,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 02. SW 공학 개념 - SW 개발 프로세스 (1)",
+    "lecture_title": "02. SW 공학 개념 - SW 개발 프로세스 (1)",
+    "display_badge": "209차시 [소공1] 02. SW 공학 개념 - SW 개발 프로세스 (1)",
+    "keywords": [
+      "SW",
+      "공학",
+      "개념",
+      "개발",
+      "프로세스"
+    ]
+  },
+  {
+    "round": 210,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 03. SW 공학 개념 - SW 개발 프로세스 (2) / 기출문제",
+    "lecture_title": "03. SW 공학 개념 - SW 개발 프로세스 (2) / 기출문제",
+    "display_badge": "210차시 [소공1] 03. SW 공학 개념 - SW 개발 프로세스 (2) / 기출문제",
+    "keywords": [
+      "SW",
+      "공학",
+      "개념",
+      "개발",
+      "프로세스"
+    ]
+  },
+  {
+    "round": 211,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 04. SW 공학 개념 - 애자일 모델 (1)",
+    "lecture_title": "04. SW 공학 개념 - 애자일 모델 (1)",
+    "display_badge": "211차시 [소공1] 04. SW 공학 개념 - 애자일 모델 (1)",
+    "keywords": [
+      "SW",
+      "공학",
+      "개념",
+      "애자일",
+      "모델"
+    ]
+  },
+  {
+    "round": 212,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 05. SW 공학 개념 - 애자일 모델 (2)",
+    "lecture_title": "05. SW 공학 개념 - 애자일 모델 (2)",
+    "display_badge": "212차시 [소공1] 05. SW 공학 개념 - 애자일 모델 (2)",
+    "keywords": [
+      "SW",
+      "공학",
+      "개념",
+      "애자일",
+      "모델"
+    ]
+  },
+  {
+    "round": 213,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 06. SW 공학 개념 - 기타 개발 프로세스 (1)",
+    "lecture_title": "06. SW 공학 개념 - 기타 개발 프로세스 (1)",
+    "display_badge": "213차시 [소공1] 06. SW 공학 개념 - 기타 개발 프로세스 (1)",
+    "keywords": [
+      "SW",
+      "공학",
+      "개념",
+      "기타",
+      "개발",
+      "프로세스"
+    ]
+  },
+  {
+    "round": 214,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 07. SW 공학 개념 - 기타 개발 프로세스 (2) / 기출문제",
+    "lecture_title": "07. SW 공학 개념 - 기타 개발 프로세스 (2) / 기출문제",
+    "display_badge": "214차시 [소공1] 07. SW 공학 개념 - 기타 개발 프로세스 (2) / 기출문제",
+    "keywords": [
+      "SW",
+      "공학",
+      "개념",
+      "기타",
+      "개발",
+      "프로세스"
+    ]
+  },
+  {
+    "round": 215,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 08. SW 개발방법론 (1)",
+    "lecture_title": "08. SW 개발방법론 (1)",
+    "display_badge": "215차시 [소공1] 08. SW 개발방법론 (1)",
+    "keywords": [
+      "SW",
+      "개발방법론"
+    ]
+  },
+  {
+    "round": 216,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 09. SW 개발방법론 (2)",
+    "lecture_title": "09. SW 개발방법론 (2)",
+    "display_badge": "216차시 [소공1] 09. SW 개발방법론 (2)",
+    "keywords": [
+      "SW",
+      "개발방법론"
+    ]
+  },
+  {
+    "round": 217,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 10. SW 개발방법론 (3) / 기출문제",
+    "lecture_title": "10. SW 개발방법론 (3) / 기출문제",
+    "display_badge": "217차시 [소공1] 10. SW 개발방법론 (3) / 기출문제",
+    "keywords": [
+      "SW",
+      "개발방법론"
+    ]
+  },
+  {
+    "round": 218,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 11. 요구분석 (1)",
+    "lecture_title": "11. 요구분석 (1)",
+    "display_badge": "218차시 [소공1] 11. 요구분석 (1)",
+    "keywords": [
+      "요구분석"
+    ]
+  },
+  {
+    "round": 219,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 12. 요구분석 (2) / 기출문제",
+    "lecture_title": "12. 요구분석 (2) / 기출문제",
+    "display_badge": "219차시 [소공1] 12. 요구분석 (2) / 기출문제",
+    "keywords": [
+      "요구분석"
+    ]
+  },
+  {
+    "round": 220,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 13. 소프트웨어 설계 / 기출문제",
+    "lecture_title": "13. 소프트웨어 설계 / 기출문제",
+    "display_badge": "220차시 [소공1] 13. 소프트웨어 설계 / 기출문제",
+    "keywords": [
+      "소프트웨어",
+      "설계"
+    ]
+  },
+  {
+    "round": 221,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 14. SW 아키텍처 패턴 (1)",
+    "lecture_title": "14. SW 아키텍처 패턴 (1)",
+    "display_badge": "221차시 [소공1] 14. SW 아키텍처 패턴 (1)",
+    "keywords": [
+      "SW",
+      "아키텍처",
+      "패턴"
+    ]
+  },
+  {
+    "round": 222,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 15. SW 아키텍처 패턴 (2)",
+    "lecture_title": "15. SW 아키텍처 패턴 (2)",
+    "display_badge": "222차시 [소공1] 15. SW 아키텍처 패턴 (2)",
+    "keywords": [
+      "SW",
+      "아키텍처",
+      "패턴"
+    ]
+  },
+  {
+    "round": 223,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 16. SW 아키텍처 평가모델 / 기출문제",
+    "lecture_title": "16. SW 아키텍처 평가모델 / 기출문제",
+    "display_badge": "223차시 [소공1] 16. SW 아키텍처 평가모델 / 기출문제",
+    "keywords": [
+      "SW",
+      "아키텍처",
+      "평가모델"
+    ]
+  },
+  {
+    "round": 224,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 17. UML 개요 / UML - 유스케이스 다이어그램",
+    "lecture_title": "17. UML 개요 / UML - 유스케이스 다이어그램",
+    "display_badge": "224차시 [소공1] 17. UML 개요 / UML - 유스케이스 다이어그램",
+    "keywords": [
+      "UML",
+      "유스케이스",
+      "다이어그램"
+    ]
+  },
+  {
+    "round": 225,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 18. UML - 클래스 다이어그램 (1)",
+    "lecture_title": "18. UML - 클래스 다이어그램 (1)",
+    "display_badge": "225차시 [소공1] 18. UML - 클래스 다이어그램 (1)",
+    "keywords": [
+      "UML",
+      "클래스",
+      "다이어그램"
+    ]
+  },
+  {
+    "round": 226,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 19. UML - 클래스 다이어그램 (2)",
+    "lecture_title": "19. UML - 클래스 다이어그램 (2)",
+    "display_badge": "226차시 [소공1] 19. UML - 클래스 다이어그램 (2)",
+    "keywords": [
+      "UML",
+      "클래스",
+      "다이어그램"
+    ]
+  },
+  {
+    "round": 227,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 20. UML - 기타 다이어그램 (1)",
+    "lecture_title": "20. UML - 기타 다이어그램 (1)",
+    "display_badge": "227차시 [소공1] 20. UML - 기타 다이어그램 (1)",
+    "keywords": [
+      "UML",
+      "기타",
+      "다이어그램"
+    ]
+  },
+  {
+    "round": 228,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 21. UML - 기타 다이어그램 (2)",
+    "lecture_title": "21. UML - 기타 다이어그램 (2)",
+    "display_badge": "228차시 [소공1] 21. UML - 기타 다이어그램 (2)",
+    "keywords": [
+      "UML",
+      "기타",
+      "다이어그램"
+    ]
+  },
+  {
+    "round": 229,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 22. UML - 기출문제 (1)",
+    "lecture_title": "22. UML - 기출문제 (1)",
+    "display_badge": "229차시 [소공1] 22. UML - 기출문제 (1)",
+    "keywords": [
+      "UML"
+    ]
+  },
+  {
+    "round": 230,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 23. UML - 기출문제 (2)",
+    "lecture_title": "23. UML - 기출문제 (2)",
+    "display_badge": "230차시 [소공1] 23. UML - 기출문제 (2)",
+    "keywords": [
+      "UML"
+    ]
+  },
+  {
+    "round": 231,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 24. SysML 및 기타 다이어그램",
+    "lecture_title": "24. SysML 및 기타 다이어그램",
+    "display_badge": "231차시 [소공1] 24. SysML 및 기타 다이어그램",
+    "keywords": [
+      "SysML",
+      "기타",
+      "다이어그램"
+    ]
+  },
+  {
+    "round": 232,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 25. 패키지 응집성 - 결함성 원칙 / 기출문제",
+    "lecture_title": "25. 패키지 응집성 - 결함성 원칙 / 기출문제",
+    "display_badge": "232차시 [소공1] 25. 패키지 응집성 - 결함성 원칙 / 기출문제",
+    "keywords": [
+      "패키지",
+      "응집성",
+      "결함성",
+      "원칙"
+    ]
+  },
+  {
+    "round": 233,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 26. SOLID 원칙 (1)",
+    "lecture_title": "26. SOLID 원칙 (1)",
+    "display_badge": "233차시 [소공1] 26. SOLID 원칙 (1)",
+    "keywords": [
+      "SOLID",
+      "원칙"
+    ]
+  },
+  {
+    "round": 234,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 27. SOLID 원칙 (2) / 기출문제",
+    "lecture_title": "27. SOLID 원칙 (2) / 기출문제",
+    "display_badge": "234차시 [소공1] 27. SOLID 원칙 (2) / 기출문제",
+    "keywords": [
+      "SOLID",
+      "원칙"
+    ]
+  },
+  {
+    "round": 235,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 28. 디자인패턴 (1)",
+    "lecture_title": "28. 디자인패턴 (1)",
+    "display_badge": "235차시 [소공1] 28. 디자인패턴 (1)",
+    "keywords": [
+      "디자인패턴"
+    ]
+  },
+  {
+    "round": 236,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 29. 디자인패턴 (2)",
+    "lecture_title": "29. 디자인패턴 (2)",
+    "display_badge": "236차시 [소공1] 29. 디자인패턴 (2)",
+    "keywords": [
+      "디자인패턴"
+    ]
+  },
+  {
+    "round": 237,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 30. 디자인패턴 (3)",
+    "lecture_title": "30. 디자인패턴 (3)",
+    "display_badge": "237차시 [소공1] 30. 디자인패턴 (3)",
+    "keywords": [
+      "디자인패턴"
+    ]
+  },
+  {
+    "round": 238,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 31. 디자인패턴 (4)",
+    "lecture_title": "31. 디자인패턴 (4)",
+    "display_badge": "238차시 [소공1] 31. 디자인패턴 (4)",
+    "keywords": [
+      "디자인패턴"
+    ]
+  },
+  {
+    "round": 239,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 32. 디자인패턴 (5) / 기출문제",
+    "lecture_title": "32. 디자인패턴 (5) / 기출문제",
+    "display_badge": "239차시 [소공1] 32. 디자인패턴 (5) / 기출문제",
+    "keywords": [
+      "디자인패턴"
+    ]
+  },
+  {
+    "round": 240,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 33. SW 구현 - 리팩토링",
+    "lecture_title": "33. SW 구현 - 리팩토링",
+    "display_badge": "240차시 [소공1] 33. SW 구현 - 리팩토링",
+    "keywords": [
+      "SW",
+      "구현",
+      "리팩토링"
+    ]
+  },
+  {
+    "round": 241,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 34. SW 구현 관련 기술 / 개념들 (1)",
+    "lecture_title": "34. SW 구현 관련 기술 / 개념들 (1)",
+    "display_badge": "241차시 [소공1] 34. SW 구현 관련 기술 / 개념들 (1)",
+    "keywords": [
+      "SW",
+      "구현",
+      "관련",
+      "기술",
+      "개념들"
+    ]
+  },
+  {
+    "round": 242,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 35. SW 구현 관련 기술 / 개념들 (2)",
+    "lecture_title": "35. SW 구현 관련 기술 / 개념들 (2)",
+    "display_badge": "242차시 [소공1] 35. SW 구현 관련 기술 / 개념들 (2)",
+    "keywords": [
+      "SW",
+      "구현",
+      "관련",
+      "기술",
+      "개념들"
+    ]
+  },
+  {
+    "round": 243,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 36. SW 구현 관련 기술 / 개념들 (3)",
+    "lecture_title": "36. SW 구현 관련 기술 / 개념들 (3)",
+    "display_badge": "243차시 [소공1] 36. SW 구현 관련 기술 / 개념들 (3)",
+    "keywords": [
+      "SW",
+      "구현",
+      "관련",
+      "기술",
+      "개념들"
+    ]
+  },
+  {
+    "round": 244,
+    "category_tag": "소공1",
+    "official_subject_code": "제2과목",
+    "official_subject_name": "소프트웨어공학",
+    "sub_area": "개발/설계/UML/구현",
+    "full_title": "[소공1] 37. SW 구현 관련 기술 / 개념들 / 기출문제 (4)",
+    "lecture_title": "37. SW 구현 관련 기술 / 개념들 / 기출문제 (4)",
+    "display_badge": "244차시 [소공1] 37. SW 구현 관련 기술 / 개념들 / 기출문제 (4)",
+    "keywords": [
+      "SW",
+      "구현",
+      "관련",
+      "기술",
+      "개념들"
+    ]
+  }
+]

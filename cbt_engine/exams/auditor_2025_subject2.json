@@ -26,31 +26,33 @@
     {
       "id": 1,
       "subject_id": 1,
-      "question": "클린 아키텍처(Clean Architecture) 기반 패키지 P1(Entities), P2(Use Cases), P3(Interface Adapters), P4(Frameworks & Drivers)가 있다. P4가 P1을 직접 참조할 때 발생하는 문제와 가장 관련이 깊은 설계 지표는?",
+      "question": "Clean Architecture에서는 패키지의 Instability를 측정하기 위한 메트릭을 정의하고 있다. 다음 다이어그램에서 P3 패키지의 Instability 값으로 가장 적절한 것은?",
       "options": [
-        "① 안정된 의존성 원칙(SDP) 위반과 불안정성(Instability) 지표",
-        "② 단일 책임 원칙(SRP) 위반",
-        "③ 개방 폐쇄 원칙(OCP) 위반",
-        "④ 인터페이스 분리 원칙(ISP) 위반"
+        "① 0.3",
+        "② 0.4",
+        "③ 0.5",
+        "④ 0.6"
       ],
-      "answer": 1,
-      "explanation": "정답: ①\n\n[해설]\n클린 아키텍처는 바깥쪽(프레임워크/드라이버)이 안쪽(엔티티)에 의존해야 하는 의존성 규칙을 가지며, 이는 안정된 의존성 원칙(SDP)과 관련이 깊습니다. 불안정한 계층(P4)이 안정적인 계층(P1)을 참조하는 것이 원칙에 맞으므로, 이 구조 자체를 평가하는 지표는 불안정성(Instability) 지표입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 클린 아키텍처(Clean Architecture): 로버트 C. 마틴 제안. 핵심 비즈니스 로직(엔티티/유스케이스)을 UI, DB, 웹 프레임워크 등 기술적 세부사항으로부터 철저히 격리.\n• 계층 의존성 규칙 (Dependency Rule): 의존성은 항상 바깥쪽(세부사항)에서 안쪽(고수준 정책)으로만 향해야 함 (P4 프레임워크 → P3 어댑터 → P2 유스케이스 → P1 엔티티).\n• SDP(안정된 의존성 원칙) & 불안정성 지표: I = Ce / (Ca + Ce). 들어오고 나가는 선 중 '나가는 선(Ce)'의 비율. P1 엔티티(I=0, 최대 안정)로 의존이 흘러야 함.\n• SOLID와의 관계: SOLID가 클래스 레벨의 설계 원칙이라면, 클린 아키텍처는 이를 패키지/시스템 전체로 확장한 종합 아키텍처임.",
+      "answer": 3,
+      "explanation": "정답: ③\n\n[해설]\n로버트 C. 마틴의 클린 아키텍처(Clean Architecture) 및 패키지 메트릭에서 패키지 불안정성(Instability, I)은 다음과 같이 정의됩니다.\n• I = Ce / (Ca + Ce)\n  - Ca (Afferent Coupling, 유입 결합도): 해당 패키지 외부의 클래스가 해당 패키지 내부의 클래스에 의존하는 수\n  - Ce (Efferent Coupling, 유출 결합도): 해당 패키지 내부의 클래스가 해당 패키지 외부의 클래스에 의존하는 수\n\n다이어그램에서 P3 패키지(클래스 C31, C32 포함)의 결합도를 분석하면:\n1) 유입(Ca): 외부(P1의 C11, P2의 C21)에서 P3(C31)로 들어오는 의존 화살표가 가리키는 외부 원천 클래스는 C11, C21 ➔ Ca = 2\n2) 유출(Ce): P3(C31, C32)에서 외부(P4의 C41, C42)로 나가는 의존/상속 화살표가 가리키는 외부 대상 클래스는 C41, C42 ➔ Ce = 2\n따라서 P3의 Instability I = 2 / (2 + 2) = 2 / 4 = 0.5 (③번)입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
-      "origin_id": 26
+      "origin_id": 26,
+      "image": "/exams/images/auditor_2025_q26.jpg",
+      "image_url": "/exams/images/auditor_2025_q26.jpg"
     },
     {
       "id": 2,
       "subject_id": 1,
-      "question": "ISO/IEC 25010:2011 품질 특성 중 유지보수성(Maintainability)의 하위 특성으로 가장 적절한 것은?",
+      "question": "다음 중 ISO/IEC 25010:2011의 유지보수성(maintainability)으로 가장 적절하지 않은 것은?",
       "options": [
-        "① 모듈성(Modularity), 재사용성(Reusability), 분석성(Analysability), 수정성(Modifiability), 시험성(Testability)",
-        "② 신뢰성(Reliability), 가용성(Availability)",
-        "③ 기능 적합성(Functional Suitability), 정확성(Correctness)",
-        "④ 사용성(Usability), 학습성(Learnability)"
+        "① 시스템이 다른 하드웨어, 운영환경 등에 효과적으로 적응할 수 있어야 한다.",
+        "② 시스템에 대한 테스트 기준(criteria)을 설정하고 이 기준의 충족 여부를 효과적으로 테스트할 수 있어야 한다.",
+        "③ 새로운 결함을 유발하거나 기존의 품질을 악화시키지 않으면서 시스템을 효과적으로 변경할 수 있어야 한다.",
+        "④ 특정 컴포넌트에 가해진 변경이 다른 컴포넌트에 미치는 영향을 최소화할 수 있어야 한다."
       ],
       "answer": 1,
-      "explanation": "정답: ①\n\n[해설]\nISO/IEC 25010:2011에서 유지보수성(Maintainability)의 하위 특성은 모듈성, 재사용성, 분석성, 수정성, 시험성입니다. 나머지 보기들은 신뢰성, 기능 적합성, 사용성 등 다른 품질 특성의 하위 요소들입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 유지보수성 5대 부특성 [모·재·분·수·시]: 모듈성(Modularity), 재사용성(Reusability), 분석성(Analysability), 수정성(Modifiability), 시험성(Testability).\n• ISO 25010 8대 주특성 1초 매핑: 기능적합성(완·정·적), 성능효율성(시·자·용), 호환성(공·상), 사용성(인·학·운·오·심·접), 신뢰성(성·가·결·복), 보안성(기·무·부·책·인), 유지보수성(모·재·분·수·시), 이식성(적·설·대).\n• 실전 풀이 팁: 단어를 주관식으로 외울 필요 없이, 맥락(소프트웨어를 쉽게 고치고 분석하는가)을 보고 짝짓기(Recognition)하면 10초 만에 풀림.",
+      "explanation": "정답: ①\n\n[해설]\n①번 \"시스템이 다른 하드웨어, 운영환경 등에 효과적으로 적응할 수 있어야 한다\"는 유지보수성(Maintainability)이 아니라 이식성(Portability)의 하위 특성인 적응성(Adaptability)에 대한 설명입니다.\n\n참고 - ISO/IEC 25010 유지보수성(Maintainability)의 5대 하위 특성:\n• 모듈성(Modularity): 한 컴포넌트의 변경이 다른 컴포넌트에 미치는 영향을 최소화하는 정도 (④번)\n• 재사용성(Reusability): 자산이 하나 이상의 시스템 구축에 사용될 수 있는 정도\n• 분석성(Analysability): 결함이나 변경 필요 부분을 쉽게 진단하고 분석할 수 있는 정도\n• 수정성(Modifiability): 결함 유발 없이 효과적/효율적으로 수정될 수 있는 정도 (③번)\n• 시험성(Testability): 테스트 기준을 수립하고 테스트를 수행하여 결함을 확인할 수 있는 정도 (②번)",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
       "origin_id": 27
@@ -58,15 +60,15 @@
     {
       "id": 3,
       "subject_id": 1,
-      "question": "소프트웨어 테스트 설계 기법 중 명세기반(블랙박스) 기법에 해당하지 않는 것은?",
+      "question": "다음 설명에 해당하는 테스트 설계 기법으로 가장 적절한 것은?\n\n· 테스트 대상과 사용자 사이에 발생할 수 있는 입/출력의 시퀀스에 대한 모델을 바탕으로 테스트 케이스를 설계한다.\n· 시스템 테스트, 인수 테스트를 수행할 때 End-to-End 기능 테스트를 위하여 주로 활용된다.",
       "options": [
-        "① 동등분할(Equivalence Partitioning)",
-        "② 경계값 분석(Boundary Value Analysis)",
-        "③ 조건/결정 커버리지(Condition/Decision Coverage)",
-        "④ 결정 테이블(Decision Table Testing)"
+        "① State transition testing",
+        "② Decision table testing",
+        "③ Scenario testing",
+        "④ Requirement-based testing"
       ],
       "answer": 3,
-      "explanation": "정답: ③\n\n[해설]\n동등분할, 경계값 분석, 결정 테이블은 명세(요구사항)를 기준으로 테스트 케이스를 도출하는 명세기반(블랙박스) 테스트 기법입니다. 조건/결정 커버리지는 소스코드의 내부 논리 구조를 분석해 테스트하는 구조기반(화이트박스) 테스트 기법에 해당하므로 ③번이 정답입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• 블랙박스(명세기반) vs 화이트박스(구조기반) 본질:\n  - 블랙박스: 소스코드를 보지 않고 명세서/화면 입출력만 보고 테스트 (동등분할, 경계값 분석, 결정 테이블, 상태전이).\n  - 화이트박스: 소스코드를 직접 열고 if문 조건/루프/경로를 검증 (구문, 분기, 조건/결정, MC/DC 커버리지).\n• 실무 예시 (전표 10만원 전결/승인):\n  - 블랙박스: 화면에서 99,999원, 100,000원, 100,001원을 입력해 결재선 생성 확인 (경계값 분석).\n  - 화이트박스: ApprovalService.java의 `if (amount <= 100000)` 분기가 실제로 참/거짓으로 타는지 검증.\n• MECE 관점: 복합 조건문에서 누락/중복 없는 완전 검증을 코드 레벨에서 하면 '조건/결정 커버리지', 표로 설계하면 '결정 테이블'임.",
+      "explanation": "정답: ③\n\n[해설]\n지문의 설명은 시나리오 테스팅(Scenario Testing)에 해당합니다.\n• 시나리오 테스팅은 사용자의 비즈니스 흐름, 유스케이스 및 실제 업무 절차에 따라 발생하는 일련의 입/출력 상호작용 시퀀스를 기반으로 테스트 케이스를 설계합니다.\n• 주로 시스템 테스트 및 사용자 인수 테스트(UAT) 단계에서 End-to-End(종단 간) 비즈니스 흐름과 복합 기능의 정상 동작을 검증하는 데 핵심적으로 활용됩니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
       "origin_id": 28
@@ -74,49 +76,51 @@
     {
       "id": 4,
       "subject_id": 1,
-      "question": "다음 시퀀스 다이어그램이 나타내는 디자인 패턴으로 가장 적절한 것은? (Client가 Master에 요청 시, Master가 다수의 Slave에게 작업을 분배하고 결과를 취합하여 Client에 반환하는 구조)",
+      "question": "다음 UML Sequence diagram은 시스템의 동작을 표현한다. 이 동작에 적용된 패턴으로 가장 적절한 것은?",
       "options": [
-        "① Master-Slave 패턴",
-        "② Singleton 패턴",
-        "③ Proxy 패턴",
-        "④ Observer 패턴"
+        "① Pipe and Filter",
+        "② Master-Slave",
+        "③ Front Controller",
+        "④ MVC(Model View Controller)"
       ],
-      "answer": 1,
-      "explanation": "정답: ①\n\n[해설]\nMaster가 다수의 Slave(Worker)에게 작업을 분배하고 각 Slave의 처리 결과를 취합하여 최종 결과를 반환하는 구조는 병렬/분산 처리에 흔히 사용되는 Master-Slave(Master-Worker) 패턴에 해당합니다. 따라서 정답은 ①번입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• Master-Slave 아키텍처 패턴: Master가 작업을 분할(`split`)하여 여러 Slave(Worker)에게 병렬 분배(`par`)하고, 결과를 취합(`merge`)하여 반환하는 분할 정복(Divide & Conquer) 패턴.\n• 시험 다이어그램 객체 식별: `:Main`(Master)과 2개의 `:Controller`(Slaves)로 구성.\n• Master-Slave vs Observer 결정적 차이:\n  - Master-Slave: 양방향 일감 분배 및 결과 취합(`merge` 필수!).\n  - Observer: 1:N 상태 변경 일방적 통지(`notify`만 있고 취합 없음).\n• 하드웨어 연계: 멀티코어, 다중 CPU(SMP/NUMA), 분산 클러스터 서버 환경에서 물리적 병렬 연산(True Parallelism) 수행.",
+      "answer": 2,
+      "explanation": "정답: ②\n\n[해설]\n다이어그램을 살펴보면:\n1) UI로부터 요청을 받은 메인 컴포넌트(:Main)가 대용량 데이터(LargeData[])를 분할(split)합니다.\n2) UML의 par(병렬 실행) 복합 프래그먼트 내에서 분할된 작업(data1, data2)을 각각 별도의 컨트롤러/워커(:Controller)들에게 동시에 분배(do)하여 병렬 처리하도록 지시합니다.\n3) 분할 작업들이 완료된 후 :Main이 각 하위 결과를 병합(merge)하여 최종 결과를 반환합니다.\n이와 같이 작업을 분할하여 복수의 슬레이브에게 병렬 위임하고 결과를 취합하는 아키텍처 패턴은 Master-Slave 패턴입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
       "origin_id": 29,
+      "image": "/exams/images/auditor_2025_q29.jpg",
       "image_url": "/exams/images/auditor_2025_q29.jpg"
     },
     {
       "id": 5,
       "subject_id": 1,
-      "question": "다음 클래스 다이어그램에 대한 설명으로 가장 적절한 것은?",
+      "question": "다음 클래스 다이어그램에서 Class2에 대한 Java 소스코드로 가장 적절한 것은?",
       "options": [
-        "① Class1은 인터페이스이며, Class2와 실체화(realization) 관계로 표현된다.",
-        "② Class1은 추상클래스이며, Class2와 일반화(generalization, 속이 빈 삼각형 실선) 관계로 표현된다.",
-        "③ Class1과 Class2는 연관관계(association)로 표현된다.",
-        "④ Class1과 Class2는 의존관계(dependency, 점선 화살표)로 표현된다."
+        "①\nclass Class2 extends Class1 {\n  private int attr1;\n  private int attr2;\n}",
+        "②\nclass Class2 implements Class1 {\n  private int attr1;\n  private static int attr2;\n}",
+        "③\nclass Class2 implements Class1 {\n  private final int attr1;\n  private int attr2;\n}",
+        "④\nclass Class2 extends Class1 {\n  private final int attr1;\n  private static int attr2;\n}"
       ],
-      "answer": 2,
-      "explanation": "정답: ②\n\n[해설]\n1) Class1의 이름이 이탤릭체(기울임꼴)로 표기되어 있으므로 추상클래스(abstract class)입니다.\n2) Class2에서 Class1으로 향하는 '실선 + 속이 빈 삼각형'은 상속(extends)을 나타내는 일반화(Generalization) 관계입니다.\n3) Class2 내부의 `- attr1 : int{readOnly}`는 final 변수(읽기 전용), 밑줄 친 `- attr2 : int`는 static 정적 변수를 의미합니다.\n따라서 정답은 ②번입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• UML 클래스 다이어그램 4대 시각 표기법:\n  1) 이탤릭체(*Class1*): 추상클래스 (Abstract Class)\n  2) 실선 + 속이 빈 삼각형(△): 일반화 (Generalization / 클래스 상속 extends)\n  3) `- attr1: int{readOnly}`: private 접근자 및 Java `final` 읽기 전용 제약\n  4) 밑줄 친 `- <u>attr2: int</u>`: Java `static` 클래스 정적 변수\n• 추상클래스/인터페이스의 본질: 자식 클래스가 필수 기능을 반드시 코딩하도록 강제하는 '구현의 계약(Contract)' 역할.",
+      "answer": 4,
+      "explanation": "정답: ④\n\n[해설]\n클래스 다이어그램 표기법 분석:\n1) Class1과 Class2의 관계:\n   - 속이 빈 삼각형 머리를 가진 실선 화살표(Generalization, 일반화/상속)로 Class2가 Class1을 가리키고 있습니다.\n   - 따라서 인터페이스 구현(implements)이 아니라 클래스 상속인 extends Class1입니다 (Class1 이름이 이탤릭체로 표기되어 추상 클래스임을 나타냄).\n2) Class2의 속성:\n   - : 가시성 '-'는 private이며, 속성 제약조건 {readOnly}는 한 번 할당되면 변경할 수 없는 불변 속성을 의미하므로 Java의 final 키워드에 매핑됩니다 ➔ private final int attr1;\n   -  (속성명 밑줄): UML에서 속성이나 오퍼레이션에 밑줄(underline)이 그어져 있는 것은 클래스 범위(Class scope) 멤버를 나타내므로 Java의 static 키워드에 매핑됩니다 ➔ private static int attr2;\n\n따라서 올바른 Java 소스코드는 ④번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
       "origin_id": 30,
+      "image": "/exams/images/auditor_2025_q30.jpg",
       "image_url": "/exams/images/auditor_2025_q30.jpg"
     },
     {
       "id": 6,
       "subject_id": 1,
-      "question": "ISO/IEC 25023에서 정의하는 신뢰성(Reliability) 측정 항목으로 가장 적절하지 않은 것은?",
+      "question": "ISO/IEC 25023:2016에서는 ISO/IEC 25010:2011의 품질 특성을 대상으로 품질을 측정하기 위한 척도(measure)를 제시하고 있다. 다음 ISO/IEC 25010의 신뢰성에 대한 척도로 가장 적절한 것은?\n\n가. 전체 기능 중에서 합리적이고 수용 가능한 수준의 결과를 산출하는 기능의 비율\n나. 관찰 기간 동안에 탐지된 장애(failure)의 수\n다. 장애로부터 복구될 때까지의 평균 시간\n라. 비인가된 접근에 의한 데이터 변조 방지 비율",
       "options": [
-        "① 평균 고장 간격(MTBF)",
-        "② 가용성(Availability)",
-        "③ 결함 발견율(Defect Detection Rate)",
-        "④ 평균 수리 시간(MTTR)"
+        "① 가, 나",
+        "② 나, 다",
+        "③ 다, 라",
+        "④ 가, 다"
       ],
-      "answer": 3,
-      "explanation": "정답: ③\n\n[해설]\nISO/IEC 25023에서 신뢰성 관련 측정 항목은 MTBF, MTTR, 가용성 등 시스템의 고장·복구·가동 관련 지표들로 구성됩니다. '결함 발견율'은 테스트 프로세스의 효과성을 나타내는 지표로 신뢰성 측정 항목이 아니므로 ③번이 정답입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• ISO/IEC 25023 신뢰성 메트릭: MTBF(평균고장간격), MTTR(평균수리시간), 가용성(Availability = MTBF / (MTBF + MTTR)).\n• 결함 발견율(Defect Detection Rate): 시스템 운영 신뢰성 지표가 아니라, 테스트 단계에서 결함을 얼마나 잘 찾아냈는지를 측정하는 '테스트 프로세스 관리 지표'임.",
+      "answer": 2,
+      "explanation": "정답: ②\n\n[해설]\nISO/IEC 25023 품질 측정 척도 분류:\n• 가. 기능 적합성(Functional Suitability)의 기능 정확성(Functional Correctness) 척도에 해당\n• 나. 신뢰성(Reliability)의 성숙성(Maturity) / 결함 밀도 관련 척도 (장애 발생 건수) ➔ 신뢰성 척도\n• 다. 신뢰성(Reliability)의 회복성(Recoverability) 척도인 MTTR(Mean Time To Recover/Repair, 평균 복구 시간) ➔ 신뢰성 척도\n• 라. 보안성(Security)의 무결성(Integrity) 관련 척도 (데이터 변조 방지 비율)\n\n따라서 신뢰성에 대한 척도로 짝지어진 것은 '나, 다'로 정답은 ②번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
       "origin_id": 31
@@ -124,15 +128,15 @@
     {
       "id": 7,
       "subject_id": 1,
-      "question": "SysML Requirement Diagram에서 요구사항 간의 관계로 옳은 것을 모두 고른 것은?\n\n가. derive (파생)\n나. satisfy (만족)\n다. verify (검증)\n라. include (포함)",
+      "question": "다음 중 SysML의 Requirement Diagram이 표현하는 정보에 해당되는 것으로 가장 적절한 것은?\n\n가. 요구사항의 계층구조를 가시적으로 표현한다.\n나. 다른 모델 요소들과의 관계를 표현한다.\n다. 개별 요구사항에 대하여 표현한다.\n라. 입력, 출력, 처리의 흐름 관점에서 표현한다.\n마. 시스템 특성의 제약사항에 대한 수식을 표현한다.",
       "options": [
         "① 가, 나, 다",
-        "② 가, 나, 라",
-        "③ 나, 다, 라",
-        "④ 가, 나, 다, 라"
+        "② 가, 다, 라",
+        "③ 나, 다, 마",
+        "④ 다, 라, 마"
       ],
       "answer": 1,
-      "explanation": "정답: ①\n\n[해설]\nSysML Requirement Diagram의 요구사항 간 관계에는 derive(파생), satisfy(만족), verify(검증), refine(정제), trace(추적), copy(복사) 등이 있습니다. 'include'는 UML 유스케이스 다이어그램에서 사용하는 관계이며 SysML 요구사항 관계가 아니므로, 옳은 것은 가·나·다이고 정답은 ①번입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• SysML(Systems Modeling Language): UML 2.0에 하드웨어, 인력, 수학/물리 수식, 요구사항 추적을 결합한 시스템 공학 전용 확장 언어.\n• 4대 영역 및 9대 다이어그램: 요구사항(Req), 구조(BDD, IBD, Pkg), 동작(Act, Seq, Stm, Uc), 파라메트릭(Parametric).\n• 요구사항 다이어그램 3대 핵심 관계:\n  - `<<derive>>`: 상위 요구사항에서 하위 요구사항 도출\n  - `<<satisfy>>`: 설계 부품(블록)이 요구사항을 충족함\n  - `<<verify>>`: 테스트 케이스가 요구사항 충족을 시험/검증함.",
+      "explanation": "정답: ①\n\n[해설]\nSysML(Systems Modeling Language)의 요구사항 다이어그램(Requirement Diagram):\n• 가(O): 복합 요구사항의 분할 및 패키징 등 요구사항 간의 계층적 포함 관계(Containment, Decompose)를 가시적으로 표현합니다.\n• 나(O): 다른 모델 요소(블록, 테스트케이스 등)와의 추적성 관계(Derive, Satisfy, Verify, Refine 등)를 표현합니다.\n• 다(O): 개별 요구사항의 고유 식별자(id)와 텍스트 설명(text) 등의 속성을 직접 표현합니다.\n• 라(X): 입력, 출력, 처리의 흐름 관점을 표현하는 것은 동작 다이어그램인 '활동 다이어그램(Activity Diagram)'입니다.\n• 마(X): 시스템 특성의 물리적 법칙, 성능 제약사항에 대한 수식 및 파라미터 간의 등식 관계를 표현하는 것은 '파라메트릭 다이어그램(Parametric Diagram)'입니다.\n\n따라서 옳은 것은 '가, 나, 다'로 정답은 ①번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
       "origin_id": 32
@@ -140,15 +144,15 @@
     {
       "id": 8,
       "subject_id": 1,
-      "question": "AI 모델의 추론 결과에 대해 입력 데이터의 범위 및 기대 결과 조건을 지정하고, 그 범위 내 모든 입력 데이터가 조건을 만족하는지 확인하는 AI 테스트 기법으로 가장 적절한 것은?",
+      "question": "다음 인공지능 테스트 관련 설명으로 가장 적절하지 않은 것은?\n\n가. 입력 데이터의 변화에 대하여 추론 결과가 어떻게 변하는지에 대한 관련성을 이용한다.\n나. 타당한 추론 결과를 얻을 수 있는 정확한 범위를 파악하지 못해도 타당한 값을 얻을 수 있는 예상되는 범위가 있다.\n다. 테스트 데이터셋을 이용하여 뉴런이 얼마나 활성화되었는지 측정하고, 활성화되지 않은 뉴런에 대하여 테스트 데이터를 추가한다.\n라. 인위적인 노이즈가 포함된 데이터를 입력하여 잘못된 작업을 수행하도록 유도한다.",
       "options": [
-        "① 메타모픽 테스트(metamorphic testing)",
-        "② 커버리지 테스트(coverage testing)",
-        "③ 뉴런 커버리지 테스트(neuron coverage testing)",
-        "④ 적대적 공격 기법(adversarial attack)"
+        "① 가 - 메타모픽 테스트 기법(metamorphic testing)",
+        "② 나 - 커버리지 테스트 기법(coverage testing)",
+        "③ 다 - 뉴런 커버리지 테스트 기법(neuron coverage testing)",
+        "④ 라 - 적대적 공격 기법(adversarial attack)"
       ],
       "answer": 2,
-      "explanation": "정답: ②\n\n[해설]\n커버리지 테스트 기법(coverage testing)은 입력 데이터의 범위 및 기대하는 추론 결과의 조건을 지정하고, 그 범위 내 모든 입력 데이터에 대해 학습 완료 모델의 추론 결과가 해당 조건을 만족하는지 확인하는 기법입니다. 참고로 메타모픽 테스트는 입력 변화에 따른 추론 결과의 관련성을 이용하고, 뉴런 커버리지 테스트는 뉴런의 활성화 정도를 측정하며, 적대적 공격 기법은 인위적 노이즈로 오작동을 유도하는 기법입니다. 따라서 정답은 ②번입니다.\n\n💡 [실무 쟁점 & 핵심 Q&A 노트]\n• AI 테스팅 4대 기법 실무 비교:\n  1) 커버리지 테스트: 지정된 입력 범위 내 모든 데이터가 안전/기대 조건을 만족하는지 검증 (예: 제동거리 0.1~5m 내 감속도 80% 보장).\n  2) 메타모픽 테스트: 정답 라벨이 없을 때(No Oracle), 1개 데이터를 회전/변형해도 결과 관계가 유지되는지 검증.\n  3) 뉴런 커버리지 테스트: 딥러닝 내부 뉴런 활성화 비율을 자동화 도구가 측정하는 AI 화이트박스 메트릭.\n  4) 적대적 공격: 사람 눈에 안 보이는 미세 노이즈를 섞어 AI 오분류를 유도하는 강건성 시험.",
+      "explanation": "정답: ②\n\n[해설]\nAI 테스트 기법 매핑 분석:\n• 가 ➔ 메타모픽 테스트(Metamorphic Testing): 테스트 오라클이 불명확할 때 입력의 변형과 출력의 변형 사이의 불변 관계(Metamorphic Relation)를 검증하는 기법 (올바른 매핑)\n• 다 ➔ 뉴런 커버리지 테스트(Neuron Coverage Testing): 심층신경망(DNN)에서 입력 데이터셋에 의해 임계값 이상 활성화된 뉴런의 비율을 측정하고, 미활성화 뉴런을 자극하기 위한 테스트 입력을 증강하는 구조 기반 기법 (올바른 매핑)\n• 라 ➔ 적대적 공격/테스팅(Adversarial Attack/Testing): 사람의 눈에는 보이지 않는 미세한 섭동(인위적 노이즈/Perturbation)을 주입하여 모델의 오분류를 유도하고 견고성(Robustness)을 검증하는 기법 (올바른 매핑)\n• 나 ➔ \"타당한 추론 결과를 얻을 수 있는 정확한 범위를 파악하지 못해도 타당한 값을 얻을 수 있는 예상되는 범위가 있다\"는 일반적인 커버리지 테스트가 아니라, AI 모델의 경계 특성을 검증하는 휴리스틱/범위 기반 유효성 테스트 또는 오라클 문제의 맥락이며, 전통적인 커버리지 테스트(Coverage Testing) 정의와 일치하지 않습니다. 따라서 가장 적절하지 않은 매핑은 ②번입니다.",
       "subject": "소프트웨어공학",
       "origin_year": 2025,
       "origin_id": 33
